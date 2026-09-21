@@ -1,0 +1,49 @@
+{
+  "phase": "Phase -1｜真实样本 → Mock 数据基线",
+  "status": "PASS",
+  "summary": {
+    "sampleCount": 11,
+    "materialFileCount": 72,
+    "pdfCount": 50,
+    "pdfPages": 94,
+    "inspectionPdfCount": 35,
+    "logicalInspectionOrderCount": 34,
+    "inspectionSourceLineCount": 122,
+    "entrustmentDraftCountConfirmed": 12,
+    "entrustmentLineCountConfirmed": 50,
+    "entrustmentLineCountUnknownSamples": [
+      "多对多样例"
+    ],
+    "customerCount": 9,
+    "inspectionGroupCount": 63,
+    "mergedGroupCount": 14,
+    "quarantinedOrderCount": 14,
+    "quarantinedSourceLineCount": 29,
+    "pendingCustomerDraftCount": 3
+  },
+  "scenarioDataChecks": 21,
+  "sourceIntegrity": {
+    "status": "PASS",
+    "allFilesIncludingHidden": 93,
+    "materialFiles": 72,
+    "method": "相对路径、字节大小、SHA-256逐项与首次盘点比较"
+  },
+  "checks": [
+    "客户与客户隔离",
+    "唯一入仓及原始行归属",
+    "三键合并及Decimal精确汇总",
+    "UNKNOWN传播",
+    "原始委托行和字段逐项一致",
+    "关系原始行追溯和无重复分配",
+    "25列直接比较Excel",
+    "去重与参考结果输入隔离",
+    "场景引用、修订目标、实际交叉关系",
+    "可重复加载及副本隔离"
+  ],
+  "notExecuted": [
+    "业务动作验收",
+    "UI",
+    "端到端测试",
+    "Phase 0"
+  ]
+}

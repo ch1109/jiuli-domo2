@@ -1,0 +1,41 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P2",
+  "request_id": "SC08-AUDIT-20260920-P2",
+  "context": {
+    "customer_id": "C-89aa660b4b46",
+    "normalization": {
+      "countries": {"KOREA": "韩国"},
+      "units": {"KG": "KG", "PCS": "个"}
+    }
+  },
+  "input": {
+    "files": [
+      {
+        "file_id": "F-8bc7177252aa",
+        "segments": ["page:1"],
+        "content": {
+          "source_path": "真实整单样本/2025YBT010-2/查货文件/1765426942103.pdf",
+          "page": 1,
+          "barcode": "25120336",
+          "customer": "英堡科技（深圳）有限公司",
+          "customer_po": "2512100302",
+          "table": {
+            "headers": ["CTN #", "Part No.", "Brand", "Description", "QTY", "Origin FAB", "NW Kg", "GW Kg", "Dimension (cm)"],
+            "rows": [
+              {"ctn": "1", "part_no": "H25G9TCXXCX702A", "brand": "SK HYNIX", "description": "64GB INK DIE (#9)", "qty": "12081", "origin_fab": "KOREA", "nw": "3.60", "gw": "4.20", "dimension": "39*34*29"},
+              {"ctn": "2", "part_no": "D25G9TCX8CX239C", "brand": "SK HYNIX", "description": "64GB INK DIE (#D)", "qty": "16054", "origin_fab": "KOREA", "nw": "4.40", "gw": "5.00", "dimension": "39*34*29"}
+            ],
+            "totals": {"qty": "28,135", "nw": "8.00", "gw": "9.20"}
+          },
+          "manual_marks": [
+            "蓝笔圈选两行 Part No.",
+            "蓝笔圈选两行 Brand",
+            "蓝笔圈选 Origin FAB 表头及两行 KOREA"
+          ],
+          "warehouse_label": {"package_text": "2件/板", "handwritten_weight": "9", "unit": "KGS"}
+        }
+      }
+    ]
+  }
+}

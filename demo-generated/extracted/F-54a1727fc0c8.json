@@ -1,0 +1,964 @@
+{
+  "id": "F-54a1727fc0c8",
+  "path": "真实整单样本/2026BMH001/核对单/参考结果.xlsx",
+  "sampleId": "2026BMH001",
+  "sha256": "9f76be689964d4919261eb0bc43b1acfe4688de4e7f68319e43714a7c5ac9933",
+  "size": 6212,
+  "extension": ".xlsx",
+  "role": "reference",
+  "sheets": [
+    {
+      "name": "参考结果",
+      "rows": 12,
+      "columns": 20,
+      "merged": [],
+      "cells": [
+        {
+          "cell": "A1",
+          "row": 1,
+          "column": 1,
+          "value": "品名",
+          "cached": "品名"
+        },
+        {
+          "cell": "B1",
+          "row": 1,
+          "column": 2,
+          "value": "品牌",
+          "cached": "品牌"
+        },
+        {
+          "cell": "C1",
+          "row": 1,
+          "column": 3,
+          "value": "型号",
+          "cached": "型号"
+        },
+        {
+          "cell": "D1",
+          "row": 1,
+          "column": 4,
+          "value": "商品描述",
+          "cached": "商品描述"
+        },
+        {
+          "cell": "E1",
+          "row": 1,
+          "column": 5,
+          "value": "产地",
+          "cached": "产地"
+        },
+        {
+          "cell": "F1",
+          "row": 1,
+          "column": 6,
+          "value": "单位",
+          "cached": "单位"
+        },
+        {
+          "cell": "G1",
+          "row": 1,
+          "column": 7,
+          "value": "数量",
+          "cached": "数量"
+        },
+        {
+          "cell": "H1",
+          "row": 1,
+          "column": 8,
+          "value": "单价",
+          "cached": "单价"
+        },
+        {
+          "cell": "I1",
+          "row": 1,
+          "column": 9,
+          "value": "件数",
+          "cached": "件数"
+        },
+        {
+          "cell": "J1",
+          "row": 1,
+          "column": 10,
+          "value": "净重",
+          "cached": "净重"
+        },
+        {
+          "cell": "K1",
+          "row": 1,
+          "column": 11,
+          "value": "毛重",
+          "cached": "毛重"
+        },
+        {
+          "cell": "L1",
+          "row": 1,
+          "column": 12,
+          "value": "sku",
+          "cached": "sku"
+        },
+        {
+          "cell": "M1",
+          "row": 1,
+          "column": 13,
+          "value": "供应商",
+          "cached": "供应商"
+        },
+        {
+          "cell": "N1",
+          "row": 1,
+          "column": 14,
+          "value": "期票天数",
+          "cached": "期票天数"
+        },
+        {
+          "cell": "O1",
+          "row": 1,
+          "column": 15,
+          "value": "对应的采购",
+          "cached": "对应的采购"
+        },
+        {
+          "cell": "P1",
+          "row": 1,
+          "column": 16,
+          "value": "料号",
+          "cached": "料号"
+        },
+        {
+          "cell": "Q1",
+          "row": 1,
+          "column": 17,
+          "value": "箱号",
+          "cached": "箱号"
+        },
+        {
+          "cell": "R1",
+          "row": 1,
+          "column": 18,
+          "value": "备注",
+          "cached": "备注"
+        },
+        {
+          "cell": "S1",
+          "row": 1,
+          "column": 19,
+          "value": "入仓号",
+          "cached": "入仓号"
+        },
+        {
+          "cell": "T1",
+          "row": 1,
+          "column": 20,
+          "value": "产线",
+          "cached": "产线"
+        },
+        {
+          "cell": "A2",
+          "row": 2,
+          "column": 1,
+          "value": "集成电路",
+          "cached": "集成电路"
+        },
+        {
+          "cell": "B2",
+          "row": 2,
+          "column": 2,
+          "value": "TI",
+          "cached": "TI"
+        },
+        {
+          "cell": "C2",
+          "row": 2,
+          "column": 3,
+          "value": "LM2576SX-3.3/NOPB",
+          "cached": "LM2576SX-3.3/NOPB"
+        },
+        {
+          "cell": "E2",
+          "row": 2,
+          "column": 5,
+          "value": "德国",
+          "cached": "德国"
+        },
+        {
+          "cell": "F2",
+          "row": 2,
+          "column": 6,
+          "value": "个",
+          "cached": "个"
+        },
+        {
+          "cell": "G2",
+          "row": 2,
+          "column": 7,
+          "value": 2500,
+          "cached": 2500
+        },
+        {
+          "cell": "H2",
+          "row": 2,
+          "column": 8,
+          "value": 0.555,
+          "cached": 0.555
+        },
+        {
+          "cell": "I2",
+          "row": 2,
+          "column": 9,
+          "value": 1,
+          "cached": 1
+        },
+        {
+          "cell": "J2",
+          "row": 2,
+          "column": 10,
+          "value": 2.01,
+          "cached": 2.01
+        },
+        {
+          "cell": "K2",
+          "row": 2,
+          "column": 11,
+          "value": 10,
+          "cached": 10
+        },
+        {
+          "cell": "M2",
+          "row": 2,
+          "column": 13,
+          "value": "SILOY ELECTRONIC (HK) CO., LIMITED",
+          "cached": "SILOY ELECTRONIC (HK) CO., LIMITED"
+        },
+        {
+          "cell": "A3",
+          "row": 3,
+          "column": 1,
+          "value": "集成电路",
+          "cached": "集成电路"
+        },
+        {
+          "cell": "B3",
+          "row": 3,
+          "column": 2,
+          "value": "TI",
+          "cached": "TI"
+        },
+        {
+          "cell": "C3",
+          "row": 3,
+          "column": 3,
+          "value": "LM2576SX-3.3/NOPB",
+          "cached": "LM2576SX-3.3/NOPB"
+        },
+        {
+          "cell": "E3",
+          "row": 3,
+          "column": 5,
+          "value": "英国",
+          "cached": "英国"
+        },
+        {
+          "cell": "F3",
+          "row": 3,
+          "column": 6,
+          "value": "个",
+          "cached": "个"
+        },
+        {
+          "cell": "G3",
+          "row": 3,
+          "column": 7,
+          "value": 2000,
+          "cached": 2000
+        },
+        {
+          "cell": "H3",
+          "row": 3,
+          "column": 8,
+          "value": 0.555,
+          "cached": 0.555
+        },
+        {
+          "cell": "I3",
+          "row": 3,
+          "column": 9,
+          "value": 1,
+          "cached": 1
+        },
+        {
+          "cell": "J3",
+          "row": 3,
+          "column": 10,
+          "value": 1.61,
+          "cached": 1.61
+        },
+        {
+          "cell": "K3",
+          "row": 3,
+          "column": 11,
+          "value": 5,
+          "cached": 5
+        },
+        {
+          "cell": "M3",
+          "row": 3,
+          "column": 13,
+          "value": "SILOY ELECTRONIC (HK) CO., LIMITED",
+          "cached": "SILOY ELECTRONIC (HK) CO., LIMITED"
+        },
+        {
+          "cell": "A4",
+          "row": 4,
+          "column": 1,
+          "value": "集成电路",
+          "cached": "集成电路"
+        },
+        {
+          "cell": "B4",
+          "row": 4,
+          "column": 2,
+          "value": "TI",
+          "cached": "TI"
+        },
+        {
+          "cell": "C4",
+          "row": 4,
+          "column": 3,
+          "value": "LM2904BIDR",
+          "cached": "LM2904BIDR"
+        },
+        {
+          "cell": "E4",
+          "row": 4,
+          "column": 5,
+          "value": "美国",
+          "cached": "美国"
+        },
+        {
+          "cell": "F4",
+          "row": 4,
+          "column": 6,
+          "value": "个",
+          "cached": "个"
+        },
+        {
+          "cell": "G4",
+          "row": 4,
+          "column": 7,
+          "value": 110000,
+          "cached": 110000
+        },
+        {
+          "cell": "H4",
+          "row": 4,
+          "column": 8,
+          "value": 0.028,
+          "cached": 0.028
+        },
+        {
+          "cell": "I4",
+          "row": 4,
+          "column": 9,
+          "value": 3,
+          "cached": 3
+        },
+        {
+          "cell": "J4",
+          "row": 4,
+          "column": 10,
+          "value": 20.52,
+          "cached": 20.52
+        },
+        {
+          "cell": "K4",
+          "row": 4,
+          "column": 11,
+          "value": 30,
+          "cached": 30
+        },
+        {
+          "cell": "M4",
+          "row": 4,
+          "column": 13,
+          "value": "SILOY ELECTRONIC (HK) CO., LIMITED",
+          "cached": "SILOY ELECTRONIC (HK) CO., LIMITED"
+        },
+        {
+          "cell": "A5",
+          "row": 5,
+          "column": 1,
+          "value": "集成电路",
+          "cached": "集成电路"
+        },
+        {
+          "cell": "B5",
+          "row": 5,
+          "column": 2,
+          "value": "TI",
+          "cached": "TI"
+        },
+        {
+          "cell": "C5",
+          "row": 5,
+          "column": 3,
+          "value": "SN74LVC08ADR",
+          "cached": "SN74LVC08ADR"
+        },
+        {
+          "cell": "E5",
+          "row": 5,
+          "column": 5,
+          "value": "美国",
+          "cached": "美国"
+        },
+        {
+          "cell": "F5",
+          "row": 5,
+          "column": 6,
+          "value": "个",
+          "cached": "个"
+        },
+        {
+          "cell": "G5",
+          "row": 5,
+          "column": 7,
+          "value": 20000,
+          "cached": 20000
+        },
+        {
+          "cell": "H5",
+          "row": 5,
+          "column": 8,
+          "value": 0.055,
+          "cached": 0.055
+        },
+        {
+          "cell": "I5",
+          "row": 5,
+          "column": 9,
+          "value": 1,
+          "cached": 1
+        },
+        {
+          "cell": "J5",
+          "row": 5,
+          "column": 10,
+          "value": 5.15,
+          "cached": 5.15
+        },
+        {
+          "cell": "K5",
+          "row": 5,
+          "column": 11,
+          "value": 10,
+          "cached": 10
+        },
+        {
+          "cell": "M5",
+          "row": 5,
+          "column": 13,
+          "value": "SILOY ELECTRONIC (HK) CO., LIMITED",
+          "cached": "SILOY ELECTRONIC (HK) CO., LIMITED"
+        },
+        {
+          "cell": "A6",
+          "row": 6,
+          "column": 1,
+          "value": "集成电路",
+          "cached": "集成电路"
+        },
+        {
+          "cell": "B6",
+          "row": 6,
+          "column": 2,
+          "value": "TI",
+          "cached": "TI"
+        },
+        {
+          "cell": "C6",
+          "row": 6,
+          "column": 3,
+          "value": "SN74AHC1G08DBVR",
+          "cached": "SN74AHC1G08DBVR"
+        },
+        {
+          "cell": "E6",
+          "row": 6,
+          "column": 5,
+          "value": "美国",
+          "cached": "美国"
+        },
+        {
+          "cell": "F6",
+          "row": 6,
+          "column": 6,
+          "value": "个",
+          "cached": "个"
+        },
+        {
+          "cell": "G6",
+          "row": 6,
+          "column": 7,
+          "value": 360000,
+          "cached": 360000
+        },
+        {
+          "cell": "H6",
+          "row": 6,
+          "column": 8,
+          "value": 0.0155,
+          "cached": 0.0155
+        },
+        {
+          "cell": "I6",
+          "row": 6,
+          "column": 9,
+          "value": 6,
+          "cached": 6
+        },
+        {
+          "cell": "J6",
+          "row": 6,
+          "column": 10,
+          "value": 27.12,
+          "cached": 27.12
+        },
+        {
+          "cell": "K6",
+          "row": 6,
+          "column": 11,
+          "value": 35,
+          "cached": 35
+        },
+        {
+          "cell": "M6",
+          "row": 6,
+          "column": 13,
+          "value": "SILOY ELECTRONIC (HK) CO., LIMITED",
+          "cached": "SILOY ELECTRONIC (HK) CO., LIMITED"
+        },
+        {
+          "cell": "A7",
+          "row": 7,
+          "column": 1,
+          "value": "集成电路",
+          "cached": "集成电路"
+        },
+        {
+          "cell": "B7",
+          "row": 7,
+          "column": 2,
+          "value": "TI",
+          "cached": "TI"
+        },
+        {
+          "cell": "C7",
+          "row": 7,
+          "column": 3,
+          "value": "SN74HC245PWR",
+          "cached": "SN74HC245PWR"
+        },
+        {
+          "cell": "E7",
+          "row": 7,
+          "column": 5,
+          "value": "美国",
+          "cached": "美国"
+        },
+        {
+          "cell": "F7",
+          "row": 7,
+          "column": 6,
+          "value": "个",
+          "cached": "个"
+        },
+        {
+          "cell": "G7",
+          "row": 7,
+          "column": 7,
+          "value": 24000,
+          "cached": 24000
+        },
+        {
+          "cell": "H7",
+          "row": 7,
+          "column": 8,
+          "value": 0.09,
+          "cached": 0.09
+        },
+        {
+          "cell": "I7",
+          "row": 7,
+          "column": 9,
+          "value": 1,
+          "cached": 1
+        },
+        {
+          "cell": "J7",
+          "row": 7,
+          "column": 10,
+          "value": 5.16,
+          "cached": 5.16
+        },
+        {
+          "cell": "K7",
+          "row": 7,
+          "column": 11,
+          "value": 9,
+          "cached": 9
+        },
+        {
+          "cell": "M7",
+          "row": 7,
+          "column": 13,
+          "value": "SILOY ELECTRONIC (HK) CO., LIMITED",
+          "cached": "SILOY ELECTRONIC (HK) CO., LIMITED"
+        },
+        {
+          "cell": "A8",
+          "row": 8,
+          "column": 1,
+          "value": "集成电路",
+          "cached": "集成电路"
+        },
+        {
+          "cell": "B8",
+          "row": 8,
+          "column": 2,
+          "value": "TI",
+          "cached": "TI"
+        },
+        {
+          "cell": "C8",
+          "row": 8,
+          "column": 3,
+          "value": "SN74LVC1G04DBVR",
+          "cached": "SN74LVC1G04DBVR"
+        },
+        {
+          "cell": "E8",
+          "row": 8,
+          "column": 5,
+          "value": "德国",
+          "cached": "德国"
+        },
+        {
+          "cell": "F8",
+          "row": 8,
+          "column": 6,
+          "value": "个",
+          "cached": "个"
+        },
+        {
+          "cell": "G8",
+          "row": 8,
+          "column": 7,
+          "value": 150000,
+          "cached": 150000
+        },
+        {
+          "cell": "H8",
+          "row": 8,
+          "column": 8,
+          "value": 0.016,
+          "cached": 0.016
+        },
+        {
+          "cell": "I8",
+          "row": 8,
+          "column": 9,
+          "value": 3,
+          "cached": 3
+        },
+        {
+          "cell": "J8",
+          "row": 8,
+          "column": 10,
+          "value": 8.49,
+          "cached": 8.49
+        },
+        {
+          "cell": "K8",
+          "row": 8,
+          "column": 11,
+          "value": 13,
+          "cached": 13
+        },
+        {
+          "cell": "M8",
+          "row": 8,
+          "column": 13,
+          "value": "SILOY ELECTRONIC (HK) CO., LIMITED",
+          "cached": "SILOY ELECTRONIC (HK) CO., LIMITED"
+        },
+        {
+          "cell": "A9",
+          "row": 9,
+          "column": 1,
+          "value": "集成电路",
+          "cached": "集成电路"
+        },
+        {
+          "cell": "B9",
+          "row": 9,
+          "column": 2,
+          "value": "TI",
+          "cached": "TI"
+        },
+        {
+          "cell": "C9",
+          "row": 9,
+          "column": 3,
+          "value": "TLV62569DBVR",
+          "cached": "TLV62569DBVR"
+        },
+        {
+          "cell": "E9",
+          "row": 9,
+          "column": 5,
+          "value": "美国",
+          "cached": "美国"
+        },
+        {
+          "cell": "F9",
+          "row": 9,
+          "column": 6,
+          "value": "个",
+          "cached": "个"
+        },
+        {
+          "cell": "G9",
+          "row": 9,
+          "column": 7,
+          "value": 450000,
+          "cached": 450000
+        },
+        {
+          "cell": "H9",
+          "row": 9,
+          "column": 8,
+          "value": 0.022,
+          "cached": 0.022
+        },
+        {
+          "cell": "I9",
+          "row": 9,
+          "column": 9,
+          "value": 4,
+          "cached": 4
+        },
+        {
+          "cell": "J9",
+          "row": 9,
+          "column": 10,
+          "value": 31.35,
+          "cached": 31.35
+        },
+        {
+          "cell": "K9",
+          "row": 9,
+          "column": 11,
+          "value": 35,
+          "cached": 35
+        },
+        {
+          "cell": "M9",
+          "row": 9,
+          "column": 13,
+          "value": "SILOY ELECTRONIC (HK) CO., LIMITED",
+          "cached": "SILOY ELECTRONIC (HK) CO., LIMITED"
+        },
+        {
+          "cell": "A10",
+          "row": 10,
+          "column": 1,
+          "value": "集成电路",
+          "cached": "集成电路"
+        },
+        {
+          "cell": "B10",
+          "row": 10,
+          "column": 2,
+          "value": "TI",
+          "cached": "TI"
+        },
+        {
+          "cell": "C10",
+          "row": 10,
+          "column": 3,
+          "value": "TPS51200DRCR",
+          "cached": "TPS51200DRCR"
+        },
+        {
+          "cell": "E10",
+          "row": 10,
+          "column": 5,
+          "value": "日本",
+          "cached": "日本"
+        },
+        {
+          "cell": "F10",
+          "row": 10,
+          "column": 6,
+          "value": "个",
+          "cached": "个"
+        },
+        {
+          "cell": "G10",
+          "row": 10,
+          "column": 7,
+          "value": 12000,
+          "cached": 12000
+        },
+        {
+          "cell": "H10",
+          "row": 10,
+          "column": 8,
+          "value": 0.079,
+          "cached": 0.079
+        },
+        {
+          "cell": "I10",
+          "row": 10,
+          "column": 9,
+          "value": 1,
+          "cached": 1
+        },
+        {
+          "cell": "J10",
+          "row": 10,
+          "column": 10,
+          "value": 0.27,
+          "cached": 0.27
+        },
+        {
+          "cell": "K10",
+          "row": 10,
+          "column": 11,
+          "value": 3,
+          "cached": 3
+        },
+        {
+          "cell": "M10",
+          "row": 10,
+          "column": 13,
+          "value": "SILOY ELECTRONIC (HK) CO., LIMITED",
+          "cached": "SILOY ELECTRONIC (HK) CO., LIMITED"
+        },
+        {
+          "cell": "A11",
+          "row": 11,
+          "column": 1,
+          "value": "集成电路",
+          "cached": "集成电路"
+        },
+        {
+          "cell": "B11",
+          "row": 11,
+          "column": 2,
+          "value": "TI",
+          "cached": "TI"
+        },
+        {
+          "cell": "C11",
+          "row": 11,
+          "column": 3,
+          "value": "TXS0108EPWR",
+          "cached": "TXS0108EPWR"
+        },
+        {
+          "cell": "E11",
+          "row": 11,
+          "column": 5,
+          "value": "中国",
+          "cached": "中国"
+        },
+        {
+          "cell": "F11",
+          "row": 11,
+          "column": 6,
+          "value": "个",
+          "cached": "个"
+        },
+        {
+          "cell": "G11",
+          "row": 11,
+          "column": 7,
+          "value": 112000,
+          "cached": 112000
+        },
+        {
+          "cell": "H11",
+          "row": 11,
+          "column": 8,
+          "value": 0.086,
+          "cached": 0.086
+        },
+        {
+          "cell": "I11",
+          "row": 11,
+          "column": 9,
+          "value": 5,
+          "cached": 5
+        },
+        {
+          "cell": "J11",
+          "row": 11,
+          "column": 10,
+          "value": 10.416,
+          "cached": 10.416
+        },
+        {
+          "cell": "K11",
+          "row": 11,
+          "column": 11,
+          "value": 39,
+          "cached": 39
+        },
+        {
+          "cell": "M11",
+          "row": 11,
+          "column": 13,
+          "value": "SILOY ELECTRONIC (HK) CO., LIMITED",
+          "cached": "SILOY ELECTRONIC (HK) CO., LIMITED"
+        },
+        {
+          "cell": "A12",
+          "row": 12,
+          "column": 1,
+          "value": "合计",
+          "cached": "合计"
+        },
+        {
+          "cell": "G12",
+          "row": 12,
+          "column": 7,
+          "value": 1242500,
+          "cached": 1242500
+        },
+        {
+          "cell": "I12",
+          "row": 12,
+          "column": 9,
+          "value": 26,
+          "cached": 26
+        },
+        {
+          "cell": "J12",
+          "row": 12,
+          "column": 10,
+          "value": 112.096,
+          "cached": 112.096
+        },
+        {
+          "cell": "K12",
+          "row": 12,
+          "column": 11,
+          "value": 189,
+          "cached": 189
+        }
+      ]
+    }
+  ]
+}

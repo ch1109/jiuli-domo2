@@ -1,0 +1,24 @@
+[
+  {
+    "id": "ER-YBT-1",
+    "entrustmentLineId": "D-3c3cc10bd26b-R007",
+    "sourceLineIds": [
+      "I-8bc7177252aa-25120336-L001"
+    ],
+    "customerId": "C-89aa660b4b46",
+    "basis": "本单品牌、基础型号、数量逐行对应；#9/#D后缀差异保留，需后续匹配规则或人工确认",
+    "requiresReview": true,
+    "active": false
+  },
+  {
+    "id": "ER-YBT-2",
+    "entrustmentLineId": "D-3c3cc10bd26b-R008",
+    "sourceLineIds": [
+      "I-8bc7177252aa-25120336-L002"
+    ],
+    "customerId": "C-89aa660b4b46",
+    "basis": "本单品牌、基础型号、数量逐行对应；#9/#D后缀差异保留，需后续匹配规则或人工确认",
+    "requiresReview": true,
+    "active": false
+  }
+]

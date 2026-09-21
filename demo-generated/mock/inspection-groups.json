@@ -1,0 +1,1258 @@
+[
+  {
+    "id": "G-3fba68fc6b40",
+    "inspectionOrderId": "I-8bc7177252aa-25120336",
+    "customerId": "C-89aa660b4b46",
+    "sourceLineIds": [
+      "I-8bc7177252aa-25120336-L001"
+    ],
+    "keys": {
+      "品牌": "SK HYNIX",
+      "型号": "H25G9TCXXCX702A",
+      "产地": "KOREA"
+    },
+    "totals": {
+      "数量": "12081",
+      "净重": "3.60",
+      "毛重": "4.20"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-aa6ec94c15df",
+    "inspectionOrderId": "I-8bc7177252aa-25120336",
+    "customerId": "C-89aa660b4b46",
+    "sourceLineIds": [
+      "I-8bc7177252aa-25120336-L002"
+    ],
+    "keys": {
+      "品牌": "SK HYNIX",
+      "型号": "D25G9TCX8CX239C",
+      "产地": "KOREA"
+    },
+    "totals": {
+      "数量": "16054",
+      "净重": "4.40",
+      "毛重": "5.00"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-8ff941e51d93",
+    "inspectionOrderId": "I-4626eef2dd66-26010713",
+    "customerId": "C-66be07d6cabe",
+    "sourceLineIds": [
+      "I-4626eef2dd66-26010713-L001"
+    ],
+    "keys": {
+      "品牌": "uPI",
+      "型号": "UP9505UQGW",
+      "产地": "UNKNOWN"
+    },
+    "totals": {
+      "数量": "2500",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-624bddfe580e",
+    "inspectionOrderId": "I-4626eef2dd66-26010713",
+    "customerId": "C-66be07d6cabe",
+    "sourceLineIds": [
+      "I-4626eef2dd66-26010713-L002"
+    ],
+    "keys": {
+      "品牌": "uPI",
+      "型号": "UP7501M8",
+      "产地": "UNKNOWN"
+    },
+    "totals": {
+      "数量": "3000",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-24e8c615658d",
+    "inspectionOrderId": "I-cdbd27982284-26010048",
+    "customerId": "C-66be07d6cabe",
+    "sourceLineIds": [
+      "I-cdbd27982284-26010048-L001"
+    ],
+    "keys": {
+      "品牌": "ASMEDIA",
+      "型号": "ASM1543",
+      "产地": "TAIWAN, CHINA"
+    },
+    "totals": {
+      "数量": "6500",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-6b694f14be3f",
+    "inspectionOrderId": "I-cdbd27982284-26010048",
+    "customerId": "C-66be07d6cabe",
+    "sourceLineIds": [
+      "I-cdbd27982284-26010048-L002"
+    ],
+    "keys": {
+      "品牌": "ASMEDIA",
+      "型号": "ASM2480B",
+      "产地": "TAIWAN, CHINA"
+    },
+    "totals": {
+      "数量": "3500",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-2d25ac60f400",
+    "inspectionOrderId": "I-cdbd27982284-26010048",
+    "customerId": "C-66be07d6cabe",
+    "sourceLineIds": [
+      "I-cdbd27982284-26010048-L003"
+    ],
+    "keys": {
+      "品牌": "ASMEDIA",
+      "型号": "ASM1562",
+      "产地": "TAIWAN, CHINA"
+    },
+    "totals": {
+      "数量": "6500",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-9d3dbb1e198e",
+    "inspectionOrderId": "I-cdbd27982284-26010048",
+    "customerId": "C-66be07d6cabe",
+    "sourceLineIds": [
+      "I-cdbd27982284-26010048-L004"
+    ],
+    "keys": {
+      "品牌": "ASMEDIA",
+      "型号": "ASM1164",
+      "产地": "TAIWAN, CHINA"
+    },
+    "totals": {
+      "数量": "7000",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-38bd4c6b2457",
+    "inspectionOrderId": "I-ad06ec2cd295-26010801",
+    "customerId": "C-66be07d6cabe",
+    "sourceLineIds": [
+      "I-ad06ec2cd295-26010801-L001",
+      "I-ad06ec2cd295-26010801-L002"
+    ],
+    "keys": {
+      "品牌": "ASL",
+      "型号": "CS5511AN",
+      "产地": "CHINA"
+    },
+    "totals": {
+      "数量": "6720",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-5eaefa11d4ff",
+    "inspectionOrderId": "I-ad06ec2cd295-26010801",
+    "customerId": "C-66be07d6cabe",
+    "sourceLineIds": [
+      "I-ad06ec2cd295-26010801-L003"
+    ],
+    "keys": {
+      "品牌": "ASL",
+      "型号": "CS5512AN",
+      "产地": "CHINA"
+    },
+    "totals": {
+      "数量": "3360",
+      "净重": "5.00",
+      "毛重": "5.30"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-798767641084",
+    "inspectionOrderId": "I-e928e7608540-26010211",
+    "customerId": "C-66be07d6cabe",
+    "sourceLineIds": [
+      "I-e928e7608540-26010211-L001",
+      "I-e928e7608540-26010211-L002"
+    ],
+    "keys": {
+      "品牌": "REALTEK",
+      "型号": "ALC897-VA2-CG",
+      "产地": "CHINA"
+    },
+    "totals": {
+      "数量": "35000",
+      "净重": "25.52",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-6cc0c0b6e443",
+    "inspectionOrderId": "I-e928e7608540-26010211",
+    "customerId": "C-66be07d6cabe",
+    "sourceLineIds": [
+      "I-e928e7608540-26010211-L003"
+    ],
+    "keys": {
+      "品牌": "REALTEK",
+      "型号": "RTS5411S-GR",
+      "产地": "CHINA"
+    },
+    "totals": {
+      "数量": "2600",
+      "净重": "1.97",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-6261ece09652",
+    "inspectionOrderId": "I-bfe5061027e1-26050640",
+    "customerId": "C-66be07d6cabe",
+    "sourceLineIds": [
+      "I-bfe5061027e1-26050640-L001"
+    ],
+    "keys": {
+      "品牌": "MAXLINEAR",
+      "型号": "SP3243EBEY-L/TR",
+      "产地": "UNKNOWN"
+    },
+    "totals": {
+      "数量": "2500",
+      "净重": "0.56",
+      "毛重": "1.56"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-3d9b656d7b5f",
+    "inspectionOrderId": "I-2907feed0d42-26033175",
+    "customerId": "UNKNOWN",
+    "sourceLineIds": [
+      "I-2907feed0d42-26033175-L001"
+    ],
+    "keys": {
+      "品牌": "MICRON",
+      "型号": "MT29F4T08EUHAFM4",
+      "产地": "UNKNOWN"
+    },
+    "totals": {
+      "数量": "1401",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-ee5d626033cf",
+    "inspectionOrderId": "I-2907feed0d42-26033175",
+    "customerId": "UNKNOWN",
+    "sourceLineIds": [
+      "I-2907feed0d42-26033175-L002"
+    ],
+    "keys": {
+      "品牌": "MICRON",
+      "型号": "MT29F2T08CUHBBM4",
+      "产地": "UNKNOWN"
+    },
+    "totals": {
+      "数量": "1564",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-eebfbf1254df",
+    "inspectionOrderId": "I-2907feed0d42-26033175",
+    "customerId": "UNKNOWN",
+    "sourceLineIds": [
+      "I-2907feed0d42-26033175-L003"
+    ],
+    "keys": {
+      "品牌": "Toshiba",
+      "型号": "TH58TF1V23BA8H",
+      "产地": "UNKNOWN"
+    },
+    "totals": {
+      "数量": "1080",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-114aeb349e02",
+    "inspectionOrderId": "I-2907feed0d42-26033175",
+    "customerId": "UNKNOWN",
+    "sourceLineIds": [
+      "I-2907feed0d42-26033175-L004"
+    ],
+    "keys": {
+      "品牌": "Toshiba",
+      "型号": "TH58TF2T23BA8J",
+      "产地": "UNKNOWN"
+    },
+    "totals": {
+      "数量": "368",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-a257fe6849b0",
+    "inspectionOrderId": "I-6b255626250f-26050688",
+    "customerId": "UNKNOWN",
+    "sourceLineIds": [
+      "I-6b255626250f-26050688-L001",
+      "I-6b255626250f-26050688-L002"
+    ],
+    "keys": {
+      "品牌": "SUSE",
+      "型号": "B-RPGC-2C4V-PS1",
+      "产地": "德国"
+    },
+    "totals": {
+      "数量": "32",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-ec7d788f3bcb",
+    "inspectionOrderId": "I-b98a101d8392-26027114",
+    "customerId": "UNKNOWN",
+    "sourceLineIds": [
+      "I-b98a101d8392-26027114-L001"
+    ],
+    "keys": {
+      "品牌": "TI",
+      "型号": "TXS0108EPWR",
+      "产地": "CN"
+    },
+    "totals": {
+      "数量": "16000",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-1aae637778ac",
+    "inspectionOrderId": "I-c5195fdb15a3-26027143",
+    "customerId": "UNKNOWN",
+    "sourceLineIds": [
+      "I-c5195fdb15a3-26027143-L001",
+      "I-c5195fdb15a3-26027143-L002"
+    ],
+    "keys": {
+      "品牌": "TI",
+      "型号": "TXS0108EPWR",
+      "产地": "CN"
+    },
+    "totals": {
+      "数量": "70000",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-ee86620eb812",
+    "inspectionOrderId": "I-94d0c3955b2a-26027191",
+    "customerId": "UNKNOWN",
+    "sourceLineIds": [
+      "I-94d0c3955b2a-26027191-L001",
+      "I-94d0c3955b2a-26027191-L002",
+      "I-94d0c3955b2a-26027191-L003"
+    ],
+    "keys": {
+      "品牌": "TI",
+      "型号": "TLV62569DBVR",
+      "产地": "US"
+    },
+    "totals": {
+      "数量": "450000",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-88e67475f240",
+    "inspectionOrderId": "I-39b0b8e82a3a-26027254",
+    "customerId": "UNKNOWN",
+    "sourceLineIds": [
+      "I-39b0b8e82a3a-26027254-L001"
+    ],
+    "keys": {
+      "品牌": "TI",
+      "型号": "TXS0108EPWR",
+      "产地": "CN"
+    },
+    "totals": {
+      "数量": "26000",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-fe75ecfd45bc",
+    "inspectionOrderId": "I-a06d575c587d-26027251",
+    "customerId": "UNKNOWN",
+    "sourceLineIds": [
+      "I-a06d575c587d-26027251-L001"
+    ],
+    "keys": {
+      "品牌": "TI",
+      "型号": "SN74HC245PWR",
+      "产地": "US"
+    },
+    "totals": {
+      "数量": "24000",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-c274587d8b15",
+    "inspectionOrderId": "I-69127fcfa5c3-26027300",
+    "customerId": "UNKNOWN",
+    "sourceLineIds": [
+      "I-69127fcfa5c3-26027300-L001"
+    ],
+    "keys": {
+      "品牌": "TI",
+      "型号": "SN74LVC1G04DBVR",
+      "产地": "DE"
+    },
+    "totals": {
+      "数量": "150000",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-574bbc07ee65",
+    "inspectionOrderId": "I-69127fcfa5c3-26027300",
+    "customerId": "UNKNOWN",
+    "sourceLineIds": [
+      "I-69127fcfa5c3-26027300-L002"
+    ],
+    "keys": {
+      "品牌": "TI",
+      "型号": "INA180A2IDBVR",
+      "产地": "JP"
+    },
+    "totals": {
+      "数量": "9000",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-37d495e1c150",
+    "inspectionOrderId": "I-de4e00bf55d8-26027299",
+    "customerId": "UNKNOWN",
+    "sourceLineIds": [
+      "I-de4e00bf55d8-26027299-L001"
+    ],
+    "keys": {
+      "品牌": "TI",
+      "型号": "LM2576SX-3.3/NOPB",
+      "产地": "GB"
+    },
+    "totals": {
+      "数量": "500",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-c7ce882c9f95",
+    "inspectionOrderId": "I-b03e0011849f-26027298",
+    "customerId": "UNKNOWN",
+    "sourceLineIds": [
+      "I-b03e0011849f-26027298-L001"
+    ],
+    "keys": {
+      "品牌": "TI",
+      "型号": "LM2576SX-3.3/NOPB",
+      "产地": "UNKNOWN"
+    },
+    "totals": {
+      "数量": "4000",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-1d3685b82d2f",
+    "inspectionOrderId": "I-cb09c02b9ed5-26027323",
+    "customerId": "UNKNOWN",
+    "sourceLineIds": [
+      "I-cb09c02b9ed5-26027323-L001"
+    ],
+    "keys": {
+      "品牌": "TI",
+      "型号": "TPS51200DRCR",
+      "产地": "JP"
+    },
+    "totals": {
+      "数量": "12000",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-4dfcd7c2fc44",
+    "inspectionOrderId": "I-f29936219cd1-26027322",
+    "customerId": "UNKNOWN",
+    "sourceLineIds": [
+      "I-f29936219cd1-26027322-L001"
+    ],
+    "keys": {
+      "品牌": "TI",
+      "型号": "SN74LVC08ADR",
+      "产地": "US"
+    },
+    "totals": {
+      "数量": "20000",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-6a75d8bc20d6",
+    "inspectionOrderId": "I-f29936219cd1-26027322",
+    "customerId": "UNKNOWN",
+    "sourceLineIds": [
+      "I-f29936219cd1-26027322-L002"
+    ],
+    "keys": {
+      "品牌": "TI",
+      "型号": "LM2904BIDR",
+      "产地": "US"
+    },
+    "totals": {
+      "数量": "150000",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-aa983ed0d7c8",
+    "inspectionOrderId": "I-276766064bb2-26027223",
+    "customerId": "UNKNOWN",
+    "sourceLineIds": [
+      "I-276766064bb2-26027223-L001",
+      "I-276766064bb2-26027223-L002",
+      "I-276766064bb2-26027223-L003",
+      "I-276766064bb2-26027223-L004",
+      "I-276766064bb2-26027223-L005",
+      "I-276766064bb2-26027223-L006",
+      "I-276766064bb2-26027223-L007"
+    ],
+    "keys": {
+      "品牌": "TI",
+      "型号": "SN74AHC1G08DBVR",
+      "产地": "US"
+    },
+    "totals": {
+      "数量": "1800000",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-7f790c57b74d",
+    "inspectionOrderId": "I-8e681d73b55a-26057448",
+    "customerId": "UNKNOWN",
+    "sourceLineIds": [
+      "I-8e681d73b55a-26057448-L001"
+    ],
+    "keys": {
+      "品牌": "HIROSE",
+      "型号": "BM25U-4P/2-V(85)",
+      "产地": "JAPAN"
+    },
+    "totals": {
+      "数量": "580000",
+      "净重": "4.81",
+      "毛重": "31.66"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-4bd5d7a44495",
+    "inspectionOrderId": "I-970b59d6d5b8-26036383",
+    "customerId": "C-132ffbd28c07",
+    "sourceLineIds": [
+      "I-970b59d6d5b8-26036383-L001"
+    ],
+    "keys": {
+      "品牌": "WINBOND",
+      "型号": "W25N01GVZEIG",
+      "产地": "CHINA"
+    },
+    "totals": {
+      "数量": "4000",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-ada9ce3c4d80",
+    "inspectionOrderId": "I-970b59d6d5b8-26036383",
+    "customerId": "C-132ffbd28c07",
+    "sourceLineIds": [
+      "I-970b59d6d5b8-26036383-L002",
+      "I-970b59d6d5b8-26036383-L003",
+      "I-970b59d6d5b8-26036383-L004",
+      "I-970b59d6d5b8-26036383-L005",
+      "I-970b59d6d5b8-26036383-L006",
+      "I-970b59d6d5b8-26036383-L007"
+    ],
+    "keys": {
+      "品牌": "WINBOND",
+      "型号": "W25N01GVZEIG",
+      "产地": "TAIWAN, CHINA"
+    },
+    "totals": {
+      "数量": "149440",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-9a5a37c0e8eb",
+    "inspectionOrderId": "I-970b59d6d5b8-26036383",
+    "customerId": "C-132ffbd28c07",
+    "sourceLineIds": [
+      "I-970b59d6d5b8-26036383-L008",
+      "I-970b59d6d5b8-26036383-L009"
+    ],
+    "keys": {
+      "品牌": "MARVELL",
+      "型号": "88E6240A1TFJ2C000",
+      "产地": "TAIWAN, CHINA"
+    },
+    "totals": {
+      "数量": "2700",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-73524343a8b3",
+    "inspectionOrderId": "I-5dc64ab64d12-26040077",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-5dc64ab64d12-26040077-L001"
+    ],
+    "keys": {
+      "品牌": "AOS",
+      "型号": "AOD3N80",
+      "产地": "China"
+    },
+    "totals": {
+      "数量": "2500",
+      "净重": "1.94",
+      "毛重": "2.44"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-a70e6257c66b",
+    "inspectionOrderId": "I-5dc64ab64d12-26040077",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-5dc64ab64d12-26040077-L002"
+    ],
+    "keys": {
+      "品牌": "AOS",
+      "型号": "AON6512",
+      "产地": "China"
+    },
+    "totals": {
+      "数量": "6000",
+      "净重": "1.63",
+      "毛重": "2.13"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-56c437fb60d5",
+    "inspectionOrderId": "I-5dc64ab64d12-26040077",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-5dc64ab64d12-26040077-L003"
+    ],
+    "keys": {
+      "品牌": "AOS",
+      "型号": "AON6354",
+      "产地": "China"
+    },
+    "totals": {
+      "数量": "3000",
+      "净重": "0.80",
+      "毛重": "1.30"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-2f3852ce5379",
+    "inspectionOrderId": "I-168417940250-26040117",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-168417940250-26040117-L001"
+    ],
+    "keys": {
+      "品牌": "ST",
+      "型号": "M24C02-RMN6TPTHA",
+      "产地": "France"
+    },
+    "totals": {
+      "数量": "5000",
+      "净重": "0.400",
+      "毛重": "2.140"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-ec3e198f0884",
+    "inspectionOrderId": "I-168417940250-26040117",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-168417940250-26040117-L002"
+    ],
+    "keys": {
+      "品牌": "ST",
+      "型号": "PM8834TR",
+      "产地": "Italy"
+    },
+    "totals": {
+      "数量": "5000",
+      "净重": "0.400",
+      "毛重": "2.090"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-e94bc14ca341",
+    "inspectionOrderId": "I-168417940250-26040117",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-168417940250-26040117-L003"
+    ],
+    "keys": {
+      "品牌": "ST",
+      "型号": "STD4N80K5",
+      "产地": "Italy"
+    },
+    "totals": {
+      "数量": "2500",
+      "净重": "0.750",
+      "毛重": "1.970"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-bb2b99b95c7b",
+    "inspectionOrderId": "I-2e8354efac27-26040114",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-2e8354efac27-26040114-L001"
+    ],
+    "keys": {
+      "品牌": "ST",
+      "型号": "LM393DT",
+      "产地": "China"
+    },
+    "totals": {
+      "数量": "2500",
+      "净重": "0.200",
+      "毛重": "1.220"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-9198f67cfe83",
+    "inspectionOrderId": "I-929e7033b39f-26040116",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-929e7033b39f-26040116-L001"
+    ],
+    "keys": {
+      "品牌": "TAIWAN SEMICONDUCTOR",
+      "型号": "SK310A",
+      "产地": "China"
+    },
+    "totals": {
+      "数量": "7500",
+      "净重": "0.360",
+      "毛重": "1.400"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-7ab36d94ea57",
+    "inspectionOrderId": "I-7d97d15951fc-26040139",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-7d97d15951fc-26040139-L001"
+    ],
+    "keys": {
+      "品牌": "ST",
+      "型号": "STM32G474MCT6",
+      "产地": "France"
+    },
+    "totals": {
+      "数量": "714",
+      "净重": "0.358",
+      "毛重": "2.160"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-8f4603059e8c",
+    "inspectionOrderId": "I-f1e1e4ea2ac5-26040716",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-f1e1e4ea2ac5-26040716-L001"
+    ],
+    "keys": {
+      "品牌": "ON",
+      "型号": "MMUN2214LT1G",
+      "产地": "CN"
+    },
+    "totals": {
+      "数量": "6000",
+      "净重": "0.34",
+      "毛重": "0.40"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-a4468296e725",
+    "inspectionOrderId": "I-da9dfc44a0f9-26040156",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-da9dfc44a0f9-26040156-L001"
+    ],
+    "keys": {
+      "品牌": "MICROCHIP",
+      "型号": "PIC18F25K22T-E/SS",
+      "产地": "TH"
+    },
+    "totals": {
+      "数量": "6300",
+      "净重": "3.500",
+      "毛重": "4.100"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-21309dc1492b",
+    "inspectionOrderId": "I-da9dfc44a0f9-26040156",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-da9dfc44a0f9-26040156-L002"
+    ],
+    "keys": {
+      "品牌": "MICROCHIP",
+      "型号": "PIC18F46K22T-I/PT",
+      "产地": "TH"
+    },
+    "totals": {
+      "数量": "3600",
+      "净重": "4.000",
+      "毛重": "4.900"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-56dfa11b379d",
+    "inspectionOrderId": "I-c578af30ff9a-26040177",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-c578af30ff9a-26040177-L001"
+    ],
+    "keys": {
+      "品牌": "DIODES",
+      "型号": "D-SBR10U60CT",
+      "产地": "CN 中国"
+    },
+    "totals": {
+      "数量": "100",
+      "净重": "0.19",
+      "毛重": "0.95"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-b95ffac6ac0c",
+    "inspectionOrderId": "I-cd33df861950-26040178",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-cd33df861950-26040178-L001"
+    ],
+    "keys": {
+      "品牌": "VISHAY",
+      "型号": "SIHP21N60EF-GE3",
+      "产地": "Israel 以色列"
+    },
+    "totals": {
+      "数量": "2000",
+      "净重": "3.90",
+      "毛重": "6.08"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-badda5210ef8",
+    "inspectionOrderId": "I-cd33df861950-26040178",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-cd33df861950-26040178-L002"
+    ],
+    "keys": {
+      "品牌": "ROHM",
+      "型号": "R6030ENZ4C13",
+      "产地": "CN 中国"
+    },
+    "totals": {
+      "数量": "1200",
+      "净重": "7.62",
+      "毛重": "10.40"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-c716ecfadf3c",
+    "inspectionOrderId": "I-ea04d3e7518a-26040179",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-ea04d3e7518a-26040179-L001"
+    ],
+    "keys": {
+      "品牌": "INFINEON",
+      "型号": "IPW65R041CFD7(SP005413359)",
+      "产地": "CN 中国"
+    },
+    "totals": {
+      "数量": "720",
+      "净重": "5.22",
+      "毛重": "6.53"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-a543882d7129",
+    "inspectionOrderId": "I-93c7d7713617-26040084",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-93c7d7713617-26040084-L001",
+      "I-93c7d7713617-26040084-L002"
+    ],
+    "keys": {
+      "品牌": "DIODES",
+      "型号": "S8KC-13",
+      "产地": "TAIWAN,CHINA"
+    },
+    "totals": {
+      "数量": "15000",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-2af1c9483265",
+    "inspectionOrderId": "I-93c7d7713617-26040084",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-93c7d7713617-26040084-L003"
+    ],
+    "keys": {
+      "品牌": "DIODES",
+      "型号": "BSS84DW-7-F",
+      "产地": "CHINA"
+    },
+    "totals": {
+      "数量": "3000",
+      "净重": "0.28",
+      "毛重": "0.40"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-45ed466d54aa",
+    "inspectionOrderId": "I-5b778363f744-26040083",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-5b778363f744-26040083-L001",
+      "I-5b778363f744-26040083-L002",
+      "I-5b778363f744-26040083-L003",
+      "I-5b778363f744-26040083-L004",
+      "I-5b778363f744-26040083-L005",
+      "I-5b778363f744-26040083-L006",
+      "I-5b778363f744-26040083-L007",
+      "I-5b778363f744-26040083-L008",
+      "I-5b778363f744-26040083-L009",
+      "I-5b778363f744-26040083-L010",
+      "I-5b778363f744-26040083-L011",
+      "I-5b778363f744-26040083-L012",
+      "I-5b778363f744-26040083-L013",
+      "I-5b778363f744-26040083-L014",
+      "I-5b778363f744-26040083-L015",
+      "I-5b778363f744-26040083-L016",
+      "I-5b778363f744-26040083-L017"
+    ],
+    "keys": {
+      "品牌": "INFINEON",
+      "型号": "BSC026N08NS5",
+      "产地": "CHINA"
+    },
+    "totals": {
+      "数量": "295000",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-4b723be6e9ab",
+    "inspectionOrderId": "I-5b778363f744-26040083",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-5b778363f744-26040083-L018",
+      "I-5b778363f744-26040083-L019",
+      "I-5b778363f744-26040083-L020",
+      "I-5b778363f744-26040083-L021",
+      "I-5b778363f744-26040083-L022",
+      "I-5b778363f744-26040083-L023",
+      "I-5b778363f744-26040083-L024",
+      "I-5b778363f744-26040083-L025",
+      "I-5b778363f744-26040083-L026",
+      "I-5b778363f744-26040083-L027",
+      "I-5b778363f744-26040083-L028",
+      "I-5b778363f744-26040083-L029"
+    ],
+    "keys": {
+      "品牌": "INFINEON",
+      "型号": "SPA11N65C3",
+      "产地": "CHINA"
+    },
+    "totals": {
+      "数量": "21500",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-f90a90a5bd62",
+    "inspectionOrderId": "I-5b778363f744-26040083",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-5b778363f744-26040083-L030",
+      "I-5b778363f744-26040083-L031"
+    ],
+    "keys": {
+      "品牌": "INFINEON",
+      "型号": "IPW60R037CSFD",
+      "产地": "CHINA"
+    },
+    "totals": {
+      "数量": "480",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-ff097d2f5ce9",
+    "inspectionOrderId": "I-5b778363f744-26040083",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-5b778363f744-26040083-L032",
+      "I-5b778363f744-26040083-L033"
+    ],
+    "keys": {
+      "品牌": "INFINEON",
+      "型号": "IPW60R120P7",
+      "产地": "CHINA"
+    },
+    "totals": {
+      "数量": "480",
+      "净重": "UNKNOWN",
+      "毛重": "UNKNOWN"
+    },
+    "complete": false
+  },
+  {
+    "id": "G-c2d5e28a2487",
+    "inspectionOrderId": "I-5b778363f744-26040083",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-5b778363f744-26040083-L034"
+    ],
+    "keys": {
+      "品牌": "INFINEON",
+      "型号": "IPW60R045P7",
+      "产地": "CHINA"
+    },
+    "totals": {
+      "数量": "480",
+      "净重": "4.09",
+      "毛重": "4.34"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-b4e989381bb9",
+    "inspectionOrderId": "I-5b778363f744-26040083",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-5b778363f744-26040083-L035"
+    ],
+    "keys": {
+      "品牌": "INFINEON",
+      "型号": "IPP110N20N3 G",
+      "产地": "CHINA"
+    },
+    "totals": {
+      "数量": "500",
+      "净重": "1.62",
+      "毛重": "1.87"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-be3e943e4253",
+    "inspectionOrderId": "I-5b778363f744-26040083",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-5b778363f744-26040083-L036"
+    ],
+    "keys": {
+      "品牌": "INFINEON",
+      "型号": "IPA80R600P7",
+      "产地": "CHINA"
+    },
+    "totals": {
+      "数量": "500",
+      "净重": "1.71",
+      "毛重": "1.96"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-e8f22e9e7df6",
+    "inspectionOrderId": "I-5b778363f744-26040083",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-5b778363f744-26040083-L037"
+    ],
+    "keys": {
+      "品牌": "INFINEON",
+      "型号": "2EDN7524F",
+      "产地": "PHILIPPINES"
+    },
+    "totals": {
+      "数量": "2500",
+      "净重": "1.13",
+      "毛重": "1.54"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-3c05d132b943",
+    "inspectionOrderId": "I-5b778363f744-26040083",
+    "customerId": "C-0a93054667fc",
+    "sourceLineIds": [
+      "I-5b778363f744-26040083-L038"
+    ],
+    "keys": {
+      "品牌": "INFINEON",
+      "型号": "BSC010N04LS",
+      "产地": "CHINA"
+    },
+    "totals": {
+      "数量": "5000",
+      "净重": "1.33",
+      "毛重": "1.70"
+    },
+    "complete": true
+  },
+  {
+    "id": "G-5cfb0188c852",
+    "inspectionOrderId": "I-a5368260946b-26070093",
+    "customerId": "C-b212996858bd",
+    "sourceLineIds": [
+      "I-a5368260946b-26070093-L001",
+      "I-a5368260946b-26070093-L002",
+      "I-a5368260946b-26070093-L003",
+      "I-a5368260946b-26070093-L004",
+      "I-a5368260946b-26070093-L005",
+      "I-a5368260946b-26070093-L006",
+      "I-a5368260946b-26070093-L007",
+      "I-a5368260946b-26070093-L008",
+      "I-a5368260946b-26070093-L009",
+      "I-a5368260946b-26070093-L010",
+      "I-a5368260946b-26070093-L011",
+      "I-a5368260946b-26070093-L012"
+    ],
+    "keys": {
+      "品牌": "UNISOC",
+      "型号": "UMW2631",
+      "产地": "CHINA"
+    },
+    "totals": {
+      "数量": "177000",
+      "净重": "53.30",
+      "毛重": "61.70"
+    },
+    "complete": true
+  }
+]

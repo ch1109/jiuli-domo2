@@ -1,0 +1,617 @@
+{
+  "id": "F-3c3cc10bd26b",
+  "path": "真实整单样本/2025YBT010-2/委托文件/2件.xlsx",
+  "sampleId": "2025YBT010-2",
+  "sha256": "cf7e73ec710d5a1fb339e91fddeb8626f3ccce5d50e90a5703a8b5fec85028f0",
+  "size": 15306,
+  "extension": ".xlsx",
+  "role": "entrustment_material",
+  "sheets": [
+    {
+      "name": "12-10-2",
+      "rows": 19,
+      "columns": 15,
+      "merged": [
+        "B14:N14",
+        "A9:G9",
+        "A2:N2",
+        "B13:N13",
+        "M3:N3",
+        "B15:N15",
+        "H16:N16",
+        "B12:C12",
+        "A1:N1"
+      ],
+      "cells": [
+        {
+          "cell": "A1",
+          "row": 1,
+          "column": 1,
+          "value": "                                                                                                      业    务    委    托    确    认    单                                                        最适合您的供应链管家",
+          "cached": "                                                                                                      业    务    委    托    确    认    单                                                        最适合您的供应链管家"
+        },
+        {
+          "cell": "A2",
+          "row": 2,
+          "column": 1,
+          "value": "      C  O  N  F  I  R  M A  T  I  O  N",
+          "cached": "      C  O  N  F  I  R  M A  T  I  O  N"
+        },
+        {
+          "cell": "A3",
+          "row": 3,
+          "column": 1,
+          "value": "委托方：",
+          "cached": "委托方："
+        },
+        {
+          "cell": "B3",
+          "row": 3,
+          "column": 2,
+          "value": "英堡科技（深圳）有限公司",
+          "cached": "英堡科技（深圳）有限公司"
+        },
+        {
+          "cell": "J3",
+          "row": 3,
+          "column": 10,
+          "value": "合同号：",
+          "cached": "合同号："
+        },
+        {
+          "cell": "K3",
+          "row": 3,
+          "column": 11,
+          "value": "2025YBT010-2",
+          "cached": "2025YBT010-2"
+        },
+        {
+          "cell": "A4",
+          "row": 4,
+          "column": 1,
+          "value": "代理方：",
+          "cached": "代理方："
+        },
+        {
+          "cell": "B4",
+          "row": 4,
+          "column": 2,
+          "value": "深圳市九立供应链股份有限公司",
+          "cached": "深圳市九立供应链股份有限公司"
+        },
+        {
+          "cell": "J4",
+          "row": 4,
+          "column": 10,
+          "value": "日期：",
+          "cached": "日期："
+        },
+        {
+          "cell": "K4",
+          "row": 4,
+          "column": 11,
+          "value": 46002,
+          "cached": 46002
+        },
+        {
+          "cell": "A5",
+          "row": 5,
+          "column": 1,
+          "value": "业务类型：",
+          "cached": "业务类型："
+        },
+        {
+          "cell": "C5",
+          "row": 5,
+          "column": 3,
+          "value": "R进口",
+          "cached": "R进口"
+        },
+        {
+          "cell": "H5",
+          "row": 5,
+          "column": 8,
+          "value": "□出口",
+          "cached": "□出口"
+        },
+        {
+          "cell": "L5",
+          "row": 5,
+          "column": 12,
+          "value": "□香港销售",
+          "cached": "□香港销售"
+        },
+        {
+          "cell": "N5",
+          "row": 5,
+          "column": 14,
+          "value": "□其他",
+          "cached": "□其他"
+        },
+        {
+          "cell": "A6",
+          "row": 6,
+          "column": 1,
+          "value": "序号",
+          "cached": "序号"
+        },
+        {
+          "cell": "B6",
+          "row": 6,
+          "column": 2,
+          "value": "货物名称",
+          "cached": "货物名称"
+        },
+        {
+          "cell": "C6",
+          "row": 6,
+          "column": 3,
+          "value": "品牌",
+          "cached": "品牌"
+        },
+        {
+          "cell": "D6",
+          "row": 6,
+          "column": 4,
+          "value": "型号",
+          "cached": "型号"
+        },
+        {
+          "cell": "E6",
+          "row": 6,
+          "column": 5,
+          "value": "参数",
+          "cached": "参数"
+        },
+        {
+          "cell": "F6",
+          "row": 6,
+          "column": 6,
+          "value": "产地",
+          "cached": "产地"
+        },
+        {
+          "cell": "G6",
+          "row": 6,
+          "column": 7,
+          "value": "单位",
+          "cached": "单位"
+        },
+        {
+          "cell": "H6",
+          "row": 6,
+          "column": 8,
+          "value": "数量(PCS)",
+          "cached": "数量(PCS)"
+        },
+        {
+          "cell": "I6",
+          "row": 6,
+          "column": 9,
+          "value": "报关单价（USD）",
+          "cached": "报关单价（USD）"
+        },
+        {
+          "cell": "J6",
+          "row": 6,
+          "column": 10,
+          "value": "报关总价（USD）   FOB香港",
+          "cached": "报关总价（USD）   FOB香港"
+        },
+        {
+          "cell": "K6",
+          "row": 6,
+          "column": 11,
+          "value": "箱数",
+          "cached": "箱数"
+        },
+        {
+          "cell": "L6",
+          "row": 6,
+          "column": 12,
+          "value": "净重(KG)",
+          "cached": "净重(KG)"
+        },
+        {
+          "cell": "M6",
+          "row": 6,
+          "column": 13,
+          "value": "毛重(KG)",
+          "cached": "毛重(KG)"
+        },
+        {
+          "cell": "N6",
+          "row": 6,
+          "column": 14,
+          "value": "预计付汇时间",
+          "cached": "预计付汇时间"
+        },
+        {
+          "cell": "O6",
+          "row": 6,
+          "column": 15,
+          "value": "备注",
+          "cached": "备注"
+        },
+        {
+          "cell": "A7",
+          "row": 7,
+          "column": 1,
+          "value": 1,
+          "cached": 1
+        },
+        {
+          "cell": "B7",
+          "row": 7,
+          "column": 2,
+          "value": "晶圆",
+          "cached": "晶圆"
+        },
+        {
+          "cell": "C7",
+          "row": 7,
+          "column": 3,
+          "value": "SK HYNIX",
+          "cached": "SK HYNIX"
+        },
+        {
+          "cell": "D7",
+          "row": 7,
+          "column": 4,
+          "value": "H25G9TCXXCX702A#9",
+          "cached": "H25G9TCXXCX702A#9"
+        },
+        {
+          "cell": "E7",
+          "row": 7,
+          "column": 5,
+          "value": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性",
+          "cached": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性"
+        },
+        {
+          "cell": "F7",
+          "row": 7,
+          "column": 6,
+          "value": "韩国",
+          "cached": "韩国"
+        },
+        {
+          "cell": "G7",
+          "row": 7,
+          "column": 7,
+          "value": "个",
+          "cached": "个"
+        },
+        {
+          "cell": "H7",
+          "row": 7,
+          "column": 8,
+          "value": 12081,
+          "cached": 12081
+        },
+        {
+          "cell": "I7",
+          "row": 7,
+          "column": 9,
+          "value": 4.1,
+          "cached": 4.1
+        },
+        {
+          "cell": "J7",
+          "row": 7,
+          "column": 10,
+          "value": "=H7*I7",
+          "cached": 49532.1
+        },
+        {
+          "cell": "K7",
+          "row": 7,
+          "column": 11,
+          "value": 1,
+          "cached": 1
+        },
+        {
+          "cell": "L7",
+          "row": 7,
+          "column": 12,
+          "value": 3.6,
+          "cached": 3.6
+        },
+        {
+          "cell": "M7",
+          "row": 7,
+          "column": 13,
+          "value": 4.2,
+          "cached": 4.2
+        },
+        {
+          "cell": "A8",
+          "row": 8,
+          "column": 1,
+          "value": 2,
+          "cached": 2
+        },
+        {
+          "cell": "B8",
+          "row": 8,
+          "column": 2,
+          "value": "晶圆",
+          "cached": "晶圆"
+        },
+        {
+          "cell": "C8",
+          "row": 8,
+          "column": 3,
+          "value": "SK HYNIX",
+          "cached": "SK HYNIX"
+        },
+        {
+          "cell": "D8",
+          "row": 8,
+          "column": 4,
+          "value": "D25G9TCX8CX239C#D",
+          "cached": "D25G9TCX8CX239C#D"
+        },
+        {
+          "cell": "E8",
+          "row": 8,
+          "column": 5,
+          "value": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性",
+          "cached": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性"
+        },
+        {
+          "cell": "F8",
+          "row": 8,
+          "column": 6,
+          "value": "韩国",
+          "cached": "韩国"
+        },
+        {
+          "cell": "G8",
+          "row": 8,
+          "column": 7,
+          "value": "个",
+          "cached": "个"
+        },
+        {
+          "cell": "H8",
+          "row": 8,
+          "column": 8,
+          "value": 16054,
+          "cached": 16054
+        },
+        {
+          "cell": "I8",
+          "row": 8,
+          "column": 9,
+          "value": 2.9,
+          "cached": 2.9
+        },
+        {
+          "cell": "J8",
+          "row": 8,
+          "column": 10,
+          "value": "=H8*I8",
+          "cached": 46556.6
+        },
+        {
+          "cell": "K8",
+          "row": 8,
+          "column": 11,
+          "value": 1,
+          "cached": 1
+        },
+        {
+          "cell": "L8",
+          "row": 8,
+          "column": 12,
+          "value": 4.4,
+          "cached": 4.4
+        },
+        {
+          "cell": "M8",
+          "row": 8,
+          "column": 13,
+          "value": 5,
+          "cached": 5
+        },
+        {
+          "cell": "A9",
+          "row": 9,
+          "column": 1,
+          "value": "合  计：",
+          "cached": "合  计："
+        },
+        {
+          "cell": "H9",
+          "row": 9,
+          "column": 8,
+          "value": "=SUM(H7:H8)",
+          "cached": 28135
+        },
+        {
+          "cell": "J9",
+          "row": 9,
+          "column": 10,
+          "value": "=SUM(J7:J8)",
+          "cached": 96088.7
+        },
+        {
+          "cell": "K9",
+          "row": 9,
+          "column": 11,
+          "value": "=SUM(K7:K8)",
+          "cached": 2
+        },
+        {
+          "cell": "L9",
+          "row": 9,
+          "column": 12,
+          "value": "=SUM(L7:L8)",
+          "cached": 8
+        },
+        {
+          "cell": "M9",
+          "row": 9,
+          "column": 13,
+          "value": "=SUM(M7:M8)",
+          "cached": 9.2
+        },
+        {
+          "cell": "A10",
+          "row": 10,
+          "column": 1,
+          "value": "说明：",
+          "cached": "说明："
+        },
+        {
+          "cell": "B10",
+          "row": 10,
+          "column": 2,
+          "value": "1） 请选择香港交货方式：",
+          "cached": "1） 请选择香港交货方式："
+        },
+        {
+          "cell": "G10",
+          "row": 10,
+          "column": 7,
+          "value": "□ 送至代理方香港仓库",
+          "cached": "□ 送至代理方香港仓库"
+        },
+        {
+          "cell": "J10",
+          "row": 10,
+          "column": 10,
+          "value": "R委托代理方代为提货",
+          "cached": "R委托代理方代为提货"
+        },
+        {
+          "cell": "B11",
+          "row": 11,
+          "column": 2,
+          "value": "       请选择国内交货方式：",
+          "cached": "       请选择国内交货方式："
+        },
+        {
+          "cell": "G11",
+          "row": 11,
+          "column": 7,
+          "value": "□客户在代理方深圳仓库自提",
+          "cached": "□客户在代理方深圳仓库自提"
+        },
+        {
+          "cell": "J11",
+          "row": 11,
+          "column": 10,
+          "value": "R运输至客户指定地点",
+          "cached": "R运输至客户指定地点"
+        },
+        {
+          "cell": "M11",
+          "row": 11,
+          "column": 13,
+          "value": "□代为客户办理国内运输",
+          "cached": "□代为客户办理国内运输"
+        },
+        {
+          "cell": "B12",
+          "row": 12,
+          "column": 2,
+          "value": "       请选择国内运输方式：",
+          "cached": "       请选择国内运输方式："
+        },
+        {
+          "cell": "G12",
+          "row": 12,
+          "column": 7,
+          "value": "□航空",
+          "cached": "□航空"
+        },
+        {
+          "cell": "H12",
+          "row": 12,
+          "column": 8,
+          "value": "R汽运",
+          "cached": "R汽运"
+        },
+        {
+          "cell": "I12",
+          "row": 12,
+          "column": 9,
+          "value": "□铁运",
+          "cached": "□铁运"
+        },
+        {
+          "cell": "J12",
+          "row": 12,
+          "column": 10,
+          "value": "是否购买保险：",
+          "cached": "是否购买保险："
+        },
+        {
+          "cell": "L12",
+          "row": 12,
+          "column": 12,
+          "value": "□是",
+          "cached": "□是"
+        },
+        {
+          "cell": "M12",
+          "row": 12,
+          "column": 13,
+          "value": "□否",
+          "cached": "□否"
+        },
+        {
+          "cell": "B13",
+          "row": 13,
+          "column": 2,
+          "value": "2） 香港详细提货地址（如需代为提货）及联系人： Flat 25, 1/F, Block B, Proficient Industrial Centre,6 Wang Kwun Road, Kowloon Bay, Kowloon, Hong Kong  852- 3971 0823 ，MING",
+          "cached": "2） 香港详细提货地址（如需代为提货）及联系人： Flat 25, 1/F, Block B, Proficient Industrial Centre,6 Wang Kwun Road, Kowloon Bay, Kowloon, Hong Kong  852- 3971 0823 ，MING"
+        },
+        {
+          "cell": "B14",
+          "row": 14,
+          "column": 2,
+          "value": "     国内详细收货地址/收货人/电话/运输方式： 深圳市龙华区观澜街道新澜社区松泰科技园C栋4楼  英堡科技（深圳）有限公司，刘键，15107548310",
+          "cached": "     国内详细收货地址/收货人/电话/运输方式： 深圳市龙华区观澜街道新澜社区松泰科技园C栋4楼  英堡科技（深圳）有限公司，刘键，15107548310"
+        },
+        {
+          "cell": "B15",
+          "row": 15,
+          "column": 2,
+          "value": "       为了确保您的货物安全到达，请填写收货人身份证号：英堡科技（深圳）有限公司公章签收",
+          "cached": "       为了确保您的货物安全到达，请填写收货人身份证号：英堡科技（深圳）有限公司公章签收"
+        },
+        {
+          "cell": "B16",
+          "row": 16,
+          "column": 2,
+          "value": "3）  客户特别要求（备注）：",
+          "cached": "3）  客户特别要求（备注）："
+        },
+        {
+          "cell": "B17",
+          "row": 17,
+          "column": 2,
+          "value": "委托方签字并盖章确认：",
+          "cached": "委托方签字并盖章确认："
+        },
+        {
+          "cell": "D17",
+          "row": 17,
+          "column": 4,
+          "value": "黎浩铭",
+          "cached": "黎浩铭"
+        },
+        {
+          "cell": "B18",
+          "row": 18,
+          "column": 2,
+          "value": "Authorized Signature",
+          "cached": "Authorized Signature"
+        }
+      ]
+    }
+  ]
+}

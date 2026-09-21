@@ -1,0 +1,1668 @@
+{
+  "sampleId": "26SHPYD056",
+  "customer": "上海浦壹电子科技有限公司",
+  "customerDetermination": "来自委托方、查货明确Bill To或内部单；未证明的归属在对象级标UNKNOWN",
+  "fileIds": [
+    "F-df72916dc019",
+    "F-970b59d6d5b8",
+    "F-ad8ae0641eda"
+  ],
+  "entrustmentDocumentCount": 1,
+  "invoiceDocumentCount": 0,
+  "packingListDocumentCount": 2,
+  "inspectionPdfCount": 1,
+  "warehouseCountConfirmed": 1,
+  "warehouseAmbiguities": [],
+  "logicalInspectionOrderCount": 1,
+  "entrustmentLineCount": 9,
+  "inspectionSourceLineCount": 9,
+  "hasMergeableGoods": true,
+  "hasFieldConflict": true,
+  "hasMultipleCandidatePotential": true,
+  "possibleRelationScenarios": [
+    "一对一候选（待逐行关系核实）"
+  ],
+  "notes": [
+    "委托9行、合计166140；查货9条批次明细、合计156140；真实差异10000保留。",
+    "委托WINBOND的8行与查货7个批次不是逐行一一对应，不能静默合并委托。",
+    "重量主要在箱/整单层级；参考结果合并成2行，不作为委托行来源。"
+  ],
+  "inspectionFacts": [
+    {
+      "fileId": "F-970b59d6d5b8",
+      "sampleId": "26SHPYD056",
+      "warehouseNo": "26036383",
+      "customerName": "上海浦壹电子科技有限公司",
+      "rows": [
+        {
+          "page": 1,
+          "position": "WINBOND批次明细第1行",
+          "品牌": "WINBOND",
+          "型号": "W25N01GVZEIG",
+          "产地": "CHINA",
+          "数量": "4000",
+          "单位": "UNKNOWN",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "DC": "2542"
+        },
+        {
+          "page": 1,
+          "position": "WINBOND批次明细第2行",
+          "品牌": "WINBOND",
+          "型号": "W25N01GVZEIG",
+          "产地": "TAIWAN, CHINA",
+          "数量": "3840",
+          "单位": "UNKNOWN",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "DC": "2523"
+        },
+        {
+          "page": 1,
+          "position": "WINBOND批次明细第3行",
+          "品牌": "WINBOND",
+          "型号": "W25N01GVZEIG",
+          "产地": "TAIWAN, CHINA",
+          "数量": "11520",
+          "单位": "UNKNOWN",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "DC": "2544"
+        },
+        {
+          "page": 1,
+          "position": "WINBOND批次明细第4行",
+          "品牌": "WINBOND",
+          "型号": "W25N01GVZEIG",
+          "产地": "TAIWAN, CHINA",
+          "数量": "3840",
+          "单位": "UNKNOWN",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "DC": "2545"
+        },
+        {
+          "page": 1,
+          "position": "WINBOND批次明细第5行",
+          "品牌": "WINBOND",
+          "型号": "W25N01GVZEIG",
+          "产地": "TAIWAN, CHINA",
+          "数量": "15360",
+          "单位": "UNKNOWN",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "DC": "2548"
+        },
+        {
+          "page": 1,
+          "position": "WINBOND批次明细第6行",
+          "品牌": "WINBOND",
+          "型号": "W25N01GVZEIG",
+          "产地": "TAIWAN, CHINA",
+          "数量": "12000",
+          "单位": "UNKNOWN",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "DC": "2551"
+        },
+        {
+          "page": 1,
+          "position": "WINBOND批次明细第7行",
+          "品牌": "WINBOND",
+          "型号": "W25N01GVZEIG",
+          "产地": "TAIWAN, CHINA",
+          "数量": "102880",
+          "单位": "UNKNOWN",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "DC": "2552"
+        },
+        {
+          "page": 2,
+          "position": "MARVELL批次明细第1行",
+          "品牌": "MARVELL",
+          "型号": "88E6240A1TFJ2C000",
+          "产地": "TAIWAN, CHINA",
+          "数量": "900",
+          "单位": "UNKNOWN",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "DC": "2522"
+        },
+        {
+          "page": 2,
+          "position": "MARVELL批次明细第2行",
+          "品牌": "MARVELL",
+          "型号": "88E6240A1TFJ2C000",
+          "产地": "TAIWAN, CHINA",
+          "数量": "1800",
+          "单位": "UNKNOWN",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "DC": "2524"
+        }
+      ],
+      "notes": "第2页同PDF续页没有独立入仓号；按第1页入仓章2页及总件数归属。保留9条批次明细，Shipped Qty汇总不重复计行。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "WINBOND 7行",
+          "件数": "4",
+          "净重": "57.7",
+          "毛重": "61.7"
+        },
+        {
+          "page": 2,
+          "scope": "MARVELL 2行",
+          "件数": "1",
+          "净重": "6.8",
+          "毛重": "7.4"
+        },
+        {
+          "page": 1,
+          "scope": "仓库实测整单",
+          "件数": "5",
+          "毛重": "75"
+        }
+      ]
+    }
+  ],
+  "entrustmentFacts": [
+    {
+      "id": "D-df72916dc019",
+      "sampleId": "26SHPYD056",
+      "fileId": "F-df72916dc019",
+      "customerName": "上海浦壹电子科技有限公司",
+      "customerEvidence": {
+        "fileId": "F-df72916dc019",
+        "sheet": "Sheet1",
+        "location": "委托方"
+      },
+      "rows": [
+        {
+          "id": "D-df72916dc019-R007",
+          "sourceOrder": 1,
+          "sourceRow": 7,
+          "fields": {
+            "客户名": "上海浦壹电子科技有限公司",
+            "品牌": "ST",
+            "型号": "LIS2DU12TR",
+            "商品描述": "传感功能 LOT:2407 境外品牌（其他）",
+            "品名": "集成电路",
+            "产地": "意大利",
+            "单位": "UNKNOWN",
+            "数量": "10000",
+            "报关单价": "1.5",
+            "总价": "15000",
+            "币种": "USD",
+            "件数": "1",
+            "净重": "0.8",
+            "毛重": "1.3",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "品牌": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "B7",
+              "rawValue": "ST",
+              "cachedValue": null,
+              "value": "ST"
+            },
+            "品名": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "C7",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "型号": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "D7",
+              "rawValue": "LIS2DU12TR",
+              "cachedValue": null,
+              "value": "LIS2DU12TR"
+            },
+            "商品描述": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "E7",
+              "rawValue": "传感功能 LOT:2407 境外品牌（其他）",
+              "cachedValue": null,
+              "value": "传感功能 LOT:2407 境外品牌（其他）"
+            },
+            "数量": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "F7",
+              "rawValue": 10000.0,
+              "cachedValue": null,
+              "value": "10000"
+            },
+            "报关单价": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "G7",
+              "rawValue": 1.5,
+              "cachedValue": null,
+              "value": "1.5"
+            },
+            "总价": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "H7",
+              "rawValue": 15000.0,
+              "cachedValue": null,
+              "value": "15000"
+            },
+            "产地": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "I7",
+              "rawValue": "意大利",
+              "cachedValue": null,
+              "value": "意大利"
+            },
+            "净重": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "J7",
+              "rawValue": 0.8,
+              "cachedValue": null,
+              "value": "0.8"
+            },
+            "毛重": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "K7",
+              "rawValue": 1.3,
+              "cachedValue": null,
+              "value": "1.3"
+            },
+            "件数": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "L7",
+              "rawValue": 1.0,
+              "cachedValue": null,
+              "value": "1"
+            },
+            "客户名": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "location": "委托方",
+              "value": "上海浦壹电子科技有限公司",
+              "rawValue": "上海浦壹电子科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        },
+        {
+          "id": "D-df72916dc019-R008",
+          "sourceOrder": 2,
+          "sourceRow": 8,
+          "fields": {
+            "客户名": "上海浦壹电子科技有限公司",
+            "品牌": "WINBOND",
+            "型号": "W25N01GVZEIG",
+            "商品描述": "存储功能 LOT:2542、2523 境外品牌（其他）",
+            "品名": "集成电路",
+            "产地": "中国台湾",
+            "单位": "UNKNOWN",
+            "数量": "68000",
+            "报关单价": "4.85203336809176",
+            "总价": "329938.26903024",
+            "币种": "USD",
+            "件数": "UNKNOWN",
+            "净重": "UNKNOWN",
+            "毛重": "UNKNOWN",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "品牌": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "B8",
+              "rawValue": "WINBOND",
+              "cachedValue": null,
+              "value": "WINBOND"
+            },
+            "品名": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "C8",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "型号": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "D8",
+              "rawValue": "W25N01GVZEIG",
+              "cachedValue": null,
+              "value": "W25N01GVZEIG"
+            },
+            "商品描述": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "E8",
+              "rawValue": "存储功能 LOT:2542、2523 境外品牌（其他）",
+              "cachedValue": null,
+              "value": "存储功能 LOT:2542、2523 境外品牌（其他）"
+            },
+            "数量": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "F8",
+              "rawValue": 68000.0,
+              "cachedValue": null,
+              "value": "68000"
+            },
+            "报关单价": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "G8",
+              "rawValue": 4.852033368091762,
+              "cachedValue": null,
+              "value": "4.85203336809176"
+            },
+            "总价": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "H8",
+              "rawValue": 329938.26903023984,
+              "cachedValue": null,
+              "value": "329938.26903024"
+            },
+            "产地": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "I8",
+              "rawValue": "中国台湾",
+              "cachedValue": null,
+              "value": "中国台湾"
+            },
+            "客户名": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "location": "委托方",
+              "value": "上海浦壹电子科技有限公司",
+              "rawValue": "上海浦壹电子科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        },
+        {
+          "id": "D-df72916dc019-R009",
+          "sourceOrder": 3,
+          "sourceRow": 9,
+          "fields": {
+            "客户名": "上海浦壹电子科技有限公司",
+            "品牌": "WINBOND",
+            "型号": "W25N01GVZEIG",
+            "商品描述": "存储功能 LOT:2542、2523 境外品牌（其他）",
+            "品名": "集成电路",
+            "产地": "UNKNOWN",
+            "单位": "UNKNOWN",
+            "数量": "8000",
+            "报关单价": "4.85203336809176",
+            "总价": "38816.2669447341",
+            "币种": "USD",
+            "件数": "UNKNOWN",
+            "净重": "UNKNOWN",
+            "毛重": "UNKNOWN",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "品牌": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "B9",
+              "rawValue": "WINBOND",
+              "cachedValue": null,
+              "value": "WINBOND"
+            },
+            "品名": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "C9",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "型号": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "D9",
+              "rawValue": "W25N01GVZEIG",
+              "cachedValue": null,
+              "value": "W25N01GVZEIG"
+            },
+            "商品描述": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "E9",
+              "rawValue": "存储功能 LOT:2542、2523 境外品牌（其他）",
+              "cachedValue": null,
+              "value": "存储功能 LOT:2542、2523 境外品牌（其他）"
+            },
+            "数量": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "F9",
+              "rawValue": 8000.0,
+              "cachedValue": null,
+              "value": "8000"
+            },
+            "报关单价": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "G9",
+              "rawValue": 4.852033368091762,
+              "cachedValue": null,
+              "value": "4.85203336809176"
+            },
+            "总价": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "H9",
+              "rawValue": 38816.266944734096,
+              "cachedValue": null,
+              "value": "38816.2669447341"
+            },
+            "客户名": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "location": "委托方",
+              "value": "上海浦壹电子科技有限公司",
+              "rawValue": "上海浦壹电子科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        },
+        {
+          "id": "D-df72916dc019-R010",
+          "sourceOrder": 4,
+          "sourceRow": 10,
+          "fields": {
+            "客户名": "上海浦壹电子科技有限公司",
+            "品牌": "WINBOND",
+            "型号": "W25N01GVZEIG",
+            "商品描述": "存储功能 LOT:2542、2523 境外品牌（其他）",
+            "品名": "集成电路",
+            "产地": "UNKNOWN",
+            "单位": "UNKNOWN",
+            "数量": "11520",
+            "报关单价": "4.85203336809176",
+            "总价": "55895.4244004171",
+            "币种": "USD",
+            "件数": "UNKNOWN",
+            "净重": "UNKNOWN",
+            "毛重": "UNKNOWN",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "品牌": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "B10",
+              "rawValue": "WINBOND",
+              "cachedValue": null,
+              "value": "WINBOND"
+            },
+            "品名": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "C10",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "型号": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "D10",
+              "rawValue": "W25N01GVZEIG",
+              "cachedValue": null,
+              "value": "W25N01GVZEIG"
+            },
+            "商品描述": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "E10",
+              "rawValue": "存储功能 LOT:2542、2523 境外品牌（其他）",
+              "cachedValue": null,
+              "value": "存储功能 LOT:2542、2523 境外品牌（其他）"
+            },
+            "数量": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "F10",
+              "rawValue": 11520.0,
+              "cachedValue": null,
+              "value": "11520"
+            },
+            "报关单价": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "G10",
+              "rawValue": 4.852033368091762,
+              "cachedValue": null,
+              "value": "4.85203336809176"
+            },
+            "总价": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "H10",
+              "rawValue": 55895.4244004171,
+              "cachedValue": null,
+              "value": "55895.4244004171"
+            },
+            "客户名": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "location": "委托方",
+              "value": "上海浦壹电子科技有限公司",
+              "rawValue": "上海浦壹电子科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        },
+        {
+          "id": "D-df72916dc019-R011",
+          "sourceOrder": 5,
+          "sourceRow": 11,
+          "fields": {
+            "客户名": "上海浦壹电子科技有限公司",
+            "品牌": "WINBOND",
+            "型号": "W25N01GVZEIG",
+            "商品描述": "存储功能 LOT:2542、2523 境外品牌（其他）",
+            "品名": "集成电路",
+            "产地": "UNKNOWN",
+            "单位": "UNKNOWN",
+            "数量": "26880",
+            "报关单价": "4.85203336809176",
+            "总价": "130422.656934307",
+            "币种": "USD",
+            "件数": "UNKNOWN",
+            "净重": "UNKNOWN",
+            "毛重": "UNKNOWN",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "品牌": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "B11",
+              "rawValue": "WINBOND",
+              "cachedValue": null,
+              "value": "WINBOND"
+            },
+            "品名": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "C11",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "型号": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "D11",
+              "rawValue": "W25N01GVZEIG",
+              "cachedValue": null,
+              "value": "W25N01GVZEIG"
+            },
+            "商品描述": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "E11",
+              "rawValue": "存储功能 LOT:2542、2523 境外品牌（其他）",
+              "cachedValue": null,
+              "value": "存储功能 LOT:2542、2523 境外品牌（其他）"
+            },
+            "数量": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "F11",
+              "rawValue": 26880.0,
+              "cachedValue": null,
+              "value": "26880"
+            },
+            "报关单价": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "G11",
+              "rawValue": 4.852033368091762,
+              "cachedValue": null,
+              "value": "4.85203336809176"
+            },
+            "总价": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "H11",
+              "rawValue": 130422.65693430656,
+              "cachedValue": null,
+              "value": "130422.656934307"
+            },
+            "客户名": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "location": "委托方",
+              "value": "上海浦壹电子科技有限公司",
+              "rawValue": "上海浦壹电子科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        },
+        {
+          "id": "D-df72916dc019-R012",
+          "sourceOrder": 6,
+          "sourceRow": 12,
+          "fields": {
+            "客户名": "上海浦壹电子科技有限公司",
+            "品牌": "WINBOND",
+            "型号": "W25N01GVZEIG",
+            "商品描述": "存储功能 LOT:2542、2523 境外品牌（其他）",
+            "品名": "集成电路",
+            "产地": "UNKNOWN",
+            "单位": "UNKNOWN",
+            "数量": "12000",
+            "报关单价": "4.85203336809176",
+            "总价": "58224.4004171011",
+            "币种": "USD",
+            "件数": "UNKNOWN",
+            "净重": "UNKNOWN",
+            "毛重": "UNKNOWN",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "品牌": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "B12",
+              "rawValue": "WINBOND",
+              "cachedValue": null,
+              "value": "WINBOND"
+            },
+            "品名": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "C12",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "型号": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "D12",
+              "rawValue": "W25N01GVZEIG",
+              "cachedValue": null,
+              "value": "W25N01GVZEIG"
+            },
+            "商品描述": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "E12",
+              "rawValue": "存储功能 LOT:2542、2523 境外品牌（其他）",
+              "cachedValue": null,
+              "value": "存储功能 LOT:2542、2523 境外品牌（其他）"
+            },
+            "数量": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "F12",
+              "rawValue": 12000.0,
+              "cachedValue": null,
+              "value": "12000"
+            },
+            "报关单价": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "G12",
+              "rawValue": 4.852033368091762,
+              "cachedValue": null,
+              "value": "4.85203336809176"
+            },
+            "总价": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "H12",
+              "rawValue": 58224.40041710115,
+              "cachedValue": null,
+              "value": "58224.4004171011"
+            },
+            "客户名": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "location": "委托方",
+              "value": "上海浦壹电子科技有限公司",
+              "rawValue": "上海浦壹电子科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        },
+        {
+          "id": "D-df72916dc019-R013",
+          "sourceOrder": 7,
+          "sourceRow": 13,
+          "fields": {
+            "客户名": "上海浦壹电子科技有限公司",
+            "品牌": "WINBOND",
+            "型号": "W25N01GVZEIG",
+            "商品描述": "存储功能 LOT:2542、2523 境外品牌（其他）",
+            "品名": "集成电路",
+            "产地": "UNKNOWN",
+            "单位": "UNKNOWN",
+            "数量": "23040",
+            "报关单价": "4.85203336809176",
+            "总价": "111790.848800834",
+            "币种": "USD",
+            "件数": "UNKNOWN",
+            "净重": "UNKNOWN",
+            "毛重": "UNKNOWN",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "品牌": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "B13",
+              "rawValue": "WINBOND",
+              "cachedValue": null,
+              "value": "WINBOND"
+            },
+            "品名": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "C13",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "型号": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "D13",
+              "rawValue": "W25N01GVZEIG",
+              "cachedValue": null,
+              "value": "W25N01GVZEIG"
+            },
+            "商品描述": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "E13",
+              "rawValue": "存储功能 LOT:2542、2523 境外品牌（其他）",
+              "cachedValue": null,
+              "value": "存储功能 LOT:2542、2523 境外品牌（其他）"
+            },
+            "数量": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "F13",
+              "rawValue": 23040.0,
+              "cachedValue": null,
+              "value": "23040"
+            },
+            "报关单价": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "G13",
+              "rawValue": 4.852033368091762,
+              "cachedValue": null,
+              "value": "4.85203336809176"
+            },
+            "总价": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "H13",
+              "rawValue": 111790.8488008342,
+              "cachedValue": null,
+              "value": "111790.848800834"
+            },
+            "客户名": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "location": "委托方",
+              "value": "上海浦壹电子科技有限公司",
+              "rawValue": "上海浦壹电子科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        },
+        {
+          "id": "D-df72916dc019-R014",
+          "sourceOrder": 8,
+          "sourceRow": 14,
+          "fields": {
+            "客户名": "上海浦壹电子科技有限公司",
+            "品牌": "WINBOND",
+            "型号": "W25N01GVZEIG",
+            "商品描述": "存储功能 LOT:2542、2523 境外品牌（其他）",
+            "品名": "集成电路",
+            "产地": "UNKNOWN",
+            "单位": "UNKNOWN",
+            "数量": "4000",
+            "报关单价": "4.85203336809176",
+            "总价": "19408.133472367",
+            "币种": "USD",
+            "件数": "UNKNOWN",
+            "净重": "UNKNOWN",
+            "毛重": "UNKNOWN",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "品牌": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "B14",
+              "rawValue": "WINBOND",
+              "cachedValue": null,
+              "value": "WINBOND"
+            },
+            "品名": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "C14",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "型号": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "D14",
+              "rawValue": "W25N01GVZEIG",
+              "cachedValue": null,
+              "value": "W25N01GVZEIG"
+            },
+            "商品描述": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "E14",
+              "rawValue": "存储功能 LOT:2542、2523 境外品牌（其他）",
+              "cachedValue": null,
+              "value": "存储功能 LOT:2542、2523 境外品牌（其他）"
+            },
+            "数量": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "F14",
+              "rawValue": 4000.0,
+              "cachedValue": null,
+              "value": "4000"
+            },
+            "报关单价": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "G14",
+              "rawValue": 4.852033368091762,
+              "cachedValue": null,
+              "value": "4.85203336809176"
+            },
+            "总价": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "H14",
+              "rawValue": 19408.133472367048,
+              "cachedValue": null,
+              "value": "19408.133472367"
+            },
+            "客户名": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "location": "委托方",
+              "value": "上海浦壹电子科技有限公司",
+              "rawValue": "上海浦壹电子科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        },
+        {
+          "id": "D-df72916dc019-R015",
+          "sourceOrder": 9,
+          "sourceRow": 15,
+          "fields": {
+            "客户名": "上海浦壹电子科技有限公司",
+            "品牌": "MARVELL",
+            "型号": "88E6240A1TFJ2C000",
+            "商品描述": "交换功能 LOT:2522、2524  境外品牌（其他）",
+            "品名": "集成电路",
+            "产地": "中国台湾",
+            "单位": "UNKNOWN",
+            "数量": "2700",
+            "报关单价": "7",
+            "总价": "18900",
+            "币种": "USD",
+            "件数": "1",
+            "净重": "6.8",
+            "毛重": "7.4",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "品牌": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "B15",
+              "rawValue": "MARVELL",
+              "cachedValue": null,
+              "value": "MARVELL"
+            },
+            "品名": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "C15",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "型号": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "D15",
+              "rawValue": "88E6240A1TFJ2C000",
+              "cachedValue": null,
+              "value": "88E6240A1TFJ2C000"
+            },
+            "商品描述": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "E15",
+              "rawValue": "交换功能 LOT:2522、2524  境外品牌（其他）",
+              "cachedValue": null,
+              "value": "交换功能 LOT:2522、2524  境外品牌（其他）"
+            },
+            "数量": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "F15",
+              "rawValue": 2700.0,
+              "cachedValue": null,
+              "value": "2700"
+            },
+            "报关单价": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "G15",
+              "rawValue": 7.0,
+              "cachedValue": null,
+              "value": "7"
+            },
+            "总价": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "H15",
+              "rawValue": 18900.0,
+              "cachedValue": null,
+              "value": "18900"
+            },
+            "产地": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "I15",
+              "rawValue": "中国台湾",
+              "cachedValue": null,
+              "value": "中国台湾"
+            },
+            "净重": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "J15",
+              "rawValue": 6.8,
+              "cachedValue": null,
+              "value": "6.8"
+            },
+            "毛重": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "K15",
+              "rawValue": 7.4,
+              "cachedValue": null,
+              "value": "7.4"
+            },
+            "件数": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "cell": "L15",
+              "rawValue": 1.0,
+              "cachedValue": null,
+              "value": "1"
+            },
+            "客户名": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "location": "委托方",
+              "value": "上海浦壹电子科技有限公司",
+              "rawValue": "上海浦壹电子科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-df72916dc019",
+              "sheet": "Sheet1",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        }
+      ],
+      "sharedMeasurements": [
+        {
+          "field": "净重",
+          "value": "57.7",
+          "rows": [
+            8,
+            14
+          ],
+          "source": {
+            "fileId": "F-df72916dc019",
+            "sheet": "Sheet1",
+            "cell": "J8"
+          }
+        },
+        {
+          "field": "毛重",
+          "value": "61.7",
+          "rows": [
+            8,
+            14
+          ],
+          "source": {
+            "fileId": "F-df72916dc019",
+            "sheet": "Sheet1",
+            "cell": "K8"
+          }
+        },
+        {
+          "field": "件数",
+          "value": "4",
+          "rows": [
+            8,
+            14
+          ],
+          "source": {
+            "fileId": "F-df72916dc019",
+            "sheet": "Sheet1",
+            "cell": "L8"
+          }
+        },
+        {
+          "field": "净重",
+          "value": "57.7",
+          "rows": [
+            8,
+            14
+          ],
+          "source": {
+            "fileId": "F-df72916dc019",
+            "sheet": "Sheet1",
+            "cell": "J8"
+          }
+        },
+        {
+          "field": "毛重",
+          "value": "61.7",
+          "rows": [
+            8,
+            14
+          ],
+          "source": {
+            "fileId": "F-df72916dc019",
+            "sheet": "Sheet1",
+            "cell": "K8"
+          }
+        },
+        {
+          "field": "件数",
+          "value": "4",
+          "rows": [
+            8,
+            14
+          ],
+          "source": {
+            "fileId": "F-df72916dc019",
+            "sheet": "Sheet1",
+            "cell": "L8"
+          }
+        },
+        {
+          "field": "净重",
+          "value": "57.7",
+          "rows": [
+            8,
+            14
+          ],
+          "source": {
+            "fileId": "F-df72916dc019",
+            "sheet": "Sheet1",
+            "cell": "J8"
+          }
+        },
+        {
+          "field": "毛重",
+          "value": "61.7",
+          "rows": [
+            8,
+            14
+          ],
+          "source": {
+            "fileId": "F-df72916dc019",
+            "sheet": "Sheet1",
+            "cell": "K8"
+          }
+        },
+        {
+          "field": "件数",
+          "value": "4",
+          "rows": [
+            8,
+            14
+          ],
+          "source": {
+            "fileId": "F-df72916dc019",
+            "sheet": "Sheet1",
+            "cell": "L8"
+          }
+        },
+        {
+          "field": "净重",
+          "value": "57.7",
+          "rows": [
+            8,
+            14
+          ],
+          "source": {
+            "fileId": "F-df72916dc019",
+            "sheet": "Sheet1",
+            "cell": "J8"
+          }
+        },
+        {
+          "field": "毛重",
+          "value": "61.7",
+          "rows": [
+            8,
+            14
+          ],
+          "source": {
+            "fileId": "F-df72916dc019",
+            "sheet": "Sheet1",
+            "cell": "K8"
+          }
+        },
+        {
+          "field": "件数",
+          "value": "4",
+          "rows": [
+            8,
+            14
+          ],
+          "source": {
+            "fileId": "F-df72916dc019",
+            "sheet": "Sheet1",
+            "cell": "L8"
+          }
+        },
+        {
+          "field": "净重",
+          "value": "57.7",
+          "rows": [
+            8,
+            14
+          ],
+          "source": {
+            "fileId": "F-df72916dc019",
+            "sheet": "Sheet1",
+            "cell": "J8"
+          }
+        },
+        {
+          "field": "毛重",
+          "value": "61.7",
+          "rows": [
+            8,
+            14
+          ],
+          "source": {
+            "fileId": "F-df72916dc019",
+            "sheet": "Sheet1",
+            "cell": "K8"
+          }
+        },
+        {
+          "field": "件数",
+          "value": "4",
+          "rows": [
+            8,
+            14
+          ],
+          "source": {
+            "fileId": "F-df72916dc019",
+            "sheet": "Sheet1",
+            "cell": "L8"
+          }
+        },
+        {
+          "field": "净重",
+          "value": "57.7",
+          "rows": [
+            8,
+            14
+          ],
+          "source": {
+            "fileId": "F-df72916dc019",
+            "sheet": "Sheet1",
+            "cell": "J8"
+          }
+        },
+        {
+          "field": "毛重",
+          "value": "61.7",
+          "rows": [
+            8,
+            14
+          ],
+          "source": {
+            "fileId": "F-df72916dc019",
+            "sheet": "Sheet1",
+            "cell": "K8"
+          }
+        },
+        {
+          "field": "件数",
+          "value": "4",
+          "rows": [
+            8,
+            14
+          ],
+          "source": {
+            "fileId": "F-df72916dc019",
+            "sheet": "Sheet1",
+            "cell": "L8"
+          }
+        },
+        {
+          "field": "净重",
+          "value": "57.7",
+          "rows": [
+            8,
+            14
+          ],
+          "source": {
+            "fileId": "F-df72916dc019",
+            "sheet": "Sheet1",
+            "cell": "J8"
+          }
+        },
+        {
+          "field": "毛重",
+          "value": "61.7",
+          "rows": [
+            8,
+            14
+          ],
+          "source": {
+            "fileId": "F-df72916dc019",
+            "sheet": "Sheet1",
+            "cell": "K8"
+          }
+        },
+        {
+          "field": "件数",
+          "value": "4",
+          "rows": [
+            8,
+            14
+          ],
+          "source": {
+            "fileId": "F-df72916dc019",
+            "sheet": "Sheet1",
+            "cell": "L8"
+          }
+        }
+      ]
+    }
+  ],
+  "reviewRecords": [
+    {
+      "fileId": "F-df72916dc019",
+      "sampleId": "26SHPYD056",
+      "role": "entrustment_material",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "Sheet1",
+          "rows": 31,
+          "columns": 23,
+          "merged": [
+            [
+              0,
+              1,
+              0,
+              18
+            ],
+            [
+              1,
+              2,
+              0,
+              2
+            ],
+            [
+              1,
+              2,
+              2,
+              5
+            ],
+            [
+              1,
+              2,
+              9,
+              11
+            ],
+            [
+              1,
+              2,
+              11,
+              14
+            ],
+            [
+              2,
+              3,
+              0,
+              2
+            ],
+            [
+              2,
+              3,
+              2,
+              5
+            ],
+            [
+              3,
+              4,
+              2,
+              5
+            ],
+            [
+              15,
+              16,
+              0,
+              5
+            ],
+            [
+              18,
+              19,
+              10,
+              12
+            ],
+            [
+              22,
+              23,
+              4,
+              7
+            ],
+            [
+              23,
+              24,
+              4,
+              7
+            ],
+            [
+              24,
+              25,
+              5,
+              7
+            ],
+            [
+              25,
+              26,
+              4,
+              7
+            ],
+            [
+              7,
+              14,
+              8,
+              9
+            ],
+            [
+              7,
+              14,
+              9,
+              10
+            ],
+            [
+              7,
+              14,
+              10,
+              11
+            ],
+            [
+              7,
+              14,
+              11,
+              12
+            ],
+            [
+              7,
+              14,
+              18,
+              19
+            ],
+            [
+              7,
+              14,
+              19,
+              20
+            ],
+            [
+              7,
+              14,
+              20,
+              21
+            ],
+            [
+              7,
+              14,
+              21,
+              22
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "fileId": "F-970b59d6d5b8",
+      "sampleId": "26SHPYD056",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-970b59d6d5b8/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-970b59d6d5b8/page-2.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-ad8ae0641eda",
+      "sampleId": "26SHPYD056",
+      "role": "reference",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "参考结果",
+          "rows": 4,
+          "columns": 20,
+          "merged": []
+        }
+      ]
+    }
+  ]
+}

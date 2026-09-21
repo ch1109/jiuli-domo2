@@ -1,0 +1,2260 @@
+{
+  "sampleId": "英卡-抽+整",
+  "customer": "深圳市英卡科技有限公司",
+  "customerDetermination": "来自委托方、查货明确Bill To或内部单；未证明的归属在对象级标UNKNOWN",
+  "fileIds": [
+    "F-1f89bab4fe64",
+    "F-1df4f4d83480",
+    "F-80d89610605b",
+    "F-b0322c865487",
+    "F-e3577cb3f191",
+    "F-a235e97d6dd0",
+    "F-eebd316ee6c7",
+    "F-ec785baa0766",
+    "F-3c457d2e01db",
+    "F-5a09ab721f2e",
+    "F-f1e3242cc308",
+    "F-6d83ce0e89f6",
+    "F-a5368260946b",
+    "F-baf3de39ef68",
+    "F-d2c9006a8eeb",
+    "F-c50878186ea6",
+    "F-39b32ef999ed"
+  ],
+  "entrustmentDocumentCount": 3,
+  "invoiceDocumentCount": 2,
+  "packingListDocumentCount": 2,
+  "inspectionPdfCount": 2,
+  "warehouseCountConfirmed": 1,
+  "warehouseAmbiguities": [],
+  "logicalInspectionOrderCount": 1,
+  "entrustmentLineCount": 9,
+  "inspectionSourceLineCount": 12,
+  "hasMergeableGoods": true,
+  "hasFieldConflict": true,
+  "hasMultipleCandidatePotential": true,
+  "possibleRelationScenarios": [
+    "一对一候选（待逐行关系核实）",
+    "一对多（有内部单依据，原始查货不全）"
+  ],
+  "notes": [
+    "三份独立委托，每份3行；同名发票箱单在三个目录重复出现，仍记录各次材料关联。",
+    "两份查货PDF实际均为26070093、12行UMW2631，不能从文件名制造26070092。",
+    "客户由内部单明确关联26070093到英卡佐证；英华国际仅记录材料上客户称谓，不自动建别名。",
+    "26070092原始查货缺失；发票箱单8000812735提供40条装箱行，属于辅助材料而非已到查货。",
+    "原始26070093共177000，三份UMW2631委托共186000，额外9000见辅助箱单但缺查货入仓证据。",
+    "8-14委托UMW2631净重23.9大于毛重20.4；不修正原件。"
+  ],
+  "inspectionFacts": [
+    {
+      "fileId": "F-a5368260946b",
+      "sampleId": "英卡-抽+整",
+      "warehouseNo": "26070093",
+      "customerName": "深圳市英卡科技有限公司",
+      "rows": [
+        {
+          "page": 1,
+          "position": "箱1",
+          "品牌": "UNISOC",
+          "型号": "UMW2631",
+          "产地": "CHINA",
+          "数量": "15000",
+          "单位": "pcs",
+          "件数": "1",
+          "净重": "4.50",
+          "毛重": "5.20"
+        },
+        {
+          "page": 1,
+          "position": "箱2",
+          "品牌": "UNISOC",
+          "型号": "UMW2631",
+          "产地": "CHINA",
+          "数量": "15000",
+          "单位": "pcs",
+          "件数": "1",
+          "净重": "4.50",
+          "毛重": "5.20"
+        },
+        {
+          "page": 1,
+          "position": "箱3",
+          "品牌": "UNISOC",
+          "型号": "UMW2631",
+          "产地": "CHINA",
+          "数量": "15000",
+          "单位": "pcs",
+          "件数": "1",
+          "净重": "4.50",
+          "毛重": "5.20"
+        },
+        {
+          "page": 1,
+          "position": "箱4",
+          "品牌": "UNISOC",
+          "型号": "UMW2631",
+          "产地": "CHINA",
+          "数量": "15000",
+          "单位": "pcs",
+          "件数": "1",
+          "净重": "4.50",
+          "毛重": "5.20"
+        },
+        {
+          "page": 1,
+          "position": "箱5",
+          "品牌": "UNISOC",
+          "型号": "UMW2631",
+          "产地": "CHINA",
+          "数量": "15000",
+          "单位": "pcs",
+          "件数": "1",
+          "净重": "4.50",
+          "毛重": "5.20"
+        },
+        {
+          "page": 1,
+          "position": "箱6",
+          "品牌": "UNISOC",
+          "型号": "UMW2631",
+          "产地": "CHINA",
+          "数量": "15000",
+          "单位": "pcs",
+          "件数": "1",
+          "净重": "4.50",
+          "毛重": "5.20"
+        },
+        {
+          "page": 1,
+          "position": "箱7",
+          "品牌": "UNISOC",
+          "型号": "UMW2631",
+          "产地": "CHINA",
+          "数量": "15000",
+          "单位": "pcs",
+          "件数": "1",
+          "净重": "4.50",
+          "毛重": "5.20"
+        },
+        {
+          "page": 1,
+          "position": "箱8",
+          "品牌": "UNISOC",
+          "型号": "UMW2631",
+          "产地": "CHINA",
+          "数量": "15000",
+          "单位": "pcs",
+          "件数": "1",
+          "净重": "4.50",
+          "毛重": "5.20"
+        },
+        {
+          "page": 1,
+          "position": "箱9",
+          "品牌": "UNISOC",
+          "型号": "UMW2631",
+          "产地": "CHINA",
+          "数量": "15000",
+          "单位": "pcs",
+          "件数": "1",
+          "净重": "4.50",
+          "毛重": "5.20"
+        },
+        {
+          "page": 1,
+          "position": "箱10",
+          "品牌": "UNISOC",
+          "型号": "UMW2631",
+          "产地": "CHINA",
+          "数量": "15000",
+          "单位": "pcs",
+          "件数": "1",
+          "净重": "4.50",
+          "毛重": "5.20"
+        },
+        {
+          "page": 1,
+          "position": "箱11",
+          "品牌": "UNISOC",
+          "型号": "UMW2631",
+          "产地": "CHINA",
+          "数量": "15000",
+          "单位": "pcs",
+          "件数": "1",
+          "净重": "4.50",
+          "毛重": "5.20"
+        },
+        {
+          "page": 1,
+          "position": "箱12",
+          "品牌": "UNISOC",
+          "型号": "UMW2631",
+          "产地": "CHINA",
+          "数量": "12000",
+          "单位": "pcs",
+          "件数": "1",
+          "净重": "3.80",
+          "毛重": "4.50"
+        }
+      ],
+      "notes": "文件名26070092但条码26070093；与F-baf3de39ef68内容相同，只生成12行。客户由英卡内部单明确引用入仓号26070093佐证，不将MESSRS英华国际自动作为英卡别名。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "整单",
+          "件数": "12",
+          "净重": "53.30",
+          "毛重": "61.70",
+          "仓库章毛重": "64"
+        }
+      ]
+    }
+  ],
+  "entrustmentFacts": [
+    {
+      "id": "D-1df4f4d83480",
+      "sampleId": "英卡-抽+整",
+      "fileId": "F-1df4f4d83480",
+      "customerName": "深圳市英卡科技有限公司",
+      "customerEvidence": {
+        "fileId": "F-1df4f4d83480",
+        "sheet": "报关资料",
+        "location": "委托方"
+      },
+      "rows": [
+        {
+          "id": "D-1df4f4d83480-R007",
+          "sourceOrder": 1,
+          "sourceRow": 7,
+          "fields": {
+            "客户名": "深圳市英卡科技有限公司",
+            "品牌": "UNISOC",
+            "型号": "UMS9230E",
+            "商品描述": "平板电脑",
+            "品名": "集成电路",
+            "产地": "CHINA",
+            "单位": "PCS",
+            "数量": "60000",
+            "报关单价": "6.9138",
+            "总价": "414828",
+            "币种": "USD",
+            "件数": "8",
+            "净重": "52.8",
+            "毛重": "58.4",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "湘海",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "YH-CGDD260624138",
+            "物料号码": "03.02.01.1000044",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "供应商": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "B7",
+              "rawValue": "湘海",
+              "cachedValue": null,
+              "value": "湘海"
+            },
+            "品名": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "C7",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "品牌": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "D7",
+              "rawValue": "UNISOC",
+              "cachedValue": null,
+              "value": "UNISOC"
+            },
+            "采购订单号": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "E7",
+              "rawValue": "YH-CGDD260624138",
+              "cachedValue": null,
+              "value": "YH-CGDD260624138"
+            },
+            "原YK订单号": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "F7",
+              "rawValue": "YK-CGDD260625131",
+              "cachedValue": null,
+              "value": "YK-CGDD260625131"
+            },
+            "物料号码": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "G7",
+              "rawValue": "03.02.01.1000044",
+              "cachedValue": null,
+              "value": "03.02.01.1000044"
+            },
+            "型号": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "H7",
+              "rawValue": "UMS9230E",
+              "cachedValue": null,
+              "value": "UMS9230E"
+            },
+            "商品描述": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "I7",
+              "rawValue": "平板电脑",
+              "cachedValue": null,
+              "value": "平板电脑"
+            },
+            "产地": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "J7",
+              "rawValue": "CHINA",
+              "cachedValue": null,
+              "value": "CHINA"
+            },
+            "单位": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "K7",
+              "rawValue": "PCS",
+              "cachedValue": null,
+              "value": "PCS"
+            },
+            "数量": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "L7",
+              "rawValue": 60000.0,
+              "cachedValue": null,
+              "value": "60000"
+            },
+            "报关单价": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "N7",
+              "rawValue": 6.9138,
+              "cachedValue": null,
+              "value": "6.9138"
+            },
+            "总价": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "O7",
+              "rawValue": 414828.0,
+              "cachedValue": null,
+              "value": "414828"
+            },
+            "件数": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "P7",
+              "rawValue": 8.0,
+              "cachedValue": null,
+              "value": "8"
+            },
+            "净重": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "Q7",
+              "rawValue": 52.8,
+              "cachedValue": null,
+              "value": "52.8"
+            },
+            "毛重": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "R7",
+              "rawValue": 58.39999999999999,
+              "cachedValue": null,
+              "value": "58.4"
+            },
+            "客户名": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "location": "委托方",
+              "value": "深圳市英卡科技有限公司",
+              "rawValue": "深圳市英卡科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {
+            "原YK订单号": "YK-CGDD260625131"
+          }
+        },
+        {
+          "id": "D-1df4f4d83480-R008",
+          "sourceOrder": 2,
+          "sourceRow": 8,
+          "fields": {
+            "客户名": "深圳市英卡科技有限公司",
+            "品牌": "SPREADTRUM",
+            "型号": "UMP510G1",
+            "商品描述": "平板电脑",
+            "品名": "集成电路",
+            "产地": "CHINA",
+            "单位": "PCS",
+            "数量": "60000",
+            "报关单价": "0.8016",
+            "总价": "48096",
+            "币种": "USD",
+            "件数": "4",
+            "净重": "23.6",
+            "毛重": "26.4",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "湘海",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "YH-CGDD260624138",
+            "物料号码": "03.04.02.1600012",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "供应商": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "B8",
+              "rawValue": "湘海",
+              "cachedValue": null,
+              "value": "湘海"
+            },
+            "品名": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "C8",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "品牌": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "D8",
+              "rawValue": "SPREADTRUM",
+              "cachedValue": null,
+              "value": "SPREADTRUM"
+            },
+            "采购订单号": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "E8",
+              "rawValue": "YH-CGDD260624138",
+              "cachedValue": null,
+              "value": "YH-CGDD260624138"
+            },
+            "原YK订单号": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "F8",
+              "rawValue": "YK-CGDD260625131",
+              "cachedValue": null,
+              "value": "YK-CGDD260625131"
+            },
+            "物料号码": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "G8",
+              "rawValue": "03.04.02.1600012",
+              "cachedValue": null,
+              "value": "03.04.02.1600012"
+            },
+            "型号": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "H8",
+              "rawValue": "UMP510G1",
+              "cachedValue": null,
+              "value": "UMP510G1"
+            },
+            "商品描述": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "I8",
+              "rawValue": "平板电脑",
+              "cachedValue": null,
+              "value": "平板电脑"
+            },
+            "产地": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "J8",
+              "rawValue": "CHINA",
+              "cachedValue": null,
+              "value": "CHINA"
+            },
+            "单位": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "K8",
+              "rawValue": "PCS",
+              "cachedValue": null,
+              "value": "PCS"
+            },
+            "数量": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "L8",
+              "rawValue": 60000.0,
+              "cachedValue": null,
+              "value": "60000"
+            },
+            "报关单价": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "N8",
+              "rawValue": 0.8016000000000001,
+              "cachedValue": null,
+              "value": "0.8016"
+            },
+            "总价": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "O8",
+              "rawValue": 48096.00000000001,
+              "cachedValue": null,
+              "value": "48096"
+            },
+            "件数": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "P8",
+              "rawValue": 4.0,
+              "cachedValue": null,
+              "value": "4"
+            },
+            "净重": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "Q8",
+              "rawValue": 23.6,
+              "cachedValue": null,
+              "value": "23.6"
+            },
+            "毛重": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "R8",
+              "rawValue": 26.4,
+              "cachedValue": null,
+              "value": "26.4"
+            },
+            "客户名": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "location": "委托方",
+              "value": "深圳市英卡科技有限公司",
+              "rawValue": "深圳市英卡科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {
+            "原YK订单号": "YK-CGDD260625131"
+          }
+        },
+        {
+          "id": "D-1df4f4d83480-R009",
+          "sourceOrder": 3,
+          "sourceRow": 9,
+          "fields": {
+            "客户名": "深圳市英卡科技有限公司",
+            "品牌": "UNISOC",
+            "型号": "UMW2631",
+            "商品描述": "平板电脑",
+            "品名": "集成电路",
+            "产地": "CHINA",
+            "单位": "PCS",
+            "数量": "60000",
+            "报关单价": "0.8016",
+            "总价": "48096",
+            "币种": "USD",
+            "件数": "4",
+            "净重": "18",
+            "毛重": "20.8",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "湘海",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "YH-CGDD260624138",
+            "物料号码": "03.04.06.1000090",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "供应商": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "B9",
+              "rawValue": "湘海",
+              "cachedValue": null,
+              "value": "湘海"
+            },
+            "品名": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "C9",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "品牌": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "D9",
+              "rawValue": "UNISOC",
+              "cachedValue": null,
+              "value": "UNISOC"
+            },
+            "采购订单号": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "E9",
+              "rawValue": "YH-CGDD260624138",
+              "cachedValue": null,
+              "value": "YH-CGDD260624138"
+            },
+            "原YK订单号": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "F9",
+              "rawValue": "YK-CGDD260625131",
+              "cachedValue": null,
+              "value": "YK-CGDD260625131"
+            },
+            "物料号码": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "G9",
+              "rawValue": "03.04.06.1000090",
+              "cachedValue": null,
+              "value": "03.04.06.1000090"
+            },
+            "型号": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "H9",
+              "rawValue": "UMW2631",
+              "cachedValue": null,
+              "value": "UMW2631"
+            },
+            "商品描述": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "I9",
+              "rawValue": "平板电脑",
+              "cachedValue": null,
+              "value": "平板电脑"
+            },
+            "产地": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "J9",
+              "rawValue": "CHINA",
+              "cachedValue": null,
+              "value": "CHINA"
+            },
+            "单位": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "K9",
+              "rawValue": "PCS",
+              "cachedValue": null,
+              "value": "PCS"
+            },
+            "数量": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "L9",
+              "rawValue": 60000.0,
+              "cachedValue": null,
+              "value": "60000"
+            },
+            "报关单价": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "N9",
+              "rawValue": 0.8016000000000001,
+              "cachedValue": null,
+              "value": "0.8016"
+            },
+            "总价": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "O9",
+              "rawValue": 48096.00000000001,
+              "cachedValue": null,
+              "value": "48096"
+            },
+            "件数": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "P9",
+              "rawValue": 4.0,
+              "cachedValue": null,
+              "value": "4"
+            },
+            "净重": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "Q9",
+              "rawValue": 18.0,
+              "cachedValue": null,
+              "value": "18"
+            },
+            "毛重": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "cell": "R9",
+              "rawValue": 20.8,
+              "cachedValue": null,
+              "value": "20.8"
+            },
+            "客户名": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "location": "委托方",
+              "value": "深圳市英卡科技有限公司",
+              "rawValue": "深圳市英卡科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-1df4f4d83480",
+              "sheet": "报关资料",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {
+            "原YK订单号": "YK-CGDD260625131"
+          }
+        }
+      ],
+      "sharedMeasurements": []
+    },
+    {
+      "id": "D-a235e97d6dd0",
+      "sampleId": "英卡-抽+整",
+      "fileId": "F-a235e97d6dd0",
+      "customerName": "深圳市英卡科技有限公司",
+      "customerEvidence": {
+        "fileId": "F-a235e97d6dd0",
+        "sheet": "报关资料",
+        "location": "委托方"
+      },
+      "rows": [
+        {
+          "id": "D-a235e97d6dd0-R007",
+          "sourceOrder": 1,
+          "sourceRow": 7,
+          "fields": {
+            "客户名": "深圳市英卡科技有限公司",
+            "品牌": "UNISOC",
+            "型号": "UMS9230E",
+            "商品描述": "平板电脑",
+            "品名": "集成电路",
+            "产地": "CHINA",
+            "单位": "PCS",
+            "数量": "66000",
+            "报关单价": "5.9118",
+            "总价": "390178.8",
+            "币种": "USD",
+            "件数": "9",
+            "净重": "58.2",
+            "毛重": "64.5",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "湘海",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "YH-CGDD260624138",
+            "物料号码": "03.02.01.1000044",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "供应商": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "B7",
+              "rawValue": "湘海",
+              "cachedValue": null,
+              "value": "湘海"
+            },
+            "品名": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "C7",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "品牌": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "D7",
+              "rawValue": "UNISOC",
+              "cachedValue": null,
+              "value": "UNISOC"
+            },
+            "采购订单号": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "E7",
+              "rawValue": "YH-CGDD260624138",
+              "cachedValue": null,
+              "value": "YH-CGDD260624138"
+            },
+            "原YK订单号": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "F7",
+              "rawValue": "YK-CGDD260625131",
+              "cachedValue": null,
+              "value": "YK-CGDD260625131"
+            },
+            "物料号码": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "G7",
+              "rawValue": "03.02.01.1000044",
+              "cachedValue": null,
+              "value": "03.02.01.1000044"
+            },
+            "型号": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "H7",
+              "rawValue": "UMS9230E",
+              "cachedValue": null,
+              "value": "UMS9230E"
+            },
+            "商品描述": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "I7",
+              "rawValue": "平板电脑",
+              "cachedValue": null,
+              "value": "平板电脑"
+            },
+            "产地": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "J7",
+              "rawValue": "CHINA",
+              "cachedValue": null,
+              "value": "CHINA"
+            },
+            "单位": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "K7",
+              "rawValue": "PCS",
+              "cachedValue": null,
+              "value": "PCS"
+            },
+            "数量": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "L7",
+              "rawValue": 66000.0,
+              "cachedValue": null,
+              "value": "66000"
+            },
+            "报关单价": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "N7",
+              "rawValue": 5.9118,
+              "cachedValue": null,
+              "value": "5.9118"
+            },
+            "总价": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "O7",
+              "rawValue": 390178.80000000005,
+              "cachedValue": null,
+              "value": "390178.8"
+            },
+            "件数": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "P7",
+              "rawValue": 9.0,
+              "cachedValue": null,
+              "value": "9"
+            },
+            "净重": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "Q7",
+              "rawValue": 58.2,
+              "cachedValue": null,
+              "value": "58.2"
+            },
+            "毛重": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "R7",
+              "rawValue": 64.49999999999999,
+              "cachedValue": null,
+              "value": "64.5"
+            },
+            "客户名": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "location": "委托方",
+              "value": "深圳市英卡科技有限公司",
+              "rawValue": "深圳市英卡科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {
+            "原YK订单号": "YK-CGDD260625131"
+          }
+        },
+        {
+          "id": "D-a235e97d6dd0-R008",
+          "sourceOrder": 2,
+          "sourceRow": 8,
+          "fields": {
+            "客户名": "深圳市英卡科技有限公司",
+            "品牌": "SPREADTRUM",
+            "型号": "UMP510G1",
+            "商品描述": "平板电脑",
+            "品名": "集成电路",
+            "产地": "CHINA",
+            "单位": "PCS",
+            "数量": "66000",
+            "报关单价": "0.8016",
+            "总价": "52905.6",
+            "币种": "USD",
+            "件数": "6",
+            "净重": "25.6",
+            "毛重": "28.8",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "湘海",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "YH-CGDD260624138",
+            "物料号码": "03.04.02.1600012",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "供应商": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "B8",
+              "rawValue": "湘海",
+              "cachedValue": null,
+              "value": "湘海"
+            },
+            "品名": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "C8",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "品牌": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "D8",
+              "rawValue": "SPREADTRUM",
+              "cachedValue": null,
+              "value": "SPREADTRUM"
+            },
+            "采购订单号": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "E8",
+              "rawValue": "YH-CGDD260624138",
+              "cachedValue": null,
+              "value": "YH-CGDD260624138"
+            },
+            "原YK订单号": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "F8",
+              "rawValue": "YK-CGDD260625131",
+              "cachedValue": null,
+              "value": "YK-CGDD260625131"
+            },
+            "物料号码": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "G8",
+              "rawValue": "03.04.02.1600012",
+              "cachedValue": null,
+              "value": "03.04.02.1600012"
+            },
+            "型号": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "H8",
+              "rawValue": "UMP510G1",
+              "cachedValue": null,
+              "value": "UMP510G1"
+            },
+            "商品描述": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "I8",
+              "rawValue": "平板电脑",
+              "cachedValue": null,
+              "value": "平板电脑"
+            },
+            "产地": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "J8",
+              "rawValue": "CHINA",
+              "cachedValue": null,
+              "value": "CHINA"
+            },
+            "单位": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "K8",
+              "rawValue": "PCS",
+              "cachedValue": null,
+              "value": "PCS"
+            },
+            "数量": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "L8",
+              "rawValue": 66000.0,
+              "cachedValue": null,
+              "value": "66000"
+            },
+            "报关单价": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "N8",
+              "rawValue": 0.8016000000000001,
+              "cachedValue": null,
+              "value": "0.8016"
+            },
+            "总价": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "O8",
+              "rawValue": 52905.600000000006,
+              "cachedValue": null,
+              "value": "52905.6"
+            },
+            "件数": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "P8",
+              "rawValue": 6.0,
+              "cachedValue": null,
+              "value": "6"
+            },
+            "净重": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "Q8",
+              "rawValue": 25.6,
+              "cachedValue": null,
+              "value": "25.6"
+            },
+            "毛重": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "R8",
+              "rawValue": 28.799999999999997,
+              "cachedValue": null,
+              "value": "28.8"
+            },
+            "客户名": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "location": "委托方",
+              "value": "深圳市英卡科技有限公司",
+              "rawValue": "深圳市英卡科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {
+            "原YK订单号": "YK-CGDD260625131"
+          }
+        },
+        {
+          "id": "D-a235e97d6dd0-R009",
+          "sourceOrder": 3,
+          "sourceRow": 9,
+          "fields": {
+            "客户名": "深圳市英卡科技有限公司",
+            "品牌": "UNISOC",
+            "型号": "UMW2631",
+            "商品描述": "平板电脑",
+            "品名": "集成电路",
+            "产地": "CHINA",
+            "单位": "PCS",
+            "数量": "66000",
+            "报关单价": "0.8016",
+            "总价": "52905.6",
+            "币种": "USD",
+            "件数": "5",
+            "净重": "23.9",
+            "毛重": "20.4",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "湘海",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "YH-CGDD260624138",
+            "物料号码": "03.04.06.1000090",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "供应商": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "B9",
+              "rawValue": "湘海",
+              "cachedValue": null,
+              "value": "湘海"
+            },
+            "品名": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "C9",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "品牌": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "D9",
+              "rawValue": "UNISOC",
+              "cachedValue": null,
+              "value": "UNISOC"
+            },
+            "采购订单号": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "E9",
+              "rawValue": "YH-CGDD260624138",
+              "cachedValue": null,
+              "value": "YH-CGDD260624138"
+            },
+            "原YK订单号": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "F9",
+              "rawValue": "YK-CGDD260625131",
+              "cachedValue": null,
+              "value": "YK-CGDD260625131"
+            },
+            "物料号码": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "G9",
+              "rawValue": "03.04.06.1000090",
+              "cachedValue": null,
+              "value": "03.04.06.1000090"
+            },
+            "型号": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "H9",
+              "rawValue": "UMW2631",
+              "cachedValue": null,
+              "value": "UMW2631"
+            },
+            "商品描述": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "I9",
+              "rawValue": "平板电脑",
+              "cachedValue": null,
+              "value": "平板电脑"
+            },
+            "产地": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "J9",
+              "rawValue": "CHINA",
+              "cachedValue": null,
+              "value": "CHINA"
+            },
+            "单位": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "K9",
+              "rawValue": "PCS",
+              "cachedValue": null,
+              "value": "PCS"
+            },
+            "数量": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "L9",
+              "rawValue": 66000.0,
+              "cachedValue": null,
+              "value": "66000"
+            },
+            "报关单价": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "N9",
+              "rawValue": 0.8016000000000001,
+              "cachedValue": null,
+              "value": "0.8016"
+            },
+            "总价": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "O9",
+              "rawValue": 52905.600000000006,
+              "cachedValue": null,
+              "value": "52905.6"
+            },
+            "件数": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "P9",
+              "rawValue": 5.0,
+              "cachedValue": null,
+              "value": "5"
+            },
+            "净重": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "Q9",
+              "rawValue": 23.9,
+              "cachedValue": null,
+              "value": "23.9"
+            },
+            "毛重": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "cell": "R9",
+              "rawValue": 20.400000000000002,
+              "cachedValue": null,
+              "value": "20.4"
+            },
+            "客户名": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "location": "委托方",
+              "value": "深圳市英卡科技有限公司",
+              "rawValue": "深圳市英卡科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-a235e97d6dd0",
+              "sheet": "报关资料",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {
+            "原YK订单号": "YK-CGDD260625131"
+          }
+        }
+      ],
+      "sharedMeasurements": []
+    },
+    {
+      "id": "D-5a09ab721f2e",
+      "sampleId": "英卡-抽+整",
+      "fileId": "F-5a09ab721f2e",
+      "customerName": "深圳市英卡科技有限公司",
+      "customerEvidence": {
+        "fileId": "F-5a09ab721f2e",
+        "sheet": "报关资料",
+        "location": "委托方"
+      },
+      "rows": [
+        {
+          "id": "D-5a09ab721f2e-R007",
+          "sourceOrder": 1,
+          "sourceRow": 7,
+          "fields": {
+            "客户名": "深圳市英卡科技有限公司",
+            "品牌": "UNISOC",
+            "型号": "UMS9230E",
+            "商品描述": "平板电脑",
+            "品名": "集成电路",
+            "产地": "CHINA",
+            "单位": "PCS",
+            "数量": "60000",
+            "报关单价": "6.9138",
+            "总价": "414828",
+            "币种": "USD",
+            "件数": "8",
+            "净重": "52.8",
+            "毛重": "58.4",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "湘海",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "YH-CGDD260624138",
+            "物料号码": "03.02.01.1000044",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "供应商": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "B7",
+              "rawValue": "湘海",
+              "cachedValue": null,
+              "value": "湘海"
+            },
+            "品名": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "C7",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "品牌": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "D7",
+              "rawValue": "UNISOC",
+              "cachedValue": null,
+              "value": "UNISOC"
+            },
+            "采购订单号": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "E7",
+              "rawValue": "YH-CGDD260624138",
+              "cachedValue": null,
+              "value": "YH-CGDD260624138"
+            },
+            "原YK订单号": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "F7",
+              "rawValue": "YK-CGDD260625131",
+              "cachedValue": null,
+              "value": "YK-CGDD260625131"
+            },
+            "物料号码": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "G7",
+              "rawValue": "03.02.01.1000044",
+              "cachedValue": null,
+              "value": "03.02.01.1000044"
+            },
+            "型号": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "H7",
+              "rawValue": "UMS9230E",
+              "cachedValue": null,
+              "value": "UMS9230E"
+            },
+            "商品描述": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "I7",
+              "rawValue": "平板电脑",
+              "cachedValue": null,
+              "value": "平板电脑"
+            },
+            "产地": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "J7",
+              "rawValue": "CHINA",
+              "cachedValue": null,
+              "value": "CHINA"
+            },
+            "单位": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "K7",
+              "rawValue": "PCS",
+              "cachedValue": null,
+              "value": "PCS"
+            },
+            "数量": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "L7",
+              "rawValue": 60000.0,
+              "cachedValue": null,
+              "value": "60000"
+            },
+            "报关单价": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "N7",
+              "rawValue": 6.9138,
+              "cachedValue": null,
+              "value": "6.9138"
+            },
+            "总价": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "O7",
+              "rawValue": 414828.0,
+              "cachedValue": null,
+              "value": "414828"
+            },
+            "件数": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "P7",
+              "rawValue": 8.0,
+              "cachedValue": null,
+              "value": "8"
+            },
+            "净重": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "Q7",
+              "rawValue": 52.8,
+              "cachedValue": null,
+              "value": "52.8"
+            },
+            "毛重": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "R7",
+              "rawValue": 58.39999999999999,
+              "cachedValue": null,
+              "value": "58.4"
+            },
+            "客户名": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "location": "委托方",
+              "value": "深圳市英卡科技有限公司",
+              "rawValue": "深圳市英卡科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {
+            "原YK订单号": "YK-CGDD260625131"
+          }
+        },
+        {
+          "id": "D-5a09ab721f2e-R008",
+          "sourceOrder": 2,
+          "sourceRow": 8,
+          "fields": {
+            "客户名": "深圳市英卡科技有限公司",
+            "品牌": "SPREADTRUM",
+            "型号": "UMP510G1",
+            "商品描述": "平板电脑",
+            "品名": "集成电路",
+            "产地": "CHINA",
+            "单位": "PCS",
+            "数量": "60000",
+            "报关单价": "0.8016",
+            "总价": "48096",
+            "币种": "USD",
+            "件数": "4",
+            "净重": "23.6",
+            "毛重": "26.4",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "湘海",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "YH-CGDD260624138",
+            "物料号码": "03.04.02.1600012",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "供应商": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "B8",
+              "rawValue": "湘海",
+              "cachedValue": null,
+              "value": "湘海"
+            },
+            "品名": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "C8",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "品牌": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "D8",
+              "rawValue": "SPREADTRUM",
+              "cachedValue": null,
+              "value": "SPREADTRUM"
+            },
+            "采购订单号": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "E8",
+              "rawValue": "YH-CGDD260624138",
+              "cachedValue": null,
+              "value": "YH-CGDD260624138"
+            },
+            "原YK订单号": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "F8",
+              "rawValue": "YK-CGDD260625131",
+              "cachedValue": null,
+              "value": "YK-CGDD260625131"
+            },
+            "物料号码": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "G8",
+              "rawValue": "03.04.02.1600012",
+              "cachedValue": null,
+              "value": "03.04.02.1600012"
+            },
+            "型号": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "H8",
+              "rawValue": "UMP510G1",
+              "cachedValue": null,
+              "value": "UMP510G1"
+            },
+            "商品描述": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "I8",
+              "rawValue": "平板电脑",
+              "cachedValue": null,
+              "value": "平板电脑"
+            },
+            "产地": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "J8",
+              "rawValue": "CHINA",
+              "cachedValue": null,
+              "value": "CHINA"
+            },
+            "单位": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "K8",
+              "rawValue": "PCS",
+              "cachedValue": null,
+              "value": "PCS"
+            },
+            "数量": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "L8",
+              "rawValue": 60000.0,
+              "cachedValue": null,
+              "value": "60000"
+            },
+            "报关单价": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "N8",
+              "rawValue": 0.8016000000000001,
+              "cachedValue": null,
+              "value": "0.8016"
+            },
+            "总价": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "O8",
+              "rawValue": 48096.00000000001,
+              "cachedValue": null,
+              "value": "48096"
+            },
+            "件数": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "P8",
+              "rawValue": 4.0,
+              "cachedValue": null,
+              "value": "4"
+            },
+            "净重": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "Q8",
+              "rawValue": 23.6,
+              "cachedValue": null,
+              "value": "23.6"
+            },
+            "毛重": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "R8",
+              "rawValue": 26.4,
+              "cachedValue": null,
+              "value": "26.4"
+            },
+            "客户名": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "location": "委托方",
+              "value": "深圳市英卡科技有限公司",
+              "rawValue": "深圳市英卡科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {
+            "原YK订单号": "YK-CGDD260625131"
+          }
+        },
+        {
+          "id": "D-5a09ab721f2e-R009",
+          "sourceOrder": 3,
+          "sourceRow": 9,
+          "fields": {
+            "客户名": "深圳市英卡科技有限公司",
+            "品牌": "UNISOC",
+            "型号": "UMW2631",
+            "商品描述": "平板电脑",
+            "品名": "集成电路",
+            "产地": "CHINA",
+            "单位": "PCS",
+            "数量": "60000",
+            "报关单价": "0.8016",
+            "总价": "48096",
+            "币种": "USD",
+            "件数": "4",
+            "净重": "18",
+            "毛重": "20.8",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "湘海",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "YH-CGDD260624138",
+            "物料号码": "03.04.06.1000090",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "供应商": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "B9",
+              "rawValue": "湘海",
+              "cachedValue": null,
+              "value": "湘海"
+            },
+            "品名": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "C9",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "品牌": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "D9",
+              "rawValue": "UNISOC",
+              "cachedValue": null,
+              "value": "UNISOC"
+            },
+            "采购订单号": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "E9",
+              "rawValue": "YH-CGDD260624138",
+              "cachedValue": null,
+              "value": "YH-CGDD260624138"
+            },
+            "原YK订单号": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "F9",
+              "rawValue": "YK-CGDD260625131",
+              "cachedValue": null,
+              "value": "YK-CGDD260625131"
+            },
+            "物料号码": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "G9",
+              "rawValue": "03.04.06.1000090",
+              "cachedValue": null,
+              "value": "03.04.06.1000090"
+            },
+            "型号": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "H9",
+              "rawValue": "UMW2631",
+              "cachedValue": null,
+              "value": "UMW2631"
+            },
+            "商品描述": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "I9",
+              "rawValue": "平板电脑",
+              "cachedValue": null,
+              "value": "平板电脑"
+            },
+            "产地": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "J9",
+              "rawValue": "CHINA",
+              "cachedValue": null,
+              "value": "CHINA"
+            },
+            "单位": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "K9",
+              "rawValue": "PCS",
+              "cachedValue": null,
+              "value": "PCS"
+            },
+            "数量": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "L9",
+              "rawValue": 60000.0,
+              "cachedValue": null,
+              "value": "60000"
+            },
+            "报关单价": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "N9",
+              "rawValue": 0.8016000000000001,
+              "cachedValue": null,
+              "value": "0.8016"
+            },
+            "总价": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "O9",
+              "rawValue": 48096.00000000001,
+              "cachedValue": null,
+              "value": "48096"
+            },
+            "件数": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "P9",
+              "rawValue": 4.0,
+              "cachedValue": null,
+              "value": "4"
+            },
+            "净重": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "Q9",
+              "rawValue": 18.0,
+              "cachedValue": null,
+              "value": "18"
+            },
+            "毛重": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "cell": "R9",
+              "rawValue": 20.8,
+              "cachedValue": null,
+              "value": "20.8"
+            },
+            "客户名": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "location": "委托方",
+              "value": "深圳市英卡科技有限公司",
+              "rawValue": "深圳市英卡科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-5a09ab721f2e",
+              "sheet": "报关资料",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {
+            "原YK订单号": "YK-CGDD260625131"
+          }
+        }
+      ],
+      "sharedMeasurements": []
+    }
+  ],
+  "reviewRecords": [
+    {
+      "fileId": "F-1f89bab4fe64",
+      "sampleId": "英卡-抽+整",
+      "role": "entrustment_material",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-1f89bab4fe64/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-1df4f4d83480",
+      "sampleId": "英卡-抽+整",
+      "role": "entrustment_material",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "报关资料",
+          "rows": 46,
+          "columns": 23,
+          "merged": [
+            [
+              0,
+              1,
+              0,
+              18
+            ],
+            [
+              1,
+              2,
+              0,
+              18
+            ],
+            [
+              13,
+              14,
+              0,
+              10
+            ],
+            [
+              23,
+              24,
+              2,
+              4
+            ],
+            [
+              25,
+              26,
+              2,
+              4
+            ],
+            [
+              6,
+              12,
+              18,
+              19
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "fileId": "F-80d89610605b",
+      "sampleId": "英卡-抽+整",
+      "role": "entrustment_material",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-80d89610605b/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-80d89610605b/page-2.png"
+        },
+        {
+          "page": 3,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-80d89610605b/page-3.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-b0322c865487",
+      "sampleId": "英卡-抽+整",
+      "role": "entrustment_material",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-b0322c865487/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-b0322c865487/page-2.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-e3577cb3f191",
+      "sampleId": "英卡-抽+整",
+      "role": "entrustment_material",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-e3577cb3f191/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-a235e97d6dd0",
+      "sampleId": "英卡-抽+整",
+      "role": "entrustment_material",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "报关资料",
+          "rows": 46,
+          "columns": 23,
+          "merged": [
+            [
+              0,
+              1,
+              0,
+              18
+            ],
+            [
+              1,
+              2,
+              0,
+              18
+            ],
+            [
+              13,
+              14,
+              0,
+              10
+            ],
+            [
+              23,
+              24,
+              2,
+              4
+            ],
+            [
+              25,
+              26,
+              2,
+              4
+            ],
+            [
+              6,
+              12,
+              18,
+              19
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "fileId": "F-eebd316ee6c7",
+      "sampleId": "英卡-抽+整",
+      "role": "entrustment_material",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-eebd316ee6c7/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-eebd316ee6c7/page-2.png"
+        },
+        {
+          "page": 3,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-eebd316ee6c7/page-3.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-ec785baa0766",
+      "sampleId": "英卡-抽+整",
+      "role": "entrustment_material",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-ec785baa0766/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-ec785baa0766/page-2.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-3c457d2e01db",
+      "sampleId": "英卡-抽+整",
+      "role": "entrustment_material",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-3c457d2e01db/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-5a09ab721f2e",
+      "sampleId": "英卡-抽+整",
+      "role": "entrustment_material",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "报关资料",
+          "rows": 46,
+          "columns": 23,
+          "merged": [
+            [
+              0,
+              1,
+              0,
+              18
+            ],
+            [
+              1,
+              2,
+              0,
+              18
+            ],
+            [
+              13,
+              14,
+              0,
+              10
+            ],
+            [
+              23,
+              24,
+              2,
+              4
+            ],
+            [
+              25,
+              26,
+              2,
+              4
+            ],
+            [
+              6,
+              12,
+              18,
+              19
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "fileId": "F-f1e3242cc308",
+      "sampleId": "英卡-抽+整",
+      "role": "entrustment_material",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-f1e3242cc308/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-f1e3242cc308/page-2.png"
+        },
+        {
+          "page": 3,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-f1e3242cc308/page-3.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-6d83ce0e89f6",
+      "sampleId": "英卡-抽+整",
+      "role": "entrustment_material",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-6d83ce0e89f6/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-6d83ce0e89f6/page-2.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-a5368260946b",
+      "sampleId": "英卡-抽+整",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-a5368260946b/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-baf3de39ef68",
+      "sampleId": "英卡-抽+整",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-baf3de39ef68/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-d2c9006a8eeb",
+      "sampleId": "英卡-抽+整",
+      "role": "reference",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-d2c9006a8eeb/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-d2c9006a8eeb/page-2.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-c50878186ea6",
+      "sampleId": "英卡-抽+整",
+      "role": "reference",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-c50878186ea6/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-39b32ef999ed",
+      "sampleId": "英卡-抽+整",
+      "role": "reference",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-39b32ef999ed/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-39b32ef999ed/page-2.png"
+        }
+      ],
+      "sheets": []
+    }
+  ]
+}

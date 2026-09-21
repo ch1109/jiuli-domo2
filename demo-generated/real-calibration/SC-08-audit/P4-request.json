@@ -1,0 +1,131 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P4",
+  "request_id": "SC08-AUDIT-20260920-P4",
+  "context": {
+    "customer_id": "C-89aa660b4b46",
+    "mode": "VERIFY_FIELDS"
+  },
+  "input": {
+    "target_rows": [
+      {
+        "order_row_id": "D-3c3cc10bd26b-R007",
+        "relation": {
+          "match_status": "MATCHED",
+          "raw_row_ids": ["I-8bc7177252aa-25120336-L001"],
+          "coverage": {"status": "COMPLETE", "overlap": "DISJOINT", "evidence_keys": ["E-I-L001-SCOPE"]}
+        },
+        "evaluated_fields": ["brand", "model", "origin", "unit", "quantity", "net_weight", "gross_weight", "warehouse_no"],
+        "fields": {
+          "brand": {
+            "base_value": "SK HYNIX", "current_value": "SK HYNIX", "value_origin": "ORDER", "write_policy": "AUTO",
+            "evidence": [{"evidence_key": "E-P4-L001-BRAND", "value": "SK HYNIX", "unit": "", "source_kind": "RAW", "scope": {"coverage": "COMPLETE", "overlap": "DISJOINT", "has_extra_goods": false, "has_unresolved_goods": false}, "raw_row_ids": ["I-8bc7177252aa-25120336-L001"], "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": 1, "column": "Brand", "raw_text": "SK HYNIX"}}],
+            "unresolved_issues": []
+          },
+          "model": {
+            "base_value": "H25G9TCXXCX702A#9", "current_value": "H25G9TCXXCX702A#9", "value_origin": "ORDER", "write_policy": "AUTO",
+            "evidence": [
+              {"evidence_key": "E-P4-L001-MODEL", "value": "H25G9TCXXCX702A", "unit": "", "source_kind": "RAW", "scope": {"coverage": "COMPLETE", "overlap": "DISJOINT", "has_extra_goods": false, "has_unresolved_goods": false}, "raw_row_ids": ["I-8bc7177252aa-25120336-L001"], "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": 1, "column": "Part No.", "raw_text": "H25G9TCXXCX702A"}},
+              {"evidence_key": "E-P4-L001-MARKER", "value": "#9", "unit": "", "source_kind": "RAW", "scope": {"coverage": "COMPLETE", "overlap": "DISJOINT", "has_extra_goods": false, "has_unresolved_goods": false}, "raw_row_ids": ["I-8bc7177252aa-25120336-L001"], "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": 1, "column": "Description", "raw_text": "64GB INK DIE (#9)"}}
+            ],
+            "unresolved_issues": []
+          },
+          "origin": {
+            "base_value": "韩国", "current_value": "韩国", "value_origin": "ORDER", "write_policy": "AUTO",
+            "evidence": [{"evidence_key": "E-P4-L001-ORIGIN", "value": "韩国", "unit": "", "source_kind": "RAW", "scope": {"coverage": "COMPLETE", "overlap": "DISJOINT", "has_extra_goods": false, "has_unresolved_goods": false}, "raw_row_ids": ["I-8bc7177252aa-25120336-L001"], "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": 1, "column": "Origin FAB", "raw_text": "KOREA"}}],
+            "unresolved_issues": []
+          },
+          "unit": {
+            "base_value": "个", "current_value": "个", "value_origin": "ORDER", "write_policy": "AUTO", "evidence": [], "unresolved_issues": []
+          },
+          "quantity": {
+            "base_value": "12081", "current_value": "12081", "value_origin": "ORDER", "write_policy": "AUTO",
+            "evidence": [{"evidence_key": "E-P4-L001-QTY", "value": "12081", "unit": "", "source_kind": "RAW", "scope": {"coverage": "COMPLETE", "overlap": "DISJOINT", "has_extra_goods": false, "has_unresolved_goods": false}, "raw_row_ids": ["I-8bc7177252aa-25120336-L001"], "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": 1, "column": "QTY", "raw_text": "12081"}}],
+            "unresolved_issues": [{"issue_id": "ISS-L001-UNIT-MISSING", "field": "quantity", "message": "查货数量未附商品单位，无法完成单位可比核验。", "blocks_auto_write": false}]
+          },
+          "net_weight": {
+            "base_value": "3.6", "current_value": "3.6", "value_origin": "ORDER", "write_policy": "AUTO",
+            "evidence": [{"evidence_key": "E-P4-L001-NW", "value": "3.60", "unit": "KG", "source_kind": "RAW", "level": "ITEM", "scope": {"coverage": "COMPLETE", "overlap": "DISJOINT", "has_extra_goods": false, "has_unresolved_goods": false}, "raw_row_ids": ["I-8bc7177252aa-25120336-L001"], "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": 1, "column": "NW", "raw_text": "3.60 KG"}}],
+            "unresolved_issues": []
+          },
+          "gross_weight": {
+            "base_value": "4.2", "current_value": "4.2", "value_origin": "ORDER", "write_policy": "AUTO",
+            "evidence": [{"evidence_key": "E-P4-L001-GW", "value": "4.20", "unit": "KG", "source_kind": "RAW", "level": "ITEM", "scope": {"coverage": "COMPLETE", "overlap": "DISJOINT", "has_extra_goods": false, "has_unresolved_goods": false}, "raw_row_ids": ["I-8bc7177252aa-25120336-L001"], "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": 1, "column": "GW", "raw_text": "4.20 KG"}}],
+            "unresolved_issues": []
+          },
+          "warehouse_no": {
+            "base_value": "", "current_value": "", "value_origin": "EMPTY", "write_policy": "AUTO",
+            "evidence": [{"evidence_key": "E-P4-L001-WH", "value": "25120336", "unit": "", "source_kind": "RAW", "scope": {"coverage": "COMPLETE", "overlap": "DISJOINT", "has_extra_goods": false, "has_unresolved_goods": false}, "raw_row_ids": ["I-8bc7177252aa-25120336-L001"], "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": null, "column": null, "raw_text": "条码下方 25120336"}}],
+            "unresolved_issues": []
+          }
+        },
+        "origin_parts": [
+          {"part_key": "PART-L001", "raw_row_ids": ["I-8bc7177252aa-25120336-L001"], "scope": {"coverage": "COMPLETE", "overlap": "DISJOINT", "has_extra_goods": false, "has_unresolved_goods": false}, "origin_candidates": [{"evidence_key": "E-P4-L001-ORIGIN", "value": "韩国", "kind": "PRINTED_COD", "validity": "ACTIVE", "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": 1, "column": "Origin FAB", "raw_text": "KOREA"}}]}
+        ],
+        "origin_partition_status": "COMPLETE_DISJOINT",
+        "relation_warehouse_evidence": [
+          {"evidence_key": "E-P4-L001-WH", "value": "25120336", "unit": "", "source_kind": "RAW", "scope": {"coverage": "COMPLETE", "overlap": "DISJOINT", "has_extra_goods": false, "has_unresolved_goods": false}, "raw_row_ids": ["I-8bc7177252aa-25120336-L001"], "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": null, "column": null, "raw_text": "条码下方 25120336"}}
+        ]
+      },
+      {
+        "order_row_id": "D-3c3cc10bd26b-R008",
+        "relation": {
+          "match_status": "MATCHED",
+          "raw_row_ids": ["I-8bc7177252aa-25120336-L002"],
+          "coverage": {"status": "COMPLETE", "overlap": "DISJOINT", "evidence_keys": ["E-I-L002-SCOPE"]}
+        },
+        "evaluated_fields": ["brand", "model", "origin", "unit", "quantity", "net_weight", "gross_weight", "warehouse_no"],
+        "fields": {
+          "brand": {
+            "base_value": "SK HYNIX", "current_value": "SK HYNIX", "value_origin": "ORDER", "write_policy": "AUTO",
+            "evidence": [{"evidence_key": "E-P4-L002-BRAND", "value": "SK HYNIX", "unit": "", "source_kind": "RAW", "scope": {"coverage": "COMPLETE", "overlap": "DISJOINT", "has_extra_goods": false, "has_unresolved_goods": false}, "raw_row_ids": ["I-8bc7177252aa-25120336-L002"], "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": 2, "column": "Brand", "raw_text": "SK HYNIX"}}],
+            "unresolved_issues": []
+          },
+          "model": {
+            "base_value": "D25G9TCX8CX239C#D", "current_value": "D25G9TCX8CX239C#D", "value_origin": "ORDER", "write_policy": "AUTO",
+            "evidence": [
+              {"evidence_key": "E-P4-L002-MODEL", "value": "D25G9TCX8CX239C", "unit": "", "source_kind": "RAW", "scope": {"coverage": "COMPLETE", "overlap": "DISJOINT", "has_extra_goods": false, "has_unresolved_goods": false}, "raw_row_ids": ["I-8bc7177252aa-25120336-L002"], "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": 2, "column": "Part No.", "raw_text": "D25G9TCX8CX239C"}},
+              {"evidence_key": "E-P4-L002-MARKER", "value": "#D", "unit": "", "source_kind": "RAW", "scope": {"coverage": "COMPLETE", "overlap": "DISJOINT", "has_extra_goods": false, "has_unresolved_goods": false}, "raw_row_ids": ["I-8bc7177252aa-25120336-L002"], "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": 2, "column": "Description", "raw_text": "64GB INK DIE (#D)"}}
+            ],
+            "unresolved_issues": []
+          },
+          "origin": {
+            "base_value": "韩国", "current_value": "韩国", "value_origin": "ORDER", "write_policy": "AUTO",
+            "evidence": [{"evidence_key": "E-P4-L002-ORIGIN", "value": "韩国", "unit": "", "source_kind": "RAW", "scope": {"coverage": "COMPLETE", "overlap": "DISJOINT", "has_extra_goods": false, "has_unresolved_goods": false}, "raw_row_ids": ["I-8bc7177252aa-25120336-L002"], "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": 2, "column": "Origin FAB", "raw_text": "KOREA"}}],
+            "unresolved_issues": []
+          },
+          "unit": {
+            "base_value": "个", "current_value": "个", "value_origin": "ORDER", "write_policy": "AUTO", "evidence": [], "unresolved_issues": []
+          },
+          "quantity": {
+            "base_value": "16054", "current_value": "16054", "value_origin": "ORDER", "write_policy": "AUTO",
+            "evidence": [{"evidence_key": "E-P4-L002-QTY", "value": "16054", "unit": "", "source_kind": "RAW", "scope": {"coverage": "COMPLETE", "overlap": "DISJOINT", "has_extra_goods": false, "has_unresolved_goods": false}, "raw_row_ids": ["I-8bc7177252aa-25120336-L002"], "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": 2, "column": "QTY", "raw_text": "16054"}}],
+            "unresolved_issues": [{"issue_id": "ISS-L002-UNIT-MISSING", "field": "quantity", "message": "查货数量未附商品单位，无法完成单位可比核验。", "blocks_auto_write": false}]
+          },
+          "net_weight": {
+            "base_value": "4.4", "current_value": "4.4", "value_origin": "ORDER", "write_policy": "AUTO",
+            "evidence": [{"evidence_key": "E-P4-L002-NW", "value": "4.40", "unit": "KG", "source_kind": "RAW", "level": "ITEM", "scope": {"coverage": "COMPLETE", "overlap": "DISJOINT", "has_extra_goods": false, "has_unresolved_goods": false}, "raw_row_ids": ["I-8bc7177252aa-25120336-L002"], "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": 2, "column": "NW", "raw_text": "4.40 KG"}}],
+            "unresolved_issues": []
+          },
+          "gross_weight": {
+            "base_value": "5", "current_value": "5", "value_origin": "ORDER", "write_policy": "AUTO",
+            "evidence": [{"evidence_key": "E-P4-L002-GW", "value": "5.00", "unit": "KG", "source_kind": "RAW", "level": "ITEM", "scope": {"coverage": "COMPLETE", "overlap": "DISJOINT", "has_extra_goods": false, "has_unresolved_goods": false}, "raw_row_ids": ["I-8bc7177252aa-25120336-L002"], "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": 2, "column": "GW", "raw_text": "5.00 KG"}}],
+            "unresolved_issues": []
+          },
+          "warehouse_no": {
+            "base_value": "", "current_value": "", "value_origin": "EMPTY", "write_policy": "AUTO",
+            "evidence": [{"evidence_key": "E-P4-L002-WH", "value": "25120336", "unit": "", "source_kind": "RAW", "scope": {"coverage": "COMPLETE", "overlap": "DISJOINT", "has_extra_goods": false, "has_unresolved_goods": false}, "raw_row_ids": ["I-8bc7177252aa-25120336-L002"], "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": null, "column": null, "raw_text": "条码下方 25120336"}}],
+            "unresolved_issues": []
+          }
+        },
+        "origin_parts": [
+          {"part_key": "PART-L002", "raw_row_ids": ["I-8bc7177252aa-25120336-L002"], "scope": {"coverage": "COMPLETE", "overlap": "DISJOINT", "has_extra_goods": false, "has_unresolved_goods": false}, "origin_candidates": [{"evidence_key": "E-P4-L002-ORIGIN", "value": "韩国", "kind": "PRINTED_COD", "validity": "ACTIVE", "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": 2, "column": "Origin FAB", "raw_text": "KOREA"}}]}
+        ],
+        "origin_partition_status": "COMPLETE_DISJOINT",
+        "relation_warehouse_evidence": [
+          {"evidence_key": "E-P4-L002-WH", "value": "25120336", "unit": "", "source_kind": "RAW", "scope": {"coverage": "COMPLETE", "overlap": "DISJOINT", "has_extra_goods": false, "has_unresolved_goods": false}, "raw_row_ids": ["I-8bc7177252aa-25120336-L002"], "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": null, "column": null, "raw_text": "条码下方 25120336"}}
+        ]
+      }
+    ]
+  }
+}

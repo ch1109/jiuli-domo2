@@ -1,0 +1,2038 @@
+{
+  "sampleId": "2026BMH001",
+  "customer": "深圳市百闽海科技有限公司",
+  "customerDetermination": "来自委托方、查货明确Bill To或内部单；未证明的归属在对象级标UNKNOWN",
+  "fileIds": [
+    "F-fb448776f711",
+    "F-b98a101d8392",
+    "F-c5195fdb15a3",
+    "F-94d0c3955b2a",
+    "F-276766064bb2",
+    "F-39b0b8e82a3a",
+    "F-a06d575c587d",
+    "F-69127fcfa5c3",
+    "F-de4e00bf55d8",
+    "F-b03e0011849f",
+    "F-cb09c02b9ed5",
+    "F-f29936219cd1",
+    "F-54a1727fc0c8"
+  ],
+  "entrustmentDocumentCount": 1,
+  "invoiceDocumentCount": 15,
+  "packingListDocumentCount": 1,
+  "inspectionPdfCount": 11,
+  "warehouseCountConfirmed": 11,
+  "warehouseAmbiguities": [],
+  "logicalInspectionOrderCount": 11,
+  "entrustmentLineCount": 11,
+  "inspectionSourceLineCount": 22,
+  "hasMergeableGoods": true,
+  "hasFieldConflict": true,
+  "hasMultipleCandidatePotential": true,
+  "possibleRelationScenarios": [
+    "多对一候选（待客户/逐行关系核实）"
+  ],
+  "notes": [
+    "11个查货PDF；印刷买方FUJIAN CENTERM或FUJIAN STAR-NET AIOT，与百闽海不同，查货客户待确认。",
+    "Arrow文件6个PDF页，原件印刷PAGE 1~6 OF 8，缺7、8页；122行总数仅计现有页。",
+    "Arrow现有印刷数量1800000，委托SN74AHC1G08DBVR为360000；不能按委托改写查货。",
+    "同一LM2576原始行数量4000含DE2500/GB1500；不自动按产地拆份。"
+  ],
+  "inspectionFacts": [
+    {
+      "fileId": "F-b98a101d8392",
+      "sampleId": "2026BMH001",
+      "warehouseNo": "26027114",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "TXS0108EPWR",
+          "产地": "CN",
+          "数量": "16000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        }
+      ],
+      "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "原始客户",
+          "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+        }
+      ]
+    },
+    {
+      "fileId": "F-c5195fdb15a3",
+      "sampleId": "2026BMH001",
+      "warehouseNo": "26027143",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "TXS0108EPWR",
+          "产地": "CN",
+          "数量": "30000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 2,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "TXS0108EPWR",
+          "产地": "CN",
+          "数量": "40000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        }
+      ],
+      "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "原始客户",
+          "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+        }
+      ]
+    },
+    {
+      "fileId": "F-94d0c3955b2a",
+      "sampleId": "2026BMH001",
+      "warehouseNo": "26027191",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "TLV62569DBVR",
+          "产地": "US",
+          "数量": "150000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 2,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "TLV62569DBVR",
+          "产地": "US",
+          "数量": "150000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 3,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "TLV62569DBVR",
+          "产地": "US",
+          "数量": "150000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        }
+      ],
+      "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "原始客户",
+          "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+        }
+      ]
+    },
+    {
+      "fileId": "F-39b0b8e82a3a",
+      "sampleId": "2026BMH001",
+      "warehouseNo": "26027254",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "TXS0108EPWR",
+          "产地": "CN",
+          "数量": "26000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        }
+      ],
+      "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "原始客户",
+          "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+        }
+      ]
+    },
+    {
+      "fileId": "F-a06d575c587d",
+      "sampleId": "2026BMH001",
+      "warehouseNo": "26027251",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "SN74HC245PWR",
+          "产地": "US",
+          "数量": "24000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        }
+      ],
+      "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "原始客户",
+          "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+        }
+      ]
+    },
+    {
+      "fileId": "F-69127fcfa5c3",
+      "sampleId": "2026BMH001",
+      "warehouseNo": "26027300",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "SN74LVC1G04DBVR",
+          "产地": "DE",
+          "数量": "150000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 2,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "INA180A2IDBVR",
+          "产地": "JP",
+          "数量": "9000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        }
+      ],
+      "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "原始客户",
+          "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+        }
+      ]
+    },
+    {
+      "fileId": "F-de4e00bf55d8",
+      "sampleId": "2026BMH001",
+      "warehouseNo": "26027299",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "LM2576SX-3.3/NOPB",
+          "产地": "GB",
+          "数量": "500",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        }
+      ],
+      "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "原始客户",
+          "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+        }
+      ]
+    },
+    {
+      "fileId": "F-b03e0011849f",
+      "sampleId": "2026BMH001",
+      "warehouseNo": "26027298",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "LM2576SX-3.3/NOPB",
+          "产地": "UNKNOWN",
+          "数量": "4000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        }
+      ],
+      "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。同一印刷商品行含DE:2500及GB:1500；保持原行、产地多值，不自动拆行。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "原始客户",
+          "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+        },
+        {
+          "page": 1,
+          "scope": "商品1产地数量组成",
+          "DE": "2500",
+          "GB": "1500"
+        }
+      ]
+    },
+    {
+      "fileId": "F-cb09c02b9ed5",
+      "sampleId": "2026BMH001",
+      "warehouseNo": "26027323",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "TPS51200DRCR",
+          "产地": "JP",
+          "数量": "12000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        }
+      ],
+      "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "原始客户",
+          "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+        }
+      ]
+    },
+    {
+      "fileId": "F-f29936219cd1",
+      "sampleId": "2026BMH001",
+      "warehouseNo": "26027322",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "SN74LVC08ADR",
+          "产地": "US",
+          "数量": "20000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 2,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "LM2904BIDR",
+          "产地": "US",
+          "数量": "150000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        }
+      ],
+      "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "原始客户",
+          "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+        }
+      ]
+    },
+    {
+      "fileId": "F-276766064bb2",
+      "sampleId": "2026BMH001",
+      "warehouseNo": "26027223",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "印刷明细1",
+          "品牌": "TI",
+          "型号": "SN74AHC1G08DBVR",
+          "产地": "US",
+          "数量": "300000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "19.6",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 2,
+          "position": "印刷明细1",
+          "品牌": "TI",
+          "型号": "SN74AHC1G08DBVR",
+          "产地": "US",
+          "数量": "300000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "19.2",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 3,
+          "position": "印刷明细1",
+          "品牌": "TI",
+          "型号": "SN74AHC1G08DBVR",
+          "产地": "US",
+          "数量": "300000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "24.1",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 4,
+          "position": "印刷明细1",
+          "品牌": "TI",
+          "型号": "SN74AHC1G08DBVR",
+          "产地": "US",
+          "数量": "120000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 4,
+          "position": "印刷明细2",
+          "品牌": "TI",
+          "型号": "SN74AHC1G08DBVR",
+          "产地": "US",
+          "数量": "180000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 5,
+          "position": "印刷明细1",
+          "品牌": "TI",
+          "型号": "SN74AHC1G08DBVR",
+          "产地": "US",
+          "数量": "300000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "17.0",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 6,
+          "position": "印刷明细1",
+          "品牌": "TI",
+          "型号": "SN74AHC1G08DBVR",
+          "产地": "US",
+          "数量": "300000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "25.3",
+          "毛重": "UNKNOWN"
+        }
+      ],
+      "notes": "现有PDF6页，原印刷页码为1～6 OF 8，缺页7、8；箱明细和手写抽出数量为附属证据，不代替印刷明细或拆库存。Sold to/最终目的方为FUJIAN STAR-NET AIOT TECHNOLOGY CO., LTD；未知与百闽海关系。",
+      "sharedMeasurements": [
+        {
+          "page": 4,
+          "scope": "两条批次",
+          "净重": "22.6"
+        },
+        {
+          "page": 1,
+          "scope": "仓库章整单",
+          "件数": "29",
+          "毛重": "136"
+        }
+      ]
+    }
+  ],
+  "entrustmentFacts": [
+    {
+      "id": "D-fb448776f711",
+      "sampleId": "2026BMH001",
+      "fileId": "F-fb448776f711",
+      "customerName": "深圳市百闽海科技有限公司",
+      "customerEvidence": {
+        "fileId": "F-fb448776f711",
+        "sheet": "Sheet1",
+        "location": "委托方"
+      },
+      "rows": [
+        {
+          "id": "D-fb448776f711-R007",
+          "sourceOrder": 1,
+          "sourceRow": 7,
+          "fields": {
+            "客户名": "深圳市百闽海科技有限公司",
+            "品牌": "TI",
+            "型号": "LM2576SX-3.3/NOPB",
+            "商品描述": "UNKNOWN",
+            "品名": "集成电路",
+            "产地": "UNKNOWN",
+            "单位": "PCS",
+            "数量": "4000",
+            "报关单价": "0.555",
+            "总价": "2220",
+            "币种": "USD",
+            "件数": "1",
+            "净重": "UNKNOWN",
+            "毛重": "UNKNOWN",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "品名": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "B7",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "品牌": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "C7",
+              "rawValue": "TI",
+              "cachedValue": null,
+              "value": "TI"
+            },
+            "型号": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "D7",
+              "rawValue": "LM2576SX-3.3/NOPB",
+              "cachedValue": null,
+              "value": "LM2576SX-3.3/NOPB"
+            },
+            "单位": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "G7",
+              "rawValue": "PCS",
+              "cachedValue": null,
+              "value": "PCS"
+            },
+            "数量": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "H7",
+              "rawValue": 4000.0,
+              "cachedValue": null,
+              "value": "4000"
+            },
+            "报关单价": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "I7",
+              "rawValue": 0.555,
+              "cachedValue": null,
+              "value": "0.555"
+            },
+            "总价": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "J7",
+              "rawValue": 2220.0,
+              "cachedValue": null,
+              "value": "2220"
+            },
+            "件数": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "K7",
+              "rawValue": 1.0,
+              "cachedValue": null,
+              "value": "1"
+            },
+            "客户名": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "location": "委托方",
+              "value": "深圳市百闽海科技有限公司",
+              "rawValue": "深圳市百闽海科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        },
+        {
+          "id": "D-fb448776f711-R008",
+          "sourceOrder": 2,
+          "sourceRow": 8,
+          "fields": {
+            "客户名": "深圳市百闽海科技有限公司",
+            "品牌": "TI",
+            "型号": "LM2576SX-3.3/NOPB",
+            "商品描述": "UNKNOWN",
+            "品名": "集成电路",
+            "产地": "UNKNOWN",
+            "单位": "PCS",
+            "数量": "500",
+            "报关单价": "0.555",
+            "总价": "277.5",
+            "币种": "USD",
+            "件数": "1",
+            "净重": "UNKNOWN",
+            "毛重": "UNKNOWN",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "品名": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "B8",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "品牌": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "C8",
+              "rawValue": "TI",
+              "cachedValue": null,
+              "value": "TI"
+            },
+            "型号": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "D8",
+              "rawValue": "LM2576SX-3.3/NOPB",
+              "cachedValue": null,
+              "value": "LM2576SX-3.3/NOPB"
+            },
+            "单位": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "G8",
+              "rawValue": "PCS",
+              "cachedValue": null,
+              "value": "PCS"
+            },
+            "数量": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "H8",
+              "rawValue": 500.0,
+              "cachedValue": null,
+              "value": "500"
+            },
+            "报关单价": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "I8",
+              "rawValue": 0.555,
+              "cachedValue": null,
+              "value": "0.555"
+            },
+            "总价": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "J8",
+              "rawValue": 277.5,
+              "cachedValue": null,
+              "value": "277.5"
+            },
+            "件数": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "K8",
+              "rawValue": 1.0,
+              "cachedValue": null,
+              "value": "1"
+            },
+            "客户名": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "location": "委托方",
+              "value": "深圳市百闽海科技有限公司",
+              "rawValue": "深圳市百闽海科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        },
+        {
+          "id": "D-fb448776f711-R009",
+          "sourceOrder": 3,
+          "sourceRow": 9,
+          "fields": {
+            "客户名": "深圳市百闽海科技有限公司",
+            "品牌": "TI",
+            "型号": "LM2904BIDR",
+            "商品描述": "UNKNOWN",
+            "品名": "集成电路",
+            "产地": "UNKNOWN",
+            "单位": "PCS",
+            "数量": "110000",
+            "报关单价": "0.028",
+            "总价": "3080",
+            "币种": "USD",
+            "件数": "3",
+            "净重": "UNKNOWN",
+            "毛重": "UNKNOWN",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "品名": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "B9",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "品牌": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "C9",
+              "rawValue": "TI",
+              "cachedValue": null,
+              "value": "TI"
+            },
+            "型号": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "D9",
+              "rawValue": "LM2904BIDR",
+              "cachedValue": null,
+              "value": "LM2904BIDR"
+            },
+            "单位": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "G9",
+              "rawValue": "PCS",
+              "cachedValue": null,
+              "value": "PCS"
+            },
+            "数量": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "H9",
+              "rawValue": 110000.0,
+              "cachedValue": null,
+              "value": "110000"
+            },
+            "报关单价": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "I9",
+              "rawValue": 0.028,
+              "cachedValue": null,
+              "value": "0.028"
+            },
+            "总价": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "J9",
+              "rawValue": 3080.0,
+              "cachedValue": null,
+              "value": "3080"
+            },
+            "件数": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "K9",
+              "rawValue": 3.0,
+              "cachedValue": null,
+              "value": "3"
+            },
+            "客户名": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "location": "委托方",
+              "value": "深圳市百闽海科技有限公司",
+              "rawValue": "深圳市百闽海科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        },
+        {
+          "id": "D-fb448776f711-R010",
+          "sourceOrder": 4,
+          "sourceRow": 10,
+          "fields": {
+            "客户名": "深圳市百闽海科技有限公司",
+            "品牌": "TI",
+            "型号": "SN74LVC08ADR",
+            "商品描述": "UNKNOWN",
+            "品名": "集成电路",
+            "产地": "UNKNOWN",
+            "单位": "PCS",
+            "数量": "20000",
+            "报关单价": "0.055",
+            "总价": "1100",
+            "币种": "USD",
+            "件数": "1",
+            "净重": "UNKNOWN",
+            "毛重": "UNKNOWN",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "品名": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "B10",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "品牌": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "C10",
+              "rawValue": "TI",
+              "cachedValue": null,
+              "value": "TI"
+            },
+            "型号": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "D10",
+              "rawValue": "SN74LVC08ADR",
+              "cachedValue": null,
+              "value": "SN74LVC08ADR"
+            },
+            "单位": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "G10",
+              "rawValue": "PCS",
+              "cachedValue": null,
+              "value": "PCS"
+            },
+            "数量": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "H10",
+              "rawValue": 20000.0,
+              "cachedValue": null,
+              "value": "20000"
+            },
+            "报关单价": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "I10",
+              "rawValue": 0.055,
+              "cachedValue": null,
+              "value": "0.055"
+            },
+            "总价": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "J10",
+              "rawValue": 1100.0,
+              "cachedValue": null,
+              "value": "1100"
+            },
+            "件数": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "K10",
+              "rawValue": 1.0,
+              "cachedValue": null,
+              "value": "1"
+            },
+            "客户名": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "location": "委托方",
+              "value": "深圳市百闽海科技有限公司",
+              "rawValue": "深圳市百闽海科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        },
+        {
+          "id": "D-fb448776f711-R011",
+          "sourceOrder": 5,
+          "sourceRow": 11,
+          "fields": {
+            "客户名": "深圳市百闽海科技有限公司",
+            "品牌": "TI",
+            "型号": "SN74AHC1G08DBVR",
+            "商品描述": "UNKNOWN",
+            "品名": "集成电路",
+            "产地": "UNKNOWN",
+            "单位": "PCS",
+            "数量": "360000",
+            "报关单价": "0.0155",
+            "总价": "5580",
+            "币种": "USD",
+            "件数": "6",
+            "净重": "UNKNOWN",
+            "毛重": "UNKNOWN",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "品名": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "B11",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "品牌": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "C11",
+              "rawValue": "TI",
+              "cachedValue": null,
+              "value": "TI"
+            },
+            "型号": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "D11",
+              "rawValue": "SN74AHC1G08DBVR",
+              "cachedValue": null,
+              "value": "SN74AHC1G08DBVR"
+            },
+            "单位": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "G11",
+              "rawValue": "PCS",
+              "cachedValue": null,
+              "value": "PCS"
+            },
+            "数量": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "H11",
+              "rawValue": 360000.0,
+              "cachedValue": null,
+              "value": "360000"
+            },
+            "报关单价": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "I11",
+              "rawValue": 0.0155,
+              "cachedValue": null,
+              "value": "0.0155"
+            },
+            "总价": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "J11",
+              "rawValue": 5580.0,
+              "cachedValue": null,
+              "value": "5580"
+            },
+            "件数": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "K11",
+              "rawValue": 6.0,
+              "cachedValue": null,
+              "value": "6"
+            },
+            "客户名": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "location": "委托方",
+              "value": "深圳市百闽海科技有限公司",
+              "rawValue": "深圳市百闽海科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        },
+        {
+          "id": "D-fb448776f711-R012",
+          "sourceOrder": 6,
+          "sourceRow": 12,
+          "fields": {
+            "客户名": "深圳市百闽海科技有限公司",
+            "品牌": "TI",
+            "型号": "SN74HC245PWR",
+            "商品描述": "UNKNOWN",
+            "品名": "集成电路",
+            "产地": "UNKNOWN",
+            "单位": "PCS",
+            "数量": "24000",
+            "报关单价": "0.09",
+            "总价": "2160",
+            "币种": "USD",
+            "件数": "1",
+            "净重": "UNKNOWN",
+            "毛重": "UNKNOWN",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "品名": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "B12",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "品牌": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "C12",
+              "rawValue": "TI",
+              "cachedValue": null,
+              "value": "TI"
+            },
+            "型号": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "D12",
+              "rawValue": "SN74HC245PWR",
+              "cachedValue": null,
+              "value": "SN74HC245PWR"
+            },
+            "单位": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "G12",
+              "rawValue": "PCS",
+              "cachedValue": null,
+              "value": "PCS"
+            },
+            "数量": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "H12",
+              "rawValue": 24000.0,
+              "cachedValue": null,
+              "value": "24000"
+            },
+            "报关单价": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "I12",
+              "rawValue": 0.09,
+              "cachedValue": null,
+              "value": "0.09"
+            },
+            "总价": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "J12",
+              "rawValue": 2160.0,
+              "cachedValue": null,
+              "value": "2160"
+            },
+            "件数": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "K12",
+              "rawValue": 1.0,
+              "cachedValue": null,
+              "value": "1"
+            },
+            "客户名": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "location": "委托方",
+              "value": "深圳市百闽海科技有限公司",
+              "rawValue": "深圳市百闽海科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        },
+        {
+          "id": "D-fb448776f711-R013",
+          "sourceOrder": 7,
+          "sourceRow": 13,
+          "fields": {
+            "客户名": "深圳市百闽海科技有限公司",
+            "品牌": "TI",
+            "型号": "SN74LVC1G04DBVR",
+            "商品描述": "UNKNOWN",
+            "品名": "集成电路",
+            "产地": "UNKNOWN",
+            "单位": "PCS",
+            "数量": "150000",
+            "报关单价": "0.016",
+            "总价": "2400",
+            "币种": "USD",
+            "件数": "3",
+            "净重": "UNKNOWN",
+            "毛重": "UNKNOWN",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "品名": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "B13",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "品牌": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "C13",
+              "rawValue": "TI",
+              "cachedValue": null,
+              "value": "TI"
+            },
+            "型号": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "D13",
+              "rawValue": "SN74LVC1G04DBVR",
+              "cachedValue": null,
+              "value": "SN74LVC1G04DBVR"
+            },
+            "单位": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "G13",
+              "rawValue": "PCS",
+              "cachedValue": null,
+              "value": "PCS"
+            },
+            "数量": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "H13",
+              "rawValue": 150000.0,
+              "cachedValue": null,
+              "value": "150000"
+            },
+            "报关单价": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "I13",
+              "rawValue": 0.016,
+              "cachedValue": null,
+              "value": "0.016"
+            },
+            "总价": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "J13",
+              "rawValue": 2400.0,
+              "cachedValue": null,
+              "value": "2400"
+            },
+            "件数": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "K13",
+              "rawValue": 3.0,
+              "cachedValue": null,
+              "value": "3"
+            },
+            "客户名": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "location": "委托方",
+              "value": "深圳市百闽海科技有限公司",
+              "rawValue": "深圳市百闽海科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        },
+        {
+          "id": "D-fb448776f711-R014",
+          "sourceOrder": 8,
+          "sourceRow": 14,
+          "fields": {
+            "客户名": "深圳市百闽海科技有限公司",
+            "品牌": "TI",
+            "型号": "TLV62569DBVR",
+            "商品描述": "UNKNOWN",
+            "品名": "集成电路",
+            "产地": "UNKNOWN",
+            "单位": "PCS",
+            "数量": "450000",
+            "报关单价": "0.022",
+            "总价": "9900",
+            "币种": "USD",
+            "件数": "4",
+            "净重": "UNKNOWN",
+            "毛重": "UNKNOWN",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "品名": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "B14",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "品牌": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "C14",
+              "rawValue": "TI",
+              "cachedValue": null,
+              "value": "TI"
+            },
+            "型号": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "D14",
+              "rawValue": "TLV62569DBVR",
+              "cachedValue": null,
+              "value": "TLV62569DBVR"
+            },
+            "单位": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "G14",
+              "rawValue": "PCS",
+              "cachedValue": null,
+              "value": "PCS"
+            },
+            "数量": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "H14",
+              "rawValue": 450000.0,
+              "cachedValue": null,
+              "value": "450000"
+            },
+            "报关单价": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "I14",
+              "rawValue": 0.022,
+              "cachedValue": null,
+              "value": "0.022"
+            },
+            "总价": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "J14",
+              "rawValue": 9900.0,
+              "cachedValue": null,
+              "value": "9900"
+            },
+            "件数": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "K14",
+              "rawValue": 4.0,
+              "cachedValue": null,
+              "value": "4"
+            },
+            "客户名": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "location": "委托方",
+              "value": "深圳市百闽海科技有限公司",
+              "rawValue": "深圳市百闽海科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        },
+        {
+          "id": "D-fb448776f711-R015",
+          "sourceOrder": 9,
+          "sourceRow": 15,
+          "fields": {
+            "客户名": "深圳市百闽海科技有限公司",
+            "品牌": "TI",
+            "型号": "TPS51200DRCR",
+            "商品描述": "UNKNOWN",
+            "品名": "集成电路",
+            "产地": "UNKNOWN",
+            "单位": "PCS",
+            "数量": "12000",
+            "报关单价": "0.079",
+            "总价": "948",
+            "币种": "USD",
+            "件数": "1",
+            "净重": "UNKNOWN",
+            "毛重": "UNKNOWN",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "品名": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "B15",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "品牌": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "C15",
+              "rawValue": "TI",
+              "cachedValue": null,
+              "value": "TI"
+            },
+            "型号": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "D15",
+              "rawValue": "TPS51200DRCR",
+              "cachedValue": null,
+              "value": "TPS51200DRCR"
+            },
+            "单位": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "G15",
+              "rawValue": "PCS",
+              "cachedValue": null,
+              "value": "PCS"
+            },
+            "数量": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "H15",
+              "rawValue": 12000.0,
+              "cachedValue": null,
+              "value": "12000"
+            },
+            "报关单价": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "I15",
+              "rawValue": 0.079,
+              "cachedValue": null,
+              "value": "0.079"
+            },
+            "总价": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "J15",
+              "rawValue": 948.0,
+              "cachedValue": null,
+              "value": "948"
+            },
+            "件数": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "K15",
+              "rawValue": 1.0,
+              "cachedValue": null,
+              "value": "1"
+            },
+            "客户名": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "location": "委托方",
+              "value": "深圳市百闽海科技有限公司",
+              "rawValue": "深圳市百闽海科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        },
+        {
+          "id": "D-fb448776f711-R016",
+          "sourceOrder": 10,
+          "sourceRow": 16,
+          "fields": {
+            "客户名": "深圳市百闽海科技有限公司",
+            "品牌": "TI",
+            "型号": "TXS0108EPWR",
+            "商品描述": "UNKNOWN",
+            "品名": "集成电路",
+            "产地": "UNKNOWN",
+            "单位": "PCS",
+            "数量": "86000",
+            "报关单价": "0.086",
+            "总价": "7396",
+            "币种": "USD",
+            "件数": "4",
+            "净重": "UNKNOWN",
+            "毛重": "UNKNOWN",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "品名": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "B16",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "品牌": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "C16",
+              "rawValue": "TI",
+              "cachedValue": null,
+              "value": "TI"
+            },
+            "型号": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "D16",
+              "rawValue": "TXS0108EPWR",
+              "cachedValue": null,
+              "value": "TXS0108EPWR"
+            },
+            "单位": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "G16",
+              "rawValue": "PCS",
+              "cachedValue": null,
+              "value": "PCS"
+            },
+            "数量": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "H16",
+              "rawValue": 86000.0,
+              "cachedValue": null,
+              "value": "86000"
+            },
+            "报关单价": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "I16",
+              "rawValue": 0.086,
+              "cachedValue": null,
+              "value": "0.086"
+            },
+            "总价": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "J16",
+              "rawValue": 7395.999999999999,
+              "cachedValue": null,
+              "value": "7396"
+            },
+            "件数": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "K16",
+              "rawValue": 4.0,
+              "cachedValue": null,
+              "value": "4"
+            },
+            "客户名": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "location": "委托方",
+              "value": "深圳市百闽海科技有限公司",
+              "rawValue": "深圳市百闽海科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        },
+        {
+          "id": "D-fb448776f711-R017",
+          "sourceOrder": 11,
+          "sourceRow": 17,
+          "fields": {
+            "客户名": "深圳市百闽海科技有限公司",
+            "品牌": "TI",
+            "型号": "TXS0108EPWR",
+            "商品描述": "UNKNOWN",
+            "品名": "集成电路",
+            "产地": "UNKNOWN",
+            "单位": "PCS",
+            "数量": "26000",
+            "报关单价": "0.086",
+            "总价": "2236",
+            "币种": "USD",
+            "件数": "1",
+            "净重": "UNKNOWN",
+            "毛重": "UNKNOWN",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "品名": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "B17",
+              "rawValue": "集成电路",
+              "cachedValue": null,
+              "value": "集成电路"
+            },
+            "品牌": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "C17",
+              "rawValue": "TI",
+              "cachedValue": null,
+              "value": "TI"
+            },
+            "型号": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "D17",
+              "rawValue": "TXS0108EPWR",
+              "cachedValue": null,
+              "value": "TXS0108EPWR"
+            },
+            "单位": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "G17",
+              "rawValue": "PCS",
+              "cachedValue": null,
+              "value": "PCS"
+            },
+            "数量": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "H17",
+              "rawValue": 26000.0,
+              "cachedValue": null,
+              "value": "26000"
+            },
+            "报关单价": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "I17",
+              "rawValue": 0.086,
+              "cachedValue": null,
+              "value": "0.086"
+            },
+            "总价": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "J17",
+              "rawValue": 2236.0,
+              "cachedValue": null,
+              "value": "2236"
+            },
+            "件数": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "cell": "K17",
+              "rawValue": 1.0,
+              "cachedValue": null,
+              "value": "1"
+            },
+            "客户名": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "location": "委托方",
+              "value": "深圳市百闽海科技有限公司",
+              "rawValue": "深圳市百闽海科技有限公司"
+            },
+            "币种": {
+              "fileId": "F-fb448776f711",
+              "sheet": "Sheet1",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        }
+      ],
+      "sharedMeasurements": []
+    }
+  ],
+  "reviewRecords": [
+    {
+      "fileId": "F-fb448776f711",
+      "sampleId": "2026BMH001",
+      "role": "entrustment_material",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "Sheet1",
+          "rows": 27,
+          "columns": 16,
+          "merged": [
+            [
+              0,
+              1,
+              0,
+              14
+            ],
+            [
+              1,
+              2,
+              0,
+              14
+            ],
+            [
+              2,
+              3,
+              12,
+              14
+            ],
+            [
+              17,
+              18,
+              0,
+              7
+            ],
+            [
+              20,
+              21,
+              1,
+              3
+            ],
+            [
+              21,
+              22,
+              1,
+              6
+            ],
+            [
+              22,
+              23,
+              1,
+              14
+            ],
+            [
+              23,
+              24,
+              1,
+              14
+            ]
+          ]
+        },
+        {
+          "sheet": "Sheet2",
+          "rows": 0,
+          "columns": 0,
+          "merged": []
+        },
+        {
+          "sheet": "Sheet3",
+          "rows": 0,
+          "columns": 0,
+          "merged": []
+        }
+      ]
+    },
+    {
+      "fileId": "F-b98a101d8392",
+      "sampleId": "2026BMH001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-b98a101d8392/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-c5195fdb15a3",
+      "sampleId": "2026BMH001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-c5195fdb15a3/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-c5195fdb15a3/page-2.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-94d0c3955b2a",
+      "sampleId": "2026BMH001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-94d0c3955b2a/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-94d0c3955b2a/page-2.png"
+        },
+        {
+          "page": 3,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-94d0c3955b2a/page-3.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-276766064bb2",
+      "sampleId": "2026BMH001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-276766064bb2/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-276766064bb2/page-2.png"
+        },
+        {
+          "page": 3,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-276766064bb2/page-3.png"
+        },
+        {
+          "page": 4,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-276766064bb2/page-4.png"
+        },
+        {
+          "page": 5,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-276766064bb2/page-5.png"
+        },
+        {
+          "page": 6,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-276766064bb2/page-6.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-39b0b8e82a3a",
+      "sampleId": "2026BMH001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-39b0b8e82a3a/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-a06d575c587d",
+      "sampleId": "2026BMH001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-a06d575c587d/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-69127fcfa5c3",
+      "sampleId": "2026BMH001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-69127fcfa5c3/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-69127fcfa5c3/page-2.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-de4e00bf55d8",
+      "sampleId": "2026BMH001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-de4e00bf55d8/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-b03e0011849f",
+      "sampleId": "2026BMH001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-b03e0011849f/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-cb09c02b9ed5",
+      "sampleId": "2026BMH001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-cb09c02b9ed5/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-f29936219cd1",
+      "sampleId": "2026BMH001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-f29936219cd1/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-f29936219cd1/page-2.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-54a1727fc0c8",
+      "sampleId": "2026BMH001",
+      "role": "reference",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "参考结果",
+          "rows": 12,
+          "columns": 20,
+          "merged": []
+        }
+      ]
+    }
+  ]
+}

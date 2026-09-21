@@ -1,0 +1,65 @@
+[
+  {
+    "scenario": "SC-01",
+    "initialDrafts": 0,
+    "afterCreateDrafts": 1,
+    "matchedRows": 2,
+    "manualCandidateSelectors": 0,
+    "submitEnabled": false,
+    "status": "已修复并回归"
+  },
+  {
+    "scenario": "SC-02",
+    "initialDrafts": 0,
+    "afterCreateDrafts": 1,
+    "matchedRows": 2,
+    "manualCandidateSelectors": 0,
+    "submitEnabled": false,
+    "status": "已修复并回归；补客户前匹配阻断"
+  },
+  {
+    "scenario": "SC-06",
+    "initialDrafts": 0,
+    "afterCreateDrafts": 1,
+    "matchedRows": 2,
+    "manualCandidateSelectors": 0,
+    "submitEnabled": false,
+    "status": "已修复并回归"
+  },
+  {
+    "scenario": "SC-14",
+    "initialDrafts": 1,
+    "afterCreateDrafts": 1,
+    "matchedRows": 0,
+    "manualCandidateSelectors": 2,
+    "submitEnabled": true,
+    "status": "已修复并回归；需人工选择两行"
+  },
+  {
+    "scenario": "SC-15",
+    "initialDrafts": 1,
+    "afterCreateDrafts": 1,
+    "matchedRows": 0,
+    "manualCandidateSelectors": 2,
+    "submitEnabled": true,
+    "status": "已修复并回归；完成确认、25列和核销"
+  },
+  {
+    "scenario": "SC-16",
+    "initialDrafts": 1,
+    "afterCreateDrafts": 1,
+    "matchedRows": 0,
+    "manualCandidateSelectors": 2,
+    "submitEnabled": true,
+    "status": "已修复并回归；完成确认、25列和核销"
+  },
+  {
+    "scenario": "SC-21",
+    "initialDrafts": 1,
+    "afterCreateDrafts": 1,
+    "matchedRows": 0,
+    "manualCandidateSelectors": 2,
+    "submitEnabled": true,
+    "status": "已修复并回归；完成确认、25列和核销"
+  }
+]

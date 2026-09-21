@@ -1,0 +1,31 @@
+test_column_order (test_validation.BaselineValidation.test_column_order) ... ok
+test_cross_customer_relation (test_validation.BaselineValidation.test_cross_customer_relation) ... ok
+test_duplicate_allocation (test_validation.BaselineValidation.test_duplicate_allocation) ... ok
+test_entrustment_same_model_merge (test_validation.BaselineValidation.test_entrustment_same_model_merge) ... ok
+test_missing_group_component (test_validation.BaselineValidation.test_missing_group_component) ... ok
+test_missing_source_position (test_validation.BaselineValidation.test_missing_source_position) ... ok
+test_multiple_warehouse_values (test_validation.BaselineValidation.test_multiple_warehouse_values) ... ok
+test_original_row_multiple_orders (test_validation.BaselineValidation.test_original_row_multiple_orders) ... ok
+test_precomputed_occupation (test_validation.BaselineValidation.test_precomputed_occupation) ... ok
+test_reference_used_as_input (test_validation.BaselineValidation.test_reference_used_as_input) ... ok
+test_source_files_unchanged (test_validation.BaselineValidation.test_source_files_unchanged) ... ok
+test_unknown_customer_not_pending (test_validation.BaselineValidation.test_unknown_customer_not_pending) ... ok
+test_unknown_group_weight_to_zero (test_validation.BaselineValidation.test_unknown_group_weight_to_zero) ... ok
+test_unknown_inspection_entering_pool (test_validation.BaselineValidation.test_unknown_inspection_entering_pool) ... ok
+test_unknown_source_weight_to_zero_even_with_recomputed_totals (test_validation.BaselineValidation.test_unknown_source_weight_to_zero_even_with_recomputed_totals) ... ok
+test_valid_baseline (test_validation.BaselineValidation.test_valid_baseline) ... ok
+test_wrong_gross_sum (test_validation.BaselineValidation.test_wrong_gross_sum) ... ok
+test_wrong_net_sum (test_validation.BaselineValidation.test_wrong_net_sum) ... ok
+test_wrong_quantity_sum (test_validation.BaselineValidation.test_wrong_quantity_sum) ... ok
+test_all_21_scenarios_and_copy_isolation (test_validation.ScenarioValidation.test_all_21_scenarios_and_copy_isolation) ... ok
+test_cross_customer_action (test_validation.ScenarioValidation.test_cross_customer_action) ... ok
+test_cross_customer_candidate (test_validation.ScenarioValidation.test_cross_customer_candidate) ... ok
+test_invalid_batch (test_validation.ScenarioValidation.test_invalid_batch) ... ok
+test_many_to_many_is_not_independent_pairs (test_validation.ScenarioValidation.test_many_to_many_is_not_independent_pairs) ... ok
+test_patch_previous_value_guard (test_validation.ScenarioValidation.test_patch_previous_value_guard) ... ok
+test_revision_not_applied_on_load (test_validation.ScenarioValidation.test_revision_not_applied_on_load) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.634s
+
+OK

@@ -1,0 +1,424 @@
+{
+  "sampleId": "2025YBT010-2",
+  "customer": "英堡科技（深圳）有限公司",
+  "customerDetermination": "来自委托方、查货明确Bill To或内部单；未证明的归属在对象级标UNKNOWN",
+  "fileIds": [
+    "F-3c3cc10bd26b",
+    "F-8bc7177252aa",
+    "F-e70c3bd328c2"
+  ],
+  "entrustmentDocumentCount": 1,
+  "invoiceDocumentCount": 0,
+  "packingListDocumentCount": 1,
+  "inspectionPdfCount": 1,
+  "warehouseCountConfirmed": 1,
+  "warehouseAmbiguities": [],
+  "logicalInspectionOrderCount": 1,
+  "entrustmentLineCount": 2,
+  "inspectionSourceLineCount": 2,
+  "hasMergeableGoods": false,
+  "hasFieldConflict": true,
+  "hasMultipleCandidatePotential": "UNKNOWN",
+  "possibleRelationScenarios": [
+    "一对一候选（待逐行关系核实）"
+  ],
+  "notes": [
+    "委托型号带#9/#D后缀，查货型号无该后缀；不能将去后缀定义为通用匹配规则。",
+    "表格毛重合计9.20，入仓章9，两个量值保留。"
+  ],
+  "inspectionFacts": [
+    {
+      "fileId": "F-8bc7177252aa",
+      "sampleId": "2025YBT010-2",
+      "warehouseNo": "25120336",
+      "customerName": "英堡科技（深圳）有限公司",
+      "rows": [
+        {
+          "page": 1,
+          "position": "商品表第1行",
+          "品牌": "SK HYNIX",
+          "型号": "H25G9TCXXCX702A",
+          "产地": "KOREA",
+          "数量": "12081",
+          "单位": "UNKNOWN",
+          "件数": "1",
+          "净重": "3.60",
+          "毛重": "4.20"
+        },
+        {
+          "page": 1,
+          "position": "商品表第2行",
+          "品牌": "SK HYNIX",
+          "型号": "D25G9TCX8CX239C",
+          "产地": "KOREA",
+          "数量": "16054",
+          "单位": "UNKNOWN",
+          "件数": "1",
+          "净重": "4.40",
+          "毛重": "5.00"
+        }
+      ],
+      "notes": "入仓章毛重9 KG，表格合计9.20 KG；两个来源均保留。",
+      "sharedMeasurements": []
+    }
+  ],
+  "entrustmentFacts": [
+    {
+      "id": "D-3c3cc10bd26b",
+      "sampleId": "2025YBT010-2",
+      "fileId": "F-3c3cc10bd26b",
+      "customerName": "英堡科技（深圳）有限公司",
+      "customerEvidence": {
+        "fileId": "F-3c3cc10bd26b",
+        "sheet": "12-10-2",
+        "location": "委托方"
+      },
+      "rows": [
+        {
+          "id": "D-3c3cc10bd26b-R007",
+          "sourceOrder": 1,
+          "sourceRow": 7,
+          "fields": {
+            "客户名": "英堡科技（深圳）有限公司",
+            "品牌": "SK HYNIX",
+            "型号": "H25G9TCXXCX702A#9",
+            "商品描述": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性",
+            "品名": "晶圆",
+            "产地": "韩国",
+            "单位": "个",
+            "数量": "12081",
+            "报关单价": "4.1",
+            "总价": "49532.1",
+            "币种": "USD",
+            "件数": "1",
+            "净重": "3.6",
+            "毛重": "4.2",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "品名": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "cell": "B7",
+              "rawValue": "晶圆",
+              "cachedValue": "晶圆",
+              "value": "晶圆"
+            },
+            "品牌": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "cell": "C7",
+              "rawValue": "SK HYNIX",
+              "cachedValue": "SK HYNIX",
+              "value": "SK HYNIX"
+            },
+            "型号": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "cell": "D7",
+              "rawValue": "H25G9TCXXCX702A#9",
+              "cachedValue": "H25G9TCXXCX702A#9",
+              "value": "H25G9TCXXCX702A#9"
+            },
+            "商品描述": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "cell": "E7",
+              "rawValue": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性",
+              "cachedValue": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性",
+              "value": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性"
+            },
+            "产地": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "cell": "F7",
+              "rawValue": "韩国",
+              "cachedValue": "韩国",
+              "value": "韩国"
+            },
+            "单位": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "cell": "G7",
+              "rawValue": "个",
+              "cachedValue": "个",
+              "value": "个"
+            },
+            "数量": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "cell": "H7",
+              "rawValue": 12081,
+              "cachedValue": 12081,
+              "value": "12081"
+            },
+            "报关单价": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "cell": "I7",
+              "rawValue": 4.1,
+              "cachedValue": 4.1,
+              "value": "4.1"
+            },
+            "总价": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "cell": "J7",
+              "rawValue": "=H7*I7",
+              "cachedValue": 49532.1,
+              "value": "49532.1"
+            },
+            "件数": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "cell": "K7",
+              "rawValue": 1,
+              "cachedValue": 1,
+              "value": "1"
+            },
+            "净重": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "cell": "L7",
+              "rawValue": 3.6,
+              "cachedValue": 3.6,
+              "value": "3.6"
+            },
+            "毛重": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "cell": "M7",
+              "rawValue": 4.2,
+              "cachedValue": 4.2,
+              "value": "4.2"
+            },
+            "客户名": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "location": "委托方",
+              "value": "英堡科技（深圳）有限公司",
+              "rawValue": "英堡科技（深圳）有限公司"
+            },
+            "币种": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        },
+        {
+          "id": "D-3c3cc10bd26b-R008",
+          "sourceOrder": 2,
+          "sourceRow": 8,
+          "fields": {
+            "客户名": "英堡科技（深圳）有限公司",
+            "品牌": "SK HYNIX",
+            "型号": "D25G9TCX8CX239C#D",
+            "商品描述": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性",
+            "品名": "晶圆",
+            "产地": "韩国",
+            "单位": "个",
+            "数量": "16054",
+            "报关单价": "2.9",
+            "总价": "46556.6",
+            "币种": "USD",
+            "件数": "1",
+            "净重": "4.4",
+            "毛重": "5",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "品名": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "cell": "B8",
+              "rawValue": "晶圆",
+              "cachedValue": "晶圆",
+              "value": "晶圆"
+            },
+            "品牌": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "cell": "C8",
+              "rawValue": "SK HYNIX",
+              "cachedValue": "SK HYNIX",
+              "value": "SK HYNIX"
+            },
+            "型号": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "cell": "D8",
+              "rawValue": "D25G9TCX8CX239C#D",
+              "cachedValue": "D25G9TCX8CX239C#D",
+              "value": "D25G9TCX8CX239C#D"
+            },
+            "商品描述": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "cell": "E8",
+              "rawValue": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性",
+              "cachedValue": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性",
+              "value": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性"
+            },
+            "产地": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "cell": "F8",
+              "rawValue": "韩国",
+              "cachedValue": "韩国",
+              "value": "韩国"
+            },
+            "单位": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "cell": "G8",
+              "rawValue": "个",
+              "cachedValue": "个",
+              "value": "个"
+            },
+            "数量": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "cell": "H8",
+              "rawValue": 16054,
+              "cachedValue": 16054,
+              "value": "16054"
+            },
+            "报关单价": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "cell": "I8",
+              "rawValue": 2.9,
+              "cachedValue": 2.9,
+              "value": "2.9"
+            },
+            "总价": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "cell": "J8",
+              "rawValue": "=H8*I8",
+              "cachedValue": 46556.6,
+              "value": "46556.6"
+            },
+            "件数": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "cell": "K8",
+              "rawValue": 1,
+              "cachedValue": 1,
+              "value": "1"
+            },
+            "净重": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "cell": "L8",
+              "rawValue": 4.4,
+              "cachedValue": 4.4,
+              "value": "4.4"
+            },
+            "毛重": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "cell": "M8",
+              "rawValue": 5,
+              "cachedValue": 5,
+              "value": "5"
+            },
+            "客户名": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "location": "委托方",
+              "value": "英堡科技（深圳）有限公司",
+              "rawValue": "英堡科技（深圳）有限公司"
+            },
+            "币种": {
+              "fileId": "F-3c3cc10bd26b",
+              "sheet": "12-10-2",
+              "location": "单价/总价表头USD",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        }
+      ],
+      "sharedMeasurements": []
+    }
+  ],
+  "reviewRecords": [
+    {
+      "fileId": "F-3c3cc10bd26b",
+      "sampleId": "2025YBT010-2",
+      "role": "entrustment_material",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "12-10-2",
+          "rows": 19,
+          "columns": 15,
+          "merged": [
+            "B14:N14",
+            "A9:G9",
+            "A2:N2",
+            "B13:N13",
+            "M3:N3",
+            "B15:N15",
+            "H16:N16",
+            "B12:C12",
+            "A1:N1"
+          ]
+        }
+      ]
+    },
+    {
+      "fileId": "F-8bc7177252aa",
+      "sampleId": "2025YBT010-2",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-8bc7177252aa/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-e70c3bd328c2",
+      "sampleId": "2025YBT010-2",
+      "role": "reference",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "参考结果",
+          "rows": 4,
+          "columns": 20,
+          "merged": []
+        }
+      ]
+    }
+  ]
+}

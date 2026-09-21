@@ -1,0 +1,563 @@
+[
+  {
+    "id": "B-I-8bc7177252aa-25120336",
+    "sampleId": "2025YBT010-2",
+    "kind": "inspection",
+    "fileIds": [
+      "F-8bc7177252aa"
+    ],
+    "inspectionOrderIds": [
+      "I-8bc7177252aa-25120336"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-D-3c3cc10bd26b",
+    "sampleId": "2025YBT010-2",
+    "kind": "entrustment",
+    "fileIds": [
+      "F-3c3cc10bd26b"
+    ],
+    "inspectionOrderIds": [],
+    "draftIds": [
+      "D-3c3cc10bd26b"
+    ]
+  },
+  {
+    "id": "B-I-4626eef2dd66-26010713",
+    "sampleId": "2026(DG)ZW001",
+    "kind": "inspection",
+    "fileIds": [
+      "F-4626eef2dd66"
+    ],
+    "inspectionOrderIds": [
+      "I-4626eef2dd66-26010713"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-I-cdbd27982284-26010048",
+    "sampleId": "2026(DG)ZW001",
+    "kind": "inspection",
+    "fileIds": [
+      "F-cdbd27982284"
+    ],
+    "inspectionOrderIds": [
+      "I-cdbd27982284-26010048"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-D-8181f9edc198",
+    "sampleId": "2026(DG)ZW001",
+    "kind": "entrustment",
+    "fileIds": [
+      "F-8181f9edc198"
+    ],
+    "inspectionOrderIds": [],
+    "draftIds": [
+      "D-8181f9edc198"
+    ]
+  },
+  {
+    "id": "B-I-ad06ec2cd295-26010801",
+    "sampleId": "2026(DG)ZW003",
+    "kind": "inspection",
+    "fileIds": [
+      "F-ad06ec2cd295"
+    ],
+    "inspectionOrderIds": [
+      "I-ad06ec2cd295-26010801"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-I-e928e7608540-26010211",
+    "sampleId": "2026(DG)ZW003",
+    "kind": "inspection",
+    "fileIds": [
+      "F-e928e7608540"
+    ],
+    "inspectionOrderIds": [
+      "I-e928e7608540-26010211"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-D-b436a16434a4",
+    "sampleId": "2026(DG)ZW003",
+    "kind": "entrustment",
+    "fileIds": [
+      "F-b436a16434a4"
+    ],
+    "inspectionOrderIds": [],
+    "draftIds": [
+      "D-b436a16434a4"
+    ]
+  },
+  {
+    "id": "B-I-bfe5061027e1-26050640",
+    "sampleId": "2026(DG)ZW050",
+    "kind": "inspection",
+    "fileIds": [
+      "F-bfe5061027e1"
+    ],
+    "inspectionOrderIds": [
+      "I-bfe5061027e1-26050640"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-D-ab6bfdee3e54",
+    "sampleId": "2026(DG)ZW050",
+    "kind": "entrustment",
+    "fileIds": [
+      "F-ab6bfdee3e54"
+    ],
+    "inspectionOrderIds": [],
+    "draftIds": [
+      "D-ab6bfdee3e54"
+    ]
+  },
+  {
+    "id": "B-I-2907feed0d42-26033175",
+    "sampleId": "2026ACSY003",
+    "kind": "inspection",
+    "fileIds": [
+      "F-2907feed0d42"
+    ],
+    "inspectionOrderIds": [
+      "I-2907feed0d42-26033175"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-D-0971c3fd7c49",
+    "sampleId": "2026ACSY003",
+    "kind": "entrustment",
+    "fileIds": [
+      "F-0971c3fd7c49"
+    ],
+    "inspectionOrderIds": [],
+    "draftIds": [
+      "D-0971c3fd7c49"
+    ]
+  },
+  {
+    "id": "B-I-6b255626250f-26050688",
+    "sampleId": "2026AG001",
+    "kind": "inspection",
+    "fileIds": [
+      "F-6b255626250f"
+    ],
+    "inspectionOrderIds": [
+      "I-6b255626250f-26050688"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-D-e60d9bd8df88",
+    "sampleId": "2026AG001",
+    "kind": "entrustment",
+    "fileIds": [
+      "F-e60d9bd8df88"
+    ],
+    "inspectionOrderIds": [],
+    "draftIds": [
+      "D-e60d9bd8df88"
+    ]
+  },
+  {
+    "id": "B-I-b98a101d8392-26027114",
+    "sampleId": "2026BMH001",
+    "kind": "inspection",
+    "fileIds": [
+      "F-b98a101d8392"
+    ],
+    "inspectionOrderIds": [
+      "I-b98a101d8392-26027114"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-I-c5195fdb15a3-26027143",
+    "sampleId": "2026BMH001",
+    "kind": "inspection",
+    "fileIds": [
+      "F-c5195fdb15a3"
+    ],
+    "inspectionOrderIds": [
+      "I-c5195fdb15a3-26027143"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-I-94d0c3955b2a-26027191",
+    "sampleId": "2026BMH001",
+    "kind": "inspection",
+    "fileIds": [
+      "F-94d0c3955b2a"
+    ],
+    "inspectionOrderIds": [
+      "I-94d0c3955b2a-26027191"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-I-39b0b8e82a3a-26027254",
+    "sampleId": "2026BMH001",
+    "kind": "inspection",
+    "fileIds": [
+      "F-39b0b8e82a3a"
+    ],
+    "inspectionOrderIds": [
+      "I-39b0b8e82a3a-26027254"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-I-a06d575c587d-26027251",
+    "sampleId": "2026BMH001",
+    "kind": "inspection",
+    "fileIds": [
+      "F-a06d575c587d"
+    ],
+    "inspectionOrderIds": [
+      "I-a06d575c587d-26027251"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-I-69127fcfa5c3-26027300",
+    "sampleId": "2026BMH001",
+    "kind": "inspection",
+    "fileIds": [
+      "F-69127fcfa5c3"
+    ],
+    "inspectionOrderIds": [
+      "I-69127fcfa5c3-26027300"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-I-de4e00bf55d8-26027299",
+    "sampleId": "2026BMH001",
+    "kind": "inspection",
+    "fileIds": [
+      "F-de4e00bf55d8"
+    ],
+    "inspectionOrderIds": [
+      "I-de4e00bf55d8-26027299"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-I-b03e0011849f-26027298",
+    "sampleId": "2026BMH001",
+    "kind": "inspection",
+    "fileIds": [
+      "F-b03e0011849f"
+    ],
+    "inspectionOrderIds": [
+      "I-b03e0011849f-26027298"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-I-cb09c02b9ed5-26027323",
+    "sampleId": "2026BMH001",
+    "kind": "inspection",
+    "fileIds": [
+      "F-cb09c02b9ed5"
+    ],
+    "inspectionOrderIds": [
+      "I-cb09c02b9ed5-26027323"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-I-f29936219cd1-26027322",
+    "sampleId": "2026BMH001",
+    "kind": "inspection",
+    "fileIds": [
+      "F-f29936219cd1"
+    ],
+    "inspectionOrderIds": [
+      "I-f29936219cd1-26027322"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-I-276766064bb2-26027223",
+    "sampleId": "2026BMH001",
+    "kind": "inspection",
+    "fileIds": [
+      "F-276766064bb2"
+    ],
+    "inspectionOrderIds": [
+      "I-276766064bb2-26027223"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-D-fb448776f711",
+    "sampleId": "2026BMH001",
+    "kind": "entrustment",
+    "fileIds": [
+      "F-fb448776f711"
+    ],
+    "inspectionOrderIds": [],
+    "draftIds": [
+      "D-fb448776f711"
+    ]
+  },
+  {
+    "id": "B-I-8e681d73b55a-26057448",
+    "sampleId": "2026CNKJ001",
+    "kind": "inspection",
+    "fileIds": [
+      "F-8e681d73b55a"
+    ],
+    "inspectionOrderIds": [
+      "I-8e681d73b55a-26057448"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-D-a64834ca9065",
+    "sampleId": "2026CNKJ001",
+    "kind": "entrustment",
+    "fileIds": [
+      "F-a64834ca9065"
+    ],
+    "inspectionOrderIds": [],
+    "draftIds": [
+      "D-a64834ca9065"
+    ]
+  },
+  {
+    "id": "B-I-970b59d6d5b8-26036383",
+    "sampleId": "26SHPYD056",
+    "kind": "inspection",
+    "fileIds": [
+      "F-970b59d6d5b8"
+    ],
+    "inspectionOrderIds": [
+      "I-970b59d6d5b8-26036383"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-D-df72916dc019",
+    "sampleId": "26SHPYD056",
+    "kind": "entrustment",
+    "fileIds": [
+      "F-df72916dc019"
+    ],
+    "inspectionOrderIds": [],
+    "draftIds": [
+      "D-df72916dc019"
+    ]
+  },
+  {
+    "id": "B-I-5dc64ab64d12-26040077",
+    "sampleId": "多对多样例",
+    "kind": "inspection",
+    "fileIds": [
+      "F-5dc64ab64d12"
+    ],
+    "inspectionOrderIds": [
+      "I-5dc64ab64d12-26040077"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-I-168417940250-26040117",
+    "sampleId": "多对多样例",
+    "kind": "inspection",
+    "fileIds": [
+      "F-168417940250"
+    ],
+    "inspectionOrderIds": [
+      "I-168417940250-26040117"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-I-2e8354efac27-26040114",
+    "sampleId": "多对多样例",
+    "kind": "inspection",
+    "fileIds": [
+      "F-2e8354efac27"
+    ],
+    "inspectionOrderIds": [
+      "I-2e8354efac27-26040114"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-I-929e7033b39f-26040116",
+    "sampleId": "多对多样例",
+    "kind": "inspection",
+    "fileIds": [
+      "F-929e7033b39f"
+    ],
+    "inspectionOrderIds": [
+      "I-929e7033b39f-26040116"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-I-7d97d15951fc-26040139",
+    "sampleId": "多对多样例",
+    "kind": "inspection",
+    "fileIds": [
+      "F-7d97d15951fc"
+    ],
+    "inspectionOrderIds": [
+      "I-7d97d15951fc-26040139"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-I-f1e1e4ea2ac5-26040716",
+    "sampleId": "多对多样例",
+    "kind": "inspection",
+    "fileIds": [
+      "F-f1e1e4ea2ac5"
+    ],
+    "inspectionOrderIds": [
+      "I-f1e1e4ea2ac5-26040716"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-I-da9dfc44a0f9-26040156",
+    "sampleId": "多对多样例",
+    "kind": "inspection",
+    "fileIds": [
+      "F-da9dfc44a0f9"
+    ],
+    "inspectionOrderIds": [
+      "I-da9dfc44a0f9-26040156"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-I-c578af30ff9a-26040177",
+    "sampleId": "多对多样例",
+    "kind": "inspection",
+    "fileIds": [
+      "F-c578af30ff9a"
+    ],
+    "inspectionOrderIds": [
+      "I-c578af30ff9a-26040177"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-I-cd33df861950-26040178",
+    "sampleId": "多对多样例",
+    "kind": "inspection",
+    "fileIds": [
+      "F-cd33df861950"
+    ],
+    "inspectionOrderIds": [
+      "I-cd33df861950-26040178"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-I-ea04d3e7518a-26040179",
+    "sampleId": "多对多样例",
+    "kind": "inspection",
+    "fileIds": [
+      "F-ea04d3e7518a"
+    ],
+    "inspectionOrderIds": [
+      "I-ea04d3e7518a-26040179"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-I-93c7d7713617-26040084",
+    "sampleId": "多对多样例",
+    "kind": "inspection",
+    "fileIds": [
+      "F-93c7d7713617"
+    ],
+    "inspectionOrderIds": [
+      "I-93c7d7713617-26040084"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-I-5b778363f744-26040083",
+    "sampleId": "多对多样例",
+    "kind": "inspection",
+    "fileIds": [
+      "F-5b778363f744"
+    ],
+    "inspectionOrderIds": [
+      "I-5b778363f744-26040083"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-I-a5368260946b-26070093",
+    "sampleId": "英卡-抽+整",
+    "kind": "inspection",
+    "fileIds": [
+      "F-a5368260946b"
+    ],
+    "inspectionOrderIds": [
+      "I-a5368260946b-26070093"
+    ],
+    "draftIds": []
+  },
+  {
+    "id": "B-D-1df4f4d83480",
+    "sampleId": "英卡-抽+整",
+    "kind": "entrustment",
+    "fileIds": [
+      "F-1f89bab4fe64",
+      "F-1df4f4d83480",
+      "F-80d89610605b",
+      "F-b0322c865487"
+    ],
+    "inspectionOrderIds": [],
+    "draftIds": [
+      "D-1df4f4d83480"
+    ]
+  },
+  {
+    "id": "B-D-a235e97d6dd0",
+    "sampleId": "英卡-抽+整",
+    "kind": "entrustment",
+    "fileIds": [
+      "F-e3577cb3f191",
+      "F-a235e97d6dd0",
+      "F-eebd316ee6c7",
+      "F-ec785baa0766"
+    ],
+    "inspectionOrderIds": [],
+    "draftIds": [
+      "D-a235e97d6dd0"
+    ]
+  },
+  {
+    "id": "B-D-5a09ab721f2e",
+    "sampleId": "英卡-抽+整",
+    "kind": "entrustment",
+    "fileIds": [
+      "F-3c457d2e01db",
+      "F-5a09ab721f2e",
+      "F-f1e3242cc308",
+      "F-6d83ce0e89f6"
+    ],
+    "inspectionOrderIds": [],
+    "draftIds": [
+      "D-5a09ab721f2e"
+    ]
+  }
+]

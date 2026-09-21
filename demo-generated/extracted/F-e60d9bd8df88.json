@@ -1,0 +1,341 @@
+{
+  "id": "F-e60d9bd8df88",
+  "path": "真实整单样本/2026AG001/委托文件/报关委托书-2026.5.15.xls",
+  "sampleId": "2026AG001",
+  "sha256": "8f9ce8e6b93ba58b5699e74eaf2fea077ee85b450a65df6119b49ba83165d346",
+  "size": 24576,
+  "extension": ".xls",
+  "role": "entrustment_material",
+  "sheets": [
+    {
+      "name": "报关资料",
+      "rows": 42,
+      "columns": 18,
+      "merged": [
+        [
+          6,
+          8,
+          12,
+          13
+        ]
+      ],
+      "cells": [
+        {
+          "row": 1,
+          "column": 1,
+          "value": "委        托         进      口      货      物      确      认      单"
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "value": "C  O  N  F  I  R  M A  T  I  O  N"
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "value": "委托方："
+        },
+        {
+          "row": 3,
+          "column": 2,
+          "value": "深圳市傲冠软件股份有限公司"
+        },
+        {
+          "row": 4,
+          "column": 1,
+          "value": "代理方："
+        },
+        {
+          "row": 4,
+          "column": 2,
+          "value": "深圳市九立供应链股份有限公司"
+        },
+        {
+          "row": 6,
+          "column": 1,
+          "value": "序号"
+        },
+        {
+          "row": 6,
+          "column": 2,
+          "value": "品牌"
+        },
+        {
+          "row": 6,
+          "column": 3,
+          "value": "品牌类型"
+        },
+        {
+          "row": 6,
+          "column": 4,
+          "value": "品名"
+        },
+        {
+          "row": 6,
+          "column": 5,
+          "value": "型号"
+        },
+        {
+          "row": 6,
+          "column": 6,
+          "value": "商品描述"
+        },
+        {
+          "row": 6,
+          "column": 7,
+          "value": "产地"
+        },
+        {
+          "row": 6,
+          "column": 8,
+          "value": "数量"
+        },
+        {
+          "row": 6,
+          "column": 9,
+          "value": "报关单价（USD）"
+        },
+        {
+          "row": 6,
+          "column": 10,
+          "value": "报关总价（USD）"
+        },
+        {
+          "row": 6,
+          "column": 11,
+          "value": "净重(kg)"
+        },
+        {
+          "row": 6,
+          "column": 12,
+          "value": "毛重(kg)"
+        },
+        {
+          "row": 6,
+          "column": 13,
+          "value": "箱数"
+        },
+        {
+          "row": 6,
+          "column": 14,
+          "value": "预计送货时间（送货要求）"
+        },
+        {
+          "row": 6,
+          "column": 15,
+          "value": "预计付汇时间"
+        },
+        {
+          "row": 7,
+          "column": 1,
+          "value": 1.0
+        },
+        {
+          "row": 7,
+          "column": 2,
+          "value": "SUSE"
+        },
+        {
+          "row": 7,
+          "column": 3,
+          "value": "境外品牌"
+        },
+        {
+          "row": 7,
+          "column": 4,
+          "value": "Linux软件"
+        },
+        {
+          "row": 7,
+          "column": 5,
+          "value": "B-RPGC-2C4V-PS1"
+        },
+        {
+          "row": 7,
+          "column": 6,
+          "value": "SUSE Linux 企业操作系统软件，标准一年服务"
+        },
+        {
+          "row": 7,
+          "column": 7,
+          "value": "德国"
+        },
+        {
+          "row": 7,
+          "column": 8,
+          "value": 20.0
+        },
+        {
+          "row": 7,
+          "column": 9,
+          "value": 1617.04
+        },
+        {
+          "row": 7,
+          "column": 10,
+          "value": 32340.8
+        },
+        {
+          "row": 7,
+          "column": 11,
+          "value": 0.1
+        },
+        {
+          "row": 7,
+          "column": 12,
+          "value": 1.0
+        },
+        {
+          "row": 7,
+          "column": 13,
+          "value": 1.0
+        },
+        {
+          "row": 8,
+          "column": 1,
+          "value": 2.0
+        },
+        {
+          "row": 8,
+          "column": 2,
+          "value": "SUSE"
+        },
+        {
+          "row": 8,
+          "column": 3,
+          "value": "境外品牌"
+        },
+        {
+          "row": 8,
+          "column": 4,
+          "value": "Linux软件"
+        },
+        {
+          "row": 8,
+          "column": 5,
+          "value": "B-RPGC-2C4V-PS1"
+        },
+        {
+          "row": 8,
+          "column": 6,
+          "value": "SUSE Linux 企业操作系统软件，标准一年服务"
+        },
+        {
+          "row": 8,
+          "column": 7,
+          "value": "德国"
+        },
+        {
+          "row": 8,
+          "column": 8,
+          "value": 12.0
+        },
+        {
+          "row": 8,
+          "column": 9,
+          "value": 2175.0
+        },
+        {
+          "row": 8,
+          "column": 10,
+          "value": 26100.0
+        },
+        {
+          "row": 8,
+          "column": 11,
+          "value": 0.1
+        },
+        {
+          "row": 8,
+          "column": 12,
+          "value": 1.0
+        },
+        {
+          "row": 9,
+          "column": 8,
+          "value": 32.0
+        },
+        {
+          "row": 9,
+          "column": 10,
+          "value": 58440.8
+        },
+        {
+          "row": 9,
+          "column": 11,
+          "value": 0.2
+        },
+        {
+          "row": 9,
+          "column": 12,
+          "value": 2.0
+        },
+        {
+          "row": 9,
+          "column": 13,
+          "value": 1.0
+        },
+        {
+          "row": 10,
+          "column": 1,
+          "value": "说明: 1） "
+        },
+        {
+          "row": 10,
+          "column": 2,
+          "value": "请选择香港交货方式： A送至代理方香港仓库                B委托代理方代为提货"
+        },
+        {
+          "row": 10,
+          "column": 8,
+          "value": "】"
+        },
+        {
+          "row": 11,
+          "column": 2,
+          "value": "请选择国内交货方式： A客户在代理方深圳仓库自提    B运输至客户指定地点            C代为客户办理国内运输    "
+        },
+        {
+          "row": 13,
+          "column": 1,
+          "value": "         2）"
+        },
+        {
+          "row": 13,
+          "column": 2,
+          "value": "香港详细提货地址（如需代为提货）及联系人："
+        },
+        {
+          "row": 14,
+          "column": 2,
+          "value": "请参考附页附件"
+        },
+        {
+          "row": 16,
+          "column": 1,
+          "value": "       3）"
+        },
+        {
+          "row": 16,
+          "column": 2,
+          "value": "供应商名称/电话/联系人："
+        },
+        {
+          "row": 19,
+          "column": 2,
+          "value": "委托方签字并盖章确认："
+        },
+        {
+          "row": 20,
+          "column": 6,
+          "value": "日期"
+        },
+        {
+          "row": 21,
+          "column": 2,
+          "value": "Authorized Signature"
+        }
+      ]
+    }
+  ]
+}

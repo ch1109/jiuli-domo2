@@ -1,0 +1,578 @@
+[
+  {
+    "id": "F-3c3cc10bd26b",
+    "path": "真实整单样本/2025YBT010-2/委托文件/2件.xlsx",
+    "sampleId": "2025YBT010-2",
+    "role": "entrustment_material",
+    "sha256": "cf7e73ec710d5a1fb339e91fddeb8626f3ccce5d50e90a5703a8b5fec85028f0",
+    "extension": ".xlsx"
+  },
+  {
+    "id": "F-8bc7177252aa",
+    "path": "真实整单样本/2025YBT010-2/查货文件/1765426942103.pdf",
+    "sampleId": "2025YBT010-2",
+    "role": "inspection",
+    "sha256": "55e2d51401bb58b4c025b1e96044e662ecd900d747dbb4c591c5043183ac6c0e",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-e70c3bd328c2",
+    "path": "真实整单样本/2025YBT010-2/核对单/参考结果.xlsx",
+    "sampleId": "2025YBT010-2",
+    "role": "reference",
+    "sha256": "2b25abefb872c7b53344c9d69814316454ecd2a64ad3b44437f4a9d297b4c5e3",
+    "extension": ".xlsx"
+  },
+  {
+    "id": "F-8181f9edc198",
+    "path": "真实整单样本/2026(DG)ZW001/委托文件/智微智能导单文件-1767600043104.xlsx",
+    "sampleId": "2026(DG)ZW001",
+    "role": "entrustment_material",
+    "sha256": "9251d2bf13f67ab38ff85c1ca1c7ecc5a7734b1349203d694de6d301fc1b114a",
+    "extension": ".xlsx"
+  },
+  {
+    "id": "F-4626eef2dd66",
+    "path": "真实整单样本/2026(DG)ZW001/查货文件/1767583198125.pdf",
+    "sampleId": "2026(DG)ZW001",
+    "role": "inspection",
+    "sha256": "4caa99eba2348014cb1abd0042159e06daca268315de8f8dd26585e4ddd30abd",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-cdbd27982284",
+    "path": "真实整单样本/2026(DG)ZW001/查货文件/1767597461096.pdf",
+    "sampleId": "2026(DG)ZW001",
+    "role": "inspection",
+    "sha256": "9137c99ca1d9bc55947cbf427016b381d34c4cc3f91d29bad1dfe2fe5f864c78",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-7f2c2cd89ada",
+    "path": "真实整单样本/2026(DG)ZW001/核对单/参考结果.xlsx",
+    "sampleId": "2026(DG)ZW001",
+    "role": "reference",
+    "sha256": "6c8d3b2ebbe2194388a629311f33de010b189c7016e906e63848bf086c7b92f9",
+    "extension": ".xlsx"
+  },
+  {
+    "id": "F-b436a16434a4",
+    "path": "真实整单样本/2026(DG)ZW003/委托文件/智微智能导单文件-1767930508809.xlsx",
+    "sampleId": "2026(DG)ZW003",
+    "role": "entrustment_material",
+    "sha256": "a6e9c3eb445e5528cf6f1c1947a1cbeb660a70d249185051ecfd3d1e43079efd",
+    "extension": ".xlsx"
+  },
+  {
+    "id": "F-ad06ec2cd295",
+    "path": "真实整单样本/2026(DG)ZW003/查货文件/1767836836913.pdf",
+    "sampleId": "2026(DG)ZW003",
+    "role": "inspection",
+    "sha256": "417bb2c707e77a9dbeecd053f6cd64fb311b3404564f5c41df3f64a1c1fe2c94",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-e928e7608540",
+    "path": "真实整单样本/2026(DG)ZW003/查货文件/1767866131153.pdf",
+    "sampleId": "2026(DG)ZW003",
+    "role": "inspection",
+    "sha256": "30495238de8e5116ee4c13bd5f68bbc7f35b4eeb55228fac887af7c94d7accdd",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-166123993de2",
+    "path": "真实整单样本/2026(DG)ZW003/核对单/参考结果.xlsx",
+    "sampleId": "2026(DG)ZW003",
+    "role": "reference",
+    "sha256": "024260aad18b4e957492fc5a5fdf8070cd6764d5f8f9ce0fa83adccdfee5beae",
+    "extension": ".xlsx"
+  },
+  {
+    "id": "F-bfe5061027e1",
+    "path": "真实整单样本/2026(DG)ZW050/input/1778638120450.pdf",
+    "sampleId": "2026(DG)ZW050",
+    "role": "inspection",
+    "sha256": "607c187942b99a2ed0d3d71739f98884c3861d6784dd57dbd3f5ff64965bd037",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-ab6bfdee3e54",
+    "path": "真实整单样本/2026(DG)ZW050/input/东莞智微智能导单文件-1778663696109.xlsx",
+    "sampleId": "2026(DG)ZW050",
+    "role": "entrustment_material",
+    "sha256": "73c2a058031e55a236774d7687897666e4bfa6a122a4da6a751b60ce46b026a5",
+    "extension": ".xlsx"
+  },
+  {
+    "id": "F-378740dad3b8",
+    "path": "真实整单样本/2026(DG)ZW050/output/参考结果.xlsx",
+    "sampleId": "2026(DG)ZW050",
+    "role": "reference",
+    "sha256": "7666ee44d265a0873043f3ca84f16c7e5d15d5def8fbc227b70881a8a3fc8ca3",
+    "extension": ".xlsx"
+  },
+  {
+    "id": "F-0971c3fd7c49",
+    "path": "真实整单样本/2026ACSY003/委托文件/报关委托书3.23_已签章(1).pdf",
+    "sampleId": "2026ACSY003",
+    "role": "entrustment_material",
+    "sha256": "6900acc8144155dbfe94c870d995b530c8d25607f33f5bbf12af0a33adc48619",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-2907feed0d42",
+    "path": "真实整单样本/2026ACSY003/查货文件/1774265710841.pdf",
+    "sampleId": "2026ACSY003",
+    "role": "inspection",
+    "sha256": "f1dbeb23452d5c3977539c700c330bb4f31176b299d64662430115d5cd96f870",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-b89001825d19",
+    "path": "真实整单样本/2026ACSY003/核对单/参考结果.xlsx",
+    "sampleId": "2026ACSY003",
+    "role": "reference",
+    "sha256": "6329b00f269df63867e01cdfe43bdb08d1fba194434848412862c8c14c5acb84",
+    "extension": ".xlsx"
+  },
+  {
+    "id": "F-e60d9bd8df88",
+    "path": "真实整单样本/2026AG001/委托文件/报关委托书-2026.5.15.xls",
+    "sampleId": "2026AG001",
+    "role": "entrustment_material",
+    "sha256": "8f9ce8e6b93ba58b5699e74eaf2fea077ee85b450a65df6119b49ba83165d346",
+    "extension": ".xls"
+  },
+  {
+    "id": "F-6b255626250f",
+    "path": "真实整单样本/2026AG001/查货文件/1779087953894.pdf",
+    "sampleId": "2026AG001",
+    "role": "inspection",
+    "sha256": "f02554091a451b4353fce7d6c083d510dcf2aac7eaacc53e24e69dea700193c5",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-6a9807227bb3",
+    "path": "真实整单样本/2026AG001/核对单/参考结果.xlsx",
+    "sampleId": "2026AG001",
+    "role": "reference",
+    "sha256": "5ce43ab15bac783e5b70a88d5f41f984463496842b9d73a007f0c44454897d77",
+    "extension": ".xlsx"
+  },
+  {
+    "id": "F-fb448776f711",
+    "path": "真实整单样本/2026BMH001/委托文件/委托进口确认单(3).xls",
+    "sampleId": "2026BMH001",
+    "role": "entrustment_material",
+    "sha256": "3768df70a597deea4ba105a18ae6a7b706853ba4a1dcc7e8e3f63ab521b5e71a",
+    "extension": ".xls"
+  },
+  {
+    "id": "F-b98a101d8392",
+    "path": "真实整单样本/2026BMH001/查货文件/1770115896818.pdf",
+    "sampleId": "2026BMH001",
+    "role": "inspection",
+    "sha256": "7691ee49d36ffa78623448fb791dfa5da66f0aaafd8177875b2ee4a668432f17",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-c5195fdb15a3",
+    "path": "真实整单样本/2026BMH001/查货文件/1770186905078.pdf",
+    "sampleId": "2026BMH001",
+    "role": "inspection",
+    "sha256": "9f454e4e1edc971f586461e241e0bee84b2b3afa73de7a549c7b3832fe1f137f",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-94d0c3955b2a",
+    "path": "真实整单样本/2026BMH001/查货文件/1770260311026.pdf",
+    "sampleId": "2026BMH001",
+    "role": "inspection",
+    "sha256": "58cd57c4097ae6fe35d8cc2612e288ef0527fe393ef3f9146e259595f13004a1",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-276766064bb2",
+    "path": "真实整单样本/2026BMH001/查货文件/1770278926075.pdf",
+    "sampleId": "2026BMH001",
+    "role": "inspection",
+    "sha256": "4a4706d81412441b34414255c215b96851988202d41c244d1e251da31a8edfb7",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-39b0b8e82a3a",
+    "path": "真实整单样本/2026BMH001/查货文件/1770349572218.pdf",
+    "sampleId": "2026BMH001",
+    "role": "inspection",
+    "sha256": "83448feb9af79489113297e8c8a6401e59c5bdcb95b058ba26829374e3e71024",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-a06d575c587d",
+    "path": "真实整单样本/2026BMH001/查货文件/1770349574703.pdf",
+    "sampleId": "2026BMH001",
+    "role": "inspection",
+    "sha256": "adb88fbb540de11029ad5542b9aa092b5b1442443ed8ea90bb96fa84727e4d94",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-69127fcfa5c3",
+    "path": "真实整单样本/2026BMH001/查货文件/1770366210310.pdf",
+    "sampleId": "2026BMH001",
+    "role": "inspection",
+    "sha256": "8a5dbae9724261f2490400f7dec8b825da0927c6e4a4514ee500f2bd0881b11b",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-de4e00bf55d8",
+    "path": "真实整单样本/2026BMH001/查货文件/1770366211262.pdf",
+    "sampleId": "2026BMH001",
+    "role": "inspection",
+    "sha256": "de0bfbb7752d14ff2bdb88ff63ae255135c983ba5697c2cff0da9ed594d5c478",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-b03e0011849f",
+    "path": "真实整单样本/2026BMH001/查货文件/1770366212127.pdf",
+    "sampleId": "2026BMH001",
+    "role": "inspection",
+    "sha256": "2346af791cf664912060e5d2e37acc2964e87bad690baaa78c279c1fb782ee13",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-cb09c02b9ed5",
+    "path": "真实整单样本/2026BMH001/查货文件/1770436102600.pdf",
+    "sampleId": "2026BMH001",
+    "role": "inspection",
+    "sha256": "4841722849148e318bbdcc16bef1a56cce98d38d4a9b56ab8c6a3e054e88fb76",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-f29936219cd1",
+    "path": "真实整单样本/2026BMH001/查货文件/1770436114845.pdf",
+    "sampleId": "2026BMH001",
+    "role": "inspection",
+    "sha256": "120163019f66950b44cf1131fca52574019cc2a142b24d8531161ef73777cc9a",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-54a1727fc0c8",
+    "path": "真实整单样本/2026BMH001/核对单/参考结果.xlsx",
+    "sampleId": "2026BMH001",
+    "role": "reference",
+    "sha256": "9f76be689964d4919261eb0bc43b1acfe4688de4e7f68319e43714a7c5ac9933",
+    "extension": ".xlsx"
+  },
+  {
+    "id": "F-a64834ca9065",
+    "path": "真实整单样本/2026CNKJ001/委托文件/报关委托书.jpg",
+    "sampleId": "2026CNKJ001",
+    "role": "entrustment_material",
+    "sha256": "d04096fc8fc633da65b90d11bece9baa0ff636af1ed527b713bfdc79bdc23fa8",
+    "extension": ".jpg"
+  },
+  {
+    "id": "F-8e681d73b55a",
+    "path": "真实整单样本/2026CNKJ001/查货文件/1778658919945.pdf",
+    "sampleId": "2026CNKJ001",
+    "role": "inspection",
+    "sha256": "55ae45328e779943dacf494702030cc1657423bc70b33483dcd50246a83f67a1",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-9116712b48a7",
+    "path": "真实整单样本/2026CNKJ001/核对单/参考结果.xlsx",
+    "sampleId": "2026CNKJ001",
+    "role": "reference",
+    "sha256": "5f319f99901c6d50ff5a78120c667c7ef36e9b5e7d3bda4b5c24a413262163d7",
+    "extension": ".xlsx"
+  },
+  {
+    "id": "F-df72916dc019",
+    "path": "真实整单样本/26SHPYD056/委托文件/报关委托确认单（浦壹）2026-03-30.xls",
+    "sampleId": "26SHPYD056",
+    "role": "entrustment_material",
+    "sha256": "af7683e49f472b8b4b46ca399b6e0634bc836afe27827202ebf86f86be0ee4b4",
+    "extension": ".xls"
+  },
+  {
+    "id": "F-970b59d6d5b8",
+    "path": "真实整单样本/26SHPYD056/查货文件/1774838084919.pdf",
+    "sampleId": "26SHPYD056",
+    "role": "inspection",
+    "sha256": "b04b514450f030761b6d9a05edad1724b6995d1904dedb0175a5e1a46e2bbde4",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-ad8ae0641eda",
+    "path": "真实整单样本/26SHPYD056/核对单/参考结果.xlsx",
+    "sampleId": "26SHPYD056",
+    "role": "reference",
+    "sha256": "2e21d7c7fc767242166e41720e5dca175ec88263a637ecc9385eed45803d75e1",
+    "extension": ".xlsx"
+  },
+  {
+    "id": "F-b441496db8b5",
+    "path": "真实整单样本/多对多样例/委托文件/委托表-BE202604090003.xlsx",
+    "sampleId": "多对多样例",
+    "role": "entrustment_material",
+    "sha256": "d50f8a5937eca346129a5f3d878457d9c0c3f49a13e219011d84f7aa484d4987",
+    "extension": ".xlsx"
+  },
+  {
+    "id": "F-5dc64ab64d12",
+    "path": "真实整单样本/多对多样例/查货文件/出货明细-BE202604090003 26040084抽001后整出 26040083抽出003和005/26040077.pdf",
+    "sampleId": "多对多样例",
+    "role": "inspection",
+    "sha256": "2d59f4273df51370e2b7817b9e6120970d3f8a24cab2fed19c2ef0903609b2fe",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-5b778363f744",
+    "path": "真实整单样本/多对多样例/查货文件/出货明细-BE202604090003 26040084抽001后整出 26040083抽出003和005/26040083.pdf",
+    "sampleId": "多对多样例",
+    "role": "inspection",
+    "sha256": "1784c75288b9f20008050330574dd6a96e1eb6d85fb8821a07846c08a2653f17",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-93c7d7713617",
+    "path": "真实整单样本/多对多样例/查货文件/出货明细-BE202604090003 26040084抽001后整出 26040083抽出003和005/26040084.pdf",
+    "sampleId": "多对多样例",
+    "role": "inspection",
+    "sha256": "d61b21e7126867c068ae8448dd8d6352cbb0c6f214df324671c677146a9f3125",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-2e8354efac27",
+    "path": "真实整单样本/多对多样例/查货文件/出货明细-BE202604090003 26040084抽001后整出 26040083抽出003和005/26040114.pdf",
+    "sampleId": "多对多样例",
+    "role": "inspection",
+    "sha256": "f8ca31610d6f401948c5f77481bee0909ac58c0bff149cd6d990f4bc88026f29",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-929e7033b39f",
+    "path": "真实整单样本/多对多样例/查货文件/出货明细-BE202604090003 26040084抽001后整出 26040083抽出003和005/26040116.pdf",
+    "sampleId": "多对多样例",
+    "role": "inspection",
+    "sha256": "8d5fc3bbf36c9daf3bf17cd85ba916eab379a4cd5245f0274f001b79def3a54d",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-168417940250",
+    "path": "真实整单样本/多对多样例/查货文件/出货明细-BE202604090003 26040084抽001后整出 26040083抽出003和005/26040117.pdf",
+    "sampleId": "多对多样例",
+    "role": "inspection",
+    "sha256": "2625e29b4a559ba6eb8ee5036a8de732ffcd2dda0501d0285a949da358e62f58",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-7d97d15951fc",
+    "path": "真实整单样本/多对多样例/查货文件/出货明细-BE202604090003 26040084抽001后整出 26040083抽出003和005/26040139.pdf",
+    "sampleId": "多对多样例",
+    "role": "inspection",
+    "sha256": "4d2b104bd3805a74237bb48083e14cb32447d39b05e39d16a6d0a8d45406ca55",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-da9dfc44a0f9",
+    "path": "真实整单样本/多对多样例/查货文件/出货明细-BE202604090003 26040084抽001后整出 26040083抽出003和005/26040156.pdf",
+    "sampleId": "多对多样例",
+    "role": "inspection",
+    "sha256": "2869ce3a92ed0e33e5e6ab77d69c362193c5d01bf8b7a52a9dfbeb2f1e860d7f",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-f1e1e4ea2ac5",
+    "path": "真实整单样本/多对多样例/查货文件/出货明细-BE202604090003 26040084抽001后整出 26040083抽出003和005/26040716.pdf",
+    "sampleId": "多对多样例",
+    "role": "inspection",
+    "sha256": "7cc6f264b70446c7c53e1621b2542be06eb5ff0c9eb0afb7de75e2437ebc60e9",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-6cb1752655d0",
+    "path": "真实整单样本/多对多样例/查货文件/出货明细-BE202604090003 26040084抽001后整出 26040083抽出003和005/BE202604090003 26040084抽001后整出 26040083抽出003和005.png",
+    "sampleId": "多对多样例",
+    "role": "inspection",
+    "sha256": "49ebb330bb8fe78d078dd72c97af78a944ba729245a70753fc7889c80bc4bba4",
+    "extension": ".png"
+  },
+  {
+    "id": "F-c578af30ff9a",
+    "path": "真实整单样本/多对多样例/查货文件/出货明细-BE202604090003-1/26040177.pdf",
+    "sampleId": "多对多样例",
+    "role": "inspection",
+    "sha256": "8fc741b5440f5a25f5062ae6bf32f3334603826acb2e3b5d1b382c977d99ea19",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-cd33df861950",
+    "path": "真实整单样本/多对多样例/查货文件/出货明细-BE202604090003-1/26040178.pdf",
+    "sampleId": "多对多样例",
+    "role": "inspection",
+    "sha256": "26435f4d5ed57fe1b3013d8f9e4b24dd634a6c72507e01a78819cc03e4709bb5",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-ea04d3e7518a",
+    "path": "真实整单样本/多对多样例/查货文件/出货明细-BE202604090003-1/26040179.pdf",
+    "sampleId": "多对多样例",
+    "role": "inspection",
+    "sha256": "e1e8129d6cb40b6065734100c5872628409577b734b1c93cda76c6679ebd1d61",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-a78f00afad64",
+    "path": "真实整单样本/多对多样例/核对单/内部单-BE202604090003-1.pdf",
+    "sampleId": "多对多样例",
+    "role": "reference",
+    "sha256": "466cb5f7153db32a83030f17c88fed506d20dcef80c747f5ec603d732c4a6d71",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-7fa1373ea149",
+    "path": "真实整单样本/多对多样例/核对单/内部单-BE202604090003.pdf",
+    "sampleId": "多对多样例",
+    "role": "reference",
+    "sha256": "caecf3e87b87d209b6fbfbc4a301db07bbc1ad906965fa843584725a3c6637e0",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-1f89bab4fe64",
+    "path": "真实整单样本/英卡-抽+整/委托文件/YK-CGDD260625131-1（抽）/(湘海 )报关委托书T615 8-5.pdf",
+    "sampleId": "英卡-抽+整",
+    "role": "entrustment_material",
+    "sha256": "3726f02f5630ad1909cc5863a5c58c555b172f24427cce079b126be1c516df89",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-1df4f4d83480",
+    "path": "真实整单样本/英卡-抽+整/委托文件/YK-CGDD260625131-1（抽）/(湘海 )报关委托书T615 8-5.xls",
+    "sampleId": "英卡-抽+整",
+    "role": "entrustment_material",
+    "sha256": "30af275546c2e11591750b96dc7dd8c8065b9ce67708121305d084d68dcddd94",
+    "extension": ".xls"
+  },
+  {
+    "id": "F-80d89610605b",
+    "path": "真实整单样本/英卡-抽+整/委托文件/YK-CGDD260625131-1（抽）/8000812735发票箱单.pdf",
+    "sampleId": "英卡-抽+整",
+    "role": "entrustment_material",
+    "sha256": "ac332ab5e7f2cea6d2b3adccc22aff8803f8605947c90a04e801300db3bbc306",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-b0322c865487",
+    "path": "真实整单样本/英卡-抽+整/委托文件/YK-CGDD260625131-1（抽）/8000815164发票箱单.pdf",
+    "sampleId": "英卡-抽+整",
+    "role": "entrustment_material",
+    "sha256": "52beb364456c906c7f92b87a9d3e307d677b60b21dd5ad616d8808e49b453ea3",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-e3577cb3f191",
+    "path": "真实整单样本/英卡-抽+整/委托文件/YK-CGDD260625131-2（整）/(湘海 )报关委托书T615 8-14.pdf",
+    "sampleId": "英卡-抽+整",
+    "role": "entrustment_material",
+    "sha256": "ec5a05cd4b5ce9f282e07dc10e6d42238427e5aac175a9631e266403fdf286de",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-a235e97d6dd0",
+    "path": "真实整单样本/英卡-抽+整/委托文件/YK-CGDD260625131-2（整）/(湘海 )报关委托书T615 8-14.xls",
+    "sampleId": "英卡-抽+整",
+    "role": "entrustment_material",
+    "sha256": "e6468c02031b0a039cfb62d28fc4278f3074eba032f90e45c2711bf4b5df0bc5",
+    "extension": ".xls"
+  },
+  {
+    "id": "F-eebd316ee6c7",
+    "path": "真实整单样本/英卡-抽+整/委托文件/YK-CGDD260625131-2（整）/8000812735发票箱单.pdf",
+    "sampleId": "英卡-抽+整",
+    "role": "entrustment_material",
+    "sha256": "ac332ab5e7f2cea6d2b3adccc22aff8803f8605947c90a04e801300db3bbc306",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-ec785baa0766",
+    "path": "真实整单样本/英卡-抽+整/委托文件/YK-CGDD260625131-2（整）/8000815164发票箱单.pdf",
+    "sampleId": "英卡-抽+整",
+    "role": "entrustment_material",
+    "sha256": "52beb364456c906c7f92b87a9d3e307d677b60b21dd5ad616d8808e49b453ea3",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-3c457d2e01db",
+    "path": "真实整单样本/英卡-抽+整/委托文件/YK-CGDD260625131（抽）/(湘海 )报关委托书T615 7-23.pdf",
+    "sampleId": "英卡-抽+整",
+    "role": "entrustment_material",
+    "sha256": "c8c20496f1565b4a22e9a401397634fdb416820921ebd83b93ff47f0b06743a9",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-5a09ab721f2e",
+    "path": "真实整单样本/英卡-抽+整/委托文件/YK-CGDD260625131（抽）/(湘海 )报关委托书T615 7-23.xls",
+    "sampleId": "英卡-抽+整",
+    "role": "entrustment_material",
+    "sha256": "6f266137ddee17107f46408b0358caee223b84a55e157f57384e8dce15c18b74",
+    "extension": ".xls"
+  },
+  {
+    "id": "F-f1e3242cc308",
+    "path": "真实整单样本/英卡-抽+整/委托文件/YK-CGDD260625131（抽）/8000812735发票箱单.pdf",
+    "sampleId": "英卡-抽+整",
+    "role": "entrustment_material",
+    "sha256": "ac332ab5e7f2cea6d2b3adccc22aff8803f8605947c90a04e801300db3bbc306",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-6d83ce0e89f6",
+    "path": "真实整单样本/英卡-抽+整/委托文件/YK-CGDD260625131（抽）/8000815164发票箱单.pdf",
+    "sampleId": "英卡-抽+整",
+    "role": "entrustment_material",
+    "sha256": "52beb364456c906c7f92b87a9d3e307d677b60b21dd5ad616d8808e49b453ea3",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-a5368260946b",
+    "path": "真实整单样本/英卡-抽+整/查货文件/26070092查货单.pdf",
+    "sampleId": "英卡-抽+整",
+    "role": "inspection",
+    "sha256": "4f0eb48361766b3fd9183de9279abb720499f3e0952f2f54d897e4e8af0720c4",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-baf3de39ef68",
+    "path": "真实整单样本/英卡-抽+整/查货文件/26070093查货单.pdf",
+    "sampleId": "英卡-抽+整",
+    "role": "inspection",
+    "sha256": "fcc13c68469556e415fdab7f2c34ed7abf43e063e3dd22c5e1bf63e6ecd9f0c3",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-d2c9006a8eeb",
+    "path": "真实整单样本/英卡-抽+整/核对单/YK-CGDD260625131-1内部单.pdf",
+    "sampleId": "英卡-抽+整",
+    "role": "reference",
+    "sha256": "7ed78049802c4f11a7ad316bd2b38336eb57754409d1e1364e50db66aa200db2",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-c50878186ea6",
+    "path": "真实整单样本/英卡-抽+整/核对单/YK-CGDD260625131-2内部单.pdf",
+    "sampleId": "英卡-抽+整",
+    "role": "reference",
+    "sha256": "2498016375c375c3309a8ff1f67aa9374182d2958c82679d6cb555cefdf5249c",
+    "extension": ".pdf"
+  },
+  {
+    "id": "F-39b32ef999ed",
+    "path": "真实整单样本/英卡-抽+整/核对单/YK-CGDD260625131内部单.pdf",
+    "sampleId": "英卡-抽+整",
+    "role": "reference",
+    "sha256": "d34a7a92eac25163dd3abc65f2dff6cfc221ce0418e4ad9803c0e7f44b1c6512",
+    "extension": ".pdf"
+  }
+]

@@ -1,0 +1,796 @@
+{
+  "id": "F-b436a16434a4",
+  "path": "真实整单样本/2026(DG)ZW003/委托文件/智微智能导单文件-1767930508809.xlsx",
+  "sampleId": "2026(DG)ZW003",
+  "sha256": "a6e9c3eb445e5528cf6f1c1947a1cbeb660a70d249185051ecfd3d1e43079efd",
+  "size": 10523,
+  "extension": ".xlsx",
+  "role": "entrustment_material",
+  "sheets": [
+    {
+      "name": "智能智能导单文件",
+      "rows": 6,
+      "columns": 21,
+      "merged": [],
+      "cells": [
+        {
+          "cell": "A1",
+          "row": 1,
+          "column": 1,
+          "value": "商品类型",
+          "cached": "商品类型"
+        },
+        {
+          "cell": "B1",
+          "row": 1,
+          "column": 2,
+          "value": "商品小类",
+          "cached": "商品小类"
+        },
+        {
+          "cell": "C1",
+          "row": 1,
+          "column": 3,
+          "value": "品牌",
+          "cached": "品牌"
+        },
+        {
+          "cell": "D1",
+          "row": 1,
+          "column": 4,
+          "value": "型号",
+          "cached": "型号"
+        },
+        {
+          "cell": "E1",
+          "row": 1,
+          "column": 5,
+          "value": "商品描述",
+          "cached": "商品描述"
+        },
+        {
+          "cell": "F1",
+          "row": 1,
+          "column": 6,
+          "value": "产地",
+          "cached": "产地"
+        },
+        {
+          "cell": "G1",
+          "row": 1,
+          "column": 7,
+          "value": "单位",
+          "cached": "单位"
+        },
+        {
+          "cell": "H1",
+          "row": 1,
+          "column": 8,
+          "value": "数量",
+          "cached": "数量"
+        },
+        {
+          "cell": "I1",
+          "row": 1,
+          "column": 9,
+          "value": "单价",
+          "cached": "单价"
+        },
+        {
+          "cell": "J1",
+          "row": 1,
+          "column": 10,
+          "value": "件数",
+          "cached": "件数"
+        },
+        {
+          "cell": "K1",
+          "row": 1,
+          "column": 11,
+          "value": "净重",
+          "cached": "净重"
+        },
+        {
+          "cell": "L1",
+          "row": 1,
+          "column": 12,
+          "value": "毛重",
+          "cached": "毛重"
+        },
+        {
+          "cell": "M1",
+          "row": 1,
+          "column": 13,
+          "value": "税号",
+          "cached": "税号"
+        },
+        {
+          "cell": "N1",
+          "row": 1,
+          "column": 14,
+          "value": "sku",
+          "cached": "sku"
+        },
+        {
+          "cell": "O1",
+          "row": 1,
+          "column": 15,
+          "value": "供应商",
+          "cached": "供应商"
+        },
+        {
+          "cell": "P1",
+          "row": 1,
+          "column": 16,
+          "value": "期票天数",
+          "cached": "期票天数"
+        },
+        {
+          "cell": "Q1",
+          "row": 1,
+          "column": 17,
+          "value": "对应的采购",
+          "cached": "对应的采购"
+        },
+        {
+          "cell": "R1",
+          "row": 1,
+          "column": 18,
+          "value": "料号",
+          "cached": "料号"
+        },
+        {
+          "cell": "S1",
+          "row": 1,
+          "column": 19,
+          "value": "托盘数",
+          "cached": "托盘数"
+        },
+        {
+          "cell": "T1",
+          "row": 1,
+          "column": 20,
+          "value": "箱号",
+          "cached": "箱号"
+        },
+        {
+          "cell": "U1",
+          "row": 1,
+          "column": 21,
+          "value": "备注",
+          "cached": "备注"
+        },
+        {
+          "cell": "A2",
+          "row": 2,
+          "column": 1,
+          "value": "元器件",
+          "cached": "元器件"
+        },
+        {
+          "cell": "B2",
+          "row": 2,
+          "column": 2,
+          "value": "集成电路",
+          "cached": "集成电路"
+        },
+        {
+          "cell": "C2",
+          "row": 2,
+          "column": 3,
+          "value": "REALTEK",
+          "cached": "REALTEK"
+        },
+        {
+          "cell": "D2",
+          "row": 2,
+          "column": 4,
+          "value": "ALC897-VA2-CG",
+          "cached": "ALC897-VA2-CG"
+        },
+        {
+          "cell": "E2",
+          "row": 2,
+          "column": 5,
+          "value": "",
+          "cached": ""
+        },
+        {
+          "cell": "F2",
+          "row": 2,
+          "column": 6,
+          "value": "中国",
+          "cached": "中国"
+        },
+        {
+          "cell": "G2",
+          "row": 2,
+          "column": 7,
+          "value": "个",
+          "cached": "个"
+        },
+        {
+          "cell": "H2",
+          "row": 2,
+          "column": 8,
+          "value": 35000,
+          "cached": 35000
+        },
+        {
+          "cell": "I2",
+          "row": 2,
+          "column": 9,
+          "value": 0.756,
+          "cached": 0.756
+        },
+        {
+          "cell": "J2",
+          "row": 2,
+          "column": 10,
+          "value": 2,
+          "cached": 2
+        },
+        {
+          "cell": "K2",
+          "row": 2,
+          "column": 11,
+          "value": 25.59,
+          "cached": 25.59
+        },
+        {
+          "cell": "L2",
+          "row": 2,
+          "column": 12,
+          "value": 37.23,
+          "cached": 37.23
+        },
+        {
+          "cell": "M2",
+          "row": 2,
+          "column": 13,
+          "value": "",
+          "cached": ""
+        },
+        {
+          "cell": "N2",
+          "row": 2,
+          "column": 14,
+          "value": 4000127338,
+          "cached": 4000127338
+        },
+        {
+          "cell": "O2",
+          "row": 2,
+          "column": 15,
+          "value": "弘忆",
+          "cached": "弘忆"
+        },
+        {
+          "cell": "P2",
+          "row": 2,
+          "column": 16,
+          "value": "",
+          "cached": ""
+        },
+        {
+          "cell": "Q2",
+          "row": 2,
+          "column": 17,
+          "value": "",
+          "cached": ""
+        },
+        {
+          "cell": "R2",
+          "row": 2,
+          "column": 18,
+          "value": "300200001235",
+          "cached": "300200001235"
+        },
+        {
+          "cell": "S2",
+          "row": 2,
+          "column": 19,
+          "value": "",
+          "cached": ""
+        },
+        {
+          "cell": "T2",
+          "row": 2,
+          "column": 20,
+          "value": "B2BA-AB1354-00",
+          "cached": "B2BA-AB1354-00"
+        },
+        {
+          "cell": "U2",
+          "row": 2,
+          "column": 21,
+          "value": "1118",
+          "cached": "1118"
+        },
+        {
+          "cell": "A3",
+          "row": 3,
+          "column": 1,
+          "value": "元器件",
+          "cached": "元器件"
+        },
+        {
+          "cell": "B3",
+          "row": 3,
+          "column": 2,
+          "value": "集成电路",
+          "cached": "集成电路"
+        },
+        {
+          "cell": "C3",
+          "row": 3,
+          "column": 3,
+          "value": "REALTEK",
+          "cached": "REALTEK"
+        },
+        {
+          "cell": "D3",
+          "row": 3,
+          "column": 4,
+          "value": "RTS5411S-GR",
+          "cached": "RTS5411S-GR"
+        },
+        {
+          "cell": "E3",
+          "row": 3,
+          "column": 5,
+          "value": "",
+          "cached": ""
+        },
+        {
+          "cell": "F3",
+          "row": 3,
+          "column": 6,
+          "value": "中国台湾",
+          "cached": "中国台湾"
+        },
+        {
+          "cell": "G3",
+          "row": 3,
+          "column": 7,
+          "value": "个",
+          "cached": "个"
+        },
+        {
+          "cell": "H3",
+          "row": 3,
+          "column": 8,
+          "value": 2600,
+          "cached": 2600
+        },
+        {
+          "cell": "I3",
+          "row": 3,
+          "column": 9,
+          "value": 0.7,
+          "cached": 0.7
+        },
+        {
+          "cell": "J3",
+          "row": 3,
+          "column": 10,
+          "value": 0,
+          "cached": 0
+        },
+        {
+          "cell": "K3",
+          "row": 3,
+          "column": 11,
+          "value": 1.9,
+          "cached": 1.9
+        },
+        {
+          "cell": "L3",
+          "row": 3,
+          "column": 12,
+          "value": 2.77,
+          "cached": 2.77
+        },
+        {
+          "cell": "M3",
+          "row": 3,
+          "column": 13,
+          "value": "",
+          "cached": ""
+        },
+        {
+          "cell": "N3",
+          "row": 3,
+          "column": 14,
+          "value": 4000157201,
+          "cached": 4000157201
+        },
+        {
+          "cell": "O3",
+          "row": 3,
+          "column": 15,
+          "value": "弘忆",
+          "cached": "弘忆"
+        },
+        {
+          "cell": "P3",
+          "row": 3,
+          "column": 16,
+          "value": "",
+          "cached": ""
+        },
+        {
+          "cell": "Q3",
+          "row": 3,
+          "column": 17,
+          "value": "",
+          "cached": ""
+        },
+        {
+          "cell": "R3",
+          "row": 3,
+          "column": 18,
+          "value": "300200002319",
+          "cached": "300200002319"
+        },
+        {
+          "cell": "S3",
+          "row": 3,
+          "column": 19,
+          "value": "",
+          "cached": ""
+        },
+        {
+          "cell": "T3",
+          "row": 3,
+          "column": 20,
+          "value": "C2BU-C83397-00",
+          "cached": "C2BU-C83397-00"
+        },
+        {
+          "cell": "U3",
+          "row": 3,
+          "column": 21,
+          "value": "1118",
+          "cached": "1118"
+        },
+        {
+          "cell": "A4",
+          "row": 4,
+          "column": 1,
+          "value": "元器件",
+          "cached": "元器件"
+        },
+        {
+          "cell": "B4",
+          "row": 4,
+          "column": 2,
+          "value": "集成电路",
+          "cached": "集成电路"
+        },
+        {
+          "cell": "C4",
+          "row": 4,
+          "column": 3,
+          "value": "ASL",
+          "cached": "ASL"
+        },
+        {
+          "cell": "D4",
+          "row": 4,
+          "column": 4,
+          "value": "CS5511AN",
+          "cached": "CS5511AN"
+        },
+        {
+          "cell": "F4",
+          "row": 4,
+          "column": 6,
+          "value": "中国台湾",
+          "cached": "中国台湾"
+        },
+        {
+          "cell": "G4",
+          "row": 4,
+          "column": 7,
+          "value": "个",
+          "cached": "个"
+        },
+        {
+          "cell": "H4",
+          "row": 4,
+          "column": 8,
+          "value": 1680,
+          "cached": 1680
+        },
+        {
+          "cell": "I4",
+          "row": 4,
+          "column": 9,
+          "value": 1.07,
+          "cached": 1.07
+        },
+        {
+          "cell": "J4",
+          "row": 4,
+          "column": 10,
+          "value": 2,
+          "cached": 2
+        },
+        {
+          "cell": "K4",
+          "row": 4,
+          "column": 11,
+          "value": 2.5,
+          "cached": 2.5
+        },
+        {
+          "cell": "L4",
+          "row": 4,
+          "column": 12,
+          "value": 2.67,
+          "cached": 2.67
+        },
+        {
+          "cell": "N4",
+          "row": 4,
+          "column": 14,
+          "value": 4000158354,
+          "cached": 4000158354
+        },
+        {
+          "cell": "O4",
+          "row": 4,
+          "column": 15,
+          "value": "华清电子",
+          "cached": "华清电子"
+        },
+        {
+          "cell": "R4",
+          "row": 4,
+          "column": 18,
+          "value": "300200017678",
+          "cached": "300200017678"
+        },
+        {
+          "cell": "T4",
+          "row": 4,
+          "column": 20,
+          "value": "无旧箱号",
+          "cached": "无旧箱号"
+        },
+        {
+          "cell": "U4",
+          "row": 4,
+          "column": 21,
+          "value": 10845,
+          "cached": 10845
+        },
+        {
+          "cell": "A5",
+          "row": 5,
+          "column": 1,
+          "value": "元器件",
+          "cached": "元器件"
+        },
+        {
+          "cell": "B5",
+          "row": 5,
+          "column": 2,
+          "value": "集成电路",
+          "cached": "集成电路"
+        },
+        {
+          "cell": "C5",
+          "row": 5,
+          "column": 3,
+          "value": "ASL",
+          "cached": "ASL"
+        },
+        {
+          "cell": "D5",
+          "row": 5,
+          "column": 4,
+          "value": "CS5511AN",
+          "cached": "CS5511AN"
+        },
+        {
+          "cell": "F5",
+          "row": 5,
+          "column": 6,
+          "value": "中国台湾",
+          "cached": "中国台湾"
+        },
+        {
+          "cell": "G5",
+          "row": 5,
+          "column": 7,
+          "value": "个",
+          "cached": "个"
+        },
+        {
+          "cell": "H5",
+          "row": 5,
+          "column": 8,
+          "value": 5040,
+          "cached": 5040
+        },
+        {
+          "cell": "I5",
+          "row": 5,
+          "column": 9,
+          "value": 1.07,
+          "cached": 1.07
+        },
+        {
+          "cell": "J5",
+          "row": 5,
+          "column": 10,
+          "value": 0,
+          "cached": 0
+        },
+        {
+          "cell": "K5",
+          "row": 5,
+          "column": 11,
+          "value": 7.5,
+          "cached": 7.5
+        },
+        {
+          "cell": "L5",
+          "row": 5,
+          "column": 12,
+          "value": 8,
+          "cached": 8
+        },
+        {
+          "cell": "N5",
+          "row": 5,
+          "column": 14,
+          "value": 4000158352,
+          "cached": 4000158352
+        },
+        {
+          "cell": "O5",
+          "row": 5,
+          "column": 15,
+          "value": "华清电子",
+          "cached": "华清电子"
+        },
+        {
+          "cell": "R5",
+          "row": 5,
+          "column": 18,
+          "value": "300200017678",
+          "cached": "300200017678"
+        },
+        {
+          "cell": "T5",
+          "row": 5,
+          "column": 20,
+          "value": "无旧箱号",
+          "cached": "无旧箱号"
+        },
+        {
+          "cell": "U5",
+          "row": 5,
+          "column": 21,
+          "value": 10845,
+          "cached": 10845
+        },
+        {
+          "cell": "A6",
+          "row": 6,
+          "column": 1,
+          "value": "元器件",
+          "cached": "元器件"
+        },
+        {
+          "cell": "B6",
+          "row": 6,
+          "column": 2,
+          "value": "集成电路",
+          "cached": "集成电路"
+        },
+        {
+          "cell": "C6",
+          "row": 6,
+          "column": 3,
+          "value": "ASL",
+          "cached": "ASL"
+        },
+        {
+          "cell": "D6",
+          "row": 6,
+          "column": 4,
+          "value": "CS5512AN",
+          "cached": "CS5512AN"
+        },
+        {
+          "cell": "F6",
+          "row": 6,
+          "column": 6,
+          "value": "中国台湾",
+          "cached": "中国台湾"
+        },
+        {
+          "cell": "G6",
+          "row": 6,
+          "column": 7,
+          "value": "个",
+          "cached": "个"
+        },
+        {
+          "cell": "H6",
+          "row": 6,
+          "column": 8,
+          "value": 3360,
+          "cached": 3360
+        },
+        {
+          "cell": "I6",
+          "row": 6,
+          "column": 9,
+          "value": 1.17,
+          "cached": 1.17
+        },
+        {
+          "cell": "J6",
+          "row": 6,
+          "column": 10,
+          "value": 0,
+          "cached": 0
+        },
+        {
+          "cell": "K6",
+          "row": 6,
+          "column": 11,
+          "value": 5,
+          "cached": 5
+        },
+        {
+          "cell": "L6",
+          "row": 6,
+          "column": 12,
+          "value": 5.33,
+          "cached": 5.33
+        },
+        {
+          "cell": "N6",
+          "row": 6,
+          "column": 14,
+          "value": 4000159709,
+          "cached": 4000159709
+        },
+        {
+          "cell": "O6",
+          "row": 6,
+          "column": 15,
+          "value": "华清电子",
+          "cached": "华清电子"
+        },
+        {
+          "cell": "R6",
+          "row": 6,
+          "column": 18,
+          "value": "300200022711",
+          "cached": "300200022711"
+        },
+        {
+          "cell": "T6",
+          "row": 6,
+          "column": 20,
+          "value": "无旧箱号",
+          "cached": "无旧箱号"
+        },
+        {
+          "cell": "U6",
+          "row": 6,
+          "column": 21,
+          "value": 10845,
+          "cached": 10845
+        }
+      ]
+    }
+  ]
+}

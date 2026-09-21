@@ -1,0 +1,4436 @@
+{
+  "id": "F-b441496db8b5",
+  "path": "真实整单样本/多对多样例/委托文件/委托表-BE202604090003.xlsx",
+  "sampleId": "多对多样例",
+  "sha256": "d50f8a5937eca346129a5f3d878457d9c0c3f49a13e219011d84f7aa484d4987",
+  "size": 9625,
+  "extension": ".xlsx",
+  "role": "entrustment_material",
+  "sheets": [
+    {
+      "name": "Sheet0",
+      "rows": 26,
+      "columns": 31,
+      "merged": [],
+      "cells": [
+        {
+          "cell": "A1",
+          "row": 1,
+          "column": 1,
+          "value": "附件查看",
+          "cached": "附件查看"
+        },
+        {
+          "cell": "B1",
+          "row": 1,
+          "column": 2,
+          "value": "PACKING NO",
+          "cached": "PACKING NO"
+        },
+        {
+          "cell": "C1",
+          "row": 1,
+          "column": 3,
+          "value": "行号",
+          "cached": "行号"
+        },
+        {
+          "cell": "D1",
+          "row": 1,
+          "column": 4,
+          "value": "状态",
+          "cached": "状态"
+        },
+        {
+          "cell": "E1",
+          "row": 1,
+          "column": 5,
+          "value": "项号",
+          "cached": "项号"
+        },
+        {
+          "cell": "F1",
+          "row": 1,
+          "column": 6,
+          "value": "进口日期",
+          "cached": "进口日期"
+        },
+        {
+          "cell": "G1",
+          "row": 1,
+          "column": 7,
+          "value": "商品编码(供)",
+          "cached": "商品编码(供)"
+        },
+        {
+          "cell": "H1",
+          "row": 1,
+          "column": 8,
+          "value": "商品名称(供)",
+          "cached": "商品名称(供)"
+        },
+        {
+          "cell": "I1",
+          "row": 1,
+          "column": 9,
+          "value": "规格型号(供)",
+          "cached": "规格型号(供)"
+        },
+        {
+          "cell": "J1",
+          "row": 1,
+          "column": 10,
+          "value": "海关编号 ",
+          "cached": "海关编号 "
+        },
+        {
+          "cell": "K1",
+          "row": 1,
+          "column": 11,
+          "value": "采购单号",
+          "cached": "采购单号"
+        },
+        {
+          "cell": "L1",
+          "row": 1,
+          "column": 12,
+          "value": "采购行号",
+          "cached": "采购行号"
+        },
+        {
+          "cell": "M1",
+          "row": 1,
+          "column": 13,
+          "value": "供应商简称",
+          "cached": "供应商简称"
+        },
+        {
+          "cell": "N1",
+          "row": 1,
+          "column": 14,
+          "value": "品牌",
+          "cached": "品牌"
+        },
+        {
+          "cell": "O1",
+          "row": 1,
+          "column": 15,
+          "value": "物料编码",
+          "cached": "物料编码"
+        },
+        {
+          "cell": "P1",
+          "row": 1,
+          "column": 16,
+          "value": "物料名称",
+          "cached": "物料名称"
+        },
+        {
+          "cell": "Q1",
+          "row": 1,
+          "column": 17,
+          "value": "物料规格",
+          "cached": "物料规格"
+        },
+        {
+          "cell": "R1",
+          "row": 1,
+          "column": 18,
+          "value": "单位",
+          "cached": "单位"
+        },
+        {
+          "cell": "S1",
+          "row": 1,
+          "column": 19,
+          "value": "采购数量",
+          "cached": "采购数量"
+        },
+        {
+          "cell": "T1",
+          "row": 1,
+          "column": 20,
+          "value": "报关单价",
+          "cached": "报关单价"
+        },
+        {
+          "cell": "U1",
+          "row": 1,
+          "column": 21,
+          "value": "报关数量",
+          "cached": "报关数量"
+        },
+        {
+          "cell": "V1",
+          "row": 1,
+          "column": 22,
+          "value": "报关总价",
+          "cached": "报关总价"
+        },
+        {
+          "cell": "W1",
+          "row": 1,
+          "column": 23,
+          "value": "币种",
+          "cached": "币种"
+        },
+        {
+          "cell": "X1",
+          "row": 1,
+          "column": 24,
+          "value": "产品批次",
+          "cached": "产品批次"
+        },
+        {
+          "cell": "Y1",
+          "row": 1,
+          "column": 25,
+          "value": "产地",
+          "cached": "产地"
+        },
+        {
+          "cell": "Z1",
+          "row": 1,
+          "column": 26,
+          "value": "箱数",
+          "cached": "箱数"
+        },
+        {
+          "cell": "AA1",
+          "row": 1,
+          "column": 27,
+          "value": "净重(KG)",
+          "cached": "净重(KG)"
+        },
+        {
+          "cell": "AB1",
+          "row": 1,
+          "column": 28,
+          "value": "毛重(KG)",
+          "cached": "毛重(KG)"
+        },
+        {
+          "cell": "AC1",
+          "row": 1,
+          "column": 29,
+          "value": "品牌类型",
+          "cached": "品牌类型"
+        },
+        {
+          "cell": "AD1",
+          "row": 1,
+          "column": 30,
+          "value": "事业部",
+          "cached": "事业部"
+        },
+        {
+          "cell": "AE1",
+          "row": 1,
+          "column": 31,
+          "value": "业务实体",
+          "cached": "业务实体"
+        },
+        {
+          "cell": "B2",
+          "row": 2,
+          "column": 2,
+          "value": "7659084",
+          "cached": "7659084"
+        },
+        {
+          "cell": "C2",
+          "row": 2,
+          "column": 3,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "D2",
+          "row": 2,
+          "column": 4,
+          "value": "报关中",
+          "cached": "报关中"
+        },
+        {
+          "cell": "K2",
+          "row": 2,
+          "column": 11,
+          "value": "I410-260400414",
+          "cached": "I410-260400414"
+        },
+        {
+          "cell": "L2",
+          "row": 2,
+          "column": 12,
+          "value": 2.0,
+          "cached": 2.0
+        },
+        {
+          "cell": "M2",
+          "row": 2,
+          "column": 13,
+          "value": "WT(文晔)",
+          "cached": "WT(文晔)"
+        },
+        {
+          "cell": "N2",
+          "row": 2,
+          "column": 14,
+          "value": "TSC",
+          "cached": "TSC"
+        },
+        {
+          "cell": "O2",
+          "row": 2,
+          "column": 15,
+          "value": "11403000520R25",
+          "cached": "11403000520R25"
+        },
+        {
+          "cell": "P2",
+          "row": 2,
+          "column": 16,
+          "value": "贴片肖特基二极管",
+          "cached": "贴片肖特基二极管"
+        },
+        {
+          "cell": "Q2",
+          "row": 2,
+          "column": 17,
+          "value": "3A;100V;VF≤0.85V;70A;SMA;TSC;SK310A;非主推;新机型禁止选用",
+          "cached": "3A;100V;VF≤0.85V;70A;SMA;TSC;SK310A;非主推;新机型禁止选用"
+        },
+        {
+          "cell": "R2",
+          "row": 2,
+          "column": 18,
+          "value": "PCS",
+          "cached": "PCS"
+        },
+        {
+          "cell": "S2",
+          "row": 2,
+          "column": 19,
+          "value": 7500.0,
+          "cached": 7500.0
+        },
+        {
+          "cell": "T2",
+          "row": 2,
+          "column": 20,
+          "value": 0.057,
+          "cached": 0.057
+        },
+        {
+          "cell": "U2",
+          "row": 2,
+          "column": 21,
+          "value": 7500.0,
+          "cached": 7500.0
+        },
+        {
+          "cell": "V2",
+          "row": 2,
+          "column": 22,
+          "value": 427.5,
+          "cached": 427.5
+        },
+        {
+          "cell": "W2",
+          "row": 2,
+          "column": 23,
+          "value": "USD",
+          "cached": "USD"
+        },
+        {
+          "cell": "X2",
+          "row": 2,
+          "column": 24,
+          "value": "2229",
+          "cached": "2229"
+        },
+        {
+          "cell": "Y2",
+          "row": 2,
+          "column": 25,
+          "value": "CHINA",
+          "cached": "CHINA"
+        },
+        {
+          "cell": "Z2",
+          "row": 2,
+          "column": 26,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "AA2",
+          "row": 2,
+          "column": 27,
+          "value": 0.36,
+          "cached": 0.36
+        },
+        {
+          "cell": "AB2",
+          "row": 2,
+          "column": 28,
+          "value": 1.4,
+          "cached": 1.4
+        },
+        {
+          "cell": "AC2",
+          "row": 2,
+          "column": 29,
+          "value": "境外品牌(其它)",
+          "cached": "境外品牌(其它)"
+        },
+        {
+          "cell": "AD2",
+          "row": 2,
+          "column": 30,
+          "value": "BU4",
+          "cached": "BU4"
+        },
+        {
+          "cell": "AE2",
+          "row": 2,
+          "column": 31,
+          "value": "深圳欧陆通电子股份有限公司",
+          "cached": "深圳欧陆通电子股份有限公司"
+        },
+        {
+          "cell": "B3",
+          "row": 3,
+          "column": 2,
+          "value": "DCI1126040700023",
+          "cached": "DCI1126040700023"
+        },
+        {
+          "cell": "C3",
+          "row": 3,
+          "column": 3,
+          "value": 2.0,
+          "cached": 2.0
+        },
+        {
+          "cell": "D3",
+          "row": 3,
+          "column": 4,
+          "value": "报关中",
+          "cached": "报关中"
+        },
+        {
+          "cell": "K3",
+          "row": 3,
+          "column": 11,
+          "value": "I410-260400146",
+          "cached": "I410-260400146"
+        },
+        {
+          "cell": "L3",
+          "row": 3,
+          "column": 12,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "M3",
+          "row": 3,
+          "column": 13,
+          "value": "威健",
+          "cached": "威健"
+        },
+        {
+          "cell": "N3",
+          "row": 3,
+          "column": 14,
+          "value": "Infineon",
+          "cached": "Infineon"
+        },
+        {
+          "cell": "O3",
+          "row": 3,
+          "column": 15,
+          "value": "11105008210R37",
+          "cached": "11105008210R37"
+        },
+        {
+          "cell": "P3",
+          "row": 3,
+          "column": 16,
+          "value": "贴片IC",
+          "cached": "贴片IC"
+        },
+        {
+          "cell": "Q3",
+          "row": 3,
+          "column": 17,
+          "value": "驱动类;PG-DSO-8-60;-40℃-+150℃;Infineon;2EDN7524F;",
+          "cached": "驱动类;PG-DSO-8-60;-40℃-+150℃;Infineon;2EDN7524F;"
+        },
+        {
+          "cell": "R3",
+          "row": 3,
+          "column": 18,
+          "value": "PCS",
+          "cached": "PCS"
+        },
+        {
+          "cell": "S3",
+          "row": 3,
+          "column": 19,
+          "value": 2500.0,
+          "cached": 2500.0
+        },
+        {
+          "cell": "T3",
+          "row": 3,
+          "column": 20,
+          "value": 0.13,
+          "cached": 0.13
+        },
+        {
+          "cell": "U3",
+          "row": 3,
+          "column": 21,
+          "value": 2500.0,
+          "cached": 2500.0
+        },
+        {
+          "cell": "V3",
+          "row": 3,
+          "column": 22,
+          "value": 325.0,
+          "cached": 325.0
+        },
+        {
+          "cell": "W3",
+          "row": 3,
+          "column": 23,
+          "value": "USD",
+          "cached": "USD"
+        },
+        {
+          "cell": "X3",
+          "row": 3,
+          "column": 24,
+          "value": "2607",
+          "cached": "2607"
+        },
+        {
+          "cell": "Y3",
+          "row": 3,
+          "column": 25,
+          "value": "CN",
+          "cached": "CN"
+        },
+        {
+          "cell": "Z3",
+          "row": 3,
+          "column": 26,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "AA3",
+          "row": 3,
+          "column": 27,
+          "value": 1.13,
+          "cached": 1.13
+        },
+        {
+          "cell": "AB3",
+          "row": 3,
+          "column": 28,
+          "value": 1.54,
+          "cached": 1.54
+        },
+        {
+          "cell": "AC3",
+          "row": 3,
+          "column": 29,
+          "value": "境外品牌(其它)",
+          "cached": "境外品牌(其它)"
+        },
+        {
+          "cell": "AD3",
+          "row": 3,
+          "column": 30,
+          "value": "BU4",
+          "cached": "BU4"
+        },
+        {
+          "cell": "AE3",
+          "row": 3,
+          "column": 31,
+          "value": "深圳欧陆通电子股份有限公司",
+          "cached": "深圳欧陆通电子股份有限公司"
+        },
+        {
+          "cell": "B4",
+          "row": 4,
+          "column": 2,
+          "value": "DCI1126040700023",
+          "cached": "DCI1126040700023"
+        },
+        {
+          "cell": "C4",
+          "row": 4,
+          "column": 3,
+          "value": 3.0,
+          "cached": 3.0
+        },
+        {
+          "cell": "D4",
+          "row": 4,
+          "column": 4,
+          "value": "报关中",
+          "cached": "报关中"
+        },
+        {
+          "cell": "K4",
+          "row": 4,
+          "column": 11,
+          "value": "I410-260400146",
+          "cached": "I410-260400146"
+        },
+        {
+          "cell": "L4",
+          "row": 4,
+          "column": 12,
+          "value": 2.0,
+          "cached": 2.0
+        },
+        {
+          "cell": "M4",
+          "row": 4,
+          "column": 13,
+          "value": "威健",
+          "cached": "威健"
+        },
+        {
+          "cell": "N4",
+          "row": 4,
+          "column": 14,
+          "value": "Infineon",
+          "cached": "Infineon"
+        },
+        {
+          "cell": "O4",
+          "row": 4,
+          "column": 15,
+          "value": "11302004790R02",
+          "cached": "11302004790R02"
+        },
+        {
+          "cell": "P4",
+          "row": 4,
+          "column": 16,
+          "value": "插件硅场效应管",
+          "cached": "插件硅场效应管"
+        },
+        {
+          "cell": "Q4",
+          "row": 4,
+          "column": 17,
+          "value": "N;61A;600V;38mΩ;RDSON≤45mΩ;206A;PG-TO247-3;Infineon;IPW60R045P7;",
+          "cached": "N;61A;600V;38mΩ;RDSON≤45mΩ;206A;PG-TO247-3;Infineon;IPW60R045P7;"
+        },
+        {
+          "cell": "R4",
+          "row": 4,
+          "column": 18,
+          "value": "PCS",
+          "cached": "PCS"
+        },
+        {
+          "cell": "S4",
+          "row": 4,
+          "column": 19,
+          "value": 480.0,
+          "cached": 480.0
+        },
+        {
+          "cell": "T4",
+          "row": 4,
+          "column": 20,
+          "value": 1.75,
+          "cached": 1.75
+        },
+        {
+          "cell": "U4",
+          "row": 4,
+          "column": 21,
+          "value": 480.0,
+          "cached": 480.0
+        },
+        {
+          "cell": "V4",
+          "row": 4,
+          "column": 22,
+          "value": 840.0,
+          "cached": 840.0
+        },
+        {
+          "cell": "W4",
+          "row": 4,
+          "column": 23,
+          "value": "USD",
+          "cached": "USD"
+        },
+        {
+          "cell": "X4",
+          "row": 4,
+          "column": 24,
+          "value": "2437",
+          "cached": "2437"
+        },
+        {
+          "cell": "Y4",
+          "row": 4,
+          "column": 25,
+          "value": "CN",
+          "cached": "CN"
+        },
+        {
+          "cell": "Z4",
+          "row": 4,
+          "column": 26,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "AA4",
+          "row": 4,
+          "column": 27,
+          "value": 4.09,
+          "cached": 4.09
+        },
+        {
+          "cell": "AB4",
+          "row": 4,
+          "column": 28,
+          "value": 4.34,
+          "cached": 4.34
+        },
+        {
+          "cell": "AC4",
+          "row": 4,
+          "column": 29,
+          "value": "境外品牌(其它)",
+          "cached": "境外品牌(其它)"
+        },
+        {
+          "cell": "AD4",
+          "row": 4,
+          "column": 30,
+          "value": "BU4",
+          "cached": "BU4"
+        },
+        {
+          "cell": "AE4",
+          "row": 4,
+          "column": 31,
+          "value": "深圳欧陆通电子股份有限公司",
+          "cached": "深圳欧陆通电子股份有限公司"
+        },
+        {
+          "cell": "B5",
+          "row": 5,
+          "column": 2,
+          "value": "OM2604080052",
+          "cached": "OM2604080052"
+        },
+        {
+          "cell": "C5",
+          "row": 5,
+          "column": 3,
+          "value": 4.0,
+          "cached": 4.0
+        },
+        {
+          "cell": "D5",
+          "row": 5,
+          "column": 4,
+          "value": "报关中",
+          "cached": "报关中"
+        },
+        {
+          "cell": "K5",
+          "row": 5,
+          "column": 11,
+          "value": "I410-260400131",
+          "cached": "I410-260400131"
+        },
+        {
+          "cell": "L5",
+          "row": 5,
+          "column": 12,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "M5",
+          "row": 5,
+          "column": 13,
+          "value": "增你强(USD)",
+          "cached": "增你强(USD)"
+        },
+        {
+          "cell": "N5",
+          "row": 5,
+          "column": 14,
+          "value": "Infineon",
+          "cached": "Infineon"
+        },
+        {
+          "cell": "O5",
+          "row": 5,
+          "column": 15,
+          "value": "11302005240R02",
+          "cached": "11302005240R02"
+        },
+        {
+          "cell": "P5",
+          "row": 5,
+          "column": 16,
+          "value": "插件硅场效应管",
+          "cached": "插件硅场效应管"
+        },
+        {
+          "cell": "Q5",
+          "row": 5,
+          "column": 17,
+          "value": "N;50A;650V;34mΩ;RDSON≤41mΩ;211A;TO-247-3;Infineon;IPW65R041CFD7;",
+          "cached": "N;50A;650V;34mΩ;RDSON≤41mΩ;211A;TO-247-3;Infineon;IPW65R041CFD7;"
+        },
+        {
+          "cell": "R5",
+          "row": 5,
+          "column": 18,
+          "value": "PCS",
+          "cached": "PCS"
+        },
+        {
+          "cell": "S5",
+          "row": 5,
+          "column": 19,
+          "value": 720.0,
+          "cached": 720.0
+        },
+        {
+          "cell": "T5",
+          "row": 5,
+          "column": 20,
+          "value": 2.0,
+          "cached": 2.0
+        },
+        {
+          "cell": "U5",
+          "row": 5,
+          "column": 21,
+          "value": 720.0,
+          "cached": 720.0
+        },
+        {
+          "cell": "V5",
+          "row": 5,
+          "column": 22,
+          "value": 1440.0,
+          "cached": 1440.0
+        },
+        {
+          "cell": "W5",
+          "row": 5,
+          "column": 23,
+          "value": "USD",
+          "cached": "USD"
+        },
+        {
+          "cell": "X5",
+          "row": 5,
+          "column": 24,
+          "value": "2610",
+          "cached": "2610"
+        },
+        {
+          "cell": "Y5",
+          "row": 5,
+          "column": 25,
+          "value": "CN",
+          "cached": "CN"
+        },
+        {
+          "cell": "Z5",
+          "row": 5,
+          "column": 26,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "AA5",
+          "row": 5,
+          "column": 27,
+          "value": 5.22,
+          "cached": 5.22
+        },
+        {
+          "cell": "AB5",
+          "row": 5,
+          "column": 28,
+          "value": 6.53,
+          "cached": 6.53
+        },
+        {
+          "cell": "AC5",
+          "row": 5,
+          "column": 29,
+          "value": "境外品牌(其它)",
+          "cached": "境外品牌(其它)"
+        },
+        {
+          "cell": "AD5",
+          "row": 5,
+          "column": 30,
+          "value": "BU4",
+          "cached": "BU4"
+        },
+        {
+          "cell": "AE5",
+          "row": 5,
+          "column": 31,
+          "value": "深圳欧陆通电子股份有限公司",
+          "cached": "深圳欧陆通电子股份有限公司"
+        },
+        {
+          "cell": "B6",
+          "row": 6,
+          "column": 2,
+          "value": "DCI1126040700023",
+          "cached": "DCI1126040700023"
+        },
+        {
+          "cell": "C6",
+          "row": 6,
+          "column": 3,
+          "value": 5.0,
+          "cached": 5.0
+        },
+        {
+          "cell": "D6",
+          "row": 6,
+          "column": 4,
+          "value": "报关中",
+          "cached": "报关中"
+        },
+        {
+          "cell": "K6",
+          "row": 6,
+          "column": 11,
+          "value": "I410-260301313",
+          "cached": "I410-260301313"
+        },
+        {
+          "cell": "L6",
+          "row": 6,
+          "column": 12,
+          "value": 5.0,
+          "cached": 5.0
+        },
+        {
+          "cell": "M6",
+          "row": 6,
+          "column": 13,
+          "value": "威健",
+          "cached": "威健"
+        },
+        {
+          "cell": "N6",
+          "row": 6,
+          "column": 14,
+          "value": "Infineon",
+          "cached": "Infineon"
+        },
+        {
+          "cell": "O6",
+          "row": 6,
+          "column": 15,
+          "value": "11302003430R02",
+          "cached": "11302003430R02"
+        },
+        {
+          "cell": "P6",
+          "row": 6,
+          "column": 16,
+          "value": "插件硅场效应管",
+          "cached": "插件硅场效应管"
+        },
+        {
+          "cell": "Q6",
+          "row": 6,
+          "column": 17,
+          "value": "N;26A;600V;1.05Ω;RDSon≤1.5Ω;78A;PG-TO247-3;Infineon;IPW60R120P7;",
+          "cached": "N;26A;600V;1.05Ω;RDSon≤1.5Ω;78A;PG-TO247-3;Infineon;IPW60R120P7;"
+        },
+        {
+          "cell": "R6",
+          "row": 6,
+          "column": 18,
+          "value": "PCS",
+          "cached": "PCS"
+        },
+        {
+          "cell": "S6",
+          "row": 6,
+          "column": 19,
+          "value": 960.0,
+          "cached": 960.0
+        },
+        {
+          "cell": "T6",
+          "row": 6,
+          "column": 20,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "U6",
+          "row": 6,
+          "column": 21,
+          "value": 480.0,
+          "cached": 480.0
+        },
+        {
+          "cell": "V6",
+          "row": 6,
+          "column": 22,
+          "value": 480.0,
+          "cached": 480.0
+        },
+        {
+          "cell": "W6",
+          "row": 6,
+          "column": 23,
+          "value": "USD",
+          "cached": "USD"
+        },
+        {
+          "cell": "X6",
+          "row": 6,
+          "column": 24,
+          "value": "2519",
+          "cached": "2519"
+        },
+        {
+          "cell": "Y6",
+          "row": 6,
+          "column": 25,
+          "value": "CN",
+          "cached": "CN"
+        },
+        {
+          "cell": "Z6",
+          "row": 6,
+          "column": 26,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "AA6",
+          "row": 6,
+          "column": 27,
+          "value": 4.14,
+          "cached": 4.14
+        },
+        {
+          "cell": "AB6",
+          "row": 6,
+          "column": 28,
+          "value": 4.39,
+          "cached": 4.39
+        },
+        {
+          "cell": "AC6",
+          "row": 6,
+          "column": 29,
+          "value": "境外品牌(其它)",
+          "cached": "境外品牌(其它)"
+        },
+        {
+          "cell": "AD6",
+          "row": 6,
+          "column": 30,
+          "value": "BU4",
+          "cached": "BU4"
+        },
+        {
+          "cell": "AE6",
+          "row": 6,
+          "column": 31,
+          "value": "深圳欧陆通电子股份有限公司",
+          "cached": "深圳欧陆通电子股份有限公司"
+        },
+        {
+          "cell": "B7",
+          "row": 7,
+          "column": 2,
+          "value": "2400127897",
+          "cached": "2400127897"
+        },
+        {
+          "cell": "C7",
+          "row": 7,
+          "column": 3,
+          "value": 6.0,
+          "cached": 6.0
+        },
+        {
+          "cell": "D7",
+          "row": 7,
+          "column": 4,
+          "value": "报关中",
+          "cached": "报关中"
+        },
+        {
+          "cell": "K7",
+          "row": 7,
+          "column": 11,
+          "value": "I410-260101392",
+          "cached": "I410-260101392"
+        },
+        {
+          "cell": "L7",
+          "row": 7,
+          "column": 12,
+          "value": 2.0,
+          "cached": 2.0
+        },
+        {
+          "cell": "M7",
+          "row": 7,
+          "column": 13,
+          "value": "力源（USD）",
+          "cached": "力源（USD）"
+        },
+        {
+          "cell": "N7",
+          "row": 7,
+          "column": 14,
+          "value": "ON",
+          "cached": "ON"
+        },
+        {
+          "cell": "O7",
+          "row": 7,
+          "column": 15,
+          "value": "11201000440R01",
+          "cached": "11201000440R01"
+        },
+        {
+          "cell": "P7",
+          "row": 7,
+          "column": 16,
+          "value": "贴片三极管",
+          "cached": "贴片三极管"
+        },
+        {
+          "cell": "Q7",
+          "row": 7,
+          "column": 17,
+          "value": "N;0.1A;50V;0.246W;SOT-23;ON;MMUN2214LT1G;1PCs+Resistor",
+          "cached": "N;0.1A;50V;0.246W;SOT-23;ON;MMUN2214LT1G;1PCs+Resistor"
+        },
+        {
+          "cell": "R7",
+          "row": 7,
+          "column": 18,
+          "value": "PCS",
+          "cached": "PCS"
+        },
+        {
+          "cell": "S7",
+          "row": 7,
+          "column": 19,
+          "value": 159000.0,
+          "cached": 159000.0
+        },
+        {
+          "cell": "T7",
+          "row": 7,
+          "column": 20,
+          "value": 0.008,
+          "cached": 0.008
+        },
+        {
+          "cell": "U7",
+          "row": 7,
+          "column": 21,
+          "value": 6000.0,
+          "cached": 6000.0
+        },
+        {
+          "cell": "V7",
+          "row": 7,
+          "column": 22,
+          "value": 48.0,
+          "cached": 48.0
+        },
+        {
+          "cell": "W7",
+          "row": 7,
+          "column": 23,
+          "value": "USD",
+          "cached": "USD"
+        },
+        {
+          "cell": "X7",
+          "row": 7,
+          "column": 24,
+          "value": "2545",
+          "cached": "2545"
+        },
+        {
+          "cell": "Y7",
+          "row": 7,
+          "column": 25,
+          "value": "CN",
+          "cached": "CN"
+        },
+        {
+          "cell": "Z7",
+          "row": 7,
+          "column": 26,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "AA7",
+          "row": 7,
+          "column": 27,
+          "value": 0.34,
+          "cached": 0.34
+        },
+        {
+          "cell": "AB7",
+          "row": 7,
+          "column": 28,
+          "value": 0.4,
+          "cached": 0.4
+        },
+        {
+          "cell": "AC7",
+          "row": 7,
+          "column": 29,
+          "value": "境外品牌(其它)",
+          "cached": "境外品牌(其它)"
+        },
+        {
+          "cell": "AD7",
+          "row": 7,
+          "column": 30,
+          "value": "BU4",
+          "cached": "BU4"
+        },
+        {
+          "cell": "AE7",
+          "row": 7,
+          "column": 31,
+          "value": "深圳欧陆通电子股份有限公司",
+          "cached": "深圳欧陆通电子股份有限公司"
+        },
+        {
+          "cell": "B8",
+          "row": 8,
+          "column": 2,
+          "value": "94310452",
+          "cached": "94310452"
+        },
+        {
+          "cell": "C8",
+          "row": 8,
+          "column": 3,
+          "value": 7.0,
+          "cached": 7.0
+        },
+        {
+          "cell": "D8",
+          "row": 8,
+          "column": 4,
+          "value": "报关中",
+          "cached": "报关中"
+        },
+        {
+          "cell": "K8",
+          "row": 8,
+          "column": 11,
+          "value": "I410-260101326",
+          "cached": "I410-260101326"
+        },
+        {
+          "cell": "L8",
+          "row": 8,
+          "column": 12,
+          "value": 7.0,
+          "cached": 7.0
+        },
+        {
+          "cell": "M8",
+          "row": 8,
+          "column": 13,
+          "value": "WT(文晔)",
+          "cached": "WT(文晔)"
+        },
+        {
+          "cell": "N8",
+          "row": 8,
+          "column": 14,
+          "value": "ST",
+          "cached": "ST"
+        },
+        {
+          "cell": "O8",
+          "row": 8,
+          "column": 15,
+          "value": "11105006670R02",
+          "cached": "11105006670R02"
+        },
+        {
+          "cell": "P8",
+          "row": 8,
+          "column": 16,
+          "value": "贴片IC",
+          "cached": "贴片IC"
+        },
+        {
+          "cell": "Q8",
+          "row": 8,
+          "column": 17,
+          "value": "存储器类;SO8;-40℃-+85℃;ST;M24C02-RMN6TP;EEPROM",
+          "cached": "存储器类;SO8;-40℃-+85℃;ST;M24C02-RMN6TP;EEPROM"
+        },
+        {
+          "cell": "R8",
+          "row": 8,
+          "column": 18,
+          "value": "PCS",
+          "cached": "PCS"
+        },
+        {
+          "cell": "S8",
+          "row": 8,
+          "column": 19,
+          "value": 72500.0,
+          "cached": 72500.0
+        },
+        {
+          "cell": "T8",
+          "row": 8,
+          "column": 20,
+          "value": 0.035,
+          "cached": 0.035
+        },
+        {
+          "cell": "U8",
+          "row": 8,
+          "column": 21,
+          "value": 5000.0,
+          "cached": 5000.0
+        },
+        {
+          "cell": "V8",
+          "row": 8,
+          "column": 22,
+          "value": 175.0,
+          "cached": 175.0
+        },
+        {
+          "cell": "W8",
+          "row": 8,
+          "column": 23,
+          "value": "USD",
+          "cached": "USD"
+        },
+        {
+          "cell": "X8",
+          "row": 8,
+          "column": 24,
+          "value": "2607",
+          "cached": "2607"
+        },
+        {
+          "cell": "Y8",
+          "row": 8,
+          "column": 25,
+          "value": "CN",
+          "cached": "CN"
+        },
+        {
+          "cell": "Z8",
+          "row": 8,
+          "column": 26,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "AA8",
+          "row": 8,
+          "column": 27,
+          "value": 0.4,
+          "cached": 0.4
+        },
+        {
+          "cell": "AB8",
+          "row": 8,
+          "column": 28,
+          "value": 2.14,
+          "cached": 2.14
+        },
+        {
+          "cell": "AC8",
+          "row": 8,
+          "column": 29,
+          "value": "境外品牌(其它)",
+          "cached": "境外品牌(其它)"
+        },
+        {
+          "cell": "AD8",
+          "row": 8,
+          "column": 30,
+          "value": "BU4",
+          "cached": "BU4"
+        },
+        {
+          "cell": "AE8",
+          "row": 8,
+          "column": 31,
+          "value": "深圳欧陆通电子股份有限公司",
+          "cached": "深圳欧陆通电子股份有限公司"
+        },
+        {
+          "cell": "B9",
+          "row": 9,
+          "column": 2,
+          "value": "94311993",
+          "cached": "94311993"
+        },
+        {
+          "cell": "C9",
+          "row": 9,
+          "column": 3,
+          "value": 8.0,
+          "cached": 8.0
+        },
+        {
+          "cell": "D9",
+          "row": 9,
+          "column": 4,
+          "value": "报关中",
+          "cached": "报关中"
+        },
+        {
+          "cell": "K9",
+          "row": 9,
+          "column": 11,
+          "value": "I410-260101326",
+          "cached": "I410-260101326"
+        },
+        {
+          "cell": "L9",
+          "row": 9,
+          "column": 12,
+          "value": 33.0,
+          "cached": 33.0
+        },
+        {
+          "cell": "M9",
+          "row": 9,
+          "column": 13,
+          "value": "WT(文晔)",
+          "cached": "WT(文晔)"
+        },
+        {
+          "cell": "N9",
+          "row": 9,
+          "column": 14,
+          "value": "ST",
+          "cached": "ST"
+        },
+        {
+          "cell": "O9",
+          "row": 9,
+          "column": 15,
+          "value": "11105001160R02",
+          "cached": "11105001160R02"
+        },
+        {
+          "cell": "P9",
+          "row": 9,
+          "column": 16,
+          "value": "贴片IC",
+          "cached": "贴片IC"
+        },
+        {
+          "cell": "Q9",
+          "row": 9,
+          "column": 17,
+          "value": "稳压器;SO-8;0℃-+70℃;ST;LM393DT;消费级;30V",
+          "cached": "稳压器;SO-8;0℃-+70℃;ST;LM393DT;消费级;30V"
+        },
+        {
+          "cell": "R9",
+          "row": 9,
+          "column": 18,
+          "value": "PCS",
+          "cached": "PCS"
+        },
+        {
+          "cell": "S9",
+          "row": 9,
+          "column": 19,
+          "value": 17500.0,
+          "cached": 17500.0
+        },
+        {
+          "cell": "T9",
+          "row": 9,
+          "column": 20,
+          "value": 0.028,
+          "cached": 0.028
+        },
+        {
+          "cell": "U9",
+          "row": 9,
+          "column": 21,
+          "value": 2500.0,
+          "cached": 2500.0
+        },
+        {
+          "cell": "V9",
+          "row": 9,
+          "column": 22,
+          "value": 70.0,
+          "cached": 70.0
+        },
+        {
+          "cell": "W9",
+          "row": 9,
+          "column": 23,
+          "value": "USD",
+          "cached": "USD"
+        },
+        {
+          "cell": "X9",
+          "row": 9,
+          "column": 24,
+          "value": "2438",
+          "cached": "2438"
+        },
+        {
+          "cell": "Y9",
+          "row": 9,
+          "column": 25,
+          "value": "CN",
+          "cached": "CN"
+        },
+        {
+          "cell": "Z9",
+          "row": 9,
+          "column": 26,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "AA9",
+          "row": 9,
+          "column": 27,
+          "value": 0.2,
+          "cached": 0.2
+        },
+        {
+          "cell": "AB9",
+          "row": 9,
+          "column": 28,
+          "value": 1.22,
+          "cached": 1.22
+        },
+        {
+          "cell": "AC9",
+          "row": 9,
+          "column": 29,
+          "value": "境外品牌(其它)",
+          "cached": "境外品牌(其它)"
+        },
+        {
+          "cell": "AD9",
+          "row": 9,
+          "column": 30,
+          "value": "BU4",
+          "cached": "BU4"
+        },
+        {
+          "cell": "AE9",
+          "row": 9,
+          "column": 31,
+          "value": "深圳欧陆通电子股份有限公司",
+          "cached": "深圳欧陆通电子股份有限公司"
+        },
+        {
+          "cell": "B10",
+          "row": 10,
+          "column": 2,
+          "value": "CM00022797",
+          "cached": "CM00022797"
+        },
+        {
+          "cell": "C10",
+          "row": 10,
+          "column": 3,
+          "value": 9.0,
+          "cached": 9.0
+        },
+        {
+          "cell": "D10",
+          "row": 10,
+          "column": 4,
+          "value": "报关中",
+          "cached": "报关中"
+        },
+        {
+          "cell": "K10",
+          "row": 10,
+          "column": 11,
+          "value": "I410-260101303",
+          "cached": "I410-260101303"
+        },
+        {
+          "cell": "L10",
+          "row": 10,
+          "column": 12,
+          "value": 14.0,
+          "cached": 14.0
+        },
+        {
+          "cell": "M10",
+          "row": 10,
+          "column": 13,
+          "value": "PROMASTER",
+          "cached": "PROMASTER"
+        },
+        {
+          "cell": "N10",
+          "row": 10,
+          "column": 14,
+          "value": "Microchip",
+          "cached": "Microchip"
+        },
+        {
+          "cell": "O10",
+          "row": 10,
+          "column": 15,
+          "value": "11105006510R01",
+          "cached": "11105006510R01"
+        },
+        {
+          "cell": "P10",
+          "row": 10,
+          "column": 16,
+          "value": "贴片IC",
+          "cached": "贴片IC"
+        },
+        {
+          "cell": "Q10",
+          "row": 10,
+          "column": 17,
+          "value": "单片机(MCU);SSOP-28;-40℃-+125℃;A5;Microchip;PIC18F25K22T-E/SS;A5;MCU;编带",
+          "cached": "单片机(MCU);SSOP-28;-40℃-+125℃;A5;Microchip;PIC18F25K22T-E/SS;A5;MCU;编带"
+        },
+        {
+          "cell": "R10",
+          "row": 10,
+          "column": 18,
+          "value": "PCS",
+          "cached": "PCS"
+        },
+        {
+          "cell": "S10",
+          "row": 10,
+          "column": 19,
+          "value": 30550.0,
+          "cached": 30550.0
+        },
+        {
+          "cell": "T10",
+          "row": 10,
+          "column": 20,
+          "value": 0.938,
+          "cached": 0.938
+        },
+        {
+          "cell": "U10",
+          "row": 10,
+          "column": 21,
+          "value": 6300.0,
+          "cached": 6300.0
+        },
+        {
+          "cell": "V10",
+          "row": 10,
+          "column": 22,
+          "value": 5909.4,
+          "cached": 5909.4
+        },
+        {
+          "cell": "W10",
+          "row": 10,
+          "column": 23,
+          "value": "USD",
+          "cached": "USD"
+        },
+        {
+          "cell": "X10",
+          "row": 10,
+          "column": 24,
+          "value": "2531",
+          "cached": "2531"
+        },
+        {
+          "cell": "Y10",
+          "row": 10,
+          "column": 25,
+          "value": "TH",
+          "cached": "TH"
+        },
+        {
+          "cell": "Z10",
+          "row": 10,
+          "column": 26,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "AA10",
+          "row": 10,
+          "column": 27,
+          "value": 3.5,
+          "cached": 3.5
+        },
+        {
+          "cell": "AB10",
+          "row": 10,
+          "column": 28,
+          "value": 4.1,
+          "cached": 4.1
+        },
+        {
+          "cell": "AC10",
+          "row": 10,
+          "column": 29,
+          "value": "境外品牌(其它)",
+          "cached": "境外品牌(其它)"
+        },
+        {
+          "cell": "AD10",
+          "row": 10,
+          "column": 30,
+          "value": "BU4",
+          "cached": "BU4"
+        },
+        {
+          "cell": "AE10",
+          "row": 10,
+          "column": 31,
+          "value": "深圳欧陆通电子股份有限公司",
+          "cached": "深圳欧陆通电子股份有限公司"
+        },
+        {
+          "cell": "B11",
+          "row": 11,
+          "column": 2,
+          "value": "OM2604080063",
+          "cached": "OM2604080063"
+        },
+        {
+          "cell": "C11",
+          "row": 11,
+          "column": 3,
+          "value": 10.0,
+          "cached": 10.0
+        },
+        {
+          "cell": "D11",
+          "row": 11,
+          "column": 4,
+          "value": "报关中",
+          "cached": "报关中"
+        },
+        {
+          "cell": "K11",
+          "row": 11,
+          "column": 11,
+          "value": "I410-260101299",
+          "cached": "I410-260101299"
+        },
+        {
+          "cell": "L11",
+          "row": 11,
+          "column": 12,
+          "value": 8.0,
+          "cached": 8.0
+        },
+        {
+          "cell": "M11",
+          "row": 11,
+          "column": 13,
+          "value": "增你强(USD)",
+          "cached": "增你强(USD)"
+        },
+        {
+          "cell": "N11",
+          "row": 11,
+          "column": 14,
+          "value": "VISHAY",
+          "cached": "VISHAY"
+        },
+        {
+          "cell": "O11",
+          "row": 11,
+          "column": 15,
+          "value": "11302004860R16",
+          "cached": "11302004860R16"
+        },
+        {
+          "cell": "P11",
+          "row": 11,
+          "column": 16,
+          "value": "插件硅场效应管",
+          "cached": "插件硅场效应管"
+        },
+        {
+          "cell": "Q11",
+          "row": 11,
+          "column": 17,
+          "value": "N;21A;600V;153mΩ;RDSON≤176mΩ;53A;TO-220AB;VISHAY;SiHP21N60EF-GE3;",
+          "cached": "N;21A;600V;153mΩ;RDSON≤176mΩ;53A;TO-220AB;VISHAY;SiHP21N60EF-GE3;"
+        },
+        {
+          "cell": "R11",
+          "row": 11,
+          "column": 18,
+          "value": "PCS",
+          "cached": "PCS"
+        },
+        {
+          "cell": "S11",
+          "row": 11,
+          "column": 19,
+          "value": 33000.0,
+          "cached": 33000.0
+        },
+        {
+          "cell": "T11",
+          "row": 11,
+          "column": 20,
+          "value": 0.72,
+          "cached": 0.72
+        },
+        {
+          "cell": "U11",
+          "row": 11,
+          "column": 21,
+          "value": 2000.0,
+          "cached": 2000.0
+        },
+        {
+          "cell": "V11",
+          "row": 11,
+          "column": 22,
+          "value": 1440.0,
+          "cached": 1440.0
+        },
+        {
+          "cell": "W11",
+          "row": 11,
+          "column": 23,
+          "value": "USD",
+          "cached": "USD"
+        },
+        {
+          "cell": "X11",
+          "row": 11,
+          "column": 24,
+          "value": "2610",
+          "cached": "2610"
+        },
+        {
+          "cell": "Y11",
+          "row": 11,
+          "column": 25,
+          "value": "CN",
+          "cached": "CN"
+        },
+        {
+          "cell": "Z11",
+          "row": 11,
+          "column": 26,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "AA11",
+          "row": 11,
+          "column": 27,
+          "value": 3.9,
+          "cached": 3.9
+        },
+        {
+          "cell": "AB11",
+          "row": 11,
+          "column": 28,
+          "value": 6.08,
+          "cached": 6.08
+        },
+        {
+          "cell": "AC11",
+          "row": 11,
+          "column": 29,
+          "value": "境外品牌(其它)",
+          "cached": "境外品牌(其它)"
+        },
+        {
+          "cell": "AD11",
+          "row": 11,
+          "column": 30,
+          "value": "BU4",
+          "cached": "BU4"
+        },
+        {
+          "cell": "AE11",
+          "row": 11,
+          "column": 31,
+          "value": "深圳欧陆通电子股份有限公司",
+          "cached": "深圳欧陆通电子股份有限公司"
+        },
+        {
+          "cell": "B12",
+          "row": 12,
+          "column": 2,
+          "value": "DCI1126040700023",
+          "cached": "DCI1126040700023"
+        },
+        {
+          "cell": "C12",
+          "row": 12,
+          "column": 3,
+          "value": 11.0,
+          "cached": 11.0
+        },
+        {
+          "cell": "D12",
+          "row": 12,
+          "column": 4,
+          "value": "报关中",
+          "cached": "报关中"
+        },
+        {
+          "cell": "K12",
+          "row": 12,
+          "column": 11,
+          "value": "I410-260101056",
+          "cached": "I410-260101056"
+        },
+        {
+          "cell": "L12",
+          "row": 12,
+          "column": 12,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "M12",
+          "row": 12,
+          "column": 13,
+          "value": "威健",
+          "cached": "威健"
+        },
+        {
+          "cell": "N12",
+          "row": 12,
+          "column": 14,
+          "value": "Infineon",
+          "cached": "Infineon"
+        },
+        {
+          "cell": "O12",
+          "row": 12,
+          "column": 15,
+          "value": "11302005060R02",
+          "cached": "11302005060R02"
+        },
+        {
+          "cell": "P12",
+          "row": 12,
+          "column": 16,
+          "value": "插件硅场效应管",
+          "cached": "插件硅场效应管"
+        },
+        {
+          "cell": "Q12",
+          "row": 12,
+          "column": 17,
+          "value": "N;54A;600V;31mΩ;RDSON≤37mΩ;236A;PG-TO 247-3;Infineon;IPW60R037CSFD;",
+          "cached": "N;54A;600V;31mΩ;RDSON≤37mΩ;236A;PG-TO 247-3;Infineon;IPW60R037CSFD;"
+        },
+        {
+          "cell": "R12",
+          "row": 12,
+          "column": 18,
+          "value": "PCS",
+          "cached": "PCS"
+        },
+        {
+          "cell": "S12",
+          "row": 12,
+          "column": 19,
+          "value": 36720.0,
+          "cached": 36720.0
+        },
+        {
+          "cell": "T12",
+          "row": 12,
+          "column": 20,
+          "value": 1.8,
+          "cached": 1.8
+        },
+        {
+          "cell": "U12",
+          "row": 12,
+          "column": 21,
+          "value": 480.0,
+          "cached": 480.0
+        },
+        {
+          "cell": "V12",
+          "row": 12,
+          "column": 22,
+          "value": 864.0,
+          "cached": 864.0
+        },
+        {
+          "cell": "W12",
+          "row": 12,
+          "column": 23,
+          "value": "USD",
+          "cached": "USD"
+        },
+        {
+          "cell": "X12",
+          "row": 12,
+          "column": 24,
+          "value": "2536",
+          "cached": "2536"
+        },
+        {
+          "cell": "Y12",
+          "row": 12,
+          "column": 25,
+          "value": "CN",
+          "cached": "CN"
+        },
+        {
+          "cell": "Z12",
+          "row": 12,
+          "column": 26,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "AA12",
+          "row": 12,
+          "column": 27,
+          "value": 4.12,
+          "cached": 4.12
+        },
+        {
+          "cell": "AB12",
+          "row": 12,
+          "column": 28,
+          "value": 4.37,
+          "cached": 4.37
+        },
+        {
+          "cell": "AC12",
+          "row": 12,
+          "column": 29,
+          "value": "境外品牌(其它)",
+          "cached": "境外品牌(其它)"
+        },
+        {
+          "cell": "AD12",
+          "row": 12,
+          "column": 30,
+          "value": "BU4",
+          "cached": "BU4"
+        },
+        {
+          "cell": "AE12",
+          "row": 12,
+          "column": 31,
+          "value": "深圳欧陆通电子股份有限公司",
+          "cached": "深圳欧陆通电子股份有限公司"
+        },
+        {
+          "cell": "B13",
+          "row": 13,
+          "column": 2,
+          "value": "OM2604080063",
+          "cached": "OM2604080063"
+        },
+        {
+          "cell": "C13",
+          "row": 13,
+          "column": 3,
+          "value": 12.0,
+          "cached": 12.0
+        },
+        {
+          "cell": "D13",
+          "row": 13,
+          "column": 4,
+          "value": "报关中",
+          "cached": "报关中"
+        },
+        {
+          "cell": "K13",
+          "row": 13,
+          "column": 11,
+          "value": "I410-251201533",
+          "cached": "I410-251201533"
+        },
+        {
+          "cell": "L13",
+          "row": 13,
+          "column": 12,
+          "value": 2.0,
+          "cached": 2.0
+        },
+        {
+          "cell": "M13",
+          "row": 13,
+          "column": 13,
+          "value": "增你强(USD)",
+          "cached": "增你强(USD)"
+        },
+        {
+          "cell": "N13",
+          "row": 13,
+          "column": 14,
+          "value": "ROHM",
+          "cached": "ROHM"
+        },
+        {
+          "cell": "O13",
+          "row": 13,
+          "column": 15,
+          "value": "11302005690R09",
+          "cached": "11302005690R09"
+        },
+        {
+          "cell": "P13",
+          "row": 13,
+          "column": 16,
+          "value": "插件硅场效应管",
+          "cached": "插件硅场效应管"
+        },
+        {
+          "cell": "Q13",
+          "row": 13,
+          "column": 17,
+          "value": "N;30A;600V;0.115Ω;RDSON≤0.130Ω;80A;TO-247;ROHM;R6030ENZ4C13;",
+          "cached": "N;30A;600V;0.115Ω;RDSON≤0.130Ω;80A;TO-247;ROHM;R6030ENZ4C13;"
+        },
+        {
+          "cell": "R13",
+          "row": 13,
+          "column": 18,
+          "value": "PCS",
+          "cached": "PCS"
+        },
+        {
+          "cell": "S13",
+          "row": 13,
+          "column": 19,
+          "value": 3000.0,
+          "cached": 3000.0
+        },
+        {
+          "cell": "T13",
+          "row": 13,
+          "column": 20,
+          "value": 0.69,
+          "cached": 0.69
+        },
+        {
+          "cell": "U13",
+          "row": 13,
+          "column": 21,
+          "value": 1200.0,
+          "cached": 1200.0
+        },
+        {
+          "cell": "V13",
+          "row": 13,
+          "column": 22,
+          "value": 828.0,
+          "cached": 828.0
+        },
+        {
+          "cell": "W13",
+          "row": 13,
+          "column": 23,
+          "value": "USD",
+          "cached": "USD"
+        },
+        {
+          "cell": "X13",
+          "row": 13,
+          "column": 24,
+          "value": "2610",
+          "cached": "2610"
+        },
+        {
+          "cell": "Y13",
+          "row": 13,
+          "column": 25,
+          "value": "CN",
+          "cached": "CN"
+        },
+        {
+          "cell": "Z13",
+          "row": 13,
+          "column": 26,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "AA13",
+          "row": 13,
+          "column": 27,
+          "value": 7.62,
+          "cached": 7.62
+        },
+        {
+          "cell": "AB13",
+          "row": 13,
+          "column": 28,
+          "value": 10.4,
+          "cached": 10.4
+        },
+        {
+          "cell": "AC13",
+          "row": 13,
+          "column": 29,
+          "value": "境外品牌(其它)",
+          "cached": "境外品牌(其它)"
+        },
+        {
+          "cell": "AD13",
+          "row": 13,
+          "column": 30,
+          "value": "BU4",
+          "cached": "BU4"
+        },
+        {
+          "cell": "AE13",
+          "row": 13,
+          "column": 31,
+          "value": "深圳欧陆通电子股份有限公司",
+          "cached": "深圳欧陆通电子股份有限公司"
+        },
+        {
+          "cell": "B14",
+          "row": 14,
+          "column": 2,
+          "value": "DCI1126040700023",
+          "cached": "DCI1126040700023"
+        },
+        {
+          "cell": "C14",
+          "row": 14,
+          "column": 3,
+          "value": 13.0,
+          "cached": 13.0
+        },
+        {
+          "cell": "D14",
+          "row": 14,
+          "column": 4,
+          "value": "报关中",
+          "cached": "报关中"
+        },
+        {
+          "cell": "K14",
+          "row": 14,
+          "column": 11,
+          "value": "I410-251200794",
+          "cached": "I410-251200794"
+        },
+        {
+          "cell": "L14",
+          "row": 14,
+          "column": 12,
+          "value": 2.0,
+          "cached": 2.0
+        },
+        {
+          "cell": "M14",
+          "row": 14,
+          "column": 13,
+          "value": "威健",
+          "cached": "威健"
+        },
+        {
+          "cell": "N14",
+          "row": 14,
+          "column": 14,
+          "value": "Infineon",
+          "cached": "Infineon"
+        },
+        {
+          "cell": "O14",
+          "row": 14,
+          "column": 15,
+          "value": "11302004160R02",
+          "cached": "11302004160R02"
+        },
+        {
+          "cell": "P14",
+          "row": 14,
+          "column": 16,
+          "value": "插件硅场效应管",
+          "cached": "插件硅场效应管"
+        },
+        {
+          "cell": "Q14",
+          "row": 14,
+          "column": 17,
+          "value": "N;88A;200V;9.9mΩ;RDSON≤11mΩ;352A;TO-220;Infineon;IPP110N20N3G;",
+          "cached": "N;88A;200V;9.9mΩ;RDSON≤11mΩ;352A;TO-220;Infineon;IPP110N20N3G;"
+        },
+        {
+          "cell": "R14",
+          "row": 14,
+          "column": 18,
+          "value": "PCS",
+          "cached": "PCS"
+        },
+        {
+          "cell": "S14",
+          "row": 14,
+          "column": 19,
+          "value": 7000.0,
+          "cached": 7000.0
+        },
+        {
+          "cell": "T14",
+          "row": 14,
+          "column": 20,
+          "value": 2.08,
+          "cached": 2.08
+        },
+        {
+          "cell": "U14",
+          "row": 14,
+          "column": 21,
+          "value": 500.0,
+          "cached": 500.0
+        },
+        {
+          "cell": "V14",
+          "row": 14,
+          "column": 22,
+          "value": 1040.0,
+          "cached": 1040.0
+        },
+        {
+          "cell": "W14",
+          "row": 14,
+          "column": 23,
+          "value": "USD",
+          "cached": "USD"
+        },
+        {
+          "cell": "X14",
+          "row": 14,
+          "column": 24,
+          "value": "2606",
+          "cached": "2606"
+        },
+        {
+          "cell": "Y14",
+          "row": 14,
+          "column": 25,
+          "value": "CN",
+          "cached": "CN"
+        },
+        {
+          "cell": "Z14",
+          "row": 14,
+          "column": 26,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "AA14",
+          "row": 14,
+          "column": 27,
+          "value": 1.62,
+          "cached": 1.62
+        },
+        {
+          "cell": "AB14",
+          "row": 14,
+          "column": 28,
+          "value": 1.87,
+          "cached": 1.87
+        },
+        {
+          "cell": "AC14",
+          "row": 14,
+          "column": 29,
+          "value": "境外品牌(其它)",
+          "cached": "境外品牌(其它)"
+        },
+        {
+          "cell": "AD14",
+          "row": 14,
+          "column": 30,
+          "value": "BU4",
+          "cached": "BU4"
+        },
+        {
+          "cell": "AE14",
+          "row": 14,
+          "column": 31,
+          "value": "深圳欧陆通电子股份有限公司",
+          "cached": "深圳欧陆通电子股份有限公司"
+        },
+        {
+          "cell": "B15",
+          "row": 15,
+          "column": 2,
+          "value": "DCI1126040700023",
+          "cached": "DCI1126040700023"
+        },
+        {
+          "cell": "C15",
+          "row": 15,
+          "column": 3,
+          "value": 14.0,
+          "cached": 14.0
+        },
+        {
+          "cell": "D15",
+          "row": 15,
+          "column": 4,
+          "value": "报关中",
+          "cached": "报关中"
+        },
+        {
+          "cell": "K15",
+          "row": 15,
+          "column": 11,
+          "value": "I410-251101901",
+          "cached": "I410-251101901"
+        },
+        {
+          "cell": "L15",
+          "row": 15,
+          "column": 12,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "M15",
+          "row": 15,
+          "column": 13,
+          "value": "威健",
+          "cached": "威健"
+        },
+        {
+          "cell": "N15",
+          "row": 15,
+          "column": 14,
+          "value": "Infineon",
+          "cached": "Infineon"
+        },
+        {
+          "cell": "O15",
+          "row": 15,
+          "column": 15,
+          "value": "11302004110R02",
+          "cached": "11302004110R02"
+        },
+        {
+          "cell": "P15",
+          "row": 15,
+          "column": 16,
+          "value": "插件硅场效应管",
+          "cached": "插件硅场效应管"
+        },
+        {
+          "cell": "Q15",
+          "row": 15,
+          "column": 17,
+          "value": "N;11A;650V;0.34Ω;RDSON≤0.38Ω;33A;TO-220FP;Infineon;SPA11N65C3;新机型禁止使用",
+          "cached": "N;11A;650V;0.34Ω;RDSON≤0.38Ω;33A;TO-220FP;Infineon;SPA11N65C3;新机型禁止使用"
+        },
+        {
+          "cell": "R15",
+          "row": 15,
+          "column": 18,
+          "value": "PCS",
+          "cached": "PCS"
+        },
+        {
+          "cell": "S15",
+          "row": 15,
+          "column": 19,
+          "value": 95000.0,
+          "cached": 95000.0
+        },
+        {
+          "cell": "T15",
+          "row": 15,
+          "column": 20,
+          "value": 0.55,
+          "cached": 0.55
+        },
+        {
+          "cell": "U15",
+          "row": 15,
+          "column": 21,
+          "value": 21500.0,
+          "cached": 21500.0
+        },
+        {
+          "cell": "V15",
+          "row": 15,
+          "column": 22,
+          "value": 11825.0,
+          "cached": 11825.0
+        },
+        {
+          "cell": "W15",
+          "row": 15,
+          "column": 23,
+          "value": "USD",
+          "cached": "USD"
+        },
+        {
+          "cell": "X15",
+          "row": 15,
+          "column": 24,
+          "value": "2610",
+          "cached": "2610"
+        },
+        {
+          "cell": "Y15",
+          "row": 15,
+          "column": 25,
+          "value": "CN",
+          "cached": "CN"
+        },
+        {
+          "cell": "Z15",
+          "row": 15,
+          "column": 26,
+          "value": 5.0,
+          "cached": 5.0
+        },
+        {
+          "cell": "AA15",
+          "row": 15,
+          "column": 27,
+          "value": 69.5,
+          "cached": 69.5
+        },
+        {
+          "cell": "AB15",
+          "row": 15,
+          "column": 28,
+          "value": 73.67,
+          "cached": 73.67
+        },
+        {
+          "cell": "AC15",
+          "row": 15,
+          "column": 29,
+          "value": "境外品牌(其它)",
+          "cached": "境外品牌(其它)"
+        },
+        {
+          "cell": "AD15",
+          "row": 15,
+          "column": 30,
+          "value": "BU4",
+          "cached": "BU4"
+        },
+        {
+          "cell": "AE15",
+          "row": 15,
+          "column": 31,
+          "value": "深圳欧陆通电子股份有限公司",
+          "cached": "深圳欧陆通电子股份有限公司"
+        },
+        {
+          "cell": "B16",
+          "row": 16,
+          "column": 2,
+          "value": "94310452",
+          "cached": "94310452"
+        },
+        {
+          "cell": "C16",
+          "row": 16,
+          "column": 3,
+          "value": 15.0,
+          "cached": 15.0
+        },
+        {
+          "cell": "D16",
+          "row": 16,
+          "column": 4,
+          "value": "报关中",
+          "cached": "报关中"
+        },
+        {
+          "cell": "K16",
+          "row": 16,
+          "column": 11,
+          "value": "I410-251101602",
+          "cached": "I410-251101602"
+        },
+        {
+          "cell": "L16",
+          "row": 16,
+          "column": 12,
+          "value": 4.0,
+          "cached": 4.0
+        },
+        {
+          "cell": "M16",
+          "row": 16,
+          "column": 13,
+          "value": "WT(文晔)",
+          "cached": "WT(文晔)"
+        },
+        {
+          "cell": "N16",
+          "row": 16,
+          "column": 14,
+          "value": "ST",
+          "cached": "ST"
+        },
+        {
+          "cell": "O16",
+          "row": 16,
+          "column": 15,
+          "value": "11105006120R02",
+          "cached": "11105006120R02"
+        },
+        {
+          "cell": "P16",
+          "row": 16,
+          "column": 16,
+          "value": "贴片IC",
+          "cached": "贴片IC"
+        },
+        {
+          "cell": "Q16",
+          "row": 16,
+          "column": 17,
+          "value": "驱动类;SO-8;-40℃-+105℃;ST;PM8834TR;PWM Driver 4A",
+          "cached": "驱动类;SO-8;-40℃-+105℃;ST;PM8834TR;PWM Driver 4A"
+        },
+        {
+          "cell": "R16",
+          "row": 16,
+          "column": 18,
+          "value": "PCS",
+          "cached": "PCS"
+        },
+        {
+          "cell": "S16",
+          "row": 16,
+          "column": 19,
+          "value": 55000.0,
+          "cached": 55000.0
+        },
+        {
+          "cell": "T16",
+          "row": 16,
+          "column": 20,
+          "value": 0.096,
+          "cached": 0.096
+        },
+        {
+          "cell": "U16",
+          "row": 16,
+          "column": 21,
+          "value": 5000.0,
+          "cached": 5000.0
+        },
+        {
+          "cell": "V16",
+          "row": 16,
+          "column": 22,
+          "value": 480.0,
+          "cached": 480.0
+        },
+        {
+          "cell": "W16",
+          "row": 16,
+          "column": 23,
+          "value": "USD",
+          "cached": "USD"
+        },
+        {
+          "cell": "X16",
+          "row": 16,
+          "column": 24,
+          "value": "2550",
+          "cached": "2550"
+        },
+        {
+          "cell": "Y16",
+          "row": 16,
+          "column": 25,
+          "value": "CN",
+          "cached": "CN"
+        },
+        {
+          "cell": "Z16",
+          "row": 16,
+          "column": 26,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "AA16",
+          "row": 16,
+          "column": 27,
+          "value": 0.4,
+          "cached": 0.4
+        },
+        {
+          "cell": "AB16",
+          "row": 16,
+          "column": 28,
+          "value": 2.09,
+          "cached": 2.09
+        },
+        {
+          "cell": "AC16",
+          "row": 16,
+          "column": 29,
+          "value": "境外品牌(其它)",
+          "cached": "境外品牌(其它)"
+        },
+        {
+          "cell": "AD16",
+          "row": 16,
+          "column": 30,
+          "value": "BU4",
+          "cached": "BU4"
+        },
+        {
+          "cell": "AE16",
+          "row": 16,
+          "column": 31,
+          "value": "深圳欧陆通电子股份有限公司",
+          "cached": "深圳欧陆通电子股份有限公司"
+        },
+        {
+          "cell": "B17",
+          "row": 17,
+          "column": 2,
+          "value": "DCI1126040700023",
+          "cached": "DCI1126040700023"
+        },
+        {
+          "cell": "C17",
+          "row": 17,
+          "column": 3,
+          "value": 16.0,
+          "cached": 16.0
+        },
+        {
+          "cell": "D17",
+          "row": 17,
+          "column": 4,
+          "value": "报关中",
+          "cached": "报关中"
+        },
+        {
+          "cell": "K17",
+          "row": 17,
+          "column": 11,
+          "value": "I410-251101563",
+          "cached": "I410-251101563"
+        },
+        {
+          "cell": "L17",
+          "row": 17,
+          "column": 12,
+          "value": 2.0,
+          "cached": 2.0
+        },
+        {
+          "cell": "M17",
+          "row": 17,
+          "column": 13,
+          "value": "威健",
+          "cached": "威健"
+        },
+        {
+          "cell": "N17",
+          "row": 17,
+          "column": 14,
+          "value": "Infineon",
+          "cached": "Infineon"
+        },
+        {
+          "cell": "O17",
+          "row": 17,
+          "column": 15,
+          "value": "11302004710R02",
+          "cached": "11302004710R02"
+        },
+        {
+          "cell": "P17",
+          "row": 17,
+          "column": 16,
+          "value": "插件硅场效应管",
+          "cached": "插件硅场效应管"
+        },
+        {
+          "cell": "Q17",
+          "row": 17,
+          "column": 17,
+          "value": "N;8A;800V;510mΩ;RDSON≤600mΩ;22A;TO-220FP;Infineon;IPA80R600P7;",
+          "cached": "N;8A;800V;510mΩ;RDSON≤600mΩ;22A;TO-220FP;Infineon;IPA80R600P7;"
+        },
+        {
+          "cell": "R17",
+          "row": 17,
+          "column": 18,
+          "value": "PCS",
+          "cached": "PCS"
+        },
+        {
+          "cell": "S17",
+          "row": 17,
+          "column": 19,
+          "value": 61000.0,
+          "cached": 61000.0
+        },
+        {
+          "cell": "T17",
+          "row": 17,
+          "column": 20,
+          "value": 0.47,
+          "cached": 0.47
+        },
+        {
+          "cell": "U17",
+          "row": 17,
+          "column": 21,
+          "value": 500.0,
+          "cached": 500.0
+        },
+        {
+          "cell": "V17",
+          "row": 17,
+          "column": 22,
+          "value": 235.0,
+          "cached": 235.0
+        },
+        {
+          "cell": "W17",
+          "row": 17,
+          "column": 23,
+          "value": "USD",
+          "cached": "USD"
+        },
+        {
+          "cell": "X17",
+          "row": 17,
+          "column": 24,
+          "value": "2541",
+          "cached": "2541"
+        },
+        {
+          "cell": "Y17",
+          "row": 17,
+          "column": 25,
+          "value": "CN",
+          "cached": "CN"
+        },
+        {
+          "cell": "Z17",
+          "row": 17,
+          "column": 26,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "AA17",
+          "row": 17,
+          "column": 27,
+          "value": 1.71,
+          "cached": 1.71
+        },
+        {
+          "cell": "AB17",
+          "row": 17,
+          "column": 28,
+          "value": 1.96,
+          "cached": 1.96
+        },
+        {
+          "cell": "AC17",
+          "row": 17,
+          "column": 29,
+          "value": "境外品牌(其它)",
+          "cached": "境外品牌(其它)"
+        },
+        {
+          "cell": "AD17",
+          "row": 17,
+          "column": 30,
+          "value": "BU4",
+          "cached": "BU4"
+        },
+        {
+          "cell": "AE17",
+          "row": 17,
+          "column": 31,
+          "value": "深圳欧陆通电子股份有限公司",
+          "cached": "深圳欧陆通电子股份有限公司"
+        },
+        {
+          "cell": "B18",
+          "row": 18,
+          "column": 2,
+          "value": "G326040173",
+          "cached": "G326040173"
+        },
+        {
+          "cell": "C18",
+          "row": 18,
+          "column": 3,
+          "value": 17.0,
+          "cached": 17.0
+        },
+        {
+          "cell": "D18",
+          "row": 18,
+          "column": 4,
+          "value": "报关中",
+          "cached": "报关中"
+        },
+        {
+          "cell": "K18",
+          "row": 18,
+          "column": 11,
+          "value": "I410-251101368",
+          "cached": "I410-251101368"
+        },
+        {
+          "cell": "L18",
+          "row": 18,
+          "column": 12,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "M18",
+          "row": 18,
+          "column": 13,
+          "value": "振远(USD)",
+          "cached": "振远(USD)"
+        },
+        {
+          "cell": "N18",
+          "row": 18,
+          "column": 14,
+          "value": "AOS",
+          "cached": "AOS"
+        },
+        {
+          "cell": "O18",
+          "row": 18,
+          "column": 15,
+          "value": "11301000340R13",
+          "cached": "11301000340R13"
+        },
+        {
+          "cell": "P18",
+          "row": 18,
+          "column": 16,
+          "value": "贴片硅场效应管",
+          "cached": "贴片硅场效应管"
+        },
+        {
+          "cell": "Q18",
+          "row": 18,
+          "column": 17,
+          "value": "N;83A;30V;2.75mΩ;RDSON≤3.3mΩ;205A;DFN5X6;AOS;AON6354;",
+          "cached": "N;83A;30V;2.75mΩ;RDSON≤3.3mΩ;205A;DFN5X6;AOS;AON6354;"
+        },
+        {
+          "cell": "R18",
+          "row": 18,
+          "column": 18,
+          "value": "PCS",
+          "cached": "PCS"
+        },
+        {
+          "cell": "S18",
+          "row": 18,
+          "column": 19,
+          "value": 120000.0,
+          "cached": 120000.0
+        },
+        {
+          "cell": "T18",
+          "row": 18,
+          "column": 20,
+          "value": 0.1,
+          "cached": 0.1
+        },
+        {
+          "cell": "U18",
+          "row": 18,
+          "column": 21,
+          "value": 3000.0,
+          "cached": 3000.0
+        },
+        {
+          "cell": "V18",
+          "row": 18,
+          "column": 22,
+          "value": 300.0,
+          "cached": 300.0
+        },
+        {
+          "cell": "W18",
+          "row": 18,
+          "column": 23,
+          "value": "USD",
+          "cached": "USD"
+        },
+        {
+          "cell": "X18",
+          "row": 18,
+          "column": 24,
+          "value": "2606",
+          "cached": "2606"
+        },
+        {
+          "cell": "Y18",
+          "row": 18,
+          "column": 25,
+          "value": "CN",
+          "cached": "CN"
+        },
+        {
+          "cell": "Z18",
+          "row": 18,
+          "column": 26,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "AA18",
+          "row": 18,
+          "column": 27,
+          "value": 0.8,
+          "cached": 0.8
+        },
+        {
+          "cell": "AB18",
+          "row": 18,
+          "column": 28,
+          "value": 1.3,
+          "cached": 1.3
+        },
+        {
+          "cell": "AC18",
+          "row": 18,
+          "column": 29,
+          "value": "境外品牌(其它)",
+          "cached": "境外品牌(其它)"
+        },
+        {
+          "cell": "AD18",
+          "row": 18,
+          "column": 30,
+          "value": "BU4",
+          "cached": "BU4"
+        },
+        {
+          "cell": "AE18",
+          "row": 18,
+          "column": 31,
+          "value": "深圳欧陆通电子股份有限公司",
+          "cached": "深圳欧陆通电子股份有限公司"
+        },
+        {
+          "cell": "B19",
+          "row": 19,
+          "column": 2,
+          "value": "G326040173",
+          "cached": "G326040173"
+        },
+        {
+          "cell": "C19",
+          "row": 19,
+          "column": 3,
+          "value": 18.0,
+          "cached": 18.0
+        },
+        {
+          "cell": "D19",
+          "row": 19,
+          "column": 4,
+          "value": "报关中",
+          "cached": "报关中"
+        },
+        {
+          "cell": "K19",
+          "row": 19,
+          "column": 11,
+          "value": "I410-251101368",
+          "cached": "I410-251101368"
+        },
+        {
+          "cell": "L19",
+          "row": 19,
+          "column": 12,
+          "value": 2.0,
+          "cached": 2.0
+        },
+        {
+          "cell": "M19",
+          "row": 19,
+          "column": 13,
+          "value": "振远(USD)",
+          "cached": "振远(USD)"
+        },
+        {
+          "cell": "N19",
+          "row": 19,
+          "column": 14,
+          "value": "AOS",
+          "cached": "AOS"
+        },
+        {
+          "cell": "O19",
+          "row": 19,
+          "column": 15,
+          "value": "11301000050R13",
+          "cached": "11301000050R13"
+        },
+        {
+          "cell": "P19",
+          "row": 19,
+          "column": 16,
+          "value": "贴片硅场效应管",
+          "cached": "贴片硅场效应管"
+        },
+        {
+          "cell": "Q19",
+          "row": 19,
+          "column": 17,
+          "value": "N;150A;30V;1.4mΩ;RDSON≤1.7mΩ;340A;DFN5X6;AOS;AON6512;",
+          "cached": "N;150A;30V;1.4mΩ;RDSON≤1.7mΩ;340A;DFN5X6;AOS;AON6512;"
+        },
+        {
+          "cell": "R19",
+          "row": 19,
+          "column": 18,
+          "value": "PCS",
+          "cached": "PCS"
+        },
+        {
+          "cell": "S19",
+          "row": 19,
+          "column": 19,
+          "value": 102000.0,
+          "cached": 102000.0
+        },
+        {
+          "cell": "T19",
+          "row": 19,
+          "column": 20,
+          "value": 0.16,
+          "cached": 0.16
+        },
+        {
+          "cell": "U19",
+          "row": 19,
+          "column": 21,
+          "value": 6000.0,
+          "cached": 6000.0
+        },
+        {
+          "cell": "V19",
+          "row": 19,
+          "column": 22,
+          "value": 960.0,
+          "cached": 960.0
+        },
+        {
+          "cell": "W19",
+          "row": 19,
+          "column": 23,
+          "value": "USD",
+          "cached": "USD"
+        },
+        {
+          "cell": "X19",
+          "row": 19,
+          "column": 24,
+          "value": "2536",
+          "cached": "2536"
+        },
+        {
+          "cell": "Y19",
+          "row": 19,
+          "column": 25,
+          "value": "CN",
+          "cached": "CN"
+        },
+        {
+          "cell": "Z19",
+          "row": 19,
+          "column": 26,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "AA19",
+          "row": 19,
+          "column": 27,
+          "value": 1.63,
+          "cached": 1.63
+        },
+        {
+          "cell": "AB19",
+          "row": 19,
+          "column": 28,
+          "value": 2.13,
+          "cached": 2.13
+        },
+        {
+          "cell": "AC19",
+          "row": 19,
+          "column": 29,
+          "value": "境外品牌(其它)",
+          "cached": "境外品牌(其它)"
+        },
+        {
+          "cell": "AD19",
+          "row": 19,
+          "column": 30,
+          "value": "BU4",
+          "cached": "BU4"
+        },
+        {
+          "cell": "AE19",
+          "row": 19,
+          "column": 31,
+          "value": "深圳欧陆通电子股份有限公司",
+          "cached": "深圳欧陆通电子股份有限公司"
+        },
+        {
+          "cell": "B20",
+          "row": 20,
+          "column": 2,
+          "value": "DHI1126040800083",
+          "cached": "DHI1126040800083"
+        },
+        {
+          "cell": "C20",
+          "row": 20,
+          "column": 3,
+          "value": 19.0,
+          "cached": 19.0
+        },
+        {
+          "cell": "D20",
+          "row": 20,
+          "column": 4,
+          "value": "报关中",
+          "cached": "报关中"
+        },
+        {
+          "cell": "K20",
+          "row": 20,
+          "column": 11,
+          "value": "I410-250900982",
+          "cached": "I410-250900982"
+        },
+        {
+          "cell": "L20",
+          "row": 20,
+          "column": 12,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "M20",
+          "row": 20,
+          "column": 13,
+          "value": "威健",
+          "cached": "威健"
+        },
+        {
+          "cell": "N20",
+          "row": 20,
+          "column": 14,
+          "value": "DIODES",
+          "cached": "DIODES"
+        },
+        {
+          "cell": "O20",
+          "row": 20,
+          "column": 15,
+          "value": "11401000970R03",
+          "cached": "11401000970R03"
+        },
+        {
+          "cell": "P20",
+          "row": 20,
+          "column": 16,
+          "value": "贴片整流二极管",
+          "cached": "贴片整流二极管"
+        },
+        {
+          "cell": "Q20",
+          "row": 20,
+          "column": 17,
+          "value": "8A;800V;VF≤0.985V;200A;SMC;DIODES;S8KC-13;2.7us",
+          "cached": "8A;800V;VF≤0.985V;200A;SMC;DIODES;S8KC-13;2.7us"
+        },
+        {
+          "cell": "R20",
+          "row": 20,
+          "column": 18,
+          "value": "PCS",
+          "cached": "PCS"
+        },
+        {
+          "cell": "S20",
+          "row": 20,
+          "column": 19,
+          "value": 102000.0,
+          "cached": 102000.0
+        },
+        {
+          "cell": "T20",
+          "row": 20,
+          "column": 20,
+          "value": 0.067,
+          "cached": 0.067
+        },
+        {
+          "cell": "U20",
+          "row": 20,
+          "column": 21,
+          "value": 15000.0,
+          "cached": 15000.0
+        },
+        {
+          "cell": "V20",
+          "row": 20,
+          "column": 22,
+          "value": 1005.0,
+          "cached": 1005.0
+        },
+        {
+          "cell": "W20",
+          "row": 20,
+          "column": 23,
+          "value": "USD",
+          "cached": "USD"
+        },
+        {
+          "cell": "X20",
+          "row": 20,
+          "column": 24,
+          "value": "2525",
+          "cached": "2525"
+        },
+        {
+          "cell": "Y20",
+          "row": 20,
+          "column": 25,
+          "value": "TW,CN",
+          "cached": "TW,CN"
+        },
+        {
+          "cell": "Z20",
+          "row": 20,
+          "column": 26,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "AA20",
+          "row": 20,
+          "column": 27,
+          "value": 6.36,
+          "cached": 6.36
+        },
+        {
+          "cell": "AB20",
+          "row": 20,
+          "column": 28,
+          "value": 7.0,
+          "cached": 7.0
+        },
+        {
+          "cell": "AC20",
+          "row": 20,
+          "column": 29,
+          "value": "境外品牌(其它)",
+          "cached": "境外品牌(其它)"
+        },
+        {
+          "cell": "AD20",
+          "row": 20,
+          "column": 30,
+          "value": "BU4",
+          "cached": "BU4"
+        },
+        {
+          "cell": "AE20",
+          "row": 20,
+          "column": 31,
+          "value": "深圳欧陆通电子股份有限公司",
+          "cached": "深圳欧陆通电子股份有限公司"
+        },
+        {
+          "cell": "B21",
+          "row": 21,
+          "column": 2,
+          "value": "DCI1126040700023",
+          "cached": "DCI1126040700023"
+        },
+        {
+          "cell": "C21",
+          "row": 21,
+          "column": 3,
+          "value": 20.0,
+          "cached": 20.0
+        },
+        {
+          "cell": "D21",
+          "row": 21,
+          "column": 4,
+          "value": "报关中",
+          "cached": "报关中"
+        },
+        {
+          "cell": "K21",
+          "row": 21,
+          "column": 11,
+          "value": "I410-250900959",
+          "cached": "I410-250900959"
+        },
+        {
+          "cell": "L21",
+          "row": 21,
+          "column": 12,
+          "value": 3.0,
+          "cached": 3.0
+        },
+        {
+          "cell": "M21",
+          "row": 21,
+          "column": 13,
+          "value": "威健",
+          "cached": "威健"
+        },
+        {
+          "cell": "N21",
+          "row": 21,
+          "column": 14,
+          "value": "Infineon",
+          "cached": "Infineon"
+        },
+        {
+          "cell": "O21",
+          "row": 21,
+          "column": 15,
+          "value": "11301000080R02",
+          "cached": "11301000080R02"
+        },
+        {
+          "cell": "P21",
+          "row": 21,
+          "column": 16,
+          "value": "贴片硅场效应管",
+          "cached": "贴片硅场效应管"
+        },
+        {
+          "cell": "Q21",
+          "row": 21,
+          "column": 17,
+          "value": "N;100A;40V;0.85mΩ;RDSON≤1.0mΩ;400A;TDSON-8FL;Infineon;BSC010N04LS;",
+          "cached": "N;100A;40V;0.85mΩ;RDSON≤1.0mΩ;400A;TDSON-8FL;Infineon;BSC010N04LS;"
+        },
+        {
+          "cell": "R21",
+          "row": 21,
+          "column": 18,
+          "value": "PCS",
+          "cached": "PCS"
+        },
+        {
+          "cell": "S21",
+          "row": 21,
+          "column": 19,
+          "value": 125000.0,
+          "cached": 125000.0
+        },
+        {
+          "cell": "T21",
+          "row": 21,
+          "column": 20,
+          "value": 0.28,
+          "cached": 0.28
+        },
+        {
+          "cell": "U21",
+          "row": 21,
+          "column": 21,
+          "value": 5000.0,
+          "cached": 5000.0
+        },
+        {
+          "cell": "V21",
+          "row": 21,
+          "column": 22,
+          "value": 1400.0,
+          "cached": 1400.0
+        },
+        {
+          "cell": "W21",
+          "row": 21,
+          "column": 23,
+          "value": "USD",
+          "cached": "USD"
+        },
+        {
+          "cell": "X21",
+          "row": 21,
+          "column": 24,
+          "value": "2604",
+          "cached": "2604"
+        },
+        {
+          "cell": "Y21",
+          "row": 21,
+          "column": 25,
+          "value": "CN",
+          "cached": "CN"
+        },
+        {
+          "cell": "Z21",
+          "row": 21,
+          "column": 26,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "AA21",
+          "row": 21,
+          "column": 27,
+          "value": 1.33,
+          "cached": 1.33
+        },
+        {
+          "cell": "AB21",
+          "row": 21,
+          "column": 28,
+          "value": 1.7,
+          "cached": 1.7
+        },
+        {
+          "cell": "AC21",
+          "row": 21,
+          "column": 29,
+          "value": "境外品牌(其它)",
+          "cached": "境外品牌(其它)"
+        },
+        {
+          "cell": "AD21",
+          "row": 21,
+          "column": 30,
+          "value": "BU4",
+          "cached": "BU4"
+        },
+        {
+          "cell": "AE21",
+          "row": 21,
+          "column": 31,
+          "value": "深圳欧陆通电子股份有限公司",
+          "cached": "深圳欧陆通电子股份有限公司"
+        },
+        {
+          "cell": "B22",
+          "row": 22,
+          "column": 2,
+          "value": "G326040173",
+          "cached": "G326040173"
+        },
+        {
+          "cell": "C22",
+          "row": 22,
+          "column": 3,
+          "value": 21.0,
+          "cached": 21.0
+        },
+        {
+          "cell": "D22",
+          "row": 22,
+          "column": 4,
+          "value": "报关中",
+          "cached": "报关中"
+        },
+        {
+          "cell": "K22",
+          "row": 22,
+          "column": 11,
+          "value": "I410-250701122",
+          "cached": "I410-250701122"
+        },
+        {
+          "cell": "L22",
+          "row": 22,
+          "column": 12,
+          "value": 4.0,
+          "cached": 4.0
+        },
+        {
+          "cell": "M22",
+          "row": 22,
+          "column": 13,
+          "value": "振远(USD)",
+          "cached": "振远(USD)"
+        },
+        {
+          "cell": "N22",
+          "row": 22,
+          "column": 14,
+          "value": "AOS",
+          "cached": "AOS"
+        },
+        {
+          "cell": "O22",
+          "row": 22,
+          "column": 15,
+          "value": "11301000130R13",
+          "cached": "11301000130R13"
+        },
+        {
+          "cell": "P22",
+          "row": 22,
+          "column": 16,
+          "value": "贴片硅场效应管",
+          "cached": "贴片硅场效应管"
+        },
+        {
+          "cell": "Q22",
+          "row": 22,
+          "column": 17,
+          "value": "N;2.8A;800V;3.8Ω;RDSON≤4.8Ω;9A;TO-252;AOS;AOD3N80;工业级;",
+          "cached": "N;2.8A;800V;3.8Ω;RDSON≤4.8Ω;9A;TO-252;AOS;AOD3N80;工业级;"
+        },
+        {
+          "cell": "R22",
+          "row": 22,
+          "column": 18,
+          "value": "PCS",
+          "cached": "PCS"
+        },
+        {
+          "cell": "S22",
+          "row": 22,
+          "column": 19,
+          "value": 15000.0,
+          "cached": 15000.0
+        },
+        {
+          "cell": "T22",
+          "row": 22,
+          "column": 20,
+          "value": 0.34,
+          "cached": 0.34
+        },
+        {
+          "cell": "U22",
+          "row": 22,
+          "column": 21,
+          "value": 2500.0,
+          "cached": 2500.0
+        },
+        {
+          "cell": "V22",
+          "row": 22,
+          "column": 22,
+          "value": 850.0,
+          "cached": 850.0
+        },
+        {
+          "cell": "W22",
+          "row": 22,
+          "column": 23,
+          "value": "USD",
+          "cached": "USD"
+        },
+        {
+          "cell": "X22",
+          "row": 22,
+          "column": 24,
+          "value": "2504",
+          "cached": "2504"
+        },
+        {
+          "cell": "Y22",
+          "row": 22,
+          "column": 25,
+          "value": "CN",
+          "cached": "CN"
+        },
+        {
+          "cell": "Z22",
+          "row": 22,
+          "column": 26,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "AA22",
+          "row": 22,
+          "column": 27,
+          "value": 1.94,
+          "cached": 1.94
+        },
+        {
+          "cell": "AB22",
+          "row": 22,
+          "column": 28,
+          "value": 2.44,
+          "cached": 2.44
+        },
+        {
+          "cell": "AC22",
+          "row": 22,
+          "column": 29,
+          "value": "境外品牌(其它)",
+          "cached": "境外品牌(其它)"
+        },
+        {
+          "cell": "AD22",
+          "row": 22,
+          "column": 30,
+          "value": "BU4",
+          "cached": "BU4"
+        },
+        {
+          "cell": "AE22",
+          "row": 22,
+          "column": 31,
+          "value": "深圳欧陆通电子股份有限公司",
+          "cached": "深圳欧陆通电子股份有限公司"
+        },
+        {
+          "cell": "B23",
+          "row": 23,
+          "column": 2,
+          "value": "OM2604080064",
+          "cached": "OM2604080064"
+        },
+        {
+          "cell": "C23",
+          "row": 23,
+          "column": 3,
+          "value": 22.0,
+          "cached": 22.0
+        },
+        {
+          "cell": "D23",
+          "row": 23,
+          "column": 4,
+          "value": "报关中",
+          "cached": "报关中"
+        },
+        {
+          "cell": "K23",
+          "row": 23,
+          "column": 11,
+          "value": "I410-250700609",
+          "cached": "I410-250700609"
+        },
+        {
+          "cell": "L23",
+          "row": 23,
+          "column": 12,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "M23",
+          "row": 23,
+          "column": 13,
+          "value": "增你强(USD)",
+          "cached": "增你强(USD)"
+        },
+        {
+          "cell": "N23",
+          "row": 23,
+          "column": 14,
+          "value": "DIODES",
+          "cached": "DIODES"
+        },
+        {
+          "cell": "O23",
+          "row": 23,
+          "column": 15,
+          "value": "11404001920R03",
+          "cached": "11404001920R03"
+        },
+        {
+          "cell": "P23",
+          "row": 23,
+          "column": 16,
+          "value": "插件肖特基二极管",
+          "cached": "插件肖特基二极管"
+        },
+        {
+          "cell": "Q23",
+          "row": 23,
+          "column": 17,
+          "value": "10A;60V;VF≤0.57V;150A;TO-220AB;DIODES;SBR10U60CT;",
+          "cached": "10A;60V;VF≤0.57V;150A;TO-220AB;DIODES;SBR10U60CT;"
+        },
+        {
+          "cell": "R23",
+          "row": 23,
+          "column": 18,
+          "value": "PCS",
+          "cached": "PCS"
+        },
+        {
+          "cell": "S23",
+          "row": 23,
+          "column": 19,
+          "value": 1000.0,
+          "cached": 1000.0
+        },
+        {
+          "cell": "T23",
+          "row": 23,
+          "column": 20,
+          "value": 0.19,
+          "cached": 0.19
+        },
+        {
+          "cell": "U23",
+          "row": 23,
+          "column": 21,
+          "value": 100.0,
+          "cached": 100.0
+        },
+        {
+          "cell": "V23",
+          "row": 23,
+          "column": 22,
+          "value": 19.0,
+          "cached": 19.0
+        },
+        {
+          "cell": "W23",
+          "row": 23,
+          "column": 23,
+          "value": "USD",
+          "cached": "USD"
+        },
+        {
+          "cell": "X23",
+          "row": 23,
+          "column": 24,
+          "value": "2316",
+          "cached": "2316"
+        },
+        {
+          "cell": "Y23",
+          "row": 23,
+          "column": 25,
+          "value": "CN",
+          "cached": "CN"
+        },
+        {
+          "cell": "Z23",
+          "row": 23,
+          "column": 26,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "AA23",
+          "row": 23,
+          "column": 27,
+          "value": 0.19,
+          "cached": 0.19
+        },
+        {
+          "cell": "AB23",
+          "row": 23,
+          "column": 28,
+          "value": 0.95,
+          "cached": 0.95
+        },
+        {
+          "cell": "AC23",
+          "row": 23,
+          "column": 29,
+          "value": "境外品牌(其它)",
+          "cached": "境外品牌(其它)"
+        },
+        {
+          "cell": "AD23",
+          "row": 23,
+          "column": 30,
+          "value": "BU4",
+          "cached": "BU4"
+        },
+        {
+          "cell": "AE23",
+          "row": 23,
+          "column": 31,
+          "value": "深圳欧陆通电子股份有限公司",
+          "cached": "深圳欧陆通电子股份有限公司"
+        },
+        {
+          "cell": "B24",
+          "row": 24,
+          "column": 2,
+          "value": "94310452",
+          "cached": "94310452"
+        },
+        {
+          "cell": "C24",
+          "row": 24,
+          "column": 3,
+          "value": 23.0,
+          "cached": 23.0
+        },
+        {
+          "cell": "D24",
+          "row": 24,
+          "column": 4,
+          "value": "报关中",
+          "cached": "报关中"
+        },
+        {
+          "cell": "K24",
+          "row": 24,
+          "column": 11,
+          "value": "I410-250600478",
+          "cached": "I410-250600478"
+        },
+        {
+          "cell": "L24",
+          "row": 24,
+          "column": 12,
+          "value": 5.0,
+          "cached": 5.0
+        },
+        {
+          "cell": "M24",
+          "row": 24,
+          "column": 13,
+          "value": "WT(文晔)",
+          "cached": "WT(文晔)"
+        },
+        {
+          "cell": "N24",
+          "row": 24,
+          "column": 14,
+          "value": "ST",
+          "cached": "ST"
+        },
+        {
+          "cell": "O24",
+          "row": 24,
+          "column": 15,
+          "value": "11301000140R01",
+          "cached": "11301000140R01"
+        },
+        {
+          "cell": "P24",
+          "row": 24,
+          "column": 16,
+          "value": "贴片硅场效应管",
+          "cached": "贴片硅场效应管"
+        },
+        {
+          "cell": "Q24",
+          "row": 24,
+          "column": 17,
+          "value": "N;3.0A;800V;2.1Ω;RDSON≤2.5Ω;12A;DPAK;ST;STD4N80K5;工业级;",
+          "cached": "N;3.0A;800V;2.1Ω;RDSON≤2.5Ω;12A;DPAK;ST;STD4N80K5;工业级;"
+        },
+        {
+          "cell": "R24",
+          "row": 24,
+          "column": 18,
+          "value": "PCS",
+          "cached": "PCS"
+        },
+        {
+          "cell": "S24",
+          "row": 24,
+          "column": 19,
+          "value": 5000.0,
+          "cached": 5000.0
+        },
+        {
+          "cell": "T24",
+          "row": 24,
+          "column": 20,
+          "value": 0.31,
+          "cached": 0.31
+        },
+        {
+          "cell": "U24",
+          "row": 24,
+          "column": 21,
+          "value": 2500.0,
+          "cached": 2500.0
+        },
+        {
+          "cell": "V24",
+          "row": 24,
+          "column": 22,
+          "value": 775.0,
+          "cached": 775.0
+        },
+        {
+          "cell": "W24",
+          "row": 24,
+          "column": 23,
+          "value": "USD",
+          "cached": "USD"
+        },
+        {
+          "cell": "X24",
+          "row": 24,
+          "column": 24,
+          "value": "2546",
+          "cached": "2546"
+        },
+        {
+          "cell": "Y24",
+          "row": 24,
+          "column": 25,
+          "value": "CN",
+          "cached": "CN"
+        },
+        {
+          "cell": "Z24",
+          "row": 24,
+          "column": 26,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "AA24",
+          "row": 24,
+          "column": 27,
+          "value": 0.75,
+          "cached": 0.75
+        },
+        {
+          "cell": "AB24",
+          "row": 24,
+          "column": 28,
+          "value": 1.97,
+          "cached": 1.97
+        },
+        {
+          "cell": "AC24",
+          "row": 24,
+          "column": 29,
+          "value": "境外品牌(其它)",
+          "cached": "境外品牌(其它)"
+        },
+        {
+          "cell": "AD24",
+          "row": 24,
+          "column": 30,
+          "value": "BU4",
+          "cached": "BU4"
+        },
+        {
+          "cell": "AE24",
+          "row": 24,
+          "column": 31,
+          "value": "深圳欧陆通电子股份有限公司",
+          "cached": "深圳欧陆通电子股份有限公司"
+        },
+        {
+          "cell": "B25",
+          "row": 25,
+          "column": 2,
+          "value": "CM00022797",
+          "cached": "CM00022797"
+        },
+        {
+          "cell": "C25",
+          "row": 25,
+          "column": 3,
+          "value": 24.0,
+          "cached": 24.0
+        },
+        {
+          "cell": "D25",
+          "row": 25,
+          "column": 4,
+          "value": "报关中",
+          "cached": "报关中"
+        },
+        {
+          "cell": "K25",
+          "row": 25,
+          "column": 11,
+          "value": "I410-250600461",
+          "cached": "I410-250600461"
+        },
+        {
+          "cell": "L25",
+          "row": 25,
+          "column": 12,
+          "value": 3.0,
+          "cached": 3.0
+        },
+        {
+          "cell": "M25",
+          "row": 25,
+          "column": 13,
+          "value": "PROMASTER",
+          "cached": "PROMASTER"
+        },
+        {
+          "cell": "N25",
+          "row": 25,
+          "column": 14,
+          "value": "Microchip",
+          "cached": "Microchip"
+        },
+        {
+          "cell": "O25",
+          "row": 25,
+          "column": 15,
+          "value": "11105006530R01",
+          "cached": "11105006530R01"
+        },
+        {
+          "cell": "P25",
+          "row": 25,
+          "column": 16,
+          "value": "贴片IC",
+          "cached": "贴片IC"
+        },
+        {
+          "cell": "Q25",
+          "row": 25,
+          "column": 17,
+          "value": "单片机(MCU);TQFP44;-40℃-+85℃;A4;Microchip;PIC18F46K22-I/PT;A4;MCU",
+          "cached": "单片机(MCU);TQFP44;-40℃-+85℃;A4;Microchip;PIC18F46K22-I/PT;A4;MCU"
+        },
+        {
+          "cell": "R25",
+          "row": 25,
+          "column": 18,
+          "value": "PCS",
+          "cached": "PCS"
+        },
+        {
+          "cell": "S25",
+          "row": 25,
+          "column": 19,
+          "value": 120000.0,
+          "cached": 120000.0
+        },
+        {
+          "cell": "T25",
+          "row": 25,
+          "column": 20,
+          "value": 1.295,
+          "cached": 1.295
+        },
+        {
+          "cell": "U25",
+          "row": 25,
+          "column": 21,
+          "value": 3600.0,
+          "cached": 3600.0
+        },
+        {
+          "cell": "V25",
+          "row": 25,
+          "column": 22,
+          "value": 4662.0,
+          "cached": 4662.0
+        },
+        {
+          "cell": "W25",
+          "row": 25,
+          "column": 23,
+          "value": "USD",
+          "cached": "USD"
+        },
+        {
+          "cell": "X25",
+          "row": 25,
+          "column": 24,
+          "value": "2530",
+          "cached": "2530"
+        },
+        {
+          "cell": "Y25",
+          "row": 25,
+          "column": 25,
+          "value": "TH",
+          "cached": "TH"
+        },
+        {
+          "cell": "Z25",
+          "row": 25,
+          "column": 26,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "AA25",
+          "row": 25,
+          "column": 27,
+          "value": 4.0,
+          "cached": 4.0
+        },
+        {
+          "cell": "AB25",
+          "row": 25,
+          "column": 28,
+          "value": 4.9,
+          "cached": 4.9
+        },
+        {
+          "cell": "AC25",
+          "row": 25,
+          "column": 29,
+          "value": "境外品牌(其它)",
+          "cached": "境外品牌(其它)"
+        },
+        {
+          "cell": "AD25",
+          "row": 25,
+          "column": 30,
+          "value": "BU4",
+          "cached": "BU4"
+        },
+        {
+          "cell": "AE25",
+          "row": 25,
+          "column": 31,
+          "value": "深圳欧陆通电子股份有限公司",
+          "cached": "深圳欧陆通电子股份有限公司"
+        },
+        {
+          "cell": "B26",
+          "row": 26,
+          "column": 2,
+          "value": "94316802",
+          "cached": "94316802"
+        },
+        {
+          "cell": "C26",
+          "row": 26,
+          "column": 3,
+          "value": 25.0,
+          "cached": 25.0
+        },
+        {
+          "cell": "D26",
+          "row": 26,
+          "column": 4,
+          "value": "报关中",
+          "cached": "报关中"
+        },
+        {
+          "cell": "K26",
+          "row": 26,
+          "column": 11,
+          "value": "I410-250502161",
+          "cached": "I410-250502161"
+        },
+        {
+          "cell": "L26",
+          "row": 26,
+          "column": 12,
+          "value": 2.0,
+          "cached": 2.0
+        },
+        {
+          "cell": "M26",
+          "row": 26,
+          "column": 13,
+          "value": "WT(文晔)",
+          "cached": "WT(文晔)"
+        },
+        {
+          "cell": "N26",
+          "row": 26,
+          "column": 14,
+          "value": "ST",
+          "cached": "ST"
+        },
+        {
+          "cell": "O26",
+          "row": 26,
+          "column": 15,
+          "value": "11105008550R02",
+          "cached": "11105008550R02"
+        },
+        {
+          "cell": "P26",
+          "row": 26,
+          "column": 16,
+          "value": "贴片IC",
+          "cached": "贴片IC"
+        },
+        {
+          "cell": "Q26",
+          "row": 26,
+          "column": 17,
+          "value": "单片机(MCU);LQFP-80P;-40℃-+85℃;X;ST;STM32G474MCT6TR;X;MCU;256KB",
+          "cached": "单片机(MCU);LQFP-80P;-40℃-+85℃;X;ST;STM32G474MCT6TR;X;MCU;256KB"
+        },
+        {
+          "cell": "R26",
+          "row": 26,
+          "column": 18,
+          "value": "PCS",
+          "cached": "PCS"
+        },
+        {
+          "cell": "S26",
+          "row": 26,
+          "column": 19,
+          "value": 18564.0,
+          "cached": 18564.0
+        },
+        {
+          "cell": "T26",
+          "row": 26,
+          "column": 20,
+          "value": 1.58,
+          "cached": 1.58
+        },
+        {
+          "cell": "U26",
+          "row": 26,
+          "column": 21,
+          "value": 714.0,
+          "cached": 714.0
+        },
+        {
+          "cell": "V26",
+          "row": 26,
+          "column": 22,
+          "value": 1128.12,
+          "cached": 1128.12
+        },
+        {
+          "cell": "W26",
+          "row": 26,
+          "column": 23,
+          "value": "USD",
+          "cached": "USD"
+        },
+        {
+          "cell": "X26",
+          "row": 26,
+          "column": 24,
+          "value": "2604",
+          "cached": "2604"
+        },
+        {
+          "cell": "Y26",
+          "row": 26,
+          "column": 25,
+          "value": "CN",
+          "cached": "CN"
+        },
+        {
+          "cell": "Z26",
+          "row": 26,
+          "column": 26,
+          "value": 1.0,
+          "cached": 1.0
+        },
+        {
+          "cell": "AA26",
+          "row": 26,
+          "column": 27,
+          "value": 0.358,
+          "cached": 0.358
+        },
+        {
+          "cell": "AB26",
+          "row": 26,
+          "column": 28,
+          "value": 2.16,
+          "cached": 2.16
+        },
+        {
+          "cell": "AC26",
+          "row": 26,
+          "column": 29,
+          "value": "境外品牌(其它)",
+          "cached": "境外品牌(其它)"
+        },
+        {
+          "cell": "AD26",
+          "row": 26,
+          "column": 30,
+          "value": "BU4",
+          "cached": "BU4"
+        },
+        {
+          "cell": "AE26",
+          "row": 26,
+          "column": 31,
+          "value": "深圳欧陆通电子股份有限公司",
+          "cached": "深圳欧陆通电子股份有限公司"
+        }
+      ]
+    }
+  ]
+}

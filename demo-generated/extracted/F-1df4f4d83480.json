@@ -1,0 +1,541 @@
+{
+  "id": "F-1df4f4d83480",
+  "path": "真实整单样本/英卡-抽+整/委托文件/YK-CGDD260625131-1（抽）/(湘海 )报关委托书T615 8-5.xls",
+  "sampleId": "英卡-抽+整",
+  "sha256": "30af275546c2e11591750b96dc7dd8c8065b9ce67708121305d084d68dcddd94",
+  "size": 28672,
+  "extension": ".xls",
+  "role": "entrustment_material",
+  "sheets": [
+    {
+      "name": "报关资料",
+      "rows": 46,
+      "columns": 23,
+      "merged": [
+        [
+          0,
+          1,
+          0,
+          18
+        ],
+        [
+          1,
+          2,
+          0,
+          18
+        ],
+        [
+          13,
+          14,
+          0,
+          10
+        ],
+        [
+          23,
+          24,
+          2,
+          4
+        ],
+        [
+          25,
+          26,
+          2,
+          4
+        ],
+        [
+          6,
+          12,
+          18,
+          19
+        ]
+      ],
+      "cells": [
+        {
+          "row": 1,
+          "column": 1,
+          "value": "委        托         进      口      货      物      确      认      单"
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "value": "C  O  N  F  I  R  M A  T  I  O  N"
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "value": "委托方："
+        },
+        {
+          "row": 3,
+          "column": 3,
+          "value": "深圳市英卡科技有限公司"
+        },
+        {
+          "row": 4,
+          "column": 1,
+          "value": "代理方："
+        },
+        {
+          "row": 4,
+          "column": 3,
+          "value": "深圳市九立供应链股份有限公司"
+        },
+        {
+          "row": 6,
+          "column": 1,
+          "value": "序号"
+        },
+        {
+          "row": 6,
+          "column": 2,
+          "value": "供应商"
+        },
+        {
+          "row": 6,
+          "column": 3,
+          "value": "品名"
+        },
+        {
+          "row": 6,
+          "column": 4,
+          "value": "品牌"
+        },
+        {
+          "row": 6,
+          "column": 5,
+          "value": " P.O"
+        },
+        {
+          "row": 6,
+          "column": 6,
+          "value": "YK  P.O"
+        },
+        {
+          "row": 6,
+          "column": 7,
+          "value": " P/N"
+        },
+        {
+          "row": 6,
+          "column": 8,
+          "value": "型号"
+        },
+        {
+          "row": 6,
+          "column": 9,
+          "value": "商品描述(产品功能、用途等)"
+        },
+        {
+          "row": 6,
+          "column": 10,
+          "value": "产地"
+        },
+        {
+          "row": 6,
+          "column": 11,
+          "value": "单位"
+        },
+        {
+          "row": 6,
+          "column": 12,
+          "value": "数量"
+        },
+        {
+          "row": 6,
+          "column": 14,
+          "value": "报关单价（USD）"
+        },
+        {
+          "row": 6,
+          "column": 15,
+          "value": "报关总价（USD）"
+        },
+        {
+          "row": 6,
+          "column": 16,
+          "value": "箱数"
+        },
+        {
+          "row": 6,
+          "column": 17,
+          "value": "净重(kg)"
+        },
+        {
+          "row": 6,
+          "column": 18,
+          "value": "毛重(kg)"
+        },
+        {
+          "row": 6,
+          "column": 19,
+          "value": "预计送货时间（送货要求）"
+        },
+        {
+          "row": 7,
+          "column": 1,
+          "value": 1.0
+        },
+        {
+          "row": 7,
+          "column": 2,
+          "value": "湘海"
+        },
+        {
+          "row": 7,
+          "column": 3,
+          "value": "集成电路"
+        },
+        {
+          "row": 7,
+          "column": 4,
+          "value": "UNISOC"
+        },
+        {
+          "row": 7,
+          "column": 5,
+          "value": "YH-CGDD260624138"
+        },
+        {
+          "row": 7,
+          "column": 6,
+          "value": "YK-CGDD260625131"
+        },
+        {
+          "row": 7,
+          "column": 7,
+          "value": "03.02.01.1000044"
+        },
+        {
+          "row": 7,
+          "column": 8,
+          "value": "UMS9230E"
+        },
+        {
+          "row": 7,
+          "column": 9,
+          "value": "平板电脑"
+        },
+        {
+          "row": 7,
+          "column": 10,
+          "value": "CHINA"
+        },
+        {
+          "row": 7,
+          "column": 11,
+          "value": "PCS"
+        },
+        {
+          "row": 7,
+          "column": 12,
+          "value": 60000.0
+        },
+        {
+          "row": 7,
+          "column": 13,
+          "value": 6.9
+        },
+        {
+          "row": 7,
+          "column": 14,
+          "value": 6.9138
+        },
+        {
+          "row": 7,
+          "column": 15,
+          "value": 414828.0
+        },
+        {
+          "row": 7,
+          "column": 16,
+          "value": 8.0
+        },
+        {
+          "row": 7,
+          "column": 17,
+          "value": 52.8
+        },
+        {
+          "row": 7,
+          "column": 18,
+          "value": 58.39999999999999
+        },
+        {
+          "row": 7,
+          "column": 19,
+          "value": "正常送货"
+        },
+        {
+          "row": 8,
+          "column": 1,
+          "value": 2.0
+        },
+        {
+          "row": 8,
+          "column": 2,
+          "value": "湘海"
+        },
+        {
+          "row": 8,
+          "column": 3,
+          "value": "集成电路"
+        },
+        {
+          "row": 8,
+          "column": 4,
+          "value": "SPREADTRUM"
+        },
+        {
+          "row": 8,
+          "column": 5,
+          "value": "YH-CGDD260624138"
+        },
+        {
+          "row": 8,
+          "column": 6,
+          "value": "YK-CGDD260625131"
+        },
+        {
+          "row": 8,
+          "column": 7,
+          "value": "03.04.02.1600012"
+        },
+        {
+          "row": 8,
+          "column": 8,
+          "value": "UMP510G1"
+        },
+        {
+          "row": 8,
+          "column": 9,
+          "value": "平板电脑"
+        },
+        {
+          "row": 8,
+          "column": 10,
+          "value": "CHINA"
+        },
+        {
+          "row": 8,
+          "column": 11,
+          "value": "PCS"
+        },
+        {
+          "row": 8,
+          "column": 12,
+          "value": 60000.0
+        },
+        {
+          "row": 8,
+          "column": 13,
+          "value": 0.8
+        },
+        {
+          "row": 8,
+          "column": 14,
+          "value": 0.8016000000000001
+        },
+        {
+          "row": 8,
+          "column": 15,
+          "value": 48096.00000000001
+        },
+        {
+          "row": 8,
+          "column": 16,
+          "value": 4.0
+        },
+        {
+          "row": 8,
+          "column": 17,
+          "value": 23.6
+        },
+        {
+          "row": 8,
+          "column": 18,
+          "value": 26.4
+        },
+        {
+          "row": 9,
+          "column": 1,
+          "value": 3.0
+        },
+        {
+          "row": 9,
+          "column": 2,
+          "value": "湘海"
+        },
+        {
+          "row": 9,
+          "column": 3,
+          "value": "集成电路"
+        },
+        {
+          "row": 9,
+          "column": 4,
+          "value": "UNISOC"
+        },
+        {
+          "row": 9,
+          "column": 5,
+          "value": "YH-CGDD260624138"
+        },
+        {
+          "row": 9,
+          "column": 6,
+          "value": "YK-CGDD260625131"
+        },
+        {
+          "row": 9,
+          "column": 7,
+          "value": "03.04.06.1000090"
+        },
+        {
+          "row": 9,
+          "column": 8,
+          "value": "UMW2631"
+        },
+        {
+          "row": 9,
+          "column": 9,
+          "value": "平板电脑"
+        },
+        {
+          "row": 9,
+          "column": 10,
+          "value": "CHINA"
+        },
+        {
+          "row": 9,
+          "column": 11,
+          "value": "PCS"
+        },
+        {
+          "row": 9,
+          "column": 12,
+          "value": 60000.0
+        },
+        {
+          "row": 9,
+          "column": 13,
+          "value": 0.8
+        },
+        {
+          "row": 9,
+          "column": 14,
+          "value": 0.8016000000000001
+        },
+        {
+          "row": 9,
+          "column": 15,
+          "value": 48096.00000000001
+        },
+        {
+          "row": 9,
+          "column": 16,
+          "value": 4.0
+        },
+        {
+          "row": 9,
+          "column": 17,
+          "value": 18.0
+        },
+        {
+          "row": 9,
+          "column": 18,
+          "value": 20.8
+        },
+        {
+          "row": 14,
+          "column": 11,
+          "value": 0.0
+        },
+        {
+          "row": 14,
+          "column": 12,
+          "value": 180000.0
+        },
+        {
+          "row": 14,
+          "column": 15,
+          "value": 511020.0
+        },
+        {
+          "row": 14,
+          "column": 16,
+          "value": 16.0
+        },
+        {
+          "row": 14,
+          "column": 17,
+          "value": 94.4
+        },
+        {
+          "row": 14,
+          "column": 18,
+          "value": 105.59999999999998
+        },
+        {
+          "row": 15,
+          "column": 1,
+          "value": "说明: 1） "
+        },
+        {
+          "row": 15,
+          "column": 3,
+          "value": "请选择香港交货方式：R A送至代理方香港仓库              £  B委托代理方代为提货"
+        },
+        {
+          "row": 16,
+          "column": 3,
+          "value": "请选择国内交货方式：£ A客户在代理方深圳仓库自提    R B运输至客户指定地点    £C代为客户办理国内运输    "
+        },
+        {
+          "row": 17,
+          "column": 1,
+          "value": "         2）"
+        },
+        {
+          "row": 17,
+          "column": 3,
+          "value": "香港详细提货地址（如需代为提货）及联系人：无需自提"
+        },
+        {
+          "row": 18,
+          "column": 3,
+          "value": "国内详细收货地址/收货人/电话/运输方式：深圳市宝安区航城街道鹤洲社区鸿荣源鸿翔工业区4栋5楼,联系人秦忠谦：13423809078"
+        },
+        {
+          "row": 21,
+          "column": 1,
+          "value": "       3）"
+        },
+        {
+          "row": 21,
+          "column": 3,
+          "value": "供应商名称/电话/联系人："
+        },
+        {
+          "row": 21,
+          "column": 5,
+          "value": "湘海电子（香港）有限公司"
+        },
+        {
+          "row": 24,
+          "column": 3,
+          "value": "委托方签字并盖章确认："
+        },
+        {
+          "row": 25,
+          "column": 8,
+          "value": 46239.0
+        },
+        {
+          "row": 26,
+          "column": 3,
+          "value": "Authorized Signature"
+        }
+      ]
+    }
+  ]
+}

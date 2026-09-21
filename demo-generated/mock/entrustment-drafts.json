@@ -1,0 +1,560 @@
+[
+  {
+    "id": "D-3c3cc10bd26b",
+    "sampleId": "2025YBT010-2",
+    "fileId": "F-3c3cc10bd26b",
+    "customerId": "C-89aa660b4b46",
+    "customerStatus": "已识别",
+    "lineIds": [
+      "D-3c3cc10bd26b-R007",
+      "D-3c3cc10bd26b-R008"
+    ],
+    "status": "待核对",
+    "loaded": false,
+    "version": 0,
+    "sharedMeasurements": [],
+    "supportingFileIds": []
+  },
+  {
+    "id": "D-8181f9edc198",
+    "sampleId": "2026(DG)ZW001",
+    "fileId": "F-8181f9edc198",
+    "customerId": "UNKNOWN",
+    "customerStatus": "待补客户信息",
+    "lineIds": [
+      "D-8181f9edc198-R002",
+      "D-8181f9edc198-R003",
+      "D-8181f9edc198-R004",
+      "D-8181f9edc198-R005",
+      "D-8181f9edc198-R006",
+      "D-8181f9edc198-R007"
+    ],
+    "status": "待核对",
+    "loaded": false,
+    "version": 0,
+    "sharedMeasurements": [],
+    "supportingFileIds": []
+  },
+  {
+    "id": "D-b436a16434a4",
+    "sampleId": "2026(DG)ZW003",
+    "fileId": "F-b436a16434a4",
+    "customerId": "UNKNOWN",
+    "customerStatus": "待补客户信息",
+    "lineIds": [
+      "D-b436a16434a4-R002",
+      "D-b436a16434a4-R003",
+      "D-b436a16434a4-R004",
+      "D-b436a16434a4-R005",
+      "D-b436a16434a4-R006"
+    ],
+    "status": "待核对",
+    "loaded": false,
+    "version": 0,
+    "sharedMeasurements": [],
+    "supportingFileIds": []
+  },
+  {
+    "id": "D-ab6bfdee3e54",
+    "sampleId": "2026(DG)ZW050",
+    "fileId": "F-ab6bfdee3e54",
+    "customerId": "UNKNOWN",
+    "customerStatus": "待补客户信息",
+    "lineIds": [
+      "D-ab6bfdee3e54-R002"
+    ],
+    "status": "待核对",
+    "loaded": false,
+    "version": 0,
+    "sharedMeasurements": [],
+    "supportingFileIds": []
+  },
+  {
+    "id": "D-0971c3fd7c49",
+    "sampleId": "2026ACSY003",
+    "fileId": "F-0971c3fd7c49",
+    "customerId": "C-7ad6719f6d43",
+    "customerStatus": "已识别",
+    "lineIds": [
+      "D-0971c3fd7c49-R001",
+      "D-0971c3fd7c49-R002",
+      "D-0971c3fd7c49-R003",
+      "D-0971c3fd7c49-R004"
+    ],
+    "status": "待核对",
+    "loaded": false,
+    "version": 0,
+    "sharedMeasurements": [
+      {
+        "source": {
+          "fileId": "F-0971c3fd7c49",
+          "page": 1
+        },
+        "rows": [
+          1,
+          2
+        ],
+        "净重": "7.0",
+        "毛重": "7.6",
+        "件数": "1"
+      },
+      {
+        "source": {
+          "fileId": "F-0971c3fd7c49",
+          "page": 1
+        },
+        "rows": [
+          3,
+          4
+        ],
+        "净重": "4.0",
+        "毛重": "4.6",
+        "件数": "1"
+      }
+    ],
+    "supportingFileIds": []
+  },
+  {
+    "id": "D-e60d9bd8df88",
+    "sampleId": "2026AG001",
+    "fileId": "F-e60d9bd8df88",
+    "customerId": "C-e0cb675e9f1d",
+    "customerStatus": "已识别",
+    "lineIds": [
+      "D-e60d9bd8df88-R007",
+      "D-e60d9bd8df88-R008"
+    ],
+    "status": "待核对",
+    "loaded": false,
+    "version": 0,
+    "sharedMeasurements": [
+      {
+        "field": "件数",
+        "value": "1",
+        "rows": [
+          7,
+          8
+        ],
+        "source": {
+          "fileId": "F-e60d9bd8df88",
+          "sheet": "报关资料",
+          "cell": "M7"
+        }
+      },
+      {
+        "field": "件数",
+        "value": "1",
+        "rows": [
+          7,
+          8
+        ],
+        "source": {
+          "fileId": "F-e60d9bd8df88",
+          "sheet": "报关资料",
+          "cell": "M7"
+        }
+      }
+    ],
+    "supportingFileIds": []
+  },
+  {
+    "id": "D-fb448776f711",
+    "sampleId": "2026BMH001",
+    "fileId": "F-fb448776f711",
+    "customerId": "C-80d0a4f9a7ac",
+    "customerStatus": "已识别",
+    "lineIds": [
+      "D-fb448776f711-R007",
+      "D-fb448776f711-R008",
+      "D-fb448776f711-R009",
+      "D-fb448776f711-R010",
+      "D-fb448776f711-R011",
+      "D-fb448776f711-R012",
+      "D-fb448776f711-R013",
+      "D-fb448776f711-R014",
+      "D-fb448776f711-R015",
+      "D-fb448776f711-R016",
+      "D-fb448776f711-R017"
+    ],
+    "status": "待核对",
+    "loaded": false,
+    "version": 0,
+    "sharedMeasurements": [],
+    "supportingFileIds": []
+  },
+  {
+    "id": "D-a64834ca9065",
+    "sampleId": "2026CNKJ001",
+    "fileId": "F-a64834ca9065",
+    "customerId": "C-7a1e673169bf",
+    "customerStatus": "已识别",
+    "lineIds": [
+      "D-a64834ca9065-R001"
+    ],
+    "status": "待核对",
+    "loaded": false,
+    "version": 0,
+    "sharedMeasurements": [],
+    "supportingFileIds": []
+  },
+  {
+    "id": "D-df72916dc019",
+    "sampleId": "26SHPYD056",
+    "fileId": "F-df72916dc019",
+    "customerId": "C-132ffbd28c07",
+    "customerStatus": "已识别",
+    "lineIds": [
+      "D-df72916dc019-R007",
+      "D-df72916dc019-R008",
+      "D-df72916dc019-R009",
+      "D-df72916dc019-R010",
+      "D-df72916dc019-R011",
+      "D-df72916dc019-R012",
+      "D-df72916dc019-R013",
+      "D-df72916dc019-R014",
+      "D-df72916dc019-R015"
+    ],
+    "status": "待核对",
+    "loaded": false,
+    "version": 0,
+    "sharedMeasurements": [
+      {
+        "field": "净重",
+        "value": "57.7",
+        "rows": [
+          8,
+          14
+        ],
+        "source": {
+          "fileId": "F-df72916dc019",
+          "sheet": "Sheet1",
+          "cell": "J8"
+        }
+      },
+      {
+        "field": "毛重",
+        "value": "61.7",
+        "rows": [
+          8,
+          14
+        ],
+        "source": {
+          "fileId": "F-df72916dc019",
+          "sheet": "Sheet1",
+          "cell": "K8"
+        }
+      },
+      {
+        "field": "件数",
+        "value": "4",
+        "rows": [
+          8,
+          14
+        ],
+        "source": {
+          "fileId": "F-df72916dc019",
+          "sheet": "Sheet1",
+          "cell": "L8"
+        }
+      },
+      {
+        "field": "净重",
+        "value": "57.7",
+        "rows": [
+          8,
+          14
+        ],
+        "source": {
+          "fileId": "F-df72916dc019",
+          "sheet": "Sheet1",
+          "cell": "J8"
+        }
+      },
+      {
+        "field": "毛重",
+        "value": "61.7",
+        "rows": [
+          8,
+          14
+        ],
+        "source": {
+          "fileId": "F-df72916dc019",
+          "sheet": "Sheet1",
+          "cell": "K8"
+        }
+      },
+      {
+        "field": "件数",
+        "value": "4",
+        "rows": [
+          8,
+          14
+        ],
+        "source": {
+          "fileId": "F-df72916dc019",
+          "sheet": "Sheet1",
+          "cell": "L8"
+        }
+      },
+      {
+        "field": "净重",
+        "value": "57.7",
+        "rows": [
+          8,
+          14
+        ],
+        "source": {
+          "fileId": "F-df72916dc019",
+          "sheet": "Sheet1",
+          "cell": "J8"
+        }
+      },
+      {
+        "field": "毛重",
+        "value": "61.7",
+        "rows": [
+          8,
+          14
+        ],
+        "source": {
+          "fileId": "F-df72916dc019",
+          "sheet": "Sheet1",
+          "cell": "K8"
+        }
+      },
+      {
+        "field": "件数",
+        "value": "4",
+        "rows": [
+          8,
+          14
+        ],
+        "source": {
+          "fileId": "F-df72916dc019",
+          "sheet": "Sheet1",
+          "cell": "L8"
+        }
+      },
+      {
+        "field": "净重",
+        "value": "57.7",
+        "rows": [
+          8,
+          14
+        ],
+        "source": {
+          "fileId": "F-df72916dc019",
+          "sheet": "Sheet1",
+          "cell": "J8"
+        }
+      },
+      {
+        "field": "毛重",
+        "value": "61.7",
+        "rows": [
+          8,
+          14
+        ],
+        "source": {
+          "fileId": "F-df72916dc019",
+          "sheet": "Sheet1",
+          "cell": "K8"
+        }
+      },
+      {
+        "field": "件数",
+        "value": "4",
+        "rows": [
+          8,
+          14
+        ],
+        "source": {
+          "fileId": "F-df72916dc019",
+          "sheet": "Sheet1",
+          "cell": "L8"
+        }
+      },
+      {
+        "field": "净重",
+        "value": "57.7",
+        "rows": [
+          8,
+          14
+        ],
+        "source": {
+          "fileId": "F-df72916dc019",
+          "sheet": "Sheet1",
+          "cell": "J8"
+        }
+      },
+      {
+        "field": "毛重",
+        "value": "61.7",
+        "rows": [
+          8,
+          14
+        ],
+        "source": {
+          "fileId": "F-df72916dc019",
+          "sheet": "Sheet1",
+          "cell": "K8"
+        }
+      },
+      {
+        "field": "件数",
+        "value": "4",
+        "rows": [
+          8,
+          14
+        ],
+        "source": {
+          "fileId": "F-df72916dc019",
+          "sheet": "Sheet1",
+          "cell": "L8"
+        }
+      },
+      {
+        "field": "净重",
+        "value": "57.7",
+        "rows": [
+          8,
+          14
+        ],
+        "source": {
+          "fileId": "F-df72916dc019",
+          "sheet": "Sheet1",
+          "cell": "J8"
+        }
+      },
+      {
+        "field": "毛重",
+        "value": "61.7",
+        "rows": [
+          8,
+          14
+        ],
+        "source": {
+          "fileId": "F-df72916dc019",
+          "sheet": "Sheet1",
+          "cell": "K8"
+        }
+      },
+      {
+        "field": "件数",
+        "value": "4",
+        "rows": [
+          8,
+          14
+        ],
+        "source": {
+          "fileId": "F-df72916dc019",
+          "sheet": "Sheet1",
+          "cell": "L8"
+        }
+      },
+      {
+        "field": "净重",
+        "value": "57.7",
+        "rows": [
+          8,
+          14
+        ],
+        "source": {
+          "fileId": "F-df72916dc019",
+          "sheet": "Sheet1",
+          "cell": "J8"
+        }
+      },
+      {
+        "field": "毛重",
+        "value": "61.7",
+        "rows": [
+          8,
+          14
+        ],
+        "source": {
+          "fileId": "F-df72916dc019",
+          "sheet": "Sheet1",
+          "cell": "K8"
+        }
+      },
+      {
+        "field": "件数",
+        "value": "4",
+        "rows": [
+          8,
+          14
+        ],
+        "source": {
+          "fileId": "F-df72916dc019",
+          "sheet": "Sheet1",
+          "cell": "L8"
+        }
+      }
+    ],
+    "supportingFileIds": []
+  },
+  {
+    "id": "D-1df4f4d83480",
+    "sampleId": "英卡-抽+整",
+    "fileId": "F-1df4f4d83480",
+    "customerId": "C-b212996858bd",
+    "customerStatus": "已识别",
+    "lineIds": [
+      "D-1df4f4d83480-R007",
+      "D-1df4f4d83480-R008",
+      "D-1df4f4d83480-R009"
+    ],
+    "status": "待核对",
+    "loaded": false,
+    "version": 0,
+    "sharedMeasurements": [],
+    "supportingFileIds": [
+      "F-1f89bab4fe64",
+      "F-80d89610605b",
+      "F-b0322c865487"
+    ]
+  },
+  {
+    "id": "D-a235e97d6dd0",
+    "sampleId": "英卡-抽+整",
+    "fileId": "F-a235e97d6dd0",
+    "customerId": "C-b212996858bd",
+    "customerStatus": "已识别",
+    "lineIds": [
+      "D-a235e97d6dd0-R007",
+      "D-a235e97d6dd0-R008",
+      "D-a235e97d6dd0-R009"
+    ],
+    "status": "待核对",
+    "loaded": false,
+    "version": 0,
+    "sharedMeasurements": [],
+    "supportingFileIds": [
+      "F-e3577cb3f191",
+      "F-eebd316ee6c7",
+      "F-ec785baa0766"
+    ]
+  },
+  {
+    "id": "D-5a09ab721f2e",
+    "sampleId": "英卡-抽+整",
+    "fileId": "F-5a09ab721f2e",
+    "customerId": "C-b212996858bd",
+    "customerStatus": "已识别",
+    "lineIds": [
+      "D-5a09ab721f2e-R007",
+      "D-5a09ab721f2e-R008",
+      "D-5a09ab721f2e-R009"
+    ],
+    "status": "待核对",
+    "loaded": false,
+    "version": 0,
+    "sharedMeasurements": [],
+    "supportingFileIds": [
+      "F-3c457d2e01db",
+      "F-f1e3242cc308",
+      "F-6d83ce0e89f6"
+    ]
+  }
+]

@@ -1,0 +1,20 @@
+import { expect, it } from 'vitest';
+import { useDemoStore } from '../lib/demo-store';
+const store = () => useDemoStore.getState();
+it('SC-17 人工组合保留原值及逐行证据，不虚构缺失重量或模型结果', () => {
+  store().loadScenario('SC-17');
+  store().resolveSelectedDraftCustomer('C-66be07d6cabe');
+  const line = store().drafts[0].lines[0];
+  const sources = ['I-e928e7608540-26010211-L001', 'I-e928e7608540-26010211-L002'];
+  store().establishCompositeForLine(line.id, sources);
+  const after = store(); const updated = after.drafts[0].lines[0];
+  expect(updated.fields).toEqual(line.fields);
+  expect(updated.issueIds).toEqual(expect.arrayContaining(['字段冲突:数量', '字段冲突:净重', '字段冲突:毛重']));
+  const evidence = after.evidence.filter(e => updated.evidenceIds.includes(e.id));
+  expect(new Set(evidence.map(e => e.sourceInspectionLineId))).toEqual(new Set(sources));
+  expect(evidence.every(e => !e.isAiUpdated && !e.modelDecision)).toBe(true);
+  expect(evidence.filter(e => e.field === '毛重').map(e => e.candidateValues)).toEqual([['22.00'], ['UNKNOWN']]);
+  for (const issue of updated.issueIds) store().confirmSelectedLineField(line.id, issue.slice(5) as keyof typeof line.fields);
+  expect(store().drafts[0].lines[0].issueIds).toEqual([]);
+  expect(store().evidence.filter(e => evidence.some(old => old.id === e.id))).toHaveLength(evidence.length);
+});

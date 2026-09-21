@@ -1,0 +1,794 @@
+[
+  {
+    "id": "I-8bc7177252aa-25120336",
+    "sampleId": "2025YBT010-2",
+    "fileId": "F-8bc7177252aa",
+    "warehouseNo": "25120336",
+    "customerId": "C-89aa660b4b46",
+    "customerStatus": "identified",
+    "sourceLineIds": [
+      "I-8bc7177252aa-25120336-L001",
+      "I-8bc7177252aa-25120336-L002"
+    ],
+    "notes": "入仓章毛重9 KG，表格合计9.20 KG；两个来源均保留。",
+    "sharedMeasurements": [],
+    "loaded": false
+  },
+  {
+    "id": "I-4626eef2dd66-26010713",
+    "sampleId": "2026(DG)ZW001",
+    "fileId": "F-4626eef2dd66",
+    "warehouseNo": "26010713",
+    "customerId": "C-66be07d6cabe",
+    "customerStatus": "identified",
+    "sourceLineIds": [
+      "I-4626eef2dd66-26010713-L001",
+      "I-4626eef2dd66-26010713-L002"
+    ],
+    "notes": "印刷列为COD，手写COO为TW,CN；不静默将COD映射成产地。",
+    "sharedMeasurements": [
+      {
+        "page": 1,
+        "scope": "箱1两行",
+        "件数": "1",
+        "净重": "1.4",
+        "毛重": "1.8",
+        "仓库章毛重": "1"
+      }
+    ],
+    "loaded": false
+  },
+  {
+    "id": "I-cdbd27982284-26010048",
+    "sampleId": "2026(DG)ZW001",
+    "fileId": "F-cdbd27982284",
+    "warehouseNo": "26010048",
+    "customerId": "C-66be07d6cabe",
+    "customerStatus": "identified",
+    "sourceLineIds": [
+      "I-cdbd27982284-26010048-L001",
+      "I-cdbd27982284-26010048-L002",
+      "I-cdbd27982284-26010048-L003",
+      "I-cdbd27982284-26010048-L004"
+    ],
+    "notes": "品牌取页内手写ASMEDIA；不按数量摊重量。",
+    "sharedMeasurements": [
+      {
+        "page": 1,
+        "scope": "整箱4行",
+        "件数": "1",
+        "净重": "5.20",
+        "毛重": "8.50",
+        "仓库章毛重": "8"
+      }
+    ],
+    "loaded": false
+  },
+  {
+    "id": "I-ad06ec2cd295-26010801",
+    "sampleId": "2026(DG)ZW003",
+    "fileId": "F-ad06ec2cd295",
+    "warehouseNo": "26010801",
+    "customerId": "C-66be07d6cabe",
+    "customerStatus": "identified",
+    "sourceLineIds": [
+      "I-ad06ec2cd295-26010801-L001",
+      "I-ad06ec2cd295-26010801-L002",
+      "I-ad06ec2cd295-26010801-L003"
+    ],
+    "notes": "箱1前两行共享10/10.60 KG，不拆分；委托两行产地中国台湾与查货CHINA冲突。",
+    "sharedMeasurements": [
+      {
+        "page": 1,
+        "scope": "箱1，商品表1、2行",
+        "件数": "1",
+        "净重": "10.00",
+        "毛重": "10.60"
+      },
+      {
+        "page": 1,
+        "scope": "整单",
+        "件数": "2",
+        "净重": "15.00",
+        "毛重": "15.90",
+        "仓库章毛重": "16"
+      }
+    ],
+    "loaded": false
+  },
+  {
+    "id": "I-e928e7608540-26010211",
+    "sampleId": "2026(DG)ZW003",
+    "fileId": "F-e928e7608540",
+    "warehouseNo": "26010211",
+    "customerId": "C-66be07d6cabe",
+    "customerStatus": "identified",
+    "sourceLineIds": [
+      "I-e928e7608540-26010211-L001",
+      "I-e928e7608540-26010211-L002",
+      "I-e928e7608540-26010211-L003"
+    ],
+    "notes": "下方六条LOT明细为主表重复细分证据，不再生成重复库存；箱2毛重17.25为后两行共享；手写RTS5411S-GR 16000pcs与表格2600冲突。",
+    "sharedMeasurements": [
+      {
+        "page": 1,
+        "scope": "箱2，主表2、3行",
+        "件数": "1",
+        "毛重": "17.25"
+      },
+      {
+        "page": 1,
+        "scope": "整单",
+        "件数": "2",
+        "净重": "27.49",
+        "毛重": "39.25",
+        "仓库章毛重": "40"
+      }
+    ],
+    "loaded": false
+  },
+  {
+    "id": "I-bfe5061027e1-26050640",
+    "sampleId": "2026(DG)ZW050",
+    "fileId": "F-bfe5061027e1",
+    "warehouseNo": "26050640",
+    "customerId": "C-66be07d6cabe",
+    "customerStatus": "identified",
+    "sourceLineIds": [
+      "I-bfe5061027e1-26050640-L001"
+    ],
+    "notes": "原印刷列标题C.O.D.，不能直接认作COO；模板委托产地韩国。",
+    "sharedMeasurements": [
+      {
+        "page": 1,
+        "scope": "整单",
+        "仓库章毛重": "2"
+      }
+    ],
+    "loaded": false
+  },
+  {
+    "id": "I-2907feed0d42-26033175",
+    "sampleId": "2026ACSY003",
+    "fileId": "F-2907feed0d42",
+    "warehouseNo": "26033175",
+    "customerId": "UNKNOWN",
+    "customerStatus": "pending",
+    "sourceLineIds": [
+      "I-2907feed0d42-26033175-L001",
+      "I-2907feed0d42-26033175-L002",
+      "I-2907feed0d42-26033175-L003",
+      "I-2907feed0d42-26033175-L004"
+    ],
+    "notes": "页内未显示委托客户；右侧手写为COD而非明确COO；重量是每两行共享且未区分净毛。",
+    "sharedMeasurements": [
+      {
+        "page": 1,
+        "scope": "商品1、2",
+        "件数": "1",
+        "重量类型未区分": "7.6"
+      },
+      {
+        "page": 1,
+        "scope": "商品3、4",
+        "件数": "1",
+        "重量类型未区分": "4.6"
+      }
+    ],
+    "loaded": false
+  },
+  {
+    "id": "I-6b255626250f-26050688",
+    "sampleId": "2026AG001",
+    "fileId": "F-6b255626250f",
+    "warehouseNo": "26050688",
+    "customerId": "UNKNOWN",
+    "customerStatus": "pending",
+    "sourceLineIds": [
+      "I-6b255626250f-26050688-L001",
+      "I-6b255626250f-26050688-L002"
+    ],
+    "notes": "License编号2026AG001，未印客户；委托写标准一年服务，查货写三年服务。",
+    "sharedMeasurements": [
+      {
+        "page": 1,
+        "scope": "整单",
+        "件数": "1"
+      }
+    ],
+    "loaded": false
+  },
+  {
+    "id": "I-b98a101d8392-26027114",
+    "sampleId": "2026BMH001",
+    "fileId": "F-b98a101d8392",
+    "warehouseNo": "26027114",
+    "customerId": "UNKNOWN",
+    "customerStatus": "pending",
+    "sourceLineIds": [
+      "I-b98a101d8392-26027114-L001"
+    ],
+    "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+    "sharedMeasurements": [
+      {
+        "page": 1,
+        "scope": "原始客户",
+        "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+      }
+    ],
+    "loaded": false
+  },
+  {
+    "id": "I-c5195fdb15a3-26027143",
+    "sampleId": "2026BMH001",
+    "fileId": "F-c5195fdb15a3",
+    "warehouseNo": "26027143",
+    "customerId": "UNKNOWN",
+    "customerStatus": "pending",
+    "sourceLineIds": [
+      "I-c5195fdb15a3-26027143-L001",
+      "I-c5195fdb15a3-26027143-L002"
+    ],
+    "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+    "sharedMeasurements": [
+      {
+        "page": 1,
+        "scope": "原始客户",
+        "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+      }
+    ],
+    "loaded": false
+  },
+  {
+    "id": "I-94d0c3955b2a-26027191",
+    "sampleId": "2026BMH001",
+    "fileId": "F-94d0c3955b2a",
+    "warehouseNo": "26027191",
+    "customerId": "UNKNOWN",
+    "customerStatus": "pending",
+    "sourceLineIds": [
+      "I-94d0c3955b2a-26027191-L001",
+      "I-94d0c3955b2a-26027191-L002",
+      "I-94d0c3955b2a-26027191-L003"
+    ],
+    "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+    "sharedMeasurements": [
+      {
+        "page": 1,
+        "scope": "原始客户",
+        "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+      }
+    ],
+    "loaded": false
+  },
+  {
+    "id": "I-39b0b8e82a3a-26027254",
+    "sampleId": "2026BMH001",
+    "fileId": "F-39b0b8e82a3a",
+    "warehouseNo": "26027254",
+    "customerId": "UNKNOWN",
+    "customerStatus": "pending",
+    "sourceLineIds": [
+      "I-39b0b8e82a3a-26027254-L001"
+    ],
+    "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+    "sharedMeasurements": [
+      {
+        "page": 1,
+        "scope": "原始客户",
+        "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+      }
+    ],
+    "loaded": false
+  },
+  {
+    "id": "I-a06d575c587d-26027251",
+    "sampleId": "2026BMH001",
+    "fileId": "F-a06d575c587d",
+    "warehouseNo": "26027251",
+    "customerId": "UNKNOWN",
+    "customerStatus": "pending",
+    "sourceLineIds": [
+      "I-a06d575c587d-26027251-L001"
+    ],
+    "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+    "sharedMeasurements": [
+      {
+        "page": 1,
+        "scope": "原始客户",
+        "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+      }
+    ],
+    "loaded": false
+  },
+  {
+    "id": "I-69127fcfa5c3-26027300",
+    "sampleId": "2026BMH001",
+    "fileId": "F-69127fcfa5c3",
+    "warehouseNo": "26027300",
+    "customerId": "UNKNOWN",
+    "customerStatus": "pending",
+    "sourceLineIds": [
+      "I-69127fcfa5c3-26027300-L001",
+      "I-69127fcfa5c3-26027300-L002"
+    ],
+    "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+    "sharedMeasurements": [
+      {
+        "page": 1,
+        "scope": "原始客户",
+        "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+      }
+    ],
+    "loaded": false
+  },
+  {
+    "id": "I-de4e00bf55d8-26027299",
+    "sampleId": "2026BMH001",
+    "fileId": "F-de4e00bf55d8",
+    "warehouseNo": "26027299",
+    "customerId": "UNKNOWN",
+    "customerStatus": "pending",
+    "sourceLineIds": [
+      "I-de4e00bf55d8-26027299-L001"
+    ],
+    "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+    "sharedMeasurements": [
+      {
+        "page": 1,
+        "scope": "原始客户",
+        "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+      }
+    ],
+    "loaded": false
+  },
+  {
+    "id": "I-b03e0011849f-26027298",
+    "sampleId": "2026BMH001",
+    "fileId": "F-b03e0011849f",
+    "warehouseNo": "26027298",
+    "customerId": "UNKNOWN",
+    "customerStatus": "pending",
+    "sourceLineIds": [
+      "I-b03e0011849f-26027298-L001"
+    ],
+    "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。同一印刷商品行含DE:2500及GB:1500；保持原行、产地多值，不自动拆行。",
+    "sharedMeasurements": [
+      {
+        "page": 1,
+        "scope": "原始客户",
+        "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+      },
+      {
+        "page": 1,
+        "scope": "商品1产地数量组成",
+        "DE": "2500",
+        "GB": "1500"
+      }
+    ],
+    "loaded": false
+  },
+  {
+    "id": "I-cb09c02b9ed5-26027323",
+    "sampleId": "2026BMH001",
+    "fileId": "F-cb09c02b9ed5",
+    "warehouseNo": "26027323",
+    "customerId": "UNKNOWN",
+    "customerStatus": "pending",
+    "sourceLineIds": [
+      "I-cb09c02b9ed5-26027323-L001"
+    ],
+    "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+    "sharedMeasurements": [
+      {
+        "page": 1,
+        "scope": "原始客户",
+        "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+      }
+    ],
+    "loaded": false
+  },
+  {
+    "id": "I-f29936219cd1-26027322",
+    "sampleId": "2026BMH001",
+    "fileId": "F-f29936219cd1",
+    "warehouseNo": "26027322",
+    "customerId": "UNKNOWN",
+    "customerStatus": "pending",
+    "sourceLineIds": [
+      "I-f29936219cd1-26027322-L001",
+      "I-f29936219cd1-26027322-L002"
+    ],
+    "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+    "sharedMeasurements": [
+      {
+        "page": 1,
+        "scope": "原始客户",
+        "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+      }
+    ],
+    "loaded": false
+  },
+  {
+    "id": "I-276766064bb2-26027223",
+    "sampleId": "2026BMH001",
+    "fileId": "F-276766064bb2",
+    "warehouseNo": "26027223",
+    "customerId": "UNKNOWN",
+    "customerStatus": "pending",
+    "sourceLineIds": [
+      "I-276766064bb2-26027223-L001",
+      "I-276766064bb2-26027223-L002",
+      "I-276766064bb2-26027223-L003",
+      "I-276766064bb2-26027223-L004",
+      "I-276766064bb2-26027223-L005",
+      "I-276766064bb2-26027223-L006",
+      "I-276766064bb2-26027223-L007"
+    ],
+    "notes": "现有PDF6页，原印刷页码为1～6 OF 8，缺页7、8；箱明细和手写抽出数量为附属证据，不代替印刷明细或拆库存。Sold to/最终目的方为FUJIAN STAR-NET AIOT TECHNOLOGY CO., LTD；未知与百闽海关系。",
+    "sharedMeasurements": [
+      {
+        "page": 4,
+        "scope": "两条批次",
+        "净重": "22.6"
+      },
+      {
+        "page": 1,
+        "scope": "仓库章整单",
+        "件数": "29",
+        "毛重": "136"
+      }
+    ],
+    "loaded": false
+  },
+  {
+    "id": "I-8e681d73b55a-26057448",
+    "sampleId": "2026CNKJ001",
+    "fileId": "F-8e681d73b55a",
+    "warehouseNo": "26057448",
+    "customerId": "UNKNOWN",
+    "customerStatus": "pending",
+    "sourceLineIds": [
+      "I-8e681d73b55a-26057448-L001"
+    ],
+    "notes": "Bill to为深圳市快极科技有限公司；委托方为福建省超年科技股份有限公司，客户归属不能自动合并。正文另有入仓号018230127，属于哪个编号体系UNKNOWN，不能把同一行复制到两个逻辑单。",
+    "sharedMeasurements": [
+      {
+        "page": 1,
+        "scope": "整单",
+        "仓库章毛重": "31",
+        "正文另一入仓号": "018230127"
+      }
+    ],
+    "loaded": false
+  },
+  {
+    "id": "I-970b59d6d5b8-26036383",
+    "sampleId": "26SHPYD056",
+    "fileId": "F-970b59d6d5b8",
+    "warehouseNo": "26036383",
+    "customerId": "C-132ffbd28c07",
+    "customerStatus": "identified",
+    "sourceLineIds": [
+      "I-970b59d6d5b8-26036383-L001",
+      "I-970b59d6d5b8-26036383-L002",
+      "I-970b59d6d5b8-26036383-L003",
+      "I-970b59d6d5b8-26036383-L004",
+      "I-970b59d6d5b8-26036383-L005",
+      "I-970b59d6d5b8-26036383-L006",
+      "I-970b59d6d5b8-26036383-L007",
+      "I-970b59d6d5b8-26036383-L008",
+      "I-970b59d6d5b8-26036383-L009"
+    ],
+    "notes": "第2页同PDF续页没有独立入仓号；按第1页入仓章2页及总件数归属。保留9条批次明细，Shipped Qty汇总不重复计行。",
+    "sharedMeasurements": [
+      {
+        "page": 1,
+        "scope": "WINBOND 7行",
+        "件数": "4",
+        "净重": "57.7",
+        "毛重": "61.7"
+      },
+      {
+        "page": 2,
+        "scope": "MARVELL 2行",
+        "件数": "1",
+        "净重": "6.8",
+        "毛重": "7.4"
+      },
+      {
+        "page": 1,
+        "scope": "仓库实测整单",
+        "件数": "5",
+        "毛重": "75"
+      }
+    ],
+    "loaded": false
+  },
+  {
+    "id": "I-5dc64ab64d12-26040077",
+    "sampleId": "多对多样例",
+    "fileId": "F-5dc64ab64d12",
+    "warehouseNo": "26040077",
+    "customerId": "C-0a93054667fc",
+    "customerStatus": "identified",
+    "sourceLineIds": [
+      "I-5dc64ab64d12-26040077-L001",
+      "I-5dc64ab64d12-26040077-L002",
+      "I-5dc64ab64d12-26040077-L003"
+    ],
+    "notes": "第2页合计，第3页发票，不重复计商品。",
+    "sharedMeasurements": [],
+    "loaded": false
+  },
+  {
+    "id": "I-168417940250-26040117",
+    "sampleId": "多对多样例",
+    "fileId": "F-168417940250",
+    "warehouseNo": "26040117",
+    "customerId": "C-0a93054667fc",
+    "customerStatus": "identified",
+    "sourceLineIds": [
+      "I-168417940250-26040117-L001",
+      "I-168417940250-26040117-L002",
+      "I-168417940250-26040117-L003"
+    ],
+    "notes": "保留DESCRIPTION完整型号及IC BODY基础型号差异，发票为辅助证据。",
+    "sharedMeasurements": [],
+    "loaded": false
+  },
+  {
+    "id": "I-2e8354efac27-26040114",
+    "sampleId": "多对多样例",
+    "fileId": "F-2e8354efac27",
+    "warehouseNo": "26040114",
+    "customerId": "C-0a93054667fc",
+    "customerStatus": "identified",
+    "sourceLineIds": [
+      "I-2e8354efac27-26040114-L001"
+    ],
+    "notes": "",
+    "sharedMeasurements": [],
+    "loaded": false
+  },
+  {
+    "id": "I-929e7033b39f-26040116",
+    "sampleId": "多对多样例",
+    "fileId": "F-929e7033b39f",
+    "warehouseNo": "26040116",
+    "customerId": "C-0a93054667fc",
+    "customerStatus": "identified",
+    "sourceLineIds": [
+      "I-929e7033b39f-26040116-L001"
+    ],
+    "notes": "",
+    "sharedMeasurements": [],
+    "loaded": false
+  },
+  {
+    "id": "I-7d97d15951fc-26040139",
+    "sampleId": "多对多样例",
+    "fileId": "F-7d97d15951fc",
+    "warehouseNo": "26040139",
+    "customerId": "C-0a93054667fc",
+    "customerStatus": "identified",
+    "sourceLineIds": [
+      "I-7d97d15951fc-26040139-L001"
+    ],
+    "notes": "",
+    "sharedMeasurements": [],
+    "loaded": false
+  },
+  {
+    "id": "I-f1e1e4ea2ac5-26040716",
+    "sampleId": "多对多样例",
+    "fileId": "F-f1e1e4ea2ac5",
+    "warehouseNo": "26040716",
+    "customerId": "C-0a93054667fc",
+    "customerStatus": "identified",
+    "sourceLineIds": [
+      "I-f1e1e4ea2ac5-26040716-L001"
+    ],
+    "notes": "",
+    "sharedMeasurements": [],
+    "loaded": false
+  },
+  {
+    "id": "I-da9dfc44a0f9-26040156",
+    "sampleId": "多对多样例",
+    "fileId": "F-da9dfc44a0f9",
+    "warehouseNo": "26040156",
+    "customerId": "C-0a93054667fc",
+    "customerStatus": "identified",
+    "sourceLineIds": [
+      "I-da9dfc44a0f9-26040156-L001",
+      "I-da9dfc44a0f9-26040156-L002"
+    ],
+    "notes": "第3页产地说明明确COO TH、COD USA；内部结果产地美国不能覆盖COO。",
+    "sharedMeasurements": [],
+    "loaded": false
+  },
+  {
+    "id": "I-c578af30ff9a-26040177",
+    "sampleId": "多对多样例",
+    "fileId": "F-c578af30ff9a",
+    "warehouseNo": "26040177",
+    "customerId": "C-0a93054667fc",
+    "customerStatus": "identified",
+    "sourceLineIds": [
+      "I-c578af30ff9a-26040177-L001"
+    ],
+    "notes": "",
+    "sharedMeasurements": [],
+    "loaded": false
+  },
+  {
+    "id": "I-cd33df861950-26040178",
+    "sampleId": "多对多样例",
+    "fileId": "F-cd33df861950",
+    "warehouseNo": "26040178",
+    "customerId": "C-0a93054667fc",
+    "customerStatus": "identified",
+    "sourceLineIds": [
+      "I-cd33df861950-26040178-L001",
+      "I-cd33df861950-26040178-L002"
+    ],
+    "notes": "",
+    "sharedMeasurements": [],
+    "loaded": false
+  },
+  {
+    "id": "I-ea04d3e7518a-26040179",
+    "sampleId": "多对多样例",
+    "fileId": "F-ea04d3e7518a",
+    "warehouseNo": "26040179",
+    "customerId": "C-0a93054667fc",
+    "customerStatus": "identified",
+    "sourceLineIds": [
+      "I-ea04d3e7518a-26040179-L001"
+    ],
+    "notes": "",
+    "sharedMeasurements": [],
+    "loaded": false
+  },
+  {
+    "id": "I-93c7d7713617-26040084",
+    "sampleId": "多对多样例",
+    "fileId": "F-93c7d7713617",
+    "warehouseNo": "26040084",
+    "customerId": "C-0a93054667fc",
+    "customerStatus": "identified",
+    "sourceLineIds": [
+      "I-93c7d7713617-26040084-L001",
+      "I-93c7d7713617-26040084-L002",
+      "I-93c7d7713617-26040084-L003"
+    ],
+    "notes": "两份箱单同一入仓号；第3页送货汇总不重复计入。",
+    "sharedMeasurements": [
+      {
+        "page": 1,
+        "scope": "箱1两个批次",
+        "件数": "1",
+        "净重": "6.36",
+        "毛重": "7.00"
+      }
+    ],
+    "loaded": false
+  },
+  {
+    "id": "I-5b778363f744-26040083",
+    "sampleId": "多对多样例",
+    "fileId": "F-5b778363f744",
+    "warehouseNo": "26040083",
+    "customerId": "C-0a93054667fc",
+    "customerStatus": "identified",
+    "sourceLineIds": [
+      "I-5b778363f744-26040083-L001",
+      "I-5b778363f744-26040083-L002",
+      "I-5b778363f744-26040083-L003",
+      "I-5b778363f744-26040083-L004",
+      "I-5b778363f744-26040083-L005",
+      "I-5b778363f744-26040083-L006",
+      "I-5b778363f744-26040083-L007",
+      "I-5b778363f744-26040083-L008",
+      "I-5b778363f744-26040083-L009",
+      "I-5b778363f744-26040083-L010",
+      "I-5b778363f744-26040083-L011",
+      "I-5b778363f744-26040083-L012",
+      "I-5b778363f744-26040083-L013",
+      "I-5b778363f744-26040083-L014",
+      "I-5b778363f744-26040083-L015",
+      "I-5b778363f744-26040083-L016",
+      "I-5b778363f744-26040083-L017",
+      "I-5b778363f744-26040083-L018",
+      "I-5b778363f744-26040083-L019",
+      "I-5b778363f744-26040083-L020",
+      "I-5b778363f744-26040083-L021",
+      "I-5b778363f744-26040083-L022",
+      "I-5b778363f744-26040083-L023",
+      "I-5b778363f744-26040083-L024",
+      "I-5b778363f744-26040083-L025",
+      "I-5b778363f744-26040083-L026",
+      "I-5b778363f744-26040083-L027",
+      "I-5b778363f744-26040083-L028",
+      "I-5b778363f744-26040083-L029",
+      "I-5b778363f744-26040083-L030",
+      "I-5b778363f744-26040083-L031",
+      "I-5b778363f744-26040083-L032",
+      "I-5b778363f744-26040083-L033",
+      "I-5b778363f744-26040083-L034",
+      "I-5b778363f744-26040083-L035",
+      "I-5b778363f744-26040083-L036",
+      "I-5b778363f744-26040083-L037",
+      "I-5b778363f744-26040083-L038"
+    ],
+    "notes": "箱单印刷38条批次商品；每箱共用重量不分摊，5页备注及6页送货汇总不重复计入。第4页BSC010N04LS净重1.33，内部结果1.32存在差异。",
+    "sharedMeasurements": [
+      {
+        "page": 2,
+        "scope": "BSC026N08NS5箱单",
+        "件数": "7",
+        "数量": "295000",
+        "净重": "68.09",
+        "毛重": "73.34"
+      },
+      {
+        "page": 4,
+        "scope": "其他8型号箱单",
+        "件数": "12",
+        "数量": "31440",
+        "净重": "87.64",
+        "毛重": "93.84"
+      },
+      {
+        "page": 4,
+        "scope": "IPW60R037CSFD两行",
+        "件数": "1",
+        "净重": "4.12",
+        "毛重": "4.37"
+      },
+      {
+        "page": 4,
+        "scope": "IPW60R120P7两行",
+        "件数": "1",
+        "净重": "4.14",
+        "毛重": "4.39"
+      }
+    ],
+    "loaded": false
+  },
+  {
+    "id": "I-a5368260946b-26070093",
+    "sampleId": "英卡-抽+整",
+    "fileId": "F-a5368260946b",
+    "warehouseNo": "26070093",
+    "customerId": "C-b212996858bd",
+    "customerStatus": "identified",
+    "sourceLineIds": [
+      "I-a5368260946b-26070093-L001",
+      "I-a5368260946b-26070093-L002",
+      "I-a5368260946b-26070093-L003",
+      "I-a5368260946b-26070093-L004",
+      "I-a5368260946b-26070093-L005",
+      "I-a5368260946b-26070093-L006",
+      "I-a5368260946b-26070093-L007",
+      "I-a5368260946b-26070093-L008",
+      "I-a5368260946b-26070093-L009",
+      "I-a5368260946b-26070093-L010",
+      "I-a5368260946b-26070093-L011",
+      "I-a5368260946b-26070093-L012"
+    ],
+    "notes": "文件名26070092但条码26070093；与F-baf3de39ef68内容相同，只生成12行。客户由英卡内部单明确引用入仓号26070093佐证，不将MESSRS英华国际自动作为英卡别名。",
+    "sharedMeasurements": [
+      {
+        "page": 1,
+        "scope": "整单",
+        "件数": "12",
+        "净重": "53.30",
+        "毛重": "61.70",
+        "仓库章毛重": "64"
+      }
+    ],
+    "loaded": false
+  }
+]

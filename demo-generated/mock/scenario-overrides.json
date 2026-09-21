@@ -1,0 +1,181 @@
+[
+  {
+    "id": "OV-ISOLATE",
+    "synthetic": true,
+    "reason": "真实已确认客户间未找到同型号可直接复用的隔离对照；复制英堡整单为浦壹模拟批次，仅客户和模拟入仓标识改变。",
+    "baseSamples": [
+      "2025YBT010-2",
+      "26SHPYD056"
+    ],
+    "operations": [
+      {
+        "op": "clone-order",
+        "fromId": "I-8bc7177252aa-25120336",
+        "id": "VI-OTHER",
+        "fileId": "VF-OTHER",
+        "warehouseNo": "DEMO-OTHER-001",
+        "customerId": "C-132ffbd28c07"
+      }
+    ],
+    "scope": "仅本场景新副本；不计入真实样本数量，不改默认事实"
+  },
+  {
+    "id": "OV-PDF",
+    "synthetic": true,
+    "reason": "未发现可靠的单PDF三个实际入仓号；将同客户三张真实查货的页面组成虚拟PDF描述，原入仓号和行不变。",
+    "baseSamples": [
+      "2026(DG)ZW001",
+      "2026(DG)ZW003"
+    ],
+    "operations": [
+      {
+        "op": "composite-pdf",
+        "id": "VF-MULTI-WAREHOUSE",
+        "orderIds": [
+          "I-4626eef2dd66-26010713",
+          "I-cdbd27982284-26010048",
+          "I-ad06ec2cd295-26010801"
+        ]
+      }
+    ],
+    "scope": "仅本场景新副本；不计入真实样本数量，不改默认事实"
+  },
+  {
+    "id": "OV-CANDIDATES",
+    "synthetic": true,
+    "reason": "复制真实英堡整张查货作为同客户另一模拟到货批次；保留型号、数量、重量，供双候选及改配演示。",
+    "baseSamples": [
+      "2025YBT010-2"
+    ],
+    "operations": [
+      {
+        "op": "clone-order",
+        "fromId": "I-8bc7177252aa-25120336",
+        "id": "VI-CANDIDATE",
+        "fileId": "VF-CANDIDATE",
+        "warehouseNo": "DEMO-CANDIDATE-001"
+      }
+    ],
+    "scope": "仅本场景新副本；不计入真实样本数量，不改默认事实"
+  },
+  {
+    "id": "OV-EXACT-MODEL",
+    "synthetic": true,
+    "reason": "唯一可靠候选测试需要排除未冻结的型号后缀规则；仅将委托两行型号改成对应真实查货基础型号。",
+    "baseSamples": [
+      "2025YBT010-2"
+    ],
+    "operations": [
+      {
+        "op": "patch-field",
+        "asset": "entrustment-lines",
+        "id": "D-3c3cc10bd26b-R007",
+        "field": "型号",
+        "before": "H25G9TCXXCX702A#9",
+        "after": "H25G9TCXXCX702A"
+      },
+      {
+        "op": "patch-field",
+        "asset": "entrustment-lines",
+        "id": "D-3c3cc10bd26b-R008",
+        "field": "型号",
+        "before": "D25G9TCX8CX239C#D",
+        "after": "D25G9TCX8CX239C"
+      }
+    ],
+    "scope": "仅本场景新副本；不计入真实样本数量，不改默认事实"
+  },
+  {
+    "id": "OV-REVISION",
+    "synthetic": true,
+    "reason": "无可靠修订前后成对原件；沿用ZW003完整原行，仅两字段构造修订材料，明确目标草稿。",
+    "baseSamples": [
+      "2026(DG)ZW003"
+    ],
+    "operations": [
+      {
+        "op": "revision-material",
+        "id": "VM-REVISION",
+        "targetDraftId": "D-b436a16434a4",
+        "changes": [
+          {
+            "lineId": "D-b436a16434a4-R003",
+            "field": "产地",
+            "before": "中国台湾",
+            "after": "中国"
+          },
+          {
+            "lineId": "D-b436a16434a4-R004",
+            "field": "商品描述",
+            "before": "UNKNOWN",
+            "after": "UNKNOWN（演示修订）"
+          }
+        ]
+      }
+    ],
+    "scope": "仅本场景新副本；不计入真实样本数量，不改默认事实"
+  },
+  {
+    "id": "OV-CROSS",
+    "synthetic": true,
+    "reason": "原多对多目录缺委托明细，英卡缺26070092查货。复制26070093为第二模拟到货；第三委托UMW的数量、总价、件数、净毛重取已有60000委托对应行，保留前值，以完整箱行表达交叉分配。",
+    "baseSamples": [
+      "英卡-抽+整"
+    ],
+    "operations": [
+      {
+        "op": "clone-order",
+        "fromId": "I-a5368260946b-26070093",
+        "id": "VI-CROSS",
+        "fileId": "VF-CROSS",
+        "warehouseNo": "DEMO-CROSS-001"
+      },
+      {
+        "op": "patch-field",
+        "asset": "entrustment-lines",
+        "id": "D-a235e97d6dd0-R009",
+        "field": "数量",
+        "before": "66000",
+        "after": "60000",
+        "donorLineId": "D-1df4f4d83480-R009"
+      },
+      {
+        "op": "patch-field",
+        "asset": "entrustment-lines",
+        "id": "D-a235e97d6dd0-R009",
+        "field": "总价",
+        "before": "52905.6",
+        "after": "48096",
+        "donorLineId": "D-1df4f4d83480-R009"
+      },
+      {
+        "op": "patch-field",
+        "asset": "entrustment-lines",
+        "id": "D-a235e97d6dd0-R009",
+        "field": "件数",
+        "before": "5",
+        "after": "4",
+        "donorLineId": "D-1df4f4d83480-R009"
+      },
+      {
+        "op": "patch-field",
+        "asset": "entrustment-lines",
+        "id": "D-a235e97d6dd0-R009",
+        "field": "净重",
+        "before": "23.9",
+        "after": "18",
+        "donorLineId": "D-1df4f4d83480-R009"
+      },
+      {
+        "op": "patch-field",
+        "asset": "entrustment-lines",
+        "id": "D-a235e97d6dd0-R009",
+        "field": "毛重",
+        "before": "20.4",
+        "after": "20.8",
+        "donorLineId": "D-1df4f4d83480-R009"
+      }
+    ],
+    "scope": "仅本场景新副本；不计入真实样本数量，不改默认事实"
+  }
+]

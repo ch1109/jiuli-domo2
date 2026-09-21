@@ -1,0 +1,348 @@
+{
+  "id": "F-6a9807227bb3",
+  "path": "真实整单样本/2026AG001/核对单/参考结果.xlsx",
+  "sampleId": "2026AG001",
+  "sha256": "5ce43ab15bac783e5b70a88d5f41f984463496842b9d73a007f0c44454897d77",
+  "size": 5652,
+  "extension": ".xlsx",
+  "role": "reference",
+  "sheets": [
+    {
+      "name": "参考结果",
+      "rows": 4,
+      "columns": 20,
+      "merged": [],
+      "cells": [
+        {
+          "cell": "A1",
+          "row": 1,
+          "column": 1,
+          "value": "品名",
+          "cached": "品名"
+        },
+        {
+          "cell": "B1",
+          "row": 1,
+          "column": 2,
+          "value": "品牌",
+          "cached": "品牌"
+        },
+        {
+          "cell": "C1",
+          "row": 1,
+          "column": 3,
+          "value": "型号",
+          "cached": "型号"
+        },
+        {
+          "cell": "D1",
+          "row": 1,
+          "column": 4,
+          "value": "商品描述",
+          "cached": "商品描述"
+        },
+        {
+          "cell": "E1",
+          "row": 1,
+          "column": 5,
+          "value": "产地",
+          "cached": "产地"
+        },
+        {
+          "cell": "F1",
+          "row": 1,
+          "column": 6,
+          "value": "单位",
+          "cached": "单位"
+        },
+        {
+          "cell": "G1",
+          "row": 1,
+          "column": 7,
+          "value": "数量",
+          "cached": "数量"
+        },
+        {
+          "cell": "H1",
+          "row": 1,
+          "column": 8,
+          "value": "单价",
+          "cached": "单价"
+        },
+        {
+          "cell": "I1",
+          "row": 1,
+          "column": 9,
+          "value": "件数",
+          "cached": "件数"
+        },
+        {
+          "cell": "J1",
+          "row": 1,
+          "column": 10,
+          "value": "净重",
+          "cached": "净重"
+        },
+        {
+          "cell": "K1",
+          "row": 1,
+          "column": 11,
+          "value": "毛重",
+          "cached": "毛重"
+        },
+        {
+          "cell": "L1",
+          "row": 1,
+          "column": 12,
+          "value": "sku",
+          "cached": "sku"
+        },
+        {
+          "cell": "M1",
+          "row": 1,
+          "column": 13,
+          "value": "供应商",
+          "cached": "供应商"
+        },
+        {
+          "cell": "N1",
+          "row": 1,
+          "column": 14,
+          "value": "期票天数",
+          "cached": "期票天数"
+        },
+        {
+          "cell": "O1",
+          "row": 1,
+          "column": 15,
+          "value": "对应的采购",
+          "cached": "对应的采购"
+        },
+        {
+          "cell": "P1",
+          "row": 1,
+          "column": 16,
+          "value": "料号",
+          "cached": "料号"
+        },
+        {
+          "cell": "Q1",
+          "row": 1,
+          "column": 17,
+          "value": "箱号",
+          "cached": "箱号"
+        },
+        {
+          "cell": "R1",
+          "row": 1,
+          "column": 18,
+          "value": "备注",
+          "cached": "备注"
+        },
+        {
+          "cell": "S1",
+          "row": 1,
+          "column": 19,
+          "value": "入仓号",
+          "cached": "入仓号"
+        },
+        {
+          "cell": "T1",
+          "row": 1,
+          "column": 20,
+          "value": "产线",
+          "cached": "产线"
+        },
+        {
+          "cell": "A2",
+          "row": 2,
+          "column": 1,
+          "value": "Linux软件",
+          "cached": "Linux软件"
+        },
+        {
+          "cell": "B2",
+          "row": 2,
+          "column": 2,
+          "value": "SUSE",
+          "cached": "SUSE"
+        },
+        {
+          "cell": "C2",
+          "row": 2,
+          "column": 3,
+          "value": "B-RPGC-2C4V-PS1",
+          "cached": "B-RPGC-2C4V-PS1"
+        },
+        {
+          "cell": "D2",
+          "row": 2,
+          "column": 4,
+          "value": "境外品牌其它， 光盘，用于各品牌服务器，用于激活，已录制，录制内容类型：软件，容量：700MB，读取速度：52 Linux操作系统软件，标准三年服务，8523492090999:其他用于重放声音、图像以外信息的光学媒体，1件合计1张光碟",
+          "cached": "境外品牌其它， 光盘，用于各品牌服务器，用于激活，已录制，录制内容类型：软件，容量：700MB，读取速度：52 Linux操作系统软件，标准三年服务，8523492090999:其他用于重放声音、图像以外信息的光学媒体，1件合计1张光碟"
+        },
+        {
+          "cell": "E2",
+          "row": 2,
+          "column": 5,
+          "value": "德国",
+          "cached": "德国"
+        },
+        {
+          "cell": "F2",
+          "row": 2,
+          "column": 6,
+          "value": "个",
+          "cached": "个"
+        },
+        {
+          "cell": "G2",
+          "row": 2,
+          "column": 7,
+          "value": 20,
+          "cached": 20
+        },
+        {
+          "cell": "H2",
+          "row": 2,
+          "column": 8,
+          "value": 1617.04,
+          "cached": 1617.04
+        },
+        {
+          "cell": "I2",
+          "row": 2,
+          "column": 9,
+          "value": 1,
+          "cached": 1
+        },
+        {
+          "cell": "J2",
+          "row": 2,
+          "column": 10,
+          "value": 0.1,
+          "cached": 0.1
+        },
+        {
+          "cell": "K2",
+          "row": 2,
+          "column": 11,
+          "value": 1,
+          "cached": 1
+        },
+        {
+          "cell": "A3",
+          "row": 3,
+          "column": 1,
+          "value": "Linux软件",
+          "cached": "Linux软件"
+        },
+        {
+          "cell": "B3",
+          "row": 3,
+          "column": 2,
+          "value": "SUSE",
+          "cached": "SUSE"
+        },
+        {
+          "cell": "C3",
+          "row": 3,
+          "column": 3,
+          "value": "B-RPGC-2C4V-PS1",
+          "cached": "B-RPGC-2C4V-PS1"
+        },
+        {
+          "cell": "D3",
+          "row": 3,
+          "column": 4,
+          "value": "境外品牌其它， 光盘，用于各品牌服务器，用于激活，已录制，录制内容类型：软件，容量：700MB，读取速度：52 Linux操作系统软件，标准三年服务，8523492090999:其他用于重放声音、图像以外信息的光学媒体，1件合计1张光碟",
+          "cached": "境外品牌其它， 光盘，用于各品牌服务器，用于激活，已录制，录制内容类型：软件，容量：700MB，读取速度：52 Linux操作系统软件，标准三年服务，8523492090999:其他用于重放声音、图像以外信息的光学媒体，1件合计1张光碟"
+        },
+        {
+          "cell": "E3",
+          "row": 3,
+          "column": 5,
+          "value": "德国",
+          "cached": "德国"
+        },
+        {
+          "cell": "F3",
+          "row": 3,
+          "column": 6,
+          "value": "个",
+          "cached": "个"
+        },
+        {
+          "cell": "G3",
+          "row": 3,
+          "column": 7,
+          "value": 12,
+          "cached": 12
+        },
+        {
+          "cell": "H3",
+          "row": 3,
+          "column": 8,
+          "value": 2175,
+          "cached": 2175
+        },
+        {
+          "cell": "I3",
+          "row": 3,
+          "column": 9,
+          "value": 0,
+          "cached": 0
+        },
+        {
+          "cell": "J3",
+          "row": 3,
+          "column": 10,
+          "value": 0.1,
+          "cached": 0.1
+        },
+        {
+          "cell": "K3",
+          "row": 3,
+          "column": 11,
+          "value": 1,
+          "cached": 1
+        },
+        {
+          "cell": "A4",
+          "row": 4,
+          "column": 1,
+          "value": "合计",
+          "cached": "合计"
+        },
+        {
+          "cell": "G4",
+          "row": 4,
+          "column": 7,
+          "value": 32,
+          "cached": 32
+        },
+        {
+          "cell": "I4",
+          "row": 4,
+          "column": 9,
+          "value": 1,
+          "cached": 1
+        },
+        {
+          "cell": "J4",
+          "row": 4,
+          "column": 10,
+          "value": 0.2,
+          "cached": 0.2
+        },
+        {
+          "cell": "K4",
+          "row": 4,
+          "column": 11,
+          "value": 2,
+          "cached": 2
+        }
+      ]
+    }
+  ]
+}

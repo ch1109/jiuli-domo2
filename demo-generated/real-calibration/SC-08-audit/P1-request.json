@@ -1,0 +1,92 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P1",
+  "request_id": "SC08-AUDIT-20260920-P1",
+  "context": {
+    "customer_directory": [
+      {
+        "customer_id": "C-89aa660b4b46",
+        "customer_name": "英堡科技（深圳）有限公司",
+        "aliases": []
+      }
+    ],
+    "normalization": {
+      "countries": {"KOREA": "韩国"},
+      "units": {"PCS": "个"}
+    }
+  },
+  "input": {
+    "materials": [
+      {
+        "file_id": "F-3c3cc10bd26b",
+        "material_type": "ORDER",
+        "segments": ["sheet:12-10-2"],
+        "content": {
+          "source_path": "真实整单样本/2025YBT010-2/委托文件/2件.xlsx",
+          "sheet": "12-10-2",
+          "header": {
+            "B3": "英堡科技（深圳）有限公司",
+            "K3": "2025YBT010-2"
+          },
+          "columns": {
+            "B": "货物名称",
+            "C": "品牌",
+            "D": "型号",
+            "E": "参数",
+            "F": "产地",
+            "G": "单位",
+            "H": "数量(PCS)",
+            "I": "报关单价（USD）",
+            "J": "报关总价（USD） FOB香港",
+            "K": "箱数",
+            "L": "净重(KG)",
+            "M": "毛重(KG)",
+            "O": "备注"
+          },
+          "rows": [
+            {
+              "row": 7,
+              "B": "晶圆",
+              "C": "SK HYNIX",
+              "D": "H25G9TCXXCX702A#9",
+              "E": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性",
+              "F": "韩国",
+              "G": "个",
+              "H": "12081",
+              "I": "4.1",
+              "J": {"formula": "=H7*I7", "cached": "49532.1"},
+              "K": "1",
+              "L": "3.6",
+              "M": "4.2",
+              "O": ""
+            },
+            {
+              "row": 8,
+              "B": "晶圆",
+              "C": "SK HYNIX",
+              "D": "D25G9TCX8CX239C#D",
+              "E": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性",
+              "F": "韩国",
+              "G": "个",
+              "H": "16054",
+              "I": "2.9",
+              "J": {"formula": "=H8*I8", "cached": "46556.6"},
+              "K": "1",
+              "L": "4.4",
+              "M": "5",
+              "O": ""
+            }
+          ],
+          "totals": {
+            "row": 9,
+            "H": {"formula": "=SUM(H7:H8)", "cached": "28135"},
+            "J": {"formula": "=SUM(J7:J8)", "cached": "96088.7"},
+            "K": {"formula": "=SUM(K7:K8)", "cached": "2"},
+            "L": {"formula": "=SUM(L7:L8)", "cached": "8"},
+            "M": {"formula": "=SUM(M7:M8)", "cached": "9.2"}
+          }
+        }
+      }
+    ]
+  }
+}

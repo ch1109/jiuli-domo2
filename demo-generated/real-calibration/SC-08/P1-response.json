@@ -1,0 +1,135 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P1",
+  "request_id": "SC08-AUDIT-20260920-P1",
+  "output": {
+    "processing_status": "SUCCESS",
+    "customer_resolution": {
+      "status": "RESOLVED",
+      "customer_id": "C-89aa660b4b46",
+      "recognized_name": "英堡科技（深圳）有限公司",
+      "candidate_customer_ids": ["C-89aa660b4b46"],
+      "sources": [
+        {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 3, "column": "B", "raw_text": "英堡科技（深圳）有限公司"}
+      ]
+    },
+    "read_status": [
+      {"file_id": "F-3c3cc10bd26b", "read_segments": ["sheet:12-10-2"], "unread_segments": [], "status": "COMPLETE"}
+    ],
+    "rows": [
+      {
+        "row_no": 1,
+        "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 7, "column": null, "raw_text": "委托商品第1行"},
+        "values": {
+          "customer_name": "英堡科技（深圳）有限公司",
+          "brand": "SK HYNIX",
+          "model": "H25G9TCXXCX702A#9",
+          "description": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性",
+          "product_name": "晶圆",
+          "origin": "韩国",
+          "unit": "个",
+          "quantity": "12081",
+          "customs_unit_price": "4.1",
+          "total_price": "49532.1",
+          "currency": "USD",
+          "packages": "1",
+          "net_weight": "3.6",
+          "gross_weight": "4.2",
+          "sku": "",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": ""
+        },
+        "evidence": [
+          {"field": "customer_name", "value": "英堡科技（深圳）有限公司", "unit": "", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 3, "column": "B", "raw_text": "英堡科技（深圳）有限公司"}},
+          {"field": "product_name", "value": "晶圆", "unit": "", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 7, "column": "B", "raw_text": "晶圆"}},
+          {"field": "brand", "value": "SK HYNIX", "unit": "", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 7, "column": "C", "raw_text": "SK HYNIX"}},
+          {"field": "model", "value": "H25G9TCXXCX702A#9", "unit": "", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 7, "column": "D", "raw_text": "H25G9TCXXCX702A#9"}},
+          {"field": "description", "value": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性", "unit": "", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 7, "column": "E", "raw_text": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性"}},
+          {"field": "origin", "value": "韩国", "unit": "", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 7, "column": "F", "raw_text": "韩国"}},
+          {"field": "unit", "value": "个", "unit": "", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 7, "column": "G", "raw_text": "个"}},
+          {"field": "quantity", "value": "12081", "unit": "PCS", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 7, "column": "H", "raw_text": "12081"}},
+          {"field": "customs_unit_price", "value": "4.1", "unit": "USD", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 7, "column": "I", "raw_text": "4.1"}},
+          {"field": "total_price", "value": "49532.1", "unit": "USD", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 7, "column": "J", "raw_text": "formula =H7*I7; cached 49532.1"}},
+          {"field": "currency", "value": "USD", "unit": "", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 6, "column": "I:J", "raw_text": "报关单价（USD）/报关总价（USD）"}},
+          {"field": "packages", "value": "1", "unit": "箱", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 7, "column": "K", "raw_text": "1"}},
+          {"field": "net_weight", "value": "3.6", "unit": "KG", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 7, "column": "L", "raw_text": "3.6"}},
+          {"field": "gross_weight", "value": "4.2", "unit": "KG", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 7, "column": "M", "raw_text": "4.2"}}
+        ],
+        "conflicts": []
+      },
+      {
+        "row_no": 2,
+        "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 8, "column": null, "raw_text": "委托商品第2行"},
+        "values": {
+          "customer_name": "英堡科技（深圳）有限公司",
+          "brand": "SK HYNIX",
+          "model": "D25G9TCX8CX239C#D",
+          "description": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性",
+          "product_name": "晶圆",
+          "origin": "韩国",
+          "unit": "个",
+          "quantity": "16054",
+          "customs_unit_price": "2.9",
+          "total_price": "46556.6",
+          "currency": "USD",
+          "packages": "1",
+          "net_weight": "4.4",
+          "gross_weight": "5",
+          "sku": "",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": ""
+        },
+        "evidence": [
+          {"field": "customer_name", "value": "英堡科技（深圳）有限公司", "unit": "", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 3, "column": "B", "raw_text": "英堡科技（深圳）有限公司"}},
+          {"field": "product_name", "value": "晶圆", "unit": "", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 8, "column": "B", "raw_text": "晶圆"}},
+          {"field": "brand", "value": "SK HYNIX", "unit": "", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 8, "column": "C", "raw_text": "SK HYNIX"}},
+          {"field": "model", "value": "D25G9TCX8CX239C#D", "unit": "", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 8, "column": "D", "raw_text": "D25G9TCX8CX239C#D"}},
+          {"field": "description", "value": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性", "unit": "", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 8, "column": "E", "raw_text": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性"}},
+          {"field": "origin", "value": "韩国", "unit": "", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 8, "column": "F", "raw_text": "韩国"}},
+          {"field": "unit", "value": "个", "unit": "", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 8, "column": "G", "raw_text": "个"}},
+          {"field": "quantity", "value": "16054", "unit": "PCS", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 8, "column": "H", "raw_text": "16054"}},
+          {"field": "customs_unit_price", "value": "2.9", "unit": "USD", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 8, "column": "I", "raw_text": "2.9"}},
+          {"field": "total_price", "value": "46556.6", "unit": "USD", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 8, "column": "J", "raw_text": "formula =H8*I8; cached 46556.6"}},
+          {"field": "currency", "value": "USD", "unit": "", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 6, "column": "I:J", "raw_text": "报关单价（USD）/报关总价（USD）"}},
+          {"field": "packages", "value": "1", "unit": "箱", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 8, "column": "K", "raw_text": "1"}},
+          {"field": "net_weight", "value": "4.4", "unit": "KG", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 8, "column": "L", "raw_text": "4.4"}},
+          {"field": "gross_weight", "value": "5", "unit": "KG", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 8, "column": "M", "raw_text": "5"}}
+        ],
+        "conflicts": []
+      }
+    ],
+    "scope_records": [
+      {
+        "kind": "ORDER_TOTAL",
+        "member_row_nos": [1, 2],
+        "range_complete": true,
+        "measurements": [
+          {"field": "quantity", "value": "28135", "unit": "PCS", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 9, "column": "H", "raw_text": "formula =SUM(H7:H8); cached 28135"}},
+          {"field": "total_price", "value": "96088.7", "unit": "USD", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 9, "column": "J", "raw_text": "formula =SUM(J7:J8); cached 96088.7"}},
+          {"field": "packages", "value": "2", "unit": "箱", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 9, "column": "K", "raw_text": "formula =SUM(K7:K8); cached 2"}},
+          {"field": "net_weight", "value": "8", "unit": "KG", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 9, "column": "L", "raw_text": "formula =SUM(L7:L8); cached 8"}},
+          {"field": "gross_weight", "value": "9.2", "unit": "KG", "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 9, "column": "M", "raw_text": "formula =SUM(M7:M8); cached 9.2"}}
+        ],
+        "source": {"file_id": "F-3c3cc10bd26b", "page": null, "sheet": "12-10-2", "row": 9, "column": "H:M", "raw_text": "合计行"}
+      }
+    ],
+    "unlinked_records": [],
+    "issues": []
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "sampleCount": 11,
+  "materialFileCount": 72,
+  "pdfCount": 50,
+  "pdfPages": 94,
+  "inspectionPdfCount": 35,
+  "logicalInspectionOrderCount": 34,
+  "inspectionSourceLineCount": 122,
+  "entrustmentDraftCountConfirmed": 12,
+  "entrustmentLineCountConfirmed": 50,
+  "entrustmentLineCountUnknownSamples": [
+    "多对多样例"
+  ],
+  "customerCount": 9,
+  "inspectionGroupCount": 63,
+  "mergedGroupCount": 14,
+  "quarantinedOrderCount": 14,
+  "quarantinedSourceLineCount": 29,
+  "pendingCustomerDraftCount": 3
+}

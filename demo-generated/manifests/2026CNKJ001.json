@@ -1,0 +1,219 @@
+{
+  "sampleId": "2026CNKJ001",
+  "customer": "福建省超年科技股份有限公司",
+  "customerDetermination": "来自委托方、查货明确Bill To或内部单；未证明的归属在对象级标UNKNOWN",
+  "fileIds": [
+    "F-a64834ca9065",
+    "F-8e681d73b55a",
+    "F-9116712b48a7"
+  ],
+  "entrustmentDocumentCount": 1,
+  "invoiceDocumentCount": 0,
+  "packingListDocumentCount": 1,
+  "inspectionPdfCount": 1,
+  "warehouseCountConfirmed": 1,
+  "warehouseAmbiguities": [
+    "018230127"
+  ],
+  "logicalInspectionOrderCount": 1,
+  "entrustmentLineCount": 1,
+  "inspectionSourceLineCount": 1,
+  "hasMergeableGoods": false,
+  "hasFieldConflict": true,
+  "hasMultipleCandidatePotential": "UNKNOWN",
+  "possibleRelationScenarios": [
+    "一对一候选（待逐行关系核实）"
+  ],
+  "notes": [
+    "委托方福建省超年科技股份有限公司，查货Bill to深圳市快极科技有限公司，归属待确认。",
+    "入仓条码26057448和正文018230127属于哪个编号体系UNKNOWN，保留后者为歧义证据，不重复生成商品。",
+    "委托品牌广濑、产地韩国；查货品牌HIROSE、产地JAPAN；是否品牌别名待确认。"
+  ],
+  "inspectionFacts": [
+    {
+      "fileId": "F-8e681d73b55a",
+      "sampleId": "2026CNKJ001",
+      "warehouseNo": "26057448",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "商品表第1行",
+          "品牌": "HIROSE",
+          "型号": "BM25U-4P/2-V(85)",
+          "产地": "JAPAN",
+          "数量": "580000",
+          "单位": "pc",
+          "件数": "3",
+          "净重": "4.81",
+          "毛重": "31.66"
+        }
+      ],
+      "notes": "Bill to为深圳市快极科技有限公司；委托方为福建省超年科技股份有限公司，客户归属不能自动合并。正文另有入仓号018230127，属于哪个编号体系UNKNOWN，不能把同一行复制到两个逻辑单。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "整单",
+          "仓库章毛重": "31",
+          "正文另一入仓号": "018230127"
+        }
+      ]
+    }
+  ],
+  "entrustmentFacts": [
+    {
+      "id": "D-a64834ca9065",
+      "sampleId": "2026CNKJ001",
+      "fileId": "F-a64834ca9065",
+      "customerName": "福建省超年科技股份有限公司",
+      "customerEvidence": {
+        "fileId": "F-a64834ca9065",
+        "page": 1,
+        "location": "委托方/公章"
+      },
+      "rows": [
+        {
+          "id": "D-a64834ca9065-R001",
+          "sourceOrder": 1,
+          "sourceRow": 1,
+          "fields": {
+            "客户名": "福建省超年科技股份有限公司",
+            "品牌": "广濑",
+            "型号": "BM25U-4P/2-V(85)",
+            "商品描述": "UNKNOWN",
+            "品名": "接插件",
+            "产地": "韩国",
+            "单位": "UNKNOWN",
+            "数量": "580000",
+            "报关单价": "0.0397",
+            "总价": "23026.00",
+            "币种": "USD",
+            "件数": "UNKNOWN",
+            "净重": "UNKNOWN",
+            "毛重": "UNKNOWN",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "客户名": {
+              "fileId": "F-a64834ca9065",
+              "page": 1,
+              "position": "委托方或表头",
+              "value": "福建省超年科技股份有限公司",
+              "rawValue": "福建省超年科技股份有限公司"
+            },
+            "品牌": {
+              "fileId": "F-a64834ca9065",
+              "page": 1,
+              "position": "委托商品表第1行/品牌",
+              "value": "广濑",
+              "rawValue": "广濑"
+            },
+            "型号": {
+              "fileId": "F-a64834ca9065",
+              "page": 1,
+              "position": "委托商品表第1行/型号",
+              "value": "BM25U-4P/2-V(85)",
+              "rawValue": "BM25U-4P/2-V(85)"
+            },
+            "品名": {
+              "fileId": "F-a64834ca9065",
+              "page": 1,
+              "position": "委托商品表第1行/品名",
+              "value": "接插件",
+              "rawValue": "接插件"
+            },
+            "产地": {
+              "fileId": "F-a64834ca9065",
+              "page": 1,
+              "position": "委托商品表第1行/产地",
+              "value": "韩国",
+              "rawValue": "韩国"
+            },
+            "数量": {
+              "fileId": "F-a64834ca9065",
+              "page": 1,
+              "position": "委托商品表第1行/数量",
+              "value": "580000",
+              "rawValue": "580000"
+            },
+            "报关单价": {
+              "fileId": "F-a64834ca9065",
+              "page": 1,
+              "position": "委托商品表第1行/报关单价",
+              "value": "0.0397",
+              "rawValue": "0.0397"
+            },
+            "总价": {
+              "fileId": "F-a64834ca9065",
+              "page": 1,
+              "position": "委托商品表第1行/总价",
+              "value": "23026.00",
+              "rawValue": "23026.00"
+            },
+            "币种": {
+              "fileId": "F-a64834ca9065",
+              "page": 1,
+              "position": "委托方或表头",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        }
+      ],
+      "sharedMeasurements": []
+    }
+  ],
+  "reviewRecords": [
+    {
+      "fileId": "F-a64834ca9065",
+      "sampleId": "2026CNKJ001",
+      "role": "entrustment_material",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "真实整单样本/2026CNKJ001/委托文件/报关委托书.jpg"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-8e681d73b55a",
+      "sampleId": "2026CNKJ001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-8e681d73b55a/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-9116712b48a7",
+      "sampleId": "2026CNKJ001",
+      "role": "reference",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "参考结果",
+          "rows": 3,
+          "columns": 20,
+          "merged": []
+        }
+      ]
+    }
+  ]
+}

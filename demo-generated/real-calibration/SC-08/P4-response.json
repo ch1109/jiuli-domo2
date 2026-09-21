@@ -1,0 +1,39 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P4",
+  "request_id": "SC08-AUDIT-20260920-P4",
+  "output": {
+    "processing_status": "SUCCESS",
+    "row_patches": [
+      {
+        "order_row_id": "D-3c3cc10bd26b-R007",
+        "evaluated_fields": ["brand", "model", "origin", "unit", "quantity", "net_weight", "gross_weight", "warehouse_no"],
+        "field_decisions": [
+          {"field": "brand", "decision": "KEEP", "result_value": "SK HYNIX", "verification_status": "VERIFIED_CONSISTENT", "evidence_keys": ["E-P4-L001-BRAND"], "candidate_values": [], "referenced_issue_ids": [], "missing_required": false, "reason": "完整商品行的查货品牌与当前值一致。"},
+          {"field": "model", "decision": "KEEP", "result_value": "H25G9TCXXCX702A#9", "verification_status": "VERIFIED_CONSISTENT", "evidence_keys": ["E-P4-L001-MODEL", "E-P4-L001-MARKER"], "candidate_values": [], "referenced_issue_ids": [], "missing_required": false, "reason": "查货型号主体一致，且同一商品行描述明确保留外部标记#9。"},
+          {"field": "origin", "decision": "KEEP", "result_value": "韩国", "verification_status": "VERIFIED_CONSISTENT", "evidence_keys": ["E-P4-L001-ORIGIN"], "candidate_values": [], "referenced_issue_ids": [], "missing_required": false, "reason": "完整独立片段的印刷COD经配置标准化为韩国，与当前值一致。"},
+          {"field": "unit", "decision": "KEEP", "result_value": "个", "verification_status": "NO_EVIDENCE", "evidence_keys": [], "candidate_values": [], "referenced_issue_ids": [], "missing_required": false, "reason": "查货商品行未提供单位，保留委托单位。"},
+          {"field": "quantity", "decision": "KEEP", "result_value": "12081", "verification_status": "NO_EVIDENCE", "evidence_keys": [], "candidate_values": [], "referenced_issue_ids": ["ISS-L001-UNIT-MISSING"], "missing_required": false, "reason": "数值相同但查货单位缺失，不能完成整行数量可比核验。"},
+          {"field": "net_weight", "decision": "KEEP", "result_value": "3.6", "verification_status": "VERIFIED_CONSISTENT", "evidence_keys": ["E-P4-L001-NW"], "candidate_values": [], "referenced_issue_ids": [], "missing_required": false, "reason": "完整商品级查货净重3.60 KG与当前值一致。"},
+          {"field": "gross_weight", "decision": "KEEP", "result_value": "4.2", "verification_status": "VERIFIED_CONSISTENT", "evidence_keys": ["E-P4-L001-GW"], "candidate_values": [], "referenced_issue_ids": [], "missing_required": false, "reason": "完整商品级查货毛重4.20 KG与当前值一致。"},
+          {"field": "warehouse_no", "decision": "FILL", "result_value": "25120336", "verification_status": "VERIFIED_UPDATED", "evidence_keys": ["E-P4-L001-WH"], "candidate_values": [], "referenced_issue_ids": [], "missing_required": false, "reason": "可靠关系对应的入仓号清单唯一且完整。"}
+        ]
+      },
+      {
+        "order_row_id": "D-3c3cc10bd26b-R008",
+        "evaluated_fields": ["brand", "model", "origin", "unit", "quantity", "net_weight", "gross_weight", "warehouse_no"],
+        "field_decisions": [
+          {"field": "brand", "decision": "KEEP", "result_value": "SK HYNIX", "verification_status": "VERIFIED_CONSISTENT", "evidence_keys": ["E-P4-L002-BRAND"], "candidate_values": [], "referenced_issue_ids": [], "missing_required": false, "reason": "完整商品行的查货品牌与当前值一致。"},
+          {"field": "model", "decision": "KEEP", "result_value": "D25G9TCX8CX239C#D", "verification_status": "VERIFIED_CONSISTENT", "evidence_keys": ["E-P4-L002-MODEL", "E-P4-L002-MARKER"], "candidate_values": [], "referenced_issue_ids": [], "missing_required": false, "reason": "查货型号主体一致，且同一商品行描述明确保留外部标记#D。"},
+          {"field": "origin", "decision": "KEEP", "result_value": "韩国", "verification_status": "VERIFIED_CONSISTENT", "evidence_keys": ["E-P4-L002-ORIGIN"], "candidate_values": [], "referenced_issue_ids": [], "missing_required": false, "reason": "完整独立片段的印刷COD经配置标准化为韩国，与当前值一致。"},
+          {"field": "unit", "decision": "KEEP", "result_value": "个", "verification_status": "NO_EVIDENCE", "evidence_keys": [], "candidate_values": [], "referenced_issue_ids": [], "missing_required": false, "reason": "查货商品行未提供单位，保留委托单位。"},
+          {"field": "quantity", "decision": "KEEP", "result_value": "16054", "verification_status": "NO_EVIDENCE", "evidence_keys": [], "candidate_values": [], "referenced_issue_ids": ["ISS-L002-UNIT-MISSING"], "missing_required": false, "reason": "数值相同但查货单位缺失，不能完成整行数量可比核验。"},
+          {"field": "net_weight", "decision": "KEEP", "result_value": "4.4", "verification_status": "VERIFIED_CONSISTENT", "evidence_keys": ["E-P4-L002-NW"], "candidate_values": [], "referenced_issue_ids": [], "missing_required": false, "reason": "完整商品级查货净重4.40 KG与当前值一致。"},
+          {"field": "gross_weight", "decision": "KEEP", "result_value": "5", "verification_status": "VERIFIED_CONSISTENT", "evidence_keys": ["E-P4-L002-GW"], "candidate_values": [], "referenced_issue_ids": [], "missing_required": false, "reason": "完整商品级查货毛重5.00 KG与当前值一致。"},
+          {"field": "warehouse_no", "decision": "FILL", "result_value": "25120336", "verification_status": "VERIFIED_UPDATED", "evidence_keys": ["E-P4-L002-WH"], "candidate_values": [], "referenced_issue_ids": [], "missing_required": false, "reason": "可靠关系对应的入仓号清单唯一且完整。"}
+        ]
+      }
+    ],
+    "issues": []
+  }
+}

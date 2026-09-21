@@ -1,0 +1,3596 @@
+{
+  "inspectionOrders": [
+    {
+      "fileId": "F-8bc7177252aa",
+      "sampleId": "2025YBT010-2",
+      "warehouseNo": "25120336",
+      "customerName": "英堡科技（深圳）有限公司",
+      "rows": [
+        {
+          "page": 1,
+          "position": "商品表第1行",
+          "品牌": "SK HYNIX",
+          "型号": "H25G9TCXXCX702A",
+          "产地": "KOREA",
+          "数量": "12081",
+          "单位": "UNKNOWN",
+          "件数": "1",
+          "净重": "3.60",
+          "毛重": "4.20"
+        },
+        {
+          "page": 1,
+          "position": "商品表第2行",
+          "品牌": "SK HYNIX",
+          "型号": "D25G9TCX8CX239C",
+          "产地": "KOREA",
+          "数量": "16054",
+          "单位": "UNKNOWN",
+          "件数": "1",
+          "净重": "4.40",
+          "毛重": "5.00"
+        }
+      ],
+      "notes": "入仓章毛重9 KG，表格合计9.20 KG；两个来源均保留。",
+      "sharedMeasurements": []
+    },
+    {
+      "fileId": "F-4626eef2dd66",
+      "sampleId": "2026(DG)ZW001",
+      "warehouseNo": "26010713",
+      "customerName": "东莞市智微智能科技有限公司",
+      "rows": [
+        {
+          "page": 1,
+          "position": "商品表第1行",
+          "品牌": "uPI",
+          "型号": "UP9505UQGW",
+          "产地": "UNKNOWN",
+          "数量": "2500",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "Taiwan China",
+          "手写COO": "TW,CN"
+        },
+        {
+          "page": 1,
+          "position": "商品表第2行",
+          "品牌": "uPI",
+          "型号": "UP7501M8",
+          "产地": "UNKNOWN",
+          "数量": "3000",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "Taiwan China",
+          "手写COO": "TW,CN"
+        }
+      ],
+      "notes": "印刷列为COD，手写COO为TW,CN；不静默将COD映射成产地。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "箱1两行",
+          "件数": "1",
+          "净重": "1.4",
+          "毛重": "1.8",
+          "仓库章毛重": "1"
+        }
+      ]
+    },
+    {
+      "fileId": "F-cdbd27982284",
+      "sampleId": "2026(DG)ZW001",
+      "warehouseNo": "26010048",
+      "customerName": "东莞市智微智能科技有限公司",
+      "rows": [
+        {
+          "page": 1,
+          "position": "商品表第1行",
+          "品牌": "ASMEDIA",
+          "型号": "ASM1543",
+          "产地": "TAIWAN, CHINA",
+          "数量": "6500",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "物料号码": "300200002056"
+        },
+        {
+          "page": 1,
+          "position": "商品表第2行",
+          "品牌": "ASMEDIA",
+          "型号": "ASM2480B",
+          "产地": "TAIWAN, CHINA",
+          "数量": "3500",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "物料号码": "300200002198"
+        },
+        {
+          "page": 1,
+          "position": "商品表第3行",
+          "品牌": "ASMEDIA",
+          "型号": "ASM1562",
+          "产地": "TAIWAN, CHINA",
+          "数量": "6500",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "物料号码": "300200001648"
+        },
+        {
+          "page": 1,
+          "position": "商品表第4行",
+          "品牌": "ASMEDIA",
+          "型号": "ASM1164",
+          "产地": "TAIWAN, CHINA",
+          "数量": "7000",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "物料号码": "300200008018"
+        }
+      ],
+      "notes": "品牌取页内手写ASMEDIA；不按数量摊重量。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "整箱4行",
+          "件数": "1",
+          "净重": "5.20",
+          "毛重": "8.50",
+          "仓库章毛重": "8"
+        }
+      ]
+    },
+    {
+      "fileId": "F-ad06ec2cd295",
+      "sampleId": "2026(DG)ZW003",
+      "warehouseNo": "26010801",
+      "customerName": "东莞市智微智能科技有限公司",
+      "rows": [
+        {
+          "page": 1,
+          "position": "商品表第1行",
+          "品牌": "ASL",
+          "型号": "CS5511AN",
+          "产地": "CHINA",
+          "数量": "1680",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 1,
+          "position": "商品表第2行",
+          "品牌": "ASL",
+          "型号": "CS5511AN",
+          "产地": "CHINA",
+          "数量": "5040",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 1,
+          "position": "商品表第3行",
+          "品牌": "ASL",
+          "型号": "CS5512AN",
+          "产地": "CHINA",
+          "数量": "3360",
+          "单位": "PCS",
+          "件数": "1",
+          "净重": "5.00",
+          "毛重": "5.30"
+        }
+      ],
+      "notes": "箱1前两行共享10/10.60 KG，不拆分；委托两行产地中国台湾与查货CHINA冲突。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "箱1，商品表1、2行",
+          "件数": "1",
+          "净重": "10.00",
+          "毛重": "10.60"
+        },
+        {
+          "page": 1,
+          "scope": "整单",
+          "件数": "2",
+          "净重": "15.00",
+          "毛重": "15.90",
+          "仓库章毛重": "16"
+        }
+      ]
+    },
+    {
+      "fileId": "F-e928e7608540",
+      "sampleId": "2026(DG)ZW003",
+      "warehouseNo": "26010211",
+      "customerName": "东莞市智微智能科技有限公司",
+      "rows": [
+        {
+          "page": 1,
+          "position": "主商品表第1行",
+          "品牌": "REALTEK",
+          "型号": "ALC897-VA2-CG",
+          "产地": "CHINA",
+          "数量": "21600",
+          "单位": "PCS",
+          "件数": "1",
+          "净重": "15.40",
+          "毛重": "22.00"
+        },
+        {
+          "page": 1,
+          "position": "主商品表第2行",
+          "品牌": "REALTEK",
+          "型号": "ALC897-VA2-CG",
+          "产地": "CHINA",
+          "数量": "13400",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "10.12",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 1,
+          "position": "主商品表第3行",
+          "品牌": "REALTEK",
+          "型号": "RTS5411S-GR",
+          "产地": "CHINA",
+          "数量": "2600",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "1.97",
+          "毛重": "UNKNOWN",
+          "COD": "TAIWAN, CHINA"
+        }
+      ],
+      "notes": "下方六条LOT明细为主表重复细分证据，不再生成重复库存；箱2毛重17.25为后两行共享；手写RTS5411S-GR 16000pcs与表格2600冲突。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "箱2，主表2、3行",
+          "件数": "1",
+          "毛重": "17.25"
+        },
+        {
+          "page": 1,
+          "scope": "整单",
+          "件数": "2",
+          "净重": "27.49",
+          "毛重": "39.25",
+          "仓库章毛重": "40"
+        }
+      ]
+    },
+    {
+      "fileId": "F-bfe5061027e1",
+      "sampleId": "2026(DG)ZW050",
+      "warehouseNo": "26050640",
+      "customerName": "东莞市智微智能科技有限公司",
+      "rows": [
+        {
+          "page": 1,
+          "position": "商品表第1行",
+          "品牌": "MAXLINEAR",
+          "型号": "SP3243EBEY-L/TR",
+          "产地": "UNKNOWN",
+          "数量": "2500",
+          "单位": "PCS",
+          "件数": "1",
+          "净重": "0.56",
+          "毛重": "1.56",
+          "COD": "KOREA"
+        }
+      ],
+      "notes": "原印刷列标题C.O.D.，不能直接认作COO；模板委托产地韩国。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "整单",
+          "仓库章毛重": "2"
+        }
+      ]
+    },
+    {
+      "fileId": "F-2907feed0d42",
+      "sampleId": "2026ACSY003",
+      "warehouseNo": "26033175",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "商品表第1行",
+          "品牌": "MICRON",
+          "型号": "MT29F4T08EUHAFM4",
+          "产地": "UNKNOWN",
+          "数量": "1401",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "批次/尾码": "NW920"
+        },
+        {
+          "page": 1,
+          "position": "商品表第2行",
+          "品牌": "MICRON",
+          "型号": "MT29F2T08CUHBBM4",
+          "产地": "UNKNOWN",
+          "数量": "1564",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "批次/尾码": "NWB21"
+        },
+        {
+          "page": 1,
+          "position": "商品表第3行",
+          "品牌": "Toshiba",
+          "型号": "TH58TF1V23BA8H",
+          "产地": "UNKNOWN",
+          "数量": "1080",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "批次/尾码": "1V23"
+        },
+        {
+          "page": 1,
+          "position": "商品表第4行",
+          "品牌": "Toshiba",
+          "型号": "TH58TF2T23BA8J",
+          "产地": "UNKNOWN",
+          "数量": "368",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "批次/尾码": "2T23"
+        }
+      ],
+      "notes": "页内未显示委托客户；右侧手写为COD而非明确COO；重量是每两行共享且未区分净毛。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "商品1、2",
+          "件数": "1",
+          "重量类型未区分": "7.6"
+        },
+        {
+          "page": 1,
+          "scope": "商品3、4",
+          "件数": "1",
+          "重量类型未区分": "4.6"
+        }
+      ]
+    },
+    {
+      "fileId": "F-6b255626250f",
+      "sampleId": "2026AG001",
+      "warehouseNo": "26050688",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "商品表第1行",
+          "品牌": "SUSE",
+          "型号": "B-RPGC-2C4V-PS1",
+          "产地": "德国",
+          "数量": "20",
+          "单位": "UNKNOWN",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "报关单价": "1617.04",
+          "总价": "32340.80",
+          "商品描述": "Linux操作系统软件，标准三年服务",
+          "币种": "USD"
+        },
+        {
+          "page": 1,
+          "position": "商品表第2行",
+          "品牌": "SUSE",
+          "型号": "B-RPGC-2C4V-PS1",
+          "产地": "德国",
+          "数量": "12",
+          "单位": "UNKNOWN",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "报关单价": "2175.00",
+          "总价": "26100.00",
+          "商品描述": "Linux操作系统软件，标准三年服务",
+          "币种": "USD"
+        }
+      ],
+      "notes": "License编号2026AG001，未印客户；委托写标准一年服务，查货写三年服务。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "整单",
+          "件数": "1"
+        }
+      ]
+    },
+    {
+      "fileId": "F-8e681d73b55a",
+      "sampleId": "2026CNKJ001",
+      "warehouseNo": "26057448",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "商品表第1行",
+          "品牌": "HIROSE",
+          "型号": "BM25U-4P/2-V(85)",
+          "产地": "JAPAN",
+          "数量": "580000",
+          "单位": "pc",
+          "件数": "3",
+          "净重": "4.81",
+          "毛重": "31.66"
+        }
+      ],
+      "notes": "Bill to为深圳市快极科技有限公司；委托方为福建省超年科技股份有限公司，客户归属不能自动合并。正文另有入仓号018230127，属于哪个编号体系UNKNOWN，不能把同一行复制到两个逻辑单。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "整单",
+          "仓库章毛重": "31",
+          "正文另一入仓号": "018230127"
+        }
+      ]
+    },
+    {
+      "fileId": "F-970b59d6d5b8",
+      "sampleId": "26SHPYD056",
+      "warehouseNo": "26036383",
+      "customerName": "上海浦壹电子科技有限公司",
+      "rows": [
+        {
+          "page": 1,
+          "position": "WINBOND批次明细第1行",
+          "品牌": "WINBOND",
+          "型号": "W25N01GVZEIG",
+          "产地": "CHINA",
+          "数量": "4000",
+          "单位": "UNKNOWN",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "DC": "2542"
+        },
+        {
+          "page": 1,
+          "position": "WINBOND批次明细第2行",
+          "品牌": "WINBOND",
+          "型号": "W25N01GVZEIG",
+          "产地": "TAIWAN, CHINA",
+          "数量": "3840",
+          "单位": "UNKNOWN",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "DC": "2523"
+        },
+        {
+          "page": 1,
+          "position": "WINBOND批次明细第3行",
+          "品牌": "WINBOND",
+          "型号": "W25N01GVZEIG",
+          "产地": "TAIWAN, CHINA",
+          "数量": "11520",
+          "单位": "UNKNOWN",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "DC": "2544"
+        },
+        {
+          "page": 1,
+          "position": "WINBOND批次明细第4行",
+          "品牌": "WINBOND",
+          "型号": "W25N01GVZEIG",
+          "产地": "TAIWAN, CHINA",
+          "数量": "3840",
+          "单位": "UNKNOWN",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "DC": "2545"
+        },
+        {
+          "page": 1,
+          "position": "WINBOND批次明细第5行",
+          "品牌": "WINBOND",
+          "型号": "W25N01GVZEIG",
+          "产地": "TAIWAN, CHINA",
+          "数量": "15360",
+          "单位": "UNKNOWN",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "DC": "2548"
+        },
+        {
+          "page": 1,
+          "position": "WINBOND批次明细第6行",
+          "品牌": "WINBOND",
+          "型号": "W25N01GVZEIG",
+          "产地": "TAIWAN, CHINA",
+          "数量": "12000",
+          "单位": "UNKNOWN",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "DC": "2551"
+        },
+        {
+          "page": 1,
+          "position": "WINBOND批次明细第7行",
+          "品牌": "WINBOND",
+          "型号": "W25N01GVZEIG",
+          "产地": "TAIWAN, CHINA",
+          "数量": "102880",
+          "单位": "UNKNOWN",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "DC": "2552"
+        },
+        {
+          "page": 2,
+          "position": "MARVELL批次明细第1行",
+          "品牌": "MARVELL",
+          "型号": "88E6240A1TFJ2C000",
+          "产地": "TAIWAN, CHINA",
+          "数量": "900",
+          "单位": "UNKNOWN",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "DC": "2522"
+        },
+        {
+          "page": 2,
+          "position": "MARVELL批次明细第2行",
+          "品牌": "MARVELL",
+          "型号": "88E6240A1TFJ2C000",
+          "产地": "TAIWAN, CHINA",
+          "数量": "1800",
+          "单位": "UNKNOWN",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "DC": "2524"
+        }
+      ],
+      "notes": "第2页同PDF续页没有独立入仓号；按第1页入仓章2页及总件数归属。保留9条批次明细，Shipped Qty汇总不重复计行。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "WINBOND 7行",
+          "件数": "4",
+          "净重": "57.7",
+          "毛重": "61.7"
+        },
+        {
+          "page": 2,
+          "scope": "MARVELL 2行",
+          "件数": "1",
+          "净重": "6.8",
+          "毛重": "7.4"
+        },
+        {
+          "page": 1,
+          "scope": "仓库实测整单",
+          "件数": "5",
+          "毛重": "75"
+        }
+      ]
+    },
+    {
+      "fileId": "F-a5368260946b",
+      "sampleId": "英卡-抽+整",
+      "warehouseNo": "26070093",
+      "customerName": "深圳市英卡科技有限公司",
+      "rows": [
+        {
+          "page": 1,
+          "position": "箱1",
+          "品牌": "UNISOC",
+          "型号": "UMW2631",
+          "产地": "CHINA",
+          "数量": "15000",
+          "单位": "pcs",
+          "件数": "1",
+          "净重": "4.50",
+          "毛重": "5.20"
+        },
+        {
+          "page": 1,
+          "position": "箱2",
+          "品牌": "UNISOC",
+          "型号": "UMW2631",
+          "产地": "CHINA",
+          "数量": "15000",
+          "单位": "pcs",
+          "件数": "1",
+          "净重": "4.50",
+          "毛重": "5.20"
+        },
+        {
+          "page": 1,
+          "position": "箱3",
+          "品牌": "UNISOC",
+          "型号": "UMW2631",
+          "产地": "CHINA",
+          "数量": "15000",
+          "单位": "pcs",
+          "件数": "1",
+          "净重": "4.50",
+          "毛重": "5.20"
+        },
+        {
+          "page": 1,
+          "position": "箱4",
+          "品牌": "UNISOC",
+          "型号": "UMW2631",
+          "产地": "CHINA",
+          "数量": "15000",
+          "单位": "pcs",
+          "件数": "1",
+          "净重": "4.50",
+          "毛重": "5.20"
+        },
+        {
+          "page": 1,
+          "position": "箱5",
+          "品牌": "UNISOC",
+          "型号": "UMW2631",
+          "产地": "CHINA",
+          "数量": "15000",
+          "单位": "pcs",
+          "件数": "1",
+          "净重": "4.50",
+          "毛重": "5.20"
+        },
+        {
+          "page": 1,
+          "position": "箱6",
+          "品牌": "UNISOC",
+          "型号": "UMW2631",
+          "产地": "CHINA",
+          "数量": "15000",
+          "单位": "pcs",
+          "件数": "1",
+          "净重": "4.50",
+          "毛重": "5.20"
+        },
+        {
+          "page": 1,
+          "position": "箱7",
+          "品牌": "UNISOC",
+          "型号": "UMW2631",
+          "产地": "CHINA",
+          "数量": "15000",
+          "单位": "pcs",
+          "件数": "1",
+          "净重": "4.50",
+          "毛重": "5.20"
+        },
+        {
+          "page": 1,
+          "position": "箱8",
+          "品牌": "UNISOC",
+          "型号": "UMW2631",
+          "产地": "CHINA",
+          "数量": "15000",
+          "单位": "pcs",
+          "件数": "1",
+          "净重": "4.50",
+          "毛重": "5.20"
+        },
+        {
+          "page": 1,
+          "position": "箱9",
+          "品牌": "UNISOC",
+          "型号": "UMW2631",
+          "产地": "CHINA",
+          "数量": "15000",
+          "单位": "pcs",
+          "件数": "1",
+          "净重": "4.50",
+          "毛重": "5.20"
+        },
+        {
+          "page": 1,
+          "position": "箱10",
+          "品牌": "UNISOC",
+          "型号": "UMW2631",
+          "产地": "CHINA",
+          "数量": "15000",
+          "单位": "pcs",
+          "件数": "1",
+          "净重": "4.50",
+          "毛重": "5.20"
+        },
+        {
+          "page": 1,
+          "position": "箱11",
+          "品牌": "UNISOC",
+          "型号": "UMW2631",
+          "产地": "CHINA",
+          "数量": "15000",
+          "单位": "pcs",
+          "件数": "1",
+          "净重": "4.50",
+          "毛重": "5.20"
+        },
+        {
+          "page": 1,
+          "position": "箱12",
+          "品牌": "UNISOC",
+          "型号": "UMW2631",
+          "产地": "CHINA",
+          "数量": "12000",
+          "单位": "pcs",
+          "件数": "1",
+          "净重": "3.80",
+          "毛重": "4.50"
+        }
+      ],
+      "notes": "文件名26070092但条码26070093；与F-baf3de39ef68内容相同，只生成12行。客户由英卡内部单明确引用入仓号26070093佐证，不将MESSRS英华国际自动作为英卡别名。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "整单",
+          "件数": "12",
+          "净重": "53.30",
+          "毛重": "61.70",
+          "仓库章毛重": "64"
+        }
+      ]
+    },
+    {
+      "fileId": "F-b98a101d8392",
+      "sampleId": "2026BMH001",
+      "warehouseNo": "26027114",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "TXS0108EPWR",
+          "产地": "CN",
+          "数量": "16000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        }
+      ],
+      "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "原始客户",
+          "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+        }
+      ]
+    },
+    {
+      "fileId": "F-c5195fdb15a3",
+      "sampleId": "2026BMH001",
+      "warehouseNo": "26027143",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "TXS0108EPWR",
+          "产地": "CN",
+          "数量": "30000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 2,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "TXS0108EPWR",
+          "产地": "CN",
+          "数量": "40000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        }
+      ],
+      "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "原始客户",
+          "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+        }
+      ]
+    },
+    {
+      "fileId": "F-94d0c3955b2a",
+      "sampleId": "2026BMH001",
+      "warehouseNo": "26027191",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "TLV62569DBVR",
+          "产地": "US",
+          "数量": "150000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 2,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "TLV62569DBVR",
+          "产地": "US",
+          "数量": "150000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 3,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "TLV62569DBVR",
+          "产地": "US",
+          "数量": "150000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        }
+      ],
+      "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "原始客户",
+          "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+        }
+      ]
+    },
+    {
+      "fileId": "F-39b0b8e82a3a",
+      "sampleId": "2026BMH001",
+      "warehouseNo": "26027254",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "TXS0108EPWR",
+          "产地": "CN",
+          "数量": "26000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        }
+      ],
+      "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "原始客户",
+          "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+        }
+      ]
+    },
+    {
+      "fileId": "F-a06d575c587d",
+      "sampleId": "2026BMH001",
+      "warehouseNo": "26027251",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "SN74HC245PWR",
+          "产地": "US",
+          "数量": "24000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        }
+      ],
+      "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "原始客户",
+          "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+        }
+      ]
+    },
+    {
+      "fileId": "F-69127fcfa5c3",
+      "sampleId": "2026BMH001",
+      "warehouseNo": "26027300",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "SN74LVC1G04DBVR",
+          "产地": "DE",
+          "数量": "150000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 2,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "INA180A2IDBVR",
+          "产地": "JP",
+          "数量": "9000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        }
+      ],
+      "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "原始客户",
+          "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+        }
+      ]
+    },
+    {
+      "fileId": "F-de4e00bf55d8",
+      "sampleId": "2026BMH001",
+      "warehouseNo": "26027299",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "LM2576SX-3.3/NOPB",
+          "产地": "GB",
+          "数量": "500",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        }
+      ],
+      "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "原始客户",
+          "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+        }
+      ]
+    },
+    {
+      "fileId": "F-b03e0011849f",
+      "sampleId": "2026BMH001",
+      "warehouseNo": "26027298",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "LM2576SX-3.3/NOPB",
+          "产地": "UNKNOWN",
+          "数量": "4000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        }
+      ],
+      "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。同一印刷商品行含DE:2500及GB:1500；保持原行、产地多值，不自动拆行。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "原始客户",
+          "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+        },
+        {
+          "page": 1,
+          "scope": "商品1产地数量组成",
+          "DE": "2500",
+          "GB": "1500"
+        }
+      ]
+    },
+    {
+      "fileId": "F-cb09c02b9ed5",
+      "sampleId": "2026BMH001",
+      "warehouseNo": "26027323",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "TPS51200DRCR",
+          "产地": "JP",
+          "数量": "12000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        }
+      ],
+      "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "原始客户",
+          "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+        }
+      ]
+    },
+    {
+      "fileId": "F-f29936219cd1",
+      "sampleId": "2026BMH001",
+      "warehouseNo": "26027322",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "SN74LVC08ADR",
+          "产地": "US",
+          "数量": "20000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 2,
+          "position": "发票商品第1行",
+          "品牌": "TI",
+          "型号": "LM2904BIDR",
+          "产地": "US",
+          "数量": "150000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        }
+      ],
+      "notes": "Sold to为FUJIAN CENTERM INFORMATION CO., LTD；不能仅凭目录绑定百闽海。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "原始客户",
+          "buyer": "FUJIAN CENTERM INFORMATION CO., LTD"
+        }
+      ]
+    },
+    {
+      "fileId": "F-276766064bb2",
+      "sampleId": "2026BMH001",
+      "warehouseNo": "26027223",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "印刷明细1",
+          "品牌": "TI",
+          "型号": "SN74AHC1G08DBVR",
+          "产地": "US",
+          "数量": "300000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "19.6",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 2,
+          "position": "印刷明细1",
+          "品牌": "TI",
+          "型号": "SN74AHC1G08DBVR",
+          "产地": "US",
+          "数量": "300000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "19.2",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 3,
+          "position": "印刷明细1",
+          "品牌": "TI",
+          "型号": "SN74AHC1G08DBVR",
+          "产地": "US",
+          "数量": "300000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "24.1",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 4,
+          "position": "印刷明细1",
+          "品牌": "TI",
+          "型号": "SN74AHC1G08DBVR",
+          "产地": "US",
+          "数量": "120000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 4,
+          "position": "印刷明细2",
+          "品牌": "TI",
+          "型号": "SN74AHC1G08DBVR",
+          "产地": "US",
+          "数量": "180000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 5,
+          "position": "印刷明细1",
+          "品牌": "TI",
+          "型号": "SN74AHC1G08DBVR",
+          "产地": "US",
+          "数量": "300000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "17.0",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 6,
+          "position": "印刷明细1",
+          "品牌": "TI",
+          "型号": "SN74AHC1G08DBVR",
+          "产地": "US",
+          "数量": "300000",
+          "单位": "EA",
+          "件数": "UNKNOWN",
+          "净重": "25.3",
+          "毛重": "UNKNOWN"
+        }
+      ],
+      "notes": "现有PDF6页，原印刷页码为1～6 OF 8，缺页7、8；箱明细和手写抽出数量为附属证据，不代替印刷明细或拆库存。Sold to/最终目的方为FUJIAN STAR-NET AIOT TECHNOLOGY CO., LTD；未知与百闽海关系。",
+      "sharedMeasurements": [
+        {
+          "page": 4,
+          "scope": "两条批次",
+          "净重": "22.6"
+        },
+        {
+          "page": 1,
+          "scope": "仓库章整单",
+          "件数": "29",
+          "毛重": "136"
+        }
+      ]
+    },
+    {
+      "fileId": "F-5dc64ab64d12",
+      "sampleId": "多对多样例",
+      "warehouseNo": "26040077",
+      "customerName": "深圳欧陆通电子股份有限公司",
+      "rows": [
+        {
+          "page": 1,
+          "position": "箱1",
+          "品牌": "AOS",
+          "型号": "AOD3N80",
+          "产地": "China",
+          "数量": "2500",
+          "单位": "PCS",
+          "件数": "1",
+          "净重": "1.94",
+          "毛重": "2.44"
+        },
+        {
+          "page": 1,
+          "position": "箱2",
+          "品牌": "AOS",
+          "型号": "AON6512",
+          "产地": "China",
+          "数量": "6000",
+          "单位": "PCS",
+          "件数": "1",
+          "净重": "1.63",
+          "毛重": "2.13"
+        },
+        {
+          "page": 1,
+          "position": "箱3",
+          "品牌": "AOS",
+          "型号": "AON6354",
+          "产地": "China",
+          "数量": "3000",
+          "单位": "PCS",
+          "件数": "1",
+          "净重": "0.80",
+          "毛重": "1.30"
+        }
+      ],
+      "notes": "第2页合计，第3页发票，不重复计商品。",
+      "sharedMeasurements": []
+    },
+    {
+      "fileId": "F-168417940250",
+      "sampleId": "多对多样例",
+      "warehouseNo": "26040117",
+      "customerName": "深圳欧陆通电子股份有限公司",
+      "rows": [
+        {
+          "page": 1,
+          "position": "箱1",
+          "品牌": "ST",
+          "型号": "M24C02-RMN6TPTHA",
+          "产地": "France",
+          "数量": "5000",
+          "单位": "PCS",
+          "件数": "1",
+          "净重": ".400",
+          "毛重": "2.140"
+        },
+        {
+          "page": 1,
+          "position": "箱2",
+          "品牌": "ST",
+          "型号": "PM8834TR",
+          "产地": "Italy",
+          "数量": "5000",
+          "单位": "PCS",
+          "件数": "1",
+          "净重": ".400",
+          "毛重": "2.090"
+        },
+        {
+          "page": 1,
+          "position": "箱3",
+          "品牌": "ST",
+          "型号": "STD4N80K5",
+          "产地": "Italy",
+          "数量": "2500",
+          "单位": "PCS",
+          "件数": "1",
+          "净重": ".750",
+          "毛重": "1.970"
+        }
+      ],
+      "notes": "保留DESCRIPTION完整型号及IC BODY基础型号差异，发票为辅助证据。",
+      "sharedMeasurements": []
+    },
+    {
+      "fileId": "F-2e8354efac27",
+      "sampleId": "多对多样例",
+      "warehouseNo": "26040114",
+      "customerName": "深圳欧陆通电子股份有限公司",
+      "rows": [
+        {
+          "page": 1,
+          "position": "箱001",
+          "品牌": "ST",
+          "型号": "LM393DT",
+          "产地": "China",
+          "数量": "2500",
+          "单位": "PCS",
+          "件数": "1",
+          "净重": ".200",
+          "毛重": "1.220"
+        }
+      ],
+      "notes": "",
+      "sharedMeasurements": []
+    },
+    {
+      "fileId": "F-929e7033b39f",
+      "sampleId": "多对多样例",
+      "warehouseNo": "26040116",
+      "customerName": "深圳欧陆通电子股份有限公司",
+      "rows": [
+        {
+          "page": 1,
+          "position": "箱001",
+          "品牌": "TAIWAN SEMICONDUCTOR",
+          "型号": "SK310A",
+          "产地": "China",
+          "数量": "7500",
+          "单位": "PCS",
+          "件数": "1",
+          "净重": ".360",
+          "毛重": "1.400"
+        }
+      ],
+      "notes": "",
+      "sharedMeasurements": []
+    },
+    {
+      "fileId": "F-7d97d15951fc",
+      "sampleId": "多对多样例",
+      "warehouseNo": "26040139",
+      "customerName": "深圳欧陆通电子股份有限公司",
+      "rows": [
+        {
+          "page": 1,
+          "position": "箱001",
+          "品牌": "ST",
+          "型号": "STM32G474MCT6",
+          "产地": "France",
+          "数量": "714",
+          "单位": "PCS",
+          "件数": "1",
+          "净重": ".358",
+          "毛重": "2.160"
+        }
+      ],
+      "notes": "",
+      "sharedMeasurements": []
+    },
+    {
+      "fileId": "F-f1e1e4ea2ac5",
+      "sampleId": "多对多样例",
+      "warehouseNo": "26040716",
+      "customerName": "深圳欧陆通电子股份有限公司",
+      "rows": [
+        {
+          "page": 1,
+          "position": "箱1",
+          "品牌": "ON",
+          "型号": "MMUN2214LT1G",
+          "产地": "CN",
+          "数量": "6000",
+          "单位": "pcs",
+          "件数": "1",
+          "净重": ".34",
+          "毛重": ".40"
+        }
+      ],
+      "notes": "",
+      "sharedMeasurements": []
+    },
+    {
+      "fileId": "F-da9dfc44a0f9",
+      "sampleId": "多对多样例",
+      "warehouseNo": "26040156",
+      "customerName": "深圳欧陆通电子股份有限公司",
+      "rows": [
+        {
+          "page": 1,
+          "position": "箱1",
+          "品牌": "MICROCHIP",
+          "型号": "PIC18F25K22T-E/SS",
+          "产地": "TH",
+          "数量": "6300",
+          "单位": "PCS",
+          "件数": "1",
+          "净重": "3.500",
+          "毛重": "4.100"
+        },
+        {
+          "page": 1,
+          "position": "箱2",
+          "品牌": "MICROCHIP",
+          "型号": "PIC18F46K22T-I/PT",
+          "产地": "TH",
+          "数量": "3600",
+          "单位": "PCS",
+          "件数": "1",
+          "净重": "4.000",
+          "毛重": "4.900"
+        }
+      ],
+      "notes": "第3页产地说明明确COO TH、COD USA；内部结果产地美国不能覆盖COO。",
+      "sharedMeasurements": []
+    },
+    {
+      "fileId": "F-c578af30ff9a",
+      "sampleId": "多对多样例",
+      "warehouseNo": "26040177",
+      "customerName": "深圳欧陆通电子股份有限公司",
+      "rows": [
+        {
+          "page": 1,
+          "position": "箱1",
+          "品牌": "DIODES",
+          "型号": "D-SBR10U60CT",
+          "产地": "CN 中国",
+          "数量": "100",
+          "单位": "PCS",
+          "件数": "1",
+          "净重": ".19",
+          "毛重": ".95"
+        }
+      ],
+      "notes": "",
+      "sharedMeasurements": []
+    },
+    {
+      "fileId": "F-cd33df861950",
+      "sampleId": "多对多样例",
+      "warehouseNo": "26040178",
+      "customerName": "深圳欧陆通电子股份有限公司",
+      "rows": [
+        {
+          "page": 1,
+          "position": "箱1",
+          "品牌": "VISHAY",
+          "型号": "SIHP21N60EF-GE3",
+          "产地": "Israel 以色列",
+          "数量": "2000",
+          "单位": "PCS",
+          "件数": "1",
+          "净重": "3.90",
+          "毛重": "6.08"
+        },
+        {
+          "page": 1,
+          "position": "箱2",
+          "品牌": "ROHM",
+          "型号": "R6030ENZ4C13",
+          "产地": "CN 中国",
+          "数量": "1200",
+          "单位": "PCS",
+          "件数": "1",
+          "净重": "7.62",
+          "毛重": "10.40"
+        }
+      ],
+      "notes": "",
+      "sharedMeasurements": []
+    },
+    {
+      "fileId": "F-ea04d3e7518a",
+      "sampleId": "多对多样例",
+      "warehouseNo": "26040179",
+      "customerName": "深圳欧陆通电子股份有限公司",
+      "rows": [
+        {
+          "page": 1,
+          "position": "箱1",
+          "品牌": "INFINEON",
+          "型号": "IPW65R041CFD7(SP005413359)",
+          "产地": "CN 中国",
+          "数量": "720",
+          "单位": "PCS",
+          "件数": "1",
+          "净重": "5.22",
+          "毛重": "6.53"
+        }
+      ],
+      "notes": "",
+      "sharedMeasurements": []
+    },
+    {
+      "fileId": "F-93c7d7713617",
+      "sampleId": "多对多样例",
+      "warehouseNo": "26040084",
+      "customerName": "深圳欧陆通电子股份有限公司",
+      "rows": [
+        {
+          "page": 1,
+          "position": "箱1批次1",
+          "品牌": "DIODES",
+          "型号": "S8KC-13",
+          "产地": "TAIWAN,CHINA",
+          "数量": "12000",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 1,
+          "position": "箱1批次2",
+          "品牌": "DIODES",
+          "型号": "S8KC-13",
+          "产地": "TAIWAN,CHINA",
+          "数量": "3000",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 2,
+          "position": "箱1",
+          "品牌": "DIODES",
+          "型号": "BSS84DW-7-F",
+          "产地": "CHINA",
+          "数量": "3000",
+          "单位": "PCS",
+          "件数": "1",
+          "净重": ".28",
+          "毛重": ".40"
+        }
+      ],
+      "notes": "两份箱单同一入仓号；第3页送货汇总不重复计入。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "箱1两个批次",
+          "件数": "1",
+          "净重": "6.36",
+          "毛重": "7.00"
+        }
+      ]
+    },
+    {
+      "fileId": "F-5b778363f744",
+      "sampleId": "多对多样例",
+      "warehouseNo": "26040083",
+      "customerName": "深圳欧陆通电子股份有限公司",
+      "rows": [
+        {
+          "page": 1,
+          "position": "BSC批次明细1",
+          "品牌": "INFINEON",
+          "型号": "BSC026N08NS5",
+          "产地": "CHINA",
+          "数量": "15000",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "GERMANY"
+        },
+        {
+          "page": 1,
+          "position": "BSC批次明细2",
+          "品牌": "INFINEON",
+          "型号": "BSC026N08NS5",
+          "产地": "CHINA",
+          "数量": "10000",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "GERMANY"
+        },
+        {
+          "page": 1,
+          "position": "BSC批次明细3",
+          "品牌": "INFINEON",
+          "型号": "BSC026N08NS5",
+          "产地": "CHINA",
+          "数量": "20000",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "GERMANY"
+        },
+        {
+          "page": 1,
+          "position": "BSC批次明细4",
+          "品牌": "INFINEON",
+          "型号": "BSC026N08NS5",
+          "产地": "CHINA",
+          "数量": "5000",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "GERMANY"
+        },
+        {
+          "page": 1,
+          "position": "BSC批次明细5",
+          "品牌": "INFINEON",
+          "型号": "BSC026N08NS5",
+          "产地": "CHINA",
+          "数量": "15000",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "GERMANY"
+        },
+        {
+          "page": 1,
+          "position": "BSC批次明细6",
+          "品牌": "INFINEON",
+          "型号": "BSC026N08NS5",
+          "产地": "CHINA",
+          "数量": "5000",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "GERMANY"
+        },
+        {
+          "page": 1,
+          "position": "BSC批次明细7",
+          "品牌": "INFINEON",
+          "型号": "BSC026N08NS5",
+          "产地": "CHINA",
+          "数量": "20000",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "GERMANY"
+        },
+        {
+          "page": 1,
+          "position": "BSC批次明细8",
+          "品牌": "INFINEON",
+          "型号": "BSC026N08NS5",
+          "产地": "CHINA",
+          "数量": "15000",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "GERMANY"
+        },
+        {
+          "page": 1,
+          "position": "BSC批次明细9",
+          "品牌": "INFINEON",
+          "型号": "BSC026N08NS5",
+          "产地": "CHINA",
+          "数量": "30000",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "GERMANY"
+        },
+        {
+          "page": 1,
+          "position": "BSC批次明细10",
+          "品牌": "INFINEON",
+          "型号": "BSC026N08NS5",
+          "产地": "CHINA",
+          "数量": "45000",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "GERMANY"
+        },
+        {
+          "page": 1,
+          "position": "BSC批次明细11",
+          "品牌": "INFINEON",
+          "型号": "BSC026N08NS5",
+          "产地": "CHINA",
+          "数量": "15000",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "GERMANY"
+        },
+        {
+          "page": 2,
+          "position": "BSC批次明细12",
+          "品牌": "INFINEON",
+          "型号": "BSC026N08NS5",
+          "产地": "CHINA",
+          "数量": "10000",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "GERMANY"
+        },
+        {
+          "page": 2,
+          "position": "BSC批次明细13",
+          "品牌": "INFINEON",
+          "型号": "BSC026N08NS5",
+          "产地": "CHINA",
+          "数量": "20000",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "GERMANY"
+        },
+        {
+          "page": 2,
+          "position": "BSC批次明细14",
+          "品牌": "INFINEON",
+          "型号": "BSC026N08NS5",
+          "产地": "CHINA",
+          "数量": "45000",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "GERMANY"
+        },
+        {
+          "page": 2,
+          "position": "BSC批次明细15",
+          "品牌": "INFINEON",
+          "型号": "BSC026N08NS5",
+          "产地": "CHINA",
+          "数量": "10000",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "GERMANY"
+        },
+        {
+          "page": 2,
+          "position": "BSC批次明细16",
+          "品牌": "INFINEON",
+          "型号": "BSC026N08NS5",
+          "产地": "CHINA",
+          "数量": "10000",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "GERMANY"
+        },
+        {
+          "page": 2,
+          "position": "BSC批次明细17",
+          "品牌": "INFINEON",
+          "型号": "BSC026N08NS5",
+          "产地": "CHINA",
+          "数量": "5000",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "GERMANY"
+        },
+        {
+          "page": 3,
+          "position": "SPA批次明细1",
+          "品牌": "INFINEON",
+          "型号": "SPA11N65C3",
+          "产地": "CHINA",
+          "数量": "500",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "MALAYSIA"
+        },
+        {
+          "page": 3,
+          "position": "SPA批次明细2",
+          "品牌": "INFINEON",
+          "型号": "SPA11N65C3",
+          "产地": "CHINA",
+          "数量": "2500",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "MALAYSIA"
+        },
+        {
+          "page": 3,
+          "position": "SPA批次明细3",
+          "品牌": "INFINEON",
+          "型号": "SPA11N65C3",
+          "产地": "CHINA",
+          "数量": "2000",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "MALAYSIA"
+        },
+        {
+          "page": 3,
+          "position": "SPA批次明细4",
+          "品牌": "INFINEON",
+          "型号": "SPA11N65C3",
+          "产地": "CHINA",
+          "数量": "500",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "MALAYSIA"
+        },
+        {
+          "page": 3,
+          "position": "SPA批次明细5",
+          "品牌": "INFINEON",
+          "型号": "SPA11N65C3",
+          "产地": "CHINA",
+          "数量": "2000",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "MALAYSIA"
+        },
+        {
+          "page": 3,
+          "position": "SPA批次明细6",
+          "品牌": "INFINEON",
+          "型号": "SPA11N65C3",
+          "产地": "CHINA",
+          "数量": "2500",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "MALAYSIA"
+        },
+        {
+          "page": 3,
+          "position": "SPA批次明细7",
+          "品牌": "INFINEON",
+          "型号": "SPA11N65C3",
+          "产地": "CHINA",
+          "数量": "500",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "MALAYSIA"
+        },
+        {
+          "page": 3,
+          "position": "SPA批次明细8",
+          "品牌": "INFINEON",
+          "型号": "SPA11N65C3",
+          "产地": "CHINA",
+          "数量": "2000",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "MALAYSIA"
+        },
+        {
+          "page": 3,
+          "position": "SPA批次明细9",
+          "品牌": "INFINEON",
+          "型号": "SPA11N65C3",
+          "产地": "CHINA",
+          "数量": "2500",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "MALAYSIA"
+        },
+        {
+          "page": 3,
+          "position": "SPA批次明细10",
+          "品牌": "INFINEON",
+          "型号": "SPA11N65C3",
+          "产地": "CHINA",
+          "数量": "2500",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "MALAYSIA"
+        },
+        {
+          "page": 3,
+          "position": "SPA批次明细11",
+          "品牌": "INFINEON",
+          "型号": "SPA11N65C3",
+          "产地": "CHINA",
+          "数量": "2500",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "MALAYSIA"
+        },
+        {
+          "page": 4,
+          "position": "SPA批次明细12",
+          "品牌": "INFINEON",
+          "型号": "SPA11N65C3",
+          "产地": "CHINA",
+          "数量": "1500",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "COD": "MALAYSIA"
+        },
+        {
+          "page": 4,
+          "position": "其他商品明细1",
+          "品牌": "INFINEON",
+          "型号": "IPW60R037CSFD",
+          "产地": "CHINA",
+          "数量": "240",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 4,
+          "position": "其他商品明细2",
+          "品牌": "INFINEON",
+          "型号": "IPW60R037CSFD",
+          "产地": "CHINA",
+          "数量": "240",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 4,
+          "position": "其他商品明细3",
+          "品牌": "INFINEON",
+          "型号": "IPW60R120P7",
+          "产地": "CHINA",
+          "数量": "240",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 4,
+          "position": "其他商品明细4",
+          "品牌": "INFINEON",
+          "型号": "IPW60R120P7",
+          "产地": "CHINA",
+          "数量": "240",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN"
+        },
+        {
+          "page": 4,
+          "position": "其他商品明细5",
+          "品牌": "INFINEON",
+          "型号": "IPW60R045P7",
+          "产地": "CHINA",
+          "数量": "480",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "4.09",
+          "毛重": "4.34"
+        },
+        {
+          "page": 4,
+          "position": "其他商品明细6",
+          "品牌": "INFINEON",
+          "型号": "IPP110N20N3 G",
+          "产地": "CHINA",
+          "数量": "500",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "1.62",
+          "毛重": "1.87"
+        },
+        {
+          "page": 4,
+          "position": "其他商品明细7",
+          "品牌": "INFINEON",
+          "型号": "IPA80R600P7",
+          "产地": "CHINA",
+          "数量": "500",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "1.71",
+          "毛重": "1.96"
+        },
+        {
+          "page": 4,
+          "position": "其他商品明细8",
+          "品牌": "INFINEON",
+          "型号": "2EDN7524F",
+          "产地": "PHILIPPINES",
+          "数量": "2500",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "1.13",
+          "毛重": "1.54"
+        },
+        {
+          "page": 4,
+          "position": "其他商品明细9",
+          "品牌": "INFINEON",
+          "型号": "BSC010N04LS",
+          "产地": "CHINA",
+          "数量": "5000",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "1.33",
+          "毛重": "1.70"
+        }
+      ],
+      "notes": "箱单印刷38条批次商品；每箱共用重量不分摊，5页备注及6页送货汇总不重复计入。第4页BSC010N04LS净重1.33，内部结果1.32存在差异。",
+      "sharedMeasurements": [
+        {
+          "page": 2,
+          "scope": "BSC026N08NS5箱单",
+          "件数": "7",
+          "数量": "295000",
+          "净重": "68.09",
+          "毛重": "73.34"
+        },
+        {
+          "page": 4,
+          "scope": "其他8型号箱单",
+          "件数": "12",
+          "数量": "31440",
+          "净重": "87.64",
+          "毛重": "93.84"
+        },
+        {
+          "page": 4,
+          "scope": "IPW60R037CSFD两行",
+          "件数": "1",
+          "净重": "4.12",
+          "毛重": "4.37"
+        },
+        {
+          "page": 4,
+          "scope": "IPW60R120P7两行",
+          "件数": "1",
+          "净重": "4.14",
+          "毛重": "4.39"
+        }
+      ]
+    }
+  ],
+  "reviewLog": [
+    {
+      "fileId": "F-2907feed0d42",
+      "sampleId": "2026ACSY003",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-2907feed0d42/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-5dc64ab64d12",
+      "sampleId": "多对多样例",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-5dc64ab64d12/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-5dc64ab64d12/page-2.png"
+        },
+        {
+          "page": 3,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-5dc64ab64d12/page-3.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-ad06ec2cd295",
+      "sampleId": "2026(DG)ZW003",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-ad06ec2cd295/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-cb09c02b9ed5",
+      "sampleId": "2026BMH001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-cb09c02b9ed5/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-168417940250",
+      "sampleId": "多对多样例",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-168417940250/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-168417940250/page-2.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-6d83ce0e89f6",
+      "sampleId": "英卡-抽+整",
+      "role": "entrustment_material",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-6d83ce0e89f6/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-6d83ce0e89f6/page-2.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-378740dad3b8",
+      "sampleId": "2026(DG)ZW050",
+      "role": "reference",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "参考结果",
+          "rows": 3,
+          "columns": 20,
+          "merged": []
+        }
+      ]
+    },
+    {
+      "fileId": "F-b89001825d19",
+      "sampleId": "2026ACSY003",
+      "role": "reference",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "参考结果",
+          "rows": 6,
+          "columns": 20,
+          "merged": []
+        }
+      ]
+    },
+    {
+      "fileId": "F-0971c3fd7c49",
+      "sampleId": "2026ACSY003",
+      "role": "entrustment_material",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-0971c3fd7c49/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-a5368260946b",
+      "sampleId": "英卡-抽+整",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-a5368260946b/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-970b59d6d5b8",
+      "sampleId": "26SHPYD056",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-970b59d6d5b8/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-970b59d6d5b8/page-2.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-f1e3242cc308",
+      "sampleId": "英卡-抽+整",
+      "role": "entrustment_material",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-f1e3242cc308/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-f1e3242cc308/page-2.png"
+        },
+        {
+          "page": 3,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-f1e3242cc308/page-3.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-80d89610605b",
+      "sampleId": "英卡-抽+整",
+      "role": "entrustment_material",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-80d89610605b/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-80d89610605b/page-2.png"
+        },
+        {
+          "page": 3,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-80d89610605b/page-3.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-cdbd27982284",
+      "sampleId": "2026(DG)ZW001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-cdbd27982284/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-ad8ae0641eda",
+      "sampleId": "26SHPYD056",
+      "role": "reference",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "参考结果",
+          "rows": 4,
+          "columns": 20,
+          "merged": []
+        }
+      ]
+    },
+    {
+      "fileId": "F-bfe5061027e1",
+      "sampleId": "2026(DG)ZW050",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-bfe5061027e1/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-eebd316ee6c7",
+      "sampleId": "英卡-抽+整",
+      "role": "entrustment_material",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-eebd316ee6c7/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-eebd316ee6c7/page-2.png"
+        },
+        {
+          "page": 3,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-eebd316ee6c7/page-3.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-1df4f4d83480",
+      "sampleId": "英卡-抽+整",
+      "role": "entrustment_material",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "报关资料",
+          "rows": 46,
+          "columns": 23,
+          "merged": [
+            [
+              0,
+              1,
+              0,
+              18
+            ],
+            [
+              1,
+              2,
+              0,
+              18
+            ],
+            [
+              13,
+              14,
+              0,
+              10
+            ],
+            [
+              23,
+              24,
+              2,
+              4
+            ],
+            [
+              25,
+              26,
+              2,
+              4
+            ],
+            [
+              6,
+              12,
+              18,
+              19
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "fileId": "F-b98a101d8392",
+      "sampleId": "2026BMH001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-b98a101d8392/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-baf3de39ef68",
+      "sampleId": "英卡-抽+整",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-baf3de39ef68/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-8181f9edc198",
+      "sampleId": "2026(DG)ZW001",
+      "role": "entrustment_material",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "智能智能导单文件",
+          "rows": 7,
+          "columns": 21,
+          "merged": []
+        }
+      ]
+    },
+    {
+      "fileId": "F-ea04d3e7518a",
+      "sampleId": "多对多样例",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-ea04d3e7518a/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-ea04d3e7518a/page-2.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-54a1727fc0c8",
+      "sampleId": "2026BMH001",
+      "role": "reference",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "参考结果",
+          "rows": 12,
+          "columns": 20,
+          "merged": []
+        }
+      ]
+    },
+    {
+      "fileId": "F-6a9807227bb3",
+      "sampleId": "2026AG001",
+      "role": "reference",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "参考结果",
+          "rows": 4,
+          "columns": 20,
+          "merged": []
+        }
+      ]
+    },
+    {
+      "fileId": "F-93c7d7713617",
+      "sampleId": "多对多样例",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-93c7d7713617/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-93c7d7713617/page-2.png"
+        },
+        {
+          "page": 3,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-93c7d7713617/page-3.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-166123993de2",
+      "sampleId": "2026(DG)ZW003",
+      "role": "reference",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "参考结果",
+          "rows": 7,
+          "columns": 20,
+          "merged": []
+        }
+      ]
+    },
+    {
+      "fileId": "F-e3577cb3f191",
+      "sampleId": "英卡-抽+整",
+      "role": "entrustment_material",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-e3577cb3f191/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-ec785baa0766",
+      "sampleId": "英卡-抽+整",
+      "role": "entrustment_material",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-ec785baa0766/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-ec785baa0766/page-2.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-3c3cc10bd26b",
+      "sampleId": "2025YBT010-2",
+      "role": "entrustment_material",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "12-10-2",
+          "rows": 19,
+          "columns": 15,
+          "merged": [
+            "B14:N14",
+            "A9:G9",
+            "A2:N2",
+            "B13:N13",
+            "M3:N3",
+            "B15:N15",
+            "H16:N16",
+            "B12:C12",
+            "A1:N1"
+          ]
+        }
+      ]
+    },
+    {
+      "fileId": "F-da9dfc44a0f9",
+      "sampleId": "多对多样例",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-da9dfc44a0f9/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-da9dfc44a0f9/page-2.png"
+        },
+        {
+          "page": 3,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-da9dfc44a0f9/page-3.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-b0322c865487",
+      "sampleId": "英卡-抽+整",
+      "role": "entrustment_material",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-b0322c865487/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-b0322c865487/page-2.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-e60d9bd8df88",
+      "sampleId": "2026AG001",
+      "role": "entrustment_material",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "报关资料",
+          "rows": 42,
+          "columns": 18,
+          "merged": [
+            [
+              6,
+              8,
+              12,
+              13
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "fileId": "F-69127fcfa5c3",
+      "sampleId": "2026BMH001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-69127fcfa5c3/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-69127fcfa5c3/page-2.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-b441496db8b5",
+      "sampleId": "多对多样例",
+      "role": "entrustment_material",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "Sheet0",
+          "rows": 26,
+          "columns": 31,
+          "merged": []
+        }
+      ]
+    },
+    {
+      "fileId": "F-fb448776f711",
+      "sampleId": "2026BMH001",
+      "role": "entrustment_material",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "Sheet1",
+          "rows": 27,
+          "columns": 16,
+          "merged": [
+            [
+              0,
+              1,
+              0,
+              14
+            ],
+            [
+              1,
+              2,
+              0,
+              14
+            ],
+            [
+              2,
+              3,
+              12,
+              14
+            ],
+            [
+              17,
+              18,
+              0,
+              7
+            ],
+            [
+              20,
+              21,
+              1,
+              3
+            ],
+            [
+              21,
+              22,
+              1,
+              6
+            ],
+            [
+              22,
+              23,
+              1,
+              14
+            ],
+            [
+              23,
+              24,
+              1,
+              14
+            ]
+          ]
+        },
+        {
+          "sheet": "Sheet2",
+          "rows": 0,
+          "columns": 0,
+          "merged": []
+        },
+        {
+          "sheet": "Sheet3",
+          "rows": 0,
+          "columns": 0,
+          "merged": []
+        }
+      ]
+    },
+    {
+      "fileId": "F-6cb1752655d0",
+      "sampleId": "多对多样例",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "真实整单样本/多对多样例/查货文件/出货明细-BE202604090003 26040084抽001后整出 26040083抽出003和005/BE202604090003 26040084抽001后整出 26040083抽出003和005.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-c578af30ff9a",
+      "sampleId": "多对多样例",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-c578af30ff9a/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-c578af30ff9a/page-2.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-cd33df861950",
+      "sampleId": "多对多样例",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-cd33df861950/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-cd33df861950/page-2.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-276766064bb2",
+      "sampleId": "2026BMH001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-276766064bb2/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-276766064bb2/page-2.png"
+        },
+        {
+          "page": 3,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-276766064bb2/page-3.png"
+        },
+        {
+          "page": 4,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-276766064bb2/page-4.png"
+        },
+        {
+          "page": 5,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-276766064bb2/page-5.png"
+        },
+        {
+          "page": 6,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-276766064bb2/page-6.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-94d0c3955b2a",
+      "sampleId": "2026BMH001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-94d0c3955b2a/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-94d0c3955b2a/page-2.png"
+        },
+        {
+          "page": 3,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-94d0c3955b2a/page-3.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-b436a16434a4",
+      "sampleId": "2026(DG)ZW003",
+      "role": "entrustment_material",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "智能智能导单文件",
+          "rows": 6,
+          "columns": 21,
+          "merged": []
+        }
+      ]
+    },
+    {
+      "fileId": "F-39b0b8e82a3a",
+      "sampleId": "2026BMH001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-39b0b8e82a3a/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-ab6bfdee3e54",
+      "sampleId": "2026(DG)ZW050",
+      "role": "entrustment_material",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "智能智能导单文件",
+          "rows": 2,
+          "columns": 21,
+          "merged": []
+        }
+      ]
+    },
+    {
+      "fileId": "F-d2c9006a8eeb",
+      "sampleId": "英卡-抽+整",
+      "role": "reference",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-d2c9006a8eeb/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-d2c9006a8eeb/page-2.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-c50878186ea6",
+      "sampleId": "英卡-抽+整",
+      "role": "reference",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-c50878186ea6/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-de4e00bf55d8",
+      "sampleId": "2026BMH001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-de4e00bf55d8/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-e928e7608540",
+      "sampleId": "2026(DG)ZW003",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-e928e7608540/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-a235e97d6dd0",
+      "sampleId": "英卡-抽+整",
+      "role": "entrustment_material",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "报关资料",
+          "rows": 46,
+          "columns": 23,
+          "merged": [
+            [
+              0,
+              1,
+              0,
+              18
+            ],
+            [
+              1,
+              2,
+              0,
+              18
+            ],
+            [
+              13,
+              14,
+              0,
+              10
+            ],
+            [
+              23,
+              24,
+              2,
+              4
+            ],
+            [
+              25,
+              26,
+              2,
+              4
+            ],
+            [
+              6,
+              12,
+              18,
+              19
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "fileId": "F-b03e0011849f",
+      "sampleId": "2026BMH001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-b03e0011849f/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-f29936219cd1",
+      "sampleId": "2026BMH001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-f29936219cd1/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-f29936219cd1/page-2.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-929e7033b39f",
+      "sampleId": "多对多样例",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-929e7033b39f/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-929e7033b39f/page-2.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-3c457d2e01db",
+      "sampleId": "英卡-抽+整",
+      "role": "entrustment_material",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-3c457d2e01db/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-8e681d73b55a",
+      "sampleId": "2026CNKJ001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-8e681d73b55a/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-2e8354efac27",
+      "sampleId": "多对多样例",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-2e8354efac27/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-2e8354efac27/page-2.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-8bc7177252aa",
+      "sampleId": "2025YBT010-2",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-8bc7177252aa/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-a06d575c587d",
+      "sampleId": "2026BMH001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-a06d575c587d/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-c5195fdb15a3",
+      "sampleId": "2026BMH001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-c5195fdb15a3/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-c5195fdb15a3/page-2.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-6b255626250f",
+      "sampleId": "2026AG001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-6b255626250f/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-1f89bab4fe64",
+      "sampleId": "英卡-抽+整",
+      "role": "entrustment_material",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-1f89bab4fe64/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-5b778363f744",
+      "sampleId": "多对多样例",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-5b778363f744/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-5b778363f744/page-2.png"
+        },
+        {
+          "page": 3,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-5b778363f744/page-3.png"
+        },
+        {
+          "page": 4,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-5b778363f744/page-4.png"
+        },
+        {
+          "page": 5,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-5b778363f744/page-5.png"
+        },
+        {
+          "page": 6,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-5b778363f744/page-6.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-7d97d15951fc",
+      "sampleId": "多对多样例",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-7d97d15951fc/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-7d97d15951fc/page-2.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-7f2c2cd89ada",
+      "sampleId": "2026(DG)ZW001",
+      "role": "reference",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "参考结果",
+          "rows": 8,
+          "columns": 20,
+          "merged": []
+        }
+      ]
+    },
+    {
+      "fileId": "F-39b32ef999ed",
+      "sampleId": "英卡-抽+整",
+      "role": "reference",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-39b32ef999ed/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-39b32ef999ed/page-2.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-f1e1e4ea2ac5",
+      "sampleId": "多对多样例",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-f1e1e4ea2ac5/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-f1e1e4ea2ac5/page-2.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-5a09ab721f2e",
+      "sampleId": "英卡-抽+整",
+      "role": "entrustment_material",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "报关资料",
+          "rows": 46,
+          "columns": 23,
+          "merged": [
+            [
+              0,
+              1,
+              0,
+              18
+            ],
+            [
+              1,
+              2,
+              0,
+              18
+            ],
+            [
+              13,
+              14,
+              0,
+              10
+            ],
+            [
+              23,
+              24,
+              2,
+              4
+            ],
+            [
+              25,
+              26,
+              2,
+              4
+            ],
+            [
+              6,
+              12,
+              18,
+              19
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "fileId": "F-a78f00afad64",
+      "sampleId": "多对多样例",
+      "role": "reference",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-a78f00afad64/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-a78f00afad64/page-2.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-9116712b48a7",
+      "sampleId": "2026CNKJ001",
+      "role": "reference",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "参考结果",
+          "rows": 3,
+          "columns": 20,
+          "merged": []
+        }
+      ]
+    },
+    {
+      "fileId": "F-7fa1373ea149",
+      "sampleId": "多对多样例",
+      "role": "reference",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-7fa1373ea149/page-1.png"
+        },
+        {
+          "page": 2,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-7fa1373ea149/page-2.png"
+        },
+        {
+          "page": 3,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-7fa1373ea149/page-3.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-e70c3bd328c2",
+      "sampleId": "2025YBT010-2",
+      "role": "reference",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "参考结果",
+          "rows": 4,
+          "columns": 20,
+          "merged": []
+        }
+      ]
+    },
+    {
+      "fileId": "F-df72916dc019",
+      "sampleId": "26SHPYD056",
+      "role": "entrustment_material",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "Sheet1",
+          "rows": 31,
+          "columns": 23,
+          "merged": [
+            [
+              0,
+              1,
+              0,
+              18
+            ],
+            [
+              1,
+              2,
+              0,
+              2
+            ],
+            [
+              1,
+              2,
+              2,
+              5
+            ],
+            [
+              1,
+              2,
+              9,
+              11
+            ],
+            [
+              1,
+              2,
+              11,
+              14
+            ],
+            [
+              2,
+              3,
+              0,
+              2
+            ],
+            [
+              2,
+              3,
+              2,
+              5
+            ],
+            [
+              3,
+              4,
+              2,
+              5
+            ],
+            [
+              15,
+              16,
+              0,
+              5
+            ],
+            [
+              18,
+              19,
+              10,
+              12
+            ],
+            [
+              22,
+              23,
+              4,
+              7
+            ],
+            [
+              23,
+              24,
+              4,
+              7
+            ],
+            [
+              24,
+              25,
+              5,
+              7
+            ],
+            [
+              25,
+              26,
+              4,
+              7
+            ],
+            [
+              7,
+              14,
+              8,
+              9
+            ],
+            [
+              7,
+              14,
+              9,
+              10
+            ],
+            [
+              7,
+              14,
+              10,
+              11
+            ],
+            [
+              7,
+              14,
+              11,
+              12
+            ],
+            [
+              7,
+              14,
+              18,
+              19
+            ],
+            [
+              7,
+              14,
+              19,
+              20
+            ],
+            [
+              7,
+              14,
+              20,
+              21
+            ],
+            [
+              7,
+              14,
+              21,
+              22
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "fileId": "F-a64834ca9065",
+      "sampleId": "2026CNKJ001",
+      "role": "entrustment_material",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "真实整单样本/2026CNKJ001/委托文件/报关委托书.jpg"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-4626eef2dd66",
+      "sampleId": "2026(DG)ZW001",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-4626eef2dd66/page-1.png"
+        }
+      ],
+      "sheets": []
+    }
+  ]
+}

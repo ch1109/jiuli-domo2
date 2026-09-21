@@ -1,0 +1,129 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P3",
+  "request_id": "SC08-AUDIT-20260920-P3",
+  "context": {
+    "customer_id": "C-89aa660b4b46",
+    "retrieval_complete": true
+  },
+  "input": {
+    "order_rows": [
+      {
+        "order_row_id": "D-3c3cc10bd26b-R007",
+        "customer_id": "C-89aa660b4b46",
+        "identity": {
+          "model": "H25G9TCXXCX702A#9",
+          "brand": "SK HYNIX",
+          "origin": "韩国",
+          "quantity": "12081",
+          "unit": "个",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "evidence": [
+          {"evidence_key": "E-O-R007-MODEL", "field": "model", "value": "H25G9TCXXCX702A#9", "source": {"file_id": "F-3c3cc10bd26b", "sheet": "12-10-2", "row": 7, "column": "D", "raw_text": "H25G9TCXXCX702A#9"}},
+          {"evidence_key": "E-O-R007-BRAND", "field": "brand", "value": "SK HYNIX", "source": {"file_id": "F-3c3cc10bd26b", "sheet": "12-10-2", "row": 7, "column": "C", "raw_text": "SK HYNIX"}},
+          {"evidence_key": "E-O-R007-QTY", "field": "quantity", "value": "12081", "source": {"file_id": "F-3c3cc10bd26b", "sheet": "12-10-2", "row": 7, "column": "H", "raw_text": "12081"}}
+        ]
+      },
+      {
+        "order_row_id": "D-3c3cc10bd26b-R008",
+        "customer_id": "C-89aa660b4b46",
+        "identity": {
+          "model": "D25G9TCX8CX239C#D",
+          "brand": "SK HYNIX",
+          "origin": "韩国",
+          "quantity": "16054",
+          "unit": "个",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "evidence": [
+          {"evidence_key": "E-O-R008-MODEL", "field": "model", "value": "D25G9TCX8CX239C#D", "source": {"file_id": "F-3c3cc10bd26b", "sheet": "12-10-2", "row": 8, "column": "D", "raw_text": "D25G9TCX8CX239C#D"}},
+          {"evidence_key": "E-O-R008-BRAND", "field": "brand", "value": "SK HYNIX", "source": {"file_id": "F-3c3cc10bd26b", "sheet": "12-10-2", "row": 8, "column": "C", "raw_text": "SK HYNIX"}},
+          {"evidence_key": "E-O-R008-QTY", "field": "quantity", "value": "16054", "source": {"file_id": "F-3c3cc10bd26b", "sheet": "12-10-2", "row": 8, "column": "H", "raw_text": "16054"}}
+        ]
+      }
+    ],
+    "inspection_candidates": [
+      {
+        "raw_row_id": "I-8bc7177252aa-25120336-L001",
+        "customer_id": "C-89aa660b4b46",
+        "logical_inspection_id": "I-8bc7177252aa-25120336",
+        "warehouse_no": "25120336",
+        "merged_product_id": null,
+        "identity": {
+          "model": "H25G9TCXXCX702A",
+          "brand": "SK HYNIX",
+          "origin": "KOREA",
+          "quantity": "12081",
+          "unit": "",
+          "material_no": "",
+          "purchase_order_no": "2512100302",
+          "sku": "",
+          "box_no": "1",
+          "dc": "",
+          "lot": "",
+          "business_row_marker": "#9",
+          "business_row_marker_source": "Description: 64GB INK DIE (#9)"
+        },
+        "scope_summary": {"coverage": "COMPLETE", "overlap": "DISJOINT", "has_extra_goods": false, "has_unresolved_goods": false},
+        "evidence": [
+          {"evidence_key": "E-I-L001-MODEL", "field": "model", "value": "H25G9TCXXCX702A", "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": 1, "column": "Part No.", "raw_text": "H25G9TCXXCX702A"}},
+          {"evidence_key": "E-I-L001-MARKER", "field": "business_row_marker", "value": "#9", "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": 1, "column": "Description", "raw_text": "64GB INK DIE (#9)"}},
+          {"evidence_key": "E-I-L001-BRAND", "field": "brand", "value": "SK HYNIX", "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": 1, "column": "Brand", "raw_text": "SK HYNIX"}},
+          {"evidence_key": "E-I-L001-QTY", "field": "quantity", "value": "12081", "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": 1, "column": "QTY", "raw_text": "12081"}},
+          {"evidence_key": "E-I-L001-SCOPE", "field": "scope", "value": "COMPLETE_DISJOINT_ITEM_ROW", "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": 1, "column": "commodity-row", "raw_text": "独立商品行1，行级型号、描述、数量、NW、GW完整"}}
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-8bc7177252aa-25120336-L002",
+        "customer_id": "C-89aa660b4b46",
+        "logical_inspection_id": "I-8bc7177252aa-25120336",
+        "warehouse_no": "25120336",
+        "merged_product_id": null,
+        "identity": {
+          "model": "D25G9TCX8CX239C",
+          "brand": "SK HYNIX",
+          "origin": "KOREA",
+          "quantity": "16054",
+          "unit": "",
+          "material_no": "",
+          "purchase_order_no": "2512100302",
+          "sku": "",
+          "box_no": "2",
+          "dc": "",
+          "lot": "",
+          "business_row_marker": "#D",
+          "business_row_marker_source": "Description: 64GB INK DIE (#D)"
+        },
+        "scope_summary": {"coverage": "COMPLETE", "overlap": "DISJOINT", "has_extra_goods": false, "has_unresolved_goods": false},
+        "evidence": [
+          {"evidence_key": "E-I-L002-MODEL", "field": "model", "value": "D25G9TCX8CX239C", "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": 2, "column": "Part No.", "raw_text": "D25G9TCX8CX239C"}},
+          {"evidence_key": "E-I-L002-MARKER", "field": "business_row_marker", "value": "#D", "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": 2, "column": "Description", "raw_text": "64GB INK DIE (#D)"}},
+          {"evidence_key": "E-I-L002-BRAND", "field": "brand", "value": "SK HYNIX", "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": 2, "column": "Brand", "raw_text": "SK HYNIX"}},
+          {"evidence_key": "E-I-L002-QTY", "field": "quantity", "value": "16054", "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": 2, "column": "QTY", "raw_text": "16054"}},
+          {"evidence_key": "E-I-L002-SCOPE", "field": "scope", "value": "COMPLETE_DISJOINT_ITEM_ROW", "source": {"file_id": "F-8bc7177252aa", "page": 1, "row": 2, "column": "commodity-row", "raw_text": "独立商品行2，行级型号、描述、数量、NW、GW完整"}}
+        ],
+        "occupied_by_order_row_id": null
+      }
+    ],
+    "proposed_groups": [
+      {"order_row_id": "D-3c3cc10bd26b-R007", "raw_row_ids": ["I-8bc7177252aa-25120336-L001"], "evidence_keys": ["E-O-R007-MODEL", "E-I-L001-MODEL", "E-I-L001-MARKER", "E-I-L001-SCOPE"]},
+      {"order_row_id": "D-3c3cc10bd26b-R008", "raw_row_ids": ["I-8bc7177252aa-25120336-L002"], "evidence_keys": ["E-O-R008-MODEL", "E-I-L002-MODEL", "E-I-L002-MARKER", "E-I-L002-SCOPE"]}
+    ],
+    "comparison_results": [
+      {"order_row_id": "D-3c3cc10bd26b-R007", "raw_row_ids": ["I-8bc7177252aa-25120336-L001"], "model_comparison": "MODEL_CORE_EQUAL_AND_EXTERNAL_MARKER_CONFIRMED", "brand_comparison": "EQUAL", "quantity_comparison": "EQUAL", "unit_comparison": "INSPECTION_UNIT_MISSING"},
+      {"order_row_id": "D-3c3cc10bd26b-R008", "raw_row_ids": ["I-8bc7177252aa-25120336-L002"], "model_comparison": "MODEL_CORE_EQUAL_AND_EXTERNAL_MARKER_CONFIRMED", "brand_comparison": "EQUAL", "quantity_comparison": "EQUAL", "unit_comparison": "INSPECTION_UNIT_MISSING"}
+    ]
+  }
+}

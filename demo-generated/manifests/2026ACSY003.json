@@ -1,0 +1,640 @@
+{
+  "sampleId": "2026ACSY003",
+  "customer": "深圳市澳创实业有限公司",
+  "customerDetermination": "来自委托方、查货明确Bill To或内部单；未证明的归属在对象级标UNKNOWN",
+  "fileIds": [
+    "F-0971c3fd7c49",
+    "F-2907feed0d42",
+    "F-b89001825d19"
+  ],
+  "entrustmentDocumentCount": 1,
+  "invoiceDocumentCount": 0,
+  "packingListDocumentCount": 0,
+  "inspectionPdfCount": 1,
+  "warehouseCountConfirmed": 1,
+  "warehouseAmbiguities": [],
+  "logicalInspectionOrderCount": 1,
+  "entrustmentLineCount": 4,
+  "inspectionSourceLineCount": 4,
+  "hasMergeableGoods": false,
+  "hasFieldConflict": "UNKNOWN",
+  "hasMultipleCandidatePotential": "UNKNOWN",
+  "possibleRelationScenarios": [
+    "一对一候选（待逐行关系核实）"
+  ],
+  "notes": [
+    "查货Delivery Note只显示TO:S59，没有客户实名，不凭目录建立客户映射。",
+    "委托4行，净毛及箱数按两行共用；参考结果的逐行分摊不作为源事实。",
+    "委托MICRON产地SINGAPORE，查货手写COD MALAYSIA，不混淆COO与COD。"
+  ],
+  "inspectionFacts": [
+    {
+      "fileId": "F-2907feed0d42",
+      "sampleId": "2026ACSY003",
+      "warehouseNo": "26033175",
+      "customerName": "UNKNOWN",
+      "rows": [
+        {
+          "page": 1,
+          "position": "商品表第1行",
+          "品牌": "MICRON",
+          "型号": "MT29F4T08EUHAFM4",
+          "产地": "UNKNOWN",
+          "数量": "1401",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "批次/尾码": "NW920"
+        },
+        {
+          "page": 1,
+          "position": "商品表第2行",
+          "品牌": "MICRON",
+          "型号": "MT29F2T08CUHBBM4",
+          "产地": "UNKNOWN",
+          "数量": "1564",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "批次/尾码": "NWB21"
+        },
+        {
+          "page": 1,
+          "position": "商品表第3行",
+          "品牌": "Toshiba",
+          "型号": "TH58TF1V23BA8H",
+          "产地": "UNKNOWN",
+          "数量": "1080",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "批次/尾码": "1V23"
+        },
+        {
+          "page": 1,
+          "position": "商品表第4行",
+          "品牌": "Toshiba",
+          "型号": "TH58TF2T23BA8J",
+          "产地": "UNKNOWN",
+          "数量": "368",
+          "单位": "PCS",
+          "件数": "UNKNOWN",
+          "净重": "UNKNOWN",
+          "毛重": "UNKNOWN",
+          "批次/尾码": "2T23"
+        }
+      ],
+      "notes": "页内未显示委托客户；右侧手写为COD而非明确COO；重量是每两行共享且未区分净毛。",
+      "sharedMeasurements": [
+        {
+          "page": 1,
+          "scope": "商品1、2",
+          "件数": "1",
+          "重量类型未区分": "7.6"
+        },
+        {
+          "page": 1,
+          "scope": "商品3、4",
+          "件数": "1",
+          "重量类型未区分": "4.6"
+        }
+      ]
+    }
+  ],
+  "entrustmentFacts": [
+    {
+      "id": "D-0971c3fd7c49",
+      "sampleId": "2026ACSY003",
+      "fileId": "F-0971c3fd7c49",
+      "customerName": "深圳市澳创实业有限公司",
+      "customerEvidence": {
+        "fileId": "F-0971c3fd7c49",
+        "page": 1,
+        "location": "委托方/公章"
+      },
+      "rows": [
+        {
+          "id": "D-0971c3fd7c49-R001",
+          "sourceOrder": 1,
+          "sourceRow": 1,
+          "fields": {
+            "客户名": "深圳市澳创实业有限公司",
+            "品牌": "MICRON",
+            "型号": "MT29F4T08EUHAFM4-NW920",
+            "商品描述": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：512GB，量产；非加密；非易失",
+            "品名": "集成电路",
+            "产地": "SINGAPORE",
+            "单位": "PCS",
+            "数量": "1401",
+            "报关单价": "57.67",
+            "总价": "80795.67",
+            "币种": "USD",
+            "件数": "UNKNOWN",
+            "净重": "UNKNOWN",
+            "毛重": "UNKNOWN",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "客户名": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托方或表头",
+              "value": "深圳市澳创实业有限公司",
+              "rawValue": "深圳市澳创实业有限公司"
+            },
+            "品牌": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第1行/品牌",
+              "value": "MICRON",
+              "rawValue": "MICRON"
+            },
+            "型号": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第1行/型号",
+              "value": "MT29F4T08EUHAFM4-NW920",
+              "rawValue": "MT29F4T08EUHAFM4-NW920"
+            },
+            "商品描述": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第1行/商品描述",
+              "value": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：512GB，量产；非加密；非易失",
+              "rawValue": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：512GB，量产；非加密；非易失"
+            },
+            "品名": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第1行/品名",
+              "value": "集成电路",
+              "rawValue": "集成电路"
+            },
+            "产地": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第1行/产地",
+              "value": "SINGAPORE",
+              "rawValue": "SINGAPORE"
+            },
+            "单位": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第1行/单位",
+              "value": "PCS",
+              "rawValue": "PCS"
+            },
+            "数量": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第1行/数量",
+              "value": "1401",
+              "rawValue": "1401"
+            },
+            "报关单价": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第1行/报关单价",
+              "value": "57.67",
+              "rawValue": "57.67"
+            },
+            "总价": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第1行/总价",
+              "value": "80795.67",
+              "rawValue": "80795.67"
+            },
+            "币种": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托方或表头",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        },
+        {
+          "id": "D-0971c3fd7c49-R002",
+          "sourceOrder": 2,
+          "sourceRow": 2,
+          "fields": {
+            "客户名": "深圳市澳创实业有限公司",
+            "品牌": "MICRON",
+            "型号": "MT29F2T08CUHBBM4-NW821",
+            "商品描述": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：256GB，量产；非加密；非易失",
+            "品名": "集成电路",
+            "产地": "SINGAPORE",
+            "单位": "PCS",
+            "数量": "1564",
+            "报关单价": "28.83",
+            "总价": "45090.12",
+            "币种": "USD",
+            "件数": "UNKNOWN",
+            "净重": "UNKNOWN",
+            "毛重": "UNKNOWN",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "客户名": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托方或表头",
+              "value": "深圳市澳创实业有限公司",
+              "rawValue": "深圳市澳创实业有限公司"
+            },
+            "品牌": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第2行/品牌",
+              "value": "MICRON",
+              "rawValue": "MICRON"
+            },
+            "型号": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第2行/型号",
+              "value": "MT29F2T08CUHBBM4-NW821",
+              "rawValue": "MT29F2T08CUHBBM4-NW821"
+            },
+            "商品描述": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第2行/商品描述",
+              "value": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：256GB，量产；非加密；非易失",
+              "rawValue": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：256GB，量产；非加密；非易失"
+            },
+            "品名": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第2行/品名",
+              "value": "集成电路",
+              "rawValue": "集成电路"
+            },
+            "产地": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第2行/产地",
+              "value": "SINGAPORE",
+              "rawValue": "SINGAPORE"
+            },
+            "单位": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第2行/单位",
+              "value": "PCS",
+              "rawValue": "PCS"
+            },
+            "数量": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第2行/数量",
+              "value": "1564",
+              "rawValue": "1564"
+            },
+            "报关单价": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第2行/报关单价",
+              "value": "28.83",
+              "rawValue": "28.83"
+            },
+            "总价": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第2行/总价",
+              "value": "45090.12",
+              "rawValue": "45090.12"
+            },
+            "币种": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托方或表头",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        },
+        {
+          "id": "D-0971c3fd7c49-R003",
+          "sourceOrder": 3,
+          "sourceRow": 3,
+          "fields": {
+            "客户名": "深圳市澳创实业有限公司",
+            "品牌": "Toshiba",
+            "型号": "TH58TF1V23BA8H-1V23",
+            "商品描述": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：128GB，量产；非加密；非易失",
+            "品名": "集成电路",
+            "产地": "JAPAN",
+            "单位": "PCS",
+            "数量": "1080",
+            "报关单价": "14.42",
+            "总价": "15573.60",
+            "币种": "USD",
+            "件数": "UNKNOWN",
+            "净重": "UNKNOWN",
+            "毛重": "UNKNOWN",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "客户名": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托方或表头",
+              "value": "深圳市澳创实业有限公司",
+              "rawValue": "深圳市澳创实业有限公司"
+            },
+            "品牌": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第3行/品牌",
+              "value": "Toshiba",
+              "rawValue": "Toshiba"
+            },
+            "型号": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第3行/型号",
+              "value": "TH58TF1V23BA8H-1V23",
+              "rawValue": "TH58TF1V23BA8H-1V23"
+            },
+            "商品描述": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第3行/商品描述",
+              "value": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：128GB，量产；非加密；非易失",
+              "rawValue": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：128GB，量产；非加密；非易失"
+            },
+            "品名": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第3行/品名",
+              "value": "集成电路",
+              "rawValue": "集成电路"
+            },
+            "产地": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第3行/产地",
+              "value": "JAPAN",
+              "rawValue": "JAPAN"
+            },
+            "单位": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第3行/单位",
+              "value": "PCS",
+              "rawValue": "PCS"
+            },
+            "数量": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第3行/数量",
+              "value": "1080",
+              "rawValue": "1080"
+            },
+            "报关单价": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第3行/报关单价",
+              "value": "14.42",
+              "rawValue": "14.42"
+            },
+            "总价": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第3行/总价",
+              "value": "15573.60",
+              "rawValue": "15573.60"
+            },
+            "币种": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托方或表头",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        },
+        {
+          "id": "D-0971c3fd7c49-R004",
+          "sourceOrder": 4,
+          "sourceRow": 4,
+          "fields": {
+            "客户名": "深圳市澳创实业有限公司",
+            "品牌": "Toshiba",
+            "型号": "TH58TF2T23BA8J-2T23",
+            "商品描述": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：256GB，量产；非加密；非易失",
+            "品名": "集成电路",
+            "产地": "JAPAN",
+            "单位": "PCS",
+            "数量": "368",
+            "报关单价": "28.83",
+            "总价": "10609.44",
+            "币种": "USD",
+            "件数": "UNKNOWN",
+            "净重": "UNKNOWN",
+            "毛重": "UNKNOWN",
+            "sku": "UNKNOWN",
+            "对应的采购": "UNKNOWN",
+            "供应商号码": "UNKNOWN",
+            "供应商": "UNKNOWN",
+            "期票天数": "UNKNOWN",
+            "采购订单号": "UNKNOWN",
+            "物料号码": "UNKNOWN",
+            "托盘数": "UNKNOWN",
+            "入仓号": "UNKNOWN",
+            "产线": "UNKNOWN",
+            "备注": "UNKNOWN"
+          },
+          "evidence": {
+            "客户名": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托方或表头",
+              "value": "深圳市澳创实业有限公司",
+              "rawValue": "深圳市澳创实业有限公司"
+            },
+            "品牌": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第4行/品牌",
+              "value": "Toshiba",
+              "rawValue": "Toshiba"
+            },
+            "型号": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第4行/型号",
+              "value": "TH58TF2T23BA8J-2T23",
+              "rawValue": "TH58TF2T23BA8J-2T23"
+            },
+            "商品描述": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第4行/商品描述",
+              "value": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：256GB，量产；非加密；非易失",
+              "rawValue": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：256GB，量产；非加密；非易失"
+            },
+            "品名": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第4行/品名",
+              "value": "集成电路",
+              "rawValue": "集成电路"
+            },
+            "产地": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第4行/产地",
+              "value": "JAPAN",
+              "rawValue": "JAPAN"
+            },
+            "单位": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第4行/单位",
+              "value": "PCS",
+              "rawValue": "PCS"
+            },
+            "数量": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第4行/数量",
+              "value": "368",
+              "rawValue": "368"
+            },
+            "报关单价": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第4行/报关单价",
+              "value": "28.83",
+              "rawValue": "28.83"
+            },
+            "总价": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托商品表第4行/总价",
+              "value": "10609.44",
+              "rawValue": "10609.44"
+            },
+            "币种": {
+              "fileId": "F-0971c3fd7c49",
+              "page": 1,
+              "position": "委托方或表头",
+              "value": "USD",
+              "rawValue": "USD"
+            }
+          },
+          "extraFields": {}
+        }
+      ],
+      "sharedMeasurements": [
+        {
+          "source": {
+            "fileId": "F-0971c3fd7c49",
+            "page": 1
+          },
+          "rows": [
+            1,
+            2
+          ],
+          "净重": "7.0",
+          "毛重": "7.6",
+          "件数": "1"
+        },
+        {
+          "source": {
+            "fileId": "F-0971c3fd7c49",
+            "page": 1
+          },
+          "rows": [
+            3,
+            4
+          ],
+          "净重": "4.0",
+          "毛重": "4.6",
+          "件数": "1"
+        }
+      ]
+    }
+  ],
+  "reviewRecords": [
+    {
+      "fileId": "F-0971c3fd7c49",
+      "sampleId": "2026ACSY003",
+      "role": "entrustment_material",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-0971c3fd7c49/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-2907feed0d42",
+      "sampleId": "2026ACSY003",
+      "role": "inspection",
+      "pages": [
+        {
+          "page": 1,
+          "review": "已检查整页结构、表头、行结构及入仓标记；识读存疑字段保留UNKNOWN",
+          "evidence": "demo-generated/renders/F-2907feed0d42/page-1.png"
+        }
+      ],
+      "sheets": []
+    },
+    {
+      "fileId": "F-b89001825d19",
+      "sampleId": "2026ACSY003",
+      "role": "reference",
+      "pages": [],
+      "sheets": [
+        {
+          "sheet": "参考结果",
+          "rows": 6,
+          "columns": 20,
+          "merged": []
+        }
+      ]
+    }
+  ]
+}

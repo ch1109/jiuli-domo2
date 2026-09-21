@@ -1,0 +1,1160 @@
+[
+  {
+    "id": "SC-01",
+    "caseIds": [
+      "CASE-01"
+    ],
+    "name": "客户隔离",
+    "sampleIds": [
+      "2025YBT010-2",
+      "26SHPYD056"
+    ],
+    "overrideIds": [
+      "OV-ISOLATE",
+      "OV-EXACT-MODEL"
+    ],
+    "initialBatchIds": [
+      "B-I-8bc7177252aa-25120336",
+      "B-VI-OTHER"
+    ],
+    "steps": [
+      {
+        "action": "新建委托草稿",
+        "batchIds": [
+          "B-D-3c3cc10bd26b"
+        ]
+      },
+      {
+        "action": "执行首次匹配",
+        "draftId": "D-3c3cc10bd26b"
+      }
+    ],
+    "expectedChecks": [
+      "仅同客户查货可进入候选",
+      "直接传入VI-OTHER原始行也必须拒绝",
+      "其他客户行保持未占用"
+    ],
+    "expectedRelations": [],
+    "candidateSets": [],
+    "unresolved": [],
+    "coverageStatus": "数据已具备（含明确变体）",
+    "businessAcceptance": "NOT_RUN_PHASE_MINUS_1"
+  },
+  {
+    "id": "SC-02",
+    "caseIds": [
+      "CASE-02"
+    ],
+    "name": "客户识别失败后补充",
+    "sampleIds": [
+      "2026(DG)ZW003"
+    ],
+    "overrideIds": [],
+    "initialBatchIds": [
+      "B-I-ad06ec2cd295-26010801",
+      "B-I-e928e7608540-26010211"
+    ],
+    "steps": [
+      {
+        "action": "新建委托草稿",
+        "batchIds": [
+          "B-D-b436a16434a4"
+        ]
+      },
+      {
+        "action": "执行首次匹配",
+        "draftId": "D-b436a16434a4",
+        "expect": "客户未补充时拒绝"
+      },
+      {
+        "action": "补充客户",
+        "draftId": "D-b436a16434a4",
+        "customerId": "C-66be07d6cabe",
+        "basis": "演示人工选择；非原委托识别结果"
+      },
+      {
+        "action": "执行首次匹配",
+        "draftId": "D-b436a16434a4"
+      }
+    ],
+    "expectedChecks": [
+      "补客户前草稿可存在但不能匹配",
+      "补后只查选定客户池",
+      "记录人工补客户事件"
+    ],
+    "expectedRelations": [],
+    "candidateSets": [],
+    "unresolved": [],
+    "coverageStatus": "数据已具备",
+    "businessAcceptance": "NOT_RUN_PHASE_MINUS_1"
+  },
+  {
+    "id": "SC-03",
+    "caseIds": [
+      "CASE-03"
+    ],
+    "name": "单PDF多入仓号",
+    "sampleIds": [
+      "2026(DG)ZW001",
+      "2026(DG)ZW003"
+    ],
+    "overrideIds": [
+      "OV-PDF"
+    ],
+    "initialBatchIds": [],
+    "steps": [
+      {
+        "action": "加载查货",
+        "batchIds": [
+          "B-VF-MULTI-WAREHOUSE"
+        ]
+      }
+    ],
+    "expectedChecks": [
+      "一个虚拟PDF形成三个逻辑查货单",
+      "三张单保留原入仓号",
+      "每行唯一归属"
+    ],
+    "expectedRelations": [],
+    "candidateSets": [],
+    "unresolved": [],
+    "coverageStatus": "数据已具备（含明确变体）",
+    "businessAcceptance": "NOT_RUN_PHASE_MINUS_1"
+  },
+  {
+    "id": "SC-04",
+    "caseIds": [
+      "CASE-04"
+    ],
+    "name": "查货三键合并",
+    "sampleIds": [
+      "英卡-抽+整"
+    ],
+    "overrideIds": [],
+    "initialBatchIds": [],
+    "steps": [
+      {
+        "action": "加载查货",
+        "batchIds": [
+          "B-I-a5368260946b-26070093"
+        ]
+      }
+    ],
+    "expectedChecks": [
+      "12条原始行保留",
+      "同单三键合并为1个展示组",
+      "数量177000；净重53.30；毛重61.70",
+      "合并不改变行状态"
+    ],
+    "expectedRelations": [],
+    "candidateSets": [],
+    "unresolved": [],
+    "coverageStatus": "数据已具备",
+    "businessAcceptance": "NOT_RUN_PHASE_MINUS_1"
+  },
+  {
+    "id": "SC-05",
+    "caseIds": [
+      "CASE-05"
+    ],
+    "name": "合并商品部分占用",
+    "sampleIds": [
+      "英卡-抽+整"
+    ],
+    "overrideIds": [],
+    "initialBatchIds": [
+      "B-I-a5368260946b-26070093"
+    ],
+    "steps": [
+      {
+        "action": "新建委托草稿",
+        "batchIds": [
+          "B-D-1df4f4d83480"
+        ]
+      },
+      {
+        "action": "人工选择原始行",
+        "entrustmentLineId": "D-1df4f4d83480-R009",
+        "sourceLineIds": [
+          "I-a5368260946b-26070093-L001",
+          "I-a5368260946b-26070093-L002",
+          "I-a5368260946b-26070093-L003",
+          "I-a5368260946b-26070093-L004"
+        ],
+        "basis": "UMW2631 60000 = 四个完整15000原始箱行；同型号箱行选择为演示人工选择"
+      },
+      {
+        "action": "新建委托草稿",
+        "batchIds": [
+          "B-D-5a09ab721f2e"
+        ]
+      },
+      {
+        "action": "人工选择原始行",
+        "entrustmentLineId": "D-5a09ab721f2e-R009",
+        "sourceLineIds": [
+          "I-a5368260946b-26070093-L005",
+          "I-a5368260946b-26070093-L006",
+          "I-a5368260946b-26070093-L007",
+          "I-a5368260946b-26070093-L008"
+        ],
+        "basis": "UMW2631 60000 = 其余四个完整15000箱行"
+      }
+    ],
+    "expectedChecks": [
+      "前四行占用后第5~12行仍可匹配",
+      "第二草稿只能使用剩余行",
+      "不占用整个合并展示组"
+    ],
+    "expectedRelations": [
+      {
+        "entrustmentLineId": "D-1df4f4d83480-R009",
+        "sourceLineIds": [
+          "I-a5368260946b-26070093-L001",
+          "I-a5368260946b-26070093-L002",
+          "I-a5368260946b-26070093-L003",
+          "I-a5368260946b-26070093-L004"
+        ],
+        "basis": "UMW2631 60000 = 四个完整15000原始箱行；同型号箱行选择为演示人工选择"
+      },
+      {
+        "entrustmentLineId": "D-5a09ab721f2e-R009",
+        "sourceLineIds": [
+          "I-a5368260946b-26070093-L005",
+          "I-a5368260946b-26070093-L006",
+          "I-a5368260946b-26070093-L007",
+          "I-a5368260946b-26070093-L008"
+        ],
+        "basis": "UMW2631 60000 = 其余四个完整15000箱行"
+      }
+    ],
+    "candidateSets": [],
+    "unresolved": [
+      "其他型号和第三委托缺完整查货；本场景只验证UMW完整箱行分配"
+    ],
+    "coverageStatus": "数据已具备",
+    "businessAcceptance": "NOT_RUN_PHASE_MINUS_1"
+  },
+  {
+    "id": "SC-06",
+    "caseIds": [
+      "CASE-06"
+    ],
+    "name": "查货先到",
+    "sampleIds": [
+      "2025YBT010-2"
+    ],
+    "overrideIds": [
+      "OV-EXACT-MODEL"
+    ],
+    "initialBatchIds": [
+      "B-I-8bc7177252aa-25120336"
+    ],
+    "steps": [
+      {
+        "action": "新建委托草稿",
+        "batchIds": [
+          "B-D-3c3cc10bd26b"
+        ]
+      },
+      {
+        "action": "执行首次匹配",
+        "draftId": "D-3c3cc10bd26b"
+      }
+    ],
+    "expectedChecks": [
+      "查货先进入客户池",
+      "到达委托后生成关系和草稿占用",
+      "不是核销"
+    ],
+    "expectedRelations": [
+      {
+        "entrustmentLineId": "D-3c3cc10bd26b-R007",
+        "sourceLineIds": [
+          "I-8bc7177252aa-25120336-L001"
+        ],
+        "basis": "本单品牌、基础型号、数量逐行对应；#9/#D后缀差异保留，需后续匹配规则或人工确认"
+      },
+      {
+        "entrustmentLineId": "D-3c3cc10bd26b-R008",
+        "sourceLineIds": [
+          "I-8bc7177252aa-25120336-L002"
+        ],
+        "basis": "本单品牌、基础型号、数量逐行对应；#9/#D后缀差异保留，需后续匹配规则或人工确认"
+      }
+    ],
+    "candidateSets": [],
+    "unresolved": [],
+    "coverageStatus": "数据已具备（含明确变体）",
+    "businessAcceptance": "NOT_RUN_PHASE_MINUS_1"
+  },
+  {
+    "id": "SC-07",
+    "caseIds": [
+      "CASE-07"
+    ],
+    "name": "委托先到与后补查货",
+    "sampleIds": [
+      "2026(DG)ZW003"
+    ],
+    "overrideIds": [],
+    "initialBatchIds": [
+      "B-D-b436a16434a4"
+    ],
+    "steps": [
+      {
+        "action": "补充客户",
+        "draftId": "D-b436a16434a4",
+        "customerId": "C-66be07d6cabe"
+      },
+      {
+        "action": "执行首次匹配",
+        "draftId": "D-b436a16434a4",
+        "expect": "查货尚未到达，所有行暂无依据"
+      },
+      {
+        "action": "加载查货",
+        "batchIds": [
+          "B-I-ad06ec2cd295-26010801"
+        ]
+      },
+      {
+        "action": "执行增量核对",
+        "draftId": "D-b436a16434a4"
+      },
+      {
+        "action": "编辑字段",
+        "lineId": "D-b436a16434a4-R004",
+        "field": "备注",
+        "value": "人工保留：稳定行"
+      },
+      {
+        "action": "加载查货",
+        "batchIds": [
+          "B-I-e928e7608540-26010211"
+        ]
+      },
+      {
+        "action": "执行增量核对",
+        "draftId": "D-b436a16434a4"
+      }
+    ],
+    "expectedChecks": [
+      "另一入仓号未到时对应商品暂无依据",
+      "后补只影响相关行",
+      "原稳定行备注和关系保持",
+      "有实际变化才产生版本"
+    ],
+    "expectedRelations": [],
+    "candidateSets": [],
+    "unresolved": [],
+    "coverageStatus": "数据已具备",
+    "businessAcceptance": "NOT_RUN_PHASE_MINUS_1"
+  },
+  {
+    "id": "SC-08",
+    "caseIds": [
+      "CASE-08"
+    ],
+    "name": "真实 Prompt 唯一可靠候选",
+    "sampleIds": [
+      "2025YBT010-2"
+    ],
+    "overrideIds": [],
+    "initialBatchIds": [
+      "B-I-8bc7177252aa-25120336",
+      "B-D-3c3cc10bd26b"
+    ],
+    "steps": [
+      {
+        "action": "执行首次匹配",
+        "draftId": "D-3c3cc10bd26b"
+      }
+    ],
+    "expectedChecks": [
+      "保留委托型号#9/#D，使用查货描述中的明确行标记建立关系",
+      "建立关系、占用、字段来源、日志在一次动作完成",
+      "P4 保留已核验字段，仅补入仓号25120336",
+      "AI核对一致不等于人工确认",
+      "未直接核销"
+    ],
+    "expectedRelations": [
+      {
+        "entrustmentLineId": "D-3c3cc10bd26b-R007",
+        "sourceLineIds": [
+          "I-8bc7177252aa-25120336-L001"
+        ],
+        "basis": "GPT-5.6 Sol P3 SC08-AUDIT-20260920: E-O-R007-MODEL, E-I-L001-MODEL, E-I-L001-MARKER, E-O-R007-BRAND, E-I-L001-BRAND, E-I-L001-SCOPE"
+      },
+      {
+        "entrustmentLineId": "D-3c3cc10bd26b-R008",
+        "sourceLineIds": [
+          "I-8bc7177252aa-25120336-L002"
+        ],
+        "basis": "GPT-5.6 Sol P3 SC08-AUDIT-20260920: E-O-R008-MODEL, E-I-L002-MODEL, E-I-L002-MARKER, E-O-R008-BRAND, E-I-L002-BRAND, E-I-L002-SCOPE"
+      }
+    ],
+    "candidateSets": [],
+    "unresolved": [],
+    "coverageStatus": "数据已具备",
+    "businessAcceptance": "NOT_RUN_PHASE_MINUS_1"
+  },
+  {
+    "id": "SC-09",
+    "caseIds": [
+      "CASE-09"
+    ],
+    "name": "多个候选",
+    "sampleIds": [
+      "2025YBT010-2"
+    ],
+    "overrideIds": [
+      "OV-CANDIDATES",
+      "OV-EXACT-MODEL"
+    ],
+    "initialBatchIds": [
+      "B-I-8bc7177252aa-25120336",
+      "B-D-3c3cc10bd26b",
+      "B-VI-CANDIDATE"
+    ],
+    "steps": [
+      {
+        "action": "执行首次匹配",
+        "draftId": "D-3c3cc10bd26b"
+      },
+      {
+        "action": "选择候选",
+        "lineId": "D-3c3cc10bd26b-R007",
+        "sourceLineIds": [
+          "I-8bc7177252aa-25120336-L001"
+        ]
+      }
+    ],
+    "expectedChecks": [
+      "选前两个候选均不占用",
+      "不得随机选择",
+      "选后只占用指定原始行"
+    ],
+    "expectedRelations": [],
+    "candidateSets": [
+      {
+        "entrustmentLineId": "D-3c3cc10bd26b-R007",
+        "options": [
+          [
+            "I-8bc7177252aa-25120336-L001"
+          ],
+          [
+            "VI-CANDIDATE-L001"
+          ]
+        ]
+      }
+    ],
+    "unresolved": [],
+    "coverageStatus": "数据已具备（含明确变体）",
+    "businessAcceptance": "NOT_RUN_PHASE_MINUS_1"
+  },
+  {
+    "id": "SC-10",
+    "caseIds": [
+      "CASE-10"
+    ],
+    "name": "字段冲突",
+    "sampleIds": [
+      "2026(DG)ZW003"
+    ],
+    "overrideIds": [],
+    "initialBatchIds": [
+      "B-D-b436a16434a4",
+      "B-I-ad06ec2cd295-26010801",
+      "B-I-e928e7608540-26010211"
+    ],
+    "steps": [
+      {
+        "action": "补充客户",
+        "draftId": "D-b436a16434a4",
+        "customerId": "C-66be07d6cabe"
+      },
+      {
+        "action": "人工选择原始行",
+        "lineId": "D-b436a16434a4-R004",
+        "sourceLineIds": [
+          "I-ad06ec2cd295-26010801-L001"
+        ]
+      },
+      {
+        "action": "执行字段交叉核对",
+        "draftId": "D-b436a16434a4"
+      }
+    ],
+    "expectedChecks": [
+      "委托中国台湾和查货CHINA同时保留",
+      "有关系仍可标黄",
+      "人工处理必须保留来源和操作记录"
+    ],
+    "expectedRelations": [],
+    "candidateSets": [],
+    "unresolved": [],
+    "coverageStatus": "数据已具备",
+    "businessAcceptance": "NOT_RUN_PHASE_MINUS_1"
+  },
+  {
+    "id": "SC-11",
+    "caseIds": [
+      "CASE-11"
+    ],
+    "name": "委托资料更新原草稿",
+    "sampleIds": [
+      "2026(DG)ZW003"
+    ],
+    "overrideIds": [
+      "OV-REVISION"
+    ],
+    "initialBatchIds": [
+      "B-D-b436a16434a4",
+      "B-I-ad06ec2cd295-26010801",
+      "B-I-e928e7608540-26010211"
+    ],
+    "steps": [
+      {
+        "action": "补充客户",
+        "draftId": "D-b436a16434a4",
+        "customerId": "C-66be07d6cabe"
+      },
+      {
+        "action": "执行首次匹配",
+        "draftId": "D-b436a16434a4"
+      },
+      {
+        "action": "更新委托资料",
+        "draftId": "D-b436a16434a4",
+        "materialId": "VM-REVISION"
+      },
+      {
+        "action": "执行增量核对",
+        "draftId": "D-b436a16434a4"
+      }
+    ],
+    "expectedChecks": [
+      "只更新目标草稿",
+      "第2/3行重核",
+      "第1/4等稳定行继承",
+      "实际变化形成版本并保留旧关系历史"
+    ],
+    "expectedRelations": [],
+    "candidateSets": [],
+    "unresolved": [],
+    "coverageStatus": "数据已具备（含明确变体）",
+    "businessAcceptance": "NOT_RUN_PHASE_MINUS_1"
+  },
+  {
+    "id": "SC-12",
+    "caseIds": [
+      "CASE-12"
+    ],
+    "name": "人工解绑",
+    "sampleIds": [
+      "2025YBT010-2"
+    ],
+    "overrideIds": [
+      "OV-EXACT-MODEL"
+    ],
+    "initialBatchIds": [
+      "B-I-8bc7177252aa-25120336",
+      "B-D-3c3cc10bd26b"
+    ],
+    "steps": [
+      {
+        "action": "执行首次匹配",
+        "draftId": "D-3c3cc10bd26b"
+      },
+      {
+        "action": "解除匹配",
+        "lineId": "D-3c3cc10bd26b-R007"
+      }
+    ],
+    "expectedChecks": [
+      "旧关系历史保留",
+      "原始行释放",
+      "重推草稿状态并记录版本"
+    ],
+    "expectedRelations": [
+      {
+        "entrustmentLineId": "D-3c3cc10bd26b-R007",
+        "sourceLineIds": [
+          "I-8bc7177252aa-25120336-L001"
+        ],
+        "basis": "本单品牌、基础型号、数量逐行对应；#9/#D后缀差异保留，需后续匹配规则或人工确认"
+      },
+      {
+        "entrustmentLineId": "D-3c3cc10bd26b-R008",
+        "sourceLineIds": [
+          "I-8bc7177252aa-25120336-L002"
+        ],
+        "basis": "本单品牌、基础型号、数量逐行对应；#9/#D后缀差异保留，需后续匹配规则或人工确认"
+      }
+    ],
+    "candidateSets": [],
+    "unresolved": [],
+    "coverageStatus": "数据已具备（含明确变体）",
+    "businessAcceptance": "NOT_RUN_PHASE_MINUS_1"
+  },
+  {
+    "id": "SC-13",
+    "caseIds": [
+      "CASE-13"
+    ],
+    "name": "人工改配",
+    "sampleIds": [
+      "2025YBT010-2"
+    ],
+    "overrideIds": [
+      "OV-CANDIDATES",
+      "OV-EXACT-MODEL"
+    ],
+    "initialBatchIds": [
+      "B-I-8bc7177252aa-25120336",
+      "B-D-3c3cc10bd26b",
+      "B-VI-CANDIDATE"
+    ],
+    "steps": [
+      {
+        "action": "人工选择原始行",
+        "entrustmentLineId": "D-3c3cc10bd26b-R007",
+        "sourceLineIds": [
+          "I-8bc7177252aa-25120336-L001"
+        ],
+        "basis": "本单品牌、基础型号、数量逐行对应；#9/#D后缀差异保留，需后续匹配规则或人工确认"
+      },
+      {
+        "action": "人工改配",
+        "lineId": "D-3c3cc10bd26b-R007",
+        "sourceLineIds": [
+          "VI-CANDIDATE-L001"
+        ]
+      }
+    ],
+    "expectedChecks": [
+      "旧行释放与新行占用同时发生",
+      "旧关系历史保留",
+      "版本与字段来源更新"
+    ],
+    "expectedRelations": [],
+    "candidateSets": [
+      {
+        "entrustmentLineId": "D-3c3cc10bd26b-R007",
+        "options": [
+          [
+            "I-8bc7177252aa-25120336-L001"
+          ],
+          [
+            "VI-CANDIDATE-L001"
+          ]
+        ]
+      }
+    ],
+    "unresolved": [],
+    "coverageStatus": "数据已具备（含明确变体）",
+    "businessAcceptance": "NOT_RUN_PHASE_MINUS_1"
+  },
+  {
+    "id": "SC-14",
+    "caseIds": [
+      "CASE-14"
+    ],
+    "name": "提交整单人工确认准入",
+    "sampleIds": [
+      "2025YBT010-2"
+    ],
+    "overrideIds": [],
+    "initialBatchIds": [
+      "B-I-8bc7177252aa-25120336",
+      "B-D-3c3cc10bd26b"
+    ],
+    "steps": [
+      {
+        "action": "人工选择原始行",
+        "entrustmentLineId": "D-3c3cc10bd26b-R007",
+        "sourceLineIds": [
+          "I-8bc7177252aa-25120336-L001"
+        ],
+        "basis": "本单品牌、基础型号、数量逐行对应；#9/#D后缀差异保留，需后续匹配规则或人工确认"
+      },
+      {
+        "action": "提交整单人工确认",
+        "draftId": "D-3c3cc10bd26b",
+        "expect": "尚有无依据行，拒绝"
+      },
+      {
+        "action": "人工选择原始行",
+        "entrustmentLineId": "D-3c3cc10bd26b-R008",
+        "sourceLineIds": [
+          "I-8bc7177252aa-25120336-L002"
+        ],
+        "basis": "本单品牌、基础型号、数量逐行对应；#9/#D后缀差异保留，需后续匹配规则或人工确认"
+      },
+      {
+        "action": "提交整单人工确认",
+        "draftId": "D-3c3cc10bd26b",
+        "expect": "全部有依据即可进入人工确认；型号差异问题保留"
+      }
+    ],
+    "expectedChecks": [
+      "无依据行阻止提交",
+      "黄色问题不阻止进入人工确认",
+      "提交不核销、不生成最终单"
+    ],
+    "expectedRelations": [
+      {
+        "entrustmentLineId": "D-3c3cc10bd26b-R007",
+        "sourceLineIds": [
+          "I-8bc7177252aa-25120336-L001"
+        ],
+        "basis": "本单品牌、基础型号、数量逐行对应；#9/#D后缀差异保留，需后续匹配规则或人工确认"
+      },
+      {
+        "entrustmentLineId": "D-3c3cc10bd26b-R008",
+        "sourceLineIds": [
+          "I-8bc7177252aa-25120336-L002"
+        ],
+        "basis": "本单品牌、基础型号、数量逐行对应；#9/#D后缀差异保留，需后续匹配规则或人工确认"
+      }
+    ],
+    "candidateSets": [],
+    "unresolved": [],
+    "coverageStatus": "数据已具备",
+    "businessAcceptance": "NOT_RUN_PHASE_MINUS_1"
+  },
+  {
+    "id": "SC-15",
+    "caseIds": [
+      "CASE-15"
+    ],
+    "name": "最终确认与核销",
+    "sampleIds": [
+      "2025YBT010-2"
+    ],
+    "overrideIds": [],
+    "initialBatchIds": [
+      "B-I-8bc7177252aa-25120336",
+      "B-D-3c3cc10bd26b"
+    ],
+    "steps": [
+      {
+        "action": "人工选择原始行",
+        "entrustmentLineId": "D-3c3cc10bd26b-R007",
+        "sourceLineIds": [
+          "I-8bc7177252aa-25120336-L001"
+        ],
+        "basis": "本单品牌、基础型号、数量逐行对应；#9/#D后缀差异保留，需后续匹配规则或人工确认"
+      },
+      {
+        "action": "人工选择原始行",
+        "entrustmentLineId": "D-3c3cc10bd26b-R008",
+        "sourceLineIds": [
+          "I-8bc7177252aa-25120336-L002"
+        ],
+        "basis": "本单品牌、基础型号、数量逐行对应；#9/#D后缀差异保留，需后续匹配规则或人工确认"
+      },
+      {
+        "action": "提交整单人工确认",
+        "draftId": "D-3c3cc10bd26b"
+      },
+      {
+        "action": "确认完成",
+        "draftId": "D-3c3cc10bd26b",
+        "expect": "未处理型号后缀/必填问题时拒绝"
+      },
+      {
+        "action": "人工处理问题",
+        "draftId": "D-3c3cc10bd26b",
+        "resolution": "人工确认本单型号#9/#D对应查货基础型号；型号与单位保持原委托值，产地韩国/KOREA保留双来源；毛重使用逐行表格4.2/5.0并记录与仓库章9的差异选择。13个必填字段均有委托原件来源；不填造选填值"
+      },
+      {
+        "action": "确认完成",
+        "draftId": "D-3c3cc10bd26b"
+      },
+      {
+        "action": "执行增量核对",
+        "draftId": "D-3c3cc10bd26b",
+        "expect": "忽略已完成草稿"
+      }
+    ],
+    "expectedChecks": [
+      "仅问题全部解决才完成",
+      "有效关系锁定、使用行核销、最终单生成原子完成",
+      "25列及四项合计正确",
+      "确认人和时间由动作生成"
+    ],
+    "expectedRelations": [
+      {
+        "entrustmentLineId": "D-3c3cc10bd26b-R007",
+        "sourceLineIds": [
+          "I-8bc7177252aa-25120336-L001"
+        ],
+        "basis": "本单品牌、基础型号、数量逐行对应；#9/#D后缀差异保留，需后续匹配规则或人工确认"
+      },
+      {
+        "entrustmentLineId": "D-3c3cc10bd26b-R008",
+        "sourceLineIds": [
+          "I-8bc7177252aa-25120336-L002"
+        ],
+        "basis": "本单品牌、基础型号、数量逐行对应；#9/#D后缀差异保留，需后续匹配规则或人工确认"
+      }
+    ],
+    "candidateSets": [],
+    "unresolved": [],
+    "coverageStatus": "数据已具备",
+    "businessAcceptance": "NOT_RUN_PHASE_MINUS_1"
+  },
+  {
+    "id": "SC-16",
+    "caseIds": [
+      "CASE-16"
+    ],
+    "name": "一对一",
+    "sampleIds": [
+      "2025YBT010-2"
+    ],
+    "overrideIds": [],
+    "initialBatchIds": [
+      "B-I-8bc7177252aa-25120336",
+      "B-D-3c3cc10bd26b"
+    ],
+    "steps": [
+      {
+        "action": "人工选择原始行",
+        "entrustmentLineId": "D-3c3cc10bd26b-R007",
+        "sourceLineIds": [
+          "I-8bc7177252aa-25120336-L001"
+        ],
+        "basis": "本单品牌、基础型号、数量逐行对应；#9/#D后缀差异保留，需后续匹配规则或人工确认"
+      },
+      {
+        "action": "人工选择原始行",
+        "entrustmentLineId": "D-3c3cc10bd26b-R008",
+        "sourceLineIds": [
+          "I-8bc7177252aa-25120336-L002"
+        ],
+        "basis": "本单品牌、基础型号、数量逐行对应；#9/#D后缀差异保留，需后续匹配规则或人工确认"
+      }
+    ],
+    "expectedChecks": [
+      "一张查货支持一个完整委托",
+      "逐行原始来源可追溯"
+    ],
+    "expectedRelations": [
+      {
+        "entrustmentLineId": "D-3c3cc10bd26b-R007",
+        "sourceLineIds": [
+          "I-8bc7177252aa-25120336-L001"
+        ],
+        "basis": "本单品牌、基础型号、数量逐行对应；#9/#D后缀差异保留，需后续匹配规则或人工确认"
+      },
+      {
+        "entrustmentLineId": "D-3c3cc10bd26b-R008",
+        "sourceLineIds": [
+          "I-8bc7177252aa-25120336-L002"
+        ],
+        "basis": "本单品牌、基础型号、数量逐行对应；#9/#D后缀差异保留，需后续匹配规则或人工确认"
+      }
+    ],
+    "candidateSets": [],
+    "unresolved": [],
+    "coverageStatus": "数据已具备",
+    "businessAcceptance": "NOT_RUN_PHASE_MINUS_1"
+  },
+  {
+    "id": "SC-17",
+    "caseIds": [
+      "CASE-17"
+    ],
+    "name": "多查货到单委托",
+    "sampleIds": [
+      "2026(DG)ZW003"
+    ],
+    "overrideIds": [],
+    "initialBatchIds": [
+      "B-D-b436a16434a4",
+      "B-I-ad06ec2cd295-26010801",
+      "B-I-e928e7608540-26010211"
+    ],
+    "steps": [
+      {
+        "action": "补充客户",
+        "draftId": "D-b436a16434a4",
+        "customerId": "C-66be07d6cabe"
+      },
+      {
+        "action": "执行首次匹配",
+        "draftId": "D-b436a16434a4"
+      },
+      {
+        "action": "人工处理问题",
+        "draftId": "D-b436a16434a4"
+      }
+    ],
+    "expectedChecks": [
+      "一个草稿可引用26010801和26010211",
+      "同型号原始行按明确数量选择",
+      "原委托5行保留"
+    ],
+    "expectedRelations": [],
+    "candidateSets": [],
+    "unresolved": [
+      "原委托缺客户，须先由演示用户明确选择；重量/产地冲突不静默解决"
+    ],
+    "coverageStatus": "数据已具备",
+    "businessAcceptance": "NOT_RUN_PHASE_MINUS_1"
+  },
+  {
+    "id": "SC-18",
+    "caseIds": [
+      "CASE-18"
+    ],
+    "name": "单查货到多委托",
+    "sampleIds": [
+      "英卡-抽+整"
+    ],
+    "overrideIds": [],
+    "initialBatchIds": [
+      "B-I-a5368260946b-26070093"
+    ],
+    "steps": [
+      {
+        "action": "新建委托草稿",
+        "batchIds": [
+          "B-D-1df4f4d83480",
+          "B-D-5a09ab721f2e"
+        ]
+      },
+      {
+        "action": "人工选择原始行",
+        "entrustmentLineId": "D-1df4f4d83480-R009",
+        "sourceLineIds": [
+          "I-a5368260946b-26070093-L001",
+          "I-a5368260946b-26070093-L002",
+          "I-a5368260946b-26070093-L003",
+          "I-a5368260946b-26070093-L004"
+        ],
+        "basis": "UMW2631 60000 = 四个完整15000原始箱行；同型号箱行选择为演示人工选择"
+      },
+      {
+        "action": "人工选择原始行",
+        "entrustmentLineId": "D-5a09ab721f2e-R009",
+        "sourceLineIds": [
+          "I-a5368260946b-26070093-L005",
+          "I-a5368260946b-26070093-L006",
+          "I-a5368260946b-26070093-L007",
+          "I-a5368260946b-26070093-L008"
+        ],
+        "basis": "UMW2631 60000 = 其余四个完整15000箱行"
+      }
+    ],
+    "expectedChecks": [
+      "同一逻辑查货不拆单",
+      "两草稿分别使用完整原始行",
+      "一个草稿核销不影响另一组行"
+    ],
+    "expectedRelations": [
+      {
+        "entrustmentLineId": "D-1df4f4d83480-R009",
+        "sourceLineIds": [
+          "I-a5368260946b-26070093-L001",
+          "I-a5368260946b-26070093-L002",
+          "I-a5368260946b-26070093-L003",
+          "I-a5368260946b-26070093-L004"
+        ],
+        "basis": "UMW2631 60000 = 四个完整15000原始箱行；同型号箱行选择为演示人工选择"
+      },
+      {
+        "entrustmentLineId": "D-5a09ab721f2e-R009",
+        "sourceLineIds": [
+          "I-a5368260946b-26070093-L005",
+          "I-a5368260946b-26070093-L006",
+          "I-a5368260946b-26070093-L007",
+          "I-a5368260946b-26070093-L008"
+        ],
+        "basis": "UMW2631 60000 = 其余四个完整15000箱行"
+      }
+    ],
+    "candidateSets": [],
+    "unresolved": [
+      "支持UMW局部关系，其他型号查货缺失，不宣称两张整单能完成"
+    ],
+    "coverageStatus": "数据已具备",
+    "businessAcceptance": "NOT_RUN_PHASE_MINUS_1"
+  },
+  {
+    "id": "SC-19",
+    "caseIds": [
+      "CASE-19"
+    ],
+    "name": "多对多交叉关系",
+    "sampleIds": [
+      "英卡-抽+整"
+    ],
+    "overrideIds": [
+      "OV-CROSS"
+    ],
+    "initialBatchIds": [
+      "B-I-a5368260946b-26070093",
+      "B-D-1df4f4d83480",
+      "B-D-a235e97d6dd0",
+      "B-D-5a09ab721f2e",
+      "B-VI-CROSS"
+    ],
+    "steps": [
+      {
+        "action": "人工选择原始行",
+        "entrustmentLineId": "D-1df4f4d83480-R009",
+        "sourceLineIds": [
+          "I-a5368260946b-26070093-L001",
+          "I-a5368260946b-26070093-L002",
+          "I-a5368260946b-26070093-L003",
+          "I-a5368260946b-26070093-L004"
+        ],
+        "basis": "UMW2631 60000 = 四个完整15000原始箱行；同型号箱行选择为演示人工选择"
+      },
+      {
+        "action": "人工选择原始行",
+        "entrustmentLineId": "D-5a09ab721f2e-R009",
+        "sourceLineIds": [
+          "I-a5368260946b-26070093-L005",
+          "I-a5368260946b-26070093-L006",
+          "VI-CROSS-L001",
+          "VI-CROSS-L002"
+        ],
+        "basis": "两个到货各两个完整15000箱行"
+      },
+      {
+        "action": "人工选择原始行",
+        "entrustmentLineId": "D-a235e97d6dd0-R009",
+        "sourceLineIds": [
+          "I-a5368260946b-26070093-L007",
+          "I-a5368260946b-26070093-L008",
+          "VI-CROSS-L003",
+          "VI-CROSS-L004"
+        ],
+        "basis": "两个到货各两个完整15000箱行；委托数量显式变体60000"
+      }
+    ],
+    "expectedChecks": [
+      "C1服务三个草稿，C2服务其中两个草稿",
+      "至少两个草稿同时引用两个查货单",
+      "任一原始行不重复占用",
+      "已核销行退出候选"
+    ],
+    "expectedRelations": [
+      {
+        "entrustmentLineId": "D-1df4f4d83480-R009",
+        "sourceLineIds": [
+          "I-a5368260946b-26070093-L001",
+          "I-a5368260946b-26070093-L002",
+          "I-a5368260946b-26070093-L003",
+          "I-a5368260946b-26070093-L004"
+        ],
+        "basis": "UMW2631 60000 = 四个完整15000原始箱行；同型号箱行选择为演示人工选择"
+      },
+      {
+        "entrustmentLineId": "D-5a09ab721f2e-R009",
+        "sourceLineIds": [
+          "I-a5368260946b-26070093-L005",
+          "I-a5368260946b-26070093-L006",
+          "VI-CROSS-L001",
+          "VI-CROSS-L002"
+        ],
+        "basis": "两个到货各两个完整15000箱行"
+      },
+      {
+        "entrustmentLineId": "D-a235e97d6dd0-R009",
+        "sourceLineIds": [
+          "I-a5368260946b-26070093-L007",
+          "I-a5368260946b-26070093-L008",
+          "VI-CROSS-L003",
+          "VI-CROSS-L004"
+        ],
+        "basis": "两个到货各两个完整15000箱行；委托数量显式变体60000"
+      }
+    ],
+    "candidateSets": [],
+    "unresolved": [
+      "仅UMW子图用于交叉关系演示；其他型号未到；非欧陆通真实多对多证明"
+    ],
+    "coverageStatus": "数据已具备（含明确变体）",
+    "businessAcceptance": "NOT_RUN_PHASE_MINUS_1"
+  },
+  {
+    "id": "SC-20",
+    "caseIds": [
+      "CASE-20"
+    ],
+    "name": "重复材料",
+    "sampleIds": [
+      "英卡-抽+整"
+    ],
+    "overrideIds": [],
+    "initialBatchIds": [],
+    "steps": [
+      {
+        "action": "加载查货",
+        "batchIds": [
+          "B-I-a5368260946b-26070093"
+        ]
+      },
+      {
+        "action": "重复上传",
+        "fileId": "F-a5368260946b",
+        "expect": "相同校验值不重复入池"
+      },
+      {
+        "action": "重复上传",
+        "fileId": "F-baf3de39ef68",
+        "expect": "不同校验值同内容不重复入池"
+      }
+    ],
+    "expectedChecks": [
+      "两个文件名实际同26070093",
+      "逻辑查货维持1张，原始行12条",
+      "重复来源保留"
+    ],
+    "expectedRelations": [],
+    "candidateSets": [],
+    "unresolved": [],
+    "coverageStatus": "数据已具备",
+    "businessAcceptance": "NOT_RUN_PHASE_MINUS_1"
+  },
+  {
+    "id": "SC-21",
+    "caseIds": [
+      "CASE-21"
+    ],
+    "name": "最终25列契约",
+    "sampleIds": [
+      "2025YBT010-2"
+    ],
+    "overrideIds": [],
+    "initialBatchIds": [
+      "B-I-8bc7177252aa-25120336",
+      "B-D-3c3cc10bd26b"
+    ],
+    "steps": [
+      {
+        "action": "执行SC-15完整动作链"
+      },
+      {
+        "action": "检查输出字段契约",
+        "contract": "field-contract.json"
+      }
+    ],
+    "expectedChecks": [
+      "列名顺序直接等于模板",
+      "四项合计正确",
+      "无来源值保持待处理，不能编造"
+    ],
+    "expectedRelations": [],
+    "candidateSets": [],
+    "unresolved": [],
+    "coverageStatus": "数据已具备",
+    "businessAcceptance": "NOT_RUN_PHASE_MINUS_1"
+  }
+]

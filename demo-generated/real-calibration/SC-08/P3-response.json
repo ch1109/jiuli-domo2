@@ -1,0 +1,31 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P3",
+  "request_id": "SC08-AUDIT-20260920-P3",
+  "output": {
+    "processing_status": "SUCCESS",
+    "row_relations": [
+      {
+        "order_row_id": "D-3c3cc10bd26b-R007",
+        "match_status": "MATCHED",
+        "selected_raw_row_ids": ["I-8bc7177252aa-25120336-L001"],
+        "coverage": {"status": "COMPLETE", "overlap": "DISJOINT", "evidence_keys": ["E-I-L001-SCOPE"]},
+        "evidence_keys": ["E-O-R007-MODEL", "E-I-L001-MODEL", "E-I-L001-MARKER", "E-O-R007-BRAND", "E-I-L001-BRAND", "E-I-L001-SCOPE"],
+        "candidate_groups": [],
+        "weak_candidates": [],
+        "issues": []
+      },
+      {
+        "order_row_id": "D-3c3cc10bd26b-R008",
+        "match_status": "MATCHED",
+        "selected_raw_row_ids": ["I-8bc7177252aa-25120336-L002"],
+        "coverage": {"status": "COMPLETE", "overlap": "DISJOINT", "evidence_keys": ["E-I-L002-SCOPE"]},
+        "evidence_keys": ["E-O-R008-MODEL", "E-I-L002-MODEL", "E-I-L002-MARKER", "E-O-R008-BRAND", "E-I-L002-BRAND", "E-I-L002-SCOPE"],
+        "candidate_groups": [],
+        "weak_candidates": [],
+        "issues": []
+      }
+    ],
+    "issues": []
+  }
+}

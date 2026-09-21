@@ -1,0 +1,131 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P2",
+  "request_id": "SC08-AUDIT-20260920-P2",
+  "output": {
+    "processing_status": "SUCCESS",
+    "customer_id": "C-89aa660b4b46",
+    "read_status": [
+      {"file_id": "F-8bc7177252aa", "read_segments": ["page:1"], "unread_segments": [], "status": "COMPLETE"}
+    ],
+    "logical_inspections": [
+      {
+        "warehouse_no": "25120336",
+        "sources": [
+          {"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": null, "column": null, "raw_text": "条码下方 25120336"}
+        ],
+        "range_status": "COMPLETE"
+      }
+    ],
+    "raw_rows": [
+      {
+        "record_no": 1,
+        "warehouse_no": "25120336",
+        "candidate_warehouse_nos": [],
+        "source": {"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": 1, "column": null, "raw_text": "商品表第1行"},
+        "fields": {
+          "brand": "SK HYNIX",
+          "model": "H25G9TCXXCX702A",
+          "product_name": "64GB INK DIE (#9)",
+          "quantity": "12081",
+          "box_no": "1",
+          "net_weight": "3.60",
+          "net_weight_unit": "KG",
+          "gross_weight": "4.20",
+          "gross_weight_unit": "KG",
+          "remark": "Dimension 39*34*29 cm"
+        },
+        "field_sources": {
+          "brand": [{"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": 1, "column": "Brand", "raw_text": "SK HYNIX"}],
+          "model": [{"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": 1, "column": "Part No.", "raw_text": "H25G9TCXXCX702A"}],
+          "product_name": [{"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": 1, "column": "Description", "raw_text": "64GB INK DIE (#9)"}],
+          "quantity": [{"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": 1, "column": "QTY", "raw_text": "12081"}],
+          "box_no": [{"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": 1, "column": "CTN #", "raw_text": "1"}],
+          "net_weight": [{"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": 1, "column": "NW Kg", "raw_text": "3.60 KG"}],
+          "net_weight_unit": [{"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": null, "column": "NW", "raw_text": "NW Kg"}],
+          "gross_weight": [{"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": 1, "column": "GW Kg", "raw_text": "4.20 KG"}],
+          "gross_weight_unit": [{"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": null, "column": "GW", "raw_text": "GW Kg"}],
+          "remark": [{"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": 1, "column": "Dimension", "raw_text": "39*34*29 cm"}]
+        },
+        "origin_candidates": [
+          {"value": "KOREA", "kind": "PRINTED_COD", "source": {"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": 1, "column": "Origin FAB", "raw_text": "KOREA"}}
+        ],
+        "manual_marks": [
+          {"action": "CIRCLE", "field": "model", "old_value": "", "new_value": "", "source": {"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": 1, "column": "Part No.", "raw_text": "蓝笔圈选 H25G9TCXXCX702A"}},
+          {"action": "CIRCLE", "field": "brand", "old_value": "", "new_value": "", "source": {"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": 1, "column": "Brand", "raw_text": "蓝笔圈选 SK HYNIX"}},
+          {"action": "CIRCLE", "field": "origin", "old_value": "", "new_value": "", "source": {"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": 1, "column": "Origin FAB", "raw_text": "蓝笔圈选 KOREA"}}
+        ]
+      },
+      {
+        "record_no": 2,
+        "warehouse_no": "25120336",
+        "candidate_warehouse_nos": [],
+        "source": {"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": 2, "column": null, "raw_text": "商品表第2行"},
+        "fields": {
+          "brand": "SK HYNIX",
+          "model": "D25G9TCX8CX239C",
+          "product_name": "64GB INK DIE (#D)",
+          "quantity": "16054",
+          "box_no": "2",
+          "net_weight": "4.40",
+          "net_weight_unit": "KG",
+          "gross_weight": "5.00",
+          "gross_weight_unit": "KG",
+          "remark": "Dimension 39*34*29 cm"
+        },
+        "field_sources": {
+          "brand": [{"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": 2, "column": "Brand", "raw_text": "SK HYNIX"}],
+          "model": [{"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": 2, "column": "Part No.", "raw_text": "D25G9TCX8CX239C"}],
+          "product_name": [{"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": 2, "column": "Description", "raw_text": "64GB INK DIE (#D)"}],
+          "quantity": [{"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": 2, "column": "QTY", "raw_text": "16054"}],
+          "box_no": [{"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": 2, "column": "CTN #", "raw_text": "2"}],
+          "net_weight": [{"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": 2, "column": "NW Kg", "raw_text": "4.40 KG"}],
+          "net_weight_unit": [{"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": null, "column": "NW", "raw_text": "NW Kg"}],
+          "gross_weight": [{"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": 2, "column": "GW Kg", "raw_text": "5.00 KG"}],
+          "gross_weight_unit": [{"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": null, "column": "GW", "raw_text": "GW Kg"}],
+          "remark": [{"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": 2, "column": "Dimension", "raw_text": "39*34*29 cm"}]
+        },
+        "origin_candidates": [
+          {"value": "KOREA", "kind": "PRINTED_COD", "source": {"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": 2, "column": "Origin FAB", "raw_text": "KOREA"}}
+        ],
+        "manual_marks": [
+          {"action": "CIRCLE", "field": "model", "old_value": "", "new_value": "", "source": {"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": 2, "column": "Part No.", "raw_text": "蓝笔圈选 D25G9TCX8CX239C"}},
+          {"action": "CIRCLE", "field": "brand", "old_value": "", "new_value": "", "source": {"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": 2, "column": "Brand", "raw_text": "蓝笔圈选 SK HYNIX"}},
+          {"action": "CIRCLE", "field": "origin", "old_value": "", "new_value": "", "source": {"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": 2, "column": "Origin FAB", "raw_text": "蓝笔圈选 KOREA"}}
+        ]
+      }
+    ],
+    "scope_records": [
+      {
+        "warehouse_no": "25120336",
+        "kind": "LOGICAL_TOTAL",
+        "identifier": "printed-total",
+        "member_record_nos": [1, 2],
+        "range_complete": true,
+        "has_unresolved_goods": false,
+        "measurements": [
+          {"field": "quantity", "value": "28,135", "unit": "", "fact_kind": "EXPLICIT", "source": {"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": null, "column": "Total QTY", "raw_text": "28,135"}},
+          {"field": "net_weight", "value": "8.00", "unit": "KG", "fact_kind": "EXPLICIT", "source": {"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": null, "column": "Total NW", "raw_text": "8.00 KG"}},
+          {"field": "gross_weight", "value": "9.20", "unit": "KG", "fact_kind": "EXPLICIT", "source": {"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": null, "column": "Total GW", "raw_text": "9.20 KG"}}
+        ],
+        "source": {"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": null, "column": "Total", "raw_text": "Total 28,135 / 8.00 / 9.20"}
+      },
+      {
+        "warehouse_no": "25120336",
+        "kind": "PACKAGE",
+        "identifier": "warehouse-label",
+        "member_record_nos": [1, 2],
+        "range_complete": true,
+        "has_unresolved_goods": false,
+        "measurements": [
+          {"field": "packages", "value": "2件/板", "unit": "", "fact_kind": "EXPLICIT", "source": {"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": null, "column": null, "raw_text": "2件 / 板"}},
+          {"field": "gross_weight", "value": "9", "unit": "KGS", "fact_kind": "HANDWRITTEN_GW", "source": {"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": null, "column": null, "raw_text": "手写 9 KGS"}}
+        ],
+        "source": {"file_id": "F-8bc7177252aa", "page": 1, "sheet": null, "row": null, "column": null, "raw_text": "入仓板标：2件/板；手写9 KGS"}
+      }
+    ],
+    "issues": [
+      {"code": "SCOPE_MEASUREMENT_CONFLICT", "row_ref": null, "field": "gross_weight", "message": "表格逻辑单合计毛重为9.20 KG，入仓板标手写毛重为9 KGS，两个范围事实均已保留。"}
+    ]
+  }
+}

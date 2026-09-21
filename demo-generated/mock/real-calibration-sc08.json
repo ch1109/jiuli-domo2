@@ -1,0 +1,3421 @@
+{
+  "schemaVersion": 2,
+  "scenarioId": "SC-08",
+  "model": "gpt-5.6-sol",
+  "auditId": "SC08-AUDIT-20260920",
+  "customerId": "C-89aa660b4b46",
+  "draftId": "D-3c3cc10bd26b",
+  "provenanceFile": "demo-generated/real-calibration/SC-08-audit/provenance.json",
+  "executionEvidenceSha256": "6196222f02eedfafba35ad60ef16a381573bbed8251ea0126519f61728bd5d0b",
+  "artifactSha256": {
+    "P1-request.json": "81b65b6c62dd65fdabdccfd5907408ef9ee0d97855ac48b270e6b6edbba40e65",
+    "P1-response.json": "cc7e328f83cb9624e68cd787a5ab7f119bb9dc563065613c6d5ee8a03b013c7d",
+    "P2-request.json": "4e779144b920bccd579d5bf84cc139945275659083760651732aca338b8ef16b",
+    "P2-response.json": "20c0eb62b4ed3168a8de2d68c7e4f212f7b68fc99d6fbaef9b26eea0e15fdf0a",
+    "P3-request.json": "21e48f307449c72a35579b3df197786365c86f9aa82350450c874de1dd205f6a",
+    "P3-response.json": "ed5a2dff934d62136b14ddd5e4b5e067edea896cc72e0de26b69dce26b1f05be",
+    "P4-request.json": "ec0e56accab47406e0083231d1faa3abb22f7ae003d3eb829abf9dfde31b5280",
+    "P4-response.json": "c7d4a38739e6c059b3e1eb9909c8856a973409833c59fda5e73aa62ef540c403"
+  },
+  "fieldMap": {
+    "customer_name": "客户名",
+    "brand": "品牌",
+    "model": "型号",
+    "description": "商品描述",
+    "product_name": "品名",
+    "origin": "产地",
+    "unit": "单位",
+    "quantity": "数量",
+    "customs_unit_price": "报关单价",
+    "total_price": "总价",
+    "currency": "币种",
+    "packages": "件数",
+    "net_weight": "净重",
+    "gross_weight": "毛重",
+    "sku": "sku",
+    "buyer": "对应的采购",
+    "supplier_code": "供应商号码",
+    "supplier": "供应商",
+    "payment_term_days": "期票天数",
+    "purchase_order_no": "采购订单号",
+    "material_no": "物料号码",
+    "pallet_count": "托盘数",
+    "warehouse_no": "入仓号",
+    "production_line": "产线",
+    "remark": "备注"
+  },
+  "orderRows": [
+    {
+      "id": "D-3c3cc10bd26b-R007",
+      "fields": {
+        "客户名": "英堡科技（深圳）有限公司",
+        "品牌": "SK HYNIX",
+        "型号": "H25G9TCXXCX702A#9",
+        "商品描述": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性",
+        "品名": "晶圆",
+        "产地": "韩国",
+        "单位": "个",
+        "数量": "12081",
+        "报关单价": "4.1",
+        "总价": "49532.1",
+        "币种": "USD",
+        "件数": "1",
+        "净重": "3.6",
+        "毛重": "4.2",
+        "sku": null,
+        "对应的采购": null,
+        "供应商号码": null,
+        "供应商": null,
+        "期票天数": null,
+        "采购订单号": null,
+        "物料号码": null,
+        "托盘数": null,
+        "入仓号": null,
+        "产线": null,
+        "备注": null
+      },
+      "baseValues": {
+        "客户名": "英堡科技（深圳）有限公司",
+        "品牌": "SK HYNIX",
+        "型号": "H25G9TCXXCX702A#9",
+        "商品描述": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性",
+        "品名": "晶圆",
+        "产地": "韩国",
+        "单位": "个",
+        "数量": "12081",
+        "报关单价": "4.1",
+        "总价": "49532.1",
+        "币种": "USD",
+        "件数": "1",
+        "净重": "3.6",
+        "毛重": "4.2",
+        "sku": null,
+        "对应的采购": null,
+        "供应商号码": null,
+        "供应商": null,
+        "期票天数": null,
+        "采购订单号": null,
+        "物料号码": null,
+        "托盘数": null,
+        "入仓号": null,
+        "产线": null,
+        "备注": null
+      },
+      "sourceOrder": 1,
+      "sourceLocation": {
+        "fileId": "F-3c3cc10bd26b",
+        "page": null,
+        "sheet": "12-10-2",
+        "position": "第 7 行"
+      },
+      "facts": {
+        "row_no": 1,
+        "source": {
+          "file_id": "F-3c3cc10bd26b",
+          "page": null,
+          "sheet": "12-10-2",
+          "row": 7,
+          "column": null,
+          "raw_text": "委托商品第1行"
+        },
+        "values": {
+          "customer_name": "英堡科技（深圳）有限公司",
+          "brand": "SK HYNIX",
+          "model": "H25G9TCXXCX702A#9",
+          "description": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性",
+          "product_name": "晶圆",
+          "origin": "韩国",
+          "unit": "个",
+          "quantity": "12081",
+          "customs_unit_price": "4.1",
+          "total_price": "49532.1",
+          "currency": "USD",
+          "packages": "1",
+          "net_weight": "3.6",
+          "gross_weight": "4.2",
+          "sku": "",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": ""
+        },
+        "evidence": [
+          {
+            "field": "customer_name",
+            "value": "英堡科技（深圳）有限公司",
+            "unit": "",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 3,
+              "column": "B",
+              "raw_text": "英堡科技（深圳）有限公司"
+            }
+          },
+          {
+            "field": "product_name",
+            "value": "晶圆",
+            "unit": "",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 7,
+              "column": "B",
+              "raw_text": "晶圆"
+            }
+          },
+          {
+            "field": "brand",
+            "value": "SK HYNIX",
+            "unit": "",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 7,
+              "column": "C",
+              "raw_text": "SK HYNIX"
+            }
+          },
+          {
+            "field": "model",
+            "value": "H25G9TCXXCX702A#9",
+            "unit": "",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 7,
+              "column": "D",
+              "raw_text": "H25G9TCXXCX702A#9"
+            }
+          },
+          {
+            "field": "description",
+            "value": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性",
+            "unit": "",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 7,
+              "column": "E",
+              "raw_text": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性"
+            }
+          },
+          {
+            "field": "origin",
+            "value": "韩国",
+            "unit": "",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 7,
+              "column": "F",
+              "raw_text": "韩国"
+            }
+          },
+          {
+            "field": "unit",
+            "value": "个",
+            "unit": "",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 7,
+              "column": "G",
+              "raw_text": "个"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "12081",
+            "unit": "PCS",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 7,
+              "column": "H",
+              "raw_text": "12081"
+            }
+          },
+          {
+            "field": "customs_unit_price",
+            "value": "4.1",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 7,
+              "column": "I",
+              "raw_text": "4.1"
+            }
+          },
+          {
+            "field": "total_price",
+            "value": "49532.1",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 7,
+              "column": "J",
+              "raw_text": "formula =H7*I7; cached 49532.1"
+            }
+          },
+          {
+            "field": "currency",
+            "value": "USD",
+            "unit": "",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 6,
+              "column": "I:J",
+              "raw_text": "报关单价（USD）/报关总价（USD）"
+            }
+          },
+          {
+            "field": "packages",
+            "value": "1",
+            "unit": "箱",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 7,
+              "column": "K",
+              "raw_text": "1"
+            }
+          },
+          {
+            "field": "net_weight",
+            "value": "3.6",
+            "unit": "KG",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 7,
+              "column": "L",
+              "raw_text": "3.6"
+            }
+          },
+          {
+            "field": "gross_weight",
+            "value": "4.2",
+            "unit": "KG",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 7,
+              "column": "M",
+              "raw_text": "4.2"
+            }
+          }
+        ],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "D-3c3cc10bd26b-R008",
+      "fields": {
+        "客户名": "英堡科技（深圳）有限公司",
+        "品牌": "SK HYNIX",
+        "型号": "D25G9TCX8CX239C#D",
+        "商品描述": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性",
+        "品名": "晶圆",
+        "产地": "韩国",
+        "单位": "个",
+        "数量": "16054",
+        "报关单价": "2.9",
+        "总价": "46556.6",
+        "币种": "USD",
+        "件数": "1",
+        "净重": "4.4",
+        "毛重": "5",
+        "sku": null,
+        "对应的采购": null,
+        "供应商号码": null,
+        "供应商": null,
+        "期票天数": null,
+        "采购订单号": null,
+        "物料号码": null,
+        "托盘数": null,
+        "入仓号": null,
+        "产线": null,
+        "备注": null
+      },
+      "baseValues": {
+        "客户名": "英堡科技（深圳）有限公司",
+        "品牌": "SK HYNIX",
+        "型号": "D25G9TCX8CX239C#D",
+        "商品描述": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性",
+        "品名": "晶圆",
+        "产地": "韩国",
+        "单位": "个",
+        "数量": "16054",
+        "报关单价": "2.9",
+        "总价": "46556.6",
+        "币种": "USD",
+        "件数": "1",
+        "净重": "4.4",
+        "毛重": "5",
+        "sku": null,
+        "对应的采购": null,
+        "供应商号码": null,
+        "供应商": null,
+        "期票天数": null,
+        "采购订单号": null,
+        "物料号码": null,
+        "托盘数": null,
+        "入仓号": null,
+        "产线": null,
+        "备注": null
+      },
+      "sourceOrder": 2,
+      "sourceLocation": {
+        "fileId": "F-3c3cc10bd26b",
+        "page": null,
+        "sheet": "12-10-2",
+        "position": "第 8 行"
+      },
+      "facts": {
+        "row_no": 2,
+        "source": {
+          "file_id": "F-3c3cc10bd26b",
+          "page": null,
+          "sheet": "12-10-2",
+          "row": 8,
+          "column": null,
+          "raw_text": "委托商品第2行"
+        },
+        "values": {
+          "customer_name": "英堡科技（深圳）有限公司",
+          "brand": "SK HYNIX",
+          "model": "D25G9TCX8CX239C#D",
+          "description": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性",
+          "product_name": "晶圆",
+          "origin": "韩国",
+          "unit": "个",
+          "quantity": "16054",
+          "customs_unit_price": "2.9",
+          "total_price": "46556.6",
+          "currency": "USD",
+          "packages": "1",
+          "net_weight": "4.4",
+          "gross_weight": "5",
+          "sku": "",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": ""
+        },
+        "evidence": [
+          {
+            "field": "customer_name",
+            "value": "英堡科技（深圳）有限公司",
+            "unit": "",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 3,
+              "column": "B",
+              "raw_text": "英堡科技（深圳）有限公司"
+            }
+          },
+          {
+            "field": "product_name",
+            "value": "晶圆",
+            "unit": "",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 8,
+              "column": "B",
+              "raw_text": "晶圆"
+            }
+          },
+          {
+            "field": "brand",
+            "value": "SK HYNIX",
+            "unit": "",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 8,
+              "column": "C",
+              "raw_text": "SK HYNIX"
+            }
+          },
+          {
+            "field": "model",
+            "value": "D25G9TCX8CX239C#D",
+            "unit": "",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 8,
+              "column": "D",
+              "raw_text": "D25G9TCX8CX239C#D"
+            }
+          },
+          {
+            "field": "description",
+            "value": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性",
+            "unit": "",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 8,
+              "column": "E",
+              "raw_text": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性"
+            }
+          },
+          {
+            "field": "origin",
+            "value": "韩国",
+            "unit": "",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 8,
+              "column": "F",
+              "raw_text": "韩国"
+            }
+          },
+          {
+            "field": "unit",
+            "value": "个",
+            "unit": "",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 8,
+              "column": "G",
+              "raw_text": "个"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "16054",
+            "unit": "PCS",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 8,
+              "column": "H",
+              "raw_text": "16054"
+            }
+          },
+          {
+            "field": "customs_unit_price",
+            "value": "2.9",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 8,
+              "column": "I",
+              "raw_text": "2.9"
+            }
+          },
+          {
+            "field": "total_price",
+            "value": "46556.6",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 8,
+              "column": "J",
+              "raw_text": "formula =H8*I8; cached 46556.6"
+            }
+          },
+          {
+            "field": "currency",
+            "value": "USD",
+            "unit": "",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 6,
+              "column": "I:J",
+              "raw_text": "报关单价（USD）/报关总价（USD）"
+            }
+          },
+          {
+            "field": "packages",
+            "value": "1",
+            "unit": "箱",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 8,
+              "column": "K",
+              "raw_text": "1"
+            }
+          },
+          {
+            "field": "net_weight",
+            "value": "4.4",
+            "unit": "KG",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 8,
+              "column": "L",
+              "raw_text": "4.4"
+            }
+          },
+          {
+            "field": "gross_weight",
+            "value": "5",
+            "unit": "KG",
+            "source": {
+              "file_id": "F-3c3cc10bd26b",
+              "page": null,
+              "sheet": "12-10-2",
+              "row": 8,
+              "column": "M",
+              "raw_text": "5"
+            }
+          }
+        ],
+        "conflicts": []
+      }
+    }
+  ],
+  "sourceLines": [
+    {
+      "id": "I-8bc7177252aa-25120336-L001",
+      "customerId": "C-89aa660b4b46",
+      "logicalInspectionOrderId": "I-8bc7177252aa-25120336",
+      "warehouseNo": "25120336",
+      "sourceFileId": "F-8bc7177252aa",
+      "sourceLocation": {
+        "fileId": "F-8bc7177252aa",
+        "page": 1,
+        "sheet": null,
+        "position": "第 1 行"
+      },
+      "fields": {
+        "品牌": "SK HYNIX",
+        "型号": "H25G9TCXXCX702A",
+        "数量": "12081",
+        "单位": null,
+        "件数": null,
+        "净重": "3.60",
+        "毛重": "4.20",
+        "产地": "KOREA"
+      },
+      "otherFields": {
+        "品名": "64GB INK DIE (#9)",
+        "box_no": "1",
+        "net_weight_unit": "KG",
+        "gross_weight_unit": "KG",
+        "备注": "Dimension 39*34*29 cm",
+        "入仓号": "25120336",
+        "范围事实": "[{\"warehouse_no\": \"25120336\", \"kind\": \"LOGICAL_TOTAL\", \"identifier\": \"printed-total\", \"member_record_nos\": [1, 2], \"range_complete\": true, \"has_unresolved_goods\": false, \"measurements\": [{\"field\": \"quantity\", \"value\": \"28,135\", \"unit\": \"\", \"fact_kind\": \"EXPLICIT\", \"source\": {\"file_id\": \"F-8bc7177252aa\", \"page\": 1, \"sheet\": null, \"row\": null, \"column\": \"Total QTY\", \"raw_text\": \"28,135\"}}, {\"field\": \"net_weight\", \"value\": \"8.00\", \"unit\": \"KG\", \"fact_kind\": \"EXPLICIT\", \"source\": {\"file_id\": \"F-8bc7177252aa\", \"page\": 1, \"sheet\": null, \"row\": null, \"column\": \"Total NW\", \"raw_text\": \"8.00 KG\"}}, {\"field\": \"gross_weight\", \"value\": \"9.20\", \"unit\": \"KG\", \"fact_kind\": \"EXPLICIT\", \"source\": {\"file_id\": \"F-8bc7177252aa\", \"page\": 1, \"sheet\": null, \"row\": null, \"column\": \"Total GW\", \"raw_text\": \"9.20 KG\"}}], \"source\": {\"file_id\": \"F-8bc7177252aa\", \"page\": 1, \"sheet\": null, \"row\": null, \"column\": \"Total\", \"raw_text\": \"Total 28,135 / 8.00 / 9.20\"}}, {\"warehouse_no\": \"25120336\", \"kind\": \"PACKAGE\", \"identifier\": \"warehouse-label\", \"member_record_nos\": [1, 2], \"range_complete\": true, \"has_unresolved_goods\": false, \"measurements\": [{\"field\": \"packages\", \"value\": \"2件/板\", \"unit\": \"\", \"fact_kind\": \"EXPLICIT\", \"source\": {\"file_id\": \"F-8bc7177252aa\", \"page\": 1, \"sheet\": null, \"row\": null, \"column\": null, \"raw_text\": \"2件 / 板\"}}, {\"field\": \"gross_weight\", \"value\": \"9\", \"unit\": \"KGS\", \"fact_kind\": \"HANDWRITTEN_GW\", \"source\": {\"file_id\": \"F-8bc7177252aa\", \"page\": 1, \"sheet\": null, \"row\": null, \"column\": null, \"raw_text\": \"手写 9 KGS\"}}], \"source\": {\"file_id\": \"F-8bc7177252aa\", \"page\": 1, \"sheet\": null, \"row\": null, \"column\": null, \"raw_text\": \"入仓板标：2件/板；手写9 KGS\"}}]",
+        "来源问题": "[{\"code\": \"SCOPE_MEASUREMENT_CONFLICT\", \"row_ref\": null, \"field\": \"gross_weight\", \"message\": \"表格逻辑单合计毛重为9.20 KG，入仓板标手写毛重为9 KGS，两个范围事实均已保留。\"}]",
+        "标准产地": "韩国"
+      },
+      "facts": {
+        "record_no": 1,
+        "warehouse_no": "25120336",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-8bc7177252aa",
+          "page": 1,
+          "sheet": null,
+          "row": 1,
+          "column": null,
+          "raw_text": "商品表第1行"
+        },
+        "fields": {
+          "brand": "SK HYNIX",
+          "model": "H25G9TCXXCX702A",
+          "product_name": "64GB INK DIE (#9)",
+          "quantity": "12081",
+          "box_no": "1",
+          "net_weight": "3.60",
+          "net_weight_unit": "KG",
+          "gross_weight": "4.20",
+          "gross_weight_unit": "KG",
+          "remark": "Dimension 39*34*29 cm"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "SK HYNIX"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Part No.",
+              "raw_text": "H25G9TCXXCX702A"
+            }
+          ],
+          "product_name": [
+            {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Description",
+              "raw_text": "64GB INK DIE (#9)"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "12081"
+            }
+          ],
+          "box_no": [
+            {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "CTN #",
+              "raw_text": "1"
+            }
+          ],
+          "net_weight": [
+            {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "NW Kg",
+              "raw_text": "3.60 KG"
+            }
+          ],
+          "net_weight_unit": [
+            {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "NW",
+              "raw_text": "NW Kg"
+            }
+          ],
+          "gross_weight": [
+            {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "GW Kg",
+              "raw_text": "4.20 KG"
+            }
+          ],
+          "gross_weight_unit": [
+            {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "GW",
+              "raw_text": "GW Kg"
+            }
+          ],
+          "remark": [
+            {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Dimension",
+              "raw_text": "39*34*29 cm"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "KOREA",
+            "kind": "PRINTED_COD",
+            "source": {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Origin FAB",
+              "raw_text": "KOREA"
+            }
+          }
+        ],
+        "manual_marks": [
+          {
+            "action": "CIRCLE",
+            "field": "model",
+            "old_value": "",
+            "new_value": "",
+            "source": {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Part No.",
+              "raw_text": "蓝笔圈选 H25G9TCXXCX702A"
+            }
+          },
+          {
+            "action": "CIRCLE",
+            "field": "brand",
+            "old_value": "",
+            "new_value": "",
+            "source": {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "蓝笔圈选 SK HYNIX"
+            }
+          },
+          {
+            "action": "CIRCLE",
+            "field": "origin",
+            "old_value": "",
+            "new_value": "",
+            "source": {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Origin FAB",
+              "raw_text": "蓝笔圈选 KOREA"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "I-8bc7177252aa-25120336-L002",
+      "customerId": "C-89aa660b4b46",
+      "logicalInspectionOrderId": "I-8bc7177252aa-25120336",
+      "warehouseNo": "25120336",
+      "sourceFileId": "F-8bc7177252aa",
+      "sourceLocation": {
+        "fileId": "F-8bc7177252aa",
+        "page": 1,
+        "sheet": null,
+        "position": "第 2 行"
+      },
+      "fields": {
+        "品牌": "SK HYNIX",
+        "型号": "D25G9TCX8CX239C",
+        "数量": "16054",
+        "单位": null,
+        "件数": null,
+        "净重": "4.40",
+        "毛重": "5.00",
+        "产地": "KOREA"
+      },
+      "otherFields": {
+        "品名": "64GB INK DIE (#D)",
+        "box_no": "2",
+        "net_weight_unit": "KG",
+        "gross_weight_unit": "KG",
+        "备注": "Dimension 39*34*29 cm",
+        "入仓号": "25120336",
+        "范围事实": "[{\"warehouse_no\": \"25120336\", \"kind\": \"LOGICAL_TOTAL\", \"identifier\": \"printed-total\", \"member_record_nos\": [1, 2], \"range_complete\": true, \"has_unresolved_goods\": false, \"measurements\": [{\"field\": \"quantity\", \"value\": \"28,135\", \"unit\": \"\", \"fact_kind\": \"EXPLICIT\", \"source\": {\"file_id\": \"F-8bc7177252aa\", \"page\": 1, \"sheet\": null, \"row\": null, \"column\": \"Total QTY\", \"raw_text\": \"28,135\"}}, {\"field\": \"net_weight\", \"value\": \"8.00\", \"unit\": \"KG\", \"fact_kind\": \"EXPLICIT\", \"source\": {\"file_id\": \"F-8bc7177252aa\", \"page\": 1, \"sheet\": null, \"row\": null, \"column\": \"Total NW\", \"raw_text\": \"8.00 KG\"}}, {\"field\": \"gross_weight\", \"value\": \"9.20\", \"unit\": \"KG\", \"fact_kind\": \"EXPLICIT\", \"source\": {\"file_id\": \"F-8bc7177252aa\", \"page\": 1, \"sheet\": null, \"row\": null, \"column\": \"Total GW\", \"raw_text\": \"9.20 KG\"}}], \"source\": {\"file_id\": \"F-8bc7177252aa\", \"page\": 1, \"sheet\": null, \"row\": null, \"column\": \"Total\", \"raw_text\": \"Total 28,135 / 8.00 / 9.20\"}}, {\"warehouse_no\": \"25120336\", \"kind\": \"PACKAGE\", \"identifier\": \"warehouse-label\", \"member_record_nos\": [1, 2], \"range_complete\": true, \"has_unresolved_goods\": false, \"measurements\": [{\"field\": \"packages\", \"value\": \"2件/板\", \"unit\": \"\", \"fact_kind\": \"EXPLICIT\", \"source\": {\"file_id\": \"F-8bc7177252aa\", \"page\": 1, \"sheet\": null, \"row\": null, \"column\": null, \"raw_text\": \"2件 / 板\"}}, {\"field\": \"gross_weight\", \"value\": \"9\", \"unit\": \"KGS\", \"fact_kind\": \"HANDWRITTEN_GW\", \"source\": {\"file_id\": \"F-8bc7177252aa\", \"page\": 1, \"sheet\": null, \"row\": null, \"column\": null, \"raw_text\": \"手写 9 KGS\"}}], \"source\": {\"file_id\": \"F-8bc7177252aa\", \"page\": 1, \"sheet\": null, \"row\": null, \"column\": null, \"raw_text\": \"入仓板标：2件/板；手写9 KGS\"}}]",
+        "来源问题": "[{\"code\": \"SCOPE_MEASUREMENT_CONFLICT\", \"row_ref\": null, \"field\": \"gross_weight\", \"message\": \"表格逻辑单合计毛重为9.20 KG，入仓板标手写毛重为9 KGS，两个范围事实均已保留。\"}]",
+        "标准产地": "韩国"
+      },
+      "facts": {
+        "record_no": 2,
+        "warehouse_no": "25120336",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-8bc7177252aa",
+          "page": 1,
+          "sheet": null,
+          "row": 2,
+          "column": null,
+          "raw_text": "商品表第2行"
+        },
+        "fields": {
+          "brand": "SK HYNIX",
+          "model": "D25G9TCX8CX239C",
+          "product_name": "64GB INK DIE (#D)",
+          "quantity": "16054",
+          "box_no": "2",
+          "net_weight": "4.40",
+          "net_weight_unit": "KG",
+          "gross_weight": "5.00",
+          "gross_weight_unit": "KG",
+          "remark": "Dimension 39*34*29 cm"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": "Brand",
+              "raw_text": "SK HYNIX"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": "Part No.",
+              "raw_text": "D25G9TCX8CX239C"
+            }
+          ],
+          "product_name": [
+            {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": "Description",
+              "raw_text": "64GB INK DIE (#D)"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": "QTY",
+              "raw_text": "16054"
+            }
+          ],
+          "box_no": [
+            {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": "CTN #",
+              "raw_text": "2"
+            }
+          ],
+          "net_weight": [
+            {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": "NW Kg",
+              "raw_text": "4.40 KG"
+            }
+          ],
+          "net_weight_unit": [
+            {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "NW",
+              "raw_text": "NW Kg"
+            }
+          ],
+          "gross_weight": [
+            {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": "GW Kg",
+              "raw_text": "5.00 KG"
+            }
+          ],
+          "gross_weight_unit": [
+            {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "GW",
+              "raw_text": "GW Kg"
+            }
+          ],
+          "remark": [
+            {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": "Dimension",
+              "raw_text": "39*34*29 cm"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "KOREA",
+            "kind": "PRINTED_COD",
+            "source": {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": "Origin FAB",
+              "raw_text": "KOREA"
+            }
+          }
+        ],
+        "manual_marks": [
+          {
+            "action": "CIRCLE",
+            "field": "model",
+            "old_value": "",
+            "new_value": "",
+            "source": {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": "Part No.",
+              "raw_text": "蓝笔圈选 D25G9TCX8CX239C"
+            }
+          },
+          {
+            "action": "CIRCLE",
+            "field": "brand",
+            "old_value": "",
+            "new_value": "",
+            "source": {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": "Brand",
+              "raw_text": "蓝笔圈选 SK HYNIX"
+            }
+          },
+          {
+            "action": "CIRCLE",
+            "field": "origin",
+            "old_value": "",
+            "new_value": "",
+            "source": {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": "Origin FAB",
+              "raw_text": "蓝笔圈选 KOREA"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "relations": [
+    {
+      "order_row_id": "D-3c3cc10bd26b-R007",
+      "match_status": "MATCHED",
+      "selected_raw_row_ids": [
+        "I-8bc7177252aa-25120336-L001"
+      ],
+      "coverage": {
+        "status": "COMPLETE",
+        "overlap": "DISJOINT",
+        "evidence_keys": [
+          "E-I-L001-SCOPE"
+        ]
+      },
+      "evidence_keys": [
+        "E-O-R007-MODEL",
+        "E-I-L001-MODEL",
+        "E-I-L001-MARKER",
+        "E-O-R007-BRAND",
+        "E-I-L001-BRAND",
+        "E-I-L001-SCOPE"
+      ],
+      "candidate_groups": [],
+      "weak_candidates": [],
+      "issues": []
+    },
+    {
+      "order_row_id": "D-3c3cc10bd26b-R008",
+      "match_status": "MATCHED",
+      "selected_raw_row_ids": [
+        "I-8bc7177252aa-25120336-L002"
+      ],
+      "coverage": {
+        "status": "COMPLETE",
+        "overlap": "DISJOINT",
+        "evidence_keys": [
+          "E-I-L002-SCOPE"
+        ]
+      },
+      "evidence_keys": [
+        "E-O-R008-MODEL",
+        "E-I-L002-MODEL",
+        "E-I-L002-MARKER",
+        "E-O-R008-BRAND",
+        "E-I-L002-BRAND",
+        "E-I-L002-SCOPE"
+      ],
+      "candidate_groups": [],
+      "weak_candidates": [],
+      "issues": []
+    }
+  ],
+  "rowPatches": [
+    {
+      "order_row_id": "D-3c3cc10bd26b-R007",
+      "evaluated_fields": [
+        "brand",
+        "model",
+        "origin",
+        "unit",
+        "quantity",
+        "net_weight",
+        "gross_weight",
+        "warehouse_no"
+      ],
+      "field_decisions": [
+        {
+          "field": "brand",
+          "decision": "KEEP",
+          "result_value": "SK HYNIX",
+          "verification_status": "VERIFIED_CONSISTENT",
+          "evidence_keys": [
+            "E-P4-L001-BRAND"
+          ],
+          "candidate_values": [],
+          "referenced_issue_ids": [],
+          "missing_required": false,
+          "reason": "完整商品行的查货品牌与当前值一致。"
+        },
+        {
+          "field": "model",
+          "decision": "KEEP",
+          "result_value": "H25G9TCXXCX702A#9",
+          "verification_status": "VERIFIED_CONSISTENT",
+          "evidence_keys": [
+            "E-P4-L001-MODEL",
+            "E-P4-L001-MARKER"
+          ],
+          "candidate_values": [],
+          "referenced_issue_ids": [],
+          "missing_required": false,
+          "reason": "查货型号主体一致，且同一商品行描述明确保留外部标记#9。"
+        },
+        {
+          "field": "origin",
+          "decision": "KEEP",
+          "result_value": "韩国",
+          "verification_status": "VERIFIED_CONSISTENT",
+          "evidence_keys": [
+            "E-P4-L001-ORIGIN"
+          ],
+          "candidate_values": [],
+          "referenced_issue_ids": [],
+          "missing_required": false,
+          "reason": "完整独立片段的印刷COD经配置标准化为韩国，与当前值一致。"
+        },
+        {
+          "field": "unit",
+          "decision": "KEEP",
+          "result_value": "个",
+          "verification_status": "NO_EVIDENCE",
+          "evidence_keys": [],
+          "candidate_values": [],
+          "referenced_issue_ids": [],
+          "missing_required": false,
+          "reason": "查货商品行未提供单位，保留委托单位。"
+        },
+        {
+          "field": "quantity",
+          "decision": "KEEP",
+          "result_value": "12081",
+          "verification_status": "NO_EVIDENCE",
+          "evidence_keys": [],
+          "candidate_values": [],
+          "referenced_issue_ids": [
+            "ISS-L001-UNIT-MISSING"
+          ],
+          "missing_required": false,
+          "reason": "数值相同但查货单位缺失，不能完成整行数量可比核验。"
+        },
+        {
+          "field": "net_weight",
+          "decision": "KEEP",
+          "result_value": "3.6",
+          "verification_status": "VERIFIED_CONSISTENT",
+          "evidence_keys": [
+            "E-P4-L001-NW"
+          ],
+          "candidate_values": [],
+          "referenced_issue_ids": [],
+          "missing_required": false,
+          "reason": "完整商品级查货净重3.60 KG与当前值一致。"
+        },
+        {
+          "field": "gross_weight",
+          "decision": "KEEP",
+          "result_value": "4.2",
+          "verification_status": "VERIFIED_CONSISTENT",
+          "evidence_keys": [
+            "E-P4-L001-GW"
+          ],
+          "candidate_values": [],
+          "referenced_issue_ids": [],
+          "missing_required": false,
+          "reason": "完整商品级查货毛重4.20 KG与当前值一致。"
+        },
+        {
+          "field": "warehouse_no",
+          "decision": "FILL",
+          "result_value": "25120336",
+          "verification_status": "VERIFIED_UPDATED",
+          "evidence_keys": [
+            "E-P4-L001-WH"
+          ],
+          "candidate_values": [],
+          "referenced_issue_ids": [],
+          "missing_required": false,
+          "reason": "可靠关系对应的入仓号清单唯一且完整。"
+        }
+      ]
+    },
+    {
+      "order_row_id": "D-3c3cc10bd26b-R008",
+      "evaluated_fields": [
+        "brand",
+        "model",
+        "origin",
+        "unit",
+        "quantity",
+        "net_weight",
+        "gross_weight",
+        "warehouse_no"
+      ],
+      "field_decisions": [
+        {
+          "field": "brand",
+          "decision": "KEEP",
+          "result_value": "SK HYNIX",
+          "verification_status": "VERIFIED_CONSISTENT",
+          "evidence_keys": [
+            "E-P4-L002-BRAND"
+          ],
+          "candidate_values": [],
+          "referenced_issue_ids": [],
+          "missing_required": false,
+          "reason": "完整商品行的查货品牌与当前值一致。"
+        },
+        {
+          "field": "model",
+          "decision": "KEEP",
+          "result_value": "D25G9TCX8CX239C#D",
+          "verification_status": "VERIFIED_CONSISTENT",
+          "evidence_keys": [
+            "E-P4-L002-MODEL",
+            "E-P4-L002-MARKER"
+          ],
+          "candidate_values": [],
+          "referenced_issue_ids": [],
+          "missing_required": false,
+          "reason": "查货型号主体一致，且同一商品行描述明确保留外部标记#D。"
+        },
+        {
+          "field": "origin",
+          "decision": "KEEP",
+          "result_value": "韩国",
+          "verification_status": "VERIFIED_CONSISTENT",
+          "evidence_keys": [
+            "E-P4-L002-ORIGIN"
+          ],
+          "candidate_values": [],
+          "referenced_issue_ids": [],
+          "missing_required": false,
+          "reason": "完整独立片段的印刷COD经配置标准化为韩国，与当前值一致。"
+        },
+        {
+          "field": "unit",
+          "decision": "KEEP",
+          "result_value": "个",
+          "verification_status": "NO_EVIDENCE",
+          "evidence_keys": [],
+          "candidate_values": [],
+          "referenced_issue_ids": [],
+          "missing_required": false,
+          "reason": "查货商品行未提供单位，保留委托单位。"
+        },
+        {
+          "field": "quantity",
+          "decision": "KEEP",
+          "result_value": "16054",
+          "verification_status": "NO_EVIDENCE",
+          "evidence_keys": [],
+          "candidate_values": [],
+          "referenced_issue_ids": [
+            "ISS-L002-UNIT-MISSING"
+          ],
+          "missing_required": false,
+          "reason": "数值相同但查货单位缺失，不能完成整行数量可比核验。"
+        },
+        {
+          "field": "net_weight",
+          "decision": "KEEP",
+          "result_value": "4.4",
+          "verification_status": "VERIFIED_CONSISTENT",
+          "evidence_keys": [
+            "E-P4-L002-NW"
+          ],
+          "candidate_values": [],
+          "referenced_issue_ids": [],
+          "missing_required": false,
+          "reason": "完整商品级查货净重4.40 KG与当前值一致。"
+        },
+        {
+          "field": "gross_weight",
+          "decision": "KEEP",
+          "result_value": "5",
+          "verification_status": "VERIFIED_CONSISTENT",
+          "evidence_keys": [
+            "E-P4-L002-GW"
+          ],
+          "candidate_values": [],
+          "referenced_issue_ids": [],
+          "missing_required": false,
+          "reason": "完整商品级查货毛重5.00 KG与当前值一致。"
+        },
+        {
+          "field": "warehouse_no",
+          "decision": "FILL",
+          "result_value": "25120336",
+          "verification_status": "VERIFIED_UPDATED",
+          "evidence_keys": [
+            "E-P4-L002-WH"
+          ],
+          "candidate_values": [],
+          "referenced_issue_ids": [],
+          "missing_required": false,
+          "reason": "可靠关系对应的入仓号清单唯一且完整。"
+        }
+      ]
+    }
+  ],
+  "verificationTargets": [
+    {
+      "order_row_id": "D-3c3cc10bd26b-R007",
+      "relation": {
+        "match_status": "MATCHED",
+        "raw_row_ids": [
+          "I-8bc7177252aa-25120336-L001"
+        ],
+        "coverage": {
+          "status": "COMPLETE",
+          "overlap": "DISJOINT",
+          "evidence_keys": [
+            "E-I-L001-SCOPE"
+          ]
+        }
+      },
+      "evaluated_fields": [
+        "brand",
+        "model",
+        "origin",
+        "unit",
+        "quantity",
+        "net_weight",
+        "gross_weight",
+        "warehouse_no"
+      ],
+      "fields": {
+        "brand": {
+          "base_value": "SK HYNIX",
+          "current_value": "SK HYNIX",
+          "value_origin": "ORDER",
+          "write_policy": "AUTO",
+          "evidence": [
+            {
+              "evidence_key": "E-P4-L001-BRAND",
+              "value": "SK HYNIX",
+              "unit": "",
+              "source_kind": "RAW",
+              "scope": {
+                "coverage": "COMPLETE",
+                "overlap": "DISJOINT",
+                "has_extra_goods": false,
+                "has_unresolved_goods": false
+              },
+              "raw_row_ids": [
+                "I-8bc7177252aa-25120336-L001"
+              ],
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "row": 1,
+                "column": "Brand",
+                "raw_text": "SK HYNIX"
+              }
+            }
+          ],
+          "unresolved_issues": []
+        },
+        "model": {
+          "base_value": "H25G9TCXXCX702A#9",
+          "current_value": "H25G9TCXXCX702A#9",
+          "value_origin": "ORDER",
+          "write_policy": "AUTO",
+          "evidence": [
+            {
+              "evidence_key": "E-P4-L001-MODEL",
+              "value": "H25G9TCXXCX702A",
+              "unit": "",
+              "source_kind": "RAW",
+              "scope": {
+                "coverage": "COMPLETE",
+                "overlap": "DISJOINT",
+                "has_extra_goods": false,
+                "has_unresolved_goods": false
+              },
+              "raw_row_ids": [
+                "I-8bc7177252aa-25120336-L001"
+              ],
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "row": 1,
+                "column": "Part No.",
+                "raw_text": "H25G9TCXXCX702A"
+              }
+            },
+            {
+              "evidence_key": "E-P4-L001-MARKER",
+              "value": "#9",
+              "unit": "",
+              "source_kind": "RAW",
+              "scope": {
+                "coverage": "COMPLETE",
+                "overlap": "DISJOINT",
+                "has_extra_goods": false,
+                "has_unresolved_goods": false
+              },
+              "raw_row_ids": [
+                "I-8bc7177252aa-25120336-L001"
+              ],
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "row": 1,
+                "column": "Description",
+                "raw_text": "64GB INK DIE (#9)"
+              }
+            }
+          ],
+          "unresolved_issues": []
+        },
+        "origin": {
+          "base_value": "韩国",
+          "current_value": "韩国",
+          "value_origin": "ORDER",
+          "write_policy": "AUTO",
+          "evidence": [
+            {
+              "evidence_key": "E-P4-L001-ORIGIN",
+              "value": "韩国",
+              "unit": "",
+              "source_kind": "RAW",
+              "scope": {
+                "coverage": "COMPLETE",
+                "overlap": "DISJOINT",
+                "has_extra_goods": false,
+                "has_unresolved_goods": false
+              },
+              "raw_row_ids": [
+                "I-8bc7177252aa-25120336-L001"
+              ],
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "row": 1,
+                "column": "Origin FAB",
+                "raw_text": "KOREA"
+              }
+            }
+          ],
+          "unresolved_issues": []
+        },
+        "unit": {
+          "base_value": "个",
+          "current_value": "个",
+          "value_origin": "ORDER",
+          "write_policy": "AUTO",
+          "evidence": [],
+          "unresolved_issues": []
+        },
+        "quantity": {
+          "base_value": "12081",
+          "current_value": "12081",
+          "value_origin": "ORDER",
+          "write_policy": "AUTO",
+          "evidence": [
+            {
+              "evidence_key": "E-P4-L001-QTY",
+              "value": "12081",
+              "unit": "",
+              "source_kind": "RAW",
+              "scope": {
+                "coverage": "COMPLETE",
+                "overlap": "DISJOINT",
+                "has_extra_goods": false,
+                "has_unresolved_goods": false
+              },
+              "raw_row_ids": [
+                "I-8bc7177252aa-25120336-L001"
+              ],
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "row": 1,
+                "column": "QTY",
+                "raw_text": "12081"
+              }
+            }
+          ],
+          "unresolved_issues": [
+            {
+              "issue_id": "ISS-L001-UNIT-MISSING",
+              "field": "quantity",
+              "message": "查货数量未附商品单位，无法完成单位可比核验。",
+              "blocks_auto_write": false
+            }
+          ]
+        },
+        "net_weight": {
+          "base_value": "3.6",
+          "current_value": "3.6",
+          "value_origin": "ORDER",
+          "write_policy": "AUTO",
+          "evidence": [
+            {
+              "evidence_key": "E-P4-L001-NW",
+              "value": "3.60",
+              "unit": "KG",
+              "source_kind": "RAW",
+              "level": "ITEM",
+              "scope": {
+                "coverage": "COMPLETE",
+                "overlap": "DISJOINT",
+                "has_extra_goods": false,
+                "has_unresolved_goods": false
+              },
+              "raw_row_ids": [
+                "I-8bc7177252aa-25120336-L001"
+              ],
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "row": 1,
+                "column": "NW",
+                "raw_text": "3.60 KG"
+              }
+            }
+          ],
+          "unresolved_issues": []
+        },
+        "gross_weight": {
+          "base_value": "4.2",
+          "current_value": "4.2",
+          "value_origin": "ORDER",
+          "write_policy": "AUTO",
+          "evidence": [
+            {
+              "evidence_key": "E-P4-L001-GW",
+              "value": "4.20",
+              "unit": "KG",
+              "source_kind": "RAW",
+              "level": "ITEM",
+              "scope": {
+                "coverage": "COMPLETE",
+                "overlap": "DISJOINT",
+                "has_extra_goods": false,
+                "has_unresolved_goods": false
+              },
+              "raw_row_ids": [
+                "I-8bc7177252aa-25120336-L001"
+              ],
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "row": 1,
+                "column": "GW",
+                "raw_text": "4.20 KG"
+              }
+            }
+          ],
+          "unresolved_issues": []
+        },
+        "warehouse_no": {
+          "base_value": "",
+          "current_value": "",
+          "value_origin": "EMPTY",
+          "write_policy": "AUTO",
+          "evidence": [
+            {
+              "evidence_key": "E-P4-L001-WH",
+              "value": "25120336",
+              "unit": "",
+              "source_kind": "RAW",
+              "scope": {
+                "coverage": "COMPLETE",
+                "overlap": "DISJOINT",
+                "has_extra_goods": false,
+                "has_unresolved_goods": false
+              },
+              "raw_row_ids": [
+                "I-8bc7177252aa-25120336-L001"
+              ],
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "row": null,
+                "column": null,
+                "raw_text": "条码下方 25120336"
+              }
+            }
+          ],
+          "unresolved_issues": []
+        }
+      },
+      "origin_parts": [
+        {
+          "part_key": "PART-L001",
+          "raw_row_ids": [
+            "I-8bc7177252aa-25120336-L001"
+          ],
+          "scope": {
+            "coverage": "COMPLETE",
+            "overlap": "DISJOINT",
+            "has_extra_goods": false,
+            "has_unresolved_goods": false
+          },
+          "origin_candidates": [
+            {
+              "evidence_key": "E-P4-L001-ORIGIN",
+              "value": "韩国",
+              "kind": "PRINTED_COD",
+              "validity": "ACTIVE",
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "row": 1,
+                "column": "Origin FAB",
+                "raw_text": "KOREA"
+              }
+            }
+          ]
+        }
+      ],
+      "origin_partition_status": "COMPLETE_DISJOINT",
+      "relation_warehouse_evidence": [
+        {
+          "evidence_key": "E-P4-L001-WH",
+          "value": "25120336",
+          "unit": "",
+          "source_kind": "RAW",
+          "scope": {
+            "coverage": "COMPLETE",
+            "overlap": "DISJOINT",
+            "has_extra_goods": false,
+            "has_unresolved_goods": false
+          },
+          "raw_row_ids": [
+            "I-8bc7177252aa-25120336-L001"
+          ],
+          "source": {
+            "file_id": "F-8bc7177252aa",
+            "page": 1,
+            "row": null,
+            "column": null,
+            "raw_text": "条码下方 25120336"
+          }
+        }
+      ]
+    },
+    {
+      "order_row_id": "D-3c3cc10bd26b-R008",
+      "relation": {
+        "match_status": "MATCHED",
+        "raw_row_ids": [
+          "I-8bc7177252aa-25120336-L002"
+        ],
+        "coverage": {
+          "status": "COMPLETE",
+          "overlap": "DISJOINT",
+          "evidence_keys": [
+            "E-I-L002-SCOPE"
+          ]
+        }
+      },
+      "evaluated_fields": [
+        "brand",
+        "model",
+        "origin",
+        "unit",
+        "quantity",
+        "net_weight",
+        "gross_weight",
+        "warehouse_no"
+      ],
+      "fields": {
+        "brand": {
+          "base_value": "SK HYNIX",
+          "current_value": "SK HYNIX",
+          "value_origin": "ORDER",
+          "write_policy": "AUTO",
+          "evidence": [
+            {
+              "evidence_key": "E-P4-L002-BRAND",
+              "value": "SK HYNIX",
+              "unit": "",
+              "source_kind": "RAW",
+              "scope": {
+                "coverage": "COMPLETE",
+                "overlap": "DISJOINT",
+                "has_extra_goods": false,
+                "has_unresolved_goods": false
+              },
+              "raw_row_ids": [
+                "I-8bc7177252aa-25120336-L002"
+              ],
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "row": 2,
+                "column": "Brand",
+                "raw_text": "SK HYNIX"
+              }
+            }
+          ],
+          "unresolved_issues": []
+        },
+        "model": {
+          "base_value": "D25G9TCX8CX239C#D",
+          "current_value": "D25G9TCX8CX239C#D",
+          "value_origin": "ORDER",
+          "write_policy": "AUTO",
+          "evidence": [
+            {
+              "evidence_key": "E-P4-L002-MODEL",
+              "value": "D25G9TCX8CX239C",
+              "unit": "",
+              "source_kind": "RAW",
+              "scope": {
+                "coverage": "COMPLETE",
+                "overlap": "DISJOINT",
+                "has_extra_goods": false,
+                "has_unresolved_goods": false
+              },
+              "raw_row_ids": [
+                "I-8bc7177252aa-25120336-L002"
+              ],
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "row": 2,
+                "column": "Part No.",
+                "raw_text": "D25G9TCX8CX239C"
+              }
+            },
+            {
+              "evidence_key": "E-P4-L002-MARKER",
+              "value": "#D",
+              "unit": "",
+              "source_kind": "RAW",
+              "scope": {
+                "coverage": "COMPLETE",
+                "overlap": "DISJOINT",
+                "has_extra_goods": false,
+                "has_unresolved_goods": false
+              },
+              "raw_row_ids": [
+                "I-8bc7177252aa-25120336-L002"
+              ],
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "row": 2,
+                "column": "Description",
+                "raw_text": "64GB INK DIE (#D)"
+              }
+            }
+          ],
+          "unresolved_issues": []
+        },
+        "origin": {
+          "base_value": "韩国",
+          "current_value": "韩国",
+          "value_origin": "ORDER",
+          "write_policy": "AUTO",
+          "evidence": [
+            {
+              "evidence_key": "E-P4-L002-ORIGIN",
+              "value": "韩国",
+              "unit": "",
+              "source_kind": "RAW",
+              "scope": {
+                "coverage": "COMPLETE",
+                "overlap": "DISJOINT",
+                "has_extra_goods": false,
+                "has_unresolved_goods": false
+              },
+              "raw_row_ids": [
+                "I-8bc7177252aa-25120336-L002"
+              ],
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "row": 2,
+                "column": "Origin FAB",
+                "raw_text": "KOREA"
+              }
+            }
+          ],
+          "unresolved_issues": []
+        },
+        "unit": {
+          "base_value": "个",
+          "current_value": "个",
+          "value_origin": "ORDER",
+          "write_policy": "AUTO",
+          "evidence": [],
+          "unresolved_issues": []
+        },
+        "quantity": {
+          "base_value": "16054",
+          "current_value": "16054",
+          "value_origin": "ORDER",
+          "write_policy": "AUTO",
+          "evidence": [
+            {
+              "evidence_key": "E-P4-L002-QTY",
+              "value": "16054",
+              "unit": "",
+              "source_kind": "RAW",
+              "scope": {
+                "coverage": "COMPLETE",
+                "overlap": "DISJOINT",
+                "has_extra_goods": false,
+                "has_unresolved_goods": false
+              },
+              "raw_row_ids": [
+                "I-8bc7177252aa-25120336-L002"
+              ],
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "row": 2,
+                "column": "QTY",
+                "raw_text": "16054"
+              }
+            }
+          ],
+          "unresolved_issues": [
+            {
+              "issue_id": "ISS-L002-UNIT-MISSING",
+              "field": "quantity",
+              "message": "查货数量未附商品单位，无法完成单位可比核验。",
+              "blocks_auto_write": false
+            }
+          ]
+        },
+        "net_weight": {
+          "base_value": "4.4",
+          "current_value": "4.4",
+          "value_origin": "ORDER",
+          "write_policy": "AUTO",
+          "evidence": [
+            {
+              "evidence_key": "E-P4-L002-NW",
+              "value": "4.40",
+              "unit": "KG",
+              "source_kind": "RAW",
+              "level": "ITEM",
+              "scope": {
+                "coverage": "COMPLETE",
+                "overlap": "DISJOINT",
+                "has_extra_goods": false,
+                "has_unresolved_goods": false
+              },
+              "raw_row_ids": [
+                "I-8bc7177252aa-25120336-L002"
+              ],
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "row": 2,
+                "column": "NW",
+                "raw_text": "4.40 KG"
+              }
+            }
+          ],
+          "unresolved_issues": []
+        },
+        "gross_weight": {
+          "base_value": "5",
+          "current_value": "5",
+          "value_origin": "ORDER",
+          "write_policy": "AUTO",
+          "evidence": [
+            {
+              "evidence_key": "E-P4-L002-GW",
+              "value": "5.00",
+              "unit": "KG",
+              "source_kind": "RAW",
+              "level": "ITEM",
+              "scope": {
+                "coverage": "COMPLETE",
+                "overlap": "DISJOINT",
+                "has_extra_goods": false,
+                "has_unresolved_goods": false
+              },
+              "raw_row_ids": [
+                "I-8bc7177252aa-25120336-L002"
+              ],
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "row": 2,
+                "column": "GW",
+                "raw_text": "5.00 KG"
+              }
+            }
+          ],
+          "unresolved_issues": []
+        },
+        "warehouse_no": {
+          "base_value": "",
+          "current_value": "",
+          "value_origin": "EMPTY",
+          "write_policy": "AUTO",
+          "evidence": [
+            {
+              "evidence_key": "E-P4-L002-WH",
+              "value": "25120336",
+              "unit": "",
+              "source_kind": "RAW",
+              "scope": {
+                "coverage": "COMPLETE",
+                "overlap": "DISJOINT",
+                "has_extra_goods": false,
+                "has_unresolved_goods": false
+              },
+              "raw_row_ids": [
+                "I-8bc7177252aa-25120336-L002"
+              ],
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "row": null,
+                "column": null,
+                "raw_text": "条码下方 25120336"
+              }
+            }
+          ],
+          "unresolved_issues": []
+        }
+      },
+      "origin_parts": [
+        {
+          "part_key": "PART-L002",
+          "raw_row_ids": [
+            "I-8bc7177252aa-25120336-L002"
+          ],
+          "scope": {
+            "coverage": "COMPLETE",
+            "overlap": "DISJOINT",
+            "has_extra_goods": false,
+            "has_unresolved_goods": false
+          },
+          "origin_candidates": [
+            {
+              "evidence_key": "E-P4-L002-ORIGIN",
+              "value": "韩国",
+              "kind": "PRINTED_COD",
+              "validity": "ACTIVE",
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "row": 2,
+                "column": "Origin FAB",
+                "raw_text": "KOREA"
+              }
+            }
+          ]
+        }
+      ],
+      "origin_partition_status": "COMPLETE_DISJOINT",
+      "relation_warehouse_evidence": [
+        {
+          "evidence_key": "E-P4-L002-WH",
+          "value": "25120336",
+          "unit": "",
+          "source_kind": "RAW",
+          "scope": {
+            "coverage": "COMPLETE",
+            "overlap": "DISJOINT",
+            "has_extra_goods": false,
+            "has_unresolved_goods": false
+          },
+          "raw_row_ids": [
+            "I-8bc7177252aa-25120336-L002"
+          ],
+          "source": {
+            "file_id": "F-8bc7177252aa",
+            "page": 1,
+            "row": null,
+            "column": null,
+            "raw_text": "条码下方 25120336"
+          }
+        }
+      ]
+    }
+  ],
+  "stageOutputs": {
+    "P1": {
+      "processing_status": "SUCCESS",
+      "customer_resolution": {
+        "status": "RESOLVED",
+        "customer_id": "C-89aa660b4b46",
+        "recognized_name": "英堡科技（深圳）有限公司",
+        "candidate_customer_ids": [
+          "C-89aa660b4b46"
+        ],
+        "sources": [
+          {
+            "file_id": "F-3c3cc10bd26b",
+            "page": null,
+            "sheet": "12-10-2",
+            "row": 3,
+            "column": "B",
+            "raw_text": "英堡科技（深圳）有限公司"
+          }
+        ]
+      },
+      "read_status": [
+        {
+          "file_id": "F-3c3cc10bd26b",
+          "read_segments": [
+            "sheet:12-10-2"
+          ],
+          "unread_segments": [],
+          "status": "COMPLETE"
+        }
+      ],
+      "rows": [
+        {
+          "row_no": 1,
+          "source": {
+            "file_id": "F-3c3cc10bd26b",
+            "page": null,
+            "sheet": "12-10-2",
+            "row": 7,
+            "column": null,
+            "raw_text": "委托商品第1行"
+          },
+          "values": {
+            "customer_name": "英堡科技（深圳）有限公司",
+            "brand": "SK HYNIX",
+            "model": "H25G9TCXXCX702A#9",
+            "description": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性",
+            "product_name": "晶圆",
+            "origin": "韩国",
+            "unit": "个",
+            "quantity": "12081",
+            "customs_unit_price": "4.1",
+            "total_price": "49532.1",
+            "currency": "USD",
+            "packages": "1",
+            "net_weight": "3.6",
+            "gross_weight": "4.2",
+            "sku": "",
+            "buyer": "",
+            "supplier_code": "",
+            "supplier": "",
+            "payment_term_days": "",
+            "purchase_order_no": "",
+            "material_no": "",
+            "pallet_count": "",
+            "warehouse_no": "",
+            "production_line": "",
+            "remark": ""
+          },
+          "evidence": [
+            {
+              "field": "customer_name",
+              "value": "英堡科技（深圳）有限公司",
+              "unit": "",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 3,
+                "column": "B",
+                "raw_text": "英堡科技（深圳）有限公司"
+              }
+            },
+            {
+              "field": "product_name",
+              "value": "晶圆",
+              "unit": "",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 7,
+                "column": "B",
+                "raw_text": "晶圆"
+              }
+            },
+            {
+              "field": "brand",
+              "value": "SK HYNIX",
+              "unit": "",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 7,
+                "column": "C",
+                "raw_text": "SK HYNIX"
+              }
+            },
+            {
+              "field": "model",
+              "value": "H25G9TCXXCX702A#9",
+              "unit": "",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 7,
+                "column": "D",
+                "raw_text": "H25G9TCXXCX702A#9"
+              }
+            },
+            {
+              "field": "description",
+              "value": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性",
+              "unit": "",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 7,
+                "column": "E",
+                "raw_text": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性"
+              }
+            },
+            {
+              "field": "origin",
+              "value": "韩国",
+              "unit": "",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 7,
+                "column": "F",
+                "raw_text": "韩国"
+              }
+            },
+            {
+              "field": "unit",
+              "value": "个",
+              "unit": "",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 7,
+                "column": "G",
+                "raw_text": "个"
+              }
+            },
+            {
+              "field": "quantity",
+              "value": "12081",
+              "unit": "PCS",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 7,
+                "column": "H",
+                "raw_text": "12081"
+              }
+            },
+            {
+              "field": "customs_unit_price",
+              "value": "4.1",
+              "unit": "USD",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 7,
+                "column": "I",
+                "raw_text": "4.1"
+              }
+            },
+            {
+              "field": "total_price",
+              "value": "49532.1",
+              "unit": "USD",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 7,
+                "column": "J",
+                "raw_text": "formula =H7*I7; cached 49532.1"
+              }
+            },
+            {
+              "field": "currency",
+              "value": "USD",
+              "unit": "",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 6,
+                "column": "I:J",
+                "raw_text": "报关单价（USD）/报关总价（USD）"
+              }
+            },
+            {
+              "field": "packages",
+              "value": "1",
+              "unit": "箱",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 7,
+                "column": "K",
+                "raw_text": "1"
+              }
+            },
+            {
+              "field": "net_weight",
+              "value": "3.6",
+              "unit": "KG",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 7,
+                "column": "L",
+                "raw_text": "3.6"
+              }
+            },
+            {
+              "field": "gross_weight",
+              "value": "4.2",
+              "unit": "KG",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 7,
+                "column": "M",
+                "raw_text": "4.2"
+              }
+            }
+          ],
+          "conflicts": []
+        },
+        {
+          "row_no": 2,
+          "source": {
+            "file_id": "F-3c3cc10bd26b",
+            "page": null,
+            "sheet": "12-10-2",
+            "row": 8,
+            "column": null,
+            "raw_text": "委托商品第2行"
+          },
+          "values": {
+            "customer_name": "英堡科技（深圳）有限公司",
+            "brand": "SK HYNIX",
+            "model": "D25G9TCX8CX239C#D",
+            "description": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性",
+            "product_name": "晶圆",
+            "origin": "韩国",
+            "unit": "个",
+            "quantity": "16054",
+            "customs_unit_price": "2.9",
+            "total_price": "46556.6",
+            "currency": "USD",
+            "packages": "1",
+            "net_weight": "4.4",
+            "gross_weight": "5",
+            "sku": "",
+            "buyer": "",
+            "supplier_code": "",
+            "supplier": "",
+            "payment_term_days": "",
+            "purchase_order_no": "",
+            "material_no": "",
+            "pallet_count": "",
+            "warehouse_no": "",
+            "production_line": "",
+            "remark": ""
+          },
+          "evidence": [
+            {
+              "field": "customer_name",
+              "value": "英堡科技（深圳）有限公司",
+              "unit": "",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 3,
+                "column": "B",
+                "raw_text": "英堡科技（深圳）有限公司"
+              }
+            },
+            {
+              "field": "product_name",
+              "value": "晶圆",
+              "unit": "",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 8,
+                "column": "B",
+                "raw_text": "晶圆"
+              }
+            },
+            {
+              "field": "brand",
+              "value": "SK HYNIX",
+              "unit": "",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 8,
+                "column": "C",
+                "raw_text": "SK HYNIX"
+              }
+            },
+            {
+              "field": "model",
+              "value": "D25G9TCX8CX239C#D",
+              "unit": "",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 8,
+                "column": "D",
+                "raw_text": "D25G9TCX8CX239C#D"
+              }
+            },
+            {
+              "field": "description",
+              "value": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性",
+              "unit": "",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 8,
+                "column": "E",
+                "raw_text": "64GB ink Die已蚀刻、已切割，已测试，未封装晶圆，非易失性"
+              }
+            },
+            {
+              "field": "origin",
+              "value": "韩国",
+              "unit": "",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 8,
+                "column": "F",
+                "raw_text": "韩国"
+              }
+            },
+            {
+              "field": "unit",
+              "value": "个",
+              "unit": "",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 8,
+                "column": "G",
+                "raw_text": "个"
+              }
+            },
+            {
+              "field": "quantity",
+              "value": "16054",
+              "unit": "PCS",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 8,
+                "column": "H",
+                "raw_text": "16054"
+              }
+            },
+            {
+              "field": "customs_unit_price",
+              "value": "2.9",
+              "unit": "USD",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 8,
+                "column": "I",
+                "raw_text": "2.9"
+              }
+            },
+            {
+              "field": "total_price",
+              "value": "46556.6",
+              "unit": "USD",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 8,
+                "column": "J",
+                "raw_text": "formula =H8*I8; cached 46556.6"
+              }
+            },
+            {
+              "field": "currency",
+              "value": "USD",
+              "unit": "",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 6,
+                "column": "I:J",
+                "raw_text": "报关单价（USD）/报关总价（USD）"
+              }
+            },
+            {
+              "field": "packages",
+              "value": "1",
+              "unit": "箱",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 8,
+                "column": "K",
+                "raw_text": "1"
+              }
+            },
+            {
+              "field": "net_weight",
+              "value": "4.4",
+              "unit": "KG",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 8,
+                "column": "L",
+                "raw_text": "4.4"
+              }
+            },
+            {
+              "field": "gross_weight",
+              "value": "5",
+              "unit": "KG",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 8,
+                "column": "M",
+                "raw_text": "5"
+              }
+            }
+          ],
+          "conflicts": []
+        }
+      ],
+      "scope_records": [
+        {
+          "kind": "ORDER_TOTAL",
+          "member_row_nos": [
+            1,
+            2
+          ],
+          "range_complete": true,
+          "measurements": [
+            {
+              "field": "quantity",
+              "value": "28135",
+              "unit": "PCS",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 9,
+                "column": "H",
+                "raw_text": "formula =SUM(H7:H8); cached 28135"
+              }
+            },
+            {
+              "field": "total_price",
+              "value": "96088.7",
+              "unit": "USD",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 9,
+                "column": "J",
+                "raw_text": "formula =SUM(J7:J8); cached 96088.7"
+              }
+            },
+            {
+              "field": "packages",
+              "value": "2",
+              "unit": "箱",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 9,
+                "column": "K",
+                "raw_text": "formula =SUM(K7:K8); cached 2"
+              }
+            },
+            {
+              "field": "net_weight",
+              "value": "8",
+              "unit": "KG",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 9,
+                "column": "L",
+                "raw_text": "formula =SUM(L7:L8); cached 8"
+              }
+            },
+            {
+              "field": "gross_weight",
+              "value": "9.2",
+              "unit": "KG",
+              "source": {
+                "file_id": "F-3c3cc10bd26b",
+                "page": null,
+                "sheet": "12-10-2",
+                "row": 9,
+                "column": "M",
+                "raw_text": "formula =SUM(M7:M8); cached 9.2"
+              }
+            }
+          ],
+          "source": {
+            "file_id": "F-3c3cc10bd26b",
+            "page": null,
+            "sheet": "12-10-2",
+            "row": 9,
+            "column": "H:M",
+            "raw_text": "合计行"
+          }
+        }
+      ],
+      "unlinked_records": [],
+      "issues": []
+    },
+    "P2": {
+      "processing_status": "SUCCESS",
+      "customer_id": "C-89aa660b4b46",
+      "read_status": [
+        {
+          "file_id": "F-8bc7177252aa",
+          "read_segments": [
+            "page:1"
+          ],
+          "unread_segments": [],
+          "status": "COMPLETE"
+        }
+      ],
+      "logical_inspections": [
+        {
+          "warehouse_no": "25120336",
+          "sources": [
+            {
+              "file_id": "F-8bc7177252aa",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": null,
+              "raw_text": "条码下方 25120336"
+            }
+          ],
+          "range_status": "COMPLETE"
+        }
+      ],
+      "raw_rows": [
+        {
+          "record_no": 1,
+          "warehouse_no": "25120336",
+          "candidate_warehouse_nos": [],
+          "source": {
+            "file_id": "F-8bc7177252aa",
+            "page": 1,
+            "sheet": null,
+            "row": 1,
+            "column": null,
+            "raw_text": "商品表第1行"
+          },
+          "fields": {
+            "brand": "SK HYNIX",
+            "model": "H25G9TCXXCX702A",
+            "product_name": "64GB INK DIE (#9)",
+            "quantity": "12081",
+            "box_no": "1",
+            "net_weight": "3.60",
+            "net_weight_unit": "KG",
+            "gross_weight": "4.20",
+            "gross_weight_unit": "KG",
+            "remark": "Dimension 39*34*29 cm"
+          },
+          "field_sources": {
+            "brand": [
+              {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": 1,
+                "column": "Brand",
+                "raw_text": "SK HYNIX"
+              }
+            ],
+            "model": [
+              {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": 1,
+                "column": "Part No.",
+                "raw_text": "H25G9TCXXCX702A"
+              }
+            ],
+            "product_name": [
+              {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": 1,
+                "column": "Description",
+                "raw_text": "64GB INK DIE (#9)"
+              }
+            ],
+            "quantity": [
+              {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": 1,
+                "column": "QTY",
+                "raw_text": "12081"
+              }
+            ],
+            "box_no": [
+              {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": 1,
+                "column": "CTN #",
+                "raw_text": "1"
+              }
+            ],
+            "net_weight": [
+              {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": 1,
+                "column": "NW Kg",
+                "raw_text": "3.60 KG"
+              }
+            ],
+            "net_weight_unit": [
+              {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": null,
+                "column": "NW",
+                "raw_text": "NW Kg"
+              }
+            ],
+            "gross_weight": [
+              {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": 1,
+                "column": "GW Kg",
+                "raw_text": "4.20 KG"
+              }
+            ],
+            "gross_weight_unit": [
+              {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": null,
+                "column": "GW",
+                "raw_text": "GW Kg"
+              }
+            ],
+            "remark": [
+              {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": 1,
+                "column": "Dimension",
+                "raw_text": "39*34*29 cm"
+              }
+            ]
+          },
+          "origin_candidates": [
+            {
+              "value": "KOREA",
+              "kind": "PRINTED_COD",
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": 1,
+                "column": "Origin FAB",
+                "raw_text": "KOREA"
+              }
+            }
+          ],
+          "manual_marks": [
+            {
+              "action": "CIRCLE",
+              "field": "model",
+              "old_value": "",
+              "new_value": "",
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": 1,
+                "column": "Part No.",
+                "raw_text": "蓝笔圈选 H25G9TCXXCX702A"
+              }
+            },
+            {
+              "action": "CIRCLE",
+              "field": "brand",
+              "old_value": "",
+              "new_value": "",
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": 1,
+                "column": "Brand",
+                "raw_text": "蓝笔圈选 SK HYNIX"
+              }
+            },
+            {
+              "action": "CIRCLE",
+              "field": "origin",
+              "old_value": "",
+              "new_value": "",
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": 1,
+                "column": "Origin FAB",
+                "raw_text": "蓝笔圈选 KOREA"
+              }
+            }
+          ]
+        },
+        {
+          "record_no": 2,
+          "warehouse_no": "25120336",
+          "candidate_warehouse_nos": [],
+          "source": {
+            "file_id": "F-8bc7177252aa",
+            "page": 1,
+            "sheet": null,
+            "row": 2,
+            "column": null,
+            "raw_text": "商品表第2行"
+          },
+          "fields": {
+            "brand": "SK HYNIX",
+            "model": "D25G9TCX8CX239C",
+            "product_name": "64GB INK DIE (#D)",
+            "quantity": "16054",
+            "box_no": "2",
+            "net_weight": "4.40",
+            "net_weight_unit": "KG",
+            "gross_weight": "5.00",
+            "gross_weight_unit": "KG",
+            "remark": "Dimension 39*34*29 cm"
+          },
+          "field_sources": {
+            "brand": [
+              {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": 2,
+                "column": "Brand",
+                "raw_text": "SK HYNIX"
+              }
+            ],
+            "model": [
+              {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": 2,
+                "column": "Part No.",
+                "raw_text": "D25G9TCX8CX239C"
+              }
+            ],
+            "product_name": [
+              {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": 2,
+                "column": "Description",
+                "raw_text": "64GB INK DIE (#D)"
+              }
+            ],
+            "quantity": [
+              {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": 2,
+                "column": "QTY",
+                "raw_text": "16054"
+              }
+            ],
+            "box_no": [
+              {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": 2,
+                "column": "CTN #",
+                "raw_text": "2"
+              }
+            ],
+            "net_weight": [
+              {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": 2,
+                "column": "NW Kg",
+                "raw_text": "4.40 KG"
+              }
+            ],
+            "net_weight_unit": [
+              {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": null,
+                "column": "NW",
+                "raw_text": "NW Kg"
+              }
+            ],
+            "gross_weight": [
+              {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": 2,
+                "column": "GW Kg",
+                "raw_text": "5.00 KG"
+              }
+            ],
+            "gross_weight_unit": [
+              {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": null,
+                "column": "GW",
+                "raw_text": "GW Kg"
+              }
+            ],
+            "remark": [
+              {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": 2,
+                "column": "Dimension",
+                "raw_text": "39*34*29 cm"
+              }
+            ]
+          },
+          "origin_candidates": [
+            {
+              "value": "KOREA",
+              "kind": "PRINTED_COD",
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": 2,
+                "column": "Origin FAB",
+                "raw_text": "KOREA"
+              }
+            }
+          ],
+          "manual_marks": [
+            {
+              "action": "CIRCLE",
+              "field": "model",
+              "old_value": "",
+              "new_value": "",
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": 2,
+                "column": "Part No.",
+                "raw_text": "蓝笔圈选 D25G9TCX8CX239C"
+              }
+            },
+            {
+              "action": "CIRCLE",
+              "field": "brand",
+              "old_value": "",
+              "new_value": "",
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": 2,
+                "column": "Brand",
+                "raw_text": "蓝笔圈选 SK HYNIX"
+              }
+            },
+            {
+              "action": "CIRCLE",
+              "field": "origin",
+              "old_value": "",
+              "new_value": "",
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": 2,
+                "column": "Origin FAB",
+                "raw_text": "蓝笔圈选 KOREA"
+              }
+            }
+          ]
+        }
+      ],
+      "scope_records": [
+        {
+          "warehouse_no": "25120336",
+          "kind": "LOGICAL_TOTAL",
+          "identifier": "printed-total",
+          "member_record_nos": [
+            1,
+            2
+          ],
+          "range_complete": true,
+          "has_unresolved_goods": false,
+          "measurements": [
+            {
+              "field": "quantity",
+              "value": "28,135",
+              "unit": "",
+              "fact_kind": "EXPLICIT",
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": null,
+                "column": "Total QTY",
+                "raw_text": "28,135"
+              }
+            },
+            {
+              "field": "net_weight",
+              "value": "8.00",
+              "unit": "KG",
+              "fact_kind": "EXPLICIT",
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": null,
+                "column": "Total NW",
+                "raw_text": "8.00 KG"
+              }
+            },
+            {
+              "field": "gross_weight",
+              "value": "9.20",
+              "unit": "KG",
+              "fact_kind": "EXPLICIT",
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": null,
+                "column": "Total GW",
+                "raw_text": "9.20 KG"
+              }
+            }
+          ],
+          "source": {
+            "file_id": "F-8bc7177252aa",
+            "page": 1,
+            "sheet": null,
+            "row": null,
+            "column": "Total",
+            "raw_text": "Total 28,135 / 8.00 / 9.20"
+          }
+        },
+        {
+          "warehouse_no": "25120336",
+          "kind": "PACKAGE",
+          "identifier": "warehouse-label",
+          "member_record_nos": [
+            1,
+            2
+          ],
+          "range_complete": true,
+          "has_unresolved_goods": false,
+          "measurements": [
+            {
+              "field": "packages",
+              "value": "2件/板",
+              "unit": "",
+              "fact_kind": "EXPLICIT",
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": null,
+                "column": null,
+                "raw_text": "2件 / 板"
+              }
+            },
+            {
+              "field": "gross_weight",
+              "value": "9",
+              "unit": "KGS",
+              "fact_kind": "HANDWRITTEN_GW",
+              "source": {
+                "file_id": "F-8bc7177252aa",
+                "page": 1,
+                "sheet": null,
+                "row": null,
+                "column": null,
+                "raw_text": "手写 9 KGS"
+              }
+            }
+          ],
+          "source": {
+            "file_id": "F-8bc7177252aa",
+            "page": 1,
+            "sheet": null,
+            "row": null,
+            "column": null,
+            "raw_text": "入仓板标：2件/板；手写9 KGS"
+          }
+        }
+      ],
+      "issues": [
+        {
+          "code": "SCOPE_MEASUREMENT_CONFLICT",
+          "row_ref": null,
+          "field": "gross_weight",
+          "message": "表格逻辑单合计毛重为9.20 KG，入仓板标手写毛重为9 KGS，两个范围事实均已保留。"
+        }
+      ]
+    },
+    "P3": {
+      "processing_status": "SUCCESS",
+      "row_relations": [
+        {
+          "order_row_id": "D-3c3cc10bd26b-R007",
+          "match_status": "MATCHED",
+          "selected_raw_row_ids": [
+            "I-8bc7177252aa-25120336-L001"
+          ],
+          "coverage": {
+            "status": "COMPLETE",
+            "overlap": "DISJOINT",
+            "evidence_keys": [
+              "E-I-L001-SCOPE"
+            ]
+          },
+          "evidence_keys": [
+            "E-O-R007-MODEL",
+            "E-I-L001-MODEL",
+            "E-I-L001-MARKER",
+            "E-O-R007-BRAND",
+            "E-I-L001-BRAND",
+            "E-I-L001-SCOPE"
+          ],
+          "candidate_groups": [],
+          "weak_candidates": [],
+          "issues": []
+        },
+        {
+          "order_row_id": "D-3c3cc10bd26b-R008",
+          "match_status": "MATCHED",
+          "selected_raw_row_ids": [
+            "I-8bc7177252aa-25120336-L002"
+          ],
+          "coverage": {
+            "status": "COMPLETE",
+            "overlap": "DISJOINT",
+            "evidence_keys": [
+              "E-I-L002-SCOPE"
+            ]
+          },
+          "evidence_keys": [
+            "E-O-R008-MODEL",
+            "E-I-L002-MODEL",
+            "E-I-L002-MARKER",
+            "E-O-R008-BRAND",
+            "E-I-L002-BRAND",
+            "E-I-L002-SCOPE"
+          ],
+          "candidate_groups": [],
+          "weak_candidates": [],
+          "issues": []
+        }
+      ],
+      "issues": []
+    },
+    "P4": {
+      "processing_status": "SUCCESS",
+      "row_patches": [
+        {
+          "order_row_id": "D-3c3cc10bd26b-R007",
+          "evaluated_fields": [
+            "brand",
+            "model",
+            "origin",
+            "unit",
+            "quantity",
+            "net_weight",
+            "gross_weight",
+            "warehouse_no"
+          ],
+          "field_decisions": [
+            {
+              "field": "brand",
+              "decision": "KEEP",
+              "result_value": "SK HYNIX",
+              "verification_status": "VERIFIED_CONSISTENT",
+              "evidence_keys": [
+                "E-P4-L001-BRAND"
+              ],
+              "candidate_values": [],
+              "referenced_issue_ids": [],
+              "missing_required": false,
+              "reason": "完整商品行的查货品牌与当前值一致。"
+            },
+            {
+              "field": "model",
+              "decision": "KEEP",
+              "result_value": "H25G9TCXXCX702A#9",
+              "verification_status": "VERIFIED_CONSISTENT",
+              "evidence_keys": [
+                "E-P4-L001-MODEL",
+                "E-P4-L001-MARKER"
+              ],
+              "candidate_values": [],
+              "referenced_issue_ids": [],
+              "missing_required": false,
+              "reason": "查货型号主体一致，且同一商品行描述明确保留外部标记#9。"
+            },
+            {
+              "field": "origin",
+              "decision": "KEEP",
+              "result_value": "韩国",
+              "verification_status": "VERIFIED_CONSISTENT",
+              "evidence_keys": [
+                "E-P4-L001-ORIGIN"
+              ],
+              "candidate_values": [],
+              "referenced_issue_ids": [],
+              "missing_required": false,
+              "reason": "完整独立片段的印刷COD经配置标准化为韩国，与当前值一致。"
+            },
+            {
+              "field": "unit",
+              "decision": "KEEP",
+              "result_value": "个",
+              "verification_status": "NO_EVIDENCE",
+              "evidence_keys": [],
+              "candidate_values": [],
+              "referenced_issue_ids": [],
+              "missing_required": false,
+              "reason": "查货商品行未提供单位，保留委托单位。"
+            },
+            {
+              "field": "quantity",
+              "decision": "KEEP",
+              "result_value": "12081",
+              "verification_status": "NO_EVIDENCE",
+              "evidence_keys": [],
+              "candidate_values": [],
+              "referenced_issue_ids": [
+                "ISS-L001-UNIT-MISSING"
+              ],
+              "missing_required": false,
+              "reason": "数值相同但查货单位缺失，不能完成整行数量可比核验。"
+            },
+            {
+              "field": "net_weight",
+              "decision": "KEEP",
+              "result_value": "3.6",
+              "verification_status": "VERIFIED_CONSISTENT",
+              "evidence_keys": [
+                "E-P4-L001-NW"
+              ],
+              "candidate_values": [],
+              "referenced_issue_ids": [],
+              "missing_required": false,
+              "reason": "完整商品级查货净重3.60 KG与当前值一致。"
+            },
+            {
+              "field": "gross_weight",
+              "decision": "KEEP",
+              "result_value": "4.2",
+              "verification_status": "VERIFIED_CONSISTENT",
+              "evidence_keys": [
+                "E-P4-L001-GW"
+              ],
+              "candidate_values": [],
+              "referenced_issue_ids": [],
+              "missing_required": false,
+              "reason": "完整商品级查货毛重4.20 KG与当前值一致。"
+            },
+            {
+              "field": "warehouse_no",
+              "decision": "FILL",
+              "result_value": "25120336",
+              "verification_status": "VERIFIED_UPDATED",
+              "evidence_keys": [
+                "E-P4-L001-WH"
+              ],
+              "candidate_values": [],
+              "referenced_issue_ids": [],
+              "missing_required": false,
+              "reason": "可靠关系对应的入仓号清单唯一且完整。"
+            }
+          ]
+        },
+        {
+          "order_row_id": "D-3c3cc10bd26b-R008",
+          "evaluated_fields": [
+            "brand",
+            "model",
+            "origin",
+            "unit",
+            "quantity",
+            "net_weight",
+            "gross_weight",
+            "warehouse_no"
+          ],
+          "field_decisions": [
+            {
+              "field": "brand",
+              "decision": "KEEP",
+              "result_value": "SK HYNIX",
+              "verification_status": "VERIFIED_CONSISTENT",
+              "evidence_keys": [
+                "E-P4-L002-BRAND"
+              ],
+              "candidate_values": [],
+              "referenced_issue_ids": [],
+              "missing_required": false,
+              "reason": "完整商品行的查货品牌与当前值一致。"
+            },
+            {
+              "field": "model",
+              "decision": "KEEP",
+              "result_value": "D25G9TCX8CX239C#D",
+              "verification_status": "VERIFIED_CONSISTENT",
+              "evidence_keys": [
+                "E-P4-L002-MODEL",
+                "E-P4-L002-MARKER"
+              ],
+              "candidate_values": [],
+              "referenced_issue_ids": [],
+              "missing_required": false,
+              "reason": "查货型号主体一致，且同一商品行描述明确保留外部标记#D。"
+            },
+            {
+              "field": "origin",
+              "decision": "KEEP",
+              "result_value": "韩国",
+              "verification_status": "VERIFIED_CONSISTENT",
+              "evidence_keys": [
+                "E-P4-L002-ORIGIN"
+              ],
+              "candidate_values": [],
+              "referenced_issue_ids": [],
+              "missing_required": false,
+              "reason": "完整独立片段的印刷COD经配置标准化为韩国，与当前值一致。"
+            },
+            {
+              "field": "unit",
+              "decision": "KEEP",
+              "result_value": "个",
+              "verification_status": "NO_EVIDENCE",
+              "evidence_keys": [],
+              "candidate_values": [],
+              "referenced_issue_ids": [],
+              "missing_required": false,
+              "reason": "查货商品行未提供单位，保留委托单位。"
+            },
+            {
+              "field": "quantity",
+              "decision": "KEEP",
+              "result_value": "16054",
+              "verification_status": "NO_EVIDENCE",
+              "evidence_keys": [],
+              "candidate_values": [],
+              "referenced_issue_ids": [
+                "ISS-L002-UNIT-MISSING"
+              ],
+              "missing_required": false,
+              "reason": "数值相同但查货单位缺失，不能完成整行数量可比核验。"
+            },
+            {
+              "field": "net_weight",
+              "decision": "KEEP",
+              "result_value": "4.4",
+              "verification_status": "VERIFIED_CONSISTENT",
+              "evidence_keys": [
+                "E-P4-L002-NW"
+              ],
+              "candidate_values": [],
+              "referenced_issue_ids": [],
+              "missing_required": false,
+              "reason": "完整商品级查货净重4.40 KG与当前值一致。"
+            },
+            {
+              "field": "gross_weight",
+              "decision": "KEEP",
+              "result_value": "5",
+              "verification_status": "VERIFIED_CONSISTENT",
+              "evidence_keys": [
+                "E-P4-L002-GW"
+              ],
+              "candidate_values": [],
+              "referenced_issue_ids": [],
+              "missing_required": false,
+              "reason": "完整商品级查货毛重5.00 KG与当前值一致。"
+            },
+            {
+              "field": "warehouse_no",
+              "decision": "FILL",
+              "result_value": "25120336",
+              "verification_status": "VERIFIED_UPDATED",
+              "evidence_keys": [
+                "E-P4-L002-WH"
+              ],
+              "candidate_values": [],
+              "referenced_issue_ids": [],
+              "missing_required": false,
+              "reason": "可靠关系对应的入仓号清单唯一且完整。"
+            }
+          ]
+        }
+      ],
+      "issues": []
+    }
+  }
+}

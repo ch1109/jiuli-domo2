@@ -1,0 +1,89 @@
+reviewed orders 34 rows 122
+{"sampleCount": 11, "materialFileCount": 72, "pdfCount": 50, "pdfPages": 94, "inspectionPdfCount": 35, "logicalInspectionOrderCount": 34, "inspectionSourceLineCount": 122, "entrustmentDraftCountConfirmed": 12, "entrustmentLineCountConfirmed": 50, "entrustmentLineCountUnknownSamples": ["多对多样例"]}
+{"sampleCount": 11, "materialFileCount": 72, "pdfCount": 50, "pdfPages": 94, "inspectionPdfCount": 35, "logicalInspectionOrderCount": 34, "inspectionSourceLineCount": 122, "entrustmentDraftCountConfirmed": 12, "entrustmentLineCountConfirmed": 50, "entrustmentLineCountUnknownSamples": ["多对多样例"], "customerCount": 9, "inspectionGroupCount": 63, "mergedGroupCount": 14, "quarantinedOrderCount": 14, "quarantinedSourceLineCount": 29, "pendingCustomerDraftCount": 3}
+scenarios 21 overrides 6
+reviewed orders 34 rows 122
+{"sampleCount": 11, "materialFileCount": 72, "pdfCount": 50, "pdfPages": 94, "inspectionPdfCount": 35, "logicalInspectionOrderCount": 34, "inspectionSourceLineCount": 122, "entrustmentDraftCountConfirmed": 12, "entrustmentLineCountConfirmed": 50, "entrustmentLineCountUnknownSamples": ["多对多样例"]}
+{"sampleCount": 11, "materialFileCount": 72, "pdfCount": 50, "pdfPages": 94, "inspectionPdfCount": 35, "logicalInspectionOrderCount": 34, "inspectionSourceLineCount": 122, "entrustmentDraftCountConfirmed": 12, "entrustmentLineCountConfirmed": 50, "entrustmentLineCountUnknownSamples": ["多对多样例"], "customerCount": 9, "inspectionGroupCount": 63, "mergedGroupCount": 14, "quarantinedOrderCount": 14, "quarantinedSourceLineCount": 29, "pendingCustomerDraftCount": 3}
+scenarios 21 overrides 6
+{
+  "phase": "Phase -1｜真实样本 → Mock 数据基线",
+  "status": "PASS",
+  "summary": {
+    "sampleCount": 11,
+    "materialFileCount": 72,
+    "pdfCount": 50,
+    "pdfPages": 94,
+    "inspectionPdfCount": 35,
+    "logicalInspectionOrderCount": 34,
+    "inspectionSourceLineCount": 122,
+    "entrustmentDraftCountConfirmed": 12,
+    "entrustmentLineCountConfirmed": 50,
+    "entrustmentLineCountUnknownSamples": [
+      "多对多样例"
+    ],
+    "customerCount": 9,
+    "inspectionGroupCount": 63,
+    "mergedGroupCount": 14,
+    "quarantinedOrderCount": 14,
+    "quarantinedSourceLineCount": 29,
+    "pendingCustomerDraftCount": 3
+  },
+  "scenarioDataChecks": 21,
+  "sourceIntegrity": {
+    "status": "PASS",
+    "allFilesIncludingHidden": 93,
+    "materialFiles": 72,
+    "method": "相对路径、字节大小、SHA-256逐项与首次盘点比较"
+  },
+  "checks": [
+    "客户与客户隔离",
+    "唯一入仓及原始行归属",
+    "三键合并及Decimal精确汇总",
+    "UNKNOWN传播",
+    "原始委托行和字段逐项一致",
+    "关系原始行追溯和无重复分配",
+    "25列直接比较Excel",
+    "去重与参考结果输入隔离",
+    "场景引用、修订目标、实际交叉关系",
+    "可重复加载及副本隔离"
+  ],
+  "notExecuted": [
+    "业务动作验收",
+    "UI",
+    "端到端测试",
+    "Phase 0"
+  ]
+}
+test_column_order (test_validation.BaselineValidation.test_column_order) ... ok
+test_cross_customer_relation (test_validation.BaselineValidation.test_cross_customer_relation) ... ok
+test_duplicate_allocation (test_validation.BaselineValidation.test_duplicate_allocation) ... ok
+test_entrustment_same_model_merge (test_validation.BaselineValidation.test_entrustment_same_model_merge) ... ok
+test_missing_group_component (test_validation.BaselineValidation.test_missing_group_component) ... ok
+test_missing_source_position (test_validation.BaselineValidation.test_missing_source_position) ... ok
+test_multiple_warehouse_values (test_validation.BaselineValidation.test_multiple_warehouse_values) ... ok
+test_original_row_multiple_orders (test_validation.BaselineValidation.test_original_row_multiple_orders) ... ok
+test_precomputed_occupation (test_validation.BaselineValidation.test_precomputed_occupation) ... ok
+test_reference_used_as_input (test_validation.BaselineValidation.test_reference_used_as_input) ... ok
+test_source_files_unchanged (test_validation.BaselineValidation.test_source_files_unchanged) ... ok
+test_unknown_customer_not_pending (test_validation.BaselineValidation.test_unknown_customer_not_pending) ... ok
+test_unknown_group_weight_to_zero (test_validation.BaselineValidation.test_unknown_group_weight_to_zero) ... ok
+test_unknown_inspection_entering_pool (test_validation.BaselineValidation.test_unknown_inspection_entering_pool) ... ok
+test_unknown_source_weight_to_zero_even_with_recomputed_totals (test_validation.BaselineValidation.test_unknown_source_weight_to_zero_even_with_recomputed_totals) ... ok
+test_valid_baseline (test_validation.BaselineValidation.test_valid_baseline) ... ok
+test_wrong_gross_sum (test_validation.BaselineValidation.test_wrong_gross_sum) ... ok
+test_wrong_net_sum (test_validation.BaselineValidation.test_wrong_net_sum) ... ok
+test_wrong_quantity_sum (test_validation.BaselineValidation.test_wrong_quantity_sum) ... ok
+test_all_21_scenarios_and_copy_isolation (test_validation.ScenarioValidation.test_all_21_scenarios_and_copy_isolation) ... ok
+test_cross_customer_action (test_validation.ScenarioValidation.test_cross_customer_action) ... ok
+test_cross_customer_candidate (test_validation.ScenarioValidation.test_cross_customer_candidate) ... ok
+test_invalid_batch (test_validation.ScenarioValidation.test_invalid_batch) ... ok
+test_many_to_many_is_not_independent_pairs (test_validation.ScenarioValidation.test_many_to_many_is_not_independent_pairs) ... ok
+test_patch_previous_value_guard (test_validation.ScenarioValidation.test_patch_previous_value_guard) ... ok
+test_revision_not_applied_on_load (test_validation.ScenarioValidation.test_revision_not_applied_on_load) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.634s
+
+OK
+

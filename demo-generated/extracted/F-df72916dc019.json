@@ -1,0 +1,1032 @@
+{
+  "id": "F-df72916dc019",
+  "path": "真实整单样本/26SHPYD056/委托文件/报关委托确认单（浦壹）2026-03-30.xls",
+  "sampleId": "26SHPYD056",
+  "sha256": "af7683e49f472b8b4b46ca399b6e0634bc836afe27827202ebf86f86be0ee4b4",
+  "size": 80896,
+  "extension": ".xls",
+  "role": "entrustment_material",
+  "sheets": [
+    {
+      "name": "Sheet1",
+      "rows": 31,
+      "columns": 23,
+      "merged": [
+        [
+          0,
+          1,
+          0,
+          18
+        ],
+        [
+          1,
+          2,
+          0,
+          2
+        ],
+        [
+          1,
+          2,
+          2,
+          5
+        ],
+        [
+          1,
+          2,
+          9,
+          11
+        ],
+        [
+          1,
+          2,
+          11,
+          14
+        ],
+        [
+          2,
+          3,
+          0,
+          2
+        ],
+        [
+          2,
+          3,
+          2,
+          5
+        ],
+        [
+          3,
+          4,
+          2,
+          5
+        ],
+        [
+          15,
+          16,
+          0,
+          5
+        ],
+        [
+          18,
+          19,
+          10,
+          12
+        ],
+        [
+          22,
+          23,
+          4,
+          7
+        ],
+        [
+          23,
+          24,
+          4,
+          7
+        ],
+        [
+          24,
+          25,
+          5,
+          7
+        ],
+        [
+          25,
+          26,
+          4,
+          7
+        ],
+        [
+          7,
+          14,
+          8,
+          9
+        ],
+        [
+          7,
+          14,
+          9,
+          10
+        ],
+        [
+          7,
+          14,
+          10,
+          11
+        ],
+        [
+          7,
+          14,
+          11,
+          12
+        ],
+        [
+          7,
+          14,
+          18,
+          19
+        ],
+        [
+          7,
+          14,
+          19,
+          20
+        ],
+        [
+          7,
+          14,
+          20,
+          21
+        ],
+        [
+          7,
+          14,
+          21,
+          22
+        ]
+      ],
+      "cells": [
+        {
+          "row": 1,
+          "column": 1,
+          "value": "报   关   委   托   书"
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "value": "委托方："
+        },
+        {
+          "row": 2,
+          "column": 3,
+          "value": "上海浦壹电子科技有限公司"
+        },
+        {
+          "row": 2,
+          "column": 10,
+          "value": "合同号："
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "value": "代理方："
+        },
+        {
+          "row": 3,
+          "column": 3,
+          "value": "深圳市九立供应链有限公司"
+        },
+        {
+          "row": 4,
+          "column": 3,
+          "value": "深圳市罗湖区沿河北路1002号瑞思大厦A座17楼"
+        },
+        {
+          "row": 6,
+          "column": 1,
+          "value": "序号"
+        },
+        {
+          "row": 6,
+          "column": 2,
+          "value": "品牌"
+        },
+        {
+          "row": 6,
+          "column": 3,
+          "value": "品名"
+        },
+        {
+          "row": 6,
+          "column": 4,
+          "value": "货物型号"
+        },
+        {
+          "row": 6,
+          "column": 5,
+          "value": "规格描述"
+        },
+        {
+          "row": 6,
+          "column": 6,
+          "value": "数量\n(PCS)"
+        },
+        {
+          "row": 6,
+          "column": 7,
+          "value": "报关单价（USD）"
+        },
+        {
+          "row": 6,
+          "column": 8,
+          "value": "报关总价（USD）"
+        },
+        {
+          "row": 6,
+          "column": 9,
+          "value": "产地"
+        },
+        {
+          "row": 6,
+          "column": 10,
+          "value": "净重\n(kg)"
+        },
+        {
+          "row": 6,
+          "column": 11,
+          "value": "毛重\n(kg)"
+        },
+        {
+          "row": 6,
+          "column": 12,
+          "value": "箱数"
+        },
+        {
+          "row": 6,
+          "column": 13,
+          "value": "入仓单号"
+        },
+        {
+          "row": 6,
+          "column": 14,
+          "value": "结算方式"
+        },
+        {
+          "row": 6,
+          "column": 15,
+          "value": "运输方式"
+        },
+        {
+          "row": 6,
+          "column": 16,
+          "value": "快递方式"
+        },
+        {
+          "row": 6,
+          "column": 17,
+          "value": "市内配送类型"
+        },
+        {
+          "row": 6,
+          "column": 18,
+          "value": "客户要求时间"
+        },
+        {
+          "row": 6,
+          "column": 19,
+          "value": "收货公司"
+        },
+        {
+          "row": 6,
+          "column": 20,
+          "value": "收货人"
+        },
+        {
+          "row": 6,
+          "column": 21,
+          "value": "收货人电话"
+        },
+        {
+          "row": 6,
+          "column": 22,
+          "value": "收货地址"
+        },
+        {
+          "row": 6,
+          "column": 23,
+          "value": "其他/备注\n/特殊要求"
+        },
+        {
+          "row": 7,
+          "column": 1,
+          "value": 1.0
+        },
+        {
+          "row": 7,
+          "column": 2,
+          "value": "ST"
+        },
+        {
+          "row": 7,
+          "column": 3,
+          "value": "集成电路"
+        },
+        {
+          "row": 7,
+          "column": 4,
+          "value": "LIS2DU12TR"
+        },
+        {
+          "row": 7,
+          "column": 5,
+          "value": "传感功能 LOT:2407 境外品牌（其他）"
+        },
+        {
+          "row": 7,
+          "column": 6,
+          "value": 10000.0
+        },
+        {
+          "row": 7,
+          "column": 7,
+          "value": 1.5
+        },
+        {
+          "row": 7,
+          "column": 8,
+          "value": 15000.0
+        },
+        {
+          "row": 7,
+          "column": 9,
+          "value": "意大利"
+        },
+        {
+          "row": 7,
+          "column": 10,
+          "value": 0.8
+        },
+        {
+          "row": 7,
+          "column": 11,
+          "value": 1.3
+        },
+        {
+          "row": 7,
+          "column": 12,
+          "value": 1.0
+        },
+        {
+          "row": 7,
+          "column": 14,
+          "value": "九立代垫"
+        },
+        {
+          "row": 7,
+          "column": 16,
+          "value": "顺丰"
+        },
+        {
+          "row": 7,
+          "column": 18,
+          "value": 46111.0
+        },
+        {
+          "row": 7,
+          "column": 19,
+          "value": "立讯电子科技(昆山)有限公司"
+        },
+        {
+          "row": 7,
+          "column": 20,
+          "value": "李旺"
+        },
+        {
+          "row": 7,
+          "column": 21,
+          "value": 13405197295.0
+        },
+        {
+          "row": 7,
+          "column": 22,
+          "value": "江苏省昆山市锦溪镇锦荣路555号2/5号门G4栋"
+        },
+        {
+          "row": 8,
+          "column": 1,
+          "value": 2.0
+        },
+        {
+          "row": 8,
+          "column": 2,
+          "value": "WINBOND"
+        },
+        {
+          "row": 8,
+          "column": 3,
+          "value": "集成电路"
+        },
+        {
+          "row": 8,
+          "column": 4,
+          "value": "W25N01GVZEIG"
+        },
+        {
+          "row": 8,
+          "column": 5,
+          "value": "存储功能 LOT:2542、2523 境外品牌（其他）"
+        },
+        {
+          "row": 8,
+          "column": 6,
+          "value": 68000.0
+        },
+        {
+          "row": 8,
+          "column": 7,
+          "value": 4.852033368091762
+        },
+        {
+          "row": 8,
+          "column": 8,
+          "value": 329938.26903023984
+        },
+        {
+          "row": 8,
+          "column": 9,
+          "value": "中国台湾"
+        },
+        {
+          "row": 8,
+          "column": 10,
+          "value": 57.7
+        },
+        {
+          "row": 8,
+          "column": 11,
+          "value": 61.7
+        },
+        {
+          "row": 8,
+          "column": 12,
+          "value": 4.0
+        },
+        {
+          "row": 8,
+          "column": 14,
+          "value": "九立代垫"
+        },
+        {
+          "row": 8,
+          "column": 16,
+          "value": "顺丰"
+        },
+        {
+          "row": 8,
+          "column": 18,
+          "value": 46111.0
+        },
+        {
+          "row": 8,
+          "column": 19,
+          "value": "浙江大华科技有限公司"
+        },
+        {
+          "row": 8,
+          "column": 20,
+          "value": "徐志伟"
+        },
+        {
+          "row": 8,
+          "column": 21,
+          "value": 17799867502.0
+        },
+        {
+          "row": 8,
+          "column": 22,
+          "value": "浙江省杭州市富阳区东洲街道东桥路28号大华智慧物联网页园区A2楼1楼北面N59-N61"
+        },
+        {
+          "row": 9,
+          "column": 1,
+          "value": 3.0
+        },
+        {
+          "row": 9,
+          "column": 2,
+          "value": "WINBOND"
+        },
+        {
+          "row": 9,
+          "column": 3,
+          "value": "集成电路"
+        },
+        {
+          "row": 9,
+          "column": 4,
+          "value": "W25N01GVZEIG"
+        },
+        {
+          "row": 9,
+          "column": 5,
+          "value": "存储功能 LOT:2542、2523 境外品牌（其他）"
+        },
+        {
+          "row": 9,
+          "column": 6,
+          "value": 8000.0
+        },
+        {
+          "row": 9,
+          "column": 7,
+          "value": 4.852033368091762
+        },
+        {
+          "row": 9,
+          "column": 8,
+          "value": 38816.266944734096
+        },
+        {
+          "row": 9,
+          "column": 14,
+          "value": "九立代垫"
+        },
+        {
+          "row": 9,
+          "column": 16,
+          "value": "顺丰"
+        },
+        {
+          "row": 9,
+          "column": 18,
+          "value": 46111.0
+        },
+        {
+          "row": 10,
+          "column": 1,
+          "value": 4.0
+        },
+        {
+          "row": 10,
+          "column": 2,
+          "value": "WINBOND"
+        },
+        {
+          "row": 10,
+          "column": 3,
+          "value": "集成电路"
+        },
+        {
+          "row": 10,
+          "column": 4,
+          "value": "W25N01GVZEIG"
+        },
+        {
+          "row": 10,
+          "column": 5,
+          "value": "存储功能 LOT:2542、2523 境外品牌（其他）"
+        },
+        {
+          "row": 10,
+          "column": 6,
+          "value": 11520.0
+        },
+        {
+          "row": 10,
+          "column": 7,
+          "value": 4.852033368091762
+        },
+        {
+          "row": 10,
+          "column": 8,
+          "value": 55895.4244004171
+        },
+        {
+          "row": 10,
+          "column": 14,
+          "value": "九立代垫"
+        },
+        {
+          "row": 10,
+          "column": 16,
+          "value": "顺丰"
+        },
+        {
+          "row": 10,
+          "column": 18,
+          "value": 46111.0
+        },
+        {
+          "row": 11,
+          "column": 1,
+          "value": 5.0
+        },
+        {
+          "row": 11,
+          "column": 2,
+          "value": "WINBOND"
+        },
+        {
+          "row": 11,
+          "column": 3,
+          "value": "集成电路"
+        },
+        {
+          "row": 11,
+          "column": 4,
+          "value": "W25N01GVZEIG"
+        },
+        {
+          "row": 11,
+          "column": 5,
+          "value": "存储功能 LOT:2542、2523 境外品牌（其他）"
+        },
+        {
+          "row": 11,
+          "column": 6,
+          "value": 26880.0
+        },
+        {
+          "row": 11,
+          "column": 7,
+          "value": 4.852033368091762
+        },
+        {
+          "row": 11,
+          "column": 8,
+          "value": 130422.65693430656
+        },
+        {
+          "row": 11,
+          "column": 14,
+          "value": "九立代垫"
+        },
+        {
+          "row": 11,
+          "column": 16,
+          "value": "顺丰"
+        },
+        {
+          "row": 11,
+          "column": 18,
+          "value": 46111.0
+        },
+        {
+          "row": 12,
+          "column": 1,
+          "value": 6.0
+        },
+        {
+          "row": 12,
+          "column": 2,
+          "value": "WINBOND"
+        },
+        {
+          "row": 12,
+          "column": 3,
+          "value": "集成电路"
+        },
+        {
+          "row": 12,
+          "column": 4,
+          "value": "W25N01GVZEIG"
+        },
+        {
+          "row": 12,
+          "column": 5,
+          "value": "存储功能 LOT:2542、2523 境外品牌（其他）"
+        },
+        {
+          "row": 12,
+          "column": 6,
+          "value": 12000.0
+        },
+        {
+          "row": 12,
+          "column": 7,
+          "value": 4.852033368091762
+        },
+        {
+          "row": 12,
+          "column": 8,
+          "value": 58224.40041710115
+        },
+        {
+          "row": 12,
+          "column": 14,
+          "value": "九立代垫"
+        },
+        {
+          "row": 12,
+          "column": 16,
+          "value": "顺丰"
+        },
+        {
+          "row": 12,
+          "column": 18,
+          "value": 46111.0
+        },
+        {
+          "row": 13,
+          "column": 1,
+          "value": 7.0
+        },
+        {
+          "row": 13,
+          "column": 2,
+          "value": "WINBOND"
+        },
+        {
+          "row": 13,
+          "column": 3,
+          "value": "集成电路"
+        },
+        {
+          "row": 13,
+          "column": 4,
+          "value": "W25N01GVZEIG"
+        },
+        {
+          "row": 13,
+          "column": 5,
+          "value": "存储功能 LOT:2542、2523 境外品牌（其他）"
+        },
+        {
+          "row": 13,
+          "column": 6,
+          "value": 23040.0
+        },
+        {
+          "row": 13,
+          "column": 7,
+          "value": 4.852033368091762
+        },
+        {
+          "row": 13,
+          "column": 8,
+          "value": 111790.8488008342
+        },
+        {
+          "row": 13,
+          "column": 14,
+          "value": "九立代垫"
+        },
+        {
+          "row": 13,
+          "column": 16,
+          "value": "顺丰"
+        },
+        {
+          "row": 13,
+          "column": 18,
+          "value": 46111.0
+        },
+        {
+          "row": 14,
+          "column": 1,
+          "value": 8.0
+        },
+        {
+          "row": 14,
+          "column": 2,
+          "value": "WINBOND"
+        },
+        {
+          "row": 14,
+          "column": 3,
+          "value": "集成电路"
+        },
+        {
+          "row": 14,
+          "column": 4,
+          "value": "W25N01GVZEIG"
+        },
+        {
+          "row": 14,
+          "column": 5,
+          "value": "存储功能 LOT:2542、2523 境外品牌（其他）"
+        },
+        {
+          "row": 14,
+          "column": 6,
+          "value": 4000.0
+        },
+        {
+          "row": 14,
+          "column": 7,
+          "value": 4.852033368091762
+        },
+        {
+          "row": 14,
+          "column": 8,
+          "value": 19408.133472367048
+        },
+        {
+          "row": 14,
+          "column": 14,
+          "value": "九立代垫"
+        },
+        {
+          "row": 14,
+          "column": 16,
+          "value": "顺丰"
+        },
+        {
+          "row": 14,
+          "column": 18,
+          "value": 46111.0
+        },
+        {
+          "row": 15,
+          "column": 1,
+          "value": 9.0
+        },
+        {
+          "row": 15,
+          "column": 2,
+          "value": "MARVELL"
+        },
+        {
+          "row": 15,
+          "column": 3,
+          "value": "集成电路"
+        },
+        {
+          "row": 15,
+          "column": 4,
+          "value": "88E6240A1TFJ2C000"
+        },
+        {
+          "row": 15,
+          "column": 5,
+          "value": "交换功能 LOT:2522、2524  境外品牌（其他）"
+        },
+        {
+          "row": 15,
+          "column": 6,
+          "value": 2700.0
+        },
+        {
+          "row": 15,
+          "column": 7,
+          "value": 7.0
+        },
+        {
+          "row": 15,
+          "column": 8,
+          "value": 18900.0
+        },
+        {
+          "row": 15,
+          "column": 9,
+          "value": "中国台湾"
+        },
+        {
+          "row": 15,
+          "column": 10,
+          "value": 6.8
+        },
+        {
+          "row": 15,
+          "column": 11,
+          "value": 7.4
+        },
+        {
+          "row": 15,
+          "column": 12,
+          "value": 1.0
+        },
+        {
+          "row": 15,
+          "column": 14,
+          "value": "九立代垫"
+        },
+        {
+          "row": 15,
+          "column": 16,
+          "value": "顺丰"
+        },
+        {
+          "row": 15,
+          "column": 18,
+          "value": 46111.0
+        },
+        {
+          "row": 15,
+          "column": 19,
+          "value": "浙江大华科技有限公司"
+        },
+        {
+          "row": 15,
+          "column": 20,
+          "value": "徐志伟"
+        },
+        {
+          "row": 15,
+          "column": 21,
+          "value": 17799867502.0
+        },
+        {
+          "row": 15,
+          "column": 22,
+          "value": "浙江省杭州市富阳区东洲街道东桥路28号大华智慧物联网产业园区A2-1北N59-N61"
+        },
+        {
+          "row": 16,
+          "column": 6,
+          "value": 166140.0
+        },
+        {
+          "row": 16,
+          "column": 8,
+          "value": 778395.9999999999
+        },
+        {
+          "row": 16,
+          "column": 12,
+          "value": 6.0
+        },
+        {
+          "row": 18,
+          "column": 1,
+          "value": "说明："
+        },
+        {
+          "row": 18,
+          "column": 2,
+          "value": "1）"
+        },
+        {
+          "row": 18,
+          "column": 3,
+          "value": "请选择香港交货方式： A送至代理方香港仓库√                B委托代理方代为提货"
+        },
+        {
+          "row": 19,
+          "column": 3,
+          "value": "请选择国内交货方式： A客户在代理方深圳仓库自提    B运输至客户指定地点    C代为客户办理国内运输√"
+        },
+        {
+          "row": 20,
+          "column": 2,
+          "value": "2）"
+        },
+        {
+          "row": 20,
+          "column": 3,
+          "value": "香港详细提货地址（如需代为提货）及联系人："
+        },
+        {
+          "row": 21,
+          "column": 3,
+          "value": "国内详细收货地址/收货人/电话/运输方式："
+        },
+        {
+          "row": 21,
+          "column": 14,
+          "value": ".."
+        },
+        {
+          "row": 22,
+          "column": 2,
+          "value": "3）"
+        },
+        {
+          "row": 22,
+          "column": 3,
+          "value": "供应商名称/电话/联系人：VADAS International CO., Ltd. (HK)/ 852-24995206/Danny"
+        },
+        {
+          "row": 23,
+          "column": 2,
+          "value": "4）"
+        },
+        {
+          "row": 23,
+          "column": 3,
+          "value": "收款人资料（如需付款提货）："
+        },
+        {
+          "row": 23,
+          "column": 5,
+          "value": "公司全称（英文）："
+        },
+        {
+          "row": 24,
+          "column": 5,
+          "value": "银行名称（英文）："
+        },
+        {
+          "row": 25,
+          "column": 6,
+          "value": "银行帐号："
+        },
+        {
+          "row": 26,
+          "column": 5,
+          "value": "付 款 币 种、金 额："
+        },
+        {
+          "row": 27,
+          "column": 3,
+          "value": "非香港本地银行，务请提供银行地址（英文）："
+        },
+        {
+          "row": 28,
+          "column": 3,
+          "value": "委托方签字并盖章确认："
+        },
+        {
+          "row": 29,
+          "column": 5,
+          "value": 46111.0
+        },
+        {
+          "row": 30,
+          "column": 3,
+          "value": "Authorized Signature"
+        }
+      ]
+    }
+  ]
+}
