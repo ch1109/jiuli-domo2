@@ -1,0 +1,95 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "audit_id": "2026AG001-AUDIT-20260921",
+  "created_at": "2026-09-21T00:00:00+08:00",
+  "model": "gpt-5.6-luna",
+  "execution_task": "run_audit_batch_b",
+  "execution_mode": "subagent_model_inference",
+  "sample_id": "2026AG001",
+  "customer": "深圳市傲冠软件股份有限公司",
+  "stage_order": [
+    "P1",
+    "P2",
+    "P3",
+    "P4"
+  ],
+  "stages": [
+    {
+      "stage": "P1",
+      "request_id": "20260921-2026AG001-P1",
+      "status": "SUCCESS",
+      "request_file": "P1-request.json",
+      "response_file": "P1-response.json"
+    },
+    {
+      "stage": "P2",
+      "request_id": "20260921-2026AG001-P2",
+      "status": "SUCCESS",
+      "request_file": "P2-request.json",
+      "response_file": "P2-response.json",
+      "logical_inspections": 1,
+      "raw_rows": 2
+    },
+    {
+      "stage": "P3",
+      "request_id": "20260921-2026AG001-P3",
+      "status": "SUCCESS",
+      "request_file": "P3-request.json",
+      "response_file": "P3-response.json",
+      "matched_rows": 0,
+      "multiple_candidates": 2,
+      "unmatched_rows": 0
+    },
+    {
+      "stage": "P4",
+      "request_id": "20260921-2026AG001-P4",
+      "status": "INVALID_INPUT",
+      "mode": "VERIFY_FIELDS",
+      "request_file": "P4-request.json",
+      "response_file": "P4-response.json",
+      "field_decisions": 0
+    }
+  ],
+  "artifact_sha256": {
+  "P1-request.json": "0b61024cce2b4947f3d56b99aa2382bd610b055e694859623a51f2af1b511980",
+  "P1-response.json": "ecb4775d31b8428a14fdf23b56ab2026d212fcf5e88404debe2e9ac2e39f594b",
+  "P2-request.json": "16f4c7293579f8f8586bc94aeafd4bc4c3ead04ae943df678f92d14402fa61a9",
+  "P2-response.json": "e582b2d7a871f093dd371f695868ecd2643c36c7edfcab746dd5275d2fb25504",
+  "P3-request.json": "6f634e746c4a10739856f114eb5ce9abc2baa266019f4abdadd0fb4311ce94ba",
+  "P3-response.json": "7f4d48ae8b47b7b49e48f6c0243a52abef9bd577a8cb3eff02c020f4ccc4a8eb",
+  "P4-request.json": "b8e6a1de2dee3eed513aded2fed599f674e89b22c0582a7f85b5362e7b0aef76",
+  "P4-response.json": "14cfc6b1ab5a0835c59e6e058729d2e8c12bea7148cfa5d2334904cd4d87c5f4"
+  },
+  "source_sha256": {
+  "AGENTS.md": "63f2c50380ed6303237cce215ce27af1d620d094c215e28d1b1538a3c070e3bb",
+  ".analysis/agent-prompts.md": "7d33f66760c2aeec4e3b1e8386055da89358dfb44f5a595dfef29f4ba82d71d0",
+  ".analysis/run-remaining-p1-p4-audit.md": "85918b9e163ba1d2b05755965ab881f3ac77ffcd03ff9a8575795bb0858987f4",
+  "提示词文件及方案/P1_order_draft_FINAL_v3.0.txt": "3d2662509025b5ef0363843c01c3eaeb59b5be16dcf00ebc45c52cb66ec36f9c",
+  "提示词文件及方案/P2_inspection_facts_FINAL_v3.0.txt": "41c615d9eac52cde376962dc330cd2771883b03917c6a47b77815c9bc77cc36c",
+  "提示词文件及方案/P3_product_matching_FINAL_v3.0.txt": "a07249b9490897b8e5fd1e3f63b14ad318447fd9b4168e3286625a698e620be3",
+  "提示词文件及方案/P4_field_verification_FINAL_v3.0.txt": "02fc74013a818f0b41e3ce2440f74283dcadf034c5dd3bd7b8f9f91c067610b5",
+  "demo-generated/sample_manifest.json": "510d7f31757e5764de054831c9f04602773fe860b4b569e6a50ff40de4d4554c",
+  "demo-generated/manifests/2026AG001.json": "48c46c81763ecdd52136729fe6530df31b5be5b74520ac5aeb0731fae9d376b2",
+  "demo-generated/extracted/F-e60d9bd8df88.json": "079d625c231b08b07d9febdfa86e8e8c4656f4358ca913af33f6bc8682a97a32",
+  "demo-generated/extracted/F-6b255626250f.json": "4943be87c3a084a3ce190280baeda97354b449e47169c11a56af42cad517c6eb",
+  "demo-generated/extracted/F-6a9807227bb3.json": "408e70f77eaf249e3a0254cc053d46c6378867eee33569b25333676e4146f13c",
+  "真实整单样本/2026AG001/委托文件/报关委托书-2026.5.15.xls": "8f9ce8e6b93ba58b5699e74eaf2fea077ee85b450a65df6119b49ba83165d346",
+  "真实整单样本/2026AG001/查货文件/1779087953894.pdf": "f02554091a451b4353fce7d6c083d510dcf2aac7eaacc53e24e69dea700193c5",
+  "真实整单样本/2026AG001/核对单/参考结果.xlsx": "5ce43ab15bac783e5b70a88d5f41f984463496842b9d73a007f0c44454897d77",
+  "demo-generated/renders/F-6b255626250f/page-1.png": "87464c2b17fdbcbe26011324a4d63a1301d6e505d924892091b5eec3090df343"
+  },
+  "source_ids": [
+    "F-e60d9bd8df88",
+    "F-6b255626250f",
+    "F-6a9807227bb3"
+  ],
+  "hash_scope_note": "artifact_sha256 covers the eight request/response JSON files in this audit directory. provenance.json is excluded from its own hash; source_sha256 covers the prompts, instructions, manifests, extracted metadata, original source files and reviewed render pages used for this sample.",
+  "guardrails": {
+    "read_existing_sc08_responses": false,
+    "modified_original_files": false,
+    "modified_prompt_files": false,
+    "modified_public_scripts": false,
+    "modified_sample_manifest": false,
+    "contains_secrets": false
+  }
+}

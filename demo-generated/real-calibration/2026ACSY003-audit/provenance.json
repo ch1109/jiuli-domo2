@@ -1,0 +1,78 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "audit_id": "REMAINING-2026ACSY003-20260921",
+  "created_at": "2026-09-21T00:00:00Z",
+  "model": "gpt-5.6-luna",
+  "execution_task": "run_remaining_p1_p4_audit",
+  "execution_mode": "direct_model_inference",
+  "sample_id": "2026ACSY003",
+  "stage_order": [
+    "P1",
+    "P2",
+    "P3",
+    "P4"
+  ],
+  "stages": [
+    {
+      "stage": "P1",
+      "request_id": "REMAINING-2026ACSY003-20260921-P1",
+      "status": "SUCCESS",
+      "request_file": "P1-request.json",
+      "response_file": "P1-response.json"
+    },
+    {
+      "stage": "P2",
+      "request_id": "REMAINING-2026ACSY003-20260921-P2",
+      "status": "NEEDS_REVIEW",
+      "request_file": "P2-request.json",
+      "response_file": "P2-response.json"
+    },
+    {
+      "stage": "P3",
+      "request_id": "REMAINING-2026ACSY003-20260921-P3",
+      "status": "SUCCESS",
+      "request_file": "P3-request.json",
+      "response_file": "P3-response.json"
+    },
+    {
+      "stage": "P4",
+      "request_id": "REMAINING-2026ACSY003-20260921-P4",
+      "status": "INVALID_INPUT",
+      "request_file": "P4-request.json",
+      "response_file": "P4-response.json"
+    }
+  ],
+  "artifact_sha256": {
+    "P1-request.json": "d956b7ddf4dd7daf32bc9352064c43e569c2faaecfc921a437261012d75435de",
+    "P2-request.json": "0eaeaa919ba804605ff363eb511efc0e86425c2349c5abcb690a46912a0557dd",
+    "P3-request.json": "2ec719252db8361020d9a6fc5dbeb28a408c02305ca1428d5b7b7fa012b64895",
+    "P4-request.json": "48b82f7594b29a0597d702d22c77f29326c6793bea4b471c27cd4d42db759ef1",
+    "P1-response.json": "af70d612c058dc682ec5db408c85f062fb25c0e93796069f9df191dec8b8ff20",
+    "P2-response.json": "a81561f982727e5f55204b73a68d78fb6b78a13f89b750d60e5aee12709ff015",
+    "P3-response.json": "de23005e96a6b936a941cf1dee9e507ccd2d996535bd51697c5a03beabd69eb7",
+    "P4-response.json": "3f797950c93f178172cae2fc7b5a68386138664f73b96cf916a230ad98bb61b2"
+  },
+  "hash_scope_note": "artifact_sha256 covers eight request/response artifacts; provenance.json is excluded to avoid self-reference.",
+  "source_sha256": {
+    "AGENTS.md": "63f2c50380ed6303237cce215ce27af1d620d094c215e28d1b1538a3c070e3bb",
+    ".analysis/agent-prompts.md": "7d33f66760c2aeec4e3b1e8386055da89358dfb44f5a595dfef29f4ba82d71d0",
+    "demo-generated/source_inventory.json": "b6adcb39cfa93845c1c9f018ebb091dc1fb04e0086f96743bc4679f0b25c64cb",
+    "demo-generated/manifests/2026ACSY003.json": "6446ae26f23f1a772fa28e5a81e92f6ac314ed9a08fd13880492f92b6c8bfe6c",
+    "提示词文件及方案/P1_order_draft_FINAL_v3.0.txt": "3d2662509025b5ef0363843c01c3eaeb59b5be16dcf00ebc45c52cb66ec36f9c",
+    "提示词文件及方案/P2_inspection_facts_FINAL_v3.0.txt": "41c615d9eac52cde376962dc330cd2771883b03917c6a47b77815c9bc77cc36c",
+    "提示词文件及方案/P3_product_matching_FINAL_v3.0.txt": "a07249b9490897b8e5fd1e3f63b14ad318447fd9b4168e3286625a698e620be3",
+    "提示词文件及方案/P4_field_verification_FINAL_v3.0.txt": "02fc74013a818f0b41e3ce2440f74283dcadf034c5dd3bd7b8f9f91c067610b5",
+    "真实整单样本/2026ACSY003/委托文件/报关委托书3.23_已签章(1).pdf": "6900acc8144155dbfe94c870d995b530c8d25607f33f5bbf12af0a33adc48619",
+    "demo-generated/extracted/F-0971c3fd7c49.json": "f3b96fefe1d6c049f3c9206088c2a11ace19110cf98e0ccd1f4729a2db0a6cc5",
+    "真实整单样本/2026ACSY003/查货文件/1774265710841.pdf": "f1dbeb23452d5c3977539c700c330bb4f31176b299d64662430115d5cd96f870",
+    "demo-generated/extracted/F-2907feed0d42.json": "8088a249561949f73f8cf902bb4bb238e07f49e3f54f54ef0c6dfafa0a71db06"
+  },
+  "guardrails": {
+    "read_existing_sc08_responses": false,
+    "modified_original_sc08_directory": false,
+    "modified_app": false,
+    "modified_lib": false,
+    "modified_demo_generated_mock": false,
+    "contains_secrets": false
+  }
+}

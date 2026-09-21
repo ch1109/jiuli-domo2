@@ -1,0 +1,17 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P4",
+  "request_id": "REMAINING-英卡-抽+整-20260921-P4",
+  "output": {
+    "processing_status": "INVALID_INPUT",
+    "row_patches": [],
+    "issues": [
+      {
+        "code": "NO_RELIABLE_RELATIONS",
+        "row_ref": null,
+        "field": null,
+        "message": "P3 没有可执行的 MATCHED 关系，P4 VERIFY_FIELDS 不可执行；不伪造字段核验。"
+      }
+    ]
+  }
+}

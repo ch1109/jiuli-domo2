@@ -1,0 +1,372 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P2",
+  "request_id": "20260921-2026CNKJ001-P2",
+  "output": {
+    "processing_status": "NEEDS_REVIEW",
+    "customer_id": "C-7a1e673169bf",
+    "read_status": [
+      {
+        "file_id": "F-8e681d73b55a",
+        "read_segments": [
+          "page:1"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      }
+    ],
+    "logical_inspections": [
+      {
+        "warehouse_no": "26057448",
+        "sources": [
+          {
+            "file_id": "F-8e681d73b55a",
+            "page": 1,
+            "sheet": null,
+            "row": null,
+            "column": "barcode",
+            "raw_text": "26057448"
+          }
+        ],
+        "range_status": "UNCERTAIN"
+      }
+    ],
+    "raw_rows": [
+      {
+        "record_no": 1,
+        "warehouse_no": "26057448",
+        "candidate_warehouse_nos": [
+          "018230127"
+        ],
+        "source": {
+          "file_id": "F-8e681d73b55a",
+          "page": 1,
+          "sheet": null,
+          "row": 1,
+          "column": null,
+          "raw_text": "商品表第1行"
+        },
+        "fields": {
+          "brand": "HIROSE",
+          "model": "BM25U-4P/2-V(85)",
+          "product_name": "Connector",
+          "unit": "pc",
+          "quantity": "580000",
+          "packages": "3",
+          "purchase_order_no": "K20260318001W",
+          "net_weight": "4.81",
+          "net_weight_unit": "KGS",
+          "gross_weight": "31.66",
+          "gross_weight_unit": "KGS",
+          "box_no": "1--3",
+          "remark": "Shipping marks: 3 CTN; #1--1 10.1KG/180000PCS; #2--3 10.78KG/200000PCS"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "HIROSE"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Part No.",
+              "raw_text": "BM25U-4P/2-V(85)"
+            }
+          ],
+          "product_name": [
+            {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Description",
+              "raw_text": "Connector"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Quantity (pc)",
+              "raw_text": "pc"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Quantity (pc)",
+              "raw_text": "580,000"
+            }
+          ],
+          "packages": [
+            {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "Shipping marks",
+              "raw_text": "TOTAL: 3 CTN"
+            }
+          ],
+          "purchase_order_no": [
+            {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "P/O NO",
+              "raw_text": "K20260318001W"
+            }
+          ],
+          "net_weight": [
+            {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "N.W. (Kgs)",
+              "raw_text": "4.81"
+            }
+          ],
+          "net_weight_unit": [
+            {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "N.W. (Kgs)",
+              "raw_text": "Kgs"
+            }
+          ],
+          "gross_weight": [
+            {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "G.W. (Kgs)",
+              "raw_text": "31.66"
+            }
+          ],
+          "gross_weight_unit": [
+            {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "G.W. (Kgs)",
+              "raw_text": "Kgs"
+            }
+          ],
+          "box_no": [
+            {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "CTN NO",
+              "raw_text": "1--3"
+            }
+          ],
+          "remark": [
+            {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "Shipping marks",
+              "raw_text": "#1--1 ...; #2--3 ..."
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "JAPAN",
+            "kind": "PRINTED_COD",
+            "source": {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Original country",
+              "raw_text": "JAPAN"
+            }
+          },
+          {
+            "value": "JP",
+            "kind": "ORIGIN_OTHER",
+            "source": {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "handwritten",
+              "raw_text": "COD: JP"
+            }
+          }
+        ],
+        "manual_marks": [
+          {
+            "action": "CIRCLE",
+            "field": "model",
+            "old_value": "",
+            "new_value": "",
+            "source": {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Part No.",
+              "raw_text": "蓝笔圈选型号"
+            }
+          },
+          {
+            "action": "UNCLEAR",
+            "field": "origin",
+            "old_value": "",
+            "new_value": "",
+            "source": {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "handwritten",
+              "raw_text": "COD: JP，是否替换印刷产地未明"
+            }
+          },
+          {
+            "action": "UNCLEAR",
+            "field": "shipping_marks",
+            "old_value": "",
+            "new_value": "",
+            "source": {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "handwritten",
+              "raw_text": "箱号/数量旁手写批注"
+            }
+          }
+        ]
+      }
+    ],
+    "scope_records": [
+      {
+        "warehouse_no": "26057448",
+        "kind": "PACKAGE",
+        "identifier": "shipping-marks",
+        "member_record_nos": [
+          1
+        ],
+        "range_complete": true,
+        "has_unresolved_goods": false,
+        "measurements": [
+          {
+            "field": "packages",
+            "value": "3",
+            "unit": "CTN",
+            "fact_kind": "EXPLICIT",
+            "source": {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "Shipping marks",
+              "raw_text": "TOTAL: 3 CTN"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "180000",
+            "unit": "PCS",
+            "fact_kind": "EXPLICIT",
+            "source": {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "Shipping marks",
+              "raw_text": "#1--1 ... 180000PCS"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "200000",
+            "unit": "PCS",
+            "fact_kind": "EXPLICIT",
+            "source": {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "Shipping marks",
+              "raw_text": "#2--3 ... 200000PCS"
+            }
+          }
+        ],
+        "source": {
+          "file_id": "F-8e681d73b55a",
+          "page": 1,
+          "sheet": null,
+          "row": null,
+          "column": "Shipping marks",
+          "raw_text": "TOTAL: 3 CTN"
+        }
+      },
+      {
+        "warehouse_no": "",
+        "kind": "UNRESOLVED",
+        "identifier": "018230127",
+        "member_record_nos": [
+          1
+        ],
+        "range_complete": false,
+        "has_unresolved_goods": true,
+        "measurements": [],
+        "source": {
+          "file_id": "F-8e681d73b55a",
+          "page": 1,
+          "sheet": null,
+          "row": "warehouse label",
+          "column": "入仓号：018230127",
+          "raw_text": ""
+        }
+      }
+    ],
+    "issues": [
+      {
+        "code": "CUSTOMER_MISMATCH",
+        "row_ref": 1,
+        "field": "customer_id",
+        "message": "查货 Bill to 为深圳市快极科技有限公司，与请求客户福建省超年科技股份有限公司不一致。"
+      },
+      {
+        "code": "WAREHOUSE_AMBIGUOUS",
+        "row_ref": 1,
+        "field": "warehouse_no",
+        "message": "页面同时出现条码26057448与正文入仓号018230127，编号体系无法确认；未复制商品行。"
+      },
+      {
+        "code": "ORIGIN_CONFLICT",
+        "row_ref": 1,
+        "field": "origin",
+        "message": "印刷 Original country 为 JAPAN，手写 COD: JP 的替换含义未确认。"
+      }
+    ]
+  }
+}

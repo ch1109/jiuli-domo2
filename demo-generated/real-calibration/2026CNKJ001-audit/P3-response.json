@@ -1,0 +1,58 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P3",
+  "request_id": "20260921-2026CNKJ001-P3",
+  "output": {
+    "processing_status": "SUCCESS",
+    "row_relations": [
+      {
+        "order_row_id": "D-a64834ca9065-R001",
+        "match_status": "UNMATCHED",
+        "selected_raw_row_ids": [],
+        "coverage": {
+          "status": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "evidence_keys": []
+        },
+        "evidence_keys": [],
+        "candidate_groups": [],
+        "weak_candidates": [
+          {
+            "raw_row_ids": [
+              "I-8e681d73b55a-26057448-L001"
+            ],
+            "evidence_keys": [
+              "E-O-R001-MODEL",
+              "E-I-CN-L001-MODEL",
+              "E-I-CN-L001-CUSTOMER",
+              "E-I-CN-L001-WH",
+              "E-I-CN-L001-WH-ALT"
+            ],
+            "reason": "型号唯一且数量相同，但客户不一致、品牌/产地不同且入仓号有歧义；数量相等不能单独证明关系。"
+          }
+        ],
+        "issues": [
+          {
+            "code": "CUSTOMER_MISMATCH",
+            "row_ref": "D-a64834ca9065-R001",
+            "field": "customer_name",
+            "message": "候选查货 Bill to 与委托客户不一致。"
+          },
+          {
+            "code": "BRAND_ORIGIN_CONFLICT",
+            "row_ref": "D-a64834ca9065-R001",
+            "field": "brand",
+            "message": "委托品牌广濑/产地韩国与查货 HIROSE/JAPAN 不同，未提供别名或来源替代证据。"
+          },
+          {
+            "code": "WAREHOUSE_AMBIGUOUS",
+            "row_ref": "D-a64834ca9065-R001",
+            "field": "warehouse_no",
+            "message": "候选同时含26057448和018230127两个入仓号文本。"
+          }
+        ]
+      }
+    ],
+    "issues": []
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P4",
+  "request_id": "20260921-2026CNKJ001-P4",
+  "output": {
+    "processing_status": "INVALID_INPUT",
+    "row_patches": [],
+    "issues": [
+      {
+        "code": "P3_DEPENDENCY_NOT_MET",
+        "row_ref": null,
+        "field": null,
+        "message": "P3 未产生 MATCHED 关系，本轮没有可执行的 VERIFY_FIELDS 目标。"
+      }
+    ]
+  }
+}

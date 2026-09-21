@@ -1,0 +1,177 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P2",
+  "request_id": "REMAINING-2026(DG)ZW050-20260921-P2",
+  "output": {
+    "processing_status": "SUCCESS",
+    "customer_id": "C-66be07d6cabe",
+    "read_status": [
+      {
+        "file_id": "F-bfe5061027e1",
+        "read_segments": [
+          "page:1"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      }
+    ],
+    "logical_inspections": [
+      {
+        "warehouse_no": "26050640",
+        "sources": [
+          {
+            "file_id": "F-bfe5061027e1",
+            "page": 1,
+            "sheet": null,
+            "row": null,
+            "column": null,
+            "raw_text": "查货文件 F-bfe5061027e1"
+          }
+        ],
+        "range_status": "COMPLETE"
+      }
+    ],
+    "raw_rows": [
+      {
+        "record_no": 1,
+        "warehouse_no": "26050640",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-bfe5061027e1",
+          "page": 1,
+          "sheet": null,
+          "row": 1,
+          "column": null,
+          "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"MAXLINEAR\",\"型号\":\"SP3243EBEY-L/TR\",\"产地\":\"UNKNOWN\",\"数量\":\"2500\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"0.56\",\"毛重\":\"1.56\",\"COD\":\"KOREA\"}"
+        },
+        "fields": {
+          "brand": "MAXLINEAR",
+          "model": "SP3243EBEY-L/TR",
+          "unit": "PCS",
+          "quantity": "2500",
+          "packages": "1",
+          "net_weight": "0.56",
+          "gross_weight": "1.56",
+          "net_weight_unit": "KG",
+          "gross_weight_unit": "KG"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-bfe5061027e1",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"MAXLINEAR\",\"型号\":\"SP3243EBEY-L/TR\",\"产地\":\"UNKNOWN\",\"数量\":\"2500\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"0.56\",\"毛重\":\"1.56\",\"COD\":\"KOREA\"}"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-bfe5061027e1",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"MAXLINEAR\",\"型号\":\"SP3243EBEY-L/TR\",\"产地\":\"UNKNOWN\",\"数量\":\"2500\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"0.56\",\"毛重\":\"1.56\",\"COD\":\"KOREA\"}"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-bfe5061027e1",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"MAXLINEAR\",\"型号\":\"SP3243EBEY-L/TR\",\"产地\":\"UNKNOWN\",\"数量\":\"2500\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"0.56\",\"毛重\":\"1.56\",\"COD\":\"KOREA\"}"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-bfe5061027e1",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"MAXLINEAR\",\"型号\":\"SP3243EBEY-L/TR\",\"产地\":\"UNKNOWN\",\"数量\":\"2500\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"0.56\",\"毛重\":\"1.56\",\"COD\":\"KOREA\"}"
+            }
+          ],
+          "packages": [
+            {
+              "file_id": "F-bfe5061027e1",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"MAXLINEAR\",\"型号\":\"SP3243EBEY-L/TR\",\"产地\":\"UNKNOWN\",\"数量\":\"2500\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"0.56\",\"毛重\":\"1.56\",\"COD\":\"KOREA\"}"
+            }
+          ],
+          "net_weight": [
+            {
+              "file_id": "F-bfe5061027e1",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"MAXLINEAR\",\"型号\":\"SP3243EBEY-L/TR\",\"产地\":\"UNKNOWN\",\"数量\":\"2500\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"0.56\",\"毛重\":\"1.56\",\"COD\":\"KOREA\"}"
+            }
+          ],
+          "gross_weight": [
+            {
+              "file_id": "F-bfe5061027e1",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"MAXLINEAR\",\"型号\":\"SP3243EBEY-L/TR\",\"产地\":\"UNKNOWN\",\"数量\":\"2500\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"0.56\",\"毛重\":\"1.56\",\"COD\":\"KOREA\"}"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "KOREA",
+            "kind": "PRINTED_COD",
+            "source": {
+              "file_id": "F-bfe5061027e1",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"MAXLINEAR\",\"型号\":\"SP3243EBEY-L/TR\",\"产地\":\"UNKNOWN\",\"数量\":\"2500\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"0.56\",\"毛重\":\"1.56\",\"COD\":\"KOREA\"}"
+            }
+          }
+        ],
+        "manual_marks": []
+      }
+    ],
+    "scope_records": [
+      {
+        "warehouse_no": "26050640",
+        "kind": "LOGICAL_TOTAL",
+        "identifier": "26050640",
+        "member_record_nos": [
+          1
+        ],
+        "range_complete": true,
+        "has_unresolved_goods": false,
+        "measurements": [],
+        "source": {
+          "file_id": "F-bfe5061027e1",
+          "page": 1,
+          "sheet": null,
+          "row": null,
+          "column": null,
+          "raw_text": "查货文件 F-bfe5061027e1"
+        }
+      }
+    ],
+    "issues": [
+      {
+        "code": "ORIGIN_PRIORITY_UNRESOLVED",
+        "row_ref": null,
+        "field": "origin",
+        "message": "原印刷列标题C.O.D.，不能直接认作COO；模板委托产地韩国。"
+      }
+    ]
+  }
+}

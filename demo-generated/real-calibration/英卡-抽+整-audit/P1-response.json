@@ -1,0 +1,79 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P1",
+  "request_id": "REMAINING-英卡-抽+整-20260921-P1",
+  "output": {
+    "processing_status": "INVALID_INPUT",
+    "customer_resolution": {
+      "status": "RESOLVED",
+      "customer_id": "C-b212996858bd",
+      "recognized_name": "深圳市英卡科技有限公司",
+      "candidate_customer_ids": [
+        "C-b212996858bd"
+      ],
+      "sources": [
+        {
+          "file_id": "F-1df4f4d83480",
+          "page": null,
+          "sheet": "报关资料",
+          "row": 3,
+          "column": "委托方",
+          "raw_text": "深圳市英卡科技有限公司"
+        },
+        {
+          "file_id": "F-a235e97d6dd0",
+          "page": null,
+          "sheet": "报关资料",
+          "row": 3,
+          "column": "委托方",
+          "raw_text": "深圳市英卡科技有限公司"
+        },
+        {
+          "file_id": "F-5a09ab721f2e",
+          "page": null,
+          "sheet": "报关资料",
+          "row": 3,
+          "column": "委托方",
+          "raw_text": "深圳市英卡科技有限公司"
+        }
+      ]
+    },
+    "read_status": [
+      {
+        "file_id": "F-1df4f4d83480",
+        "read_segments": [
+          "sheet:报关资料"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      },
+      {
+        "file_id": "F-a235e97d6dd0",
+        "read_segments": [
+          "sheet:报关资料"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      },
+      {
+        "file_id": "F-5a09ab721f2e",
+        "read_segments": [
+          "sheet:报关资料"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      }
+    ],
+    "rows": [],
+    "scope_records": [],
+    "unlinked_records": [],
+    "issues": [
+      {
+        "code": "MULTIPLE_ORDER_MATERIALS",
+        "row_ref": null,
+        "field": "materials",
+        "message": "本次输入包含3份相互独立的主体委托书；P1契约要求恰好1份，不能合并或静默选取其中一份。"
+      }
+    ]
+  }
+}

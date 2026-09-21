@@ -1,0 +1,366 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P1",
+  "request_id": "REMAINING-2026(DG)ZW050-20260921-P1",
+  "context": {
+    "customer_directory": [
+      {
+        "customer_id": "C-66be07d6cabe",
+        "customer_name": "东莞市智微智能科技有限公司",
+        "aliases": []
+      },
+      {
+        "customer_id": "C-7ad6719f6d43",
+        "customer_name": "深圳市澳创实业有限公司",
+        "aliases": []
+      }
+    ],
+    "normalization": {
+      "countries": {
+        "KOREA": "韩国",
+        "TAIWAN, CHINA": "中国台湾",
+        "TAIWAN,CHINA": "中国台湾",
+        "Taiwan China": "中国台湾",
+        "CHINA": "中国",
+        "China": "中国",
+        "SINGAPORE": "新加坡",
+        "JAPAN": "日本"
+      },
+      "units": {
+        "PCS": "个",
+        "pcs": "个",
+        "PC": "个",
+        "EA": "个",
+        "个": "个"
+      }
+    }
+  },
+  "input": {
+    "materials": [
+      {
+        "file_id": "F-ab6bfdee3e54",
+        "material_type": "ORDER",
+        "segments": [
+          "sheet:智能智能导单文件"
+        ],
+        "content": {
+          "source_path": "真实整单样本/2026(DG)ZW050/委托文件/东莞智微智能导单文件-1778663696109.xlsx",
+          "sha256": "73c2a058031e55a236774d7687897666e4bfa6a122a4da6a751b60ce46b026a5",
+          "extracted": {
+            "id": "F-ab6bfdee3e54",
+            "path": "真实整单样本/2026(DG)ZW050/input/东莞智微智能导单文件-1778663696109.xlsx",
+            "sampleId": "2026(DG)ZW050",
+            "sha256": "73c2a058031e55a236774d7687897666e4bfa6a122a4da6a751b60ce46b026a5",
+            "size": 9926,
+            "extension": ".xlsx",
+            "role": "entrustment_material",
+            "sheets": [
+              {
+                "name": "智能智能导单文件",
+                "rows": 2,
+                "columns": 21,
+                "merged": [],
+                "cells": [
+                  {
+                    "cell": "A1",
+                    "row": 1,
+                    "column": 1,
+                    "value": "商品类型",
+                    "cached": "商品类型"
+                  },
+                  {
+                    "cell": "B1",
+                    "row": 1,
+                    "column": 2,
+                    "value": "商品小类",
+                    "cached": "商品小类"
+                  },
+                  {
+                    "cell": "C1",
+                    "row": 1,
+                    "column": 3,
+                    "value": "品牌",
+                    "cached": "品牌"
+                  },
+                  {
+                    "cell": "D1",
+                    "row": 1,
+                    "column": 4,
+                    "value": "型号",
+                    "cached": "型号"
+                  },
+                  {
+                    "cell": "E1",
+                    "row": 1,
+                    "column": 5,
+                    "value": "商品描述",
+                    "cached": "商品描述"
+                  },
+                  {
+                    "cell": "F1",
+                    "row": 1,
+                    "column": 6,
+                    "value": "产地",
+                    "cached": "产地"
+                  },
+                  {
+                    "cell": "G1",
+                    "row": 1,
+                    "column": 7,
+                    "value": "单位",
+                    "cached": "单位"
+                  },
+                  {
+                    "cell": "H1",
+                    "row": 1,
+                    "column": 8,
+                    "value": "数量",
+                    "cached": "数量"
+                  },
+                  {
+                    "cell": "I1",
+                    "row": 1,
+                    "column": 9,
+                    "value": "单价",
+                    "cached": "单价"
+                  },
+                  {
+                    "cell": "J1",
+                    "row": 1,
+                    "column": 10,
+                    "value": "件数",
+                    "cached": "件数"
+                  },
+                  {
+                    "cell": "K1",
+                    "row": 1,
+                    "column": 11,
+                    "value": "净重",
+                    "cached": "净重"
+                  },
+                  {
+                    "cell": "L1",
+                    "row": 1,
+                    "column": 12,
+                    "value": "毛重",
+                    "cached": "毛重"
+                  },
+                  {
+                    "cell": "M1",
+                    "row": 1,
+                    "column": 13,
+                    "value": "税号",
+                    "cached": "税号"
+                  },
+                  {
+                    "cell": "N1",
+                    "row": 1,
+                    "column": 14,
+                    "value": "sku",
+                    "cached": "sku"
+                  },
+                  {
+                    "cell": "O1",
+                    "row": 1,
+                    "column": 15,
+                    "value": "供应商",
+                    "cached": "供应商"
+                  },
+                  {
+                    "cell": "P1",
+                    "row": 1,
+                    "column": 16,
+                    "value": "期票天数",
+                    "cached": "期票天数"
+                  },
+                  {
+                    "cell": "Q1",
+                    "row": 1,
+                    "column": 17,
+                    "value": "对应的采购",
+                    "cached": "对应的采购"
+                  },
+                  {
+                    "cell": "R1",
+                    "row": 1,
+                    "column": 18,
+                    "value": "料号",
+                    "cached": "料号"
+                  },
+                  {
+                    "cell": "S1",
+                    "row": 1,
+                    "column": 19,
+                    "value": "托盘数",
+                    "cached": "托盘数"
+                  },
+                  {
+                    "cell": "T1",
+                    "row": 1,
+                    "column": 20,
+                    "value": "箱号",
+                    "cached": "箱号"
+                  },
+                  {
+                    "cell": "U1",
+                    "row": 1,
+                    "column": 21,
+                    "value": "备注",
+                    "cached": "备注"
+                  },
+                  {
+                    "cell": "A2",
+                    "row": 2,
+                    "column": 1,
+                    "value": "元器件",
+                    "cached": "元器件"
+                  },
+                  {
+                    "cell": "B2",
+                    "row": 2,
+                    "column": 2,
+                    "value": "集成电路",
+                    "cached": "集成电路"
+                  },
+                  {
+                    "cell": "C2",
+                    "row": 2,
+                    "column": 3,
+                    "value": "MAXLINEAR",
+                    "cached": "MAXLINEAR"
+                  },
+                  {
+                    "cell": "D2",
+                    "row": 2,
+                    "column": 4,
+                    "value": "SP3243EBEY-L/TR",
+                    "cached": "SP3243EBEY-L/TR"
+                  },
+                  {
+                    "cell": "E2",
+                    "row": 2,
+                    "column": 5,
+                    "value": "",
+                    "cached": ""
+                  },
+                  {
+                    "cell": "F2",
+                    "row": 2,
+                    "column": 6,
+                    "value": "韩国",
+                    "cached": "韩国"
+                  },
+                  {
+                    "cell": "G2",
+                    "row": 2,
+                    "column": 7,
+                    "value": "个",
+                    "cached": "个"
+                  },
+                  {
+                    "cell": "H2",
+                    "row": 2,
+                    "column": 8,
+                    "value": 2500,
+                    "cached": 2500
+                  },
+                  {
+                    "cell": "I2",
+                    "row": 2,
+                    "column": 9,
+                    "value": 0.145,
+                    "cached": 0.145
+                  },
+                  {
+                    "cell": "J2",
+                    "row": 2,
+                    "column": 10,
+                    "value": 1,
+                    "cached": 1
+                  },
+                  {
+                    "cell": "K2",
+                    "row": 2,
+                    "column": 11,
+                    "value": 0.56,
+                    "cached": 0.56
+                  },
+                  {
+                    "cell": "L2",
+                    "row": 2,
+                    "column": 12,
+                    "value": 2,
+                    "cached": 2
+                  },
+                  {
+                    "cell": "M2",
+                    "row": 2,
+                    "column": 13,
+                    "value": "",
+                    "cached": ""
+                  },
+                  {
+                    "cell": "N2",
+                    "row": 2,
+                    "column": 14,
+                    "value": "4000167606",
+                    "cached": "4000167606"
+                  },
+                  {
+                    "cell": "O2",
+                    "row": 2,
+                    "column": 15,
+                    "value": "霆宝",
+                    "cached": "霆宝"
+                  },
+                  {
+                    "cell": "P2",
+                    "row": 2,
+                    "column": 16,
+                    "value": "",
+                    "cached": ""
+                  },
+                  {
+                    "cell": "Q2",
+                    "row": 2,
+                    "column": 17,
+                    "value": "",
+                    "cached": ""
+                  },
+                  {
+                    "cell": "R2",
+                    "row": 2,
+                    "column": 18,
+                    "value": "300200001900",
+                    "cached": "300200001900"
+                  },
+                  {
+                    "cell": "S2",
+                    "row": 2,
+                    "column": 19,
+                    "value": "",
+                    "cached": ""
+                  },
+                  {
+                    "cell": "T2",
+                    "row": 2,
+                    "column": 20,
+                    "value": "B2BB-A91991-00",
+                    "cached": "B2BB-A91991-00"
+                  },
+                  {
+                    "cell": "U2",
+                    "row": 2,
+                    "column": 21,
+                    "value": "4785",
+                    "cached": "4785"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

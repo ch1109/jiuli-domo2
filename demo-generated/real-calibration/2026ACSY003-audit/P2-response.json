@@ -1,0 +1,333 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P2",
+  "request_id": "REMAINING-2026ACSY003-20260921-P2",
+  "output": {
+    "processing_status": "NEEDS_REVIEW",
+    "customer_id": "C-7ad6719f6d43",
+    "read_status": [
+      {
+        "file_id": "F-2907feed0d42",
+        "read_segments": [
+          "page:1"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      }
+    ],
+    "logical_inspections": [
+      {
+        "warehouse_no": "26033175",
+        "sources": [
+          {
+            "file_id": "F-2907feed0d42",
+            "page": 1,
+            "sheet": null,
+            "row": null,
+            "column": null,
+            "raw_text": "查货文件 F-2907feed0d42"
+          }
+        ],
+        "range_status": "COMPLETE"
+      }
+    ],
+    "raw_rows": [
+      {
+        "record_no": 1,
+        "warehouse_no": "26033175",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-2907feed0d42",
+          "page": 1,
+          "sheet": null,
+          "row": 1,
+          "column": null,
+          "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"MICRON\",\"型号\":\"MT29F4T08EUHAFM4\",\"产地\":\"UNKNOWN\",\"数量\":\"1401\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"NW920\"}"
+        },
+        "fields": {
+          "brand": "MICRON",
+          "model": "MT29F4T08EUHAFM4",
+          "unit": "PCS",
+          "quantity": "1401"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"MICRON\",\"型号\":\"MT29F4T08EUHAFM4\",\"产地\":\"UNKNOWN\",\"数量\":\"1401\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"NW920\"}"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"MICRON\",\"型号\":\"MT29F4T08EUHAFM4\",\"产地\":\"UNKNOWN\",\"数量\":\"1401\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"NW920\"}"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"MICRON\",\"型号\":\"MT29F4T08EUHAFM4\",\"产地\":\"UNKNOWN\",\"数量\":\"1401\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"NW920\"}"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"MICRON\",\"型号\":\"MT29F4T08EUHAFM4\",\"产地\":\"UNKNOWN\",\"数量\":\"1401\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"NW920\"}"
+            }
+          ]
+        },
+        "origin_candidates": [],
+        "manual_marks": []
+      },
+      {
+        "record_no": 2,
+        "warehouse_no": "26033175",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-2907feed0d42",
+          "page": 1,
+          "sheet": null,
+          "row": 2,
+          "column": null,
+          "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"MICRON\",\"型号\":\"MT29F2T08CUHBBM4\",\"产地\":\"UNKNOWN\",\"数量\":\"1564\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"NWB21\"}"
+        },
+        "fields": {
+          "brand": "MICRON",
+          "model": "MT29F2T08CUHBBM4",
+          "unit": "PCS",
+          "quantity": "1564"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"MICRON\",\"型号\":\"MT29F2T08CUHBBM4\",\"产地\":\"UNKNOWN\",\"数量\":\"1564\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"NWB21\"}"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"MICRON\",\"型号\":\"MT29F2T08CUHBBM4\",\"产地\":\"UNKNOWN\",\"数量\":\"1564\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"NWB21\"}"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"MICRON\",\"型号\":\"MT29F2T08CUHBBM4\",\"产地\":\"UNKNOWN\",\"数量\":\"1564\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"NWB21\"}"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"MICRON\",\"型号\":\"MT29F2T08CUHBBM4\",\"产地\":\"UNKNOWN\",\"数量\":\"1564\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"NWB21\"}"
+            }
+          ]
+        },
+        "origin_candidates": [],
+        "manual_marks": []
+      },
+      {
+        "record_no": 3,
+        "warehouse_no": "26033175",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-2907feed0d42",
+          "page": 1,
+          "sheet": null,
+          "row": 3,
+          "column": null,
+          "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"Toshiba\",\"型号\":\"TH58TF1V23BA8H\",\"产地\":\"UNKNOWN\",\"数量\":\"1080\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"1V23\"}"
+        },
+        "fields": {
+          "brand": "Toshiba",
+          "model": "TH58TF1V23BA8H",
+          "unit": "PCS",
+          "quantity": "1080"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"Toshiba\",\"型号\":\"TH58TF1V23BA8H\",\"产地\":\"UNKNOWN\",\"数量\":\"1080\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"1V23\"}"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"Toshiba\",\"型号\":\"TH58TF1V23BA8H\",\"产地\":\"UNKNOWN\",\"数量\":\"1080\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"1V23\"}"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"Toshiba\",\"型号\":\"TH58TF1V23BA8H\",\"产地\":\"UNKNOWN\",\"数量\":\"1080\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"1V23\"}"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"Toshiba\",\"型号\":\"TH58TF1V23BA8H\",\"产地\":\"UNKNOWN\",\"数量\":\"1080\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"1V23\"}"
+            }
+          ]
+        },
+        "origin_candidates": [],
+        "manual_marks": []
+      },
+      {
+        "record_no": 4,
+        "warehouse_no": "26033175",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-2907feed0d42",
+          "page": 1,
+          "sheet": null,
+          "row": 4,
+          "column": null,
+          "raw_text": "{\"page\":1,\"position\":\"商品表第4行\",\"品牌\":\"Toshiba\",\"型号\":\"TH58TF2T23BA8J\",\"产地\":\"UNKNOWN\",\"数量\":\"368\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"2T23\"}"
+        },
+        "fields": {
+          "brand": "Toshiba",
+          "model": "TH58TF2T23BA8J",
+          "unit": "PCS",
+          "quantity": "368"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第4行\",\"品牌\":\"Toshiba\",\"型号\":\"TH58TF2T23BA8J\",\"产地\":\"UNKNOWN\",\"数量\":\"368\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"2T23\"}"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第4行\",\"品牌\":\"Toshiba\",\"型号\":\"TH58TF2T23BA8J\",\"产地\":\"UNKNOWN\",\"数量\":\"368\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"2T23\"}"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第4行\",\"品牌\":\"Toshiba\",\"型号\":\"TH58TF2T23BA8J\",\"产地\":\"UNKNOWN\",\"数量\":\"368\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"2T23\"}"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第4行\",\"品牌\":\"Toshiba\",\"型号\":\"TH58TF2T23BA8J\",\"产地\":\"UNKNOWN\",\"数量\":\"368\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"2T23\"}"
+            }
+          ]
+        },
+        "origin_candidates": [],
+        "manual_marks": []
+      }
+    ],
+    "scope_records": [
+      {
+        "warehouse_no": "26033175",
+        "kind": "LOGICAL_TOTAL",
+        "identifier": "26033175",
+        "member_record_nos": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "range_complete": true,
+        "has_unresolved_goods": false,
+        "measurements": [],
+        "source": {
+          "file_id": "F-2907feed0d42",
+          "page": 1,
+          "sheet": null,
+          "row": null,
+          "column": null,
+          "raw_text": "查货文件 F-2907feed0d42"
+        }
+      }
+    ],
+    "issues": [
+      {
+        "code": "CUSTOMER_UNRESOLVED",
+        "row_ref": null,
+        "field": "customer_id",
+        "message": "查货材料客户为 UNKNOWN，未证明属于当前客户。"
+      },
+      {
+        "code": "SHARED_SCOPE_VALUE",
+        "row_ref": null,
+        "field": "gross_weight",
+        "message": "页内未显示委托客户；右侧手写为COD而非明确COO；重量是每两行共享且未区分净毛。"
+      },
+      {
+        "code": "ORIGIN_PRIORITY_UNRESOLVED",
+        "row_ref": null,
+        "field": "origin",
+        "message": "页内未显示委托客户；右侧手写为COD而非明确COO；重量是每两行共享且未区分净毛。"
+      }
+    ]
+  }
+}

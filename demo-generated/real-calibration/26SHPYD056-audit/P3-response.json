@@ -1,0 +1,656 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P3",
+  "request_id": "REMAINING-26SHPYD056-20260921-P3",
+  "output": {
+    "processing_status": "SUCCESS",
+    "row_relations": [
+      {
+        "order_row_id": "D-df72916dc019-R007",
+        "match_status": "UNMATCHED",
+        "selected_raw_row_ids": [],
+        "coverage": {
+          "status": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "evidence_keys": []
+        },
+        "evidence_keys": [],
+        "candidate_groups": [],
+        "weak_candidates": [],
+        "issues": [
+          {
+            "code": "NO_IDENTITY_CANDIDATE",
+            "row_ref": "D-df72916dc019-R007",
+            "field": "model",
+            "message": "查货材料没有与LIS2DU12TR同品牌同型号的原始行。"
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-df72916dc019-R008",
+        "match_status": "MULTIPLE_CANDIDATES",
+        "selected_raw_row_ids": [],
+        "coverage": {
+          "status": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "evidence_keys": []
+        },
+        "evidence_keys": [],
+        "candidate_groups": [
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L001"
+            ],
+            "evidence_keys": [
+              "E-P3-I-001-MODEL",
+              "E-P3-I-001-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L002"
+            ],
+            "evidence_keys": [
+              "E-P3-I-002-MODEL",
+              "E-P3-I-002-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L003"
+            ],
+            "evidence_keys": [
+              "E-P3-I-003-MODEL",
+              "E-P3-I-003-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L004"
+            ],
+            "evidence_keys": [
+              "E-P3-I-004-MODEL",
+              "E-P3-I-004-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L005"
+            ],
+            "evidence_keys": [
+              "E-P3-I-005-MODEL",
+              "E-P3-I-005-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L006"
+            ],
+            "evidence_keys": [
+              "E-P3-I-006-MODEL",
+              "E-P3-I-006-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L007"
+            ],
+            "evidence_keys": [
+              "E-P3-I-007-MODEL",
+              "E-P3-I-007-BRAND"
+            ]
+          }
+        ],
+        "weak_candidates": [],
+        "issues": [
+          {
+            "code": "WINBOND_GROUP_SCOPE_UNRESOLVED",
+            "row_ref": "D-df72916dc019-R008",
+            "field": "quantity",
+            "message": "委托同型号行与查货批次均有多行，批次/LOT与数量不能逐行闭合，禁止按数量或列表位置静默分配。"
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-df72916dc019-R009",
+        "match_status": "MULTIPLE_CANDIDATES",
+        "selected_raw_row_ids": [],
+        "coverage": {
+          "status": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "evidence_keys": []
+        },
+        "evidence_keys": [],
+        "candidate_groups": [
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L001"
+            ],
+            "evidence_keys": [
+              "E-P3-I-001-MODEL",
+              "E-P3-I-001-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L002"
+            ],
+            "evidence_keys": [
+              "E-P3-I-002-MODEL",
+              "E-P3-I-002-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L003"
+            ],
+            "evidence_keys": [
+              "E-P3-I-003-MODEL",
+              "E-P3-I-003-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L004"
+            ],
+            "evidence_keys": [
+              "E-P3-I-004-MODEL",
+              "E-P3-I-004-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L005"
+            ],
+            "evidence_keys": [
+              "E-P3-I-005-MODEL",
+              "E-P3-I-005-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L006"
+            ],
+            "evidence_keys": [
+              "E-P3-I-006-MODEL",
+              "E-P3-I-006-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L007"
+            ],
+            "evidence_keys": [
+              "E-P3-I-007-MODEL",
+              "E-P3-I-007-BRAND"
+            ]
+          }
+        ],
+        "weak_candidates": [],
+        "issues": [
+          {
+            "code": "WINBOND_GROUP_SCOPE_UNRESOLVED",
+            "row_ref": "D-df72916dc019-R009",
+            "field": "quantity",
+            "message": "委托同型号行与查货批次均有多行，批次/LOT与数量不能逐行闭合，禁止按数量或列表位置静默分配。"
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-df72916dc019-R010",
+        "match_status": "MULTIPLE_CANDIDATES",
+        "selected_raw_row_ids": [],
+        "coverage": {
+          "status": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "evidence_keys": []
+        },
+        "evidence_keys": [],
+        "candidate_groups": [
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L001"
+            ],
+            "evidence_keys": [
+              "E-P3-I-001-MODEL",
+              "E-P3-I-001-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L002"
+            ],
+            "evidence_keys": [
+              "E-P3-I-002-MODEL",
+              "E-P3-I-002-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L003"
+            ],
+            "evidence_keys": [
+              "E-P3-I-003-MODEL",
+              "E-P3-I-003-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L004"
+            ],
+            "evidence_keys": [
+              "E-P3-I-004-MODEL",
+              "E-P3-I-004-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L005"
+            ],
+            "evidence_keys": [
+              "E-P3-I-005-MODEL",
+              "E-P3-I-005-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L006"
+            ],
+            "evidence_keys": [
+              "E-P3-I-006-MODEL",
+              "E-P3-I-006-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L007"
+            ],
+            "evidence_keys": [
+              "E-P3-I-007-MODEL",
+              "E-P3-I-007-BRAND"
+            ]
+          }
+        ],
+        "weak_candidates": [],
+        "issues": [
+          {
+            "code": "WINBOND_GROUP_SCOPE_UNRESOLVED",
+            "row_ref": "D-df72916dc019-R010",
+            "field": "quantity",
+            "message": "委托同型号行与查货批次均有多行，批次/LOT与数量不能逐行闭合，禁止按数量或列表位置静默分配。"
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-df72916dc019-R011",
+        "match_status": "MULTIPLE_CANDIDATES",
+        "selected_raw_row_ids": [],
+        "coverage": {
+          "status": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "evidence_keys": []
+        },
+        "evidence_keys": [],
+        "candidate_groups": [
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L001"
+            ],
+            "evidence_keys": [
+              "E-P3-I-001-MODEL",
+              "E-P3-I-001-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L002"
+            ],
+            "evidence_keys": [
+              "E-P3-I-002-MODEL",
+              "E-P3-I-002-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L003"
+            ],
+            "evidence_keys": [
+              "E-P3-I-003-MODEL",
+              "E-P3-I-003-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L004"
+            ],
+            "evidence_keys": [
+              "E-P3-I-004-MODEL",
+              "E-P3-I-004-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L005"
+            ],
+            "evidence_keys": [
+              "E-P3-I-005-MODEL",
+              "E-P3-I-005-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L006"
+            ],
+            "evidence_keys": [
+              "E-P3-I-006-MODEL",
+              "E-P3-I-006-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L007"
+            ],
+            "evidence_keys": [
+              "E-P3-I-007-MODEL",
+              "E-P3-I-007-BRAND"
+            ]
+          }
+        ],
+        "weak_candidates": [],
+        "issues": [
+          {
+            "code": "WINBOND_GROUP_SCOPE_UNRESOLVED",
+            "row_ref": "D-df72916dc019-R011",
+            "field": "quantity",
+            "message": "委托同型号行与查货批次均有多行，批次/LOT与数量不能逐行闭合，禁止按数量或列表位置静默分配。"
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-df72916dc019-R012",
+        "match_status": "MULTIPLE_CANDIDATES",
+        "selected_raw_row_ids": [],
+        "coverage": {
+          "status": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "evidence_keys": []
+        },
+        "evidence_keys": [],
+        "candidate_groups": [
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L001"
+            ],
+            "evidence_keys": [
+              "E-P3-I-001-MODEL",
+              "E-P3-I-001-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L002"
+            ],
+            "evidence_keys": [
+              "E-P3-I-002-MODEL",
+              "E-P3-I-002-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L003"
+            ],
+            "evidence_keys": [
+              "E-P3-I-003-MODEL",
+              "E-P3-I-003-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L004"
+            ],
+            "evidence_keys": [
+              "E-P3-I-004-MODEL",
+              "E-P3-I-004-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L005"
+            ],
+            "evidence_keys": [
+              "E-P3-I-005-MODEL",
+              "E-P3-I-005-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L006"
+            ],
+            "evidence_keys": [
+              "E-P3-I-006-MODEL",
+              "E-P3-I-006-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L007"
+            ],
+            "evidence_keys": [
+              "E-P3-I-007-MODEL",
+              "E-P3-I-007-BRAND"
+            ]
+          }
+        ],
+        "weak_candidates": [],
+        "issues": [
+          {
+            "code": "WINBOND_GROUP_SCOPE_UNRESOLVED",
+            "row_ref": "D-df72916dc019-R012",
+            "field": "quantity",
+            "message": "委托同型号行与查货批次均有多行，批次/LOT与数量不能逐行闭合，禁止按数量或列表位置静默分配。"
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-df72916dc019-R013",
+        "match_status": "MULTIPLE_CANDIDATES",
+        "selected_raw_row_ids": [],
+        "coverage": {
+          "status": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "evidence_keys": []
+        },
+        "evidence_keys": [],
+        "candidate_groups": [
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L001"
+            ],
+            "evidence_keys": [
+              "E-P3-I-001-MODEL",
+              "E-P3-I-001-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L002"
+            ],
+            "evidence_keys": [
+              "E-P3-I-002-MODEL",
+              "E-P3-I-002-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L003"
+            ],
+            "evidence_keys": [
+              "E-P3-I-003-MODEL",
+              "E-P3-I-003-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L004"
+            ],
+            "evidence_keys": [
+              "E-P3-I-004-MODEL",
+              "E-P3-I-004-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L005"
+            ],
+            "evidence_keys": [
+              "E-P3-I-005-MODEL",
+              "E-P3-I-005-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L006"
+            ],
+            "evidence_keys": [
+              "E-P3-I-006-MODEL",
+              "E-P3-I-006-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L007"
+            ],
+            "evidence_keys": [
+              "E-P3-I-007-MODEL",
+              "E-P3-I-007-BRAND"
+            ]
+          }
+        ],
+        "weak_candidates": [],
+        "issues": [
+          {
+            "code": "WINBOND_GROUP_SCOPE_UNRESOLVED",
+            "row_ref": "D-df72916dc019-R013",
+            "field": "quantity",
+            "message": "委托同型号行与查货批次均有多行，批次/LOT与数量不能逐行闭合，禁止按数量或列表位置静默分配。"
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-df72916dc019-R014",
+        "match_status": "MULTIPLE_CANDIDATES",
+        "selected_raw_row_ids": [],
+        "coverage": {
+          "status": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "evidence_keys": []
+        },
+        "evidence_keys": [],
+        "candidate_groups": [
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L001"
+            ],
+            "evidence_keys": [
+              "E-P3-I-001-MODEL",
+              "E-P3-I-001-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L002"
+            ],
+            "evidence_keys": [
+              "E-P3-I-002-MODEL",
+              "E-P3-I-002-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L003"
+            ],
+            "evidence_keys": [
+              "E-P3-I-003-MODEL",
+              "E-P3-I-003-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L004"
+            ],
+            "evidence_keys": [
+              "E-P3-I-004-MODEL",
+              "E-P3-I-004-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L005"
+            ],
+            "evidence_keys": [
+              "E-P3-I-005-MODEL",
+              "E-P3-I-005-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L006"
+            ],
+            "evidence_keys": [
+              "E-P3-I-006-MODEL",
+              "E-P3-I-006-BRAND"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L007"
+            ],
+            "evidence_keys": [
+              "E-P3-I-007-MODEL",
+              "E-P3-I-007-BRAND"
+            ]
+          }
+        ],
+        "weak_candidates": [],
+        "issues": [
+          {
+            "code": "WINBOND_GROUP_SCOPE_UNRESOLVED",
+            "row_ref": "D-df72916dc019-R014",
+            "field": "quantity",
+            "message": "委托同型号行与查货批次均有多行，批次/LOT与数量不能逐行闭合，禁止按数量或列表位置静默分配。"
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-df72916dc019-R015",
+        "match_status": "MATCHED",
+        "selected_raw_row_ids": [
+          "I-F-970b59d6d5b8-26036383-L008",
+          "I-F-970b59d6d5b8-26036383-L009"
+        ],
+        "coverage": {
+          "status": "COMPLETE",
+          "overlap": "DISJOINT",
+          "evidence_keys": [
+            "E-P3-I-008-SCOPE",
+            "E-P3-I-009-SCOPE"
+          ]
+        },
+        "evidence_keys": [
+          "E-P3-O-009-MODEL",
+          "E-P3-I-008-MODEL",
+          "E-P3-I-009-MODEL",
+          "E-P3-O-009-BRAND",
+          "E-P3-I-008-BRAND",
+          "E-P3-I-009-BRAND",
+          "E-P3-I-008-SCOPE",
+          "E-P3-I-009-SCOPE"
+        ],
+        "candidate_groups": [],
+        "weak_candidates": [],
+        "issues": []
+      }
+    ],
+    "issues": []
+  }
+}

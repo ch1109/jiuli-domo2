@@ -1,0 +1,12 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P4",
+  "request_id": "REMAINING-英卡-抽+整-20260921-P4",
+  "context": {
+    "customer_id": "C-b212996858bd",
+    "mode": "VERIFY_FIELDS"
+  },
+  "input": {
+    "target_rows": []
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P4",
+  "request_id": "REMAINING-2026ACSY003-20260921-P4",
+  "context": {
+    "customer_id": "C-7ad6719f6d43",
+    "mode": "VERIFY_FIELDS"
+  },
+  "input": {
+    "target_rows": []
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P3",
+  "request_id": "REMAINING-2026(DG)ZW050-20260921-P3",
+  "output": {
+    "processing_status": "INVALID_INPUT",
+    "row_relations": [],
+    "issues": [
+      {
+        "code": "ORDER_CUSTOMER_UNRESOLVED",
+        "row_ref": null,
+        "field": "customer_id",
+        "message": "P1 未解析主体委托客户，禁止自动建立同客户关系。"
+      }
+    ]
+  }
+}

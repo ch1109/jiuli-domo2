@@ -1,0 +1,2427 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P2",
+  "request_id": "20260921-2026BMH001-P2",
+  "output": {
+    "processing_status": "PARTIAL",
+    "customer_id": "C-80d0a4f9a7ac",
+    "read_status": [
+      {
+        "file_id": "F-b98a101d8392",
+        "read_segments": [
+          "page:1"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      },
+      {
+        "file_id": "F-c5195fdb15a3",
+        "read_segments": [
+          "page:1",
+          "page:2"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      },
+      {
+        "file_id": "F-94d0c3955b2a",
+        "read_segments": [
+          "page:1",
+          "page:2",
+          "page:3"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      },
+      {
+        "file_id": "F-39b0b8e82a3a",
+        "read_segments": [
+          "page:1"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      },
+      {
+        "file_id": "F-a06d575c587d",
+        "read_segments": [
+          "page:1"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      },
+      {
+        "file_id": "F-69127fcfa5c3",
+        "read_segments": [
+          "page:1",
+          "page:2"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      },
+      {
+        "file_id": "F-de4e00bf55d8",
+        "read_segments": [
+          "page:1"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      },
+      {
+        "file_id": "F-b03e0011849f",
+        "read_segments": [
+          "page:1"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      },
+      {
+        "file_id": "F-cb09c02b9ed5",
+        "read_segments": [
+          "page:1"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      },
+      {
+        "file_id": "F-f29936219cd1",
+        "read_segments": [
+          "page:1",
+          "page:2"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      },
+      {
+        "file_id": "F-276766064bb2",
+        "read_segments": [
+          "page:1",
+          "page:2",
+          "page:3",
+          "page:4",
+          "page:5",
+          "page:6"
+        ],
+        "unread_segments": [
+          "page:7",
+          "page:8"
+        ],
+        "status": "INCOMPLETE"
+      }
+    ],
+    "logical_inspections": [
+      {
+        "warehouse_no": "26027114",
+        "sources": [
+          {
+            "file_id": "F-b98a101d8392",
+            "page": 1,
+            "sheet": null,
+            "row": null,
+            "column": "barcode",
+            "raw_text": "26027114"
+          }
+        ],
+        "range_status": "COMPLETE"
+      },
+      {
+        "warehouse_no": "26027143",
+        "sources": [
+          {
+            "file_id": "F-c5195fdb15a3",
+            "page": 1,
+            "sheet": null,
+            "row": null,
+            "column": "barcode",
+            "raw_text": "26027143"
+          }
+        ],
+        "range_status": "COMPLETE"
+      },
+      {
+        "warehouse_no": "26027191",
+        "sources": [
+          {
+            "file_id": "F-94d0c3955b2a",
+            "page": 1,
+            "sheet": null,
+            "row": null,
+            "column": "barcode",
+            "raw_text": "26027191"
+          }
+        ],
+        "range_status": "COMPLETE"
+      },
+      {
+        "warehouse_no": "26027254",
+        "sources": [
+          {
+            "file_id": "F-39b0b8e82a3a",
+            "page": 1,
+            "sheet": null,
+            "row": null,
+            "column": "barcode",
+            "raw_text": "26027254"
+          }
+        ],
+        "range_status": "COMPLETE"
+      },
+      {
+        "warehouse_no": "26027251",
+        "sources": [
+          {
+            "file_id": "F-a06d575c587d",
+            "page": 1,
+            "sheet": null,
+            "row": null,
+            "column": "barcode",
+            "raw_text": "26027251"
+          }
+        ],
+        "range_status": "COMPLETE"
+      },
+      {
+        "warehouse_no": "26027300",
+        "sources": [
+          {
+            "file_id": "F-69127fcfa5c3",
+            "page": 1,
+            "sheet": null,
+            "row": null,
+            "column": "barcode",
+            "raw_text": "26027300"
+          }
+        ],
+        "range_status": "COMPLETE"
+      },
+      {
+        "warehouse_no": "26027299",
+        "sources": [
+          {
+            "file_id": "F-de4e00bf55d8",
+            "page": 1,
+            "sheet": null,
+            "row": null,
+            "column": "barcode",
+            "raw_text": "26027299"
+          }
+        ],
+        "range_status": "COMPLETE"
+      },
+      {
+        "warehouse_no": "26027298",
+        "sources": [
+          {
+            "file_id": "F-b03e0011849f",
+            "page": 1,
+            "sheet": null,
+            "row": null,
+            "column": "barcode",
+            "raw_text": "26027298"
+          }
+        ],
+        "range_status": "COMPLETE"
+      },
+      {
+        "warehouse_no": "26027323",
+        "sources": [
+          {
+            "file_id": "F-cb09c02b9ed5",
+            "page": 1,
+            "sheet": null,
+            "row": null,
+            "column": "barcode",
+            "raw_text": "26027323"
+          }
+        ],
+        "range_status": "COMPLETE"
+      },
+      {
+        "warehouse_no": "26027322",
+        "sources": [
+          {
+            "file_id": "F-f29936219cd1",
+            "page": 1,
+            "sheet": null,
+            "row": null,
+            "column": "barcode",
+            "raw_text": "26027322"
+          }
+        ],
+        "range_status": "COMPLETE"
+      },
+      {
+        "warehouse_no": "26027223",
+        "sources": [
+          {
+            "file_id": "F-276766064bb2",
+            "page": 1,
+            "sheet": null,
+            "row": null,
+            "column": "barcode",
+            "raw_text": "26027223"
+          }
+        ],
+        "range_status": "PARTIAL"
+      }
+    ],
+    "raw_rows": [
+      {
+        "record_no": 1,
+        "warehouse_no": "26027114",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-b98a101d8392",
+          "page": 1,
+          "sheet": null,
+          "row": 1,
+          "column": null,
+          "raw_text": "商品表第1行"
+        },
+        "fields": {
+          "brand": "TI",
+          "model": "TXS0108EPWR",
+          "quantity": "16000",
+          "unit": "EA"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-b98a101d8392",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-b98a101d8392",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "TXS0108EPWR"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-b98a101d8392",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "16000"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-b98a101d8392",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "UNIT",
+              "raw_text": "EA"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "CN",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-b98a101d8392",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "CN"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 2,
+        "warehouse_no": "26027143",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-c5195fdb15a3",
+          "page": 1,
+          "sheet": null,
+          "row": 1,
+          "column": null,
+          "raw_text": "商品表第1行"
+        },
+        "fields": {
+          "brand": "TI",
+          "model": "TXS0108EPWR",
+          "quantity": "30000",
+          "unit": "EA"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-c5195fdb15a3",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-c5195fdb15a3",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "TXS0108EPWR"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-c5195fdb15a3",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "30000"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-c5195fdb15a3",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "UNIT",
+              "raw_text": "EA"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "CN",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-c5195fdb15a3",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "CN"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 3,
+        "warehouse_no": "26027143",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-c5195fdb15a3",
+          "page": 2,
+          "sheet": null,
+          "row": 2,
+          "column": null,
+          "raw_text": "商品表第2行"
+        },
+        "fields": {
+          "brand": "TI",
+          "model": "TXS0108EPWR",
+          "quantity": "40000",
+          "unit": "EA"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-c5195fdb15a3",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-c5195fdb15a3",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "PN",
+              "raw_text": "TXS0108EPWR"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-c5195fdb15a3",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "QTY",
+              "raw_text": "40000"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-c5195fdb15a3",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "UNIT",
+              "raw_text": "EA"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "CN",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-c5195fdb15a3",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "COO",
+              "raw_text": "CN"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 4,
+        "warehouse_no": "26027191",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-94d0c3955b2a",
+          "page": 1,
+          "sheet": null,
+          "row": 1,
+          "column": null,
+          "raw_text": "商品表第1行"
+        },
+        "fields": {
+          "brand": "TI",
+          "model": "TLV62569DBVR",
+          "quantity": "150000",
+          "unit": "EA"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-94d0c3955b2a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-94d0c3955b2a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "TLV62569DBVR"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-94d0c3955b2a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "150000"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-94d0c3955b2a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "UNIT",
+              "raw_text": "EA"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "US",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-94d0c3955b2a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "US"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 5,
+        "warehouse_no": "26027191",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-94d0c3955b2a",
+          "page": 2,
+          "sheet": null,
+          "row": 2,
+          "column": null,
+          "raw_text": "商品表第2行"
+        },
+        "fields": {
+          "brand": "TI",
+          "model": "TLV62569DBVR",
+          "quantity": "150000",
+          "unit": "EA"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-94d0c3955b2a",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-94d0c3955b2a",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "PN",
+              "raw_text": "TLV62569DBVR"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-94d0c3955b2a",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "QTY",
+              "raw_text": "150000"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-94d0c3955b2a",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "UNIT",
+              "raw_text": "EA"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "US",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-94d0c3955b2a",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "COO",
+              "raw_text": "US"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 6,
+        "warehouse_no": "26027191",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-94d0c3955b2a",
+          "page": 3,
+          "sheet": null,
+          "row": 3,
+          "column": null,
+          "raw_text": "商品表第3行"
+        },
+        "fields": {
+          "brand": "TI",
+          "model": "TLV62569DBVR",
+          "quantity": "150000",
+          "unit": "EA"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-94d0c3955b2a",
+              "page": 3,
+              "sheet": null,
+              "row": 3,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-94d0c3955b2a",
+              "page": 3,
+              "sheet": null,
+              "row": 3,
+              "column": "PN",
+              "raw_text": "TLV62569DBVR"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-94d0c3955b2a",
+              "page": 3,
+              "sheet": null,
+              "row": 3,
+              "column": "QTY",
+              "raw_text": "150000"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-94d0c3955b2a",
+              "page": 3,
+              "sheet": null,
+              "row": 3,
+              "column": "UNIT",
+              "raw_text": "EA"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "US",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-94d0c3955b2a",
+              "page": 3,
+              "sheet": null,
+              "row": 3,
+              "column": "COO",
+              "raw_text": "US"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 7,
+        "warehouse_no": "26027254",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-39b0b8e82a3a",
+          "page": 1,
+          "sheet": null,
+          "row": 1,
+          "column": null,
+          "raw_text": "商品表第1行"
+        },
+        "fields": {
+          "brand": "TI",
+          "model": "TXS0108EPWR",
+          "quantity": "26000",
+          "unit": "EA"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-39b0b8e82a3a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-39b0b8e82a3a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "TXS0108EPWR"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-39b0b8e82a3a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "26000"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-39b0b8e82a3a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "UNIT",
+              "raw_text": "EA"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "CN",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-39b0b8e82a3a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "CN"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 8,
+        "warehouse_no": "26027251",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-a06d575c587d",
+          "page": 1,
+          "sheet": null,
+          "row": 1,
+          "column": null,
+          "raw_text": "商品表第1行"
+        },
+        "fields": {
+          "brand": "TI",
+          "model": "SN74HC245PWR",
+          "quantity": "24000",
+          "unit": "EA"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-a06d575c587d",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-a06d575c587d",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "SN74HC245PWR"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-a06d575c587d",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "24000"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-a06d575c587d",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "UNIT",
+              "raw_text": "EA"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "US",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-a06d575c587d",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "US"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 9,
+        "warehouse_no": "26027300",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-69127fcfa5c3",
+          "page": 1,
+          "sheet": null,
+          "row": 1,
+          "column": null,
+          "raw_text": "商品表第1行"
+        },
+        "fields": {
+          "brand": "TI",
+          "model": "SN74LVC1G04DBVR",
+          "quantity": "150000",
+          "unit": "EA"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-69127fcfa5c3",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-69127fcfa5c3",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "SN74LVC1G04DBVR"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-69127fcfa5c3",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "150000"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-69127fcfa5c3",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "UNIT",
+              "raw_text": "EA"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "DE",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-69127fcfa5c3",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "DE"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 10,
+        "warehouse_no": "26027300",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-69127fcfa5c3",
+          "page": 2,
+          "sheet": null,
+          "row": 2,
+          "column": null,
+          "raw_text": "商品表第2行"
+        },
+        "fields": {
+          "brand": "TI",
+          "model": "INA180A2IDBVR",
+          "quantity": "9000",
+          "unit": "EA"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-69127fcfa5c3",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-69127fcfa5c3",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "PN",
+              "raw_text": "INA180A2IDBVR"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-69127fcfa5c3",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "QTY",
+              "raw_text": "9000"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-69127fcfa5c3",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "UNIT",
+              "raw_text": "EA"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "JP",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-69127fcfa5c3",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "COO",
+              "raw_text": "JP"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 11,
+        "warehouse_no": "26027299",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-de4e00bf55d8",
+          "page": 1,
+          "sheet": null,
+          "row": 1,
+          "column": null,
+          "raw_text": "商品表第1行"
+        },
+        "fields": {
+          "brand": "TI",
+          "model": "LM2576SX-3.3/NOPB",
+          "quantity": "500",
+          "unit": "EA"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-de4e00bf55d8",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-de4e00bf55d8",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "LM2576SX-3.3/NOPB"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-de4e00bf55d8",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "500"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-de4e00bf55d8",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "UNIT",
+              "raw_text": "EA"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "GB",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-de4e00bf55d8",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "GB"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 12,
+        "warehouse_no": "26027298",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-b03e0011849f",
+          "page": 1,
+          "sheet": null,
+          "row": 1,
+          "column": null,
+          "raw_text": "商品表第1行"
+        },
+        "fields": {
+          "brand": "TI",
+          "model": "LM2576SX-3.3/NOPB",
+          "quantity": "4000",
+          "unit": "EA",
+          "remark": "同一印刷商品行含 DE:2500 与 GB:1500，未拆分"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-b03e0011849f",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-b03e0011849f",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "LM2576SX-3.3/NOPB"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-b03e0011849f",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "4000"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-b03e0011849f",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "UNIT",
+              "raw_text": "EA"
+            }
+          ],
+          "remark": [
+            {
+              "file_id": "F-b03e0011849f",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "DE:2500; GB:1500"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "DE",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-b03e0011849f",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "DE:2500"
+            }
+          },
+          {
+            "value": "GB",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-b03e0011849f",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "GB:1500"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 13,
+        "warehouse_no": "26027323",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-cb09c02b9ed5",
+          "page": 1,
+          "sheet": null,
+          "row": 1,
+          "column": null,
+          "raw_text": "商品表第1行"
+        },
+        "fields": {
+          "brand": "TI",
+          "model": "TPS51200DRCR",
+          "quantity": "12000",
+          "unit": "EA"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-cb09c02b9ed5",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-cb09c02b9ed5",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "TPS51200DRCR"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-cb09c02b9ed5",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "12000"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-cb09c02b9ed5",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "UNIT",
+              "raw_text": "EA"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "JP",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-cb09c02b9ed5",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "JP"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 14,
+        "warehouse_no": "26027322",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-f29936219cd1",
+          "page": 1,
+          "sheet": null,
+          "row": 1,
+          "column": null,
+          "raw_text": "商品表第1行"
+        },
+        "fields": {
+          "brand": "TI",
+          "model": "SN74LVC08ADR",
+          "quantity": "20000",
+          "unit": "EA"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-f29936219cd1",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-f29936219cd1",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "SN74LVC08ADR"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-f29936219cd1",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "20000"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-f29936219cd1",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "UNIT",
+              "raw_text": "EA"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "US",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-f29936219cd1",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "US"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 15,
+        "warehouse_no": "26027322",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-f29936219cd1",
+          "page": 2,
+          "sheet": null,
+          "row": 2,
+          "column": null,
+          "raw_text": "商品表第2行"
+        },
+        "fields": {
+          "brand": "TI",
+          "model": "LM2904BIDR",
+          "quantity": "150000",
+          "unit": "EA"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-f29936219cd1",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-f29936219cd1",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "PN",
+              "raw_text": "LM2904BIDR"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-f29936219cd1",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "QTY",
+              "raw_text": "150000"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-f29936219cd1",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "UNIT",
+              "raw_text": "EA"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "US",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-f29936219cd1",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "COO",
+              "raw_text": "US"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 16,
+        "warehouse_no": "26027223",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-276766064bb2",
+          "page": 1,
+          "sheet": null,
+          "row": 1,
+          "column": null,
+          "raw_text": "商品表第1行"
+        },
+        "fields": {
+          "brand": "TI",
+          "model": "SN74AHC1G08DBVR",
+          "quantity": "300000",
+          "unit": "EA",
+          "product_name": "Gate 1-Element 2-IN CMOS Automotive 5-Pin SOT-23 T/R",
+          "net_weight": "19.6",
+          "net_weight_unit": "KG"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "SN74AHC1G08DBVR"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "300000"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "UNIT",
+              "raw_text": "EA"
+            }
+          ],
+          "product_name": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "DESCRIPTION",
+              "raw_text": "Gate 1-Element 2-IN CMOS Automotive 5-Pin SOT-23 T/R"
+            }
+          ],
+          "net_weight": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "NET WEIGHT (KG)",
+              "raw_text": "19.6"
+            }
+          ],
+          "net_weight_unit": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "NET WEIGHT",
+              "raw_text": "KG"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "US",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "US"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 17,
+        "warehouse_no": "26027223",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-276766064bb2",
+          "page": 2,
+          "sheet": null,
+          "row": 2,
+          "column": null,
+          "raw_text": "商品表第2行"
+        },
+        "fields": {
+          "brand": "TI",
+          "model": "SN74AHC1G08DBVR",
+          "quantity": "300000",
+          "unit": "EA",
+          "product_name": "Gate 1-Element 2-IN CMOS Automotive 5-Pin SOT-23 T/R",
+          "net_weight": "19.2",
+          "net_weight_unit": "KG"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "PN",
+              "raw_text": "SN74AHC1G08DBVR"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "QTY",
+              "raw_text": "300000"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "UNIT",
+              "raw_text": "EA"
+            }
+          ],
+          "product_name": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "DESCRIPTION",
+              "raw_text": "Gate 1-Element 2-IN CMOS Automotive 5-Pin SOT-23 T/R"
+            }
+          ],
+          "net_weight": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "NET WEIGHT (KG)",
+              "raw_text": "19.2"
+            }
+          ],
+          "net_weight_unit": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 2,
+              "sheet": null,
+              "row": null,
+              "column": "NET WEIGHT",
+              "raw_text": "KG"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "US",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 2,
+              "sheet": null,
+              "row": 2,
+              "column": "COO",
+              "raw_text": "US"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 18,
+        "warehouse_no": "26027223",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-276766064bb2",
+          "page": 3,
+          "sheet": null,
+          "row": 3,
+          "column": null,
+          "raw_text": "商品表第3行"
+        },
+        "fields": {
+          "brand": "TI",
+          "model": "SN74AHC1G08DBVR",
+          "quantity": "300000",
+          "unit": "EA",
+          "product_name": "Gate 1-Element 2-IN CMOS Automotive 5-Pin SOT-23 T/R",
+          "net_weight": "24.1",
+          "net_weight_unit": "KG"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 3,
+              "sheet": null,
+              "row": 3,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 3,
+              "sheet": null,
+              "row": 3,
+              "column": "PN",
+              "raw_text": "SN74AHC1G08DBVR"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 3,
+              "sheet": null,
+              "row": 3,
+              "column": "QTY",
+              "raw_text": "300000"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 3,
+              "sheet": null,
+              "row": 3,
+              "column": "UNIT",
+              "raw_text": "EA"
+            }
+          ],
+          "product_name": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 3,
+              "sheet": null,
+              "row": 3,
+              "column": "DESCRIPTION",
+              "raw_text": "Gate 1-Element 2-IN CMOS Automotive 5-Pin SOT-23 T/R"
+            }
+          ],
+          "net_weight": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 3,
+              "sheet": null,
+              "row": 3,
+              "column": "NET WEIGHT (KG)",
+              "raw_text": "24.1"
+            }
+          ],
+          "net_weight_unit": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 3,
+              "sheet": null,
+              "row": null,
+              "column": "NET WEIGHT",
+              "raw_text": "KG"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "US",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 3,
+              "sheet": null,
+              "row": 3,
+              "column": "COO",
+              "raw_text": "US"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 19,
+        "warehouse_no": "26027223",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-276766064bb2",
+          "page": 4,
+          "sheet": null,
+          "row": 4,
+          "column": null,
+          "raw_text": "商品表第4行"
+        },
+        "fields": {
+          "brand": "TI",
+          "model": "SN74AHC1G08DBVR",
+          "quantity": "120000",
+          "unit": "EA",
+          "product_name": "Gate 1-Element 2-IN CMOS Automotive 5-Pin SOT-23 T/R"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 4,
+              "sheet": null,
+              "row": 4,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 4,
+              "sheet": null,
+              "row": 4,
+              "column": "PN",
+              "raw_text": "SN74AHC1G08DBVR"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 4,
+              "sheet": null,
+              "row": 4,
+              "column": "QTY",
+              "raw_text": "120000"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 4,
+              "sheet": null,
+              "row": 4,
+              "column": "UNIT",
+              "raw_text": "EA"
+            }
+          ],
+          "product_name": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 4,
+              "sheet": null,
+              "row": 4,
+              "column": "DESCRIPTION",
+              "raw_text": "Gate 1-Element 2-IN CMOS Automotive 5-Pin SOT-23 T/R"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "US",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 4,
+              "sheet": null,
+              "row": 4,
+              "column": "COO",
+              "raw_text": "US"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 20,
+        "warehouse_no": "26027223",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-276766064bb2",
+          "page": 4,
+          "sheet": null,
+          "row": 5,
+          "column": null,
+          "raw_text": "商品表第5行"
+        },
+        "fields": {
+          "brand": "TI",
+          "model": "SN74AHC1G08DBVR",
+          "quantity": "180000",
+          "unit": "EA",
+          "product_name": "Gate 1-Element 2-IN CMOS Automotive 5-Pin SOT-23 T/R"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 4,
+              "sheet": null,
+              "row": 5,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 4,
+              "sheet": null,
+              "row": 5,
+              "column": "PN",
+              "raw_text": "SN74AHC1G08DBVR"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 4,
+              "sheet": null,
+              "row": 5,
+              "column": "QTY",
+              "raw_text": "180000"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 4,
+              "sheet": null,
+              "row": 5,
+              "column": "UNIT",
+              "raw_text": "EA"
+            }
+          ],
+          "product_name": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 4,
+              "sheet": null,
+              "row": 5,
+              "column": "DESCRIPTION",
+              "raw_text": "Gate 1-Element 2-IN CMOS Automotive 5-Pin SOT-23 T/R"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "US",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 4,
+              "sheet": null,
+              "row": 5,
+              "column": "COO",
+              "raw_text": "US"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 21,
+        "warehouse_no": "26027223",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-276766064bb2",
+          "page": 5,
+          "sheet": null,
+          "row": 6,
+          "column": null,
+          "raw_text": "商品表第6行"
+        },
+        "fields": {
+          "brand": "TI",
+          "model": "SN74AHC1G08DBVR",
+          "quantity": "300000",
+          "unit": "EA",
+          "product_name": "Gate 1-Element 2-IN CMOS Automotive 5-Pin SOT-23 T/R",
+          "net_weight": "17.0",
+          "net_weight_unit": "KG"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 5,
+              "sheet": null,
+              "row": 6,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 5,
+              "sheet": null,
+              "row": 6,
+              "column": "PN",
+              "raw_text": "SN74AHC1G08DBVR"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 5,
+              "sheet": null,
+              "row": 6,
+              "column": "QTY",
+              "raw_text": "300000"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 5,
+              "sheet": null,
+              "row": 6,
+              "column": "UNIT",
+              "raw_text": "EA"
+            }
+          ],
+          "product_name": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 5,
+              "sheet": null,
+              "row": 6,
+              "column": "DESCRIPTION",
+              "raw_text": "Gate 1-Element 2-IN CMOS Automotive 5-Pin SOT-23 T/R"
+            }
+          ],
+          "net_weight": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 5,
+              "sheet": null,
+              "row": 6,
+              "column": "NET WEIGHT (KG)",
+              "raw_text": "17.0"
+            }
+          ],
+          "net_weight_unit": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 5,
+              "sheet": null,
+              "row": null,
+              "column": "NET WEIGHT",
+              "raw_text": "KG"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "US",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 5,
+              "sheet": null,
+              "row": 6,
+              "column": "COO",
+              "raw_text": "US"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 22,
+        "warehouse_no": "26027223",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-276766064bb2",
+          "page": 6,
+          "sheet": null,
+          "row": 7,
+          "column": null,
+          "raw_text": "商品表第7行"
+        },
+        "fields": {
+          "brand": "TI",
+          "model": "SN74AHC1G08DBVR",
+          "quantity": "300000",
+          "unit": "EA",
+          "product_name": "Gate 1-Element 2-IN CMOS Automotive 5-Pin SOT-23 T/R",
+          "net_weight": "25.3",
+          "net_weight_unit": "KG"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 6,
+              "sheet": null,
+              "row": 7,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 6,
+              "sheet": null,
+              "row": 7,
+              "column": "PN",
+              "raw_text": "SN74AHC1G08DBVR"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 6,
+              "sheet": null,
+              "row": 7,
+              "column": "QTY",
+              "raw_text": "300000"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 6,
+              "sheet": null,
+              "row": 7,
+              "column": "UNIT",
+              "raw_text": "EA"
+            }
+          ],
+          "product_name": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 6,
+              "sheet": null,
+              "row": 7,
+              "column": "DESCRIPTION",
+              "raw_text": "Gate 1-Element 2-IN CMOS Automotive 5-Pin SOT-23 T/R"
+            }
+          ],
+          "net_weight": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 6,
+              "sheet": null,
+              "row": 7,
+              "column": "NET WEIGHT (KG)",
+              "raw_text": "25.3"
+            }
+          ],
+          "net_weight_unit": [
+            {
+              "file_id": "F-276766064bb2",
+              "page": 6,
+              "sheet": null,
+              "row": null,
+              "column": "NET WEIGHT",
+              "raw_text": "KG"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "US",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 6,
+              "sheet": null,
+              "row": 7,
+              "column": "COO",
+              "raw_text": "US"
+            }
+          }
+        ],
+        "manual_marks": []
+      }
+    ],
+    "scope_records": [
+      {
+        "warehouse_no": "26027298",
+        "kind": "QUANTITY_GROUP",
+        "identifier": "origin-components",
+        "member_record_nos": [
+          12
+        ],
+        "range_complete": true,
+        "has_unresolved_goods": false,
+        "measurements": [
+          {
+            "field": "quantity",
+            "value": "2500",
+            "unit": "EA",
+            "fact_kind": "EXPLICIT",
+            "source": {
+              "file_id": "F-b03e0011849f",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "DE:2500"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "1500",
+            "unit": "EA",
+            "fact_kind": "EXPLICIT",
+            "source": {
+              "file_id": "F-b03e0011849f",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "GB:1500"
+            }
+          },
+          {
+            "field": "origin",
+            "value": "DE",
+            "unit": "",
+            "fact_kind": "COO",
+            "source": {
+              "file_id": "F-b03e0011849f",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "DE:2500"
+            }
+          },
+          {
+            "field": "origin",
+            "value": "GB",
+            "unit": "",
+            "fact_kind": "COO",
+            "source": {
+              "file_id": "F-b03e0011849f",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "GB:1500"
+            }
+          }
+        ],
+        "source": {
+          "file_id": "F-b03e0011849f",
+          "page": 1,
+          "sheet": null,
+          "row": 1,
+          "column": "COO",
+          "raw_text": "DE:2500; GB:1500"
+        }
+      },
+      {
+        "warehouse_no": "26027223",
+        "kind": "QUANTITY_GROUP",
+        "identifier": "page-4-two-batches",
+        "member_record_nos": [
+          19,
+          20
+        ],
+        "range_complete": true,
+        "has_unresolved_goods": false,
+        "measurements": [
+          {
+            "field": "net_weight",
+            "value": "22.6",
+            "unit": "KG",
+            "fact_kind": "EXPLICIT",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 4,
+              "sheet": null,
+              "row": 1,
+              "column": "NET WEIGHT (KG)",
+              "raw_text": "22.6"
+            }
+          }
+        ],
+        "source": {
+          "file_id": "F-276766064bb2",
+          "page": 4,
+          "sheet": null,
+          "row": null,
+          "column": "NET WEIGHT (KG)",
+          "raw_text": "22.6"
+        }
+      },
+      {
+        "warehouse_no": "26027223",
+        "kind": "LOGICAL_TOTAL",
+        "identifier": "printed-total-page-1",
+        "member_record_nos": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "range_complete": false,
+        "has_unresolved_goods": true,
+        "measurements": [
+          {
+            "field": "item_count",
+            "value": "8",
+            "unit": "items",
+            "fact_kind": "EXPLICIT",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "# OF ITEMS SHIPPED",
+              "raw_text": "8"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "1800000",
+            "unit": "EA",
+            "fact_kind": "EXPLICIT",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "QUANTITY SHIPPED",
+              "raw_text": "current-page sum 1800000"
+            }
+          },
+          {
+            "field": "packages",
+            "value": "29件/板",
+            "unit": "",
+            "fact_kind": "EXPLICIT",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "warehouse label",
+              "raw_text": "29件/板"
+            }
+          },
+          {
+            "field": "gross_weight",
+            "value": "136",
+            "unit": "KGS",
+            "fact_kind": "HANDWRITTEN_GW",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "warehouse label",
+              "raw_text": "136 KGS"
+            }
+          }
+        ],
+        "source": {
+          "file_id": "F-276766064bb2",
+          "page": 1,
+          "sheet": null,
+          "row": null,
+          "column": "total / label",
+          "raw_text": "8 items; 29件/板; 136 KGS"
+        }
+      }
+    ],
+    "issues": [
+      {
+        "code": "CUSTOMER_MISMATCH",
+        "row_ref": null,
+        "field": "customer_id",
+        "message": "查货文件 F-b98a101d8392 的抬头客户为 FUJIAN CENTERM INFORMATION CO., LTD，与请求客户深圳市百闽海科技有限公司不一致。"
+      },
+      {
+        "code": "CUSTOMER_MISMATCH",
+        "row_ref": null,
+        "field": "customer_id",
+        "message": "查货文件 F-c5195fdb15a3 的抬头客户为 FUJIAN CENTERM INFORMATION CO., LTD，与请求客户深圳市百闽海科技有限公司不一致。"
+      },
+      {
+        "code": "CUSTOMER_MISMATCH",
+        "row_ref": null,
+        "field": "customer_id",
+        "message": "查货文件 F-94d0c3955b2a 的抬头客户为 FUJIAN CENTERM INFORMATION CO., LTD，与请求客户深圳市百闽海科技有限公司不一致。"
+      },
+      {
+        "code": "CUSTOMER_MISMATCH",
+        "row_ref": null,
+        "field": "customer_id",
+        "message": "查货文件 F-39b0b8e82a3a 的抬头客户为 FUJIAN CENTERM INFORMATION CO., LTD，与请求客户深圳市百闽海科技有限公司不一致。"
+      },
+      {
+        "code": "CUSTOMER_MISMATCH",
+        "row_ref": null,
+        "field": "customer_id",
+        "message": "查货文件 F-a06d575c587d 的抬头客户为 FUJIAN CENTERM INFORMATION CO., LTD，与请求客户深圳市百闽海科技有限公司不一致。"
+      },
+      {
+        "code": "CUSTOMER_MISMATCH",
+        "row_ref": null,
+        "field": "customer_id",
+        "message": "查货文件 F-69127fcfa5c3 的抬头客户为 FUJIAN CENTERM INFORMATION CO., LTD，与请求客户深圳市百闽海科技有限公司不一致。"
+      },
+      {
+        "code": "CUSTOMER_MISMATCH",
+        "row_ref": null,
+        "field": "customer_id",
+        "message": "查货文件 F-de4e00bf55d8 的抬头客户为 FUJIAN CENTERM INFORMATION CO., LTD，与请求客户深圳市百闽海科技有限公司不一致。"
+      },
+      {
+        "code": "CUSTOMER_MISMATCH",
+        "row_ref": null,
+        "field": "customer_id",
+        "message": "查货文件 F-b03e0011849f 的抬头客户为 FUJIAN CENTERM INFORMATION CO., LTD，与请求客户深圳市百闽海科技有限公司不一致。"
+      },
+      {
+        "code": "CUSTOMER_MISMATCH",
+        "row_ref": null,
+        "field": "customer_id",
+        "message": "查货文件 F-cb09c02b9ed5 的抬头客户为 FUJIAN CENTERM INFORMATION CO., LTD，与请求客户深圳市百闽海科技有限公司不一致。"
+      },
+      {
+        "code": "CUSTOMER_MISMATCH",
+        "row_ref": null,
+        "field": "customer_id",
+        "message": "查货文件 F-f29936219cd1 的抬头客户为 FUJIAN CENTERM INFORMATION CO., LTD，与请求客户深圳市百闽海科技有限公司不一致。"
+      },
+      {
+        "code": "CUSTOMER_MISMATCH",
+        "row_ref": null,
+        "field": "customer_id",
+        "message": "查货文件 F-276766064bb2 的抬头客户为 FUJIAN STAR-NET AIOT TECHNOLOGY CO., LTD，与请求客户深圳市百闽海科技有限公司不一致。"
+      },
+      {
+        "code": "MISSING_PAGES",
+        "row_ref": null,
+        "field": null,
+        "message": "F-276766064bb2 原件标记 PAGE 1 OF 8，但实际仅读取到第1至6页，缺少第7、8页。"
+      },
+      {
+        "code": "ORIGIN_MULTI_VALUE",
+        "row_ref": 12,
+        "field": "origin",
+        "message": "F-b03e0011849f 同一印刷行保留 DE:2500 与 GB:1500 两个产地组成，未拆行。"
+      }
+    ]
+  }
+}

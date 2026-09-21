@@ -1,0 +1,664 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P2",
+  "request_id": "20260921-2026BMH001-P2",
+  "context": {
+    "customer_id": "C-80d0a4f9a7ac",
+    "normalization": {
+      "countries": {
+        "CN": "中国",
+        "US": "美国",
+        "DE": "德国",
+        "GB": "英国",
+        "JP": "日本"
+      },
+      "units": {
+        "EA": "个",
+        "PCS": "个"
+      }
+    }
+  },
+  "input": {
+    "files": [
+      {
+        "file_id": "F-b98a101d8392",
+        "segments": [
+          "page:1"
+        ],
+        "content": {
+          "source_path": "真实整单样本/2026BMH001/查货文件/1770115896818.pdf",
+          "page_count": 1,
+          "read_pages": [
+            1
+          ],
+          "missing_pages": [],
+          "barcode": "26027114",
+          "sold_to": "FUJIAN CENTERM INFORMATION CO., LTD",
+          "table": {
+            "headers": [
+              "PN",
+              "DESCRIPTION",
+              "CUST PN",
+              "CUST PO NUM",
+              "QTY",
+              "UNIT",
+              "NET WEIGHT (KG)",
+              "COO"
+            ],
+            "rows": [
+              {
+                "page": 1,
+                "row": 1,
+                "model": "TXS0108EPWR",
+                "brand": "TI",
+                "description": "",
+                "quantity": "16000",
+                "unit": "EA",
+                "origin": "CN",
+                "net_weight": "",
+                "gross_weight": ""
+              }
+            ]
+          },
+          "annotations": {}
+        }
+      },
+      {
+        "file_id": "F-c5195fdb15a3",
+        "segments": [
+          "page:1",
+          "page:2"
+        ],
+        "content": {
+          "source_path": "真实整单样本/2026BMH001/查货文件/1770186905078.pdf",
+          "page_count": 2,
+          "read_pages": [
+            1,
+            2
+          ],
+          "missing_pages": [],
+          "barcode": "26027143",
+          "sold_to": "FUJIAN CENTERM INFORMATION CO., LTD",
+          "table": {
+            "headers": [
+              "PN",
+              "DESCRIPTION",
+              "CUST PN",
+              "CUST PO NUM",
+              "QTY",
+              "UNIT",
+              "NET WEIGHT (KG)",
+              "COO"
+            ],
+            "rows": [
+              {
+                "page": 1,
+                "row": 1,
+                "model": "TXS0108EPWR",
+                "brand": "TI",
+                "description": "",
+                "quantity": "30000",
+                "unit": "EA",
+                "origin": "CN",
+                "net_weight": "",
+                "gross_weight": ""
+              },
+              {
+                "page": 2,
+                "row": 2,
+                "model": "TXS0108EPWR",
+                "brand": "TI",
+                "description": "",
+                "quantity": "40000",
+                "unit": "EA",
+                "origin": "CN",
+                "net_weight": "",
+                "gross_weight": ""
+              }
+            ]
+          },
+          "annotations": {}
+        }
+      },
+      {
+        "file_id": "F-94d0c3955b2a",
+        "segments": [
+          "page:1",
+          "page:2",
+          "page:3"
+        ],
+        "content": {
+          "source_path": "真实整单样本/2026BMH001/查货文件/1770260311026.pdf",
+          "page_count": 3,
+          "read_pages": [
+            1,
+            2,
+            3
+          ],
+          "missing_pages": [],
+          "barcode": "26027191",
+          "sold_to": "FUJIAN CENTERM INFORMATION CO., LTD",
+          "table": {
+            "headers": [
+              "PN",
+              "DESCRIPTION",
+              "CUST PN",
+              "CUST PO NUM",
+              "QTY",
+              "UNIT",
+              "NET WEIGHT (KG)",
+              "COO"
+            ],
+            "rows": [
+              {
+                "page": 1,
+                "row": 1,
+                "model": "TLV62569DBVR",
+                "brand": "TI",
+                "description": "",
+                "quantity": "150000",
+                "unit": "EA",
+                "origin": "US",
+                "net_weight": "",
+                "gross_weight": ""
+              },
+              {
+                "page": 2,
+                "row": 2,
+                "model": "TLV62569DBVR",
+                "brand": "TI",
+                "description": "",
+                "quantity": "150000",
+                "unit": "EA",
+                "origin": "US",
+                "net_weight": "",
+                "gross_weight": ""
+              },
+              {
+                "page": 3,
+                "row": 3,
+                "model": "TLV62569DBVR",
+                "brand": "TI",
+                "description": "",
+                "quantity": "150000",
+                "unit": "EA",
+                "origin": "US",
+                "net_weight": "",
+                "gross_weight": ""
+              }
+            ]
+          },
+          "annotations": {}
+        }
+      },
+      {
+        "file_id": "F-39b0b8e82a3a",
+        "segments": [
+          "page:1"
+        ],
+        "content": {
+          "source_path": "真实整单样本/2026BMH001/查货文件/1770349572218.pdf",
+          "page_count": 1,
+          "read_pages": [
+            1
+          ],
+          "missing_pages": [],
+          "barcode": "26027254",
+          "sold_to": "FUJIAN CENTERM INFORMATION CO., LTD",
+          "table": {
+            "headers": [
+              "PN",
+              "DESCRIPTION",
+              "CUST PN",
+              "CUST PO NUM",
+              "QTY",
+              "UNIT",
+              "NET WEIGHT (KG)",
+              "COO"
+            ],
+            "rows": [
+              {
+                "page": 1,
+                "row": 1,
+                "model": "TXS0108EPWR",
+                "brand": "TI",
+                "description": "",
+                "quantity": "26000",
+                "unit": "EA",
+                "origin": "CN",
+                "net_weight": "",
+                "gross_weight": ""
+              }
+            ]
+          },
+          "annotations": {}
+        }
+      },
+      {
+        "file_id": "F-a06d575c587d",
+        "segments": [
+          "page:1"
+        ],
+        "content": {
+          "source_path": "真实整单样本/2026BMH001/查货文件/1770349574703.pdf",
+          "page_count": 1,
+          "read_pages": [
+            1
+          ],
+          "missing_pages": [],
+          "barcode": "26027251",
+          "sold_to": "FUJIAN CENTERM INFORMATION CO., LTD",
+          "table": {
+            "headers": [
+              "PN",
+              "DESCRIPTION",
+              "CUST PN",
+              "CUST PO NUM",
+              "QTY",
+              "UNIT",
+              "NET WEIGHT (KG)",
+              "COO"
+            ],
+            "rows": [
+              {
+                "page": 1,
+                "row": 1,
+                "model": "SN74HC245PWR",
+                "brand": "TI",
+                "description": "",
+                "quantity": "24000",
+                "unit": "EA",
+                "origin": "US",
+                "net_weight": "",
+                "gross_weight": ""
+              }
+            ]
+          },
+          "annotations": {}
+        }
+      },
+      {
+        "file_id": "F-69127fcfa5c3",
+        "segments": [
+          "page:1",
+          "page:2"
+        ],
+        "content": {
+          "source_path": "真实整单样本/2026BMH001/查货文件/1770366210310.pdf",
+          "page_count": 2,
+          "read_pages": [
+            1,
+            2
+          ],
+          "missing_pages": [],
+          "barcode": "26027300",
+          "sold_to": "FUJIAN CENTERM INFORMATION CO., LTD",
+          "table": {
+            "headers": [
+              "PN",
+              "DESCRIPTION",
+              "CUST PN",
+              "CUST PO NUM",
+              "QTY",
+              "UNIT",
+              "NET WEIGHT (KG)",
+              "COO"
+            ],
+            "rows": [
+              {
+                "page": 1,
+                "row": 1,
+                "model": "SN74LVC1G04DBVR",
+                "brand": "TI",
+                "description": "",
+                "quantity": "150000",
+                "unit": "EA",
+                "origin": "DE",
+                "net_weight": "",
+                "gross_weight": ""
+              },
+              {
+                "page": 2,
+                "row": 2,
+                "model": "INA180A2IDBVR",
+                "brand": "TI",
+                "description": "",
+                "quantity": "9000",
+                "unit": "EA",
+                "origin": "JP",
+                "net_weight": "",
+                "gross_weight": ""
+              }
+            ]
+          },
+          "annotations": {}
+        }
+      },
+      {
+        "file_id": "F-de4e00bf55d8",
+        "segments": [
+          "page:1"
+        ],
+        "content": {
+          "source_path": "真实整单样本/2026BMH001/查货文件/1770366211262.pdf",
+          "page_count": 1,
+          "read_pages": [
+            1
+          ],
+          "missing_pages": [],
+          "barcode": "26027299",
+          "sold_to": "FUJIAN CENTERM INFORMATION CO., LTD",
+          "table": {
+            "headers": [
+              "PN",
+              "DESCRIPTION",
+              "CUST PN",
+              "CUST PO NUM",
+              "QTY",
+              "UNIT",
+              "NET WEIGHT (KG)",
+              "COO"
+            ],
+            "rows": [
+              {
+                "page": 1,
+                "row": 1,
+                "model": "LM2576SX-3.3/NOPB",
+                "brand": "TI",
+                "description": "",
+                "quantity": "500",
+                "unit": "EA",
+                "origin": "GB",
+                "net_weight": "",
+                "gross_weight": ""
+              }
+            ]
+          },
+          "annotations": {}
+        }
+      },
+      {
+        "file_id": "F-b03e0011849f",
+        "segments": [
+          "page:1"
+        ],
+        "content": {
+          "source_path": "真实整单样本/2026BMH001/查货文件/1770366212127.pdf",
+          "page_count": 1,
+          "read_pages": [
+            1
+          ],
+          "missing_pages": [],
+          "barcode": "26027298",
+          "sold_to": "FUJIAN CENTERM INFORMATION CO., LTD",
+          "table": {
+            "headers": [
+              "PN",
+              "DESCRIPTION",
+              "CUST PN",
+              "CUST PO NUM",
+              "QTY",
+              "UNIT",
+              "NET WEIGHT (KG)",
+              "COO"
+            ],
+            "rows": [
+              {
+                "page": 1,
+                "row": 1,
+                "model": "LM2576SX-3.3/NOPB",
+                "brand": "TI",
+                "description": "",
+                "quantity": "4000",
+                "unit": "EA",
+                "origin": "UNKNOWN",
+                "net_weight": "",
+                "gross_weight": ""
+              }
+            ]
+          },
+          "annotations": {
+            "origin_components": [
+              "DE:2500",
+              "GB:1500"
+            ]
+          }
+        }
+      },
+      {
+        "file_id": "F-cb09c02b9ed5",
+        "segments": [
+          "page:1"
+        ],
+        "content": {
+          "source_path": "真实整单样本/2026BMH001/查货文件/1770436102600.pdf",
+          "page_count": 1,
+          "read_pages": [
+            1
+          ],
+          "missing_pages": [],
+          "barcode": "26027323",
+          "sold_to": "FUJIAN CENTERM INFORMATION CO., LTD",
+          "table": {
+            "headers": [
+              "PN",
+              "DESCRIPTION",
+              "CUST PN",
+              "CUST PO NUM",
+              "QTY",
+              "UNIT",
+              "NET WEIGHT (KG)",
+              "COO"
+            ],
+            "rows": [
+              {
+                "page": 1,
+                "row": 1,
+                "model": "TPS51200DRCR",
+                "brand": "TI",
+                "description": "",
+                "quantity": "12000",
+                "unit": "EA",
+                "origin": "JP",
+                "net_weight": "",
+                "gross_weight": ""
+              }
+            ]
+          },
+          "annotations": {}
+        }
+      },
+      {
+        "file_id": "F-f29936219cd1",
+        "segments": [
+          "page:1",
+          "page:2"
+        ],
+        "content": {
+          "source_path": "真实整单样本/2026BMH001/查货文件/1770436114845.pdf",
+          "page_count": 2,
+          "read_pages": [
+            1,
+            2
+          ],
+          "missing_pages": [],
+          "barcode": "26027322",
+          "sold_to": "FUJIAN CENTERM INFORMATION CO., LTD",
+          "table": {
+            "headers": [
+              "PN",
+              "DESCRIPTION",
+              "CUST PN",
+              "CUST PO NUM",
+              "QTY",
+              "UNIT",
+              "NET WEIGHT (KG)",
+              "COO"
+            ],
+            "rows": [
+              {
+                "page": 1,
+                "row": 1,
+                "model": "SN74LVC08ADR",
+                "brand": "TI",
+                "description": "",
+                "quantity": "20000",
+                "unit": "EA",
+                "origin": "US",
+                "net_weight": "",
+                "gross_weight": ""
+              },
+              {
+                "page": 2,
+                "row": 2,
+                "model": "LM2904BIDR",
+                "brand": "TI",
+                "description": "",
+                "quantity": "150000",
+                "unit": "EA",
+                "origin": "US",
+                "net_weight": "",
+                "gross_weight": ""
+              }
+            ]
+          },
+          "annotations": {}
+        }
+      },
+      {
+        "file_id": "F-276766064bb2",
+        "segments": [
+          "page:1",
+          "page:2",
+          "page:3",
+          "page:4",
+          "page:5",
+          "page:6",
+          "page:7",
+          "page:8"
+        ],
+        "content": {
+          "source_path": "真实整单样本/2026BMH001/查货文件/1770278926075.pdf",
+          "page_count": 8,
+          "read_pages": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "missing_pages": [
+            7,
+            8
+          ],
+          "barcode": "26027223",
+          "sold_to": "FUJIAN STAR-NET AIOT TECHNOLOGY CO., LTD",
+          "table": {
+            "headers": [
+              "PN",
+              "DESCRIPTION",
+              "CUST PN",
+              "CUST PO NUM",
+              "QTY",
+              "UNIT",
+              "NET WEIGHT (KG)",
+              "COO"
+            ],
+            "rows": [
+              {
+                "page": 1,
+                "row": 1,
+                "model": "SN74AHC1G08DBVR",
+                "brand": "TI",
+                "description": "Gate 1-Element 2-IN CMOS Automotive 5-Pin SOT-23 T/R",
+                "quantity": "300000",
+                "unit": "EA",
+                "origin": "US",
+                "net_weight": "19.6",
+                "gross_weight": ""
+              },
+              {
+                "page": 2,
+                "row": 2,
+                "model": "SN74AHC1G08DBVR",
+                "brand": "TI",
+                "description": "Gate 1-Element 2-IN CMOS Automotive 5-Pin SOT-23 T/R",
+                "quantity": "300000",
+                "unit": "EA",
+                "origin": "US",
+                "net_weight": "19.2",
+                "gross_weight": ""
+              },
+              {
+                "page": 3,
+                "row": 3,
+                "model": "SN74AHC1G08DBVR",
+                "brand": "TI",
+                "description": "Gate 1-Element 2-IN CMOS Automotive 5-Pin SOT-23 T/R",
+                "quantity": "300000",
+                "unit": "EA",
+                "origin": "US",
+                "net_weight": "24.1",
+                "gross_weight": ""
+              },
+              {
+                "page": 4,
+                "row": 4,
+                "model": "SN74AHC1G08DBVR",
+                "brand": "TI",
+                "description": "Gate 1-Element 2-IN CMOS Automotive 5-Pin SOT-23 T/R",
+                "quantity": "120000",
+                "unit": "EA",
+                "origin": "US",
+                "net_weight": "",
+                "gross_weight": ""
+              },
+              {
+                "page": 4,
+                "row": 5,
+                "model": "SN74AHC1G08DBVR",
+                "brand": "TI",
+                "description": "Gate 1-Element 2-IN CMOS Automotive 5-Pin SOT-23 T/R",
+                "quantity": "180000",
+                "unit": "EA",
+                "origin": "US",
+                "net_weight": "",
+                "gross_weight": ""
+              },
+              {
+                "page": 5,
+                "row": 6,
+                "model": "SN74AHC1G08DBVR",
+                "brand": "TI",
+                "description": "Gate 1-Element 2-IN CMOS Automotive 5-Pin SOT-23 T/R",
+                "quantity": "300000",
+                "unit": "EA",
+                "origin": "US",
+                "net_weight": "17.0",
+                "gross_weight": ""
+              },
+              {
+                "page": 6,
+                "row": 7,
+                "model": "SN74AHC1G08DBVR",
+                "brand": "TI",
+                "description": "Gate 1-Element 2-IN CMOS Automotive 5-Pin SOT-23 T/R",
+                "quantity": "300000",
+                "unit": "EA",
+                "origin": "US",
+                "net_weight": "25.3",
+                "gross_weight": ""
+              }
+            ]
+          },
+          "annotations": {
+            "printed_item_count": "8",
+            "package_text": "29件/板",
+            "handwritten_gross_weight": "136 KGS"
+          }
+        }
+      }
+    ]
+  }
+}

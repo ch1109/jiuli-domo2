@@ -1,0 +1,777 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P1",
+  "request_id": "REMAINING-2026ACSY003-20260921-P1",
+  "output": {
+    "processing_status": "SUCCESS",
+    "customer_resolution": {
+      "status": "RESOLVED",
+      "customer_id": "C-7ad6719f6d43",
+      "recognized_name": "深圳市澳创实业有限公司",
+      "candidate_customer_ids": [
+        "C-7ad6719f6d43"
+      ],
+      "sources": [
+        {
+          "file_id": "F-0971c3fd7c49",
+          "page": 1,
+          "sheet": null,
+          "row": null,
+          "column": null,
+          "raw_text": "委托方/公章"
+        }
+      ]
+    },
+    "read_status": [
+      {
+        "file_id": "F-0971c3fd7c49",
+        "read_segments": [
+          "page:1"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      }
+    ],
+    "rows": [
+      {
+        "row_no": 1,
+        "source": {
+          "file_id": "F-0971c3fd7c49",
+          "page": null,
+          "sheet": null,
+          "row": 1,
+          "column": null,
+          "raw_text": "委托商品第1行"
+        },
+        "values": {
+          "customer_name": "深圳市澳创实业有限公司",
+          "brand": "MICRON",
+          "model": "MT29F4T08EUHAFM4-NW920",
+          "description": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：512GB，量产；非加密；非易失",
+          "product_name": "集成电路",
+          "origin": "SINGAPORE",
+          "unit": "PCS",
+          "quantity": "1401",
+          "customs_unit_price": "57.67",
+          "total_price": "80795.67",
+          "currency": "USD",
+          "packages": "",
+          "net_weight": "",
+          "gross_weight": "",
+          "sku": "",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": ""
+        },
+        "evidence": [
+          {
+            "field": "customer_name",
+            "value": "深圳市澳创实业有限公司",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": null,
+              "raw_text": "深圳市澳创实业有限公司"
+            }
+          },
+          {
+            "field": "brand",
+            "value": "MICRON",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "MICRON"
+            }
+          },
+          {
+            "field": "model",
+            "value": "MT29F4T08EUHAFM4-NW920",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "MT29F4T08EUHAFM4-NW920"
+            }
+          },
+          {
+            "field": "description",
+            "value": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：512GB，量产；非加密；非易失",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：512GB，量产；非加密；非易失"
+            }
+          },
+          {
+            "field": "product_name",
+            "value": "集成电路",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "field": "origin",
+            "value": "SINGAPORE",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "SINGAPORE"
+            }
+          },
+          {
+            "field": "unit",
+            "value": "PCS",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "PCS"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "1401",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "1401"
+            }
+          },
+          {
+            "field": "customs_unit_price",
+            "value": "57.67",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "57.67"
+            }
+          },
+          {
+            "field": "total_price",
+            "value": "80795.67",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "80795.67"
+            }
+          },
+          {
+            "field": "currency",
+            "value": "USD",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "USD"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      {
+        "row_no": 2,
+        "source": {
+          "file_id": "F-0971c3fd7c49",
+          "page": null,
+          "sheet": null,
+          "row": 2,
+          "column": null,
+          "raw_text": "委托商品第2行"
+        },
+        "values": {
+          "customer_name": "深圳市澳创实业有限公司",
+          "brand": "MICRON",
+          "model": "MT29F2T08CUHBBM4-NW821",
+          "description": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：256GB，量产；非加密；非易失",
+          "product_name": "集成电路",
+          "origin": "SINGAPORE",
+          "unit": "PCS",
+          "quantity": "1564",
+          "customs_unit_price": "28.83",
+          "total_price": "45090.12",
+          "currency": "USD",
+          "packages": "",
+          "net_weight": "",
+          "gross_weight": "",
+          "sku": "",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": ""
+        },
+        "evidence": [
+          {
+            "field": "customer_name",
+            "value": "深圳市澳创实业有限公司",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": null,
+              "raw_text": "深圳市澳创实业有限公司"
+            }
+          },
+          {
+            "field": "brand",
+            "value": "MICRON",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "MICRON"
+            }
+          },
+          {
+            "field": "model",
+            "value": "MT29F2T08CUHBBM4-NW821",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "MT29F2T08CUHBBM4-NW821"
+            }
+          },
+          {
+            "field": "description",
+            "value": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：256GB，量产；非加密；非易失",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：256GB，量产；非加密；非易失"
+            }
+          },
+          {
+            "field": "product_name",
+            "value": "集成电路",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "field": "origin",
+            "value": "SINGAPORE",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "SINGAPORE"
+            }
+          },
+          {
+            "field": "unit",
+            "value": "PCS",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "PCS"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "1564",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "1564"
+            }
+          },
+          {
+            "field": "customs_unit_price",
+            "value": "28.83",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "28.83"
+            }
+          },
+          {
+            "field": "total_price",
+            "value": "45090.12",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "45090.12"
+            }
+          },
+          {
+            "field": "currency",
+            "value": "USD",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "USD"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      {
+        "row_no": 3,
+        "source": {
+          "file_id": "F-0971c3fd7c49",
+          "page": null,
+          "sheet": null,
+          "row": 3,
+          "column": null,
+          "raw_text": "委托商品第3行"
+        },
+        "values": {
+          "customer_name": "深圳市澳创实业有限公司",
+          "brand": "Toshiba",
+          "model": "TH58TF1V23BA8H-1V23",
+          "description": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：128GB，量产；非加密；非易失",
+          "product_name": "集成电路",
+          "origin": "JAPAN",
+          "unit": "PCS",
+          "quantity": "1080",
+          "customs_unit_price": "14.42",
+          "total_price": "15573.60",
+          "currency": "USD",
+          "packages": "",
+          "net_weight": "",
+          "gross_weight": "",
+          "sku": "",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": ""
+        },
+        "evidence": [
+          {
+            "field": "customer_name",
+            "value": "深圳市澳创实业有限公司",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": null,
+              "raw_text": "深圳市澳创实业有限公司"
+            }
+          },
+          {
+            "field": "brand",
+            "value": "Toshiba",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "Toshiba"
+            }
+          },
+          {
+            "field": "model",
+            "value": "TH58TF1V23BA8H-1V23",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "TH58TF1V23BA8H-1V23"
+            }
+          },
+          {
+            "field": "description",
+            "value": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：128GB，量产；非加密；非易失",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：128GB，量产；非加密；非易失"
+            }
+          },
+          {
+            "field": "product_name",
+            "value": "集成电路",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "field": "origin",
+            "value": "JAPAN",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "JAPAN"
+            }
+          },
+          {
+            "field": "unit",
+            "value": "PCS",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "PCS"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "1080",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "1080"
+            }
+          },
+          {
+            "field": "customs_unit_price",
+            "value": "14.42",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "14.42"
+            }
+          },
+          {
+            "field": "total_price",
+            "value": "15573.60",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "15573.60"
+            }
+          },
+          {
+            "field": "currency",
+            "value": "USD",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "USD"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      {
+        "row_no": 4,
+        "source": {
+          "file_id": "F-0971c3fd7c49",
+          "page": null,
+          "sheet": null,
+          "row": 4,
+          "column": null,
+          "raw_text": "委托商品第4行"
+        },
+        "values": {
+          "customer_name": "深圳市澳创实业有限公司",
+          "brand": "Toshiba",
+          "model": "TH58TF2T23BA8J-2T23",
+          "description": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：256GB，量产；非加密；非易失",
+          "product_name": "集成电路",
+          "origin": "JAPAN",
+          "unit": "PCS",
+          "quantity": "368",
+          "customs_unit_price": "28.83",
+          "total_price": "10609.44",
+          "currency": "USD",
+          "packages": "",
+          "net_weight": "",
+          "gross_weight": "",
+          "sku": "",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": ""
+        },
+        "evidence": [
+          {
+            "field": "customer_name",
+            "value": "深圳市澳创实业有限公司",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": null,
+              "raw_text": "深圳市澳创实业有限公司"
+            }
+          },
+          {
+            "field": "brand",
+            "value": "Toshiba",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "Toshiba"
+            }
+          },
+          {
+            "field": "model",
+            "value": "TH58TF2T23BA8J-2T23",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "TH58TF2T23BA8J-2T23"
+            }
+          },
+          {
+            "field": "description",
+            "value": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：256GB，量产；非加密；非易失",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：256GB，量产；非加密；非易失"
+            }
+          },
+          {
+            "field": "product_name",
+            "value": "集成电路",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "field": "origin",
+            "value": "JAPAN",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "JAPAN"
+            }
+          },
+          {
+            "field": "unit",
+            "value": "PCS",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "PCS"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "368",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "368"
+            }
+          },
+          {
+            "field": "customs_unit_price",
+            "value": "28.83",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "28.83"
+            }
+          },
+          {
+            "field": "total_price",
+            "value": "10609.44",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "10609.44"
+            }
+          },
+          {
+            "field": "currency",
+            "value": "USD",
+            "unit": "",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "USD"
+            }
+          }
+        ],
+        "conflicts": []
+      }
+    ],
+    "scope_records": [],
+    "unlinked_records": [],
+    "issues": []
+  }
+}

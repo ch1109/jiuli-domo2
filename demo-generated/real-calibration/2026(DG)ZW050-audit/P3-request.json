@@ -1,0 +1,320 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P3",
+  "request_id": "REMAINING-2026(DG)ZW050-20260921-P3",
+  "context": {
+    "customer_id": "C-66be07d6cabe",
+    "retrieval_complete": false
+  },
+  "input": {
+    "order_rows": [
+      {
+        "order_row_id": "D-ab6bfdee3e54-R002",
+        "customer_id": null,
+        "identity": {
+          "model": "SP3243EBEY-L/TR",
+          "brand": "MAXLINEAR",
+          "origin": "韩国",
+          "quantity": "2500",
+          "unit": "个",
+          "material_no": "300200001900",
+          "sku": "4000167606"
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-001-01",
+            "field": "brand",
+            "value": "MAXLINEAR",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "C",
+              "raw_text": "MAXLINEAR"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-02",
+            "field": "model",
+            "value": "SP3243EBEY-L/TR",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "D",
+              "raw_text": "SP3243EBEY-L/TR"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-03",
+            "field": "product_name",
+            "value": "集成电路",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "B",
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-04",
+            "field": "origin",
+            "value": "韩国",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "F",
+              "raw_text": "韩国"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-05",
+            "field": "unit",
+            "value": "个",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "G",
+              "raw_text": "个"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-06",
+            "field": "quantity",
+            "value": "2500",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "H",
+              "raw_text": "2500"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-07",
+            "field": "customs_unit_price",
+            "value": "0.145",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "I",
+              "raw_text": "0.145"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-08",
+            "field": "packages",
+            "value": "1",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "J",
+              "raw_text": "1"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-09",
+            "field": "net_weight",
+            "value": "0.56",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "K",
+              "raw_text": "0.56"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-10",
+            "field": "gross_weight",
+            "value": "2",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "L",
+              "raw_text": "2"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-11",
+            "field": "sku",
+            "value": "4000167606",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "N",
+              "raw_text": "4000167606"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-12",
+            "field": "supplier",
+            "value": "霆宝",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "O",
+              "raw_text": "霆宝"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-13",
+            "field": "material_no",
+            "value": "300200001900",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "R",
+              "raw_text": "300200001900"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-14",
+            "field": "remark",
+            "value": "4785",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "U",
+              "raw_text": "4785"
+            }
+          }
+        ]
+      }
+    ],
+    "inspection_candidates": [
+      {
+        "raw_row_id": "I-bfe5061027e1-26050640-L001",
+        "customer_id": "C-66be07d6cabe",
+        "logical_inspection_id": "I-bfe5061027e1-26050640",
+        "warehouse_no": "26050640",
+        "merged_product_id": null,
+        "identity": {
+          "model": "SP3243EBEY-L/TR",
+          "brand": "MAXLINEAR",
+          "quantity": "2500",
+          "unit": "PCS"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-001-01",
+            "field": "model",
+            "value": "SP3243EBEY-L/TR",
+            "source": {
+              "file_id": "F-bfe5061027e1",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"MAXLINEAR\",\"型号\":\"SP3243EBEY-L/TR\",\"产地\":\"UNKNOWN\",\"数量\":\"2500\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"0.56\",\"毛重\":\"1.56\",\"COD\":\"KOREA\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-02",
+            "field": "brand",
+            "value": "MAXLINEAR",
+            "source": {
+              "file_id": "F-bfe5061027e1",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"MAXLINEAR\",\"型号\":\"SP3243EBEY-L/TR\",\"产地\":\"UNKNOWN\",\"数量\":\"2500\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"0.56\",\"毛重\":\"1.56\",\"COD\":\"KOREA\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-03",
+            "field": "quantity",
+            "value": "2500",
+            "source": {
+              "file_id": "F-bfe5061027e1",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"MAXLINEAR\",\"型号\":\"SP3243EBEY-L/TR\",\"产地\":\"UNKNOWN\",\"数量\":\"2500\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"0.56\",\"毛重\":\"1.56\",\"COD\":\"KOREA\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-04",
+            "field": "unit",
+            "value": "PCS",
+            "source": {
+              "file_id": "F-bfe5061027e1",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"MAXLINEAR\",\"型号\":\"SP3243EBEY-L/TR\",\"产地\":\"UNKNOWN\",\"数量\":\"2500\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"0.56\",\"毛重\":\"1.56\",\"COD\":\"KOREA\"}"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      }
+    ],
+    "proposed_groups": [
+      {
+        "order_row_id": "D-ab6bfdee3e54-R002",
+        "raw_row_ids": [
+          "I-bfe5061027e1-26050640-L001"
+        ],
+        "evidence_keys": [
+          "E-P3-001-01",
+          "E-P3-001-02",
+          "E-P3-001-03",
+          "E-P3-001-04"
+        ]
+      }
+    ],
+    "comparison_results": [
+      {
+        "order_row_id": "D-ab6bfdee3e54-R002",
+        "candidate_groups": [
+          {
+            "raw_row_ids": [
+              "I-bfe5061027e1-26050640-L001"
+            ],
+            "evidence_keys": [
+              "E-P3-001-01",
+              "E-P3-001-02",
+              "E-P3-001-03",
+              "E-P3-001-04"
+            ]
+          }
+        ],
+        "quantity_comparable": false,
+        "reason": "模型只生成比较快照，不把数量相等当作关系证据。"
+      }
+    ]
+  }
+}

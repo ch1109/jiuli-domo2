@@ -1,0 +1,17 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P3",
+  "request_id": "REMAINING-英卡-抽+整-20260921-P3",
+  "output": {
+    "processing_status": "INVALID_INPUT",
+    "row_relations": [],
+    "issues": [
+      {
+        "code": "MULTIPLE_ORDER_MATERIALS",
+        "row_ref": null,
+        "field": "order_rows",
+        "message": "P1 因3份主体委托书同时输入而无合法单一委托任务；不能合并委托行建立关系。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,646 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P3",
+  "request_id": "20260921-2026BMH001-P3",
+  "output": {
+    "processing_status": "SUCCESS",
+    "row_relations": [
+      {
+        "order_row_id": "D-fb448776f711-R007",
+        "match_status": "MULTIPLE_CANDIDATES",
+        "selected_raw_row_ids": [],
+        "coverage": {
+          "status": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "evidence_keys": []
+        },
+        "evidence_keys": [],
+        "candidate_groups": [
+          {
+            "raw_row_ids": [
+              "I-F-de4e00bf55d8-26027299-L001"
+            ],
+            "evidence_keys": [
+              "E-I-F_de4e00bf55d8_26027299_L001-MODEL",
+              "E-I-F_de4e00bf55d8_26027299_L001-BRAND",
+              "E-I-F_de4e00bf55d8_26027299_L001-ORIGIN",
+              "E-I-F_de4e00bf55d8_26027299_L001-QTY"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-b03e0011849f-26027298-L001"
+            ],
+            "evidence_keys": [
+              "E-I-F_b03e0011849f_26027298_L001-MODEL",
+              "E-I-F_b03e0011849f_26027298_L001-BRAND",
+              "E-I-F_b03e0011849f_26027298_L001-ORIGIN",
+              "E-I-F_b03e0011849f_26027298_L001-QTY"
+            ]
+          }
+        ],
+        "weak_candidates": [],
+        "issues": [
+          {
+            "code": "MULTIPLE_MODEL_CANDIDATES",
+            "row_ref": "D-fb448776f711-R007",
+            "field": "model",
+            "message": "LM2576SX-3.3/NOPB 在查货池有2条原始行，缺少可区分业务编号。"
+          },
+          {
+            "code": "CUSTOMER_MISMATCH",
+            "row_ref": "D-fb448776f711-R007",
+            "field": "customer_name",
+            "message": "查货材料的 Sold to/最终目的方与请求客户不一致，客户归属未确认。"
+          },
+          {
+            "code": "ORIGIN_MULTI_VALUE",
+            "row_ref": "D-fb448776f711-R007",
+            "field": "origin",
+            "message": "其中一个查货原始行保留 DE:2500 与 GB:1500，不能按委托拆分。"
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R008",
+        "match_status": "MULTIPLE_CANDIDATES",
+        "selected_raw_row_ids": [],
+        "coverage": {
+          "status": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "evidence_keys": []
+        },
+        "evidence_keys": [],
+        "candidate_groups": [
+          {
+            "raw_row_ids": [
+              "I-F-de4e00bf55d8-26027299-L001"
+            ],
+            "evidence_keys": [
+              "E-I-F_de4e00bf55d8_26027299_L001-MODEL",
+              "E-I-F_de4e00bf55d8_26027299_L001-BRAND",
+              "E-I-F_de4e00bf55d8_26027299_L001-ORIGIN",
+              "E-I-F_de4e00bf55d8_26027299_L001-QTY"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-b03e0011849f-26027298-L001"
+            ],
+            "evidence_keys": [
+              "E-I-F_b03e0011849f_26027298_L001-MODEL",
+              "E-I-F_b03e0011849f_26027298_L001-BRAND",
+              "E-I-F_b03e0011849f_26027298_L001-ORIGIN",
+              "E-I-F_b03e0011849f_26027298_L001-QTY"
+            ]
+          }
+        ],
+        "weak_candidates": [],
+        "issues": [
+          {
+            "code": "MULTIPLE_MODEL_CANDIDATES",
+            "row_ref": "D-fb448776f711-R008",
+            "field": "model",
+            "message": "LM2576SX-3.3/NOPB 在查货池有2条原始行，缺少可区分业务编号。"
+          },
+          {
+            "code": "CUSTOMER_MISMATCH",
+            "row_ref": "D-fb448776f711-R008",
+            "field": "customer_name",
+            "message": "查货材料的 Sold to/最终目的方与请求客户不一致，客户归属未确认。"
+          },
+          {
+            "code": "ORIGIN_MULTI_VALUE",
+            "row_ref": "D-fb448776f711-R008",
+            "field": "origin",
+            "message": "其中一个查货原始行保留 DE:2500 与 GB:1500，不能按委托拆分。"
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R009",
+        "match_status": "UNMATCHED",
+        "selected_raw_row_ids": [],
+        "coverage": {
+          "status": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "evidence_keys": []
+        },
+        "evidence_keys": [],
+        "candidate_groups": [],
+        "weak_candidates": [
+          {
+            "raw_row_ids": [
+              "I-F-f29936219cd1-26027322-L002"
+            ],
+            "evidence_keys": [
+              "E-I-F_f29936219cd1_26027322_L002-MODEL",
+              "E-I-F_f29936219cd1_26027322_L002-BRAND",
+              "E-I-F_f29936219cd1_26027322_L002-ORIGIN",
+              "E-I-F_f29936219cd1_26027322_L002-QTY"
+            ],
+            "reason": "型号唯一或候选唯一仍不足以证明客户归属/业务行关系；数量相等不能单独匹配。"
+          }
+        ],
+        "issues": [
+          {
+            "code": "SINGLE_CANDIDATE_NOT_PROOF",
+            "row_ref": "D-fb448776f711-R009",
+            "field": "model",
+            "message": "仅有一条同型号候选，但检索未完成且没有直接业务行编号，不能自动匹配。"
+          },
+          {
+            "code": "CUSTOMER_MISMATCH",
+            "row_ref": "D-fb448776f711-R009",
+            "field": "customer_name",
+            "message": "查货材料的 Sold to/最终目的方与请求客户不一致，客户归属未确认。"
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R010",
+        "match_status": "UNMATCHED",
+        "selected_raw_row_ids": [],
+        "coverage": {
+          "status": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "evidence_keys": []
+        },
+        "evidence_keys": [],
+        "candidate_groups": [],
+        "weak_candidates": [
+          {
+            "raw_row_ids": [
+              "I-F-f29936219cd1-26027322-L001"
+            ],
+            "evidence_keys": [
+              "E-I-F_f29936219cd1_26027322_L001-MODEL",
+              "E-I-F_f29936219cd1_26027322_L001-BRAND",
+              "E-I-F_f29936219cd1_26027322_L001-ORIGIN",
+              "E-I-F_f29936219cd1_26027322_L001-QTY"
+            ],
+            "reason": "型号唯一或候选唯一仍不足以证明客户归属/业务行关系；数量相等不能单独匹配。"
+          }
+        ],
+        "issues": [
+          {
+            "code": "SINGLE_CANDIDATE_NOT_PROOF",
+            "row_ref": "D-fb448776f711-R010",
+            "field": "model",
+            "message": "仅有一条同型号候选，但检索未完成且没有直接业务行编号，不能自动匹配。"
+          },
+          {
+            "code": "CUSTOMER_MISMATCH",
+            "row_ref": "D-fb448776f711-R010",
+            "field": "customer_name",
+            "message": "查货材料的 Sold to/最终目的方与请求客户不一致，客户归属未确认。"
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R011",
+        "match_status": "MULTIPLE_CANDIDATES",
+        "selected_raw_row_ids": [],
+        "coverage": {
+          "status": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "evidence_keys": []
+        },
+        "evidence_keys": [],
+        "candidate_groups": [
+          {
+            "raw_row_ids": [
+              "I-F-276766064bb2-26027223-L001"
+            ],
+            "evidence_keys": [
+              "E-I-F_276766064bb2_26027223_L001-MODEL",
+              "E-I-F_276766064bb2_26027223_L001-BRAND",
+              "E-I-F_276766064bb2_26027223_L001-ORIGIN",
+              "E-I-F_276766064bb2_26027223_L001-QTY"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-276766064bb2-26027223-L002"
+            ],
+            "evidence_keys": [
+              "E-I-F_276766064bb2_26027223_L002-MODEL",
+              "E-I-F_276766064bb2_26027223_L002-BRAND",
+              "E-I-F_276766064bb2_26027223_L002-ORIGIN",
+              "E-I-F_276766064bb2_26027223_L002-QTY"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-276766064bb2-26027223-L003"
+            ],
+            "evidence_keys": [
+              "E-I-F_276766064bb2_26027223_L003-MODEL",
+              "E-I-F_276766064bb2_26027223_L003-BRAND",
+              "E-I-F_276766064bb2_26027223_L003-ORIGIN",
+              "E-I-F_276766064bb2_26027223_L003-QTY"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-276766064bb2-26027223-L004"
+            ],
+            "evidence_keys": [
+              "E-I-F_276766064bb2_26027223_L004-MODEL",
+              "E-I-F_276766064bb2_26027223_L004-BRAND",
+              "E-I-F_276766064bb2_26027223_L004-ORIGIN",
+              "E-I-F_276766064bb2_26027223_L004-QTY"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-276766064bb2-26027223-L005"
+            ],
+            "evidence_keys": [
+              "E-I-F_276766064bb2_26027223_L005-MODEL",
+              "E-I-F_276766064bb2_26027223_L005-BRAND",
+              "E-I-F_276766064bb2_26027223_L005-ORIGIN",
+              "E-I-F_276766064bb2_26027223_L005-QTY"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-276766064bb2-26027223-L006"
+            ],
+            "evidence_keys": [
+              "E-I-F_276766064bb2_26027223_L006-MODEL",
+              "E-I-F_276766064bb2_26027223_L006-BRAND",
+              "E-I-F_276766064bb2_26027223_L006-ORIGIN",
+              "E-I-F_276766064bb2_26027223_L006-QTY"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-276766064bb2-26027223-L007"
+            ],
+            "evidence_keys": [
+              "E-I-F_276766064bb2_26027223_L007-MODEL",
+              "E-I-F_276766064bb2_26027223_L007-BRAND",
+              "E-I-F_276766064bb2_26027223_L007-ORIGIN",
+              "E-I-F_276766064bb2_26027223_L007-QTY"
+            ]
+          }
+        ],
+        "weak_candidates": [],
+        "issues": [
+          {
+            "code": "MULTIPLE_MODEL_CANDIDATES",
+            "row_ref": "D-fb448776f711-R011",
+            "field": "model",
+            "message": "SN74AHC1G08DBVR 在查货池有7条原始行，缺少可区分业务编号。"
+          },
+          {
+            "code": "CUSTOMER_MISMATCH",
+            "row_ref": "D-fb448776f711-R011",
+            "field": "customer_name",
+            "message": "查货材料的 Sold to/最终目的方与请求客户不一致，客户归属未确认。"
+          },
+          {
+            "code": "RETRIEVAL_INCOMPLETE",
+            "row_ref": "D-fb448776f711-R011",
+            "field": null,
+            "message": "该候选所在 PDF 缺少第7、8页或逻辑范围存在未定内容。"
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R012",
+        "match_status": "UNMATCHED",
+        "selected_raw_row_ids": [],
+        "coverage": {
+          "status": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "evidence_keys": []
+        },
+        "evidence_keys": [],
+        "candidate_groups": [],
+        "weak_candidates": [
+          {
+            "raw_row_ids": [
+              "I-F-a06d575c587d-26027251-L001"
+            ],
+            "evidence_keys": [
+              "E-I-F_a06d575c587d_26027251_L001-MODEL",
+              "E-I-F_a06d575c587d_26027251_L001-BRAND",
+              "E-I-F_a06d575c587d_26027251_L001-ORIGIN",
+              "E-I-F_a06d575c587d_26027251_L001-QTY"
+            ],
+            "reason": "型号唯一或候选唯一仍不足以证明客户归属/业务行关系；数量相等不能单独匹配。"
+          }
+        ],
+        "issues": [
+          {
+            "code": "SINGLE_CANDIDATE_NOT_PROOF",
+            "row_ref": "D-fb448776f711-R012",
+            "field": "model",
+            "message": "仅有一条同型号候选，但检索未完成且没有直接业务行编号，不能自动匹配。"
+          },
+          {
+            "code": "CUSTOMER_MISMATCH",
+            "row_ref": "D-fb448776f711-R012",
+            "field": "customer_name",
+            "message": "查货材料的 Sold to/最终目的方与请求客户不一致，客户归属未确认。"
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R013",
+        "match_status": "UNMATCHED",
+        "selected_raw_row_ids": [],
+        "coverage": {
+          "status": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "evidence_keys": []
+        },
+        "evidence_keys": [],
+        "candidate_groups": [],
+        "weak_candidates": [
+          {
+            "raw_row_ids": [
+              "I-F-69127fcfa5c3-26027300-L001"
+            ],
+            "evidence_keys": [
+              "E-I-F_69127fcfa5c3_26027300_L001-MODEL",
+              "E-I-F_69127fcfa5c3_26027300_L001-BRAND",
+              "E-I-F_69127fcfa5c3_26027300_L001-ORIGIN",
+              "E-I-F_69127fcfa5c3_26027300_L001-QTY"
+            ],
+            "reason": "型号唯一或候选唯一仍不足以证明客户归属/业务行关系；数量相等不能单独匹配。"
+          }
+        ],
+        "issues": [
+          {
+            "code": "SINGLE_CANDIDATE_NOT_PROOF",
+            "row_ref": "D-fb448776f711-R013",
+            "field": "model",
+            "message": "仅有一条同型号候选，但检索未完成且没有直接业务行编号，不能自动匹配。"
+          },
+          {
+            "code": "CUSTOMER_MISMATCH",
+            "row_ref": "D-fb448776f711-R013",
+            "field": "customer_name",
+            "message": "查货材料的 Sold to/最终目的方与请求客户不一致，客户归属未确认。"
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R014",
+        "match_status": "MULTIPLE_CANDIDATES",
+        "selected_raw_row_ids": [],
+        "coverage": {
+          "status": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "evidence_keys": []
+        },
+        "evidence_keys": [],
+        "candidate_groups": [
+          {
+            "raw_row_ids": [
+              "I-F-94d0c3955b2a-26027191-L001"
+            ],
+            "evidence_keys": [
+              "E-I-F_94d0c3955b2a_26027191_L001-MODEL",
+              "E-I-F_94d0c3955b2a_26027191_L001-BRAND",
+              "E-I-F_94d0c3955b2a_26027191_L001-ORIGIN",
+              "E-I-F_94d0c3955b2a_26027191_L001-QTY"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-94d0c3955b2a-26027191-L002"
+            ],
+            "evidence_keys": [
+              "E-I-F_94d0c3955b2a_26027191_L002-MODEL",
+              "E-I-F_94d0c3955b2a_26027191_L002-BRAND",
+              "E-I-F_94d0c3955b2a_26027191_L002-ORIGIN",
+              "E-I-F_94d0c3955b2a_26027191_L002-QTY"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-94d0c3955b2a-26027191-L003"
+            ],
+            "evidence_keys": [
+              "E-I-F_94d0c3955b2a_26027191_L003-MODEL",
+              "E-I-F_94d0c3955b2a_26027191_L003-BRAND",
+              "E-I-F_94d0c3955b2a_26027191_L003-ORIGIN",
+              "E-I-F_94d0c3955b2a_26027191_L003-QTY"
+            ]
+          }
+        ],
+        "weak_candidates": [],
+        "issues": [
+          {
+            "code": "MULTIPLE_MODEL_CANDIDATES",
+            "row_ref": "D-fb448776f711-R014",
+            "field": "model",
+            "message": "TLV62569DBVR 在查货池有3条原始行，缺少可区分业务编号。"
+          },
+          {
+            "code": "CUSTOMER_MISMATCH",
+            "row_ref": "D-fb448776f711-R014",
+            "field": "customer_name",
+            "message": "查货材料的 Sold to/最终目的方与请求客户不一致，客户归属未确认。"
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R015",
+        "match_status": "UNMATCHED",
+        "selected_raw_row_ids": [],
+        "coverage": {
+          "status": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "evidence_keys": []
+        },
+        "evidence_keys": [],
+        "candidate_groups": [],
+        "weak_candidates": [
+          {
+            "raw_row_ids": [
+              "I-F-cb09c02b9ed5-26027323-L001"
+            ],
+            "evidence_keys": [
+              "E-I-F_cb09c02b9ed5_26027323_L001-MODEL",
+              "E-I-F_cb09c02b9ed5_26027323_L001-BRAND",
+              "E-I-F_cb09c02b9ed5_26027323_L001-ORIGIN",
+              "E-I-F_cb09c02b9ed5_26027323_L001-QTY"
+            ],
+            "reason": "型号唯一或候选唯一仍不足以证明客户归属/业务行关系；数量相等不能单独匹配。"
+          }
+        ],
+        "issues": [
+          {
+            "code": "SINGLE_CANDIDATE_NOT_PROOF",
+            "row_ref": "D-fb448776f711-R015",
+            "field": "model",
+            "message": "仅有一条同型号候选，但检索未完成且没有直接业务行编号，不能自动匹配。"
+          },
+          {
+            "code": "CUSTOMER_MISMATCH",
+            "row_ref": "D-fb448776f711-R015",
+            "field": "customer_name",
+            "message": "查货材料的 Sold to/最终目的方与请求客户不一致，客户归属未确认。"
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R016",
+        "match_status": "MULTIPLE_CANDIDATES",
+        "selected_raw_row_ids": [],
+        "coverage": {
+          "status": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "evidence_keys": []
+        },
+        "evidence_keys": [],
+        "candidate_groups": [
+          {
+            "raw_row_ids": [
+              "I-F-b98a101d8392-26027114-L001"
+            ],
+            "evidence_keys": [
+              "E-I-F_b98a101d8392_26027114_L001-MODEL",
+              "E-I-F_b98a101d8392_26027114_L001-BRAND",
+              "E-I-F_b98a101d8392_26027114_L001-ORIGIN",
+              "E-I-F_b98a101d8392_26027114_L001-QTY"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-c5195fdb15a3-26027143-L001"
+            ],
+            "evidence_keys": [
+              "E-I-F_c5195fdb15a3_26027143_L001-MODEL",
+              "E-I-F_c5195fdb15a3_26027143_L001-BRAND",
+              "E-I-F_c5195fdb15a3_26027143_L001-ORIGIN",
+              "E-I-F_c5195fdb15a3_26027143_L001-QTY"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-c5195fdb15a3-26027143-L002"
+            ],
+            "evidence_keys": [
+              "E-I-F_c5195fdb15a3_26027143_L002-MODEL",
+              "E-I-F_c5195fdb15a3_26027143_L002-BRAND",
+              "E-I-F_c5195fdb15a3_26027143_L002-ORIGIN",
+              "E-I-F_c5195fdb15a3_26027143_L002-QTY"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-39b0b8e82a3a-26027254-L001"
+            ],
+            "evidence_keys": [
+              "E-I-F_39b0b8e82a3a_26027254_L001-MODEL",
+              "E-I-F_39b0b8e82a3a_26027254_L001-BRAND",
+              "E-I-F_39b0b8e82a3a_26027254_L001-ORIGIN",
+              "E-I-F_39b0b8e82a3a_26027254_L001-QTY"
+            ]
+          }
+        ],
+        "weak_candidates": [],
+        "issues": [
+          {
+            "code": "MULTIPLE_MODEL_CANDIDATES",
+            "row_ref": "D-fb448776f711-R016",
+            "field": "model",
+            "message": "TXS0108EPWR 在查货池有4条原始行，缺少可区分业务编号。"
+          },
+          {
+            "code": "CUSTOMER_MISMATCH",
+            "row_ref": "D-fb448776f711-R016",
+            "field": "customer_name",
+            "message": "查货材料的 Sold to/最终目的方与请求客户不一致，客户归属未确认。"
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R017",
+        "match_status": "MULTIPLE_CANDIDATES",
+        "selected_raw_row_ids": [],
+        "coverage": {
+          "status": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "evidence_keys": []
+        },
+        "evidence_keys": [],
+        "candidate_groups": [
+          {
+            "raw_row_ids": [
+              "I-F-b98a101d8392-26027114-L001"
+            ],
+            "evidence_keys": [
+              "E-I-F_b98a101d8392_26027114_L001-MODEL",
+              "E-I-F_b98a101d8392_26027114_L001-BRAND",
+              "E-I-F_b98a101d8392_26027114_L001-ORIGIN",
+              "E-I-F_b98a101d8392_26027114_L001-QTY"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-c5195fdb15a3-26027143-L001"
+            ],
+            "evidence_keys": [
+              "E-I-F_c5195fdb15a3_26027143_L001-MODEL",
+              "E-I-F_c5195fdb15a3_26027143_L001-BRAND",
+              "E-I-F_c5195fdb15a3_26027143_L001-ORIGIN",
+              "E-I-F_c5195fdb15a3_26027143_L001-QTY"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-c5195fdb15a3-26027143-L002"
+            ],
+            "evidence_keys": [
+              "E-I-F_c5195fdb15a3_26027143_L002-MODEL",
+              "E-I-F_c5195fdb15a3_26027143_L002-BRAND",
+              "E-I-F_c5195fdb15a3_26027143_L002-ORIGIN",
+              "E-I-F_c5195fdb15a3_26027143_L002-QTY"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-F-39b0b8e82a3a-26027254-L001"
+            ],
+            "evidence_keys": [
+              "E-I-F_39b0b8e82a3a_26027254_L001-MODEL",
+              "E-I-F_39b0b8e82a3a_26027254_L001-BRAND",
+              "E-I-F_39b0b8e82a3a_26027254_L001-ORIGIN",
+              "E-I-F_39b0b8e82a3a_26027254_L001-QTY"
+            ]
+          }
+        ],
+        "weak_candidates": [],
+        "issues": [
+          {
+            "code": "MULTIPLE_MODEL_CANDIDATES",
+            "row_ref": "D-fb448776f711-R017",
+            "field": "model",
+            "message": "TXS0108EPWR 在查货池有4条原始行，缺少可区分业务编号。"
+          },
+          {
+            "code": "CUSTOMER_MISMATCH",
+            "row_ref": "D-fb448776f711-R017",
+            "field": "customer_name",
+            "message": "查货材料的 Sold to/最终目的方与请求客户不一致，客户归属未确认。"
+          }
+        ]
+      }
+    ],
+    "issues": [
+      {
+        "code": "RETRIEVAL_INCOMPLETE",
+        "row_ref": null,
+        "field": null,
+        "message": "至少一个逻辑查货单缺页，且查货客户抬头未确认；本阶段不自动产生 MATCHED 关系。"
+      }
+    ]
+  }
+}

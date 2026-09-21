@@ -1,0 +1,635 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P2",
+  "request_id": "REMAINING-2026(DG)ZW001-20260921-P2",
+  "output": {
+    "processing_status": "SUCCESS",
+    "customer_id": "C-66be07d6cabe",
+    "read_status": [
+      {
+        "file_id": "F-4626eef2dd66",
+        "read_segments": [
+          "page:1"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      },
+      {
+        "file_id": "F-cdbd27982284",
+        "read_segments": [
+          "page:1"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      }
+    ],
+    "logical_inspections": [
+      {
+        "warehouse_no": "26010713",
+        "sources": [
+          {
+            "file_id": "F-4626eef2dd66",
+            "page": 1,
+            "sheet": null,
+            "row": null,
+            "column": null,
+            "raw_text": "查货文件 F-4626eef2dd66"
+          }
+        ],
+        "range_status": "COMPLETE"
+      },
+      {
+        "warehouse_no": "26010048",
+        "sources": [
+          {
+            "file_id": "F-cdbd27982284",
+            "page": 1,
+            "sheet": null,
+            "row": null,
+            "column": null,
+            "raw_text": "查货文件 F-cdbd27982284"
+          }
+        ],
+        "range_status": "COMPLETE"
+      }
+    ],
+    "raw_rows": [
+      {
+        "record_no": 1,
+        "warehouse_no": "26010713",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-4626eef2dd66",
+          "page": 1,
+          "sheet": null,
+          "row": 1,
+          "column": null,
+          "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"uPI\",\"型号\":\"UP9505UQGW\",\"产地\":\"UNKNOWN\",\"数量\":\"2500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"COD\":\"Taiwan China\",\"手写COO\":\"TW,CN\"}"
+        },
+        "fields": {
+          "brand": "uPI",
+          "model": "UP9505UQGW",
+          "unit": "PCS",
+          "quantity": "2500"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-4626eef2dd66",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"uPI\",\"型号\":\"UP9505UQGW\",\"产地\":\"UNKNOWN\",\"数量\":\"2500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"COD\":\"Taiwan China\",\"手写COO\":\"TW,CN\"}"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-4626eef2dd66",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"uPI\",\"型号\":\"UP9505UQGW\",\"产地\":\"UNKNOWN\",\"数量\":\"2500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"COD\":\"Taiwan China\",\"手写COO\":\"TW,CN\"}"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-4626eef2dd66",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"uPI\",\"型号\":\"UP9505UQGW\",\"产地\":\"UNKNOWN\",\"数量\":\"2500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"COD\":\"Taiwan China\",\"手写COO\":\"TW,CN\"}"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-4626eef2dd66",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"uPI\",\"型号\":\"UP9505UQGW\",\"产地\":\"UNKNOWN\",\"数量\":\"2500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"COD\":\"Taiwan China\",\"手写COO\":\"TW,CN\"}"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "Taiwan China",
+            "kind": "PRINTED_COD",
+            "source": {
+              "file_id": "F-4626eef2dd66",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"uPI\",\"型号\":\"UP9505UQGW\",\"产地\":\"UNKNOWN\",\"数量\":\"2500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"COD\":\"Taiwan China\",\"手写COO\":\"TW,CN\"}"
+            }
+          },
+          {
+            "value": "TW,CN",
+            "kind": "HANDWRITTEN_COO",
+            "source": {
+              "file_id": "F-4626eef2dd66",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"uPI\",\"型号\":\"UP9505UQGW\",\"产地\":\"UNKNOWN\",\"数量\":\"2500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"COD\":\"Taiwan China\",\"手写COO\":\"TW,CN\"}"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 2,
+        "warehouse_no": "26010713",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-4626eef2dd66",
+          "page": 1,
+          "sheet": null,
+          "row": 2,
+          "column": null,
+          "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"uPI\",\"型号\":\"UP7501M8\",\"产地\":\"UNKNOWN\",\"数量\":\"3000\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"COD\":\"Taiwan China\",\"手写COO\":\"TW,CN\"}"
+        },
+        "fields": {
+          "brand": "uPI",
+          "model": "UP7501M8",
+          "unit": "PCS",
+          "quantity": "3000"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-4626eef2dd66",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"uPI\",\"型号\":\"UP7501M8\",\"产地\":\"UNKNOWN\",\"数量\":\"3000\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"COD\":\"Taiwan China\",\"手写COO\":\"TW,CN\"}"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-4626eef2dd66",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"uPI\",\"型号\":\"UP7501M8\",\"产地\":\"UNKNOWN\",\"数量\":\"3000\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"COD\":\"Taiwan China\",\"手写COO\":\"TW,CN\"}"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-4626eef2dd66",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"uPI\",\"型号\":\"UP7501M8\",\"产地\":\"UNKNOWN\",\"数量\":\"3000\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"COD\":\"Taiwan China\",\"手写COO\":\"TW,CN\"}"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-4626eef2dd66",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"uPI\",\"型号\":\"UP7501M8\",\"产地\":\"UNKNOWN\",\"数量\":\"3000\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"COD\":\"Taiwan China\",\"手写COO\":\"TW,CN\"}"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "Taiwan China",
+            "kind": "PRINTED_COD",
+            "source": {
+              "file_id": "F-4626eef2dd66",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"uPI\",\"型号\":\"UP7501M8\",\"产地\":\"UNKNOWN\",\"数量\":\"3000\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"COD\":\"Taiwan China\",\"手写COO\":\"TW,CN\"}"
+            }
+          },
+          {
+            "value": "TW,CN",
+            "kind": "HANDWRITTEN_COO",
+            "source": {
+              "file_id": "F-4626eef2dd66",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"uPI\",\"型号\":\"UP7501M8\",\"产地\":\"UNKNOWN\",\"数量\":\"3000\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"COD\":\"Taiwan China\",\"手写COO\":\"TW,CN\"}"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 3,
+        "warehouse_no": "26010048",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-cdbd27982284",
+          "page": 1,
+          "sheet": null,
+          "row": 1,
+          "column": null,
+          "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1543\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"6500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200002056\"}"
+        },
+        "fields": {
+          "brand": "ASMEDIA",
+          "model": "ASM1543",
+          "unit": "PCS",
+          "quantity": "6500",
+          "material_no": "300200002056"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1543\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"6500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200002056\"}"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1543\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"6500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200002056\"}"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1543\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"6500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200002056\"}"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1543\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"6500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200002056\"}"
+            }
+          ],
+          "material_no": [
+            {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1543\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"6500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200002056\"}"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "TAIWAN, CHINA",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1543\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"6500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200002056\"}"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 4,
+        "warehouse_no": "26010048",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-cdbd27982284",
+          "page": 1,
+          "sheet": null,
+          "row": 2,
+          "column": null,
+          "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM2480B\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"3500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200002198\"}"
+        },
+        "fields": {
+          "brand": "ASMEDIA",
+          "model": "ASM2480B",
+          "unit": "PCS",
+          "quantity": "3500",
+          "material_no": "300200002198"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM2480B\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"3500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200002198\"}"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM2480B\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"3500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200002198\"}"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM2480B\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"3500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200002198\"}"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM2480B\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"3500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200002198\"}"
+            }
+          ],
+          "material_no": [
+            {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM2480B\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"3500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200002198\"}"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "TAIWAN, CHINA",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM2480B\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"3500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200002198\"}"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 5,
+        "warehouse_no": "26010048",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-cdbd27982284",
+          "page": 1,
+          "sheet": null,
+          "row": 3,
+          "column": null,
+          "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1562\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"6500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200001648\"}"
+        },
+        "fields": {
+          "brand": "ASMEDIA",
+          "model": "ASM1562",
+          "unit": "PCS",
+          "quantity": "6500",
+          "material_no": "300200001648"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1562\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"6500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200001648\"}"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1562\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"6500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200001648\"}"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1562\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"6500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200001648\"}"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1562\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"6500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200001648\"}"
+            }
+          ],
+          "material_no": [
+            {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1562\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"6500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200001648\"}"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "TAIWAN, CHINA",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1562\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"6500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200001648\"}"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 6,
+        "warehouse_no": "26010048",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-cdbd27982284",
+          "page": 1,
+          "sheet": null,
+          "row": 4,
+          "column": null,
+          "raw_text": "{\"page\":1,\"position\":\"商品表第4行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1164\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"7000\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200008018\"}"
+        },
+        "fields": {
+          "brand": "ASMEDIA",
+          "model": "ASM1164",
+          "unit": "PCS",
+          "quantity": "7000",
+          "material_no": "300200008018"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第4行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1164\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"7000\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200008018\"}"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第4行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1164\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"7000\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200008018\"}"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第4行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1164\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"7000\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200008018\"}"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第4行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1164\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"7000\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200008018\"}"
+            }
+          ],
+          "material_no": [
+            {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第4行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1164\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"7000\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200008018\"}"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "TAIWAN, CHINA",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第4行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1164\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"7000\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200008018\"}"
+            }
+          }
+        ],
+        "manual_marks": []
+      }
+    ],
+    "scope_records": [
+      {
+        "warehouse_no": "26010713",
+        "kind": "LOGICAL_TOTAL",
+        "identifier": "26010713",
+        "member_record_nos": [
+          1,
+          2
+        ],
+        "range_complete": true,
+        "has_unresolved_goods": false,
+        "measurements": [],
+        "source": {
+          "file_id": "F-4626eef2dd66",
+          "page": 1,
+          "sheet": null,
+          "row": null,
+          "column": null,
+          "raw_text": "查货文件 F-4626eef2dd66"
+        }
+      },
+      {
+        "warehouse_no": "26010048",
+        "kind": "LOGICAL_TOTAL",
+        "identifier": "26010048",
+        "member_record_nos": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "range_complete": true,
+        "has_unresolved_goods": false,
+        "measurements": [],
+        "source": {
+          "file_id": "F-cdbd27982284",
+          "page": 1,
+          "sheet": null,
+          "row": null,
+          "column": null,
+          "raw_text": "查货文件 F-cdbd27982284"
+        }
+      }
+    ],
+    "issues": [
+      {
+        "code": "ORIGIN_PRIORITY_UNRESOLVED",
+        "row_ref": null,
+        "field": "origin",
+        "message": "印刷列为COD，手写COO为TW,CN；不静默将COD映射成产地。"
+      }
+    ]
+  }
+}

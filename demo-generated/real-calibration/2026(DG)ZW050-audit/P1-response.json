@@ -1,0 +1,260 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P1",
+  "request_id": "REMAINING-2026(DG)ZW050-20260921-P1",
+  "output": {
+    "processing_status": "NEEDS_REVIEW",
+    "customer_resolution": {
+      "status": "UNRESOLVED",
+      "customer_id": null,
+      "recognized_name": "",
+      "candidate_customer_ids": [],
+      "sources": []
+    },
+    "read_status": [
+      {
+        "file_id": "F-ab6bfdee3e54",
+        "read_segments": [
+          "sheet:智能智能导单文件"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      }
+    ],
+    "rows": [
+      {
+        "row_no": 1,
+        "source": {
+          "file_id": "F-ab6bfdee3e54",
+          "page": null,
+          "sheet": "智能智能导单文件",
+          "row": 2,
+          "column": null,
+          "raw_text": "委托商品第1行"
+        },
+        "values": {
+          "customer_name": "",
+          "brand": "MAXLINEAR",
+          "model": "SP3243EBEY-L/TR",
+          "description": "",
+          "product_name": "集成电路",
+          "origin": "韩国",
+          "unit": "个",
+          "quantity": "2500",
+          "customs_unit_price": "0.145",
+          "total_price": "",
+          "currency": "",
+          "packages": "1",
+          "net_weight": "0.56",
+          "gross_weight": "2",
+          "sku": "4000167606",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "霆宝",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "300200001900",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": "4785"
+        },
+        "evidence": [
+          {
+            "field": "brand",
+            "value": "MAXLINEAR",
+            "unit": "",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "C",
+              "raw_text": "MAXLINEAR"
+            }
+          },
+          {
+            "field": "model",
+            "value": "SP3243EBEY-L/TR",
+            "unit": "",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "D",
+              "raw_text": "SP3243EBEY-L/TR"
+            }
+          },
+          {
+            "field": "product_name",
+            "value": "集成电路",
+            "unit": "",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "B",
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "field": "origin",
+            "value": "韩国",
+            "unit": "",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "F",
+              "raw_text": "韩国"
+            }
+          },
+          {
+            "field": "unit",
+            "value": "个",
+            "unit": "",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "G",
+              "raw_text": "个"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "2500",
+            "unit": "",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "H",
+              "raw_text": "2500"
+            }
+          },
+          {
+            "field": "customs_unit_price",
+            "value": "0.145",
+            "unit": "",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "I",
+              "raw_text": "0.145"
+            }
+          },
+          {
+            "field": "packages",
+            "value": "1",
+            "unit": "",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "J",
+              "raw_text": "1"
+            }
+          },
+          {
+            "field": "net_weight",
+            "value": "0.56",
+            "unit": "",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "K",
+              "raw_text": "0.56"
+            }
+          },
+          {
+            "field": "gross_weight",
+            "value": "2",
+            "unit": "",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "L",
+              "raw_text": "2"
+            }
+          },
+          {
+            "field": "sku",
+            "value": "4000167606",
+            "unit": "",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "N",
+              "raw_text": "4000167606"
+            }
+          },
+          {
+            "field": "supplier",
+            "value": "霆宝",
+            "unit": "",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "O",
+              "raw_text": "霆宝"
+            }
+          },
+          {
+            "field": "material_no",
+            "value": "300200001900",
+            "unit": "",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "R",
+              "raw_text": "300200001900"
+            }
+          },
+          {
+            "field": "remark",
+            "value": "4785",
+            "unit": "",
+            "source": {
+              "file_id": "F-ab6bfdee3e54",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "U",
+              "raw_text": "4785"
+            }
+          }
+        ],
+        "conflicts": []
+      }
+    ],
+    "scope_records": [],
+    "unlinked_records": [],
+    "issues": [
+      {
+        "code": "CUSTOMER_UNRESOLVED",
+        "row_ref": null,
+        "field": "customer_name",
+        "message": "主体委托未提供可映射客户名称，不能把样本目录客户当作模型识别结论。"
+      }
+    ]
+  }
+}

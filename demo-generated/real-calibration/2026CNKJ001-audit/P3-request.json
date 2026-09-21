@@ -1,0 +1,211 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P3",
+  "request_id": "20260921-2026CNKJ001-P3",
+  "context": {
+    "customer_id": "C-7a1e673169bf",
+    "retrieval_complete": false
+  },
+  "input": {
+    "order_rows": [
+      {
+        "order_row_id": "D-a64834ca9065-R001",
+        "customer_id": "C-7a1e673169bf",
+        "identity": {
+          "model": "BM25U-4P/2-V(85)",
+          "brand": "广濑",
+          "origin": "韩国",
+          "quantity": "580000",
+          "unit": "",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-O-R001-MODEL",
+            "field": "model",
+            "value": "BM25U-4P/2-V(85)",
+            "source": {
+              "file_id": "F-a64834ca9065",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "型号",
+              "raw_text": "BM25U-4P/2-V(85)"
+            }
+          },
+          {
+            "evidence_key": "E-O-R001-BRAND",
+            "field": "brand",
+            "value": "广濑",
+            "source": {
+              "file_id": "F-a64834ca9065",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "品牌",
+              "raw_text": "广濑"
+            }
+          },
+          {
+            "evidence_key": "E-O-R001-ORIGIN",
+            "field": "origin",
+            "value": "韩国",
+            "source": {
+              "file_id": "F-a64834ca9065",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "产地",
+              "raw_text": "韩国"
+            }
+          }
+        ]
+      }
+    ],
+    "inspection_candidates": [
+      {
+        "raw_row_id": "I-8e681d73b55a-26057448-L001",
+        "customer_id": "C-7a1e673169bf",
+        "logical_inspection_id": "I-8e681d73b55a-26057448",
+        "warehouse_no": "26057448",
+        "merged_product_id": null,
+        "identity": {
+          "model": "BM25U-4P/2-V(85)",
+          "brand": "HIROSE",
+          "origin": "JAPAN",
+          "quantity": "580000",
+          "unit": "pc",
+          "material_no": "",
+          "purchase_order_no": "K20260318001W",
+          "sku": "",
+          "box_no": "1--3",
+          "dc": "",
+          "lot": ""
+        },
+        "scope_summary": {
+          "coverage": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "has_extra_goods": false,
+          "has_unresolved_goods": true
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-I-CN-L001-MODEL",
+            "field": "model",
+            "value": "BM25U-4P/2-V(85)",
+            "source": {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Part No.",
+              "raw_text": "BM25U-4P/2-V(85)"
+            }
+          },
+          {
+            "evidence_key": "E-I-CN-L001-BRAND",
+            "field": "brand",
+            "value": "HIROSE",
+            "source": {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "HIROSE"
+            }
+          },
+          {
+            "evidence_key": "E-I-CN-L001-ORIGIN",
+            "field": "origin",
+            "value": "JAPAN",
+            "source": {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Original country",
+              "raw_text": "JAPAN"
+            }
+          },
+          {
+            "evidence_key": "E-I-CN-L001-CUSTOMER",
+            "field": "customer",
+            "value": "深圳市快极科技有限公司",
+            "source": {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "Bill to",
+              "raw_text": "深圳市快极科技有限公司"
+            }
+          },
+          {
+            "evidence_key": "E-I-CN-L001-WH",
+            "field": "warehouse_no",
+            "value": "26057448",
+            "source": {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "barcode",
+              "raw_text": "26057448"
+            }
+          },
+          {
+            "evidence_key": "E-I-CN-L001-WH-ALT",
+            "field": "warehouse_no",
+            "value": "018230127",
+            "source": {
+              "file_id": "F-8e681d73b55a",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "body",
+              "raw_text": "018230127"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      }
+    ],
+    "proposed_groups": [
+      {
+        "order_row_id": "D-a64834ca9065-R001",
+        "raw_row_ids": [
+          "I-8e681d73b55a-26057448-L001"
+        ],
+        "evidence_keys": [
+          "E-O-R001-MODEL",
+          "E-I-CN-L001-MODEL"
+        ]
+      }
+    ],
+    "comparison_results": [
+      {
+        "order_row_id": "D-a64834ca9065-R001",
+        "raw_row_ids": [
+          "I-8e681d73b55a-26057448-L001"
+        ],
+        "quantity_comparison": {
+          "order_value": "580000",
+          "inspection_value": "580000",
+          "status": "EQUAL_NUMERIC",
+          "unit_comparable": false
+        },
+        "model_comparison": "EXACT",
+        "brand_comparison": "DIFFERENT_RAW_VALUES",
+        "origin_comparison": "DIFFERENT_RAW_VALUES",
+        "customer_comparison": "MISMATCH",
+        "warehouse_comparison": "AMBIGUOUS"
+      }
+    ]
+  }
+}

@@ -1,0 +1,250 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P1",
+  "request_id": "20260921-2026BMH001-P1",
+  "context": {
+    "customer_directory": [
+      {
+        "customer_id": "C-80d0a4f9a7ac",
+        "customer_name": "深圳市百闽海科技有限公司",
+        "aliases": []
+      }
+    ],
+    "normalization": {
+      "countries": {
+        "CN": "中国",
+        "US": "美国",
+        "DE": "德国",
+        "GB": "英国",
+        "JP": "日本"
+      },
+      "units": {
+        "PCS": "个",
+        "EA": "个"
+      }
+    }
+  },
+  "input": {
+    "materials": [
+      {
+        "file_id": "F-fb448776f711",
+        "material_type": "ORDER",
+        "segments": [
+          "sheet:Sheet1",
+          "sheet:Sheet2",
+          "sheet:Sheet3"
+        ],
+        "content": {
+          "source_path": "真实整单样本/2026BMH001/委托文件/委托进口确认单(3).xls",
+          "sheets": [
+            {
+              "name": "Sheet1",
+              "header": {
+                "A3": "委托方：",
+                "B3": "深圳市百闽海科技有限公司"
+              },
+              "columns": {
+                "A": "序号",
+                "B": "货物名称",
+                "C": "品牌",
+                "D": "型号",
+                "E": "参数",
+                "F": "产地",
+                "G": "单位",
+                "H": "数量(PCS)",
+                "I": "报关单价（USD）",
+                "J": "报关总价（USD） FOB香港",
+                "K": "箱数",
+                "L": "净重(KG)",
+                "M": "毛重(KG)"
+              },
+              "rows": [
+                {
+                  "row": 7,
+                  "serial": "1",
+                  "product_name": "集成电路",
+                  "brand": "TI",
+                  "model": "LM2576SX-3.3/NOPB",
+                  "origin": "",
+                  "unit": "PCS",
+                  "quantity": "4000",
+                  "unit_price": "0.555",
+                  "total_price": "2220",
+                  "packages": "1",
+                  "net_weight": "",
+                  "gross_weight": ""
+                },
+                {
+                  "row": 8,
+                  "serial": "11",
+                  "product_name": "集成电路",
+                  "brand": "TI",
+                  "model": "LM2576SX-3.3/NOPB",
+                  "origin": "",
+                  "unit": "PCS",
+                  "quantity": "500",
+                  "unit_price": "0.555",
+                  "total_price": "277.5",
+                  "packages": "1",
+                  "net_weight": "",
+                  "gross_weight": ""
+                },
+                {
+                  "row": 9,
+                  "serial": "2",
+                  "product_name": "集成电路",
+                  "brand": "TI",
+                  "model": "LM2904BIDR",
+                  "origin": "",
+                  "unit": "PCS",
+                  "quantity": "110000",
+                  "unit_price": "0.028",
+                  "total_price": "3080",
+                  "packages": "3",
+                  "net_weight": "",
+                  "gross_weight": ""
+                },
+                {
+                  "row": 10,
+                  "serial": "5",
+                  "product_name": "集成电路",
+                  "brand": "TI",
+                  "model": "SN74LVC08ADR",
+                  "origin": "",
+                  "unit": "PCS",
+                  "quantity": "20000",
+                  "unit_price": "0.055",
+                  "total_price": "1100",
+                  "packages": "1",
+                  "net_weight": "",
+                  "gross_weight": ""
+                },
+                {
+                  "row": 11,
+                  "serial": "3",
+                  "product_name": "集成电路",
+                  "brand": "TI",
+                  "model": "SN74AHC1G08DBVR",
+                  "origin": "",
+                  "unit": "PCS",
+                  "quantity": "360000",
+                  "unit_price": "0.0155",
+                  "total_price": "5580",
+                  "packages": "6",
+                  "net_weight": "",
+                  "gross_weight": ""
+                },
+                {
+                  "row": 12,
+                  "serial": "4",
+                  "product_name": "集成电路",
+                  "brand": "TI",
+                  "model": "SN74HC245PWR",
+                  "origin": "",
+                  "unit": "PCS",
+                  "quantity": "24000",
+                  "unit_price": "0.09",
+                  "total_price": "2160",
+                  "packages": "1",
+                  "net_weight": "",
+                  "gross_weight": ""
+                },
+                {
+                  "row": 13,
+                  "serial": "6",
+                  "product_name": "集成电路",
+                  "brand": "TI",
+                  "model": "SN74LVC1G04DBVR",
+                  "origin": "",
+                  "unit": "PCS",
+                  "quantity": "150000",
+                  "unit_price": "0.016",
+                  "total_price": "2400",
+                  "packages": "3",
+                  "net_weight": "",
+                  "gross_weight": ""
+                },
+                {
+                  "row": 14,
+                  "serial": "7",
+                  "product_name": "集成电路",
+                  "brand": "TI",
+                  "model": "TLV62569DBVR",
+                  "origin": "",
+                  "unit": "PCS",
+                  "quantity": "450000",
+                  "unit_price": "0.022",
+                  "total_price": "9900",
+                  "packages": "4",
+                  "net_weight": "",
+                  "gross_weight": ""
+                },
+                {
+                  "row": 15,
+                  "serial": "8",
+                  "product_name": "集成电路",
+                  "brand": "TI",
+                  "model": "TPS51200DRCR",
+                  "origin": "",
+                  "unit": "PCS",
+                  "quantity": "12000",
+                  "unit_price": "0.079",
+                  "total_price": "948",
+                  "packages": "1",
+                  "net_weight": "",
+                  "gross_weight": ""
+                },
+                {
+                  "row": 16,
+                  "serial": "9",
+                  "product_name": "集成电路",
+                  "brand": "TI",
+                  "model": "TXS0108EPWR",
+                  "origin": "",
+                  "unit": "PCS",
+                  "quantity": "86000",
+                  "unit_price": "0.086",
+                  "total_price": "7396",
+                  "packages": "4",
+                  "net_weight": "",
+                  "gross_weight": ""
+                },
+                {
+                  "row": 17,
+                  "serial": "10",
+                  "product_name": "集成电路",
+                  "brand": "TI",
+                  "model": "TXS0108EPWR",
+                  "origin": "",
+                  "unit": "PCS",
+                  "quantity": "26000",
+                  "unit_price": "0.086",
+                  "total_price": "2236",
+                  "packages": "1",
+                  "net_weight": "",
+                  "gross_weight": ""
+                }
+              ],
+              "totals": {
+                "row": 18,
+                "quantity": "1242500",
+                "total_price": "37297.5",
+                "packages": "26",
+                "net_weight": "0.0",
+                "gross_weight": "0.0"
+              }
+            },
+            {
+              "name": "Sheet2",
+              "rows": []
+            },
+            {
+              "name": "Sheet3",
+              "rows": []
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

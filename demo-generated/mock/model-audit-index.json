@@ -1,0 +1,1844 @@
+{
+  "generatedAt": "2026-09-21",
+  "contract": "jiuli-ai-v3",
+  "samples": [
+    {
+      "sampleId": "2025YBT010-2",
+      "model": "gpt-5.6-sol",
+      "auditDirectory": "demo-generated/real-calibration/SC-08-audit",
+      "stageStatus": {
+        "P1": "SUCCESS",
+        "P2": "SUCCESS",
+        "P3": "SUCCESS",
+        "P4": "SUCCESS"
+      },
+      "counts": {
+        "orderRows": 2,
+        "rawRows": 2,
+        "matched": 2,
+        "multipleCandidates": 0,
+        "unmatched": 0,
+        "fieldDecisions": 16
+      },
+      "customerName": "英堡科技（深圳）有限公司",
+      "customerId": "C-89aa660b4b46",
+      "entrustmentFiles": [
+        "2件.xlsx"
+      ],
+      "inspectionFiles": [
+        "1765426942103.pdf"
+      ],
+      "blockedReason": null,
+      "p1": {
+        "status": "SUCCESS",
+        "recognizedName": "英堡科技（深圳）有限公司",
+        "customerId": "C-89aa660b4b46",
+        "rowsCount": 2,
+        "sampleRows": [
+          {
+            "rowNo": 1,
+            "brand": "SK HYNIX",
+            "model": "H25G9TCXXCX702A#9",
+            "quantity": "12081",
+            "unit": "个",
+            "origin": "韩国",
+            "netWeight": "3.6",
+            "grossWeight": "4.2"
+          },
+          {
+            "rowNo": 2,
+            "brand": "SK HYNIX",
+            "model": "D25G9TCX8CX239C#D",
+            "quantity": "16054",
+            "unit": "个",
+            "origin": "韩国",
+            "netWeight": "4.4",
+            "grossWeight": "5"
+          }
+        ]
+      },
+      "p2": {
+        "status": "SUCCESS",
+        "customerId": "C-89aa660b4b46",
+        "rawRowsCount": 2,
+        "warehouseNos": [
+          "25120336"
+        ],
+        "sampleRows": [
+          {
+            "recordNo": 1,
+            "warehouseNo": "25120336",
+            "brand": "SK HYNIX",
+            "model": "H25G9TCXXCX702A",
+            "quantity": "12081",
+            "unit": null
+          },
+          {
+            "recordNo": 2,
+            "warehouseNo": "25120336",
+            "brand": "SK HYNIX",
+            "model": "D25G9TCX8CX239C",
+            "quantity": "16054",
+            "unit": null
+          }
+        ]
+      },
+      "p3": {
+        "status": "SUCCESS",
+        "matchedCount": 2,
+        "multipleCount": 0,
+        "unmatchedCount": 0,
+        "relations": [
+          {
+            "orderRowId": "D-3c3cc10bd26b-R007",
+            "matchStatus": "MATCHED",
+            "coverage": {
+              "status": "COMPLETE",
+              "overlap": "DISJOINT",
+              "evidence_keys": [
+                "E-I-L001-SCOPE"
+              ]
+            },
+            "evidenceKeys": [
+              "E-O-R007-MODEL",
+              "E-I-L001-MODEL",
+              "E-I-L001-MARKER",
+              "E-O-R007-BRAND",
+              "E-I-L001-BRAND",
+              "E-I-L001-SCOPE"
+            ],
+            "selectedRawRowIds": [
+              "I-8bc7177252aa-25120336-L001"
+            ]
+          },
+          {
+            "orderRowId": "D-3c3cc10bd26b-R008",
+            "matchStatus": "MATCHED",
+            "coverage": {
+              "status": "COMPLETE",
+              "overlap": "DISJOINT",
+              "evidence_keys": [
+                "E-I-L002-SCOPE"
+              ]
+            },
+            "evidenceKeys": [
+              "E-O-R008-MODEL",
+              "E-I-L002-MODEL",
+              "E-I-L002-MARKER",
+              "E-O-R008-BRAND",
+              "E-I-L002-BRAND",
+              "E-I-L002-SCOPE"
+            ],
+            "selectedRawRowIds": [
+              "I-8bc7177252aa-25120336-L002"
+            ]
+          }
+        ]
+      },
+      "p4": {
+        "status": "SUCCESS",
+        "patchesCount": 2,
+        "decisions": [
+          {
+            "orderRowId": "D-3c3cc10bd26b-R007",
+            "fieldDecisions": [
+              {
+                "field": "brand",
+                "decision": "KEEP",
+                "resultValue": "SK HYNIX",
+                "reason": "完整商品行的查货品牌与当前值一致。"
+              },
+              {
+                "field": "model",
+                "decision": "KEEP",
+                "resultValue": "H25G9TCXXCX702A#9",
+                "reason": "查货型号主体一致，且同一商品行描述明确保留外部标记#9。"
+              },
+              {
+                "field": "origin",
+                "decision": "KEEP",
+                "resultValue": "韩国",
+                "reason": "完整独立片段的印刷COD经配置标准化为韩国，与当前值一致。"
+              },
+              {
+                "field": "unit",
+                "decision": "KEEP",
+                "resultValue": "个",
+                "reason": "查货商品行未提供单位，保留委托单位。"
+              },
+              {
+                "field": "quantity",
+                "decision": "KEEP",
+                "resultValue": "12081",
+                "reason": "数值相同但查货单位缺失，不能完成整行数量可比核验。"
+              },
+              {
+                "field": "net_weight",
+                "decision": "KEEP",
+                "resultValue": "3.6",
+                "reason": "完整商品级查货净重3.60 KG与当前值一致。"
+              },
+              {
+                "field": "gross_weight",
+                "decision": "KEEP",
+                "resultValue": "4.2",
+                "reason": "完整商品级查货毛重4.20 KG与当前值一致。"
+              },
+              {
+                "field": "warehouse_no",
+                "decision": "FILL",
+                "resultValue": "25120336",
+                "reason": "可靠关系对应的入仓号清单唯一且完整。"
+              }
+            ]
+          },
+          {
+            "orderRowId": "D-3c3cc10bd26b-R008",
+            "fieldDecisions": [
+              {
+                "field": "brand",
+                "decision": "KEEP",
+                "resultValue": "SK HYNIX",
+                "reason": "完整商品行的查货品牌与当前值一致。"
+              },
+              {
+                "field": "model",
+                "decision": "KEEP",
+                "resultValue": "D25G9TCX8CX239C#D",
+                "reason": "查货型号主体一致，且同一商品行描述明确保留外部标记#D。"
+              },
+              {
+                "field": "origin",
+                "decision": "KEEP",
+                "resultValue": "韩国",
+                "reason": "完整独立片段的印刷COD经配置标准化为韩国，与当前值一致。"
+              },
+              {
+                "field": "unit",
+                "decision": "KEEP",
+                "resultValue": "个",
+                "reason": "查货商品行未提供单位，保留委托单位。"
+              },
+              {
+                "field": "quantity",
+                "decision": "KEEP",
+                "resultValue": "16054",
+                "reason": "数值相同但查货单位缺失，不能完成整行数量可比核验。"
+              },
+              {
+                "field": "net_weight",
+                "decision": "KEEP",
+                "resultValue": "4.4",
+                "reason": "完整商品级查货净重4.40 KG与当前值一致。"
+              },
+              {
+                "field": "gross_weight",
+                "decision": "KEEP",
+                "resultValue": "5",
+                "reason": "完整商品级查货毛重5.00 KG与当前值一致。"
+              },
+              {
+                "field": "warehouse_no",
+                "decision": "FILL",
+                "resultValue": "25120336",
+                "reason": "可靠关系对应的入仓号清单唯一且完整。"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "2026(DG)ZW001",
+      "model": "gpt-5.6-luna",
+      "auditDirectory": "demo-generated/real-calibration/2026(DG)ZW001-audit",
+      "stageStatus": {
+        "P1": "NEEDS_REVIEW",
+        "P2": "SUCCESS",
+        "P3": "INVALID_INPUT",
+        "P4": "INVALID_INPUT"
+      },
+      "counts": {
+        "orderRows": 6,
+        "rawRows": 6,
+        "matched": 0,
+        "multipleCandidates": 0,
+        "unmatched": 0,
+        "fieldDecisions": 0
+      },
+      "customerName": "东莞市智微智能科技有限公司",
+      "customerId": "C-66be07d6cabe",
+      "entrustmentFiles": [
+        "智微智能导单文件-1767600043104.xlsx"
+      ],
+      "inspectionFiles": [
+        "1767583198125.pdf",
+        "1767597461096.pdf"
+      ],
+      "blockedReason": "主体委托（导单文件）缺少明确客户名称抬头，P3 按契约阻断跨客户强配；P2 查货事实与入仓号已完整保留。",
+      "p1": {
+        "status": "NEEDS_REVIEW",
+        "recognizedName": "",
+        "customerId": null,
+        "rowsCount": 6,
+        "sampleRows": [
+          {
+            "rowNo": 1,
+            "brand": "ASMEDIA",
+            "model": "ASM1543",
+            "quantity": "6500",
+            "unit": "个",
+            "origin": "中国台湾",
+            "netWeight": "1.44",
+            "grossWeight": "2.21"
+          },
+          {
+            "rowNo": 2,
+            "brand": "ASMEDIA",
+            "model": "ASM2480B",
+            "quantity": "3500",
+            "unit": "个",
+            "origin": "中国台湾",
+            "netWeight": "0.77",
+            "grossWeight": "1.2"
+          },
+          {
+            "rowNo": 3,
+            "brand": "ASMEDIA",
+            "model": "ASM1562",
+            "quantity": "6500",
+            "unit": "个",
+            "origin": "中国台湾",
+            "netWeight": "1.44",
+            "grossWeight": "2.21"
+          },
+          {
+            "rowNo": 4,
+            "brand": "ASMEDIA",
+            "model": "ASM1164",
+            "quantity": "7000",
+            "unit": "个",
+            "origin": "中国台湾",
+            "netWeight": "1.55",
+            "grossWeight": "2.38"
+          },
+          {
+            "rowNo": 5,
+            "brand": "UPI",
+            "model": "UP9505UQGW",
+            "quantity": "2500",
+            "unit": "个",
+            "origin": "中国台湾",
+            "netWeight": "0.36",
+            "grossWeight": "0.45"
+          }
+        ]
+      },
+      "p2": {
+        "status": "SUCCESS",
+        "customerId": "C-66be07d6cabe",
+        "rawRowsCount": 6,
+        "warehouseNos": [
+          "26010048",
+          "26010713"
+        ],
+        "sampleRows": [
+          {
+            "recordNo": 1,
+            "warehouseNo": "26010713",
+            "brand": "uPI",
+            "model": "UP9505UQGW",
+            "quantity": "2500",
+            "unit": "PCS"
+          },
+          {
+            "recordNo": 2,
+            "warehouseNo": "26010713",
+            "brand": "uPI",
+            "model": "UP7501M8",
+            "quantity": "3000",
+            "unit": "PCS"
+          },
+          {
+            "recordNo": 3,
+            "warehouseNo": "26010048",
+            "brand": "ASMEDIA",
+            "model": "ASM1543",
+            "quantity": "6500",
+            "unit": "PCS"
+          },
+          {
+            "recordNo": 4,
+            "warehouseNo": "26010048",
+            "brand": "ASMEDIA",
+            "model": "ASM2480B",
+            "quantity": "3500",
+            "unit": "PCS"
+          },
+          {
+            "recordNo": 5,
+            "warehouseNo": "26010048",
+            "brand": "ASMEDIA",
+            "model": "ASM1562",
+            "quantity": "6500",
+            "unit": "PCS"
+          }
+        ]
+      },
+      "p3": {
+        "status": "INVALID_INPUT",
+        "matchedCount": 0,
+        "multipleCount": 0,
+        "unmatchedCount": 0,
+        "relations": []
+      },
+      "p4": {
+        "status": "INVALID_INPUT",
+        "patchesCount": 0,
+        "decisions": []
+      }
+    },
+    {
+      "sampleId": "2026(DG)ZW003",
+      "model": "gpt-5.6-luna",
+      "auditDirectory": "demo-generated/real-calibration/2026(DG)ZW003-audit",
+      "stageStatus": {
+        "P1": "NEEDS_REVIEW",
+        "P2": "SUCCESS",
+        "P3": "INVALID_INPUT",
+        "P4": "INVALID_INPUT"
+      },
+      "counts": {
+        "orderRows": 5,
+        "rawRows": 6,
+        "matched": 0,
+        "multipleCandidates": 0,
+        "unmatched": 0,
+        "fieldDecisions": 0
+      },
+      "customerName": "东莞市智微智能科技有限公司",
+      "customerId": "C-66be07d6cabe",
+      "entrustmentFiles": [
+        "智微智能导单文件-1767930508809.xlsx"
+      ],
+      "inspectionFiles": [
+        "1767836836913.pdf",
+        "1767866131153.pdf"
+      ],
+      "blockedReason": "主体委托（导单文件）缺少明确客户名称抬头，P3 按契约阻断跨客户强配；P2 查货事实与入仓号已完整保留。",
+      "p1": {
+        "status": "NEEDS_REVIEW",
+        "recognizedName": "",
+        "customerId": null,
+        "rowsCount": 5,
+        "sampleRows": [
+          {
+            "rowNo": 1,
+            "brand": "REALTEK",
+            "model": "ALC897-VA2-CG",
+            "quantity": "35000",
+            "unit": "个",
+            "origin": "中国",
+            "netWeight": "25.59",
+            "grossWeight": "37.23"
+          },
+          {
+            "rowNo": 2,
+            "brand": "REALTEK",
+            "model": "RTS5411S-GR",
+            "quantity": "2600",
+            "unit": "个",
+            "origin": "中国台湾",
+            "netWeight": "1.9",
+            "grossWeight": "2.77"
+          },
+          {
+            "rowNo": 3,
+            "brand": "ASL",
+            "model": "CS5511AN",
+            "quantity": "1680",
+            "unit": "个",
+            "origin": "中国台湾",
+            "netWeight": "2.5",
+            "grossWeight": "2.67"
+          },
+          {
+            "rowNo": 4,
+            "brand": "ASL",
+            "model": "CS5511AN",
+            "quantity": "5040",
+            "unit": "个",
+            "origin": "中国台湾",
+            "netWeight": "7.5",
+            "grossWeight": "8"
+          },
+          {
+            "rowNo": 5,
+            "brand": "ASL",
+            "model": "CS5512AN",
+            "quantity": "3360",
+            "unit": "个",
+            "origin": "中国台湾",
+            "netWeight": "5",
+            "grossWeight": "5.33"
+          }
+        ]
+      },
+      "p2": {
+        "status": "SUCCESS",
+        "customerId": "C-66be07d6cabe",
+        "rawRowsCount": 6,
+        "warehouseNos": [
+          "26010211",
+          "26010801"
+        ],
+        "sampleRows": [
+          {
+            "recordNo": 1,
+            "warehouseNo": "26010801",
+            "brand": "ASL",
+            "model": "CS5511AN",
+            "quantity": "1680",
+            "unit": "PCS"
+          },
+          {
+            "recordNo": 2,
+            "warehouseNo": "26010801",
+            "brand": "ASL",
+            "model": "CS5511AN",
+            "quantity": "5040",
+            "unit": "PCS"
+          },
+          {
+            "recordNo": 3,
+            "warehouseNo": "26010801",
+            "brand": "ASL",
+            "model": "CS5512AN",
+            "quantity": "3360",
+            "unit": "PCS"
+          },
+          {
+            "recordNo": 4,
+            "warehouseNo": "26010211",
+            "brand": "REALTEK",
+            "model": "ALC897-VA2-CG",
+            "quantity": "21600",
+            "unit": "PCS"
+          },
+          {
+            "recordNo": 5,
+            "warehouseNo": "26010211",
+            "brand": "REALTEK",
+            "model": "ALC897-VA2-CG",
+            "quantity": "13400",
+            "unit": "PCS"
+          }
+        ]
+      },
+      "p3": {
+        "status": "INVALID_INPUT",
+        "matchedCount": 0,
+        "multipleCount": 0,
+        "unmatchedCount": 0,
+        "relations": []
+      },
+      "p4": {
+        "status": "INVALID_INPUT",
+        "patchesCount": 0,
+        "decisions": []
+      }
+    },
+    {
+      "sampleId": "2026(DG)ZW050",
+      "model": "gpt-5.6-luna",
+      "auditDirectory": "demo-generated/real-calibration/2026(DG)ZW050-audit",
+      "stageStatus": {
+        "P1": "NEEDS_REVIEW",
+        "P2": "SUCCESS",
+        "P3": "INVALID_INPUT",
+        "P4": "INVALID_INPUT"
+      },
+      "counts": {
+        "orderRows": 1,
+        "rawRows": 1,
+        "matched": 0,
+        "multipleCandidates": 0,
+        "unmatched": 0,
+        "fieldDecisions": 0
+      },
+      "customerName": "东莞市智微智能科技有限公司",
+      "customerId": "C-66be07d6cabe",
+      "entrustmentFiles": [
+        "东莞智微智能导单文件-1778663696109.xlsx"
+      ],
+      "inspectionFiles": [
+        "1778638120450.pdf"
+      ],
+      "blockedReason": "主体委托（导单文件）缺少明确客户名称抬头，P3 按契约阻断跨客户强配；P2 查货事实与入仓号已完整保留。",
+      "p1": {
+        "status": "NEEDS_REVIEW",
+        "recognizedName": "",
+        "customerId": null,
+        "rowsCount": 1,
+        "sampleRows": [
+          {
+            "rowNo": 1,
+            "brand": "MAXLINEAR",
+            "model": "SP3243EBEY-L/TR",
+            "quantity": "2500",
+            "unit": "个",
+            "origin": "韩国",
+            "netWeight": "0.56",
+            "grossWeight": "2"
+          }
+        ]
+      },
+      "p2": {
+        "status": "SUCCESS",
+        "customerId": "C-66be07d6cabe",
+        "rawRowsCount": 1,
+        "warehouseNos": [
+          "26050640"
+        ],
+        "sampleRows": [
+          {
+            "recordNo": 1,
+            "warehouseNo": "26050640",
+            "brand": "MAXLINEAR",
+            "model": "SP3243EBEY-L/TR",
+            "quantity": "2500",
+            "unit": "PCS"
+          }
+        ]
+      },
+      "p3": {
+        "status": "INVALID_INPUT",
+        "matchedCount": 0,
+        "multipleCount": 0,
+        "unmatchedCount": 0,
+        "relations": []
+      },
+      "p4": {
+        "status": "INVALID_INPUT",
+        "patchesCount": 0,
+        "decisions": []
+      }
+    },
+    {
+      "sampleId": "2026ACSY003",
+      "model": "gpt-5.6-luna",
+      "auditDirectory": "demo-generated/real-calibration/2026ACSY003-audit",
+      "stageStatus": {
+        "P1": "SUCCESS",
+        "P2": "NEEDS_REVIEW",
+        "P3": "SUCCESS",
+        "P4": "INVALID_INPUT"
+      },
+      "counts": {
+        "orderRows": 4,
+        "rawRows": 4,
+        "matched": 0,
+        "multipleCandidates": 0,
+        "unmatched": 4,
+        "fieldDecisions": 0
+      },
+      "customerName": "深圳市澳创实业有限公司",
+      "customerId": "C-7ad6719f6d43",
+      "entrustmentFiles": [
+        "报关委托书3.23_已签章(1).pdf"
+      ],
+      "inspectionFiles": [
+        "1774265710841.pdf"
+      ],
+      "blockedReason": "P3 判定 4 条委托行与查货商品无可靠对应，未进入 P4 自动核验，保留为待人工核实。",
+      "p1": {
+        "status": "SUCCESS",
+        "recognizedName": "深圳市澳创实业有限公司",
+        "customerId": "C-7ad6719f6d43",
+        "rowsCount": 4,
+        "sampleRows": [
+          {
+            "rowNo": 1,
+            "brand": "MICRON",
+            "model": "MT29F4T08EUHAFM4-NW920",
+            "quantity": "1401",
+            "unit": "PCS",
+            "origin": "SINGAPORE",
+            "netWeight": "",
+            "grossWeight": ""
+          },
+          {
+            "rowNo": 2,
+            "brand": "MICRON",
+            "model": "MT29F2T08CUHBBM4-NW821",
+            "quantity": "1564",
+            "unit": "PCS",
+            "origin": "SINGAPORE",
+            "netWeight": "",
+            "grossWeight": ""
+          },
+          {
+            "rowNo": 3,
+            "brand": "Toshiba",
+            "model": "TH58TF1V23BA8H-1V23",
+            "quantity": "1080",
+            "unit": "PCS",
+            "origin": "JAPAN",
+            "netWeight": "",
+            "grossWeight": ""
+          },
+          {
+            "rowNo": 4,
+            "brand": "Toshiba",
+            "model": "TH58TF2T23BA8J-2T23",
+            "quantity": "368",
+            "unit": "PCS",
+            "origin": "JAPAN",
+            "netWeight": "",
+            "grossWeight": ""
+          }
+        ]
+      },
+      "p2": {
+        "status": "NEEDS_REVIEW",
+        "customerId": "C-7ad6719f6d43",
+        "rawRowsCount": 4,
+        "warehouseNos": [
+          "26033175"
+        ],
+        "sampleRows": [
+          {
+            "recordNo": 1,
+            "warehouseNo": "26033175",
+            "brand": "MICRON",
+            "model": "MT29F4T08EUHAFM4",
+            "quantity": "1401",
+            "unit": "PCS"
+          },
+          {
+            "recordNo": 2,
+            "warehouseNo": "26033175",
+            "brand": "MICRON",
+            "model": "MT29F2T08CUHBBM4",
+            "quantity": "1564",
+            "unit": "PCS"
+          },
+          {
+            "recordNo": 3,
+            "warehouseNo": "26033175",
+            "brand": "Toshiba",
+            "model": "TH58TF1V23BA8H",
+            "quantity": "1080",
+            "unit": "PCS"
+          },
+          {
+            "recordNo": 4,
+            "warehouseNo": "26033175",
+            "brand": "Toshiba",
+            "model": "TH58TF2T23BA8J",
+            "quantity": "368",
+            "unit": "PCS"
+          }
+        ]
+      },
+      "p3": {
+        "status": "SUCCESS",
+        "matchedCount": 0,
+        "multipleCount": 0,
+        "unmatchedCount": 4,
+        "relations": [
+          {
+            "orderRowId": "D-0971c3fd7c49-R001",
+            "matchStatus": "UNMATCHED",
+            "coverage": {
+              "status": "UNCERTAIN",
+              "overlap": "UNKNOWN",
+              "evidence_keys": []
+            },
+            "evidenceKeys": [],
+            "selectedRawRowIds": []
+          },
+          {
+            "orderRowId": "D-0971c3fd7c49-R002",
+            "matchStatus": "UNMATCHED",
+            "coverage": {
+              "status": "UNCERTAIN",
+              "overlap": "UNKNOWN",
+              "evidence_keys": []
+            },
+            "evidenceKeys": [],
+            "selectedRawRowIds": []
+          },
+          {
+            "orderRowId": "D-0971c3fd7c49-R003",
+            "matchStatus": "UNMATCHED",
+            "coverage": {
+              "status": "UNCERTAIN",
+              "overlap": "UNKNOWN",
+              "evidence_keys": []
+            },
+            "evidenceKeys": [],
+            "selectedRawRowIds": []
+          },
+          {
+            "orderRowId": "D-0971c3fd7c49-R004",
+            "matchStatus": "UNMATCHED",
+            "coverage": {
+              "status": "UNCERTAIN",
+              "overlap": "UNKNOWN",
+              "evidence_keys": []
+            },
+            "evidenceKeys": [],
+            "selectedRawRowIds": []
+          }
+        ]
+      },
+      "p4": {
+        "status": "INVALID_INPUT",
+        "patchesCount": 0,
+        "decisions": []
+      }
+    },
+    {
+      "sampleId": "2026AG001",
+      "model": "gpt-5.6-luna",
+      "auditDirectory": "demo-generated/real-calibration/2026AG001-audit",
+      "stageStatus": {
+        "P1": "SUCCESS",
+        "P2": "SUCCESS",
+        "P3": "SUCCESS",
+        "P4": "INVALID_INPUT"
+      },
+      "counts": {
+        "orderRows": 2,
+        "rawRows": 2,
+        "matched": 0,
+        "multipleCandidates": 2,
+        "unmatched": 0,
+        "fieldDecisions": 0
+      },
+      "customerName": "深圳市傲冠软件股份有限公司",
+      "customerId": "C-e0cb675e9f1d",
+      "entrustmentFiles": [
+        "报关委托书-2026.5.15.xls"
+      ],
+      "inspectionFiles": [
+        "1779087953894.pdf"
+      ],
+      "blockedReason": "P3 判定 2 条同型号委托存在多候选竞争，未进入 P4 自动核验，保留为多候选待选。",
+      "p1": {
+        "status": "SUCCESS",
+        "recognizedName": "深圳市傲冠软件股份有限公司",
+        "customerId": "C-e0cb675e9f1d",
+        "rowsCount": 2,
+        "sampleRows": [
+          {
+            "rowNo": 1,
+            "brand": "SUSE",
+            "model": "B-RPGC-2C4V-PS1",
+            "quantity": "20",
+            "unit": "",
+            "origin": "德国",
+            "netWeight": "0.1",
+            "grossWeight": "1"
+          },
+          {
+            "rowNo": 2,
+            "brand": "SUSE",
+            "model": "B-RPGC-2C4V-PS1",
+            "quantity": "12",
+            "unit": "",
+            "origin": "德国",
+            "netWeight": "0.1",
+            "grossWeight": "1"
+          }
+        ]
+      },
+      "p2": {
+        "status": "SUCCESS",
+        "customerId": "C-e0cb675e9f1d",
+        "rawRowsCount": 2,
+        "warehouseNos": [
+          "26050688"
+        ],
+        "sampleRows": [
+          {
+            "recordNo": 1,
+            "warehouseNo": "26050688",
+            "brand": "SUSE",
+            "model": "B-RPGC-2C4V-PS1",
+            "quantity": "20",
+            "unit": null
+          },
+          {
+            "recordNo": 2,
+            "warehouseNo": "26050688",
+            "brand": "SUSE",
+            "model": "B-RPGC-2C4V-PS1",
+            "quantity": "12",
+            "unit": null
+          }
+        ]
+      },
+      "p3": {
+        "status": "SUCCESS",
+        "matchedCount": 0,
+        "multipleCount": 2,
+        "unmatchedCount": 0,
+        "relations": [
+          {
+            "orderRowId": "D-e60d9bd8df88-R007",
+            "matchStatus": "MULTIPLE_CANDIDATES",
+            "coverage": {
+              "status": "UNCERTAIN",
+              "overlap": "UNKNOWN",
+              "evidence_keys": []
+            },
+            "evidenceKeys": [],
+            "selectedRawRowIds": []
+          },
+          {
+            "orderRowId": "D-e60d9bd8df88-R008",
+            "matchStatus": "MULTIPLE_CANDIDATES",
+            "coverage": {
+              "status": "UNCERTAIN",
+              "overlap": "UNKNOWN",
+              "evidence_keys": []
+            },
+            "evidenceKeys": [],
+            "selectedRawRowIds": []
+          }
+        ]
+      },
+      "p4": {
+        "status": "INVALID_INPUT",
+        "patchesCount": 0,
+        "decisions": []
+      }
+    },
+    {
+      "sampleId": "2026BMH001",
+      "model": "gpt-5.6-luna",
+      "auditDirectory": "demo-generated/real-calibration/2026BMH001-audit",
+      "stageStatus": {
+        "P1": "SUCCESS",
+        "P2": "PARTIAL",
+        "P3": "SUCCESS",
+        "P4": "INVALID_INPUT"
+      },
+      "counts": {
+        "orderRows": 11,
+        "rawRows": 22,
+        "matched": 0,
+        "multipleCandidates": 6,
+        "unmatched": 5,
+        "fieldDecisions": 0
+      },
+      "customerName": "深圳市百闽海科技有限公司",
+      "customerId": "C-80d0a4f9a7ac",
+      "entrustmentFiles": [
+        "委托进口确认单(3).xls"
+      ],
+      "inspectionFiles": [
+        "1770115896818.pdf",
+        "1770186905078.pdf",
+        "1770260311026.pdf",
+        "1770278926075.pdf",
+        "1770349572218.pdf",
+        "1770349574703.pdf",
+        "1770366210310.pdf",
+        "1770366211262.pdf",
+        "1770366212127.pdf",
+        "1770436102600.pdf",
+        "1770436114845.pdf"
+      ],
+      "blockedReason": "P3 判定 6 条多候选、5 条未匹配，证据不足时不凭目录名强配，未进入 P4 自动核验。",
+      "p1": {
+        "status": "SUCCESS",
+        "recognizedName": "深圳市百闽海科技有限公司",
+        "customerId": "C-80d0a4f9a7ac",
+        "rowsCount": 11,
+        "sampleRows": [
+          {
+            "rowNo": 1,
+            "brand": "TI",
+            "model": "LM2576SX-3.3/NOPB",
+            "quantity": "4000",
+            "unit": "PCS",
+            "origin": "",
+            "netWeight": "",
+            "grossWeight": ""
+          },
+          {
+            "rowNo": 2,
+            "brand": "TI",
+            "model": "LM2576SX-3.3/NOPB",
+            "quantity": "500",
+            "unit": "PCS",
+            "origin": "",
+            "netWeight": "",
+            "grossWeight": ""
+          },
+          {
+            "rowNo": 3,
+            "brand": "TI",
+            "model": "LM2904BIDR",
+            "quantity": "110000",
+            "unit": "PCS",
+            "origin": "",
+            "netWeight": "",
+            "grossWeight": ""
+          },
+          {
+            "rowNo": 4,
+            "brand": "TI",
+            "model": "SN74LVC08ADR",
+            "quantity": "20000",
+            "unit": "PCS",
+            "origin": "",
+            "netWeight": "",
+            "grossWeight": ""
+          },
+          {
+            "rowNo": 5,
+            "brand": "TI",
+            "model": "SN74AHC1G08DBVR",
+            "quantity": "360000",
+            "unit": "PCS",
+            "origin": "",
+            "netWeight": "",
+            "grossWeight": ""
+          }
+        ]
+      },
+      "p2": {
+        "status": "PARTIAL",
+        "customerId": "C-80d0a4f9a7ac",
+        "rawRowsCount": 22,
+        "warehouseNos": [
+          "26027114",
+          "26027143",
+          "26027191",
+          "26027223",
+          "26027251",
+          "26027254",
+          "26027298",
+          "26027299",
+          "26027300",
+          "26027322",
+          "26027323"
+        ],
+        "sampleRows": [
+          {
+            "recordNo": 1,
+            "warehouseNo": "26027114",
+            "brand": "TI",
+            "model": "TXS0108EPWR",
+            "quantity": "16000",
+            "unit": "EA"
+          },
+          {
+            "recordNo": 2,
+            "warehouseNo": "26027143",
+            "brand": "TI",
+            "model": "TXS0108EPWR",
+            "quantity": "30000",
+            "unit": "EA"
+          },
+          {
+            "recordNo": 3,
+            "warehouseNo": "26027143",
+            "brand": "TI",
+            "model": "TXS0108EPWR",
+            "quantity": "40000",
+            "unit": "EA"
+          },
+          {
+            "recordNo": 4,
+            "warehouseNo": "26027191",
+            "brand": "TI",
+            "model": "TLV62569DBVR",
+            "quantity": "150000",
+            "unit": "EA"
+          },
+          {
+            "recordNo": 5,
+            "warehouseNo": "26027191",
+            "brand": "TI",
+            "model": "TLV62569DBVR",
+            "quantity": "150000",
+            "unit": "EA"
+          }
+        ]
+      },
+      "p3": {
+        "status": "SUCCESS",
+        "matchedCount": 0,
+        "multipleCount": 6,
+        "unmatchedCount": 5,
+        "relations": [
+          {
+            "orderRowId": "D-fb448776f711-R007",
+            "matchStatus": "MULTIPLE_CANDIDATES",
+            "coverage": {
+              "status": "UNCERTAIN",
+              "overlap": "UNKNOWN",
+              "evidence_keys": []
+            },
+            "evidenceKeys": [],
+            "selectedRawRowIds": []
+          },
+          {
+            "orderRowId": "D-fb448776f711-R008",
+            "matchStatus": "MULTIPLE_CANDIDATES",
+            "coverage": {
+              "status": "UNCERTAIN",
+              "overlap": "UNKNOWN",
+              "evidence_keys": []
+            },
+            "evidenceKeys": [],
+            "selectedRawRowIds": []
+          },
+          {
+            "orderRowId": "D-fb448776f711-R009",
+            "matchStatus": "UNMATCHED",
+            "coverage": {
+              "status": "UNCERTAIN",
+              "overlap": "UNKNOWN",
+              "evidence_keys": []
+            },
+            "evidenceKeys": [],
+            "selectedRawRowIds": []
+          },
+          {
+            "orderRowId": "D-fb448776f711-R010",
+            "matchStatus": "UNMATCHED",
+            "coverage": {
+              "status": "UNCERTAIN",
+              "overlap": "UNKNOWN",
+              "evidence_keys": []
+            },
+            "evidenceKeys": [],
+            "selectedRawRowIds": []
+          },
+          {
+            "orderRowId": "D-fb448776f711-R011",
+            "matchStatus": "MULTIPLE_CANDIDATES",
+            "coverage": {
+              "status": "UNCERTAIN",
+              "overlap": "UNKNOWN",
+              "evidence_keys": []
+            },
+            "evidenceKeys": [],
+            "selectedRawRowIds": []
+          },
+          {
+            "orderRowId": "D-fb448776f711-R012",
+            "matchStatus": "UNMATCHED",
+            "coverage": {
+              "status": "UNCERTAIN",
+              "overlap": "UNKNOWN",
+              "evidence_keys": []
+            },
+            "evidenceKeys": [],
+            "selectedRawRowIds": []
+          },
+          {
+            "orderRowId": "D-fb448776f711-R013",
+            "matchStatus": "UNMATCHED",
+            "coverage": {
+              "status": "UNCERTAIN",
+              "overlap": "UNKNOWN",
+              "evidence_keys": []
+            },
+            "evidenceKeys": [],
+            "selectedRawRowIds": []
+          },
+          {
+            "orderRowId": "D-fb448776f711-R014",
+            "matchStatus": "MULTIPLE_CANDIDATES",
+            "coverage": {
+              "status": "UNCERTAIN",
+              "overlap": "UNKNOWN",
+              "evidence_keys": []
+            },
+            "evidenceKeys": [],
+            "selectedRawRowIds": []
+          },
+          {
+            "orderRowId": "D-fb448776f711-R015",
+            "matchStatus": "UNMATCHED",
+            "coverage": {
+              "status": "UNCERTAIN",
+              "overlap": "UNKNOWN",
+              "evidence_keys": []
+            },
+            "evidenceKeys": [],
+            "selectedRawRowIds": []
+          },
+          {
+            "orderRowId": "D-fb448776f711-R016",
+            "matchStatus": "MULTIPLE_CANDIDATES",
+            "coverage": {
+              "status": "UNCERTAIN",
+              "overlap": "UNKNOWN",
+              "evidence_keys": []
+            },
+            "evidenceKeys": [],
+            "selectedRawRowIds": []
+          },
+          {
+            "orderRowId": "D-fb448776f711-R017",
+            "matchStatus": "MULTIPLE_CANDIDATES",
+            "coverage": {
+              "status": "UNCERTAIN",
+              "overlap": "UNKNOWN",
+              "evidence_keys": []
+            },
+            "evidenceKeys": [],
+            "selectedRawRowIds": []
+          }
+        ]
+      },
+      "p4": {
+        "status": "INVALID_INPUT",
+        "patchesCount": 0,
+        "decisions": []
+      }
+    },
+    {
+      "sampleId": "2026CNKJ001",
+      "model": "gpt-5.6-luna",
+      "auditDirectory": "demo-generated/real-calibration/2026CNKJ001-audit",
+      "stageStatus": {
+        "P1": "SUCCESS",
+        "P2": "NEEDS_REVIEW",
+        "P3": "SUCCESS",
+        "P4": "INVALID_INPUT"
+      },
+      "counts": {
+        "orderRows": 1,
+        "rawRows": 1,
+        "matched": 0,
+        "multipleCandidates": 0,
+        "unmatched": 1,
+        "fieldDecisions": 0
+      },
+      "customerName": "福建省超年科技股份有限公司",
+      "customerId": "C-7a1e673169bf",
+      "entrustmentFiles": [
+        "报关委托书.jpg"
+      ],
+      "inspectionFiles": [
+        "1778658919945.pdf"
+      ],
+      "blockedReason": "P3 判定 1 条委托行与查货无可靠对应，未进入 P4 自动核验，保留为待人工核实。",
+      "p1": {
+        "status": "SUCCESS",
+        "recognizedName": "福建省超年科技股份有限公司",
+        "customerId": "C-7a1e673169bf",
+        "rowsCount": 1,
+        "sampleRows": [
+          {
+            "rowNo": 1,
+            "brand": "广濑",
+            "model": "BM25U-4P/2-V(85)",
+            "quantity": "580000",
+            "unit": "",
+            "origin": "韩国",
+            "netWeight": "",
+            "grossWeight": ""
+          }
+        ]
+      },
+      "p2": {
+        "status": "NEEDS_REVIEW",
+        "customerId": "C-7a1e673169bf",
+        "rawRowsCount": 1,
+        "warehouseNos": [
+          "26057448"
+        ],
+        "sampleRows": [
+          {
+            "recordNo": 1,
+            "warehouseNo": "26057448",
+            "brand": "HIROSE",
+            "model": "BM25U-4P/2-V(85)",
+            "quantity": "580000",
+            "unit": "pc"
+          }
+        ]
+      },
+      "p3": {
+        "status": "SUCCESS",
+        "matchedCount": 0,
+        "multipleCount": 0,
+        "unmatchedCount": 1,
+        "relations": [
+          {
+            "orderRowId": "D-a64834ca9065-R001",
+            "matchStatus": "UNMATCHED",
+            "coverage": {
+              "status": "UNCERTAIN",
+              "overlap": "UNKNOWN",
+              "evidence_keys": []
+            },
+            "evidenceKeys": [],
+            "selectedRawRowIds": []
+          }
+        ]
+      },
+      "p4": {
+        "status": "INVALID_INPUT",
+        "patchesCount": 0,
+        "decisions": []
+      }
+    },
+    {
+      "sampleId": "26SHPYD056",
+      "model": "gpt-5.6-luna",
+      "auditDirectory": "demo-generated/real-calibration/26SHPYD056-audit",
+      "stageStatus": {
+        "P1": "SUCCESS",
+        "P2": "SUCCESS",
+        "P3": "SUCCESS",
+        "P4": "SUCCESS"
+      },
+      "counts": {
+        "orderRows": 9,
+        "rawRows": 9,
+        "matched": 1,
+        "multipleCandidates": 7,
+        "unmatched": 1,
+        "fieldDecisions": 8
+      },
+      "customerName": "上海浦壹电子科技有限公司",
+      "customerId": "C-132ffbd28c07",
+      "entrustmentFiles": [
+        "报关委托确认单（浦壹）2026-03-30.xls"
+      ],
+      "inspectionFiles": [
+        "1774838084919.pdf"
+      ],
+      "blockedReason": null,
+      "p1": {
+        "status": "SUCCESS",
+        "recognizedName": "上海浦壹电子科技有限公司",
+        "customerId": "C-132ffbd28c07",
+        "rowsCount": 9,
+        "sampleRows": [
+          {
+            "rowNo": 1,
+            "brand": "ST",
+            "model": "LIS2DU12TR",
+            "quantity": "10000",
+            "unit": "",
+            "origin": "意大利",
+            "netWeight": "0.8",
+            "grossWeight": "1.3"
+          },
+          {
+            "rowNo": 2,
+            "brand": "WINBOND",
+            "model": "W25N01GVZEIG",
+            "quantity": "68000",
+            "unit": "",
+            "origin": "中国台湾",
+            "netWeight": "",
+            "grossWeight": ""
+          },
+          {
+            "rowNo": 3,
+            "brand": "WINBOND",
+            "model": "W25N01GVZEIG",
+            "quantity": "8000",
+            "unit": "",
+            "origin": "",
+            "netWeight": "",
+            "grossWeight": ""
+          },
+          {
+            "rowNo": 4,
+            "brand": "WINBOND",
+            "model": "W25N01GVZEIG",
+            "quantity": "11520",
+            "unit": "",
+            "origin": "",
+            "netWeight": "",
+            "grossWeight": ""
+          },
+          {
+            "rowNo": 5,
+            "brand": "WINBOND",
+            "model": "W25N01GVZEIG",
+            "quantity": "26880",
+            "unit": "",
+            "origin": "",
+            "netWeight": "",
+            "grossWeight": ""
+          }
+        ]
+      },
+      "p2": {
+        "status": "SUCCESS",
+        "customerId": "C-132ffbd28c07",
+        "rawRowsCount": 9,
+        "warehouseNos": [
+          "26036383"
+        ],
+        "sampleRows": [
+          {
+            "recordNo": 1,
+            "warehouseNo": "26036383",
+            "brand": "WINBOND",
+            "model": "W25N01GVZEIG",
+            "quantity": "4000",
+            "unit": null
+          },
+          {
+            "recordNo": 2,
+            "warehouseNo": "26036383",
+            "brand": "WINBOND",
+            "model": "W25N01GVZEIG",
+            "quantity": "3840",
+            "unit": null
+          },
+          {
+            "recordNo": 3,
+            "warehouseNo": "26036383",
+            "brand": "WINBOND",
+            "model": "W25N01GVZEIG",
+            "quantity": "11520",
+            "unit": null
+          },
+          {
+            "recordNo": 4,
+            "warehouseNo": "26036383",
+            "brand": "WINBOND",
+            "model": "W25N01GVZEIG",
+            "quantity": "3840",
+            "unit": null
+          },
+          {
+            "recordNo": 5,
+            "warehouseNo": "26036383",
+            "brand": "WINBOND",
+            "model": "W25N01GVZEIG",
+            "quantity": "15360",
+            "unit": null
+          }
+        ]
+      },
+      "p3": {
+        "status": "SUCCESS",
+        "matchedCount": 1,
+        "multipleCount": 7,
+        "unmatchedCount": 1,
+        "relations": [
+          {
+            "orderRowId": "D-df72916dc019-R007",
+            "matchStatus": "UNMATCHED",
+            "coverage": {
+              "status": "UNCERTAIN",
+              "overlap": "UNKNOWN",
+              "evidence_keys": []
+            },
+            "evidenceKeys": [],
+            "selectedRawRowIds": []
+          },
+          {
+            "orderRowId": "D-df72916dc019-R008",
+            "matchStatus": "MULTIPLE_CANDIDATES",
+            "coverage": {
+              "status": "UNCERTAIN",
+              "overlap": "UNKNOWN",
+              "evidence_keys": []
+            },
+            "evidenceKeys": [],
+            "selectedRawRowIds": []
+          },
+          {
+            "orderRowId": "D-df72916dc019-R009",
+            "matchStatus": "MULTIPLE_CANDIDATES",
+            "coverage": {
+              "status": "UNCERTAIN",
+              "overlap": "UNKNOWN",
+              "evidence_keys": []
+            },
+            "evidenceKeys": [],
+            "selectedRawRowIds": []
+          },
+          {
+            "orderRowId": "D-df72916dc019-R010",
+            "matchStatus": "MULTIPLE_CANDIDATES",
+            "coverage": {
+              "status": "UNCERTAIN",
+              "overlap": "UNKNOWN",
+              "evidence_keys": []
+            },
+            "evidenceKeys": [],
+            "selectedRawRowIds": []
+          },
+          {
+            "orderRowId": "D-df72916dc019-R011",
+            "matchStatus": "MULTIPLE_CANDIDATES",
+            "coverage": {
+              "status": "UNCERTAIN",
+              "overlap": "UNKNOWN",
+              "evidence_keys": []
+            },
+            "evidenceKeys": [],
+            "selectedRawRowIds": []
+          },
+          {
+            "orderRowId": "D-df72916dc019-R012",
+            "matchStatus": "MULTIPLE_CANDIDATES",
+            "coverage": {
+              "status": "UNCERTAIN",
+              "overlap": "UNKNOWN",
+              "evidence_keys": []
+            },
+            "evidenceKeys": [],
+            "selectedRawRowIds": []
+          },
+          {
+            "orderRowId": "D-df72916dc019-R013",
+            "matchStatus": "MULTIPLE_CANDIDATES",
+            "coverage": {
+              "status": "UNCERTAIN",
+              "overlap": "UNKNOWN",
+              "evidence_keys": []
+            },
+            "evidenceKeys": [],
+            "selectedRawRowIds": []
+          },
+          {
+            "orderRowId": "D-df72916dc019-R014",
+            "matchStatus": "MULTIPLE_CANDIDATES",
+            "coverage": {
+              "status": "UNCERTAIN",
+              "overlap": "UNKNOWN",
+              "evidence_keys": []
+            },
+            "evidenceKeys": [],
+            "selectedRawRowIds": []
+          },
+          {
+            "orderRowId": "D-df72916dc019-R015",
+            "matchStatus": "MATCHED",
+            "coverage": {
+              "status": "COMPLETE",
+              "overlap": "DISJOINT",
+              "evidence_keys": [
+                "E-P3-I-008-SCOPE",
+                "E-P3-I-009-SCOPE"
+              ]
+            },
+            "evidenceKeys": [
+              "E-P3-O-009-MODEL",
+              "E-P3-I-008-MODEL",
+              "E-P3-I-009-MODEL",
+              "E-P3-O-009-BRAND",
+              "E-P3-I-008-BRAND",
+              "E-P3-I-009-BRAND",
+              "E-P3-I-008-SCOPE",
+              "E-P3-I-009-SCOPE"
+            ],
+            "selectedRawRowIds": [
+              "I-F-970b59d6d5b8-26036383-L008",
+              "I-F-970b59d6d5b8-26036383-L009"
+            ]
+          }
+        ]
+      },
+      "p4": {
+        "status": "SUCCESS",
+        "patchesCount": 1,
+        "decisions": [
+          {
+            "orderRowId": "D-df72916dc019-R015",
+            "fieldDecisions": [
+              {
+                "field": "brand",
+                "decision": "KEEP",
+                "resultValue": "MARVELL",
+                "reason": "完整查货范围的品牌与委托值一致。"
+              },
+              {
+                "field": "model",
+                "decision": "KEEP",
+                "resultValue": "88E6240A1TFJ2C000",
+                "reason": "两条查货批次型号一致且与委托值一致。"
+              },
+              {
+                "field": "origin",
+                "decision": "KEEP",
+                "resultValue": "中国台湾",
+                "reason": "查货COO为TAIWAN, CHINA，按配置标准化后与当前值一致。"
+              },
+              {
+                "field": "unit",
+                "decision": "KEEP",
+                "resultValue": "",
+                "reason": "查货行没有商品单位，保留当前空值。"
+              },
+              {
+                "field": "quantity",
+                "decision": "KEEP",
+                "resultValue": "2700",
+                "reason": "数量合计一致，但查货缺少单位，不能完成数量可比核验。"
+              },
+              {
+                "field": "net_weight",
+                "decision": "KEEP",
+                "resultValue": "6.8",
+                "reason": "同一范围的共享净重6.8 KG与当前值一致。"
+              },
+              {
+                "field": "gross_weight",
+                "decision": "KEEP",
+                "resultValue": "7.4",
+                "reason": "同一范围的共享毛重7.4 KG与当前值一致。"
+              },
+              {
+                "field": "warehouse_no",
+                "decision": "FILL",
+                "resultValue": "26036383",
+                "reason": "可靠匹配关系对应的入仓号唯一且完整。"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "多对多样例",
+      "model": "gpt-5.6-luna",
+      "auditDirectory": "demo-generated/real-calibration/多对多样例-audit",
+      "stageStatus": {
+        "P1": "NEEDS_REVIEW",
+        "P2": "SUCCESS",
+        "P3": "INVALID_INPUT",
+        "P4": "INVALID_INPUT"
+      },
+      "counts": {
+        "orderRows": 0,
+        "rawRows": 57,
+        "matched": 0,
+        "multipleCandidates": 0,
+        "unmatched": 0,
+        "fieldDecisions": 0
+      },
+      "customerName": "深圳欧陆通电子股份有限公司",
+      "customerId": "C-0a93054667fc",
+      "entrustmentFiles": [
+        "委托表-BE202604090003.xlsx"
+      ],
+      "inspectionFiles": [
+        "26040077.pdf",
+        "26040083.pdf",
+        "26040084.pdf",
+        "26040114.pdf",
+        "26040116.pdf",
+        "26040117.pdf",
+        "26040139.pdf",
+        "26040156.pdf",
+        "26040716.pdf",
+        "BE202604090003 26040084抽001后整出 26040083抽出003和005.png",
+        "26040177.pdf",
+        "26040178.pdf",
+        "26040179.pdf"
+      ],
+      "blockedReason": "委托表仅含“附件查看”占位符，未生成结构化商品行；P2 查货事实（57条原始行、12个入仓单）已完整保留。",
+      "p1": {
+        "status": "NEEDS_REVIEW",
+        "recognizedName": "",
+        "customerId": null,
+        "rowsCount": 0,
+        "sampleRows": []
+      },
+      "p2": {
+        "status": "SUCCESS",
+        "customerId": "C-0a93054667fc",
+        "rawRowsCount": 57,
+        "warehouseNos": [
+          "26040077",
+          "26040083",
+          "26040084",
+          "26040114",
+          "26040116",
+          "26040117",
+          "26040139",
+          "26040156",
+          "26040177",
+          "26040178",
+          "26040179",
+          "26040716"
+        ],
+        "sampleRows": [
+          {
+            "recordNo": 1,
+            "warehouseNo": "26040077",
+            "brand": "AOS",
+            "model": "AOD3N80",
+            "quantity": "2500",
+            "unit": "PCS"
+          },
+          {
+            "recordNo": 2,
+            "warehouseNo": "26040077",
+            "brand": "AOS",
+            "model": "AON6512",
+            "quantity": "6000",
+            "unit": "PCS"
+          },
+          {
+            "recordNo": 3,
+            "warehouseNo": "26040077",
+            "brand": "AOS",
+            "model": "AON6354",
+            "quantity": "3000",
+            "unit": "PCS"
+          },
+          {
+            "recordNo": 4,
+            "warehouseNo": "26040117",
+            "brand": "ST",
+            "model": "M24C02-RMN6TPTHA",
+            "quantity": "5000",
+            "unit": "PCS"
+          },
+          {
+            "recordNo": 5,
+            "warehouseNo": "26040117",
+            "brand": "ST",
+            "model": "PM8834TR",
+            "quantity": "5000",
+            "unit": "PCS"
+          }
+        ]
+      },
+      "p3": {
+        "status": "INVALID_INPUT",
+        "matchedCount": 0,
+        "multipleCount": 0,
+        "unmatchedCount": 0,
+        "relations": []
+      },
+      "p4": {
+        "status": "INVALID_INPUT",
+        "patchesCount": 0,
+        "decisions": []
+      }
+    },
+    {
+      "sampleId": "英卡-抽+整",
+      "model": "gpt-5.6-luna",
+      "auditDirectory": "demo-generated/real-calibration/英卡-抽+整-audit",
+      "stageStatus": {
+        "P1": "INVALID_INPUT",
+        "P2": "NEEDS_REVIEW",
+        "P3": "INVALID_INPUT",
+        "P4": "INVALID_INPUT"
+      },
+      "counts": {
+        "orderRows": 0,
+        "rawRows": 12,
+        "matched": 0,
+        "multipleCandidates": 0,
+        "unmatched": 0,
+        "fieldDecisions": 0
+      },
+      "customerName": "深圳市英卡科技有限公司",
+      "customerId": "C-b212996858bd",
+      "entrustmentFiles": [
+        "(湘海 )报关委托书T615 8-5.pdf",
+        "(湘海 )报关委托书T615 8-5.xls",
+        "8000812735发票箱单.pdf",
+        "8000815164发票箱单.pdf",
+        "(湘海 )报关委托书T615 8-14.pdf",
+        "(湘海 )报关委托书T615 8-14.xls",
+        "8000812735发票箱单.pdf",
+        "8000815164发票箱单.pdf",
+        "(湘海 )报关委托书T615 7-23.pdf",
+        "(湘海 )报关委托书T615 7-23.xls",
+        "8000812735发票箱单.pdf",
+        "8000815164发票箱单.pdf"
+      ],
+      "inspectionFiles": [
+        "26070092查货单.pdf",
+        "26070093查货单.pdf"
+      ],
+      "blockedReason": "样本包含三份独立委托（抽单与整单），按单 P1 任务输入契约触发阻断，需拆分后单独核对；P2 查货事实已完整保留。",
+      "p1": {
+        "status": "INVALID_INPUT",
+        "recognizedName": "深圳市英卡科技有限公司",
+        "customerId": "C-b212996858bd",
+        "rowsCount": 0,
+        "sampleRows": []
+      },
+      "p2": {
+        "status": "NEEDS_REVIEW",
+        "customerId": "C-b212996858bd",
+        "rawRowsCount": 12,
+        "warehouseNos": [
+          "26070093"
+        ],
+        "sampleRows": [
+          {
+            "recordNo": 1,
+            "warehouseNo": "26070093",
+            "brand": "UNISOC",
+            "model": "UMW2631",
+            "quantity": "15000",
+            "unit": "pcs"
+          },
+          {
+            "recordNo": 2,
+            "warehouseNo": "26070093",
+            "brand": "UNISOC",
+            "model": "UMW2631",
+            "quantity": "15000",
+            "unit": "pcs"
+          },
+          {
+            "recordNo": 3,
+            "warehouseNo": "26070093",
+            "brand": "UNISOC",
+            "model": "UMW2631",
+            "quantity": "15000",
+            "unit": "pcs"
+          },
+          {
+            "recordNo": 4,
+            "warehouseNo": "26070093",
+            "brand": "UNISOC",
+            "model": "UMW2631",
+            "quantity": "15000",
+            "unit": "pcs"
+          },
+          {
+            "recordNo": 5,
+            "warehouseNo": "26070093",
+            "brand": "UNISOC",
+            "model": "UMW2631",
+            "quantity": "15000",
+            "unit": "pcs"
+          }
+        ]
+      },
+      "p3": {
+        "status": "INVALID_INPUT",
+        "matchedCount": 0,
+        "multipleCount": 0,
+        "unmatchedCount": 0,
+        "relations": []
+      },
+      "p4": {
+        "status": "INVALID_INPUT",
+        "patchesCount": 0,
+        "decisions": []
+      }
+    }
+  ]
+}

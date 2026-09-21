@@ -1,0 +1,17 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P3",
+  "request_id": "REMAINING-多对多样例-20260921-P3",
+  "output": {
+    "processing_status": "INVALID_INPUT",
+    "row_relations": [],
+    "issues": [
+      {
+        "code": "ORDER_SUBJECT_UNREADABLE",
+        "row_ref": null,
+        "field": "order_rows",
+        "message": "P1 未形成可验证的主体委托行，不能建立多对多商品关系；不把内部单或查货行补成商品。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,1612 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P3",
+  "request_id": "REMAINING-英卡-抽+整-20260921-P3",
+  "context": {
+    "customer_id": "C-b212996858bd",
+    "retrieval_complete": false
+  },
+  "input": {
+    "order_rows": [],
+    "inspection_candidates": [
+      {
+        "raw_row_id": "I-F-a5368260946b-26070093-L001",
+        "customer_id": "C-b212996858bd",
+        "logical_inspection_id": "I-F-a5368260946b-26070093",
+        "warehouse_no": "26070093",
+        "merged_product_id": null,
+        "identity": {
+          "model": "UMW2631",
+          "brand": "UNISOC",
+          "origin": "CHINA",
+          "quantity": "15000",
+          "unit": "pcs",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-I-001-MODEL",
+            "field": "model",
+            "value": "UMW2631",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱1\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-001-BRAND",
+            "field": "brand",
+            "value": "UNISOC",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱1\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-001-QUANTITY",
+            "field": "quantity",
+            "value": "15000",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱1\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-001-UNIT",
+            "field": "unit",
+            "value": "pcs",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱1\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-001-PACKAGES",
+            "field": "packages",
+            "value": "1",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱1\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-001-NET_WEIGHT",
+            "field": "net_weight",
+            "value": "4.50",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱1\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-001-GROSS_WEIGHT",
+            "field": "gross_weight",
+            "value": "5.20",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱1\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-001-SCOPE",
+            "field": "scope",
+            "value": "COMPLETE_DISJOINT_ITEM_ROW",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "commodity-row",
+              "raw_text": "原始商品行范围完整"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-a5368260946b-26070093-L002",
+        "customer_id": "C-b212996858bd",
+        "logical_inspection_id": "I-F-a5368260946b-26070093",
+        "warehouse_no": "26070093",
+        "merged_product_id": null,
+        "identity": {
+          "model": "UMW2631",
+          "brand": "UNISOC",
+          "origin": "CHINA",
+          "quantity": "15000",
+          "unit": "pcs",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-I-002-MODEL",
+            "field": "model",
+            "value": "UMW2631",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱2\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-002-BRAND",
+            "field": "brand",
+            "value": "UNISOC",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱2\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-002-QUANTITY",
+            "field": "quantity",
+            "value": "15000",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱2\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-002-UNIT",
+            "field": "unit",
+            "value": "pcs",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱2\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-002-PACKAGES",
+            "field": "packages",
+            "value": "1",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱2\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-002-NET_WEIGHT",
+            "field": "net_weight",
+            "value": "4.50",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱2\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-002-GROSS_WEIGHT",
+            "field": "gross_weight",
+            "value": "5.20",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱2\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-002-SCOPE",
+            "field": "scope",
+            "value": "COMPLETE_DISJOINT_ITEM_ROW",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": "commodity-row",
+              "raw_text": "原始商品行范围完整"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-a5368260946b-26070093-L003",
+        "customer_id": "C-b212996858bd",
+        "logical_inspection_id": "I-F-a5368260946b-26070093",
+        "warehouse_no": "26070093",
+        "merged_product_id": null,
+        "identity": {
+          "model": "UMW2631",
+          "brand": "UNISOC",
+          "origin": "CHINA",
+          "quantity": "15000",
+          "unit": "pcs",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-I-003-MODEL",
+            "field": "model",
+            "value": "UMW2631",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱3\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-003-BRAND",
+            "field": "brand",
+            "value": "UNISOC",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱3\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-003-QUANTITY",
+            "field": "quantity",
+            "value": "15000",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱3\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-003-UNIT",
+            "field": "unit",
+            "value": "pcs",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱3\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-003-PACKAGES",
+            "field": "packages",
+            "value": "1",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱3\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-003-NET_WEIGHT",
+            "field": "net_weight",
+            "value": "4.50",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱3\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-003-GROSS_WEIGHT",
+            "field": "gross_weight",
+            "value": "5.20",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱3\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-003-SCOPE",
+            "field": "scope",
+            "value": "COMPLETE_DISJOINT_ITEM_ROW",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": "commodity-row",
+              "raw_text": "原始商品行范围完整"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-a5368260946b-26070093-L004",
+        "customer_id": "C-b212996858bd",
+        "logical_inspection_id": "I-F-a5368260946b-26070093",
+        "warehouse_no": "26070093",
+        "merged_product_id": null,
+        "identity": {
+          "model": "UMW2631",
+          "brand": "UNISOC",
+          "origin": "CHINA",
+          "quantity": "15000",
+          "unit": "pcs",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-I-004-MODEL",
+            "field": "model",
+            "value": "UMW2631",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱4\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-004-BRAND",
+            "field": "brand",
+            "value": "UNISOC",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱4\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-004-QUANTITY",
+            "field": "quantity",
+            "value": "15000",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱4\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-004-UNIT",
+            "field": "unit",
+            "value": "pcs",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱4\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-004-PACKAGES",
+            "field": "packages",
+            "value": "1",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱4\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-004-NET_WEIGHT",
+            "field": "net_weight",
+            "value": "4.50",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱4\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-004-GROSS_WEIGHT",
+            "field": "gross_weight",
+            "value": "5.20",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱4\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-004-SCOPE",
+            "field": "scope",
+            "value": "COMPLETE_DISJOINT_ITEM_ROW",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": "commodity-row",
+              "raw_text": "原始商品行范围完整"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-a5368260946b-26070093-L005",
+        "customer_id": "C-b212996858bd",
+        "logical_inspection_id": "I-F-a5368260946b-26070093",
+        "warehouse_no": "26070093",
+        "merged_product_id": null,
+        "identity": {
+          "model": "UMW2631",
+          "brand": "UNISOC",
+          "origin": "CHINA",
+          "quantity": "15000",
+          "unit": "pcs",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-I-005-MODEL",
+            "field": "model",
+            "value": "UMW2631",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 5,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱5\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-005-BRAND",
+            "field": "brand",
+            "value": "UNISOC",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 5,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱5\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-005-QUANTITY",
+            "field": "quantity",
+            "value": "15000",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 5,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱5\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-005-UNIT",
+            "field": "unit",
+            "value": "pcs",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 5,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱5\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-005-PACKAGES",
+            "field": "packages",
+            "value": "1",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 5,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱5\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-005-NET_WEIGHT",
+            "field": "net_weight",
+            "value": "4.50",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 5,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱5\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-005-GROSS_WEIGHT",
+            "field": "gross_weight",
+            "value": "5.20",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 5,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱5\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-005-SCOPE",
+            "field": "scope",
+            "value": "COMPLETE_DISJOINT_ITEM_ROW",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 5,
+              "column": "commodity-row",
+              "raw_text": "原始商品行范围完整"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-a5368260946b-26070093-L006",
+        "customer_id": "C-b212996858bd",
+        "logical_inspection_id": "I-F-a5368260946b-26070093",
+        "warehouse_no": "26070093",
+        "merged_product_id": null,
+        "identity": {
+          "model": "UMW2631",
+          "brand": "UNISOC",
+          "origin": "CHINA",
+          "quantity": "15000",
+          "unit": "pcs",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-I-006-MODEL",
+            "field": "model",
+            "value": "UMW2631",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 6,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱6\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-006-BRAND",
+            "field": "brand",
+            "value": "UNISOC",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 6,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱6\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-006-QUANTITY",
+            "field": "quantity",
+            "value": "15000",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 6,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱6\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-006-UNIT",
+            "field": "unit",
+            "value": "pcs",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 6,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱6\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-006-PACKAGES",
+            "field": "packages",
+            "value": "1",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 6,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱6\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-006-NET_WEIGHT",
+            "field": "net_weight",
+            "value": "4.50",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 6,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱6\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-006-GROSS_WEIGHT",
+            "field": "gross_weight",
+            "value": "5.20",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 6,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱6\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-006-SCOPE",
+            "field": "scope",
+            "value": "COMPLETE_DISJOINT_ITEM_ROW",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 6,
+              "column": "commodity-row",
+              "raw_text": "原始商品行范围完整"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-a5368260946b-26070093-L007",
+        "customer_id": "C-b212996858bd",
+        "logical_inspection_id": "I-F-a5368260946b-26070093",
+        "warehouse_no": "26070093",
+        "merged_product_id": null,
+        "identity": {
+          "model": "UMW2631",
+          "brand": "UNISOC",
+          "origin": "CHINA",
+          "quantity": "15000",
+          "unit": "pcs",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-I-007-MODEL",
+            "field": "model",
+            "value": "UMW2631",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 7,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱7\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-007-BRAND",
+            "field": "brand",
+            "value": "UNISOC",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 7,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱7\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-007-QUANTITY",
+            "field": "quantity",
+            "value": "15000",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 7,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱7\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-007-UNIT",
+            "field": "unit",
+            "value": "pcs",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 7,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱7\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-007-PACKAGES",
+            "field": "packages",
+            "value": "1",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 7,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱7\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-007-NET_WEIGHT",
+            "field": "net_weight",
+            "value": "4.50",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 7,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱7\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-007-GROSS_WEIGHT",
+            "field": "gross_weight",
+            "value": "5.20",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 7,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱7\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-007-SCOPE",
+            "field": "scope",
+            "value": "COMPLETE_DISJOINT_ITEM_ROW",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 7,
+              "column": "commodity-row",
+              "raw_text": "原始商品行范围完整"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-a5368260946b-26070093-L008",
+        "customer_id": "C-b212996858bd",
+        "logical_inspection_id": "I-F-a5368260946b-26070093",
+        "warehouse_no": "26070093",
+        "merged_product_id": null,
+        "identity": {
+          "model": "UMW2631",
+          "brand": "UNISOC",
+          "origin": "CHINA",
+          "quantity": "15000",
+          "unit": "pcs",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-I-008-MODEL",
+            "field": "model",
+            "value": "UMW2631",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 8,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱8\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-008-BRAND",
+            "field": "brand",
+            "value": "UNISOC",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 8,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱8\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-008-QUANTITY",
+            "field": "quantity",
+            "value": "15000",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 8,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱8\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-008-UNIT",
+            "field": "unit",
+            "value": "pcs",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 8,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱8\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-008-PACKAGES",
+            "field": "packages",
+            "value": "1",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 8,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱8\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-008-NET_WEIGHT",
+            "field": "net_weight",
+            "value": "4.50",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 8,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱8\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-008-GROSS_WEIGHT",
+            "field": "gross_weight",
+            "value": "5.20",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 8,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱8\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-008-SCOPE",
+            "field": "scope",
+            "value": "COMPLETE_DISJOINT_ITEM_ROW",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 8,
+              "column": "commodity-row",
+              "raw_text": "原始商品行范围完整"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-a5368260946b-26070093-L009",
+        "customer_id": "C-b212996858bd",
+        "logical_inspection_id": "I-F-a5368260946b-26070093",
+        "warehouse_no": "26070093",
+        "merged_product_id": null,
+        "identity": {
+          "model": "UMW2631",
+          "brand": "UNISOC",
+          "origin": "CHINA",
+          "quantity": "15000",
+          "unit": "pcs",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-I-009-MODEL",
+            "field": "model",
+            "value": "UMW2631",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 9,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱9\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-009-BRAND",
+            "field": "brand",
+            "value": "UNISOC",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 9,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱9\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-009-QUANTITY",
+            "field": "quantity",
+            "value": "15000",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 9,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱9\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-009-UNIT",
+            "field": "unit",
+            "value": "pcs",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 9,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱9\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-009-PACKAGES",
+            "field": "packages",
+            "value": "1",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 9,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱9\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-009-NET_WEIGHT",
+            "field": "net_weight",
+            "value": "4.50",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 9,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱9\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-009-GROSS_WEIGHT",
+            "field": "gross_weight",
+            "value": "5.20",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 9,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱9\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-009-SCOPE",
+            "field": "scope",
+            "value": "COMPLETE_DISJOINT_ITEM_ROW",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 9,
+              "column": "commodity-row",
+              "raw_text": "原始商品行范围完整"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-a5368260946b-26070093-L010",
+        "customer_id": "C-b212996858bd",
+        "logical_inspection_id": "I-F-a5368260946b-26070093",
+        "warehouse_no": "26070093",
+        "merged_product_id": null,
+        "identity": {
+          "model": "UMW2631",
+          "brand": "UNISOC",
+          "origin": "CHINA",
+          "quantity": "15000",
+          "unit": "pcs",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-I-010-MODEL",
+            "field": "model",
+            "value": "UMW2631",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 10,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱10\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-010-BRAND",
+            "field": "brand",
+            "value": "UNISOC",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 10,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱10\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-010-QUANTITY",
+            "field": "quantity",
+            "value": "15000",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 10,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱10\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-010-UNIT",
+            "field": "unit",
+            "value": "pcs",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 10,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱10\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-010-PACKAGES",
+            "field": "packages",
+            "value": "1",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 10,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱10\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-010-NET_WEIGHT",
+            "field": "net_weight",
+            "value": "4.50",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 10,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱10\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-010-GROSS_WEIGHT",
+            "field": "gross_weight",
+            "value": "5.20",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 10,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱10\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-010-SCOPE",
+            "field": "scope",
+            "value": "COMPLETE_DISJOINT_ITEM_ROW",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 10,
+              "column": "commodity-row",
+              "raw_text": "原始商品行范围完整"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-a5368260946b-26070093-L011",
+        "customer_id": "C-b212996858bd",
+        "logical_inspection_id": "I-F-a5368260946b-26070093",
+        "warehouse_no": "26070093",
+        "merged_product_id": null,
+        "identity": {
+          "model": "UMW2631",
+          "brand": "UNISOC",
+          "origin": "CHINA",
+          "quantity": "15000",
+          "unit": "pcs",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-I-011-MODEL",
+            "field": "model",
+            "value": "UMW2631",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 11,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱11\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-011-BRAND",
+            "field": "brand",
+            "value": "UNISOC",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 11,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱11\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-011-QUANTITY",
+            "field": "quantity",
+            "value": "15000",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 11,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱11\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-011-UNIT",
+            "field": "unit",
+            "value": "pcs",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 11,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱11\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-011-PACKAGES",
+            "field": "packages",
+            "value": "1",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 11,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱11\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-011-NET_WEIGHT",
+            "field": "net_weight",
+            "value": "4.50",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 11,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱11\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-011-GROSS_WEIGHT",
+            "field": "gross_weight",
+            "value": "5.20",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 11,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱11\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"15000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"4.50\",\"毛重\":\"5.20\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-011-SCOPE",
+            "field": "scope",
+            "value": "COMPLETE_DISJOINT_ITEM_ROW",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 11,
+              "column": "commodity-row",
+              "raw_text": "原始商品行范围完整"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-a5368260946b-26070093-L012",
+        "customer_id": "C-b212996858bd",
+        "logical_inspection_id": "I-F-a5368260946b-26070093",
+        "warehouse_no": "26070093",
+        "merged_product_id": null,
+        "identity": {
+          "model": "UMW2631",
+          "brand": "UNISOC",
+          "origin": "CHINA",
+          "quantity": "12000",
+          "unit": "pcs",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-I-012-MODEL",
+            "field": "model",
+            "value": "UMW2631",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 12,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱12\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"12000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"3.80\",\"毛重\":\"4.50\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-012-BRAND",
+            "field": "brand",
+            "value": "UNISOC",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 12,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱12\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"12000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"3.80\",\"毛重\":\"4.50\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-012-QUANTITY",
+            "field": "quantity",
+            "value": "12000",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 12,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱12\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"12000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"3.80\",\"毛重\":\"4.50\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-012-UNIT",
+            "field": "unit",
+            "value": "pcs",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 12,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱12\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"12000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"3.80\",\"毛重\":\"4.50\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-012-PACKAGES",
+            "field": "packages",
+            "value": "1",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 12,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱12\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"12000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"3.80\",\"毛重\":\"4.50\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-012-NET_WEIGHT",
+            "field": "net_weight",
+            "value": "3.80",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 12,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱12\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"12000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"3.80\",\"毛重\":\"4.50\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-012-GROSS_WEIGHT",
+            "field": "gross_weight",
+            "value": "4.50",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 12,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"箱12\",\"品牌\":\"UNISOC\",\"型号\":\"UMW2631\",\"产地\":\"CHINA\",\"数量\":\"12000\",\"单位\":\"pcs\",\"件数\":\"1\",\"净重\":\"3.80\",\"毛重\":\"4.50\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-012-SCOPE",
+            "field": "scope",
+            "value": "COMPLETE_DISJOINT_ITEM_ROW",
+            "source": {
+              "file_id": "F-a5368260946b",
+              "page": 1,
+              "sheet": null,
+              "row": 12,
+              "column": "commodity-row",
+              "raw_text": "原始商品行范围完整"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      }
+    ],
+    "proposed_groups": [],
+    "comparison_results": []
+  }
+}

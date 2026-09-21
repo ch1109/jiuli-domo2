@@ -1,0 +1,12 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P4",
+  "request_id": "20260921-2026AG001-P4",
+  "context": {
+    "customer_id": "C-e0cb675e9f1d",
+    "mode": "VERIFY_FIELDS"
+  },
+  "input": {
+    "target_rows": []
+  }
+}

@@ -1,0 +1,1375 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P1",
+  "request_id": "REMAINING-2026(DG)ZW001-20260921-P1",
+  "output": {
+    "processing_status": "NEEDS_REVIEW",
+    "customer_resolution": {
+      "status": "UNRESOLVED",
+      "customer_id": null,
+      "recognized_name": "",
+      "candidate_customer_ids": [],
+      "sources": []
+    },
+    "read_status": [
+      {
+        "file_id": "F-8181f9edc198",
+        "read_segments": [
+          "sheet:智能智能导单文件"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      }
+    ],
+    "rows": [
+      {
+        "row_no": 1,
+        "source": {
+          "file_id": "F-8181f9edc198",
+          "page": null,
+          "sheet": "智能智能导单文件",
+          "row": 2,
+          "column": null,
+          "raw_text": "委托商品第1行"
+        },
+        "values": {
+          "customer_name": "",
+          "brand": "ASMEDIA",
+          "model": "ASM1543",
+          "description": "",
+          "product_name": "集成电路",
+          "origin": "中国台湾",
+          "unit": "个",
+          "quantity": "6500",
+          "customs_unit_price": "0.34",
+          "total_price": "",
+          "currency": "",
+          "packages": "1",
+          "net_weight": "1.44",
+          "gross_weight": "2.21",
+          "sku": "4000156680",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "易盛",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "300200002056",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": "4538"
+        },
+        "evidence": [
+          {
+            "field": "brand",
+            "value": "ASMEDIA",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "C",
+              "raw_text": "ASMEDIA"
+            }
+          },
+          {
+            "field": "model",
+            "value": "ASM1543",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "D",
+              "raw_text": "ASM1543"
+            }
+          },
+          {
+            "field": "product_name",
+            "value": "集成电路",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "B",
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "field": "origin",
+            "value": "中国台湾",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "F",
+              "raw_text": "中国台湾"
+            }
+          },
+          {
+            "field": "unit",
+            "value": "个",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "G",
+              "raw_text": "个"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "6500",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "H",
+              "raw_text": "6500"
+            }
+          },
+          {
+            "field": "customs_unit_price",
+            "value": "0.34",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "I",
+              "raw_text": "0.34"
+            }
+          },
+          {
+            "field": "packages",
+            "value": "1",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "J",
+              "raw_text": "1"
+            }
+          },
+          {
+            "field": "net_weight",
+            "value": "1.44",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "K",
+              "raw_text": "1.44"
+            }
+          },
+          {
+            "field": "gross_weight",
+            "value": "2.21",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "L",
+              "raw_text": "2.21"
+            }
+          },
+          {
+            "field": "sku",
+            "value": "4000156680",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "N",
+              "raw_text": "4000156680"
+            }
+          },
+          {
+            "field": "supplier",
+            "value": "易盛",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "O",
+              "raw_text": "易盛"
+            }
+          },
+          {
+            "field": "material_no",
+            "value": "300200002056",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "R",
+              "raw_text": "300200002056"
+            }
+          },
+          {
+            "field": "remark",
+            "value": "4538",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "U",
+              "raw_text": "4538"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      {
+        "row_no": 2,
+        "source": {
+          "file_id": "F-8181f9edc198",
+          "page": null,
+          "sheet": "智能智能导单文件",
+          "row": 3,
+          "column": null,
+          "raw_text": "委托商品第2行"
+        },
+        "values": {
+          "customer_name": "",
+          "brand": "ASMEDIA",
+          "model": "ASM2480B",
+          "description": "",
+          "product_name": "集成电路",
+          "origin": "中国台湾",
+          "unit": "个",
+          "quantity": "3500",
+          "customs_unit_price": "1.13",
+          "total_price": "",
+          "currency": "",
+          "packages": "0",
+          "net_weight": "0.77",
+          "gross_weight": "1.2",
+          "sku": "4000155179",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "易盛",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "300200002198",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": "4538"
+        },
+        "evidence": [
+          {
+            "field": "brand",
+            "value": "ASMEDIA",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "C",
+              "raw_text": "ASMEDIA"
+            }
+          },
+          {
+            "field": "model",
+            "value": "ASM2480B",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "D",
+              "raw_text": "ASM2480B"
+            }
+          },
+          {
+            "field": "product_name",
+            "value": "集成电路",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "B",
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "field": "origin",
+            "value": "中国台湾",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "F",
+              "raw_text": "中国台湾"
+            }
+          },
+          {
+            "field": "unit",
+            "value": "个",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "G",
+              "raw_text": "个"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "3500",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "H",
+              "raw_text": "3500"
+            }
+          },
+          {
+            "field": "customs_unit_price",
+            "value": "1.13",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "I",
+              "raw_text": "1.13"
+            }
+          },
+          {
+            "field": "packages",
+            "value": "0",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "J",
+              "raw_text": "0"
+            }
+          },
+          {
+            "field": "net_weight",
+            "value": "0.77",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "K",
+              "raw_text": "0.77"
+            }
+          },
+          {
+            "field": "gross_weight",
+            "value": "1.2",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "L",
+              "raw_text": "1.2"
+            }
+          },
+          {
+            "field": "sku",
+            "value": "4000155179",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "N",
+              "raw_text": "4000155179"
+            }
+          },
+          {
+            "field": "supplier",
+            "value": "易盛",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "O",
+              "raw_text": "易盛"
+            }
+          },
+          {
+            "field": "material_no",
+            "value": "300200002198",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "R",
+              "raw_text": "300200002198"
+            }
+          },
+          {
+            "field": "remark",
+            "value": "4538",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "U",
+              "raw_text": "4538"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      {
+        "row_no": 3,
+        "source": {
+          "file_id": "F-8181f9edc198",
+          "page": null,
+          "sheet": "智能智能导单文件",
+          "row": 4,
+          "column": null,
+          "raw_text": "委托商品第3行"
+        },
+        "values": {
+          "customer_name": "",
+          "brand": "ASMEDIA",
+          "model": "ASM1562",
+          "description": "",
+          "product_name": "集成电路",
+          "origin": "中国台湾",
+          "unit": "个",
+          "quantity": "6500",
+          "customs_unit_price": "0.5",
+          "total_price": "",
+          "currency": "",
+          "packages": "0",
+          "net_weight": "1.44",
+          "gross_weight": "2.21",
+          "sku": "4000156680",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "易盛",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "300200001648",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": "4538"
+        },
+        "evidence": [
+          {
+            "field": "brand",
+            "value": "ASMEDIA",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "C",
+              "raw_text": "ASMEDIA"
+            }
+          },
+          {
+            "field": "model",
+            "value": "ASM1562",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "D",
+              "raw_text": "ASM1562"
+            }
+          },
+          {
+            "field": "product_name",
+            "value": "集成电路",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "B",
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "field": "origin",
+            "value": "中国台湾",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "F",
+              "raw_text": "中国台湾"
+            }
+          },
+          {
+            "field": "unit",
+            "value": "个",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "G",
+              "raw_text": "个"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "6500",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "H",
+              "raw_text": "6500"
+            }
+          },
+          {
+            "field": "customs_unit_price",
+            "value": "0.5",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "I",
+              "raw_text": "0.5"
+            }
+          },
+          {
+            "field": "packages",
+            "value": "0",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "J",
+              "raw_text": "0"
+            }
+          },
+          {
+            "field": "net_weight",
+            "value": "1.44",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "K",
+              "raw_text": "1.44"
+            }
+          },
+          {
+            "field": "gross_weight",
+            "value": "2.21",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "L",
+              "raw_text": "2.21"
+            }
+          },
+          {
+            "field": "sku",
+            "value": "4000156680",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "N",
+              "raw_text": "4000156680"
+            }
+          },
+          {
+            "field": "supplier",
+            "value": "易盛",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "O",
+              "raw_text": "易盛"
+            }
+          },
+          {
+            "field": "material_no",
+            "value": "300200001648",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "R",
+              "raw_text": "300200001648"
+            }
+          },
+          {
+            "field": "remark",
+            "value": "4538",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "U",
+              "raw_text": "4538"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      {
+        "row_no": 4,
+        "source": {
+          "file_id": "F-8181f9edc198",
+          "page": null,
+          "sheet": "智能智能导单文件",
+          "row": 5,
+          "column": null,
+          "raw_text": "委托商品第4行"
+        },
+        "values": {
+          "customer_name": "",
+          "brand": "ASMEDIA",
+          "model": "ASM1164",
+          "description": "",
+          "product_name": "集成电路",
+          "origin": "中国台湾",
+          "unit": "个",
+          "quantity": "7000",
+          "customs_unit_price": "4.25",
+          "total_price": "",
+          "currency": "",
+          "packages": "0",
+          "net_weight": "1.55",
+          "gross_weight": "2.38",
+          "sku": "4000155731",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "易盛",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "300200008018",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": "4538"
+        },
+        "evidence": [
+          {
+            "field": "brand",
+            "value": "ASMEDIA",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "C",
+              "raw_text": "ASMEDIA"
+            }
+          },
+          {
+            "field": "model",
+            "value": "ASM1164",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "D",
+              "raw_text": "ASM1164"
+            }
+          },
+          {
+            "field": "product_name",
+            "value": "集成电路",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "B",
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "field": "origin",
+            "value": "中国台湾",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "F",
+              "raw_text": "中国台湾"
+            }
+          },
+          {
+            "field": "unit",
+            "value": "个",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "G",
+              "raw_text": "个"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "7000",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "H",
+              "raw_text": "7000"
+            }
+          },
+          {
+            "field": "customs_unit_price",
+            "value": "4.25",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "I",
+              "raw_text": "4.25"
+            }
+          },
+          {
+            "field": "packages",
+            "value": "0",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "J",
+              "raw_text": "0"
+            }
+          },
+          {
+            "field": "net_weight",
+            "value": "1.55",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "K",
+              "raw_text": "1.55"
+            }
+          },
+          {
+            "field": "gross_weight",
+            "value": "2.38",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "L",
+              "raw_text": "2.38"
+            }
+          },
+          {
+            "field": "sku",
+            "value": "4000155731",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "N",
+              "raw_text": "4000155731"
+            }
+          },
+          {
+            "field": "supplier",
+            "value": "易盛",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "O",
+              "raw_text": "易盛"
+            }
+          },
+          {
+            "field": "material_no",
+            "value": "300200008018",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "R",
+              "raw_text": "300200008018"
+            }
+          },
+          {
+            "field": "remark",
+            "value": "4538",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "U",
+              "raw_text": "4538"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      {
+        "row_no": 5,
+        "source": {
+          "file_id": "F-8181f9edc198",
+          "page": null,
+          "sheet": "智能智能导单文件",
+          "row": 6,
+          "column": null,
+          "raw_text": "委托商品第5行"
+        },
+        "values": {
+          "customer_name": "",
+          "brand": "UPI",
+          "model": "UP9505UQGW",
+          "description": "",
+          "product_name": "集成电路",
+          "origin": "中国台湾",
+          "unit": "个",
+          "quantity": "2500",
+          "customs_unit_price": "0.7202",
+          "total_price": "",
+          "currency": "",
+          "packages": "1",
+          "net_weight": "0.36",
+          "gross_weight": "0.45",
+          "sku": "4000156666",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "TOMBO",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "300200000843",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": "4489"
+        },
+        "evidence": [
+          {
+            "field": "brand",
+            "value": "UPI",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "C",
+              "raw_text": "UPI"
+            }
+          },
+          {
+            "field": "model",
+            "value": "UP9505UQGW",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "D",
+              "raw_text": "UP9505UQGW"
+            }
+          },
+          {
+            "field": "product_name",
+            "value": "集成电路",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "B",
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "field": "origin",
+            "value": "中国台湾",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "F",
+              "raw_text": "中国台湾"
+            }
+          },
+          {
+            "field": "unit",
+            "value": "个",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "G",
+              "raw_text": "个"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "2500",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "H",
+              "raw_text": "2500"
+            }
+          },
+          {
+            "field": "customs_unit_price",
+            "value": "0.7202",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "I",
+              "raw_text": "0.7202"
+            }
+          },
+          {
+            "field": "packages",
+            "value": "1",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "J",
+              "raw_text": "1"
+            }
+          },
+          {
+            "field": "net_weight",
+            "value": "0.36",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "K",
+              "raw_text": "0.36"
+            }
+          },
+          {
+            "field": "gross_weight",
+            "value": "0.45",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "L",
+              "raw_text": "0.45"
+            }
+          },
+          {
+            "field": "sku",
+            "value": "4000156666",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "N",
+              "raw_text": "4000156666"
+            }
+          },
+          {
+            "field": "supplier",
+            "value": "TOMBO",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "O",
+              "raw_text": "TOMBO"
+            }
+          },
+          {
+            "field": "material_no",
+            "value": "300200000843",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "R",
+              "raw_text": "300200000843"
+            }
+          },
+          {
+            "field": "remark",
+            "value": "4489",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "U",
+              "raw_text": "4489"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      {
+        "row_no": 6,
+        "source": {
+          "file_id": "F-8181f9edc198",
+          "page": null,
+          "sheet": "智能智能导单文件",
+          "row": 7,
+          "column": null,
+          "raw_text": "委托商品第6行"
+        },
+        "values": {
+          "customer_name": "",
+          "brand": "UPI",
+          "model": "UP7501M8",
+          "description": "",
+          "product_name": "集成电路",
+          "origin": "中国台湾",
+          "unit": "个",
+          "quantity": "3000",
+          "customs_unit_price": "0.1366",
+          "total_price": "",
+          "currency": "",
+          "packages": "0",
+          "net_weight": "0.44",
+          "gross_weight": "0.55",
+          "sku": "4000143736",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "TOMBO",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "300200002031",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": "4489"
+        },
+        "evidence": [
+          {
+            "field": "brand",
+            "value": "UPI",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "C",
+              "raw_text": "UPI"
+            }
+          },
+          {
+            "field": "model",
+            "value": "UP7501M8",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "D",
+              "raw_text": "UP7501M8"
+            }
+          },
+          {
+            "field": "product_name",
+            "value": "集成电路",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "B",
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "field": "origin",
+            "value": "中国台湾",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "F",
+              "raw_text": "中国台湾"
+            }
+          },
+          {
+            "field": "unit",
+            "value": "个",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "G",
+              "raw_text": "个"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "3000",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "H",
+              "raw_text": "3000"
+            }
+          },
+          {
+            "field": "customs_unit_price",
+            "value": "0.1366",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "I",
+              "raw_text": "0.1366"
+            }
+          },
+          {
+            "field": "packages",
+            "value": "0",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "J",
+              "raw_text": "0"
+            }
+          },
+          {
+            "field": "net_weight",
+            "value": "0.44",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "K",
+              "raw_text": "0.44"
+            }
+          },
+          {
+            "field": "gross_weight",
+            "value": "0.55",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "L",
+              "raw_text": "0.55"
+            }
+          },
+          {
+            "field": "sku",
+            "value": "4000143736",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "N",
+              "raw_text": "4000143736"
+            }
+          },
+          {
+            "field": "supplier",
+            "value": "TOMBO",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "O",
+              "raw_text": "TOMBO"
+            }
+          },
+          {
+            "field": "material_no",
+            "value": "300200002031",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "R",
+              "raw_text": "300200002031"
+            }
+          },
+          {
+            "field": "remark",
+            "value": "4489",
+            "unit": "",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "U",
+              "raw_text": "4489"
+            }
+          }
+        ],
+        "conflicts": []
+      }
+    ],
+    "scope_records": [],
+    "unlinked_records": [],
+    "issues": [
+      {
+        "code": "CUSTOMER_UNRESOLVED",
+        "row_ref": null,
+        "field": "customer_name",
+        "message": "主体委托未提供可映射客户名称，不能把样本目录客户当作模型识别结论。"
+      }
+    ]
+  }
+}

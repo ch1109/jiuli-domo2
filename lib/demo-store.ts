@@ -10,7 +10,7 @@ import filesJson from "../demo-generated/mock/source-files.json";
 import scenariosJson from "../demo-generated/mock/scenarios.json";
 import materialBatchesJson from "../demo-generated/mock/material-batches.json";
 import scenarioOverridesJson from "../demo-generated/mock/scenario-overrides.json";
-import { promptFixture, replayPromptResult, initialPromptEvidence } from "./domain/prompt-replay";
+import { promptFixture, puyiFixture, getPromptFixture, replayPromptResult, initialPromptEvidence } from "./domain/prompt-replay";
 import { completeDraft, confirmDraftLine, createEntrustmentDraft, editDraftField, establishManualCompositeMatch, executeInitialMatching, ingestInspectionBatch, reassignMatch, reconcileDraftWithInspectionIncrement, resolveDraftCustomer, selectMatchCandidate, submitDraftForManualConfirmation, unbindMatch, updateEntrustmentDraftMaterial } from "./domain/actions";
 import { createFinalOutputRow } from "./domain/final-output";
 import { mergeInspectionSourceLines } from "./domain/inspection-merge";
@@ -193,6 +193,10 @@ export interface DemoState {
   setIntakeCustomer: (customerId: string) => void;
   selectDraft: (id: string) => void;
   loadScenario: (id: string) => void;
+  openBusinessWorkspace: () => void;
+  savedBusinessWorkspace: Partial<DemoState> | null;
+  previousScenarioWorkspace: Partial<DemoState> | null;
+  restorePreviousScenario: () => void;
   ingestFile: (fileId: string) => void;
   stageLocalFile: (file: { name: string; size: number; type: string; file?: File; materialType?: MaterialType; customerId?: string; batchId?: string }) => void;
   parseLocalFile: (fileId: string) => Promise<void>;
@@ -489,7 +493,42 @@ type ScenarioOperation =
   | { op: "composite-pdf"; id: string; orderIds: string[] }
   | { op: "revision-material"; id: string; targetDraftId: string };
 
+export function buildBusinessWorkspace() {
+  const puyiEvidence = initialPromptEvidence(puyiFixture);
+  const drafts = buildDrafts().map(draft => {
+    if (draft.id === puyiFixture.draftId) {
+      return {
+        ...draft,
+        lines: draft.lines.map(line => {
+          const matched = puyiEvidence.filter(e => e.entrustmentLineId === line.id);
+          return { ...line, evidenceIds: matched.map(e => e.id) };
+        }),
+      };
+    }
+    return draft;
+  });
+  const sources = buildSources().map(source => ({ ...source, availability: source.customerId ? "可匹配" as const : "未加载" as const }));
+  const files = buildFiles().map(file => {
+    const owners = new Set([...drafts.filter(d => d.materialFileIds.includes(file.id)).map(d => d.customerId), ...sources.filter(s => s.sourceFileId === file.id).map(s => s.customerId)].filter((id): id is string => !!id));
+    const asset = filesJson.find(f => f.id === file.id)!;
+    if (!owners.size && asset.role === "entrustment_material") {
+      for (const draft of drafts) {
+        if (draft.customerId && draft.materialFileIds.some(id => filesJson.some(f => f.id === id && f.sampleId === asset.sampleId))) owners.add(draft.customerId);
+      }
+    }
+    const kinds = asset.documentSegments.map(segment => segment.kind);
+    const materialType = asset.role === "reference" ? "参考结果" : asset.role === "inspection" ? "查货" : kinds.includes("entrustment") ? "委托书" : kinds.includes("invoice") ? "发票" : kinds.includes("packing-list") ? "箱单" : "其他材料";
+    return { ...file, materialType, loaded: true, customerId: owners.size === 1 ? [...owners][0] : undefined };
+  });
+  return { scenario: { id: "BUSINESS", name: "完整客户业务", initialBatchIds: [], overrideIds: [] }, drafts, availableDrafts: drafts, sources, files, selectedDraftId: drafts[0]?.id ?? null };
+}
+
+function workspaceSnapshot(state: Partial<DemoState>): Partial<DemoState> {
+  return Object.fromEntries(Object.entries(state).filter(([key, value]) => typeof value !== "function" && !["savedBusinessWorkspace", "previousScenarioWorkspace"].includes(key))) as Partial<DemoState>;
+}
+
 export function buildScenarioState(scenarioId: string) {
+  if (scenarioId === "BUSINESS") return buildBusinessWorkspace();
   const scenario = (scenariosJson as Array<{ id: string; name: string; initialBatchIds: string[]; overrideIds: string[] }>).find((item) => item.id === scenarioId);
   if (!scenario) throw new Error(`未知场景：${scenarioId}`);
 
@@ -655,7 +694,7 @@ function buildTaskSnapshot(
   };
 }
 
-const initialScenario = buildScenarioState("SC-01");
+const initialScenario = buildBusinessWorkspace();
 const initialDrafts = initialScenario.drafts;
 const initialTaskSnapshot = buildTaskSnapshot(
   initialDrafts.find((draft) => draft.id === initialScenario.selectedDraftId),
@@ -664,6 +703,19 @@ const initialTaskSnapshot = buildTaskSnapshot(
 
 export const useDemoStore = create<DemoState>()(persist((set, get) => ({
   view: "home",
+  savedBusinessWorkspace: null,
+  previousScenarioWorkspace: null,
+  restorePreviousScenario: () => {
+    const state = get();
+    if (state.previousScenarioWorkspace) set({ ...state.previousScenarioWorkspace, savedBusinessWorkspace: state.scenarioId === "BUSINESS" ? workspaceSnapshot(state) : state.savedBusinessWorkspace, view: "home" });
+  },
+  openBusinessWorkspace: () => {
+    const state = get();
+    if (state.scenarioId === "BUSINESS") return;
+    const previousScenarioWorkspace = workspaceSnapshot(state);
+    if (state.savedBusinessWorkspace) set({ ...state.savedBusinessWorkspace, previousScenarioWorkspace, view: "home" });
+    else { state.loadScenario("BUSINESS"); set({ previousScenarioWorkspace, view: "home" }); }
+  },
   scenarioId: initialScenario.scenario.id,
   activeTaskId: initialScenario.selectedDraftId,
   taskStage: initialTaskSnapshot.taskStage,
@@ -716,7 +768,8 @@ export const useDemoStore = create<DemoState>()(persist((set, get) => ({
   loadScenario: (scenarioId) => {
     try {
       const restored = buildScenarioState(scenarioId);
-      localFileBlobs.clear();
+      const current = get();
+      if (current.scenarioId === "BUSINESS" && scenarioId !== "BUSINESS") set({ savedBusinessWorkspace: workspaceSnapshot(current) });
       set({
         scenarioId,
         activeTaskId: restored.selectedDraftId,
@@ -728,7 +781,7 @@ export const useDemoStore = create<DemoState>()(persist((set, get) => ({
         drafts: restored.drafts,
         sources: restored.sources,
         files: restored.files,
-        events: [], relations: [], evidence: scenarioId === promptFixture.scenarioId ? initialPromptEvidence() : [], versions: [], operations: [], finalReconciliations: [],
+        events: [], relations: [], evidence: scenarioId === promptFixture.scenarioId ? initialPromptEvidence() : (scenarioId === "BUSINESS" || scenarioId === "26SHPYD056" ? [...initialPromptEvidence(), ...initialPromptEvidence(puyiFixture)] : []), versions: [], operations: [], finalReconciliations: [],
         pocPhaseTimings: (["查找", "检查", "修改", "返工"] as PocPhase[]).map((phase) => ({ phase, elapsedMs: 0, startedAt: null })),
         parseJobs: [], parseResults: [], parsedFacts: [], convertedEntrustments: [], convertedInspections: [], convertedAuxiliaryMaterials: [], materialBindings: [],
         toast: `已恢复场景：${restored.scenario.name}`,
@@ -1126,10 +1179,12 @@ export const useDemoStore = create<DemoState>()(persist((set, get) => ({
       if (!draft || !draft.customerId || draft.finalized) return { toast: "客户未确定或草稿已完成，不能匹配" };
       let result;
       try {
-      result = (state.scenarioId === promptFixture.scenarioId && draft.id === promptFixture.draftId ? replayPromptResult : executeInitialMatching)({
-        draft: toDomainDraft(draft), entrustmentLines: draft.lines.map(toDomainLine),
-        inspectionSourceLines: state.sources.filter((source) => source.availability !== "未加载").map(toDomainSource), now: now(),
-      });
+        const fixture = getPromptFixture(draft.id, state.scenarioId);
+        const isReplay = (state.scenarioId === fixture.scenarioId && draft.id === fixture.draftId) || draft.id === puyiFixture.draftId;
+        result = (isReplay ? ((input: any) => replayPromptResult(input, fixture)) : executeInitialMatching)({
+          draft: toDomainDraft(draft), entrustmentLines: draft.lines.map(toDomainLine),
+          inspectionSourceLines: state.sources.filter((source) => source.availability !== "未加载").map(toDomainSource), now: now(),
+        });
       } catch (error) { return {toast: error instanceof Error ? error.message : "模型记录应用失败"}; }
       const allRelations = [...state.relations, ...result.relations];
       const relationByLine = new Map(allRelations.filter((relation) => relation.active).map((relation) => [relation.entrustmentLineId, relation]));
@@ -1421,7 +1476,19 @@ export const useDemoStore = create<DemoState>()(persist((set, get) => ({
   clearToast: () => set({ toast: null }),
 }), {
   name: "jiuli-demo-workspace-v1",
-  version: 1,
+  version: 2,
+  migrate: (persisted): DemoState => {
+    const previous = persisted as Partial<DemoState>;
+    // Keep the old scenario, including uploads and manual edits, available for recovery.
+    const business = buildBusinessWorkspace();
+    return { ...previous, scenarioId: "BUSINESS", view: "home", drafts: business.drafts, sources: business.sources, files: business.files,
+      selectedDraftId: business.selectedDraftId, activeTaskId: business.selectedDraftId, lastVisitedTaskId: business.selectedDraftId, lastVisitedPanel: "overview",
+      scenarioEntry: { scenarioId: "BUSINESS", restoredAt: baselineTime },
+      events: [], relations: [], evidence: [], versions: [], operations: [], finalReconciliations: [],
+      parseJobs: [], parseResults: [], parsedFacts: [], convertedEntrustments: [], convertedInspections: [], convertedAuxiliaryMaterials: [], materialBindings: [],
+      savedBusinessWorkspace: null, previousScenarioWorkspace: workspaceSnapshot(previous),
+    } as DemoState;
+  },
   storage: createJSONStorage(() => typeof window === "undefined" ? memoryStorage : window.localStorage),
   onRehydrateStorage: () => (state) => {
     if (state) state.recoverInterruptedParseJobs();

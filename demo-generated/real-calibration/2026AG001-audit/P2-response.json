@@ -1,0 +1,256 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P2",
+  "request_id": "20260921-2026AG001-P2",
+  "output": {
+    "processing_status": "SUCCESS",
+    "customer_id": "C-e0cb675e9f1d",
+    "read_status": [
+      {
+        "file_id": "F-6b255626250f",
+        "read_segments": [
+          "page:1"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      }
+    ],
+    "logical_inspections": [
+      {
+        "warehouse_no": "26050688",
+        "sources": [
+          {
+            "file_id": "F-6b255626250f",
+            "page": 1,
+            "sheet": null,
+            "row": null,
+            "column": "Barcode",
+            "raw_text": "26050688"
+          }
+        ],
+        "range_status": "COMPLETE"
+      }
+    ],
+    "raw_rows": [
+      {
+        "record_no": 1,
+        "warehouse_no": "26050688",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-6b255626250f",
+          "page": 1,
+          "sheet": null,
+          "row": 1,
+          "column": null,
+          "raw_text": "商品表第1行"
+        },
+        "fields": {
+          "brand": "SUSE",
+          "model": "B-RPGC-2C4V-PS1",
+          "product_name": "Linux操作系统软件，标准三年服务",
+          "quantity": "20",
+          "remark": "License 2026AG001；服务年限三年"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-6b255626250f",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "SUSE"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-6b255626250f",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Model",
+              "raw_text": "B-RPGC-2C4V-PS1"
+            }
+          ],
+          "product_name": [
+            {
+              "file_id": "F-6b255626250f",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Description",
+              "raw_text": "Linux操作系统软件，标准三年服务"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-6b255626250f",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Quantity",
+              "raw_text": "20"
+            }
+          ],
+          "remark": [
+            {
+              "file_id": "F-6b255626250f",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Description",
+              "raw_text": "Linux操作系统软件，标准三年服务"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "德国",
+            "kind": "PRINTED_COD",
+            "source": {
+              "file_id": "F-6b255626250f",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Country of Origin",
+              "raw_text": "德国"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 2,
+        "warehouse_no": "26050688",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-6b255626250f",
+          "page": 1,
+          "sheet": null,
+          "row": 2,
+          "column": null,
+          "raw_text": "商品表第2行"
+        },
+        "fields": {
+          "brand": "SUSE",
+          "model": "B-RPGC-2C4V-PS1",
+          "product_name": "Linux操作系统软件，标准三年服务",
+          "quantity": "12",
+          "remark": "License 2026AG001；服务年限三年"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-6b255626250f",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": "Brand",
+              "raw_text": "SUSE"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-6b255626250f",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": "Model",
+              "raw_text": "B-RPGC-2C4V-PS1"
+            }
+          ],
+          "product_name": [
+            {
+              "file_id": "F-6b255626250f",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": "Description",
+              "raw_text": "Linux操作系统软件，标准三年服务"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-6b255626250f",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": "Quantity",
+              "raw_text": "12"
+            }
+          ],
+          "remark": [
+            {
+              "file_id": "F-6b255626250f",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": "Description",
+              "raw_text": "Linux操作系统软件，标准三年服务"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "德国",
+            "kind": "PRINTED_COD",
+            "source": {
+              "file_id": "F-6b255626250f",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": "Country of Origin",
+              "raw_text": "德国"
+            }
+          }
+        ],
+        "manual_marks": []
+      }
+    ],
+    "scope_records": [
+      {
+        "warehouse_no": "26050688",
+        "kind": "PACKAGE",
+        "identifier": "warehouse-label",
+        "member_record_nos": [
+          1,
+          2
+        ],
+        "range_complete": true,
+        "has_unresolved_goods": false,
+        "measurements": [
+          {
+            "field": "packages",
+            "value": "1件/板",
+            "unit": "",
+            "fact_kind": "EXPLICIT",
+            "source": {
+              "file_id": "F-6b255626250f",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "warehouse label",
+              "raw_text": "1件/板"
+            }
+          }
+        ],
+        "source": {
+          "file_id": "F-6b255626250f",
+          "page": 1,
+          "sheet": null,
+          "row": null,
+          "column": "warehouse label",
+          "raw_text": "1件/板"
+        }
+      }
+    ],
+    "issues": [
+      {
+        "code": "CUSTOMER_UNCONFIRMED",
+        "row_ref": null,
+        "field": "customer_id",
+        "message": "查货页只显示 License 2026AG001 和入仓号26050688，未显示客户名称。"
+      }
+    ]
+  }
+}

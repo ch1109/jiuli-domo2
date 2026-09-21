@@ -1,0 +1,948 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P2",
+  "request_id": "REMAINING-26SHPYD056-20260921-P2",
+  "context": {
+    "customer_id": "C-132ffbd28c07",
+    "normalization": {
+      "countries": {
+        "KOREA": "韩国",
+        "TAIWAN, CHINA": "中国台湾",
+        "TAIWAN,CHINA": "中国台湾",
+        "Taiwan China": "中国台湾",
+        "CHINA": "中国",
+        "China": "中国",
+        "SINGAPORE": "新加坡",
+        "JAPAN": "日本",
+        "FRANCE": "法国",
+        "ITALY": "意大利",
+        "GERMANY": "德国",
+        "USA": "美国",
+        "TH": "泰国",
+        "THAILAND": "泰国",
+        "CN中国": "中国",
+        "中国": "中国",
+        "中国台湾": "中国台湾",
+        "意大利": "意大利",
+        "法国": "法国",
+        "以色列": "以色列"
+      },
+      "units": {
+        "PCS": "个",
+        "pcs": "个",
+        "PC": "个",
+        "EA": "个",
+        "个": "个"
+      }
+    }
+  },
+  "input": {
+    "files": [
+      {
+        "file_id": "F-970b59d6d5b8",
+        "material_type": "INSPECTION",
+        "segments": [
+          "page:1",
+          "page:2"
+        ],
+        "content": {
+          "source_path": "真实整单样本/26SHPYD056/查货文件/1774838084919.pdf",
+          "sha256": "b04b514450f030761b6d9a05edad1724b6995d1904dedb0175a5e1a46e2bbde4",
+          "extracted": {
+            "id": "F-970b59d6d5b8",
+            "path": "真实整单样本/26SHPYD056/查货文件/1774838084919.pdf",
+            "sampleId": "26SHPYD056",
+            "sha256": "b04b514450f030761b6d9a05edad1724b6995d1904dedb0175a5e1a46e2bbde4",
+            "size": 1450047,
+            "extension": ".pdf",
+            "role": "inspection",
+            "pages": [
+              {
+                "page": 1,
+                "renderPath": "demo-generated/renders/F-970b59d6d5b8/page-1.png",
+                "text": "",
+                "ocr": [
+                  {
+                    "confidence": 0.30000001192092896,
+                    "text": "上凝浦斐电予科技有膜公司"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "纳税人识别号："
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "91310116692952378P"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "开户行："
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "上海农商银行阐北支行"
+                  },
+                  {
+                    "confidence": 0.30000001192092896,
+                    "text": "熙户号码："
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "50131000629293829"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "上海浦壹电子科技有限公司"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "上海市徐汇区东安路562号绿地国际广场23楼"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "TEL：+86-021-64181090"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "FAX：+86-021-64181091"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "26036383"
+                  },
+                  {
+                    "confidence": 0.30000001192092896,
+                    "text": "DELIV....~.-"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "PACKING LIST"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "Pack No."
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "PYPL097374"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "Pack Date"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "2026-03-30"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "Shipper："
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "上海浦壹电子科技有限公司"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "上海市徐汇区东安路562号绿地国际广场23楼"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "ATTN："
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "Shirley Luo"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "TEL：+86-021-64181090"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "FAX：+86-021-64181091"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "Ship To："
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "浙江大华科技有限公司"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "浙江省杭州市富阳区东洲街道东桥路28号大华智慧物联网页园区A2"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "楼1楼北面N59-N61"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "ATTN："
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "徐志伟"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "TEL: 17799867502"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "FAX："
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "Ship VIA："
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "九旭控股有限公司"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "J LONG HOLDINGS LIMITED"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "新界大埔南华莆LOT95ORP至960RP DD9"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "DD9 LOT95ORP TO 96ORP, NAM WA PO, TAI PO, N.T.， HONG"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "KONG"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "Package Information："
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "Non-wooden Packing Material"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "Total："
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "Size（CTN NO.）："
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "Weight Gross："
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "Weight Net："
+                  },
+                  {
+                    "confidence": 0.30000001192092896,
+                    "text": "4 CTN"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "42*41*42CM：（1）（4）"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "50*40*38CM： （2）-（3）"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "61.700 KGS"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "57.700 KGS"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "NW:12.300 GW:13.300 （2）-（3）"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "NW:14.700 GW:15.700（4）"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "NW:18.400 GW:19.400 （1）"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "ShipTo："
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "ShipVia："
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "ShipVia No.："
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "ShipVia Info："
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "DDP"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "TO FU LOGISTICS CO"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "货送九立（九旭）"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "MARKS:PRO-E"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "ATTN："
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "李文基"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "TEL：（852）63965636"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "FAX:N/A"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "Packlist include invoices"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "Invoices"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "PYINV133972"
+                  },
+                  {
+                    "confidence": 0.30000001192092896,
+                    "text": "5件/；板3人"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "2026-03-30/2頁/"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "KGS"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "Descriptions of Goods"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "Shipped"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "Qty"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "Packing Qty"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "CTNNO."
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "BRAND: WINBOND P/V:/W25N01GVZEIG"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "INT:1.2.18.16.10355"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "HSCODE: 85423990"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "Inv No.：PYINV133972"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "Desc: NAND FLASH"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "PO No.： DH20705872053"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "DC: 2542 ROHS: YES"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "COO: CHINA COD: N/A PBF: YES"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "HF:YES"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "4,000"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "DC:2523"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "HF:YES"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "ROHS:YES"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "COO: TAIWAN, CHINA COD: N/A PBF: YES"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "3,840"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "DC: 2544"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "HF:YES"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "ROHS: YES"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "COO: TAIWAN,CHINA COD: N/A"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "PBF:YES"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "11,520"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "153,440"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "（1） 38400"
+                  },
+                  {
+                    "confidence": 0.30000001192092896,
+                    "text": "（2）-（3） 40000"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "（4） 35040"
+                  },
+                  {
+                    "confidence": 0.30000001192092896,
+                    "text": "（1） （2）-"
+                  },
+                  {
+                    "confidence": 0.30000001192092896,
+                    "text": "（3） （4）"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "DC: 2545"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "HF: YES"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "ROHS: YES"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "COO: TAIWAN,CHINA COD: N/A"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "PBF:YES"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "3,840"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "DC: 2548"
+                  },
+                  {
+                    "confidence": 0.30000001192092896,
+                    "text": "HF:YES"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "ROHS: YES"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "COO: TAIWAN,CHINA COD: N/A"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "PBF:YES"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "15,360"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "DC:2551"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "HF:YES"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "ROHS: YES"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "COO: TAIWAN,CHINA COD:N/A"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "PBF:YES"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "12,000"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "DC:2552"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "HF:YES"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "ROHS:YES"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "COO: TAIWAN,CHINA COD: N/A"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "PBF:YES"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "102,880"
+                  }
+                ]
+              },
+              {
+                "page": 2,
+                "renderPath": "demo-generated/renders/F-970b59d6d5b8/page-2.png",
+                "text": "",
+                "ocr": [
+                  {
+                    "confidence": 0.30000001192092896,
+                    "text": "上海油登电予科技有限公司"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "纳税人识别号："
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "91310116692952378P"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "开户行："
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "上海农商银行阐北支行"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "账户号码："
+                  },
+                  {
+                    "confidence": 0.30000001192092896,
+                    "text": "20451000629293829"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "上海浦壹电子科技有限公司"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "上海市徐汇区东安路562号绿地国际广场23楼"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "TEL：+86-021-64181090"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "FAX：+86-021-64181091"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "DELIVERY NOTE"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "PACKING LIST"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "Pack No."
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "PYPL097364"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "Pack Date"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "2026-03-30"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "Shipper："
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "上海浦壹电子科技有限公司"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "上海市徐汇区东安路562号绿地国际广场23楼"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "ATTN："
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "TEL：+86-021-64181090"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "Shirley Luo"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "FAX：+86-021-64181091"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "Ship To："
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "浙江大华科技有限公司"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "浙江省杭州市富阳区东洲街道东桥路28号大华智慧物联网产业园区"
+                  },
+                  {
+                    "confidence": 0.30000001192092896,
+                    "text": "A2-176N59-N61"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "ATTN："
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "徐志伟"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "TEL:17799867502"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "FAX："
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "Ship VIA："
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "九旭控股有限公司"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "J LONG HOLDINGS LIMITED"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "新界大埔南华莆LOT950RP至960RP DD9"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "DD9 LOT95ORP TO 960RP, NAM WA PO, TAI PO, N.T.， HONG"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "KONG"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "Package Information："
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "Non-wooden Packing Material"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "Total："
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "1 CTN"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "Size（CTN NO.）： 42*41*23CM： （1）"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "Weight Gross："
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "Weight Net："
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "7.400 KGS"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "6.800 KGS"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "NW:6.800 GW:7.400 （1）"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "ShipTo："
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "ShipVia："
+                  },
+                  {
+                    "confidence": 0.30000001192092896,
+                    "text": "ShipVia No.："
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "ShipVia Info："
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "DDP"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "TO FU LOGISTICS CO"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "货送九立（九旭）"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "MARKS:PRO-E"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "ATTN："
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "李文基"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "TEL：（852）63965636"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "FAX:N/A"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "Packlist include invoices"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "Invoices"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "PYINV133961"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "Descriptions of Goods"
+                  },
+                  {
+                    "confidence": 0.30000001192092896,
+                    "text": "BRAND:MARVELYPNE"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "88E6240A1TFJ2C000"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "INT: C2510235"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "HSCODE: 85423119"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "Inv No.：PYINV133961"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "Desc: FE + 3 GE AVB SWITCH WITH TCAM"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "PO No.： PO162603230004"
+                  },
+                  {
+                    "confidence": 0.30000001192092896,
+                    "text": "coo（（AIWAN.C）"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "Shipped"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "Qty"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "Packing Qty"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "CTNNO."
+                  },
+                  {
+                    "confidence": 0.30000001192092896,
+                    "text": "（270g21）200"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "（1）"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "DC:2522 ROHS: YES"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "COO: TAIWAN,CHINA COD: N/A PBF: YES"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "HF:YES"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "900"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "DC: 2524"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "HF:YES"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "ROHS: YES"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "COO: TAIWAN,CHINA COD: N/A PBF: YES"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "1,800"
+                  },
+                  {
+                    "confidence": 0.30000001192092896,
+                    "text": "42"
+                  },
+                  {
+                    "confidence": 0.5,
+                    "text": "合同专用章"
+                  },
+                  {
+                    "confidence": 1,
+                    "text": "（Authorized Signature）"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

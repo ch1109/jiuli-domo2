@@ -1,0 +1,73 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P2",
+  "request_id": "20260921-2026AG001-P2",
+  "context": {
+    "customer_id": "C-e0cb675e9f1d",
+    "normalization": {
+      "countries": {
+        "DE": "德国",
+        "GERMANY": "德国"
+      },
+      "units": {
+        "PCS": "个",
+        "EA": "个"
+      }
+    }
+  },
+  "input": {
+    "files": [
+      {
+        "file_id": "F-6b255626250f",
+        "segments": [
+          "page:1"
+        ],
+        "content": {
+          "source_path": "真实整单样本/2026AG001/查货文件/1779087953894.pdf",
+          "page": 1,
+          "license_no": "2026AG001",
+          "customer": "UNKNOWN",
+          "barcode": "26050688",
+          "table": {
+            "headers": [
+              "Item",
+              "Description",
+              "Country of Origin",
+              "Quantity",
+              "Unit Price",
+              "Amount"
+            ],
+            "rows": [
+              {
+                "row": 1,
+                "description": "Linux操作系统软件，标准三年服务",
+                "brand": "SUSE",
+                "model": "B-RPGC-2C4V-PS1",
+                "country_of_origin": "德国",
+                "quantity": "20",
+                "unit_price": "1617.04",
+                "amount": "32340.80"
+              },
+              {
+                "row": 2,
+                "description": "Linux操作系统软件，标准三年服务",
+                "brand": "SUSE",
+                "model": "B-RPGC-2C4V-PS1",
+                "country_of_origin": "德国",
+                "quantity": "12",
+                "unit_price": "2175.00",
+                "amount": "26100.00"
+              }
+            ],
+            "total_amount": "58440.80"
+          },
+          "warehouse_label": {
+            "package_text": "1件/板",
+            "handwritten_weight": "",
+            "unit": "KGS"
+          }
+        }
+      }
+    ]
+  }
+}

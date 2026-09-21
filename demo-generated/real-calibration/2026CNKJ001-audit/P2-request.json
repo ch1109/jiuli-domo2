@@ -1,0 +1,86 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P2",
+  "request_id": "20260921-2026CNKJ001-P2",
+  "context": {
+    "customer_id": "C-7a1e673169bf",
+    "normalization": {
+      "countries": {
+        "JAPAN": "日本",
+        "JP": "日本"
+      },
+      "units": {
+        "PC": "个",
+        "PCS": "个",
+        "KGS": "KG"
+      }
+    }
+  },
+  "input": {
+    "files": [
+      {
+        "file_id": "F-8e681d73b55a",
+        "segments": [
+          "page:1"
+        ],
+        "content": {
+          "source_path": "真实整单样本/2026CNKJ001/查货文件/1778658919945.pdf",
+          "page": 1,
+          "barcode": "26057448",
+          "shipped_to": "九旭控股有限公司 / JLONG HOLDINGS LIMITED",
+          "bill_to": "深圳市快极科技有限公司",
+          "invoice_no": "2026051136660",
+          "date": "2026/5/13",
+          "delivery_term": "FCA HK",
+          "warehouse_label": "26057448",
+          "body_warehouse_no": "018230127",
+          "customer": "深圳市快极科技有限公司",
+          "table": {
+            "headers": [
+              "CTN NO",
+              "Part No.",
+              "Customer Part No.",
+              "Description",
+              "P/O NO",
+              "Quantity (pc)",
+              "N.W. (Kgs)",
+              "G.W. (Kgs)",
+              "Original country",
+              "Brand"
+            ],
+            "rows": [
+              {
+                "row": 1,
+                "ctn_no": "1--3",
+                "part_no": "BM25U-4P/2-V(85)",
+                "description": "Connector",
+                "po": "K20260318001W",
+                "quantity": "580,000",
+                "nw": "4.81",
+                "gw": "31.66",
+                "origin": "JAPAN",
+                "brand": "HIROSE"
+              }
+            ],
+            "total": {
+              "quantity": "580,000",
+              "nw": "4.81",
+              "gw": "31.66"
+            }
+          },
+          "shipping_marks": {
+            "total_ctn": "3",
+            "lines": [
+              "#1--1 44*44*33CM/10.1KG/180000PCS",
+              "#2--3 42*42*32CM/10.78KG/200000PCS"
+            ]
+          },
+          "manual_notes": [
+            "COD: JP",
+            "手写批注范围不明"
+          ]
+        }
+      }
+    ]
+  }
+}

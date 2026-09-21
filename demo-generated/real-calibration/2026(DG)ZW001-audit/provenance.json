@@ -1,0 +1,80 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "audit_id": "REMAINING-2026(DG)ZW001-20260921",
+  "created_at": "2026-09-21T00:00:00Z",
+  "model": "gpt-5.6-luna",
+  "execution_task": "run_remaining_p1_p4_audit",
+  "execution_mode": "direct_model_inference",
+  "sample_id": "2026(DG)ZW001",
+  "stage_order": [
+    "P1",
+    "P2",
+    "P3",
+    "P4"
+  ],
+  "stages": [
+    {
+      "stage": "P1",
+      "request_id": "REMAINING-2026(DG)ZW001-20260921-P1",
+      "status": "NEEDS_REVIEW",
+      "request_file": "P1-request.json",
+      "response_file": "P1-response.json"
+    },
+    {
+      "stage": "P2",
+      "request_id": "REMAINING-2026(DG)ZW001-20260921-P2",
+      "status": "SUCCESS",
+      "request_file": "P2-request.json",
+      "response_file": "P2-response.json"
+    },
+    {
+      "stage": "P3",
+      "request_id": "REMAINING-2026(DG)ZW001-20260921-P3",
+      "status": "INVALID_INPUT",
+      "request_file": "P3-request.json",
+      "response_file": "P3-response.json"
+    },
+    {
+      "stage": "P4",
+      "request_id": "REMAINING-2026(DG)ZW001-20260921-P4",
+      "status": "INVALID_INPUT",
+      "request_file": "P4-request.json",
+      "response_file": "P4-response.json"
+    }
+  ],
+  "artifact_sha256": {
+    "P1-request.json": "893bd294e7ea8ef7142b1fe052988805ee071e12e55e26cdb06c7c45ef8c940e",
+    "P2-request.json": "ea746070c18575e2206c27ede9b4fe0a2367012716a3f63fb73b4ada2230dda6",
+    "P3-request.json": "7bed9f6967e516c1daea9b2b66317c60cce04a4b7b89a1d1110685288362072c",
+    "P4-request.json": "30c54a21ec247bf63e6765e06cd94b1a8e3ef2ccd3c66c3b4dd5d65a44db533b",
+    "P1-response.json": "a3af186bd2e156631b1f051acc22b649eeae87615a21155a87fdd85f83df96cd",
+    "P2-response.json": "0976fcb325c8d372500fdb0629a41ebbc79c06f2db8388da1d5971bfc9113b5b",
+    "P3-response.json": "615ee75f53e107e66253a9a4b96eb0c3d739ac3b6b74442cfc7e9a0a72ec1a1a",
+    "P4-response.json": "c17895f7b8e4afcda02f2210c9c613e5a7b02dd526ded8a6d83ee0afa2e2b798"
+  },
+  "hash_scope_note": "artifact_sha256 covers eight request/response artifacts; provenance.json is excluded to avoid self-reference.",
+  "source_sha256": {
+    "AGENTS.md": "63f2c50380ed6303237cce215ce27af1d620d094c215e28d1b1538a3c070e3bb",
+    ".analysis/agent-prompts.md": "7d33f66760c2aeec4e3b1e8386055da89358dfb44f5a595dfef29f4ba82d71d0",
+    "demo-generated/source_inventory.json": "b6adcb39cfa93845c1c9f018ebb091dc1fb04e0086f96743bc4679f0b25c64cb",
+    "demo-generated/manifests/2026(DG)ZW001.json": "55c635ce45f5c7de458e49cc0f744ec7aa9da4629e473fd0da373bccbc7a2eaf",
+    "提示词文件及方案/P1_order_draft_FINAL_v3.0.txt": "3d2662509025b5ef0363843c01c3eaeb59b5be16dcf00ebc45c52cb66ec36f9c",
+    "提示词文件及方案/P2_inspection_facts_FINAL_v3.0.txt": "41c615d9eac52cde376962dc330cd2771883b03917c6a47b77815c9bc77cc36c",
+    "提示词文件及方案/P3_product_matching_FINAL_v3.0.txt": "a07249b9490897b8e5fd1e3f63b14ad318447fd9b4168e3286625a698e620be3",
+    "提示词文件及方案/P4_field_verification_FINAL_v3.0.txt": "02fc74013a818f0b41e3ce2440f74283dcadf034c5dd3bd7b8f9f91c067610b5",
+    "真实整单样本/2026(DG)ZW001/查货文件/1767583198125.pdf": "4caa99eba2348014cb1abd0042159e06daca268315de8f8dd26585e4ddd30abd",
+    "demo-generated/extracted/F-4626eef2dd66.json": "663b39d7fbec9a7bbbfbfd1ecf91b6c5b6c96a72138f18a0a368fd30a65bfdfd",
+    "真实整单样本/2026(DG)ZW001/委托文件/智微智能导单文件-1767600043104.xlsx": "9251d2bf13f67ab38ff85c1ca1c7ecc5a7734b1349203d694de6d301fc1b114a",
+    "demo-generated/extracted/F-8181f9edc198.json": "0c08cf9d906038dc9b6ac8768cd3b080f349fc167e1f5eb1415b20afe5b62df3",
+    "真实整单样本/2026(DG)ZW001/查货文件/1767597461096.pdf": "9137c99ca1d9bc55947cbf427016b381d34c4cc3f91d29bad1dfe2fe5f864c78",
+    "demo-generated/extracted/F-cdbd27982284.json": "92fbe72f76ac7d9846c17101ef051120c6b33e6b76420e59bafa806ab1a855d4"
+  },
+  "guardrails": {
+    "read_existing_sc08_responses": false,
+    "modified_original_sc08_directory": false,
+    "modified_app": false,
+    "modified_lib": false,
+    "modified_demo_generated_mock": false,
+    "contains_secrets": false
+  }
+}

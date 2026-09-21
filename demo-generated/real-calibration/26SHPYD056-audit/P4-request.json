@@ -1,0 +1,349 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P4",
+  "request_id": "REMAINING-26SHPYD056-20260921-P4",
+  "context": {
+    "customer_id": "C-132ffbd28c07",
+    "mode": "VERIFY_FIELDS"
+  },
+  "input": {
+    "target_rows": [
+      {
+        "order_row_id": "D-df72916dc019-R015",
+        "relation": {
+          "match_status": "MATCHED",
+          "raw_row_ids": [
+            "I-F-970b59d6d5b8-26036383-L008",
+            "I-F-970b59d6d5b8-26036383-L009"
+          ],
+          "coverage": {
+            "coverage": "COMPLETE",
+            "overlap": "DISJOINT",
+            "has_extra_goods": false,
+            "has_unresolved_goods": false
+          },
+          "evidence_keys": [
+            "E-P3-I-008-SCOPE",
+            "E-P3-I-009-SCOPE"
+          ]
+        },
+        "evaluated_fields": [
+          "brand",
+          "model",
+          "origin",
+          "unit",
+          "quantity",
+          "net_weight",
+          "gross_weight",
+          "warehouse_no"
+        ],
+        "fields": {
+          "brand": {
+            "base_value": "MARVELL",
+            "current_value": "MARVELL",
+            "value_origin": "ORDER",
+            "write_policy": "AUTO",
+            "evidence": [
+              {
+                "evidence_key": "E-P4-MARVELL-BRAND",
+                "value": "MARVELL",
+                "unit": "",
+                "source_kind": "RAW",
+                "scope": {
+                  "coverage": "COMPLETE",
+                  "overlap": "DISJOINT",
+                  "has_extra_goods": false,
+                  "has_unresolved_goods": false
+                },
+                "raw_row_ids": [
+                  "I-F-970b59d6d5b8-26036383-L008",
+                  "I-F-970b59d6d5b8-26036383-L009"
+                ],
+                "source": {
+                  "file_id": "F-970b59d6d5b8",
+                  "page": 2,
+                  "sheet": null,
+                  "row": 8,
+                  "column": null,
+                  "raw_text": "{\"page\":2,\"position\":\"MARVELL批次明细第1行\",\"品牌\":\"MARVELL\",\"型号\":\"88E6240A1TFJ2C000\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"900\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2522\"}"
+                }
+              }
+            ],
+            "unresolved_issues": []
+          },
+          "model": {
+            "base_value": "88E6240A1TFJ2C000",
+            "current_value": "88E6240A1TFJ2C000",
+            "value_origin": "ORDER",
+            "write_policy": "AUTO",
+            "evidence": [
+              {
+                "evidence_key": "E-P4-MARVELL-MODEL",
+                "value": "88E6240A1TFJ2C000",
+                "unit": "",
+                "source_kind": "RAW",
+                "scope": {
+                  "coverage": "COMPLETE",
+                  "overlap": "DISJOINT",
+                  "has_extra_goods": false,
+                  "has_unresolved_goods": false
+                },
+                "raw_row_ids": [
+                  "I-F-970b59d6d5b8-26036383-L008",
+                  "I-F-970b59d6d5b8-26036383-L009"
+                ],
+                "source": {
+                  "file_id": "F-970b59d6d5b8",
+                  "page": 2,
+                  "sheet": null,
+                  "row": 8,
+                  "column": null,
+                  "raw_text": "{\"page\":2,\"position\":\"MARVELL批次明细第1行\",\"品牌\":\"MARVELL\",\"型号\":\"88E6240A1TFJ2C000\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"900\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2522\"}"
+                }
+              }
+            ],
+            "unresolved_issues": []
+          },
+          "origin": {
+            "base_value": "中国台湾",
+            "current_value": "中国台湾",
+            "value_origin": "ORDER",
+            "write_policy": "AUTO",
+            "evidence": [
+              {
+                "evidence_key": "E-P4-MARVELL-ORIGIN",
+                "value": "TAIWAN, CHINA",
+                "unit": "",
+                "source_kind": "RAW",
+                "scope": {
+                  "coverage": "COMPLETE",
+                  "overlap": "DISJOINT",
+                  "has_extra_goods": false,
+                  "has_unresolved_goods": false
+                },
+                "raw_row_ids": [
+                  "I-F-970b59d6d5b8-26036383-L008",
+                  "I-F-970b59d6d5b8-26036383-L009"
+                ],
+                "source": {
+                  "file_id": "F-970b59d6d5b8",
+                  "page": 2,
+                  "sheet": null,
+                  "row": 8,
+                  "column": null,
+                  "raw_text": "{\"page\":2,\"position\":\"MARVELL批次明细第1行\",\"品牌\":\"MARVELL\",\"型号\":\"88E6240A1TFJ2C000\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"900\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2522\"}"
+                }
+              }
+            ],
+            "unresolved_issues": []
+          },
+          "unit": {
+            "base_value": "",
+            "current_value": "",
+            "value_origin": "EMPTY",
+            "write_policy": "AUTO",
+            "evidence": [],
+            "unresolved_issues": []
+          },
+          "quantity": {
+            "base_value": "2700",
+            "current_value": "2700",
+            "value_origin": "ORDER",
+            "write_policy": "AUTO",
+            "evidence": [
+              {
+                "evidence_key": "E-P4-MARVELL-QTY",
+                "value": "2700",
+                "unit": "",
+                "source_kind": "RAW",
+                "scope": {
+                  "coverage": "COMPLETE",
+                  "overlap": "DISJOINT",
+                  "has_extra_goods": false,
+                  "has_unresolved_goods": false
+                },
+                "raw_row_ids": [
+                  "I-F-970b59d6d5b8-26036383-L008",
+                  "I-F-970b59d6d5b8-26036383-L009"
+                ],
+                "source": {
+                  "file_id": "F-970b59d6d5b8",
+                  "page": 2,
+                  "sheet": null,
+                  "row": 8,
+                  "column": null,
+                  "raw_text": "两条查货行数量 900 + 1800 = 2700"
+                }
+              }
+            ],
+            "unresolved_issues": [
+              {
+                "issue_id": "ISS-MARVELL-UNIT-MISSING",
+                "field": "quantity",
+                "message": "查货数量没有单位，不能完成单位可比核验。",
+                "blocks_auto_write": false
+              }
+            ]
+          },
+          "net_weight": {
+            "base_value": "6.8",
+            "current_value": "6.8",
+            "value_origin": "ORDER",
+            "write_policy": "AUTO",
+            "evidence": [
+              {
+                "evidence_key": "E-P4-MARVELL-NW",
+                "value": "6.8",
+                "unit": "KG",
+                "source_kind": "RAW",
+                "scope": {
+                  "coverage": "COMPLETE",
+                  "overlap": "DISJOINT",
+                  "has_extra_goods": false,
+                  "has_unresolved_goods": false
+                },
+                "raw_row_ids": [
+                  "I-F-970b59d6d5b8-26036383-L008",
+                  "I-F-970b59d6d5b8-26036383-L009"
+                ],
+                "source": {
+                  "file_id": "F-970b59d6d5b8",
+                  "page": 2,
+                  "sheet": null,
+                  "row": null,
+                  "column": "shared-weight",
+                  "raw_text": "MARVELL 2行：净重6.8 KG；毛重7.4 KG"
+                }
+              }
+            ],
+            "unresolved_issues": []
+          },
+          "gross_weight": {
+            "base_value": "7.4",
+            "current_value": "7.4",
+            "value_origin": "ORDER",
+            "write_policy": "AUTO",
+            "evidence": [
+              {
+                "evidence_key": "E-P4-MARVELL-GW",
+                "value": "7.4",
+                "unit": "KG",
+                "source_kind": "RAW",
+                "scope": {
+                  "coverage": "COMPLETE",
+                  "overlap": "DISJOINT",
+                  "has_extra_goods": false,
+                  "has_unresolved_goods": false
+                },
+                "raw_row_ids": [
+                  "I-F-970b59d6d5b8-26036383-L008",
+                  "I-F-970b59d6d5b8-26036383-L009"
+                ],
+                "source": {
+                  "file_id": "F-970b59d6d5b8",
+                  "page": 2,
+                  "sheet": null,
+                  "row": null,
+                  "column": "shared-weight",
+                  "raw_text": "MARVELL 2行：净重6.8 KG；毛重7.4 KG"
+                }
+              }
+            ],
+            "unresolved_issues": []
+          },
+          "warehouse_no": {
+            "base_value": "",
+            "current_value": "",
+            "value_origin": "EMPTY",
+            "write_policy": "AUTO",
+            "evidence": [
+              {
+                "evidence_key": "E-P4-MARVELL-WH",
+                "value": "26036383",
+                "unit": "",
+                "source_kind": "RAW",
+                "scope": {
+                  "coverage": "COMPLETE",
+                  "overlap": "DISJOINT",
+                  "has_extra_goods": false,
+                  "has_unresolved_goods": false
+                },
+                "raw_row_ids": [
+                  "I-F-970b59d6d5b8-26036383-L008",
+                  "I-F-970b59d6d5b8-26036383-L009"
+                ],
+                "source": {
+                  "file_id": "F-970b59d6d5b8",
+                  "page": 1,
+                  "sheet": null,
+                  "row": null,
+                  "column": "warehouse_no",
+                  "raw_text": "条码 26036383"
+                }
+              }
+            ],
+            "unresolved_issues": []
+          }
+        },
+        "origin_parts": [
+          {
+            "part_key": "PART-MARVELL",
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L008",
+              "I-F-970b59d6d5b8-26036383-L009"
+            ],
+            "scope": {
+              "coverage": "COMPLETE",
+              "overlap": "DISJOINT",
+              "has_extra_goods": false,
+              "has_unresolved_goods": false
+            },
+            "origin_candidates": [
+              {
+                "evidence_key": "E-P4-MARVELL-ORIGIN",
+                "value": "TAIWAN, CHINA",
+                "kind": "COO",
+                "validity": "ACTIVE",
+                "source": {
+                  "file_id": "F-970b59d6d5b8",
+                  "page": 2,
+                  "sheet": null,
+                  "row": 8,
+                  "column": null,
+                  "raw_text": "{\"page\":2,\"position\":\"MARVELL批次明细第1行\",\"品牌\":\"MARVELL\",\"型号\":\"88E6240A1TFJ2C000\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"900\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2522\"}"
+                }
+              }
+            ]
+          }
+        ],
+        "origin_partition_status": "COMPLETE_DISJOINT",
+        "relation_warehouse_evidence": [
+          {
+            "evidence_key": "E-P4-MARVELL-WH",
+            "value": "26036383",
+            "unit": "",
+            "source_kind": "RAW",
+            "scope": {
+              "coverage": "COMPLETE",
+              "overlap": "DISJOINT",
+              "has_extra_goods": false,
+              "has_unresolved_goods": false
+            },
+            "raw_row_ids": [
+              "I-F-970b59d6d5b8-26036383-L008",
+              "I-F-970b59d6d5b8-26036383-L009"
+            ],
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "warehouse_no",
+              "raw_text": "条码 26036383"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

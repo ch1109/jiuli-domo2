@@ -1,0 +1,385 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P3",
+  "request_id": "20260921-2026AG001-P3",
+  "context": {
+    "customer_id": "C-e0cb675e9f1d",
+    "retrieval_complete": true
+  },
+  "input": {
+    "order_rows": [
+      {
+        "order_row_id": "D-e60d9bd8df88-R007",
+        "customer_id": "C-e0cb675e9f1d",
+        "identity": {
+          "model": "B-RPGC-2C4V-PS1",
+          "brand": "SUSE",
+          "origin": "德国",
+          "quantity": "20",
+          "unit": "",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": "",
+          "service_term": "标准一年服务"
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-O-R007-MODEL",
+            "field": "model",
+            "value": "B-RPGC-2C4V-PS1",
+            "source": {
+              "file_id": "F-e60d9bd8df88",
+              "page": null,
+              "sheet": "报关资料",
+              "row": 7,
+              "column": "E",
+              "raw_text": "B-RPGC-2C4V-PS1"
+            }
+          },
+          {
+            "evidence_key": "E-O-R007-BRAND",
+            "field": "brand",
+            "value": "SUSE",
+            "source": {
+              "file_id": "F-e60d9bd8df88",
+              "page": null,
+              "sheet": "报关资料",
+              "row": 7,
+              "column": "B",
+              "raw_text": "SUSE"
+            }
+          },
+          {
+            "evidence_key": "E-O-R007-QTY",
+            "field": "quantity",
+            "value": "20",
+            "source": {
+              "file_id": "F-e60d9bd8df88",
+              "page": null,
+              "sheet": "报关资料",
+              "row": 7,
+              "column": "H",
+              "raw_text": "20"
+            }
+          },
+          {
+            "evidence_key": "E-O-R007-TERM",
+            "field": "description",
+            "value": "标准一年服务",
+            "source": {
+              "file_id": "F-e60d9bd8df88",
+              "page": null,
+              "sheet": "报关资料",
+              "row": 7,
+              "column": "F",
+              "raw_text": "SUSE Linux 企业操作系统软件，标准一年服务"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-e60d9bd8df88-R008",
+        "customer_id": "C-e0cb675e9f1d",
+        "identity": {
+          "model": "B-RPGC-2C4V-PS1",
+          "brand": "SUSE",
+          "origin": "德国",
+          "quantity": "12",
+          "unit": "",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": "",
+          "service_term": "标准一年服务"
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-O-R008-MODEL",
+            "field": "model",
+            "value": "B-RPGC-2C4V-PS1",
+            "source": {
+              "file_id": "F-e60d9bd8df88",
+              "page": null,
+              "sheet": "报关资料",
+              "row": 8,
+              "column": "E",
+              "raw_text": "B-RPGC-2C4V-PS1"
+            }
+          },
+          {
+            "evidence_key": "E-O-R008-BRAND",
+            "field": "brand",
+            "value": "SUSE",
+            "source": {
+              "file_id": "F-e60d9bd8df88",
+              "page": null,
+              "sheet": "报关资料",
+              "row": 8,
+              "column": "B",
+              "raw_text": "SUSE"
+            }
+          },
+          {
+            "evidence_key": "E-O-R008-QTY",
+            "field": "quantity",
+            "value": "12",
+            "source": {
+              "file_id": "F-e60d9bd8df88",
+              "page": null,
+              "sheet": "报关资料",
+              "row": 8,
+              "column": "H",
+              "raw_text": "12"
+            }
+          },
+          {
+            "evidence_key": "E-O-R008-TERM",
+            "field": "description",
+            "value": "标准一年服务",
+            "source": {
+              "file_id": "F-e60d9bd8df88",
+              "page": null,
+              "sheet": "报关资料",
+              "row": 8,
+              "column": "F",
+              "raw_text": "SUSE Linux 企业操作系统软件，标准一年服务"
+            }
+          }
+        ]
+      }
+    ],
+    "inspection_candidates": [
+      {
+        "raw_row_id": "I-6b255626250f-26050688-L001",
+        "customer_id": "C-e0cb675e9f1d",
+        "logical_inspection_id": "I-6b255626250f-26050688",
+        "warehouse_no": "26050688",
+        "merged_product_id": null,
+        "identity": {
+          "model": "B-RPGC-2C4V-PS1",
+          "brand": "SUSE",
+          "origin": "德国",
+          "quantity": "20",
+          "unit": "",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": "",
+          "service_term": "标准三年服务"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-I-AG-L001-MODEL",
+            "field": "model",
+            "value": "B-RPGC-2C4V-PS1",
+            "source": {
+              "file_id": "F-6b255626250f",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Model",
+              "raw_text": "B-RPGC-2C4V-PS1"
+            }
+          },
+          {
+            "evidence_key": "E-I-AG-L001-BRAND",
+            "field": "brand",
+            "value": "SUSE",
+            "source": {
+              "file_id": "F-6b255626250f",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "SUSE"
+            }
+          },
+          {
+            "evidence_key": "E-I-AG-L001-QTY",
+            "field": "quantity",
+            "value": "20",
+            "source": {
+              "file_id": "F-6b255626250f",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Quantity",
+              "raw_text": "20"
+            }
+          },
+          {
+            "evidence_key": "E-I-AG-L001-TERM",
+            "field": "description",
+            "value": "标准三年服务",
+            "source": {
+              "file_id": "F-6b255626250f",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Description",
+              "raw_text": "Linux操作系统软件，标准三年服务"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-6b255626250f-26050688-L002",
+        "customer_id": "C-e0cb675e9f1d",
+        "logical_inspection_id": "I-6b255626250f-26050688",
+        "warehouse_no": "26050688",
+        "merged_product_id": null,
+        "identity": {
+          "model": "B-RPGC-2C4V-PS1",
+          "brand": "SUSE",
+          "origin": "德国",
+          "quantity": "12",
+          "unit": "",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": "",
+          "service_term": "标准三年服务"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-I-AG-L002-MODEL",
+            "field": "model",
+            "value": "B-RPGC-2C4V-PS1",
+            "source": {
+              "file_id": "F-6b255626250f",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": "Model",
+              "raw_text": "B-RPGC-2C4V-PS1"
+            }
+          },
+          {
+            "evidence_key": "E-I-AG-L002-BRAND",
+            "field": "brand",
+            "value": "SUSE",
+            "source": {
+              "file_id": "F-6b255626250f",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": "Brand",
+              "raw_text": "SUSE"
+            }
+          },
+          {
+            "evidence_key": "E-I-AG-L002-QTY",
+            "field": "quantity",
+            "value": "12",
+            "source": {
+              "file_id": "F-6b255626250f",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": "Quantity",
+              "raw_text": "12"
+            }
+          },
+          {
+            "evidence_key": "E-I-AG-L002-TERM",
+            "field": "description",
+            "value": "标准三年服务",
+            "source": {
+              "file_id": "F-6b255626250f",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": "Description",
+              "raw_text": "Linux操作系统软件，标准三年服务"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      }
+    ],
+    "proposed_groups": [
+      {
+        "order_row_id": "D-e60d9bd8df88-R007",
+        "raw_row_ids": [
+          "I-6b255626250f-26050688-L001",
+          "I-6b255626250f-26050688-L002"
+        ],
+        "evidence_keys": [
+          "E-O-R007-MODEL",
+          "E-I-AG-L001-MODEL",
+          "E-I-AG-L002-MODEL"
+        ]
+      },
+      {
+        "order_row_id": "D-e60d9bd8df88-R008",
+        "raw_row_ids": [
+          "I-6b255626250f-26050688-L001",
+          "I-6b255626250f-26050688-L002"
+        ],
+        "evidence_keys": [
+          "E-O-R008-MODEL",
+          "E-I-AG-L001-MODEL",
+          "E-I-AG-L002-MODEL"
+        ]
+      }
+    ],
+    "comparison_results": [
+      {
+        "order_row_id": "D-e60d9bd8df88-R007",
+        "raw_row_ids": [
+          "I-6b255626250f-26050688-L001"
+        ],
+        "quantity_comparison": {
+          "order_value": "20",
+          "inspection_value": "20",
+          "status": "EQUAL_NUMERIC",
+          "unit_comparable": false
+        },
+        "service_term_comparison": {
+          "order_value": "标准一年服务",
+          "inspection_value": "标准三年服务",
+          "status": "DIFFERENT"
+        }
+      },
+      {
+        "order_row_id": "D-e60d9bd8df88-R008",
+        "raw_row_ids": [
+          "I-6b255626250f-26050688-L002"
+        ],
+        "quantity_comparison": {
+          "order_value": "12",
+          "inspection_value": "12",
+          "status": "EQUAL_NUMERIC",
+          "unit_comparable": false
+        },
+        "service_term_comparison": {
+          "order_value": "标准一年服务",
+          "inspection_value": "标准三年服务",
+          "status": "DIFFERENT"
+        }
+      }
+    ]
+  }
+}

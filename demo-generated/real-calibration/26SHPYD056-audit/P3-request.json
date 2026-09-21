@@ -1,0 +1,1658 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P3",
+  "request_id": "REMAINING-26SHPYD056-20260921-P3",
+  "context": {
+    "customer_id": "C-132ffbd28c07",
+    "retrieval_complete": true
+  },
+  "input": {
+    "order_rows": [
+      {
+        "order_row_id": "D-df72916dc019-R007",
+        "customer_id": "C-132ffbd28c07",
+        "identity": {
+          "model": "LIS2DU12TR",
+          "brand": "ST",
+          "origin": "意大利",
+          "quantity": "10000",
+          "unit": "",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-O-001-MODEL",
+            "field": "model",
+            "value": "LIS2DU12TR",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 7,
+              "column": null,
+              "raw_text": "model=LIS2DU12TR"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-001-BRAND",
+            "field": "brand",
+            "value": "ST",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 7,
+              "column": null,
+              "raw_text": "brand=ST"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-001-ORIGIN",
+            "field": "origin",
+            "value": "意大利",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 7,
+              "column": null,
+              "raw_text": "origin=意大利"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-001-QUANTITY",
+            "field": "quantity",
+            "value": "10000",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 7,
+              "column": null,
+              "raw_text": "quantity=10000"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-001-DESCRIPTION",
+            "field": "description",
+            "value": "传感功能 LOT:2407 境外品牌（其他）",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 7,
+              "column": null,
+              "raw_text": "description=传感功能 LOT:2407 境外品牌（其他）"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-001-PRODUCT_NAME",
+            "field": "product_name",
+            "value": "集成电路",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 7,
+              "column": null,
+              "raw_text": "product_name=集成电路"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-df72916dc019-R008",
+        "customer_id": "C-132ffbd28c07",
+        "identity": {
+          "model": "W25N01GVZEIG",
+          "brand": "WINBOND",
+          "origin": "中国台湾",
+          "quantity": "68000",
+          "unit": "",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-O-002-MODEL",
+            "field": "model",
+            "value": "W25N01GVZEIG",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 8,
+              "column": null,
+              "raw_text": "model=W25N01GVZEIG"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-002-BRAND",
+            "field": "brand",
+            "value": "WINBOND",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 8,
+              "column": null,
+              "raw_text": "brand=WINBOND"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-002-ORIGIN",
+            "field": "origin",
+            "value": "中国台湾",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 8,
+              "column": null,
+              "raw_text": "origin=中国台湾"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-002-QUANTITY",
+            "field": "quantity",
+            "value": "68000",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 8,
+              "column": null,
+              "raw_text": "quantity=68000"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-002-DESCRIPTION",
+            "field": "description",
+            "value": "存储功能 LOT:2542、2523 境外品牌（其他）",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 8,
+              "column": null,
+              "raw_text": "description=存储功能 LOT:2542、2523 境外品牌（其他）"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-002-PRODUCT_NAME",
+            "field": "product_name",
+            "value": "集成电路",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 8,
+              "column": null,
+              "raw_text": "product_name=集成电路"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-df72916dc019-R009",
+        "customer_id": "C-132ffbd28c07",
+        "identity": {
+          "model": "W25N01GVZEIG",
+          "brand": "WINBOND",
+          "origin": "",
+          "quantity": "8000",
+          "unit": "",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-O-003-MODEL",
+            "field": "model",
+            "value": "W25N01GVZEIG",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 9,
+              "column": null,
+              "raw_text": "model=W25N01GVZEIG"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-003-BRAND",
+            "field": "brand",
+            "value": "WINBOND",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 9,
+              "column": null,
+              "raw_text": "brand=WINBOND"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-003-QUANTITY",
+            "field": "quantity",
+            "value": "8000",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 9,
+              "column": null,
+              "raw_text": "quantity=8000"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-003-DESCRIPTION",
+            "field": "description",
+            "value": "存储功能 LOT:2542、2523 境外品牌（其他）",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 9,
+              "column": null,
+              "raw_text": "description=存储功能 LOT:2542、2523 境外品牌（其他）"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-003-PRODUCT_NAME",
+            "field": "product_name",
+            "value": "集成电路",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 9,
+              "column": null,
+              "raw_text": "product_name=集成电路"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-df72916dc019-R010",
+        "customer_id": "C-132ffbd28c07",
+        "identity": {
+          "model": "W25N01GVZEIG",
+          "brand": "WINBOND",
+          "origin": "",
+          "quantity": "11520",
+          "unit": "",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-O-004-MODEL",
+            "field": "model",
+            "value": "W25N01GVZEIG",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 10,
+              "column": null,
+              "raw_text": "model=W25N01GVZEIG"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-004-BRAND",
+            "field": "brand",
+            "value": "WINBOND",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 10,
+              "column": null,
+              "raw_text": "brand=WINBOND"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-004-QUANTITY",
+            "field": "quantity",
+            "value": "11520",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 10,
+              "column": null,
+              "raw_text": "quantity=11520"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-004-DESCRIPTION",
+            "field": "description",
+            "value": "存储功能 LOT:2542、2523 境外品牌（其他）",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 10,
+              "column": null,
+              "raw_text": "description=存储功能 LOT:2542、2523 境外品牌（其他）"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-004-PRODUCT_NAME",
+            "field": "product_name",
+            "value": "集成电路",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 10,
+              "column": null,
+              "raw_text": "product_name=集成电路"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-df72916dc019-R011",
+        "customer_id": "C-132ffbd28c07",
+        "identity": {
+          "model": "W25N01GVZEIG",
+          "brand": "WINBOND",
+          "origin": "",
+          "quantity": "26880",
+          "unit": "",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-O-005-MODEL",
+            "field": "model",
+            "value": "W25N01GVZEIG",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 11,
+              "column": null,
+              "raw_text": "model=W25N01GVZEIG"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-005-BRAND",
+            "field": "brand",
+            "value": "WINBOND",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 11,
+              "column": null,
+              "raw_text": "brand=WINBOND"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-005-QUANTITY",
+            "field": "quantity",
+            "value": "26880",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 11,
+              "column": null,
+              "raw_text": "quantity=26880"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-005-DESCRIPTION",
+            "field": "description",
+            "value": "存储功能 LOT:2542、2523 境外品牌（其他）",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 11,
+              "column": null,
+              "raw_text": "description=存储功能 LOT:2542、2523 境外品牌（其他）"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-005-PRODUCT_NAME",
+            "field": "product_name",
+            "value": "集成电路",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 11,
+              "column": null,
+              "raw_text": "product_name=集成电路"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-df72916dc019-R012",
+        "customer_id": "C-132ffbd28c07",
+        "identity": {
+          "model": "W25N01GVZEIG",
+          "brand": "WINBOND",
+          "origin": "",
+          "quantity": "12000",
+          "unit": "",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-O-006-MODEL",
+            "field": "model",
+            "value": "W25N01GVZEIG",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 12,
+              "column": null,
+              "raw_text": "model=W25N01GVZEIG"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-006-BRAND",
+            "field": "brand",
+            "value": "WINBOND",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 12,
+              "column": null,
+              "raw_text": "brand=WINBOND"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-006-QUANTITY",
+            "field": "quantity",
+            "value": "12000",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 12,
+              "column": null,
+              "raw_text": "quantity=12000"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-006-DESCRIPTION",
+            "field": "description",
+            "value": "存储功能 LOT:2542、2523 境外品牌（其他）",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 12,
+              "column": null,
+              "raw_text": "description=存储功能 LOT:2542、2523 境外品牌（其他）"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-006-PRODUCT_NAME",
+            "field": "product_name",
+            "value": "集成电路",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 12,
+              "column": null,
+              "raw_text": "product_name=集成电路"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-df72916dc019-R013",
+        "customer_id": "C-132ffbd28c07",
+        "identity": {
+          "model": "W25N01GVZEIG",
+          "brand": "WINBOND",
+          "origin": "",
+          "quantity": "23040",
+          "unit": "",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-O-007-MODEL",
+            "field": "model",
+            "value": "W25N01GVZEIG",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 13,
+              "column": null,
+              "raw_text": "model=W25N01GVZEIG"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-007-BRAND",
+            "field": "brand",
+            "value": "WINBOND",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 13,
+              "column": null,
+              "raw_text": "brand=WINBOND"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-007-QUANTITY",
+            "field": "quantity",
+            "value": "23040",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 13,
+              "column": null,
+              "raw_text": "quantity=23040"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-007-DESCRIPTION",
+            "field": "description",
+            "value": "存储功能 LOT:2542、2523 境外品牌（其他）",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 13,
+              "column": null,
+              "raw_text": "description=存储功能 LOT:2542、2523 境外品牌（其他）"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-007-PRODUCT_NAME",
+            "field": "product_name",
+            "value": "集成电路",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 13,
+              "column": null,
+              "raw_text": "product_name=集成电路"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-df72916dc019-R014",
+        "customer_id": "C-132ffbd28c07",
+        "identity": {
+          "model": "W25N01GVZEIG",
+          "brand": "WINBOND",
+          "origin": "",
+          "quantity": "4000",
+          "unit": "",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-O-008-MODEL",
+            "field": "model",
+            "value": "W25N01GVZEIG",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 14,
+              "column": null,
+              "raw_text": "model=W25N01GVZEIG"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-008-BRAND",
+            "field": "brand",
+            "value": "WINBOND",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 14,
+              "column": null,
+              "raw_text": "brand=WINBOND"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-008-QUANTITY",
+            "field": "quantity",
+            "value": "4000",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 14,
+              "column": null,
+              "raw_text": "quantity=4000"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-008-DESCRIPTION",
+            "field": "description",
+            "value": "存储功能 LOT:2542、2523 境外品牌（其他）",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 14,
+              "column": null,
+              "raw_text": "description=存储功能 LOT:2542、2523 境外品牌（其他）"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-008-PRODUCT_NAME",
+            "field": "product_name",
+            "value": "集成电路",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 14,
+              "column": null,
+              "raw_text": "product_name=集成电路"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-df72916dc019-R015",
+        "customer_id": "C-132ffbd28c07",
+        "identity": {
+          "model": "88E6240A1TFJ2C000",
+          "brand": "MARVELL",
+          "origin": "中国台湾",
+          "quantity": "2700",
+          "unit": "",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-O-009-MODEL",
+            "field": "model",
+            "value": "88E6240A1TFJ2C000",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 15,
+              "column": null,
+              "raw_text": "model=88E6240A1TFJ2C000"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-009-BRAND",
+            "field": "brand",
+            "value": "MARVELL",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 15,
+              "column": null,
+              "raw_text": "brand=MARVELL"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-009-ORIGIN",
+            "field": "origin",
+            "value": "中国台湾",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 15,
+              "column": null,
+              "raw_text": "origin=中国台湾"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-009-QUANTITY",
+            "field": "quantity",
+            "value": "2700",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 15,
+              "column": null,
+              "raw_text": "quantity=2700"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-009-DESCRIPTION",
+            "field": "description",
+            "value": "交换功能 LOT:2522、2524  境外品牌（其他）",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 15,
+              "column": null,
+              "raw_text": "description=交换功能 LOT:2522、2524  境外品牌（其他）"
+            }
+          },
+          {
+            "evidence_key": "E-P3-O-009-PRODUCT_NAME",
+            "field": "product_name",
+            "value": "集成电路",
+            "source": {
+              "file_id": "F-df72916dc019",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 15,
+              "column": null,
+              "raw_text": "product_name=集成电路"
+            }
+          }
+        ]
+      }
+    ],
+    "inspection_candidates": [
+      {
+        "raw_row_id": "I-F-970b59d6d5b8-26036383-L001",
+        "customer_id": "C-132ffbd28c07",
+        "logical_inspection_id": "I-F-970b59d6d5b8-26036383",
+        "warehouse_no": "26036383",
+        "merged_product_id": null,
+        "identity": {
+          "model": "W25N01GVZEIG",
+          "brand": "WINBOND",
+          "origin": "CHINA",
+          "quantity": "4000",
+          "unit": "",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "2542",
+          "lot": ""
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-I-001-MODEL",
+            "field": "model",
+            "value": "W25N01GVZEIG",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第1行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"CHINA\",\"数量\":\"4000\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2542\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-001-BRAND",
+            "field": "brand",
+            "value": "WINBOND",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第1行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"CHINA\",\"数量\":\"4000\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2542\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-001-QUANTITY",
+            "field": "quantity",
+            "value": "4000",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第1行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"CHINA\",\"数量\":\"4000\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2542\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-001-DC",
+            "field": "dc",
+            "value": "2542",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第1行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"CHINA\",\"数量\":\"4000\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2542\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-001-SCOPE",
+            "field": "scope",
+            "value": "COMPLETE_DISJOINT_ITEM_ROW",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "commodity-row",
+              "raw_text": "原始商品行范围完整"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-970b59d6d5b8-26036383-L002",
+        "customer_id": "C-132ffbd28c07",
+        "logical_inspection_id": "I-F-970b59d6d5b8-26036383",
+        "warehouse_no": "26036383",
+        "merged_product_id": null,
+        "identity": {
+          "model": "W25N01GVZEIG",
+          "brand": "WINBOND",
+          "origin": "TAIWAN, CHINA",
+          "quantity": "3840",
+          "unit": "",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "2523",
+          "lot": ""
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-I-002-MODEL",
+            "field": "model",
+            "value": "W25N01GVZEIG",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第2行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"3840\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2523\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-002-BRAND",
+            "field": "brand",
+            "value": "WINBOND",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第2行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"3840\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2523\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-002-QUANTITY",
+            "field": "quantity",
+            "value": "3840",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第2行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"3840\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2523\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-002-DC",
+            "field": "dc",
+            "value": "2523",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第2行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"3840\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2523\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-002-SCOPE",
+            "field": "scope",
+            "value": "COMPLETE_DISJOINT_ITEM_ROW",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": "commodity-row",
+              "raw_text": "原始商品行范围完整"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-970b59d6d5b8-26036383-L003",
+        "customer_id": "C-132ffbd28c07",
+        "logical_inspection_id": "I-F-970b59d6d5b8-26036383",
+        "warehouse_no": "26036383",
+        "merged_product_id": null,
+        "identity": {
+          "model": "W25N01GVZEIG",
+          "brand": "WINBOND",
+          "origin": "TAIWAN, CHINA",
+          "quantity": "11520",
+          "unit": "",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "2544",
+          "lot": ""
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-I-003-MODEL",
+            "field": "model",
+            "value": "W25N01GVZEIG",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第3行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"11520\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2544\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-003-BRAND",
+            "field": "brand",
+            "value": "WINBOND",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第3行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"11520\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2544\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-003-QUANTITY",
+            "field": "quantity",
+            "value": "11520",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第3行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"11520\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2544\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-003-DC",
+            "field": "dc",
+            "value": "2544",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第3行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"11520\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2544\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-003-SCOPE",
+            "field": "scope",
+            "value": "COMPLETE_DISJOINT_ITEM_ROW",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": "commodity-row",
+              "raw_text": "原始商品行范围完整"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-970b59d6d5b8-26036383-L004",
+        "customer_id": "C-132ffbd28c07",
+        "logical_inspection_id": "I-F-970b59d6d5b8-26036383",
+        "warehouse_no": "26036383",
+        "merged_product_id": null,
+        "identity": {
+          "model": "W25N01GVZEIG",
+          "brand": "WINBOND",
+          "origin": "TAIWAN, CHINA",
+          "quantity": "3840",
+          "unit": "",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "2545",
+          "lot": ""
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-I-004-MODEL",
+            "field": "model",
+            "value": "W25N01GVZEIG",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第4行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"3840\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2545\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-004-BRAND",
+            "field": "brand",
+            "value": "WINBOND",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第4行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"3840\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2545\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-004-QUANTITY",
+            "field": "quantity",
+            "value": "3840",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第4行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"3840\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2545\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-004-DC",
+            "field": "dc",
+            "value": "2545",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第4行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"3840\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2545\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-004-SCOPE",
+            "field": "scope",
+            "value": "COMPLETE_DISJOINT_ITEM_ROW",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": "commodity-row",
+              "raw_text": "原始商品行范围完整"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-970b59d6d5b8-26036383-L005",
+        "customer_id": "C-132ffbd28c07",
+        "logical_inspection_id": "I-F-970b59d6d5b8-26036383",
+        "warehouse_no": "26036383",
+        "merged_product_id": null,
+        "identity": {
+          "model": "W25N01GVZEIG",
+          "brand": "WINBOND",
+          "origin": "TAIWAN, CHINA",
+          "quantity": "15360",
+          "unit": "",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "2548",
+          "lot": ""
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-I-005-MODEL",
+            "field": "model",
+            "value": "W25N01GVZEIG",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 5,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第5行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"15360\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2548\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-005-BRAND",
+            "field": "brand",
+            "value": "WINBOND",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 5,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第5行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"15360\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2548\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-005-QUANTITY",
+            "field": "quantity",
+            "value": "15360",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 5,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第5行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"15360\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2548\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-005-DC",
+            "field": "dc",
+            "value": "2548",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 5,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第5行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"15360\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2548\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-005-SCOPE",
+            "field": "scope",
+            "value": "COMPLETE_DISJOINT_ITEM_ROW",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 5,
+              "column": "commodity-row",
+              "raw_text": "原始商品行范围完整"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-970b59d6d5b8-26036383-L006",
+        "customer_id": "C-132ffbd28c07",
+        "logical_inspection_id": "I-F-970b59d6d5b8-26036383",
+        "warehouse_no": "26036383",
+        "merged_product_id": null,
+        "identity": {
+          "model": "W25N01GVZEIG",
+          "brand": "WINBOND",
+          "origin": "TAIWAN, CHINA",
+          "quantity": "12000",
+          "unit": "",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "2551",
+          "lot": ""
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-I-006-MODEL",
+            "field": "model",
+            "value": "W25N01GVZEIG",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 6,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第6行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"12000\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2551\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-006-BRAND",
+            "field": "brand",
+            "value": "WINBOND",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 6,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第6行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"12000\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2551\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-006-QUANTITY",
+            "field": "quantity",
+            "value": "12000",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 6,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第6行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"12000\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2551\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-006-DC",
+            "field": "dc",
+            "value": "2551",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 6,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第6行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"12000\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2551\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-006-SCOPE",
+            "field": "scope",
+            "value": "COMPLETE_DISJOINT_ITEM_ROW",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 6,
+              "column": "commodity-row",
+              "raw_text": "原始商品行范围完整"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-970b59d6d5b8-26036383-L007",
+        "customer_id": "C-132ffbd28c07",
+        "logical_inspection_id": "I-F-970b59d6d5b8-26036383",
+        "warehouse_no": "26036383",
+        "merged_product_id": null,
+        "identity": {
+          "model": "W25N01GVZEIG",
+          "brand": "WINBOND",
+          "origin": "TAIWAN, CHINA",
+          "quantity": "102880",
+          "unit": "",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "2552",
+          "lot": ""
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-I-007-MODEL",
+            "field": "model",
+            "value": "W25N01GVZEIG",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 7,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第7行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"102880\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2552\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-007-BRAND",
+            "field": "brand",
+            "value": "WINBOND",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 7,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第7行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"102880\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2552\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-007-QUANTITY",
+            "field": "quantity",
+            "value": "102880",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 7,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第7行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"102880\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2552\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-007-DC",
+            "field": "dc",
+            "value": "2552",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 7,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"WINBOND批次明细第7行\",\"品牌\":\"WINBOND\",\"型号\":\"W25N01GVZEIG\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"102880\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2552\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-007-SCOPE",
+            "field": "scope",
+            "value": "COMPLETE_DISJOINT_ITEM_ROW",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 1,
+              "sheet": null,
+              "row": 7,
+              "column": "commodity-row",
+              "raw_text": "原始商品行范围完整"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-970b59d6d5b8-26036383-L008",
+        "customer_id": "C-132ffbd28c07",
+        "logical_inspection_id": "I-F-970b59d6d5b8-26036383",
+        "warehouse_no": "26036383",
+        "merged_product_id": null,
+        "identity": {
+          "model": "88E6240A1TFJ2C000",
+          "brand": "MARVELL",
+          "origin": "TAIWAN, CHINA",
+          "quantity": "900",
+          "unit": "",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "2522",
+          "lot": ""
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-I-008-MODEL",
+            "field": "model",
+            "value": "88E6240A1TFJ2C000",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 2,
+              "sheet": null,
+              "row": 8,
+              "column": null,
+              "raw_text": "{\"page\":2,\"position\":\"MARVELL批次明细第1行\",\"品牌\":\"MARVELL\",\"型号\":\"88E6240A1TFJ2C000\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"900\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2522\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-008-BRAND",
+            "field": "brand",
+            "value": "MARVELL",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 2,
+              "sheet": null,
+              "row": 8,
+              "column": null,
+              "raw_text": "{\"page\":2,\"position\":\"MARVELL批次明细第1行\",\"品牌\":\"MARVELL\",\"型号\":\"88E6240A1TFJ2C000\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"900\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2522\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-008-QUANTITY",
+            "field": "quantity",
+            "value": "900",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 2,
+              "sheet": null,
+              "row": 8,
+              "column": null,
+              "raw_text": "{\"page\":2,\"position\":\"MARVELL批次明细第1行\",\"品牌\":\"MARVELL\",\"型号\":\"88E6240A1TFJ2C000\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"900\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2522\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-008-DC",
+            "field": "dc",
+            "value": "2522",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 2,
+              "sheet": null,
+              "row": 8,
+              "column": null,
+              "raw_text": "{\"page\":2,\"position\":\"MARVELL批次明细第1行\",\"品牌\":\"MARVELL\",\"型号\":\"88E6240A1TFJ2C000\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"900\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2522\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-008-SCOPE",
+            "field": "scope",
+            "value": "COMPLETE_DISJOINT_ITEM_ROW",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 2,
+              "sheet": null,
+              "row": 8,
+              "column": "commodity-row",
+              "raw_text": "原始商品行范围完整"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-970b59d6d5b8-26036383-L009",
+        "customer_id": "C-132ffbd28c07",
+        "logical_inspection_id": "I-F-970b59d6d5b8-26036383",
+        "warehouse_no": "26036383",
+        "merged_product_id": null,
+        "identity": {
+          "model": "88E6240A1TFJ2C000",
+          "brand": "MARVELL",
+          "origin": "TAIWAN, CHINA",
+          "quantity": "1800",
+          "unit": "",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "2524",
+          "lot": ""
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-I-009-MODEL",
+            "field": "model",
+            "value": "88E6240A1TFJ2C000",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 2,
+              "sheet": null,
+              "row": 9,
+              "column": null,
+              "raw_text": "{\"page\":2,\"position\":\"MARVELL批次明细第2行\",\"品牌\":\"MARVELL\",\"型号\":\"88E6240A1TFJ2C000\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"1800\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2524\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-009-BRAND",
+            "field": "brand",
+            "value": "MARVELL",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 2,
+              "sheet": null,
+              "row": 9,
+              "column": null,
+              "raw_text": "{\"page\":2,\"position\":\"MARVELL批次明细第2行\",\"品牌\":\"MARVELL\",\"型号\":\"88E6240A1TFJ2C000\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"1800\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2524\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-009-QUANTITY",
+            "field": "quantity",
+            "value": "1800",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 2,
+              "sheet": null,
+              "row": 9,
+              "column": null,
+              "raw_text": "{\"page\":2,\"position\":\"MARVELL批次明细第2行\",\"品牌\":\"MARVELL\",\"型号\":\"88E6240A1TFJ2C000\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"1800\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2524\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-009-DC",
+            "field": "dc",
+            "value": "2524",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 2,
+              "sheet": null,
+              "row": 9,
+              "column": null,
+              "raw_text": "{\"page\":2,\"position\":\"MARVELL批次明细第2行\",\"品牌\":\"MARVELL\",\"型号\":\"88E6240A1TFJ2C000\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"1800\",\"单位\":\"UNKNOWN\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"DC\":\"2524\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-I-009-SCOPE",
+            "field": "scope",
+            "value": "COMPLETE_DISJOINT_ITEM_ROW",
+            "source": {
+              "file_id": "F-970b59d6d5b8",
+              "page": 2,
+              "sheet": null,
+              "row": 9,
+              "column": "commodity-row",
+              "raw_text": "原始商品行范围完整"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      }
+    ],
+    "proposed_groups": [],
+    "comparison_results": []
+  }
+}

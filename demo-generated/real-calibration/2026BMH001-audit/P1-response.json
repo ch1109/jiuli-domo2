@@ -1,0 +1,2042 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P1",
+  "request_id": "20260921-2026BMH001-P1",
+  "output": {
+    "processing_status": "SUCCESS",
+    "customer_resolution": {
+      "status": "RESOLVED",
+      "customer_id": "C-80d0a4f9a7ac",
+      "recognized_name": "深圳市百闽海科技有限公司",
+      "candidate_customer_ids": [
+        "C-80d0a4f9a7ac"
+      ],
+      "sources": [
+        {
+          "file_id": "F-fb448776f711",
+          "page": null,
+          "sheet": "Sheet1",
+          "row": 3,
+          "column": "B",
+          "raw_text": "深圳市百闽海科技有限公司"
+        }
+      ]
+    },
+    "read_status": [
+      {
+        "file_id": "F-fb448776f711",
+        "read_segments": [
+          "sheet:Sheet1",
+          "sheet:Sheet2",
+          "sheet:Sheet3"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      }
+    ],
+    "rows": [
+      {
+        "row_no": 1,
+        "source": {
+          "file_id": "F-fb448776f711",
+          "page": null,
+          "sheet": "Sheet1",
+          "row": 7,
+          "column": null,
+          "raw_text": "委托商品第1行"
+        },
+        "values": {
+          "customer_name": "深圳市百闽海科技有限公司",
+          "brand": "TI",
+          "model": "LM2576SX-3.3/NOPB",
+          "description": "",
+          "product_name": "集成电路",
+          "origin": "",
+          "unit": "PCS",
+          "quantity": "4000",
+          "customs_unit_price": "0.555",
+          "total_price": "2220",
+          "currency": "USD",
+          "packages": "1",
+          "net_weight": "",
+          "gross_weight": "",
+          "sku": "",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": ""
+        },
+        "evidence": [
+          {
+            "field": "customer_name",
+            "value": "深圳市百闽海科技有限公司",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 3,
+              "column": "B",
+              "raw_text": "深圳市百闽海科技有限公司"
+            }
+          },
+          {
+            "field": "brand",
+            "value": "TI",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 7,
+              "column": "C",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "field": "model",
+            "value": "LM2576SX-3.3/NOPB",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 7,
+              "column": "D",
+              "raw_text": "LM2576SX-3.3/NOPB"
+            }
+          },
+          {
+            "field": "product_name",
+            "value": "集成电路",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 7,
+              "column": "B",
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "field": "unit",
+            "value": "PCS",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 7,
+              "column": "G",
+              "raw_text": "PCS"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "4000",
+            "unit": "PCS",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 7,
+              "column": "H",
+              "raw_text": "4000"
+            }
+          },
+          {
+            "field": "customs_unit_price",
+            "value": "0.555",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 7,
+              "column": "I",
+              "raw_text": "0.555"
+            }
+          },
+          {
+            "field": "total_price",
+            "value": "2220",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 7,
+              "column": "J",
+              "raw_text": "2220"
+            }
+          },
+          {
+            "field": "currency",
+            "value": "USD",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 6,
+              "column": "I:J",
+              "raw_text": "报关单价（USD）/报关总价（USD） FOB香港"
+            }
+          },
+          {
+            "field": "packages",
+            "value": "1",
+            "unit": "箱",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 7,
+              "column": "K",
+              "raw_text": "1"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      {
+        "row_no": 2,
+        "source": {
+          "file_id": "F-fb448776f711",
+          "page": null,
+          "sheet": "Sheet1",
+          "row": 8,
+          "column": null,
+          "raw_text": "委托商品第2行"
+        },
+        "values": {
+          "customer_name": "深圳市百闽海科技有限公司",
+          "brand": "TI",
+          "model": "LM2576SX-3.3/NOPB",
+          "description": "",
+          "product_name": "集成电路",
+          "origin": "",
+          "unit": "PCS",
+          "quantity": "500",
+          "customs_unit_price": "0.555",
+          "total_price": "277.5",
+          "currency": "USD",
+          "packages": "1",
+          "net_weight": "",
+          "gross_weight": "",
+          "sku": "",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": ""
+        },
+        "evidence": [
+          {
+            "field": "customer_name",
+            "value": "深圳市百闽海科技有限公司",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 3,
+              "column": "B",
+              "raw_text": "深圳市百闽海科技有限公司"
+            }
+          },
+          {
+            "field": "brand",
+            "value": "TI",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 8,
+              "column": "C",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "field": "model",
+            "value": "LM2576SX-3.3/NOPB",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 8,
+              "column": "D",
+              "raw_text": "LM2576SX-3.3/NOPB"
+            }
+          },
+          {
+            "field": "product_name",
+            "value": "集成电路",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 8,
+              "column": "B",
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "field": "unit",
+            "value": "PCS",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 8,
+              "column": "G",
+              "raw_text": "PCS"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "500",
+            "unit": "PCS",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 8,
+              "column": "H",
+              "raw_text": "500"
+            }
+          },
+          {
+            "field": "customs_unit_price",
+            "value": "0.555",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 8,
+              "column": "I",
+              "raw_text": "0.555"
+            }
+          },
+          {
+            "field": "total_price",
+            "value": "277.5",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 8,
+              "column": "J",
+              "raw_text": "277.5"
+            }
+          },
+          {
+            "field": "currency",
+            "value": "USD",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 6,
+              "column": "I:J",
+              "raw_text": "报关单价（USD）/报关总价（USD） FOB香港"
+            }
+          },
+          {
+            "field": "packages",
+            "value": "1",
+            "unit": "箱",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 8,
+              "column": "K",
+              "raw_text": "1"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      {
+        "row_no": 3,
+        "source": {
+          "file_id": "F-fb448776f711",
+          "page": null,
+          "sheet": "Sheet1",
+          "row": 9,
+          "column": null,
+          "raw_text": "委托商品第3行"
+        },
+        "values": {
+          "customer_name": "深圳市百闽海科技有限公司",
+          "brand": "TI",
+          "model": "LM2904BIDR",
+          "description": "",
+          "product_name": "集成电路",
+          "origin": "",
+          "unit": "PCS",
+          "quantity": "110000",
+          "customs_unit_price": "0.028",
+          "total_price": "3080",
+          "currency": "USD",
+          "packages": "3",
+          "net_weight": "",
+          "gross_weight": "",
+          "sku": "",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": ""
+        },
+        "evidence": [
+          {
+            "field": "customer_name",
+            "value": "深圳市百闽海科技有限公司",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 3,
+              "column": "B",
+              "raw_text": "深圳市百闽海科技有限公司"
+            }
+          },
+          {
+            "field": "brand",
+            "value": "TI",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 9,
+              "column": "C",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "field": "model",
+            "value": "LM2904BIDR",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 9,
+              "column": "D",
+              "raw_text": "LM2904BIDR"
+            }
+          },
+          {
+            "field": "product_name",
+            "value": "集成电路",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 9,
+              "column": "B",
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "field": "unit",
+            "value": "PCS",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 9,
+              "column": "G",
+              "raw_text": "PCS"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "110000",
+            "unit": "PCS",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 9,
+              "column": "H",
+              "raw_text": "110000"
+            }
+          },
+          {
+            "field": "customs_unit_price",
+            "value": "0.028",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 9,
+              "column": "I",
+              "raw_text": "0.028"
+            }
+          },
+          {
+            "field": "total_price",
+            "value": "3080",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 9,
+              "column": "J",
+              "raw_text": "3080"
+            }
+          },
+          {
+            "field": "currency",
+            "value": "USD",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 6,
+              "column": "I:J",
+              "raw_text": "报关单价（USD）/报关总价（USD） FOB香港"
+            }
+          },
+          {
+            "field": "packages",
+            "value": "3",
+            "unit": "箱",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 9,
+              "column": "K",
+              "raw_text": "3"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      {
+        "row_no": 4,
+        "source": {
+          "file_id": "F-fb448776f711",
+          "page": null,
+          "sheet": "Sheet1",
+          "row": 10,
+          "column": null,
+          "raw_text": "委托商品第4行"
+        },
+        "values": {
+          "customer_name": "深圳市百闽海科技有限公司",
+          "brand": "TI",
+          "model": "SN74LVC08ADR",
+          "description": "",
+          "product_name": "集成电路",
+          "origin": "",
+          "unit": "PCS",
+          "quantity": "20000",
+          "customs_unit_price": "0.055",
+          "total_price": "1100",
+          "currency": "USD",
+          "packages": "1",
+          "net_weight": "",
+          "gross_weight": "",
+          "sku": "",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": ""
+        },
+        "evidence": [
+          {
+            "field": "customer_name",
+            "value": "深圳市百闽海科技有限公司",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 3,
+              "column": "B",
+              "raw_text": "深圳市百闽海科技有限公司"
+            }
+          },
+          {
+            "field": "brand",
+            "value": "TI",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 10,
+              "column": "C",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "field": "model",
+            "value": "SN74LVC08ADR",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 10,
+              "column": "D",
+              "raw_text": "SN74LVC08ADR"
+            }
+          },
+          {
+            "field": "product_name",
+            "value": "集成电路",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 10,
+              "column": "B",
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "field": "unit",
+            "value": "PCS",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 10,
+              "column": "G",
+              "raw_text": "PCS"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "20000",
+            "unit": "PCS",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 10,
+              "column": "H",
+              "raw_text": "20000"
+            }
+          },
+          {
+            "field": "customs_unit_price",
+            "value": "0.055",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 10,
+              "column": "I",
+              "raw_text": "0.055"
+            }
+          },
+          {
+            "field": "total_price",
+            "value": "1100",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 10,
+              "column": "J",
+              "raw_text": "1100"
+            }
+          },
+          {
+            "field": "currency",
+            "value": "USD",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 6,
+              "column": "I:J",
+              "raw_text": "报关单价（USD）/报关总价（USD） FOB香港"
+            }
+          },
+          {
+            "field": "packages",
+            "value": "1",
+            "unit": "箱",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 10,
+              "column": "K",
+              "raw_text": "1"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      {
+        "row_no": 5,
+        "source": {
+          "file_id": "F-fb448776f711",
+          "page": null,
+          "sheet": "Sheet1",
+          "row": 11,
+          "column": null,
+          "raw_text": "委托商品第5行"
+        },
+        "values": {
+          "customer_name": "深圳市百闽海科技有限公司",
+          "brand": "TI",
+          "model": "SN74AHC1G08DBVR",
+          "description": "",
+          "product_name": "集成电路",
+          "origin": "",
+          "unit": "PCS",
+          "quantity": "360000",
+          "customs_unit_price": "0.0155",
+          "total_price": "5580",
+          "currency": "USD",
+          "packages": "6",
+          "net_weight": "",
+          "gross_weight": "",
+          "sku": "",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": ""
+        },
+        "evidence": [
+          {
+            "field": "customer_name",
+            "value": "深圳市百闽海科技有限公司",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 3,
+              "column": "B",
+              "raw_text": "深圳市百闽海科技有限公司"
+            }
+          },
+          {
+            "field": "brand",
+            "value": "TI",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 11,
+              "column": "C",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "field": "model",
+            "value": "SN74AHC1G08DBVR",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 11,
+              "column": "D",
+              "raw_text": "SN74AHC1G08DBVR"
+            }
+          },
+          {
+            "field": "product_name",
+            "value": "集成电路",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 11,
+              "column": "B",
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "field": "unit",
+            "value": "PCS",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 11,
+              "column": "G",
+              "raw_text": "PCS"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "360000",
+            "unit": "PCS",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 11,
+              "column": "H",
+              "raw_text": "360000"
+            }
+          },
+          {
+            "field": "customs_unit_price",
+            "value": "0.0155",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 11,
+              "column": "I",
+              "raw_text": "0.0155"
+            }
+          },
+          {
+            "field": "total_price",
+            "value": "5580",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 11,
+              "column": "J",
+              "raw_text": "5580"
+            }
+          },
+          {
+            "field": "currency",
+            "value": "USD",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 6,
+              "column": "I:J",
+              "raw_text": "报关单价（USD）/报关总价（USD） FOB香港"
+            }
+          },
+          {
+            "field": "packages",
+            "value": "6",
+            "unit": "箱",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 11,
+              "column": "K",
+              "raw_text": "6"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      {
+        "row_no": 6,
+        "source": {
+          "file_id": "F-fb448776f711",
+          "page": null,
+          "sheet": "Sheet1",
+          "row": 12,
+          "column": null,
+          "raw_text": "委托商品第6行"
+        },
+        "values": {
+          "customer_name": "深圳市百闽海科技有限公司",
+          "brand": "TI",
+          "model": "SN74HC245PWR",
+          "description": "",
+          "product_name": "集成电路",
+          "origin": "",
+          "unit": "PCS",
+          "quantity": "24000",
+          "customs_unit_price": "0.09",
+          "total_price": "2160",
+          "currency": "USD",
+          "packages": "1",
+          "net_weight": "",
+          "gross_weight": "",
+          "sku": "",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": ""
+        },
+        "evidence": [
+          {
+            "field": "customer_name",
+            "value": "深圳市百闽海科技有限公司",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 3,
+              "column": "B",
+              "raw_text": "深圳市百闽海科技有限公司"
+            }
+          },
+          {
+            "field": "brand",
+            "value": "TI",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 12,
+              "column": "C",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "field": "model",
+            "value": "SN74HC245PWR",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 12,
+              "column": "D",
+              "raw_text": "SN74HC245PWR"
+            }
+          },
+          {
+            "field": "product_name",
+            "value": "集成电路",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 12,
+              "column": "B",
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "field": "unit",
+            "value": "PCS",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 12,
+              "column": "G",
+              "raw_text": "PCS"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "24000",
+            "unit": "PCS",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 12,
+              "column": "H",
+              "raw_text": "24000"
+            }
+          },
+          {
+            "field": "customs_unit_price",
+            "value": "0.09",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 12,
+              "column": "I",
+              "raw_text": "0.09"
+            }
+          },
+          {
+            "field": "total_price",
+            "value": "2160",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 12,
+              "column": "J",
+              "raw_text": "2160"
+            }
+          },
+          {
+            "field": "currency",
+            "value": "USD",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 6,
+              "column": "I:J",
+              "raw_text": "报关单价（USD）/报关总价（USD） FOB香港"
+            }
+          },
+          {
+            "field": "packages",
+            "value": "1",
+            "unit": "箱",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 12,
+              "column": "K",
+              "raw_text": "1"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      {
+        "row_no": 7,
+        "source": {
+          "file_id": "F-fb448776f711",
+          "page": null,
+          "sheet": "Sheet1",
+          "row": 13,
+          "column": null,
+          "raw_text": "委托商品第7行"
+        },
+        "values": {
+          "customer_name": "深圳市百闽海科技有限公司",
+          "brand": "TI",
+          "model": "SN74LVC1G04DBVR",
+          "description": "",
+          "product_name": "集成电路",
+          "origin": "",
+          "unit": "PCS",
+          "quantity": "150000",
+          "customs_unit_price": "0.016",
+          "total_price": "2400",
+          "currency": "USD",
+          "packages": "3",
+          "net_weight": "",
+          "gross_weight": "",
+          "sku": "",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": ""
+        },
+        "evidence": [
+          {
+            "field": "customer_name",
+            "value": "深圳市百闽海科技有限公司",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 3,
+              "column": "B",
+              "raw_text": "深圳市百闽海科技有限公司"
+            }
+          },
+          {
+            "field": "brand",
+            "value": "TI",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 13,
+              "column": "C",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "field": "model",
+            "value": "SN74LVC1G04DBVR",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 13,
+              "column": "D",
+              "raw_text": "SN74LVC1G04DBVR"
+            }
+          },
+          {
+            "field": "product_name",
+            "value": "集成电路",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 13,
+              "column": "B",
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "field": "unit",
+            "value": "PCS",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 13,
+              "column": "G",
+              "raw_text": "PCS"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "150000",
+            "unit": "PCS",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 13,
+              "column": "H",
+              "raw_text": "150000"
+            }
+          },
+          {
+            "field": "customs_unit_price",
+            "value": "0.016",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 13,
+              "column": "I",
+              "raw_text": "0.016"
+            }
+          },
+          {
+            "field": "total_price",
+            "value": "2400",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 13,
+              "column": "J",
+              "raw_text": "2400"
+            }
+          },
+          {
+            "field": "currency",
+            "value": "USD",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 6,
+              "column": "I:J",
+              "raw_text": "报关单价（USD）/报关总价（USD） FOB香港"
+            }
+          },
+          {
+            "field": "packages",
+            "value": "3",
+            "unit": "箱",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 13,
+              "column": "K",
+              "raw_text": "3"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      {
+        "row_no": 8,
+        "source": {
+          "file_id": "F-fb448776f711",
+          "page": null,
+          "sheet": "Sheet1",
+          "row": 14,
+          "column": null,
+          "raw_text": "委托商品第8行"
+        },
+        "values": {
+          "customer_name": "深圳市百闽海科技有限公司",
+          "brand": "TI",
+          "model": "TLV62569DBVR",
+          "description": "",
+          "product_name": "集成电路",
+          "origin": "",
+          "unit": "PCS",
+          "quantity": "450000",
+          "customs_unit_price": "0.022",
+          "total_price": "9900",
+          "currency": "USD",
+          "packages": "4",
+          "net_weight": "",
+          "gross_weight": "",
+          "sku": "",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": ""
+        },
+        "evidence": [
+          {
+            "field": "customer_name",
+            "value": "深圳市百闽海科技有限公司",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 3,
+              "column": "B",
+              "raw_text": "深圳市百闽海科技有限公司"
+            }
+          },
+          {
+            "field": "brand",
+            "value": "TI",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 14,
+              "column": "C",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "field": "model",
+            "value": "TLV62569DBVR",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 14,
+              "column": "D",
+              "raw_text": "TLV62569DBVR"
+            }
+          },
+          {
+            "field": "product_name",
+            "value": "集成电路",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 14,
+              "column": "B",
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "field": "unit",
+            "value": "PCS",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 14,
+              "column": "G",
+              "raw_text": "PCS"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "450000",
+            "unit": "PCS",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 14,
+              "column": "H",
+              "raw_text": "450000"
+            }
+          },
+          {
+            "field": "customs_unit_price",
+            "value": "0.022",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 14,
+              "column": "I",
+              "raw_text": "0.022"
+            }
+          },
+          {
+            "field": "total_price",
+            "value": "9900",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 14,
+              "column": "J",
+              "raw_text": "9900"
+            }
+          },
+          {
+            "field": "currency",
+            "value": "USD",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 6,
+              "column": "I:J",
+              "raw_text": "报关单价（USD）/报关总价（USD） FOB香港"
+            }
+          },
+          {
+            "field": "packages",
+            "value": "4",
+            "unit": "箱",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 14,
+              "column": "K",
+              "raw_text": "4"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      {
+        "row_no": 9,
+        "source": {
+          "file_id": "F-fb448776f711",
+          "page": null,
+          "sheet": "Sheet1",
+          "row": 15,
+          "column": null,
+          "raw_text": "委托商品第9行"
+        },
+        "values": {
+          "customer_name": "深圳市百闽海科技有限公司",
+          "brand": "TI",
+          "model": "TPS51200DRCR",
+          "description": "",
+          "product_name": "集成电路",
+          "origin": "",
+          "unit": "PCS",
+          "quantity": "12000",
+          "customs_unit_price": "0.079",
+          "total_price": "948",
+          "currency": "USD",
+          "packages": "1",
+          "net_weight": "",
+          "gross_weight": "",
+          "sku": "",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": ""
+        },
+        "evidence": [
+          {
+            "field": "customer_name",
+            "value": "深圳市百闽海科技有限公司",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 3,
+              "column": "B",
+              "raw_text": "深圳市百闽海科技有限公司"
+            }
+          },
+          {
+            "field": "brand",
+            "value": "TI",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 15,
+              "column": "C",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "field": "model",
+            "value": "TPS51200DRCR",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 15,
+              "column": "D",
+              "raw_text": "TPS51200DRCR"
+            }
+          },
+          {
+            "field": "product_name",
+            "value": "集成电路",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 15,
+              "column": "B",
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "field": "unit",
+            "value": "PCS",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 15,
+              "column": "G",
+              "raw_text": "PCS"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "12000",
+            "unit": "PCS",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 15,
+              "column": "H",
+              "raw_text": "12000"
+            }
+          },
+          {
+            "field": "customs_unit_price",
+            "value": "0.079",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 15,
+              "column": "I",
+              "raw_text": "0.079"
+            }
+          },
+          {
+            "field": "total_price",
+            "value": "948",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 15,
+              "column": "J",
+              "raw_text": "948"
+            }
+          },
+          {
+            "field": "currency",
+            "value": "USD",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 6,
+              "column": "I:J",
+              "raw_text": "报关单价（USD）/报关总价（USD） FOB香港"
+            }
+          },
+          {
+            "field": "packages",
+            "value": "1",
+            "unit": "箱",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 15,
+              "column": "K",
+              "raw_text": "1"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      {
+        "row_no": 10,
+        "source": {
+          "file_id": "F-fb448776f711",
+          "page": null,
+          "sheet": "Sheet1",
+          "row": 16,
+          "column": null,
+          "raw_text": "委托商品第10行"
+        },
+        "values": {
+          "customer_name": "深圳市百闽海科技有限公司",
+          "brand": "TI",
+          "model": "TXS0108EPWR",
+          "description": "",
+          "product_name": "集成电路",
+          "origin": "",
+          "unit": "PCS",
+          "quantity": "86000",
+          "customs_unit_price": "0.086",
+          "total_price": "7396",
+          "currency": "USD",
+          "packages": "4",
+          "net_weight": "",
+          "gross_weight": "",
+          "sku": "",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": ""
+        },
+        "evidence": [
+          {
+            "field": "customer_name",
+            "value": "深圳市百闽海科技有限公司",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 3,
+              "column": "B",
+              "raw_text": "深圳市百闽海科技有限公司"
+            }
+          },
+          {
+            "field": "brand",
+            "value": "TI",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 16,
+              "column": "C",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "field": "model",
+            "value": "TXS0108EPWR",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 16,
+              "column": "D",
+              "raw_text": "TXS0108EPWR"
+            }
+          },
+          {
+            "field": "product_name",
+            "value": "集成电路",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 16,
+              "column": "B",
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "field": "unit",
+            "value": "PCS",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 16,
+              "column": "G",
+              "raw_text": "PCS"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "86000",
+            "unit": "PCS",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 16,
+              "column": "H",
+              "raw_text": "86000"
+            }
+          },
+          {
+            "field": "customs_unit_price",
+            "value": "0.086",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 16,
+              "column": "I",
+              "raw_text": "0.086"
+            }
+          },
+          {
+            "field": "total_price",
+            "value": "7396",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 16,
+              "column": "J",
+              "raw_text": "7396"
+            }
+          },
+          {
+            "field": "currency",
+            "value": "USD",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 6,
+              "column": "I:J",
+              "raw_text": "报关单价（USD）/报关总价（USD） FOB香港"
+            }
+          },
+          {
+            "field": "packages",
+            "value": "4",
+            "unit": "箱",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 16,
+              "column": "K",
+              "raw_text": "4"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      {
+        "row_no": 11,
+        "source": {
+          "file_id": "F-fb448776f711",
+          "page": null,
+          "sheet": "Sheet1",
+          "row": 17,
+          "column": null,
+          "raw_text": "委托商品第11行"
+        },
+        "values": {
+          "customer_name": "深圳市百闽海科技有限公司",
+          "brand": "TI",
+          "model": "TXS0108EPWR",
+          "description": "",
+          "product_name": "集成电路",
+          "origin": "",
+          "unit": "PCS",
+          "quantity": "26000",
+          "customs_unit_price": "0.086",
+          "total_price": "2236",
+          "currency": "USD",
+          "packages": "1",
+          "net_weight": "",
+          "gross_weight": "",
+          "sku": "",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": ""
+        },
+        "evidence": [
+          {
+            "field": "customer_name",
+            "value": "深圳市百闽海科技有限公司",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 3,
+              "column": "B",
+              "raw_text": "深圳市百闽海科技有限公司"
+            }
+          },
+          {
+            "field": "brand",
+            "value": "TI",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 17,
+              "column": "C",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "field": "model",
+            "value": "TXS0108EPWR",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 17,
+              "column": "D",
+              "raw_text": "TXS0108EPWR"
+            }
+          },
+          {
+            "field": "product_name",
+            "value": "集成电路",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 17,
+              "column": "B",
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "field": "unit",
+            "value": "PCS",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 17,
+              "column": "G",
+              "raw_text": "PCS"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "26000",
+            "unit": "PCS",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 17,
+              "column": "H",
+              "raw_text": "26000"
+            }
+          },
+          {
+            "field": "customs_unit_price",
+            "value": "0.086",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 17,
+              "column": "I",
+              "raw_text": "0.086"
+            }
+          },
+          {
+            "field": "total_price",
+            "value": "2236",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 17,
+              "column": "J",
+              "raw_text": "2236"
+            }
+          },
+          {
+            "field": "currency",
+            "value": "USD",
+            "unit": "",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 6,
+              "column": "I:J",
+              "raw_text": "报关单价（USD）/报关总价（USD） FOB香港"
+            }
+          },
+          {
+            "field": "packages",
+            "value": "1",
+            "unit": "箱",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 17,
+              "column": "K",
+              "raw_text": "1"
+            }
+          }
+        ],
+        "conflicts": []
+      }
+    ],
+    "scope_records": [
+      {
+        "kind": "ORDER_TOTAL",
+        "member_row_nos": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "range_complete": true,
+        "measurements": [
+          {
+            "field": "quantity",
+            "value": "1242500",
+            "unit": "PCS",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 18,
+              "column": "H",
+              "raw_text": "1242500"
+            }
+          },
+          {
+            "field": "total_price",
+            "value": "37297.5",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 18,
+              "column": "J",
+              "raw_text": "37297.5"
+            }
+          },
+          {
+            "field": "packages",
+            "value": "26",
+            "unit": "箱",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 18,
+              "column": "K",
+              "raw_text": "26"
+            }
+          },
+          {
+            "field": "net_weight",
+            "value": "0.0",
+            "unit": "KG",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 18,
+              "column": "L",
+              "raw_text": "0.0"
+            }
+          },
+          {
+            "field": "gross_weight",
+            "value": "0.0",
+            "unit": "KG",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 18,
+              "column": "M",
+              "raw_text": "0.0"
+            }
+          }
+        ],
+        "source": {
+          "file_id": "F-fb448776f711",
+          "page": null,
+          "sheet": "Sheet1",
+          "row": 18,
+          "column": "H:M",
+          "raw_text": "合计行"
+        }
+      }
+    ],
+    "unlinked_records": [],
+    "issues": [
+      {
+        "code": "FIELD_MISSING",
+        "row_ref": null,
+        "field": "origin",
+        "message": "11条主体商品行产地为空。"
+      },
+      {
+        "code": "FIELD_MISSING",
+        "row_ref": null,
+        "field": "net_weight",
+        "message": "11条主体商品行净重为空。"
+      },
+      {
+        "code": "FIELD_MISSING",
+        "row_ref": null,
+        "field": "gross_weight",
+        "message": "11条主体商品行毛重为空。"
+      },
+      {
+        "code": "FIELD_MISSING",
+        "row_ref": null,
+        "field": "description",
+        "message": "11条主体商品行参数/描述为空。"
+      }
+    ]
+  }
+}

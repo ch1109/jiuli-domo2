@@ -1,0 +1,958 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P3",
+  "request_id": "REMAINING-2026ACSY003-20260921-P3",
+  "context": {
+    "customer_id": "C-7ad6719f6d43",
+    "retrieval_complete": false
+  },
+  "input": {
+    "order_rows": [
+      {
+        "order_row_id": "D-0971c3fd7c49-R001",
+        "customer_id": "C-7ad6719f6d43",
+        "identity": {
+          "model": "MT29F4T08EUHAFM4-NW920",
+          "brand": "MICRON",
+          "origin": "SINGAPORE",
+          "quantity": "1401",
+          "unit": "PCS"
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-001-01",
+            "field": "customer_name",
+            "value": "深圳市澳创实业有限公司",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": null,
+              "raw_text": "深圳市澳创实业有限公司"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-02",
+            "field": "brand",
+            "value": "MICRON",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "MICRON"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-03",
+            "field": "model",
+            "value": "MT29F4T08EUHAFM4-NW920",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "MT29F4T08EUHAFM4-NW920"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-04",
+            "field": "description",
+            "value": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：512GB，量产；非加密；非易失",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：512GB，量产；非加密；非易失"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-05",
+            "field": "product_name",
+            "value": "集成电路",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-06",
+            "field": "origin",
+            "value": "SINGAPORE",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "SINGAPORE"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-07",
+            "field": "unit",
+            "value": "PCS",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "PCS"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-08",
+            "field": "quantity",
+            "value": "1401",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "1401"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-09",
+            "field": "customs_unit_price",
+            "value": "57.67",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "57.67"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-10",
+            "field": "total_price",
+            "value": "80795.67",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "80795.67"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-11",
+            "field": "currency",
+            "value": "USD",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "USD"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-0971c3fd7c49-R002",
+        "customer_id": "C-7ad6719f6d43",
+        "identity": {
+          "model": "MT29F2T08CUHBBM4-NW821",
+          "brand": "MICRON",
+          "origin": "SINGAPORE",
+          "quantity": "1564",
+          "unit": "PCS"
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-002-01",
+            "field": "customer_name",
+            "value": "深圳市澳创实业有限公司",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": null,
+              "raw_text": "深圳市澳创实业有限公司"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-02",
+            "field": "brand",
+            "value": "MICRON",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "MICRON"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-03",
+            "field": "model",
+            "value": "MT29F2T08CUHBBM4-NW821",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "MT29F2T08CUHBBM4-NW821"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-04",
+            "field": "description",
+            "value": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：256GB，量产；非加密；非易失",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：256GB，量产；非加密；非易失"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-05",
+            "field": "product_name",
+            "value": "集成电路",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-06",
+            "field": "origin",
+            "value": "SINGAPORE",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "SINGAPORE"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-07",
+            "field": "unit",
+            "value": "PCS",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "PCS"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-08",
+            "field": "quantity",
+            "value": "1564",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "1564"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-09",
+            "field": "customs_unit_price",
+            "value": "28.83",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "28.83"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-10",
+            "field": "total_price",
+            "value": "45090.12",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "45090.12"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-11",
+            "field": "currency",
+            "value": "USD",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "USD"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-0971c3fd7c49-R003",
+        "customer_id": "C-7ad6719f6d43",
+        "identity": {
+          "model": "TH58TF1V23BA8H-1V23",
+          "brand": "Toshiba",
+          "origin": "JAPAN",
+          "quantity": "1080",
+          "unit": "PCS"
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-003-01",
+            "field": "customer_name",
+            "value": "深圳市澳创实业有限公司",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": null,
+              "raw_text": "深圳市澳创实业有限公司"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-02",
+            "field": "brand",
+            "value": "Toshiba",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "Toshiba"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-03",
+            "field": "model",
+            "value": "TH58TF1V23BA8H-1V23",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "TH58TF1V23BA8H-1V23"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-04",
+            "field": "description",
+            "value": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：128GB，量产；非加密；非易失",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：128GB，量产；非加密；非易失"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-05",
+            "field": "product_name",
+            "value": "集成电路",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-06",
+            "field": "origin",
+            "value": "JAPAN",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "JAPAN"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-07",
+            "field": "unit",
+            "value": "PCS",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "PCS"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-08",
+            "field": "quantity",
+            "value": "1080",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "1080"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-09",
+            "field": "customs_unit_price",
+            "value": "14.42",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "14.42"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-10",
+            "field": "total_price",
+            "value": "15573.60",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "15573.60"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-11",
+            "field": "currency",
+            "value": "USD",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "USD"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-0971c3fd7c49-R004",
+        "customer_id": "C-7ad6719f6d43",
+        "identity": {
+          "model": "TH58TF2T23BA8J-2T23",
+          "brand": "Toshiba",
+          "origin": "JAPAN",
+          "quantity": "368",
+          "unit": "PCS"
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-004-01",
+            "field": "customer_name",
+            "value": "深圳市澳创实业有限公司",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": null,
+              "raw_text": "深圳市澳创实业有限公司"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-02",
+            "field": "brand",
+            "value": "Toshiba",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "Toshiba"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-03",
+            "field": "model",
+            "value": "TH58TF2T23BA8J-2T23",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "TH58TF2T23BA8J-2T23"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-04",
+            "field": "description",
+            "value": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：256GB，量产；非加密；非易失",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "非多元件集成电路；已切割、已封装；应用场景：消费电子；存储功能；容量：256GB，量产；非加密；非易失"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-05",
+            "field": "product_name",
+            "value": "集成电路",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-06",
+            "field": "origin",
+            "value": "JAPAN",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "JAPAN"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-07",
+            "field": "unit",
+            "value": "PCS",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "PCS"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-08",
+            "field": "quantity",
+            "value": "368",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "368"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-09",
+            "field": "customs_unit_price",
+            "value": "28.83",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "28.83"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-10",
+            "field": "total_price",
+            "value": "10609.44",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "10609.44"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-11",
+            "field": "currency",
+            "value": "USD",
+            "source": {
+              "file_id": "F-0971c3fd7c49",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "USD"
+            }
+          }
+        ]
+      }
+    ],
+    "inspection_candidates": [
+      {
+        "raw_row_id": "I-2907feed0d42-26033175-L001",
+        "customer_id": null,
+        "logical_inspection_id": "I-2907feed0d42-26033175",
+        "warehouse_no": "26033175",
+        "merged_product_id": null,
+        "identity": {
+          "model": "MT29F4T08EUHAFM4",
+          "brand": "MICRON",
+          "quantity": "1401",
+          "unit": "PCS"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-001-01",
+            "field": "model",
+            "value": "MT29F4T08EUHAFM4",
+            "source": {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"MICRON\",\"型号\":\"MT29F4T08EUHAFM4\",\"产地\":\"UNKNOWN\",\"数量\":\"1401\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"NW920\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-02",
+            "field": "brand",
+            "value": "MICRON",
+            "source": {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"MICRON\",\"型号\":\"MT29F4T08EUHAFM4\",\"产地\":\"UNKNOWN\",\"数量\":\"1401\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"NW920\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-03",
+            "field": "quantity",
+            "value": "1401",
+            "source": {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"MICRON\",\"型号\":\"MT29F4T08EUHAFM4\",\"产地\":\"UNKNOWN\",\"数量\":\"1401\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"NW920\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-04",
+            "field": "unit",
+            "value": "PCS",
+            "source": {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"MICRON\",\"型号\":\"MT29F4T08EUHAFM4\",\"产地\":\"UNKNOWN\",\"数量\":\"1401\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"NW920\"}"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-2907feed0d42-26033175-L002",
+        "customer_id": null,
+        "logical_inspection_id": "I-2907feed0d42-26033175",
+        "warehouse_no": "26033175",
+        "merged_product_id": null,
+        "identity": {
+          "model": "MT29F2T08CUHBBM4",
+          "brand": "MICRON",
+          "quantity": "1564",
+          "unit": "PCS"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-002-01",
+            "field": "model",
+            "value": "MT29F2T08CUHBBM4",
+            "source": {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"MICRON\",\"型号\":\"MT29F2T08CUHBBM4\",\"产地\":\"UNKNOWN\",\"数量\":\"1564\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"NWB21\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-02",
+            "field": "brand",
+            "value": "MICRON",
+            "source": {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"MICRON\",\"型号\":\"MT29F2T08CUHBBM4\",\"产地\":\"UNKNOWN\",\"数量\":\"1564\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"NWB21\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-03",
+            "field": "quantity",
+            "value": "1564",
+            "source": {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"MICRON\",\"型号\":\"MT29F2T08CUHBBM4\",\"产地\":\"UNKNOWN\",\"数量\":\"1564\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"NWB21\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-04",
+            "field": "unit",
+            "value": "PCS",
+            "source": {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"MICRON\",\"型号\":\"MT29F2T08CUHBBM4\",\"产地\":\"UNKNOWN\",\"数量\":\"1564\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"NWB21\"}"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-2907feed0d42-26033175-L003",
+        "customer_id": null,
+        "logical_inspection_id": "I-2907feed0d42-26033175",
+        "warehouse_no": "26033175",
+        "merged_product_id": null,
+        "identity": {
+          "model": "TH58TF1V23BA8H",
+          "brand": "Toshiba",
+          "quantity": "1080",
+          "unit": "PCS"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-003-01",
+            "field": "model",
+            "value": "TH58TF1V23BA8H",
+            "source": {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"Toshiba\",\"型号\":\"TH58TF1V23BA8H\",\"产地\":\"UNKNOWN\",\"数量\":\"1080\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"1V23\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-02",
+            "field": "brand",
+            "value": "Toshiba",
+            "source": {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"Toshiba\",\"型号\":\"TH58TF1V23BA8H\",\"产地\":\"UNKNOWN\",\"数量\":\"1080\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"1V23\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-03",
+            "field": "quantity",
+            "value": "1080",
+            "source": {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"Toshiba\",\"型号\":\"TH58TF1V23BA8H\",\"产地\":\"UNKNOWN\",\"数量\":\"1080\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"1V23\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-04",
+            "field": "unit",
+            "value": "PCS",
+            "source": {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"Toshiba\",\"型号\":\"TH58TF1V23BA8H\",\"产地\":\"UNKNOWN\",\"数量\":\"1080\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"1V23\"}"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-2907feed0d42-26033175-L004",
+        "customer_id": null,
+        "logical_inspection_id": "I-2907feed0d42-26033175",
+        "warehouse_no": "26033175",
+        "merged_product_id": null,
+        "identity": {
+          "model": "TH58TF2T23BA8J",
+          "brand": "Toshiba",
+          "quantity": "368",
+          "unit": "PCS"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-004-01",
+            "field": "model",
+            "value": "TH58TF2T23BA8J",
+            "source": {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第4行\",\"品牌\":\"Toshiba\",\"型号\":\"TH58TF2T23BA8J\",\"产地\":\"UNKNOWN\",\"数量\":\"368\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"2T23\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-02",
+            "field": "brand",
+            "value": "Toshiba",
+            "source": {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第4行\",\"品牌\":\"Toshiba\",\"型号\":\"TH58TF2T23BA8J\",\"产地\":\"UNKNOWN\",\"数量\":\"368\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"2T23\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-03",
+            "field": "quantity",
+            "value": "368",
+            "source": {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第4行\",\"品牌\":\"Toshiba\",\"型号\":\"TH58TF2T23BA8J\",\"产地\":\"UNKNOWN\",\"数量\":\"368\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"2T23\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-04",
+            "field": "unit",
+            "value": "PCS",
+            "source": {
+              "file_id": "F-2907feed0d42",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第4行\",\"品牌\":\"Toshiba\",\"型号\":\"TH58TF2T23BA8J\",\"产地\":\"UNKNOWN\",\"数量\":\"368\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"批次/尾码\":\"2T23\"}"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      }
+    ],
+    "proposed_groups": [
+      {
+        "order_row_id": "D-0971c3fd7c49-R001",
+        "raw_row_ids": [],
+        "evidence_keys": []
+      },
+      {
+        "order_row_id": "D-0971c3fd7c49-R002",
+        "raw_row_ids": [],
+        "evidence_keys": []
+      },
+      {
+        "order_row_id": "D-0971c3fd7c49-R003",
+        "raw_row_ids": [],
+        "evidence_keys": []
+      },
+      {
+        "order_row_id": "D-0971c3fd7c49-R004",
+        "raw_row_ids": [],
+        "evidence_keys": []
+      }
+    ],
+    "comparison_results": []
+  }
+}

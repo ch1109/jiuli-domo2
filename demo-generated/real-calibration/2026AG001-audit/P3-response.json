@@ -1,0 +1,119 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P3",
+  "request_id": "20260921-2026AG001-P3",
+  "output": {
+    "processing_status": "SUCCESS",
+    "row_relations": [
+      {
+        "order_row_id": "D-e60d9bd8df88-R007",
+        "match_status": "MULTIPLE_CANDIDATES",
+        "selected_raw_row_ids": [],
+        "coverage": {
+          "status": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "evidence_keys": []
+        },
+        "evidence_keys": [],
+        "candidate_groups": [
+          {
+            "raw_row_ids": [
+              "I-6b255626250f-26050688-L001"
+            ],
+            "evidence_keys": [
+              "E-I-AG-L001-MODEL",
+              "E-I-AG-L001-BRAND",
+              "E-I-AG-L001-QTY"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-6b255626250f-26050688-L002"
+            ],
+            "evidence_keys": [
+              "E-I-AG-L002-MODEL",
+              "E-I-AG-L002-BRAND",
+              "E-I-AG-L002-QTY"
+            ]
+          }
+        ],
+        "weak_candidates": [],
+        "issues": [
+          {
+            "code": "DUPLICATE_MODEL_UNRESOLVED",
+            "row_ref": "D-e60d9bd8df88-R007",
+            "field": "model",
+            "message": "两条委托行和两条查货行的型号、品牌相同，缺少可区分业务编号。"
+          },
+          {
+            "code": "SERVICE_TERM_CONFLICT",
+            "row_ref": "D-e60d9bd8df88-R007",
+            "field": "description",
+            "message": "委托为标准一年服务，查货为标准三年服务。"
+          },
+          {
+            "code": "CUSTOMER_UNCONFIRMED",
+            "row_ref": "D-e60d9bd8df88-R007",
+            "field": "customer_name",
+            "message": "查货页未显示客户名称，不能仅凭 License 或数量确认归属。"
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-e60d9bd8df88-R008",
+        "match_status": "MULTIPLE_CANDIDATES",
+        "selected_raw_row_ids": [],
+        "coverage": {
+          "status": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "evidence_keys": []
+        },
+        "evidence_keys": [],
+        "candidate_groups": [
+          {
+            "raw_row_ids": [
+              "I-6b255626250f-26050688-L001"
+            ],
+            "evidence_keys": [
+              "E-I-AG-L001-MODEL",
+              "E-I-AG-L001-BRAND",
+              "E-I-AG-L001-QTY"
+            ]
+          },
+          {
+            "raw_row_ids": [
+              "I-6b255626250f-26050688-L002"
+            ],
+            "evidence_keys": [
+              "E-I-AG-L002-MODEL",
+              "E-I-AG-L002-BRAND",
+              "E-I-AG-L002-QTY"
+            ]
+          }
+        ],
+        "weak_candidates": [],
+        "issues": [
+          {
+            "code": "DUPLICATE_MODEL_UNRESOLVED",
+            "row_ref": "D-e60d9bd8df88-R008",
+            "field": "model",
+            "message": "两条委托行和两条查货行的型号、品牌相同，缺少可区分业务编号。"
+          },
+          {
+            "code": "SERVICE_TERM_CONFLICT",
+            "row_ref": "D-e60d9bd8df88-R008",
+            "field": "description",
+            "message": "委托为标准一年服务，查货为标准三年服务。"
+          },
+          {
+            "code": "CUSTOMER_UNCONFIRMED",
+            "row_ref": "D-e60d9bd8df88-R008",
+            "field": "customer_name",
+            "message": "查货页未显示客户名称，不能仅凭 License 或数量确认归属。"
+          }
+        ]
+      }
+    ],
+    "issues": []
+  }
+}

@@ -1,0 +1,1889 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P3",
+  "request_id": "REMAINING-2026(DG)ZW001-20260921-P3",
+  "context": {
+    "customer_id": "C-66be07d6cabe",
+    "retrieval_complete": false
+  },
+  "input": {
+    "order_rows": [
+      {
+        "order_row_id": "D-8181f9edc198-R002",
+        "customer_id": null,
+        "identity": {
+          "model": "ASM1543",
+          "brand": "ASMEDIA",
+          "origin": "中国台湾",
+          "quantity": "6500",
+          "unit": "个",
+          "material_no": "300200002056",
+          "sku": "4000156680"
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-001-01",
+            "field": "brand",
+            "value": "ASMEDIA",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "C",
+              "raw_text": "ASMEDIA"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-02",
+            "field": "model",
+            "value": "ASM1543",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "D",
+              "raw_text": "ASM1543"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-03",
+            "field": "product_name",
+            "value": "集成电路",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "B",
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-04",
+            "field": "origin",
+            "value": "中国台湾",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "F",
+              "raw_text": "中国台湾"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-05",
+            "field": "unit",
+            "value": "个",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "G",
+              "raw_text": "个"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-06",
+            "field": "quantity",
+            "value": "6500",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "H",
+              "raw_text": "6500"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-07",
+            "field": "customs_unit_price",
+            "value": "0.34",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "I",
+              "raw_text": "0.34"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-08",
+            "field": "packages",
+            "value": "1",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "J",
+              "raw_text": "1"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-09",
+            "field": "net_weight",
+            "value": "1.44",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "K",
+              "raw_text": "1.44"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-10",
+            "field": "gross_weight",
+            "value": "2.21",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "L",
+              "raw_text": "2.21"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-11",
+            "field": "sku",
+            "value": "4000156680",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "N",
+              "raw_text": "4000156680"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-12",
+            "field": "supplier",
+            "value": "易盛",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "O",
+              "raw_text": "易盛"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-13",
+            "field": "material_no",
+            "value": "300200002056",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "R",
+              "raw_text": "300200002056"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-14",
+            "field": "remark",
+            "value": "4538",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 2,
+              "column": "U",
+              "raw_text": "4538"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-8181f9edc198-R003",
+        "customer_id": null,
+        "identity": {
+          "model": "ASM2480B",
+          "brand": "ASMEDIA",
+          "origin": "中国台湾",
+          "quantity": "3500",
+          "unit": "个",
+          "material_no": "300200002198",
+          "sku": "4000155179"
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-002-01",
+            "field": "brand",
+            "value": "ASMEDIA",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "C",
+              "raw_text": "ASMEDIA"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-02",
+            "field": "model",
+            "value": "ASM2480B",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "D",
+              "raw_text": "ASM2480B"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-03",
+            "field": "product_name",
+            "value": "集成电路",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "B",
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-04",
+            "field": "origin",
+            "value": "中国台湾",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "F",
+              "raw_text": "中国台湾"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-05",
+            "field": "unit",
+            "value": "个",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "G",
+              "raw_text": "个"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-06",
+            "field": "quantity",
+            "value": "3500",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "H",
+              "raw_text": "3500"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-07",
+            "field": "customs_unit_price",
+            "value": "1.13",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "I",
+              "raw_text": "1.13"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-08",
+            "field": "packages",
+            "value": "0",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "J",
+              "raw_text": "0"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-09",
+            "field": "net_weight",
+            "value": "0.77",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "K",
+              "raw_text": "0.77"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-10",
+            "field": "gross_weight",
+            "value": "1.2",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "L",
+              "raw_text": "1.2"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-11",
+            "field": "sku",
+            "value": "4000155179",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "N",
+              "raw_text": "4000155179"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-12",
+            "field": "supplier",
+            "value": "易盛",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "O",
+              "raw_text": "易盛"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-13",
+            "field": "material_no",
+            "value": "300200002198",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "R",
+              "raw_text": "300200002198"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-14",
+            "field": "remark",
+            "value": "4538",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 3,
+              "column": "U",
+              "raw_text": "4538"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-8181f9edc198-R004",
+        "customer_id": null,
+        "identity": {
+          "model": "ASM1562",
+          "brand": "ASMEDIA",
+          "origin": "中国台湾",
+          "quantity": "6500",
+          "unit": "个",
+          "material_no": "300200001648",
+          "sku": "4000156680"
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-003-01",
+            "field": "brand",
+            "value": "ASMEDIA",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "C",
+              "raw_text": "ASMEDIA"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-02",
+            "field": "model",
+            "value": "ASM1562",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "D",
+              "raw_text": "ASM1562"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-03",
+            "field": "product_name",
+            "value": "集成电路",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "B",
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-04",
+            "field": "origin",
+            "value": "中国台湾",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "F",
+              "raw_text": "中国台湾"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-05",
+            "field": "unit",
+            "value": "个",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "G",
+              "raw_text": "个"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-06",
+            "field": "quantity",
+            "value": "6500",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "H",
+              "raw_text": "6500"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-07",
+            "field": "customs_unit_price",
+            "value": "0.5",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "I",
+              "raw_text": "0.5"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-08",
+            "field": "packages",
+            "value": "0",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "J",
+              "raw_text": "0"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-09",
+            "field": "net_weight",
+            "value": "1.44",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "K",
+              "raw_text": "1.44"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-10",
+            "field": "gross_weight",
+            "value": "2.21",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "L",
+              "raw_text": "2.21"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-11",
+            "field": "sku",
+            "value": "4000156680",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "N",
+              "raw_text": "4000156680"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-12",
+            "field": "supplier",
+            "value": "易盛",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "O",
+              "raw_text": "易盛"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-13",
+            "field": "material_no",
+            "value": "300200001648",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "R",
+              "raw_text": "300200001648"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-14",
+            "field": "remark",
+            "value": "4538",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 4,
+              "column": "U",
+              "raw_text": "4538"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-8181f9edc198-R005",
+        "customer_id": null,
+        "identity": {
+          "model": "ASM1164",
+          "brand": "ASMEDIA",
+          "origin": "中国台湾",
+          "quantity": "7000",
+          "unit": "个",
+          "material_no": "300200008018",
+          "sku": "4000155731"
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-004-01",
+            "field": "brand",
+            "value": "ASMEDIA",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "C",
+              "raw_text": "ASMEDIA"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-02",
+            "field": "model",
+            "value": "ASM1164",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "D",
+              "raw_text": "ASM1164"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-03",
+            "field": "product_name",
+            "value": "集成电路",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "B",
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-04",
+            "field": "origin",
+            "value": "中国台湾",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "F",
+              "raw_text": "中国台湾"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-05",
+            "field": "unit",
+            "value": "个",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "G",
+              "raw_text": "个"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-06",
+            "field": "quantity",
+            "value": "7000",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "H",
+              "raw_text": "7000"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-07",
+            "field": "customs_unit_price",
+            "value": "4.25",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "I",
+              "raw_text": "4.25"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-08",
+            "field": "packages",
+            "value": "0",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "J",
+              "raw_text": "0"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-09",
+            "field": "net_weight",
+            "value": "1.55",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "K",
+              "raw_text": "1.55"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-10",
+            "field": "gross_weight",
+            "value": "2.38",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "L",
+              "raw_text": "2.38"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-11",
+            "field": "sku",
+            "value": "4000155731",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "N",
+              "raw_text": "4000155731"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-12",
+            "field": "supplier",
+            "value": "易盛",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "O",
+              "raw_text": "易盛"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-13",
+            "field": "material_no",
+            "value": "300200008018",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "R",
+              "raw_text": "300200008018"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-14",
+            "field": "remark",
+            "value": "4538",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 5,
+              "column": "U",
+              "raw_text": "4538"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-8181f9edc198-R006",
+        "customer_id": null,
+        "identity": {
+          "model": "UP9505UQGW",
+          "brand": "UPI",
+          "origin": "中国台湾",
+          "quantity": "2500",
+          "unit": "个",
+          "material_no": "300200000843",
+          "sku": "4000156666"
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-005-01",
+            "field": "brand",
+            "value": "UPI",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "C",
+              "raw_text": "UPI"
+            }
+          },
+          {
+            "evidence_key": "E-P3-005-02",
+            "field": "model",
+            "value": "UP9505UQGW",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "D",
+              "raw_text": "UP9505UQGW"
+            }
+          },
+          {
+            "evidence_key": "E-P3-005-03",
+            "field": "product_name",
+            "value": "集成电路",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "B",
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "evidence_key": "E-P3-005-04",
+            "field": "origin",
+            "value": "中国台湾",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "F",
+              "raw_text": "中国台湾"
+            }
+          },
+          {
+            "evidence_key": "E-P3-005-05",
+            "field": "unit",
+            "value": "个",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "G",
+              "raw_text": "个"
+            }
+          },
+          {
+            "evidence_key": "E-P3-005-06",
+            "field": "quantity",
+            "value": "2500",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "H",
+              "raw_text": "2500"
+            }
+          },
+          {
+            "evidence_key": "E-P3-005-07",
+            "field": "customs_unit_price",
+            "value": "0.7202",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "I",
+              "raw_text": "0.7202"
+            }
+          },
+          {
+            "evidence_key": "E-P3-005-08",
+            "field": "packages",
+            "value": "1",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "J",
+              "raw_text": "1"
+            }
+          },
+          {
+            "evidence_key": "E-P3-005-09",
+            "field": "net_weight",
+            "value": "0.36",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "K",
+              "raw_text": "0.36"
+            }
+          },
+          {
+            "evidence_key": "E-P3-005-10",
+            "field": "gross_weight",
+            "value": "0.45",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "L",
+              "raw_text": "0.45"
+            }
+          },
+          {
+            "evidence_key": "E-P3-005-11",
+            "field": "sku",
+            "value": "4000156666",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "N",
+              "raw_text": "4000156666"
+            }
+          },
+          {
+            "evidence_key": "E-P3-005-12",
+            "field": "supplier",
+            "value": "TOMBO",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "O",
+              "raw_text": "TOMBO"
+            }
+          },
+          {
+            "evidence_key": "E-P3-005-13",
+            "field": "material_no",
+            "value": "300200000843",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "R",
+              "raw_text": "300200000843"
+            }
+          },
+          {
+            "evidence_key": "E-P3-005-14",
+            "field": "remark",
+            "value": "4489",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 6,
+              "column": "U",
+              "raw_text": "4489"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-8181f9edc198-R007",
+        "customer_id": null,
+        "identity": {
+          "model": "UP7501M8",
+          "brand": "UPI",
+          "origin": "中国台湾",
+          "quantity": "3000",
+          "unit": "个",
+          "material_no": "300200002031",
+          "sku": "4000143736"
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-006-01",
+            "field": "brand",
+            "value": "UPI",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "C",
+              "raw_text": "UPI"
+            }
+          },
+          {
+            "evidence_key": "E-P3-006-02",
+            "field": "model",
+            "value": "UP7501M8",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "D",
+              "raw_text": "UP7501M8"
+            }
+          },
+          {
+            "evidence_key": "E-P3-006-03",
+            "field": "product_name",
+            "value": "集成电路",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "B",
+              "raw_text": "集成电路"
+            }
+          },
+          {
+            "evidence_key": "E-P3-006-04",
+            "field": "origin",
+            "value": "中国台湾",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "F",
+              "raw_text": "中国台湾"
+            }
+          },
+          {
+            "evidence_key": "E-P3-006-05",
+            "field": "unit",
+            "value": "个",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "G",
+              "raw_text": "个"
+            }
+          },
+          {
+            "evidence_key": "E-P3-006-06",
+            "field": "quantity",
+            "value": "3000",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "H",
+              "raw_text": "3000"
+            }
+          },
+          {
+            "evidence_key": "E-P3-006-07",
+            "field": "customs_unit_price",
+            "value": "0.1366",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "I",
+              "raw_text": "0.1366"
+            }
+          },
+          {
+            "evidence_key": "E-P3-006-08",
+            "field": "packages",
+            "value": "0",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "J",
+              "raw_text": "0"
+            }
+          },
+          {
+            "evidence_key": "E-P3-006-09",
+            "field": "net_weight",
+            "value": "0.44",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "K",
+              "raw_text": "0.44"
+            }
+          },
+          {
+            "evidence_key": "E-P3-006-10",
+            "field": "gross_weight",
+            "value": "0.55",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "L",
+              "raw_text": "0.55"
+            }
+          },
+          {
+            "evidence_key": "E-P3-006-11",
+            "field": "sku",
+            "value": "4000143736",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "N",
+              "raw_text": "4000143736"
+            }
+          },
+          {
+            "evidence_key": "E-P3-006-12",
+            "field": "supplier",
+            "value": "TOMBO",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "O",
+              "raw_text": "TOMBO"
+            }
+          },
+          {
+            "evidence_key": "E-P3-006-13",
+            "field": "material_no",
+            "value": "300200002031",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "R",
+              "raw_text": "300200002031"
+            }
+          },
+          {
+            "evidence_key": "E-P3-006-14",
+            "field": "remark",
+            "value": "4489",
+            "source": {
+              "file_id": "F-8181f9edc198",
+              "page": null,
+              "sheet": "智能智能导单文件",
+              "row": 7,
+              "column": "U",
+              "raw_text": "4489"
+            }
+          }
+        ]
+      }
+    ],
+    "inspection_candidates": [
+      {
+        "raw_row_id": "I-4626eef2dd66-26010713-L001",
+        "customer_id": "C-66be07d6cabe",
+        "logical_inspection_id": "I-4626eef2dd66-26010713",
+        "warehouse_no": "26010713",
+        "merged_product_id": null,
+        "identity": {
+          "model": "UP9505UQGW",
+          "brand": "uPI",
+          "quantity": "2500",
+          "unit": "PCS"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-001-01",
+            "field": "model",
+            "value": "UP9505UQGW",
+            "source": {
+              "file_id": "F-4626eef2dd66",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"uPI\",\"型号\":\"UP9505UQGW\",\"产地\":\"UNKNOWN\",\"数量\":\"2500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"COD\":\"Taiwan China\",\"手写COO\":\"TW,CN\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-02",
+            "field": "brand",
+            "value": "uPI",
+            "source": {
+              "file_id": "F-4626eef2dd66",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"uPI\",\"型号\":\"UP9505UQGW\",\"产地\":\"UNKNOWN\",\"数量\":\"2500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"COD\":\"Taiwan China\",\"手写COO\":\"TW,CN\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-03",
+            "field": "quantity",
+            "value": "2500",
+            "source": {
+              "file_id": "F-4626eef2dd66",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"uPI\",\"型号\":\"UP9505UQGW\",\"产地\":\"UNKNOWN\",\"数量\":\"2500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"COD\":\"Taiwan China\",\"手写COO\":\"TW,CN\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-001-04",
+            "field": "unit",
+            "value": "PCS",
+            "source": {
+              "file_id": "F-4626eef2dd66",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"uPI\",\"型号\":\"UP9505UQGW\",\"产地\":\"UNKNOWN\",\"数量\":\"2500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"COD\":\"Taiwan China\",\"手写COO\":\"TW,CN\"}"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-4626eef2dd66-26010713-L002",
+        "customer_id": "C-66be07d6cabe",
+        "logical_inspection_id": "I-4626eef2dd66-26010713",
+        "warehouse_no": "26010713",
+        "merged_product_id": null,
+        "identity": {
+          "model": "UP7501M8",
+          "brand": "uPI",
+          "quantity": "3000",
+          "unit": "PCS"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-002-01",
+            "field": "model",
+            "value": "UP7501M8",
+            "source": {
+              "file_id": "F-4626eef2dd66",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"uPI\",\"型号\":\"UP7501M8\",\"产地\":\"UNKNOWN\",\"数量\":\"3000\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"COD\":\"Taiwan China\",\"手写COO\":\"TW,CN\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-02",
+            "field": "brand",
+            "value": "uPI",
+            "source": {
+              "file_id": "F-4626eef2dd66",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"uPI\",\"型号\":\"UP7501M8\",\"产地\":\"UNKNOWN\",\"数量\":\"3000\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"COD\":\"Taiwan China\",\"手写COO\":\"TW,CN\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-03",
+            "field": "quantity",
+            "value": "3000",
+            "source": {
+              "file_id": "F-4626eef2dd66",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"uPI\",\"型号\":\"UP7501M8\",\"产地\":\"UNKNOWN\",\"数量\":\"3000\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"COD\":\"Taiwan China\",\"手写COO\":\"TW,CN\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-002-04",
+            "field": "unit",
+            "value": "PCS",
+            "source": {
+              "file_id": "F-4626eef2dd66",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"uPI\",\"型号\":\"UP7501M8\",\"产地\":\"UNKNOWN\",\"数量\":\"3000\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"COD\":\"Taiwan China\",\"手写COO\":\"TW,CN\"}"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-cdbd27982284-26010048-L003",
+        "customer_id": "C-66be07d6cabe",
+        "logical_inspection_id": "I-cdbd27982284-26010048",
+        "warehouse_no": "26010048",
+        "merged_product_id": null,
+        "identity": {
+          "model": "ASM1543",
+          "brand": "ASMEDIA",
+          "quantity": "6500",
+          "unit": "PCS",
+          "material_no": "300200002056"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-003-01",
+            "field": "model",
+            "value": "ASM1543",
+            "source": {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1543\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"6500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200002056\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-02",
+            "field": "brand",
+            "value": "ASMEDIA",
+            "source": {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1543\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"6500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200002056\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-03",
+            "field": "quantity",
+            "value": "6500",
+            "source": {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1543\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"6500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200002056\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-04",
+            "field": "unit",
+            "value": "PCS",
+            "source": {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1543\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"6500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200002056\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-003-05",
+            "field": "material_no",
+            "value": "300200002056",
+            "source": {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1543\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"6500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200002056\"}"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-cdbd27982284-26010048-L004",
+        "customer_id": "C-66be07d6cabe",
+        "logical_inspection_id": "I-cdbd27982284-26010048",
+        "warehouse_no": "26010048",
+        "merged_product_id": null,
+        "identity": {
+          "model": "ASM2480B",
+          "brand": "ASMEDIA",
+          "quantity": "3500",
+          "unit": "PCS",
+          "material_no": "300200002198"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-004-01",
+            "field": "model",
+            "value": "ASM2480B",
+            "source": {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM2480B\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"3500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200002198\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-02",
+            "field": "brand",
+            "value": "ASMEDIA",
+            "source": {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM2480B\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"3500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200002198\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-03",
+            "field": "quantity",
+            "value": "3500",
+            "source": {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM2480B\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"3500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200002198\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-04",
+            "field": "unit",
+            "value": "PCS",
+            "source": {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM2480B\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"3500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200002198\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-004-05",
+            "field": "material_no",
+            "value": "300200002198",
+            "source": {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM2480B\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"3500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200002198\"}"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-cdbd27982284-26010048-L005",
+        "customer_id": "C-66be07d6cabe",
+        "logical_inspection_id": "I-cdbd27982284-26010048",
+        "warehouse_no": "26010048",
+        "merged_product_id": null,
+        "identity": {
+          "model": "ASM1562",
+          "brand": "ASMEDIA",
+          "quantity": "6500",
+          "unit": "PCS",
+          "material_no": "300200001648"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-005-01",
+            "field": "model",
+            "value": "ASM1562",
+            "source": {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1562\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"6500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200001648\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-005-02",
+            "field": "brand",
+            "value": "ASMEDIA",
+            "source": {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1562\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"6500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200001648\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-005-03",
+            "field": "quantity",
+            "value": "6500",
+            "source": {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1562\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"6500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200001648\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-005-04",
+            "field": "unit",
+            "value": "PCS",
+            "source": {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1562\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"6500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200001648\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-005-05",
+            "field": "material_no",
+            "value": "300200001648",
+            "source": {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1562\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"6500\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200001648\"}"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-cdbd27982284-26010048-L006",
+        "customer_id": "C-66be07d6cabe",
+        "logical_inspection_id": "I-cdbd27982284-26010048",
+        "warehouse_no": "26010048",
+        "merged_product_id": null,
+        "identity": {
+          "model": "ASM1164",
+          "brand": "ASMEDIA",
+          "quantity": "7000",
+          "unit": "PCS",
+          "material_no": "300200008018"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-P3-006-01",
+            "field": "model",
+            "value": "ASM1164",
+            "source": {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第4行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1164\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"7000\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200008018\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-006-02",
+            "field": "brand",
+            "value": "ASMEDIA",
+            "source": {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第4行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1164\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"7000\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200008018\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-006-03",
+            "field": "quantity",
+            "value": "7000",
+            "source": {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第4行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1164\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"7000\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200008018\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-006-04",
+            "field": "unit",
+            "value": "PCS",
+            "source": {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第4行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1164\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"7000\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200008018\"}"
+            }
+          },
+          {
+            "evidence_key": "E-P3-006-05",
+            "field": "material_no",
+            "value": "300200008018",
+            "source": {
+              "file_id": "F-cdbd27982284",
+              "page": 1,
+              "sheet": null,
+              "row": 4,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第4行\",\"品牌\":\"ASMEDIA\",\"型号\":\"ASM1164\",\"产地\":\"TAIWAN, CHINA\",\"数量\":\"7000\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\",\"物料号码\":\"300200008018\"}"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      }
+    ],
+    "proposed_groups": [
+      {
+        "order_row_id": "D-8181f9edc198-R002",
+        "raw_row_ids": [
+          "I-cdbd27982284-26010048-L003"
+        ],
+        "evidence_keys": [
+          "E-P3-003-01",
+          "E-P3-003-02",
+          "E-P3-003-03",
+          "E-P3-003-04",
+          "E-P3-003-05"
+        ]
+      },
+      {
+        "order_row_id": "D-8181f9edc198-R003",
+        "raw_row_ids": [
+          "I-cdbd27982284-26010048-L004"
+        ],
+        "evidence_keys": [
+          "E-P3-004-01",
+          "E-P3-004-02",
+          "E-P3-004-03",
+          "E-P3-004-04",
+          "E-P3-004-05"
+        ]
+      },
+      {
+        "order_row_id": "D-8181f9edc198-R004",
+        "raw_row_ids": [
+          "I-cdbd27982284-26010048-L005"
+        ],
+        "evidence_keys": [
+          "E-P3-005-01",
+          "E-P3-005-02",
+          "E-P3-005-03",
+          "E-P3-005-04",
+          "E-P3-005-05"
+        ]
+      },
+      {
+        "order_row_id": "D-8181f9edc198-R005",
+        "raw_row_ids": [
+          "I-cdbd27982284-26010048-L006"
+        ],
+        "evidence_keys": [
+          "E-P3-006-01",
+          "E-P3-006-02",
+          "E-P3-006-03",
+          "E-P3-006-04",
+          "E-P3-006-05"
+        ]
+      },
+      {
+        "order_row_id": "D-8181f9edc198-R006",
+        "raw_row_ids": [
+          "I-4626eef2dd66-26010713-L001"
+        ],
+        "evidence_keys": [
+          "E-P3-001-01",
+          "E-P3-001-02",
+          "E-P3-001-03",
+          "E-P3-001-04"
+        ]
+      },
+      {
+        "order_row_id": "D-8181f9edc198-R007",
+        "raw_row_ids": [
+          "I-4626eef2dd66-26010713-L002"
+        ],
+        "evidence_keys": [
+          "E-P3-002-01",
+          "E-P3-002-02",
+          "E-P3-002-03",
+          "E-P3-002-04"
+        ]
+      }
+    ],
+    "comparison_results": [
+      {
+        "order_row_id": "D-8181f9edc198-R002",
+        "candidate_groups": [
+          {
+            "raw_row_ids": [
+              "I-cdbd27982284-26010048-L003"
+            ],
+            "evidence_keys": [
+              "E-P3-003-01",
+              "E-P3-003-02",
+              "E-P3-003-03",
+              "E-P3-003-04",
+              "E-P3-003-05"
+            ]
+          }
+        ],
+        "quantity_comparable": false,
+        "reason": "模型只生成比较快照，不把数量相等当作关系证据。"
+      },
+      {
+        "order_row_id": "D-8181f9edc198-R003",
+        "candidate_groups": [
+          {
+            "raw_row_ids": [
+              "I-cdbd27982284-26010048-L004"
+            ],
+            "evidence_keys": [
+              "E-P3-004-01",
+              "E-P3-004-02",
+              "E-P3-004-03",
+              "E-P3-004-04",
+              "E-P3-004-05"
+            ]
+          }
+        ],
+        "quantity_comparable": false,
+        "reason": "模型只生成比较快照，不把数量相等当作关系证据。"
+      },
+      {
+        "order_row_id": "D-8181f9edc198-R004",
+        "candidate_groups": [
+          {
+            "raw_row_ids": [
+              "I-cdbd27982284-26010048-L005"
+            ],
+            "evidence_keys": [
+              "E-P3-005-01",
+              "E-P3-005-02",
+              "E-P3-005-03",
+              "E-P3-005-04",
+              "E-P3-005-05"
+            ]
+          }
+        ],
+        "quantity_comparable": false,
+        "reason": "模型只生成比较快照，不把数量相等当作关系证据。"
+      },
+      {
+        "order_row_id": "D-8181f9edc198-R005",
+        "candidate_groups": [
+          {
+            "raw_row_ids": [
+              "I-cdbd27982284-26010048-L006"
+            ],
+            "evidence_keys": [
+              "E-P3-006-01",
+              "E-P3-006-02",
+              "E-P3-006-03",
+              "E-P3-006-04",
+              "E-P3-006-05"
+            ]
+          }
+        ],
+        "quantity_comparable": false,
+        "reason": "模型只生成比较快照，不把数量相等当作关系证据。"
+      },
+      {
+        "order_row_id": "D-8181f9edc198-R006",
+        "candidate_groups": [
+          {
+            "raw_row_ids": [
+              "I-4626eef2dd66-26010713-L001"
+            ],
+            "evidence_keys": [
+              "E-P3-001-01",
+              "E-P3-001-02",
+              "E-P3-001-03",
+              "E-P3-001-04"
+            ]
+          }
+        ],
+        "quantity_comparable": false,
+        "reason": "模型只生成比较快照，不把数量相等当作关系证据。"
+      },
+      {
+        "order_row_id": "D-8181f9edc198-R007",
+        "candidate_groups": [
+          {
+            "raw_row_ids": [
+              "I-4626eef2dd66-26010713-L002"
+            ],
+            "evidence_keys": [
+              "E-P3-002-01",
+              "E-P3-002-02",
+              "E-P3-002-03",
+              "E-P3-002-04"
+            ]
+          }
+        ],
+        "quantity_comparable": false,
+        "reason": "模型只生成比较快照，不把数量相等当作关系证据。"
+      }
+    ]
+  }
+}

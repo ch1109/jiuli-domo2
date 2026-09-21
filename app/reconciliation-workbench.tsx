@@ -26,6 +26,7 @@ import {calculateFinalOutputTotals} from '@/lib/domain/final-output';
 import {buildFinalReconciliationCsv,finalReconciliationFileName} from '@/lib/final-reconciliation-csv';
 import { MaterialPreview } from "./material-preview";
 import { LineActions } from "./workbench-relations";
+import { generateTaskProcessStages } from "@/lib/business-translation";
 import "./workbench.css";
 
 const filters = ["全部字段", "有变化", "冲突", "缺失", "待人工"] as const;
@@ -63,6 +64,7 @@ export function ReconciliationWorkbench({
   const [history, setHistory] = useState(false);
   const [drawer, setDrawer] = useState<"left" | "right" | null>(null);
   const [source, setSource] = useState("全部");
+  const [selectedFileId, setSelectedFileId] = useState<string | null>(null);
   const [preview, setPreview] = useState<{
     location: SourceLocation;
     name: string;
@@ -100,6 +102,23 @@ export function ReconciliationWorkbench({
       .map((s) => s.sourceFileId),
   ]);
   const files = state.files.filter((f) => materialIds.has(f.id));
+  const customerSources = state.sources.filter(
+    (s) => s.customerId === draft.customerId && s.availability !== "未加载"
+  );
+  const mergedProductCount = Math.max(
+    1,
+    new Set(
+      customerSources.map((s) => `${s.brand}-${s.model}-${s.origin}`)
+    ).size
+  );
+  const stages = generateTaskProcessStages(
+    draft,
+    state.sources.filter((s) =>
+      draft.lines.some((l) => l.relationSourceIds.includes(s.id))
+    ),
+    customerSources.length,
+    mergedProductCount
+  );
   const sourceNotes = [...new Set(state.sources.filter(s=>s.customerId===draft.customerId && s.availability!=='未加载').flatMap(s=>{
     try { return (JSON.parse(s.otherFields['来源问题']??'[]') as {message:string}[]).map(i=>i.message); } catch { return []; }
   }))];
@@ -143,17 +162,105 @@ export function ReconciliationWorkbench({
   const uniqueEntries = entries.filter(
     (entry, i) => entries.findIndex((e) => e.key === entry.key) === i,
   );
-  const activePreview =
-    preview ??
-    (uniqueEntries[0]
-      ? {
-          location: uniqueEntries[0].location,
-          name:
-            state.files.find((f) => f.id === uniqueEntries[0].location.fileId)
-              ?.name ?? uniqueEntries[0].location.fileId,
-          key: uniqueEntries[0].key,
-        }
-      : null);
+  const currentLineSources = state.sources.filter(
+    (s) => (line?.relationSourceIds ?? []).includes(s.id) || line?.relationSourceId === s.id
+  );
+  const entrustFileIds = new Set([
+    ...draft.materialFileIds,
+    ...(line?.sourceLocation?.fileId ? [line.sourceLocation.fileId] : []),
+  ]);
+  const inspectionFileIds = new Set([
+    ...currentLineSources.map((s) => s.sourceFileId),
+    ...customerSources.map((s) => s.sourceFileId),
+  ]);
+  const boundFileIds = new Set(
+    state.materialBindings.filter((b) => b.draftId === draft.id).map((b) => b.fileId)
+  );
+  const taskFileIdSet = new Set([
+    ...entrustFileIds,
+    ...inspectionFileIds,
+    ...boundFileIds,
+    ...state.files.filter((f) => f.batchId === `WORKBENCH-${draft.id}` || f.customerId === draft.customerId).map((f) => f.id),
+    ...uniqueEntries.map((e) => e.location.fileId),
+  ]);
+  let taskFiles = state.files.filter((f) => taskFileIdSet.has(f.id));
+  if (taskFiles.length === 0 && draft.materialFileIds.length > 0) {
+    taskFiles = draft.materialFileIds.map((fid) => ({
+      id: fid,
+      name: fid,
+      materialType: "委托书",
+      loaded: true,
+      duplicate: false,
+      source: "基线" as const,
+    }));
+  }
+
+  const activeFileId =
+    preview && taskFiles.some((f) => f.id === preview.location.fileId)
+      ? preview.location.fileId
+      : selectedFileId && taskFiles.some((f) => f.id === selectedFileId)
+        ? selectedFileId
+        : uniqueEntries[0] && taskFiles.some((f) => f.id === uniqueEntries[0].location.fileId)
+          ? uniqueEntries[0].location.fileId
+          : taskFiles.find((f) => entrustFileIds.has(f.id))?.id ?? taskFiles[0]?.id ?? "";
+
+  const currentFile = taskFiles.find((f) => f.id === activeFileId) ?? taskFiles[0];
+
+  const effectivePreview = useMemo(() => {
+    if (!currentFile) return null;
+    if (preview && preview.location.fileId === currentFile.id) {
+      return preview;
+    }
+    const matchingEntry = uniqueEntries.find((e) => e.location.fileId === currentFile.id);
+    if (matchingEntry) {
+      return {
+        location: matchingEntry.location,
+        name: currentFile.name ?? matchingEntry.location.fileId,
+        key: matchingEntry.key,
+      };
+    }
+    // 非 OCR 字段级定位（直接定位到具体文件和已有结构化行号/页码）
+    if (currentFile.materialType === "委托书") {
+      const row = line?.sourceLocation?.row ?? null;
+      const sheet = line?.sourceLocation?.sheet ?? null;
+      return {
+        location: {
+          fileId: currentFile.id,
+          page: line?.sourceLocation?.page ?? null,
+          row,
+          sheet,
+          position: row ? `第 ${row} 行` : "整单委托材料",
+        },
+        name: currentFile.name,
+        key: `${currentFile.id}-entrust-${line?.id ?? ""}`,
+      };
+    }
+    if (currentFile.materialType === "查货") {
+      const page = currentLineSources[0]?.sourceLocation?.page ?? 1;
+      return {
+        location: {
+          fileId: currentFile.id,
+          page,
+          sheet: null,
+          position: `第 ${page} 页`,
+        },
+        name: currentFile.name,
+        key: `${currentFile.id}-inspect-${line?.id ?? ""}`,
+      };
+    }
+    return {
+      location: {
+        fileId: currentFile.id,
+        page: 1,
+        sheet: null,
+        position: null,
+      },
+      name: currentFile.name,
+      key: `${currentFile.id}-other`,
+    };
+  }, [currentFile, preview, uniqueEntries, line, currentLineSources]);
+
+  const activePreview = effectivePreview;
   const exportCsv = () => {
     const final=state.finalReconciliations.find(s=>s.sourceDraftId===draft.id);
     const rows=draft.lines.map(l=>l.fields);
@@ -227,32 +334,86 @@ export function ReconciliationWorkbench({
           )}
         </div>
       </header>
+      {/* 五阶段业务处理全流程进度条 */}
+      <div className="recon-workflow-container">
+        <div className="recon-workflow-title">
+          <span>AI 报关智能核对流程（五阶段实时流转）</span>
+          <span>
+            当前环节：
+            <b style={{ color: "#1b6e46", marginLeft: 4 }}>
+              {stages.find((s) => s.status === "processing" || s.status === "warning")?.title ||
+                (draft.finalized ? "已完成封版归档" : "全部核对通过 · 待复核")}
+            </b>
+          </span>
+        </div>
+        <div className="recon-workflow-steps">
+          {stages.map((stage, idx) => (
+            <Fragment key={stage.step}>
+              <div className={`recon-workflow-step ${stage.status}`}>
+                <div className="recon-step-head">
+                  <span className="recon-step-title">
+                    {stage.step}. {stage.title}
+                  </span>
+                  <span className={`recon-step-status ${stage.status}`}>
+                    {stage.status === "completed"
+                      ? "✓ "
+                      : stage.status === "processing"
+                      ? "● "
+                      : stage.status === "warning"
+                      ? "⚠️ "
+                      : "○ "}
+                    {stage.statusText}
+                  </span>
+                </div>
+                <div className="recon-step-product" title={stage.productSummary}>
+                  {stage.productSummary}
+                </div>
+                <div className="recon-step-foot">
+                  <span>{stage.actionNote}</span>
+                  <span className="recon-step-code">{stage.code}</span>
+                </div>
+              </div>
+              {idx < stages.length - 1 && (
+                <div className="recon-workflow-arrow">
+                  <ChevronRight size={16} />
+                </div>
+              )}
+            </Fragment>
+          ))}
+        </div>
+      </div>
       <div className="recon-summary">
         <strong>
           <span className="live-dot" />
           {summary.businessStatus}
         </strong>
         <span>
-          商品 <b>{draft.lines.length}</b>
+          待核对商品 <b>{draft.lines.length}</b>
         </span>
         <span>
-          已匹配{" "}
+          已找到对应（已匹配）{" "}
           <b>
             {summary.matched}/{summary.total}
           </b>
         </span>
         <span>
-          已核验{" "}
+          字段已核验{" "}
           <b>
             {all.filter((r) => r.verified).length}/{all.length}
           </b>
         </span>
         <span className="danger-text">
-          冲突 <b>{all.filter((r) => r.conflict).length}</b>
+          字段冲突 <b>{all.filter((r) => r.conflict).length}</b>
         </span>
         <span>
           必填缺失 <b>{all.filter((r) => r.missing && r.required).length}</b>
         </span>
+      </div>
+      <div className="recon-task-note">
+        <span>当前任务</span>
+        <strong>{draft.finalized ? "已完成 · 可查看最终核对单" : summary.businessStatus}</strong>
+        <span>当前草稿 V{draft.version}</span>
+        <span>最近更新：{draft.lastUpdateReason || "尚未执行 AI 核对"}</span>
       </div>
       {history && (
         <section className="recon-history" aria-label="当前草稿版本与操作">
@@ -327,7 +488,7 @@ export function ReconciliationWorkbench({
             <p className="muted">{summary.realtimeStatus}</p>
             <dl>
               <div>
-                <dt>已匹配商品</dt>
+                <dt>已找到对应商品</dt>
                 <dd>
                   {summary.matched} / {summary.total}
                 </dd>
@@ -349,6 +510,15 @@ export function ReconciliationWorkbench({
                 还有 {blocking} 项必须处理
               </p>
             )}
+          </section>
+          <section className="line-navigation">
+            <h3>待核对商品列表 <span>{draft.lines.length}</span></h3>
+            {draft.lines.map((item, index) => {
+              const itemRows = rowsByLine.get(item.id) ?? [];
+              const itemIssue = itemRows.filter((r) => r.needsHuman).length;
+              const itemState = itemIssue ? "待处理" : item.relationSourceIds.length ? (itemRows.every((r) => r.verified || !r.required) ? "无问题" : "待复核") : "待查货";
+              return <button key={item.id} className={item.id === line?.id ? "selected" : ""} onClick={() => select(item.id, null)}><span><b>商品 {String(index + 1).padStart(2, "0")}</b><small>{item.model || "型号待补充"}</small></span><em className={itemIssue ? "warn" : item.relationSourceIds.length ? "ok" : "muted"}>{itemIssue ? `${itemIssue} 个问题` : itemState}</em></button>;
+            })}
           </section>
           <section className="problem-center">
             <h3>
@@ -750,98 +920,160 @@ export function ReconciliationWorkbench({
             <strong>{value(active?.currentValue)}</strong>
             <span>证据 {uniqueEntries.length} 条</span>
           </div>
-          <div className="evidence-source-tabs">
-            {[
-              "全部",
-              ...new Set(
-                uniqueEntries.map(
-                  (e) =>
-                    state.files.find((f) => f.id === e.location.fileId)
-                      ?.materialType ?? "其他",
-                ),
-              ),
-            ].map((s) => (
-              <button
-                className={source === s ? "active" : ""}
-                key={s}
-                onClick={() => setSource(s)}
-              >
-                {s}
-              </button>
-            ))}
-          </div>
-          {uniqueEntries
-            .filter(
-              (e) =>
-                source === "全部" ||
-                state.files.find((f) => f.id === e.location.fileId)
-                  ?.materialType === source,
-            )
-            .map((e) => {
-              const file = state.files.find((f) => f.id === e.location.fileId);
+          <div className="material-file-tabs" role="tablist" aria-label="相关材料原文件">
+            {taskFiles.map((f) => {
+              const isSelected = f.id === currentFile?.id;
+              const isLineDirect = currentLineSources.some((s) => s.sourceFileId === f.id) || entrustFileIds.has(f.id);
               return (
-                <article
-                  className={`evidence-entry ${activePreview?.key === e.key ? "selected" : ""}`}
-                  key={e.key}
+                <button
+                  key={f.id}
+                  role="tab"
+                  aria-selected={isSelected}
+                  className={`material-file-tab ${isSelected ? "active" : ""}`}
+                  onClick={() => {
+                    setSelectedFileId(f.id);
+                    setPreview(null);
+                  }}
+                  title={f.name}
                 >
-                  <button
-                    className="evidence-entry-title"
-                    onClick={() => {
-                      setField(active.field);
-                      setPreview({
-                        location: e.location,
-                        name: file?.name ?? e.location.fileId,
-                        key: e.key,
-                      });
-                    }}
-                  >
-                    <FileText size={14} />
-                    {file?.name ?? e.location.fileId}
-                  </button>
-                  <small>
-                    {e.location.sheet
-                      ? `Sheet ${e.location.sheet} · ${e.location.column ?? ""}${e.location.row ?? ""}`
-                      : e.location.page
-                        ? `第 ${e.location.page} 页`
-                        : (e.location.position ?? "位置未记录")}
-                  </small>
-                  <blockquote>
-                    {e.location.rawText || "原文未记录，可查看原文件"}
-                  </blockquote>
-                  <dl>
-                    <div>
-                      <dt>原始值</dt>
-                      <dd>{value(e.raw)}</dd>
-                    </div>
-                    <div>
-                      <dt>标准化值</dt>
-                      <dd>{value(e.normalized)}</dd>
-                    </div>
-                  </dl>
-                  <button
-                    className="text-button"
-                    onClick={() => {
-                      setField(active.field);
-                      setPreview({
-                        location: e.location,
-                        name: file?.name ?? e.location.fileId,
-                        key: e.key,
-                      });
-                    }}
-                  >
-                    定位到原文
-                    <ChevronRight size={13} />
-                  </button>
-                  <div className="evidence-related">{draft.lines.flatMap(l=>(rowsByLine.get(l.id)??[]).filter(r=>r.evidence.some(item=>item.id===e.key||item.references?.some(ref=>ref.key===e.key))).map(r=><button key={`${l.id}-${r.field}`} className="text-button" onClick={()=>{select(l.id,r.field);setPreview({location:e.location,name:file?.name??e.location.fileId,key:e.key});}}>{short(l.id)} · {r.field}</button>))}</div>
-                </article>
+                  <span className="material-tab-badge">{f.materialType}</span>
+                  <span className="material-tab-name">{f.name}</span>
+                  {isLineDirect && <span className="material-tab-dot" title="当前商品行关联原件" />}
+                </button>
               );
             })}
-          {!uniqueEntries.length && (
-            <p className="recon-empty">该字段暂无材料证据</p>
+          </div>
+          {uniqueEntries.length > 0 ? (
+            <>
+              <div className="evidence-source-tabs">
+                {[
+                  "全部",
+                  ...new Set(
+                    uniqueEntries.map(
+                      (e) =>
+                        state.files.find((f) => f.id === e.location.fileId)
+                          ?.materialType ?? "其他",
+                    ),
+                  ),
+                ].map((s) => (
+                  <button
+                    className={source === s ? "active" : ""}
+                    key={s}
+                    onClick={() => setSource(s)}
+                  >
+                    {s}
+                  </button>
+                ))}
+              </div>
+              {uniqueEntries
+                .filter(
+                  (e) =>
+                    source === "全部" ||
+                    state.files.find((f) => f.id === e.location.fileId)
+                      ?.materialType === source,
+                )
+                .map((e) => {
+                  const file = state.files.find((f) => f.id === e.location.fileId);
+                  return (
+                    <article
+                      className={`evidence-entry ${activePreview?.key === e.key ? "selected" : ""}`}
+                      key={e.key}
+                    >
+                      <button
+                        className="evidence-entry-title"
+                        onClick={() => {
+                          setField(active.field);
+                          setSelectedFileId(e.location.fileId);
+                          setPreview({
+                            location: e.location,
+                            name: file?.name ?? e.location.fileId,
+                            key: e.key,
+                          });
+                        }}
+                      >
+                        <FileText size={14} />
+                        {file?.name ?? e.location.fileId}
+                      </button>
+                      <small>
+                        {e.location.sheet
+                          ? `Sheet ${e.location.sheet} · ${e.location.column ?? ""}${e.location.row ?? ""}`
+                          : e.location.page
+                            ? `第 ${e.location.page} 页`
+                            : (e.location.position ?? "位置未记录")}
+                      </small>
+                      <blockquote>
+                        {e.location.rawText || "原文未记录，可查看原文件"}
+                      </blockquote>
+                      <dl>
+                        <div>
+                          <dt>原始值</dt>
+                          <dd>{value(e.raw)}</dd>
+                        </div>
+                        <div>
+                          <dt>标准化值</dt>
+                          <dd>{value(e.normalized)}</dd>
+                        </div>
+                      </dl>
+                      <button
+                        className="text-button"
+                        onClick={() => {
+                          setField(active.field);
+                          setSelectedFileId(e.location.fileId);
+                          setPreview({
+                            location: e.location,
+                            name: file?.name ?? e.location.fileId,
+                            key: e.key,
+                          });
+                        }}
+                      >
+                        定位到原文
+                        <ChevronRight size={13} />
+                      </button>
+                      <div className="evidence-related">
+                        {draft.lines
+                          .flatMap((l) =>
+                            (rowsByLine.get(l.id) ?? []).filter((r) =>
+                              r.evidence.some(
+                                (item) =>
+                                  item.id === e.key ||
+                                  item.references?.some((ref) => ref.key === e.key),
+                              ),
+                            ),
+                          )
+                          .map((r) => (
+                            <button
+                              key={`${r.field}-${e.key}`}
+                              className="text-button"
+                              onClick={() => {
+                                select(line.id, r.field);
+                                setSelectedFileId(e.location.fileId);
+                                setPreview({
+                                  location: e.location,
+                                  name: file?.name ?? e.location.fileId,
+                                  key: e.key,
+                                });
+                              }}
+                            >
+                              {short(line.id)} · {r.field}
+                            </button>
+                          ))}
+                      </div>
+                    </article>
+                  );
+                })}
+            </>
+          ) : (
+            <div className="evidence-direct-note">
+              <FileText size={14} />
+              <div>
+                <strong>已定位到具体原文件对照</strong>
+                <span>无需 OCR 字段级坐标，可直接在下方查看原件内容。</span>
+              </div>
+            </div>
           )}
           {activePreview && (
             <MaterialPreview
-              key={activePreview.key}
+              key={`${activePreview.key}-${activePreview.location.fileId}`}
               location={activePreview.location}
               name={activePreview.name}
             />

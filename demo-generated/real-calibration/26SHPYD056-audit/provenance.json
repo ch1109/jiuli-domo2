@@ -1,0 +1,88 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "audit_id": "REMAINING-26SHPYD056-20260921",
+  "created_at": "2026-09-21T00:00:00Z",
+  "model": "gpt-5.6-luna",
+  "execution_task": "run_remaining_p1_p4_audit",
+  "execution_mode": "direct_model_inference",
+  "sample_id": "26SHPYD056",
+  "stage_order": [
+    "P1",
+    "P2",
+    "P3",
+    "P4"
+  ],
+  "stages": [
+    {
+      "stage": "P1",
+      "request_id": "REMAINING-26SHPYD056-20260921-P1",
+      "status": "SUCCESS",
+      "request_file": "P1-request.json",
+      "response_file": "P1-response.json"
+    },
+    {
+      "stage": "P2",
+      "request_id": "REMAINING-26SHPYD056-20260921-P2",
+      "status": "SUCCESS",
+      "request_file": "P2-request.json",
+      "response_file": "P2-response.json"
+    },
+    {
+      "stage": "P3",
+      "request_id": "REMAINING-26SHPYD056-20260921-P3",
+      "status": "SUCCESS",
+      "request_file": "P3-request.json",
+      "response_file": "P3-response.json"
+    },
+    {
+      "stage": "P4",
+      "request_id": "REMAINING-26SHPYD056-20260921-P4",
+      "status": "SUCCESS",
+      "request_file": "P4-request.json",
+      "response_file": "P4-response.json"
+    }
+  ],
+  "artifact_sha256": {
+    "P1-request.json": "bb251453d3add602bc57ac45a4aad89f88534e1addaa67fd691daa50476e8ee4",
+    "P1-response.json": "63102d0fb7f9c03ff70031ac45136f8c06dfddb0cc36552510cc562e3470df56",
+    "P2-request.json": "9799aa2b85fcca91bddc98a645f6965eec79f7052a4018e349c885c7fe118f3d",
+    "P2-response.json": "1c3f004b6b836e7c88109eeb3462490a73c42e531e8caa8302b9ee770d5b8bb9",
+    "P3-request.json": "730b4b09ea6c942cc61d36f296831775e2984a5d8a75ee30907b922d4beed592",
+    "P3-response.json": "58cb7562171d23b155ee2243a6d64cb0902e1e78a8ded4b69b9a7dd5e5d488c4",
+    "P4-request.json": "32ceb5b0ef78da7280be4d63daccecfd84dbcc460ebbbb0a4a33ab8875105f8f",
+    "P4-response.json": "ba1944e1b5ef33c24c6bf17aedf858aaf4ce2fb65caf05d1dfb490878dbfa157"
+  },
+  "hash_scope_note": "artifact_sha256 covers eight request/response artifacts; provenance.json is excluded to avoid self-reference.",
+  "source_sha256": {
+    "AGENTS.md": "63f2c50380ed6303237cce215ce27af1d620d094c215e28d1b1538a3c070e3bb",
+    ".analysis/agent-prompts.md": "7d33f66760c2aeec4e3b1e8386055da89358dfb44f5a595dfef29f4ba82d71d0",
+    ".analysis/run-remaining-p1-p4-audit.md": "85918b9e163ba1d2b05755965ab881f3ac77ffcd03ff9a8575795bb0858987f4",
+    "demo-generated/source_inventory.json": "b6adcb39cfa93845c1c9f018ebb091dc1fb04e0086f96743bc4679f0b25c64cb",
+    "demo-generated/sample_manifest.json": "510d7f31757e5764de054831c9f04602773fe860b4b569e6a50ff40de4d4554c",
+    "demo-generated/manifests/26SHPYD056.json": "01d85c5ad8638fc205962d263316babd2db0bb350692986cedfbbbc16e5879aa",
+    "提示词文件及方案/P1_order_draft_FINAL_v3.0.txt": "3d2662509025b5ef0363843c01c3eaeb59b5be16dcf00ebc45c52cb66ec36f9c",
+    "提示词文件及方案/P2_inspection_facts_FINAL_v3.0.txt": "41c615d9eac52cde376962dc330cd2771883b03917c6a47b77815c9bc77cc36c",
+    "提示词文件及方案/P3_product_matching_FINAL_v3.0.txt": "a07249b9490897b8e5fd1e3f63b14ad318447fd9b4168e3286625a698e620be3",
+    "提示词文件及方案/P4_field_verification_FINAL_v3.0.txt": "02fc74013a818f0b41e3ce2440f74283dcadf034c5dd3bd7b8f9f91c067610b5",
+    "demo-generated/real-calibration/SC-08-audit/INTEGRATION_REPORT.md": "305624fe61ece59cab37006772e347b01f3db8c262802493739e6335317856ce",
+    "真实整单样本/26SHPYD056/委托文件/报关委托确认单（浦壹）2026-03-30.xls": "af7683e49f472b8b4b46ca399b6e0634bc836afe27827202ebf86f86be0ee4b4",
+    "demo-generated/extracted/F-df72916dc019.json": "6f63aefce8952e40c03e584eb1cd3ef59ba0f79a92f61872fcc12ef598560616",
+    "真实整单样本/26SHPYD056/查货文件/1774838084919.pdf": "b04b514450f030761b6d9a05edad1724b6995d1904dedb0175a5e1a46e2bbde4",
+    "demo-generated/extracted/F-970b59d6d5b8.json": "dfbdebb3987f97c6f472f561b12ee77af70547086faff246d9a745efd1a54ee6",
+    "真实整单样本/26SHPYD056/核对单/参考结果.xlsx": "2e21d7c7fc767242166e41720e5dca175ec88263a637ecc9385eed45803d75e1",
+    "demo-generated/extracted/F-ad8ae0641eda.json": "af97deeeb8c1bed5e90ed7c887af6fb1c7a6c3a07eb620c92741b0b944534017",
+    "demo-generated/renders/review-26SHPYD056-inspection-0.jpg": "e5fd6c8ab389170a7364af06da55f0dfe5f41883d95f3d906e0a49bb07af7e5b",
+    "demo-generated/renders/F-970b59d6d5b8/page-1.png": "1b25484c0307c21d6ba7abf36495c74344575b5f74f37cf312eff5dc90bfadb7",
+    "demo-generated/renders/F-970b59d6d5b8/page-2.png": "bbea987774b878f779ff503c25e21672c1762dbb2425631f14b9171186a057d2"
+  },
+  "guardrails": {
+    "read_existing_sc08_responses": false,
+    "modified_original_sc08_directory": false,
+    "modified_app": false,
+    "modified_lib": false,
+    "modified_demo_generated_mock": false,
+    "contains_secrets": false,
+    "read_real_originals_and_renders": true,
+    "reference_materials_used_as_model_conclusion": false
+  }
+}

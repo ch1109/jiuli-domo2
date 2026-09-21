@@ -1,0 +1,691 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P2",
+  "request_id": "REMAINING-2026(DG)ZW003-20260921-P2",
+  "output": {
+    "processing_status": "SUCCESS",
+    "customer_id": "C-66be07d6cabe",
+    "read_status": [
+      {
+        "file_id": "F-ad06ec2cd295",
+        "read_segments": [
+          "page:1"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      },
+      {
+        "file_id": "F-e928e7608540",
+        "read_segments": [
+          "page:1"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      }
+    ],
+    "logical_inspections": [
+      {
+        "warehouse_no": "26010801",
+        "sources": [
+          {
+            "file_id": "F-ad06ec2cd295",
+            "page": 1,
+            "sheet": null,
+            "row": null,
+            "column": null,
+            "raw_text": "查货文件 F-ad06ec2cd295"
+          }
+        ],
+        "range_status": "COMPLETE"
+      },
+      {
+        "warehouse_no": "26010211",
+        "sources": [
+          {
+            "file_id": "F-e928e7608540",
+            "page": 1,
+            "sheet": null,
+            "row": null,
+            "column": null,
+            "raw_text": "查货文件 F-e928e7608540"
+          }
+        ],
+        "range_status": "COMPLETE"
+      }
+    ],
+    "raw_rows": [
+      {
+        "record_no": 1,
+        "warehouse_no": "26010801",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-ad06ec2cd295",
+          "page": 1,
+          "sheet": null,
+          "row": 1,
+          "column": null,
+          "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"ASL\",\"型号\":\"CS5511AN\",\"产地\":\"CHINA\",\"数量\":\"1680\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\"}"
+        },
+        "fields": {
+          "brand": "ASL",
+          "model": "CS5511AN",
+          "unit": "PCS",
+          "quantity": "1680"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-ad06ec2cd295",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"ASL\",\"型号\":\"CS5511AN\",\"产地\":\"CHINA\",\"数量\":\"1680\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\"}"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-ad06ec2cd295",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"ASL\",\"型号\":\"CS5511AN\",\"产地\":\"CHINA\",\"数量\":\"1680\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\"}"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-ad06ec2cd295",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"ASL\",\"型号\":\"CS5511AN\",\"产地\":\"CHINA\",\"数量\":\"1680\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\"}"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-ad06ec2cd295",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"ASL\",\"型号\":\"CS5511AN\",\"产地\":\"CHINA\",\"数量\":\"1680\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\"}"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "CHINA",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-ad06ec2cd295",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第1行\",\"品牌\":\"ASL\",\"型号\":\"CS5511AN\",\"产地\":\"CHINA\",\"数量\":\"1680\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\"}"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 2,
+        "warehouse_no": "26010801",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-ad06ec2cd295",
+          "page": 1,
+          "sheet": null,
+          "row": 2,
+          "column": null,
+          "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"ASL\",\"型号\":\"CS5511AN\",\"产地\":\"CHINA\",\"数量\":\"5040\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\"}"
+        },
+        "fields": {
+          "brand": "ASL",
+          "model": "CS5511AN",
+          "unit": "PCS",
+          "quantity": "5040"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-ad06ec2cd295",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"ASL\",\"型号\":\"CS5511AN\",\"产地\":\"CHINA\",\"数量\":\"5040\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\"}"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-ad06ec2cd295",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"ASL\",\"型号\":\"CS5511AN\",\"产地\":\"CHINA\",\"数量\":\"5040\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\"}"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-ad06ec2cd295",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"ASL\",\"型号\":\"CS5511AN\",\"产地\":\"CHINA\",\"数量\":\"5040\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\"}"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-ad06ec2cd295",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"ASL\",\"型号\":\"CS5511AN\",\"产地\":\"CHINA\",\"数量\":\"5040\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\"}"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "CHINA",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-ad06ec2cd295",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第2行\",\"品牌\":\"ASL\",\"型号\":\"CS5511AN\",\"产地\":\"CHINA\",\"数量\":\"5040\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"UNKNOWN\",\"毛重\":\"UNKNOWN\"}"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 3,
+        "warehouse_no": "26010801",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-ad06ec2cd295",
+          "page": 1,
+          "sheet": null,
+          "row": 3,
+          "column": null,
+          "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"ASL\",\"型号\":\"CS5512AN\",\"产地\":\"CHINA\",\"数量\":\"3360\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"5.00\",\"毛重\":\"5.30\"}"
+        },
+        "fields": {
+          "brand": "ASL",
+          "model": "CS5512AN",
+          "unit": "PCS",
+          "quantity": "3360",
+          "packages": "1",
+          "net_weight": "5.00",
+          "gross_weight": "5.30",
+          "net_weight_unit": "KG",
+          "gross_weight_unit": "KG"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-ad06ec2cd295",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"ASL\",\"型号\":\"CS5512AN\",\"产地\":\"CHINA\",\"数量\":\"3360\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"5.00\",\"毛重\":\"5.30\"}"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-ad06ec2cd295",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"ASL\",\"型号\":\"CS5512AN\",\"产地\":\"CHINA\",\"数量\":\"3360\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"5.00\",\"毛重\":\"5.30\"}"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-ad06ec2cd295",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"ASL\",\"型号\":\"CS5512AN\",\"产地\":\"CHINA\",\"数量\":\"3360\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"5.00\",\"毛重\":\"5.30\"}"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-ad06ec2cd295",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"ASL\",\"型号\":\"CS5512AN\",\"产地\":\"CHINA\",\"数量\":\"3360\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"5.00\",\"毛重\":\"5.30\"}"
+            }
+          ],
+          "packages": [
+            {
+              "file_id": "F-ad06ec2cd295",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"ASL\",\"型号\":\"CS5512AN\",\"产地\":\"CHINA\",\"数量\":\"3360\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"5.00\",\"毛重\":\"5.30\"}"
+            }
+          ],
+          "net_weight": [
+            {
+              "file_id": "F-ad06ec2cd295",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"ASL\",\"型号\":\"CS5512AN\",\"产地\":\"CHINA\",\"数量\":\"3360\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"5.00\",\"毛重\":\"5.30\"}"
+            }
+          ],
+          "gross_weight": [
+            {
+              "file_id": "F-ad06ec2cd295",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"ASL\",\"型号\":\"CS5512AN\",\"产地\":\"CHINA\",\"数量\":\"3360\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"5.00\",\"毛重\":\"5.30\"}"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "CHINA",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-ad06ec2cd295",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"商品表第3行\",\"品牌\":\"ASL\",\"型号\":\"CS5512AN\",\"产地\":\"CHINA\",\"数量\":\"3360\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"5.00\",\"毛重\":\"5.30\"}"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 4,
+        "warehouse_no": "26010211",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-e928e7608540",
+          "page": 1,
+          "sheet": null,
+          "row": 1,
+          "column": null,
+          "raw_text": "{\"page\":1,\"position\":\"主商品表第1行\",\"品牌\":\"REALTEK\",\"型号\":\"ALC897-VA2-CG\",\"产地\":\"CHINA\",\"数量\":\"21600\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"15.40\",\"毛重\":\"22.00\"}"
+        },
+        "fields": {
+          "brand": "REALTEK",
+          "model": "ALC897-VA2-CG",
+          "unit": "PCS",
+          "quantity": "21600",
+          "packages": "1",
+          "net_weight": "15.40",
+          "gross_weight": "22.00",
+          "net_weight_unit": "KG",
+          "gross_weight_unit": "KG"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-e928e7608540",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"主商品表第1行\",\"品牌\":\"REALTEK\",\"型号\":\"ALC897-VA2-CG\",\"产地\":\"CHINA\",\"数量\":\"21600\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"15.40\",\"毛重\":\"22.00\"}"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-e928e7608540",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"主商品表第1行\",\"品牌\":\"REALTEK\",\"型号\":\"ALC897-VA2-CG\",\"产地\":\"CHINA\",\"数量\":\"21600\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"15.40\",\"毛重\":\"22.00\"}"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-e928e7608540",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"主商品表第1行\",\"品牌\":\"REALTEK\",\"型号\":\"ALC897-VA2-CG\",\"产地\":\"CHINA\",\"数量\":\"21600\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"15.40\",\"毛重\":\"22.00\"}"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-e928e7608540",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"主商品表第1行\",\"品牌\":\"REALTEK\",\"型号\":\"ALC897-VA2-CG\",\"产地\":\"CHINA\",\"数量\":\"21600\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"15.40\",\"毛重\":\"22.00\"}"
+            }
+          ],
+          "packages": [
+            {
+              "file_id": "F-e928e7608540",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"主商品表第1行\",\"品牌\":\"REALTEK\",\"型号\":\"ALC897-VA2-CG\",\"产地\":\"CHINA\",\"数量\":\"21600\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"15.40\",\"毛重\":\"22.00\"}"
+            }
+          ],
+          "net_weight": [
+            {
+              "file_id": "F-e928e7608540",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"主商品表第1行\",\"品牌\":\"REALTEK\",\"型号\":\"ALC897-VA2-CG\",\"产地\":\"CHINA\",\"数量\":\"21600\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"15.40\",\"毛重\":\"22.00\"}"
+            }
+          ],
+          "gross_weight": [
+            {
+              "file_id": "F-e928e7608540",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"主商品表第1行\",\"品牌\":\"REALTEK\",\"型号\":\"ALC897-VA2-CG\",\"产地\":\"CHINA\",\"数量\":\"21600\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"15.40\",\"毛重\":\"22.00\"}"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "CHINA",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-e928e7608540",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"主商品表第1行\",\"品牌\":\"REALTEK\",\"型号\":\"ALC897-VA2-CG\",\"产地\":\"CHINA\",\"数量\":\"21600\",\"单位\":\"PCS\",\"件数\":\"1\",\"净重\":\"15.40\",\"毛重\":\"22.00\"}"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 5,
+        "warehouse_no": "26010211",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-e928e7608540",
+          "page": 1,
+          "sheet": null,
+          "row": 2,
+          "column": null,
+          "raw_text": "{\"page\":1,\"position\":\"主商品表第2行\",\"品牌\":\"REALTEK\",\"型号\":\"ALC897-VA2-CG\",\"产地\":\"CHINA\",\"数量\":\"13400\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"10.12\",\"毛重\":\"UNKNOWN\"}"
+        },
+        "fields": {
+          "brand": "REALTEK",
+          "model": "ALC897-VA2-CG",
+          "unit": "PCS",
+          "quantity": "13400",
+          "net_weight": "10.12",
+          "net_weight_unit": "KG"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-e928e7608540",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"主商品表第2行\",\"品牌\":\"REALTEK\",\"型号\":\"ALC897-VA2-CG\",\"产地\":\"CHINA\",\"数量\":\"13400\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"10.12\",\"毛重\":\"UNKNOWN\"}"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-e928e7608540",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"主商品表第2行\",\"品牌\":\"REALTEK\",\"型号\":\"ALC897-VA2-CG\",\"产地\":\"CHINA\",\"数量\":\"13400\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"10.12\",\"毛重\":\"UNKNOWN\"}"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-e928e7608540",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"主商品表第2行\",\"品牌\":\"REALTEK\",\"型号\":\"ALC897-VA2-CG\",\"产地\":\"CHINA\",\"数量\":\"13400\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"10.12\",\"毛重\":\"UNKNOWN\"}"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-e928e7608540",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"主商品表第2行\",\"品牌\":\"REALTEK\",\"型号\":\"ALC897-VA2-CG\",\"产地\":\"CHINA\",\"数量\":\"13400\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"10.12\",\"毛重\":\"UNKNOWN\"}"
+            }
+          ],
+          "net_weight": [
+            {
+              "file_id": "F-e928e7608540",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"主商品表第2行\",\"品牌\":\"REALTEK\",\"型号\":\"ALC897-VA2-CG\",\"产地\":\"CHINA\",\"数量\":\"13400\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"10.12\",\"毛重\":\"UNKNOWN\"}"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "CHINA",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-e928e7608540",
+              "page": 1,
+              "sheet": null,
+              "row": 2,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"主商品表第2行\",\"品牌\":\"REALTEK\",\"型号\":\"ALC897-VA2-CG\",\"产地\":\"CHINA\",\"数量\":\"13400\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"10.12\",\"毛重\":\"UNKNOWN\"}"
+            }
+          }
+        ],
+        "manual_marks": []
+      },
+      {
+        "record_no": 6,
+        "warehouse_no": "26010211",
+        "candidate_warehouse_nos": [],
+        "source": {
+          "file_id": "F-e928e7608540",
+          "page": 1,
+          "sheet": null,
+          "row": 3,
+          "column": null,
+          "raw_text": "{\"page\":1,\"position\":\"主商品表第3行\",\"品牌\":\"REALTEK\",\"型号\":\"RTS5411S-GR\",\"产地\":\"CHINA\",\"数量\":\"2600\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"1.97\",\"毛重\":\"UNKNOWN\",\"COD\":\"TAIWAN, CHINA\"}"
+        },
+        "fields": {
+          "brand": "REALTEK",
+          "model": "RTS5411S-GR",
+          "unit": "PCS",
+          "quantity": "2600",
+          "net_weight": "1.97",
+          "net_weight_unit": "KG"
+        },
+        "field_sources": {
+          "brand": [
+            {
+              "file_id": "F-e928e7608540",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"主商品表第3行\",\"品牌\":\"REALTEK\",\"型号\":\"RTS5411S-GR\",\"产地\":\"CHINA\",\"数量\":\"2600\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"1.97\",\"毛重\":\"UNKNOWN\",\"COD\":\"TAIWAN, CHINA\"}"
+            }
+          ],
+          "model": [
+            {
+              "file_id": "F-e928e7608540",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"主商品表第3行\",\"品牌\":\"REALTEK\",\"型号\":\"RTS5411S-GR\",\"产地\":\"CHINA\",\"数量\":\"2600\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"1.97\",\"毛重\":\"UNKNOWN\",\"COD\":\"TAIWAN, CHINA\"}"
+            }
+          ],
+          "unit": [
+            {
+              "file_id": "F-e928e7608540",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"主商品表第3行\",\"品牌\":\"REALTEK\",\"型号\":\"RTS5411S-GR\",\"产地\":\"CHINA\",\"数量\":\"2600\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"1.97\",\"毛重\":\"UNKNOWN\",\"COD\":\"TAIWAN, CHINA\"}"
+            }
+          ],
+          "quantity": [
+            {
+              "file_id": "F-e928e7608540",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"主商品表第3行\",\"品牌\":\"REALTEK\",\"型号\":\"RTS5411S-GR\",\"产地\":\"CHINA\",\"数量\":\"2600\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"1.97\",\"毛重\":\"UNKNOWN\",\"COD\":\"TAIWAN, CHINA\"}"
+            }
+          ],
+          "net_weight": [
+            {
+              "file_id": "F-e928e7608540",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"主商品表第3行\",\"品牌\":\"REALTEK\",\"型号\":\"RTS5411S-GR\",\"产地\":\"CHINA\",\"数量\":\"2600\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"1.97\",\"毛重\":\"UNKNOWN\",\"COD\":\"TAIWAN, CHINA\"}"
+            }
+          ]
+        },
+        "origin_candidates": [
+          {
+            "value": "CHINA",
+            "kind": "COO",
+            "source": {
+              "file_id": "F-e928e7608540",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"主商品表第3行\",\"品牌\":\"REALTEK\",\"型号\":\"RTS5411S-GR\",\"产地\":\"CHINA\",\"数量\":\"2600\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"1.97\",\"毛重\":\"UNKNOWN\",\"COD\":\"TAIWAN, CHINA\"}"
+            }
+          },
+          {
+            "value": "TAIWAN, CHINA",
+            "kind": "PRINTED_COD",
+            "source": {
+              "file_id": "F-e928e7608540",
+              "page": 1,
+              "sheet": null,
+              "row": 3,
+              "column": null,
+              "raw_text": "{\"page\":1,\"position\":\"主商品表第3行\",\"品牌\":\"REALTEK\",\"型号\":\"RTS5411S-GR\",\"产地\":\"CHINA\",\"数量\":\"2600\",\"单位\":\"PCS\",\"件数\":\"UNKNOWN\",\"净重\":\"1.97\",\"毛重\":\"UNKNOWN\",\"COD\":\"TAIWAN, CHINA\"}"
+            }
+          }
+        ],
+        "manual_marks": []
+      }
+    ],
+    "scope_records": [
+      {
+        "warehouse_no": "26010801",
+        "kind": "LOGICAL_TOTAL",
+        "identifier": "26010801",
+        "member_record_nos": [
+          1,
+          2,
+          3
+        ],
+        "range_complete": true,
+        "has_unresolved_goods": false,
+        "measurements": [],
+        "source": {
+          "file_id": "F-ad06ec2cd295",
+          "page": 1,
+          "sheet": null,
+          "row": null,
+          "column": null,
+          "raw_text": "查货文件 F-ad06ec2cd295"
+        }
+      },
+      {
+        "warehouse_no": "26010211",
+        "kind": "LOGICAL_TOTAL",
+        "identifier": "26010211",
+        "member_record_nos": [
+          4,
+          5,
+          6
+        ],
+        "range_complete": true,
+        "has_unresolved_goods": false,
+        "measurements": [],
+        "source": {
+          "file_id": "F-e928e7608540",
+          "page": 1,
+          "sheet": null,
+          "row": null,
+          "column": null,
+          "raw_text": "查货文件 F-e928e7608540"
+        }
+      }
+    ],
+    "issues": [
+      {
+        "code": "SHARED_SCOPE_VALUE",
+        "row_ref": null,
+        "field": "gross_weight",
+        "message": "箱1前两行共享10/10.60 KG，不拆分；委托两行产地中国台湾与查货CHINA冲突。"
+      },
+      {
+        "code": "ORIGIN_PRIORITY_UNRESOLVED",
+        "row_ref": null,
+        "field": "origin",
+        "message": "箱1前两行共享10/10.60 KG，不拆分；委托两行产地中国台湾与查货CHINA冲突。"
+      },
+      {
+        "code": "SHARED_SCOPE_VALUE",
+        "row_ref": null,
+        "field": "gross_weight",
+        "message": "下方六条LOT明细为主表重复细分证据，不再生成重复库存；箱2毛重17.25为后两行共享；手写RTS5411S-GR 16000pcs与表格2600冲突。"
+      },
+      {
+        "code": "DUPLICATE_SUSPECT",
+        "row_ref": null,
+        "field": null,
+        "message": "下方六条LOT明细为主表重复细分证据，不再生成重复库存；箱2毛重17.25为后两行共享；手写RTS5411S-GR 16000pcs与表格2600冲突。"
+      }
+    ]
+  }
+}

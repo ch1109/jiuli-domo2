@@ -1,0 +1,78 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P1",
+  "request_id": "20260921-2026CNKJ001-P1",
+  "context": {
+    "customer_directory": [
+      {
+        "customer_id": "C-7a1e673169bf",
+        "customer_name": "福建省超年科技股份有限公司",
+        "aliases": []
+      }
+    ],
+    "normalization": {
+      "countries": {
+        "KOREA": "韩国"
+      },
+      "units": {
+        "PCS": "个",
+        "PC": "个"
+      }
+    }
+  },
+  "input": {
+    "materials": [
+      {
+        "file_id": "F-a64834ca9065",
+        "material_type": "ORDER",
+        "segments": [
+          "page:1"
+        ],
+        "content": {
+          "source_path": "真实整单样本/2026CNKJ001/委托文件/报关委托书.jpg",
+          "page": 1,
+          "header": {
+            "customer_name": "福建省超年科技股份有限公司",
+            "agent": "深圳市九立供应链股份有限公司",
+            "date": "2026-05-12"
+          },
+          "columns": {
+            "序号": "1",
+            "品牌": "广濑",
+            "品名": "接插件",
+            "型号": "BM25U-4P/2-V(85)",
+            "产地": "韩国",
+            "数量": "580,000",
+            "报关单价": "0.0397",
+            "报关总价": "23,026.00",
+            "净重": "",
+            "毛重": "",
+            "箱数": ""
+          },
+          "rows": [
+            {
+              "row": 1,
+              "序号": "1",
+              "品牌": "广濑",
+              "品名": "接插件",
+              "型号": "BM25U-4P/2-V(85)",
+              "产地": "韩国",
+              "数量": "580,000",
+              "报关单价": "0.0397",
+              "报关总价": "23,026.00",
+              "净重": "",
+              "毛重": "",
+              "箱数": ""
+            }
+          ],
+          "totals": {
+            "quantity": "580,000",
+            "total_price": "23,026.00",
+            "gross_weight": "0.00",
+            "packages": "0"
+          }
+        }
+      }
+    ]
+  }
+}

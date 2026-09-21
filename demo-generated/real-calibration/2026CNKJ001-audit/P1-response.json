@@ -1,0 +1,294 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P1",
+  "request_id": "20260921-2026CNKJ001-P1",
+  "output": {
+    "processing_status": "SUCCESS",
+    "customer_resolution": {
+      "status": "RESOLVED",
+      "customer_id": "C-7a1e673169bf",
+      "recognized_name": "福建省超年科技股份有限公司",
+      "candidate_customer_ids": [
+        "C-7a1e673169bf"
+      ],
+      "sources": [
+        {
+          "file_id": "F-a64834ca9065",
+          "page": 1,
+          "sheet": null,
+          "row": null,
+          "column": "委托方",
+          "raw_text": "福建省超年科技股份有限公司"
+        }
+      ]
+    },
+    "read_status": [
+      {
+        "file_id": "F-a64834ca9065",
+        "read_segments": [
+          "page:1"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      }
+    ],
+    "rows": [
+      {
+        "row_no": 1,
+        "source": {
+          "file_id": "F-a64834ca9065",
+          "page": 1,
+          "sheet": null,
+          "row": 1,
+          "column": null,
+          "raw_text": "委托商品表第1行"
+        },
+        "values": {
+          "customer_name": "福建省超年科技股份有限公司",
+          "brand": "广濑",
+          "model": "BM25U-4P/2-V(85)",
+          "description": "",
+          "product_name": "接插件",
+          "origin": "韩国",
+          "unit": "",
+          "quantity": "580000",
+          "customs_unit_price": "0.0397",
+          "total_price": "23026.00",
+          "currency": "USD",
+          "packages": "",
+          "net_weight": "",
+          "gross_weight": "",
+          "sku": "",
+          "buyer": "",
+          "supplier_code": "",
+          "supplier": "",
+          "payment_term_days": "",
+          "purchase_order_no": "",
+          "material_no": "",
+          "pallet_count": "",
+          "warehouse_no": "",
+          "production_line": "",
+          "remark": ""
+        },
+        "evidence": [
+          {
+            "field": "customer_name",
+            "value": "福建省超年科技股份有限公司",
+            "unit": "",
+            "source": {
+              "file_id": "F-a64834ca9065",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "委托方或表头",
+              "raw_text": "福建省超年科技股份有限公司"
+            }
+          },
+          {
+            "field": "brand",
+            "value": "广濑",
+            "unit": "",
+            "source": {
+              "file_id": "F-a64834ca9065",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "品牌",
+              "raw_text": "广濑"
+            }
+          },
+          {
+            "field": "product_name",
+            "value": "接插件",
+            "unit": "",
+            "source": {
+              "file_id": "F-a64834ca9065",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "品名",
+              "raw_text": "接插件"
+            }
+          },
+          {
+            "field": "model",
+            "value": "BM25U-4P/2-V(85)",
+            "unit": "",
+            "source": {
+              "file_id": "F-a64834ca9065",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "型号",
+              "raw_text": "BM25U-4P/2-V(85)"
+            }
+          },
+          {
+            "field": "origin",
+            "value": "韩国",
+            "unit": "",
+            "source": {
+              "file_id": "F-a64834ca9065",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "产地",
+              "raw_text": "韩国"
+            }
+          },
+          {
+            "field": "quantity",
+            "value": "580000",
+            "unit": "PCS",
+            "source": {
+              "file_id": "F-a64834ca9065",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "数量",
+              "raw_text": "580,000"
+            }
+          },
+          {
+            "field": "customs_unit_price",
+            "value": "0.0397",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-a64834ca9065",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "报关单价（USD）",
+              "raw_text": "0.0397"
+            }
+          },
+          {
+            "field": "total_price",
+            "value": "23026.00",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-a64834ca9065",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "报关总价（USD）",
+              "raw_text": "23,026.00"
+            }
+          },
+          {
+            "field": "currency",
+            "value": "USD",
+            "unit": "",
+            "source": {
+              "file_id": "F-a64834ca9065",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "报关单价/总价表头",
+              "raw_text": "USD"
+            }
+          }
+        ],
+        "conflicts": []
+      }
+    ],
+    "scope_records": [
+      {
+        "kind": "ORDER_TOTAL",
+        "member_row_nos": [
+          1
+        ],
+        "range_complete": true,
+        "measurements": [
+          {
+            "field": "quantity",
+            "value": "580000",
+            "unit": "PCS",
+            "source": {
+              "file_id": "F-a64834ca9065",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "合计/数量",
+              "raw_text": "580,000"
+            }
+          },
+          {
+            "field": "total_price",
+            "value": "23026.00",
+            "unit": "USD",
+            "source": {
+              "file_id": "F-a64834ca9065",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "合计/报关总价",
+              "raw_text": "23,026.00"
+            }
+          },
+          {
+            "field": "gross_weight",
+            "value": "0.00",
+            "unit": "KG",
+            "source": {
+              "file_id": "F-a64834ca9065",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "合计/毛重",
+              "raw_text": "0.00"
+            }
+          },
+          {
+            "field": "packages",
+            "value": "0",
+            "unit": "箱",
+            "source": {
+              "file_id": "F-a64834ca9065",
+              "page": 1,
+              "sheet": null,
+              "row": null,
+              "column": "合计/箱数",
+              "raw_text": "0"
+            }
+          }
+        ],
+        "source": {
+          "file_id": "F-a64834ca9065",
+          "page": 1,
+          "sheet": null,
+          "row": null,
+          "column": "合计",
+          "raw_text": "580,000 / 23,026.00 / 0.00 / 0"
+        }
+      }
+    ],
+    "unlinked_records": [],
+    "issues": [
+      {
+        "code": "UNIT_MISSING",
+        "row_ref": 1,
+        "field": "unit",
+        "message": "委托图片商品表未填写单位。"
+      },
+      {
+        "code": "FIELD_MISSING",
+        "row_ref": 1,
+        "field": "packages",
+        "message": "委托图片商品表未填写商品级箱数。"
+      },
+      {
+        "code": "FIELD_MISSING",
+        "row_ref": 1,
+        "field": "net_weight",
+        "message": "委托图片商品表未填写商品级净重。"
+      },
+      {
+        "code": "FIELD_MISSING",
+        "row_ref": 1,
+        "field": "gross_weight",
+        "message": "委托图片商品表未填写商品级毛重。"
+      }
+    ]
+  }
+}

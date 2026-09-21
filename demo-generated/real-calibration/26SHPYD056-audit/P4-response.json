@@ -1,0 +1,130 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P4",
+  "request_id": "REMAINING-26SHPYD056-20260921-P4",
+  "output": {
+    "processing_status": "SUCCESS",
+    "row_patches": [
+      {
+        "order_row_id": "D-df72916dc019-R015",
+        "evaluated_fields": [
+          "brand",
+          "model",
+          "origin",
+          "unit",
+          "quantity",
+          "net_weight",
+          "gross_weight",
+          "warehouse_no"
+        ],
+        "field_decisions": [
+          {
+            "field": "brand",
+            "decision": "KEEP",
+            "result_value": "MARVELL",
+            "verification_status": "VERIFIED_CONSISTENT",
+            "evidence_keys": [
+              "E-P4-MARVELL-BRAND"
+            ],
+            "candidate_values": [],
+            "referenced_issue_ids": [],
+            "missing_required": false,
+            "reason": "完整查货范围的品牌与委托值一致。"
+          },
+          {
+            "field": "model",
+            "decision": "KEEP",
+            "result_value": "88E6240A1TFJ2C000",
+            "verification_status": "VERIFIED_CONSISTENT",
+            "evidence_keys": [
+              "E-P4-MARVELL-MODEL"
+            ],
+            "candidate_values": [],
+            "referenced_issue_ids": [],
+            "missing_required": false,
+            "reason": "两条查货批次型号一致且与委托值一致。"
+          },
+          {
+            "field": "origin",
+            "decision": "KEEP",
+            "result_value": "中国台湾",
+            "verification_status": "VERIFIED_CONSISTENT",
+            "evidence_keys": [
+              "E-P4-MARVELL-ORIGIN"
+            ],
+            "candidate_values": [],
+            "referenced_issue_ids": [],
+            "missing_required": false,
+            "reason": "查货COO为TAIWAN, CHINA，按配置标准化后与当前值一致。"
+          },
+          {
+            "field": "unit",
+            "decision": "KEEP",
+            "result_value": "",
+            "verification_status": "NO_EVIDENCE",
+            "evidence_keys": [],
+            "candidate_values": [],
+            "referenced_issue_ids": [],
+            "missing_required": false,
+            "reason": "查货行没有商品单位，保留当前空值。"
+          },
+          {
+            "field": "quantity",
+            "decision": "KEEP",
+            "result_value": "2700",
+            "verification_status": "NO_EVIDENCE",
+            "evidence_keys": [
+              "E-P4-MARVELL-QTY"
+            ],
+            "candidate_values": [],
+            "referenced_issue_ids": [
+              "ISS-MARVELL-UNIT-MISSING"
+            ],
+            "missing_required": false,
+            "reason": "数量合计一致，但查货缺少单位，不能完成数量可比核验。"
+          },
+          {
+            "field": "net_weight",
+            "decision": "KEEP",
+            "result_value": "6.8",
+            "verification_status": "VERIFIED_CONSISTENT",
+            "evidence_keys": [
+              "E-P4-MARVELL-NW"
+            ],
+            "candidate_values": [],
+            "referenced_issue_ids": [],
+            "missing_required": false,
+            "reason": "同一范围的共享净重6.8 KG与当前值一致。"
+          },
+          {
+            "field": "gross_weight",
+            "decision": "KEEP",
+            "result_value": "7.4",
+            "verification_status": "VERIFIED_CONSISTENT",
+            "evidence_keys": [
+              "E-P4-MARVELL-GW"
+            ],
+            "candidate_values": [],
+            "referenced_issue_ids": [],
+            "missing_required": false,
+            "reason": "同一范围的共享毛重7.4 KG与当前值一致。"
+          },
+          {
+            "field": "warehouse_no",
+            "decision": "FILL",
+            "result_value": "26036383",
+            "verification_status": "VERIFIED_UPDATED",
+            "evidence_keys": [
+              "E-P4-MARVELL-WH"
+            ],
+            "candidate_values": [],
+            "referenced_issue_ids": [],
+            "missing_required": false,
+            "reason": "可靠匹配关系对应的入仓号唯一且完整。"
+          }
+        ]
+      }
+    ],
+    "issues": []
+  }
+}

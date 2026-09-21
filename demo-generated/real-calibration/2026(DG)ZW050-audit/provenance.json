@@ -1,0 +1,78 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "audit_id": "REMAINING-2026(DG)ZW050-20260921",
+  "created_at": "2026-09-21T00:00:00Z",
+  "model": "gpt-5.6-luna",
+  "execution_task": "run_remaining_p1_p4_audit",
+  "execution_mode": "direct_model_inference",
+  "sample_id": "2026(DG)ZW050",
+  "stage_order": [
+    "P1",
+    "P2",
+    "P3",
+    "P4"
+  ],
+  "stages": [
+    {
+      "stage": "P1",
+      "request_id": "REMAINING-2026(DG)ZW050-20260921-P1",
+      "status": "NEEDS_REVIEW",
+      "request_file": "P1-request.json",
+      "response_file": "P1-response.json"
+    },
+    {
+      "stage": "P2",
+      "request_id": "REMAINING-2026(DG)ZW050-20260921-P2",
+      "status": "SUCCESS",
+      "request_file": "P2-request.json",
+      "response_file": "P2-response.json"
+    },
+    {
+      "stage": "P3",
+      "request_id": "REMAINING-2026(DG)ZW050-20260921-P3",
+      "status": "INVALID_INPUT",
+      "request_file": "P3-request.json",
+      "response_file": "P3-response.json"
+    },
+    {
+      "stage": "P4",
+      "request_id": "REMAINING-2026(DG)ZW050-20260921-P4",
+      "status": "INVALID_INPUT",
+      "request_file": "P4-request.json",
+      "response_file": "P4-response.json"
+    }
+  ],
+  "artifact_sha256": {
+    "P1-request.json": "935c5bd59879ccf0cdade298b7e39e5498002f606f7c635173d7c56540223dc3",
+    "P2-request.json": "1945f39419c4bbb2a5036ac31cdbf8199a6b8e0c093695cd6b15c6dc426578bf",
+    "P3-request.json": "3111170a6129a6c191f9c9040882aca96cd0893ba12443abc26e4840c50f68ff",
+    "P4-request.json": "a6a4b6ce8b71aa6a7dbbc69c0eefec83607c814934882d51577432e350c482a2",
+    "P1-response.json": "21f71d301458ef2b626f47a210f9cd9c168fbe667b1b9497d892c2a76fa14209",
+    "P2-response.json": "091416a5a163bb2ddce945b6264efb2ffa42a017b75e8963d44eb3cba810e3f6",
+    "P3-response.json": "0babf86d2c802e9b67dcfc4544b931d6342a22c813ec364157c6409ef72d2f64",
+    "P4-response.json": "3a65868c38581c40186d1cdc34a8d5dc6da404f35f13f95ce365f636bd0dc3d4"
+  },
+  "hash_scope_note": "artifact_sha256 covers eight request/response artifacts; provenance.json is excluded to avoid self-reference.",
+  "source_sha256": {
+    "AGENTS.md": "63f2c50380ed6303237cce215ce27af1d620d094c215e28d1b1538a3c070e3bb",
+    ".analysis/agent-prompts.md": "7d33f66760c2aeec4e3b1e8386055da89358dfb44f5a595dfef29f4ba82d71d0",
+    "demo-generated/source_inventory.json": "b6adcb39cfa93845c1c9f018ebb091dc1fb04e0086f96743bc4679f0b25c64cb",
+    "demo-generated/manifests/2026(DG)ZW050.json": "8d0324dc17353ccbdd8814c6667cb6a36a0256c1a2033bd9620cc7bb6c363cf6",
+    "提示词文件及方案/P1_order_draft_FINAL_v3.0.txt": "3d2662509025b5ef0363843c01c3eaeb59b5be16dcf00ebc45c52cb66ec36f9c",
+    "提示词文件及方案/P2_inspection_facts_FINAL_v3.0.txt": "41c615d9eac52cde376962dc330cd2771883b03917c6a47b77815c9bc77cc36c",
+    "提示词文件及方案/P3_product_matching_FINAL_v3.0.txt": "a07249b9490897b8e5fd1e3f63b14ad318447fd9b4168e3286625a698e620be3",
+    "提示词文件及方案/P4_field_verification_FINAL_v3.0.txt": "02fc74013a818f0b41e3ce2440f74283dcadf034c5dd3bd7b8f9f91c067610b5",
+    "真实整单样本/2026(DG)ZW050/委托文件/东莞智微智能导单文件-1778663696109.xlsx": "73c2a058031e55a236774d7687897666e4bfa6a122a4da6a751b60ce46b026a5",
+    "demo-generated/extracted/F-ab6bfdee3e54.json": "7c751a9acb730fd018d489fd12d97fcf9ac73439aa173fc5faa32d5a286e10ab",
+    "真实整单样本/2026(DG)ZW050/查货文件/1778638120450.pdf": "607c187942b99a2ed0d3d71739f98884c3861d6784dd57dbd3f5ff64965bd037",
+    "demo-generated/extracted/F-bfe5061027e1.json": "540dbe61e01d9187f941d89defc0a553dfaa8d86e5386c5fb8162508ca59f938"
+  },
+  "guardrails": {
+    "read_existing_sc08_responses": false,
+    "modified_original_sc08_directory": false,
+    "modified_app": false,
+    "modified_lib": false,
+    "modified_demo_generated_mock": false,
+    "contains_secrets": false
+  }
+}

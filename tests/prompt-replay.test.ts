@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import { buildScenarioState, useDemoStore } from '../lib/demo-store';
-import { promptFixture, replayPromptResult } from '../lib/domain/prompt-replay';
+import { promptFixture, puyiFixture, replayPromptResult } from '../lib/domain/prompt-replay';
+import { createFinalOutputRow } from '../lib/domain/final-output';
 import type { ExecuteInitialMatchingInput } from '../lib/domain/actions';
 import type { FinalOutputField } from '../lib/domain/types';
 
@@ -146,5 +147,58 @@ describe('连续操作与终态保护',()=>{
     store.completeSelectedDraft();const before=structuredClone({draft:useDemoStore.getState().drafts[0],sheets:useDemoStore.getState().finalReconciliations,versions:useDemoStore.getState().versions,sources:useDemoStore.getState().sources});
     const first=before.draft.lines[0];store.editSelectedLineField(first.id,'备注','不应保存');store.unbindSelectedLine(first.id);store.confirmLine(first.id);store.matchSelectedDraft();store.completeSelectedDraft();
     const after=useDemoStore.getState();expect({draft:after.drafts[0],sheets:after.finalReconciliations,versions:after.versions,sources:after.sources}).toEqual(before);
+  });
+  it('上海浦壹 26SHPYD056 四步全通模型结果正确回放', () => {
+    const draft = {
+      id: puyiFixture.draftId,
+      customerId: puyiFixture.customerId,
+      lineIds: puyiFixture.orderRows.map((r: any) => r.id),
+      materialFileIds: ['F-df72916dc019'],
+      version: 1,
+      status: '待核对',
+      hasAiUpdate: false,
+      isFinalized: false,
+      manuallyEditedFieldKeys: [],
+      updatedAt: '2026-09-20T05:00:00Z',
+    };
+    const entrustmentLines = puyiFixture.orderRows.map((r: any) => ({
+      id: r.id,
+      draftId: puyiFixture.draftId,
+      status: '未开始' as const,
+      sourceOrder: r.sourceOrder,
+      sourceLocation: r.sourceLocation,
+      fields: createFinalOutputRow(r.fields),
+      baseValues: createFinalOutputRow(r.fields),
+      matchRelationIds: [],
+      evidenceIds: [],
+      issueIds: [],
+      updatedFieldNames: [],
+      manuallyConfirmed: false,
+      manuallyConfirmedFieldNames: [],
+      updatedAt: '2026-09-20T05:00:00Z',
+    }));
+    const inspectionSourceLines = puyiFixture.sourceLines.map((s: any) => ({
+      id: s.id,
+      logicalInspectionOrderId: s.logicalInspectionOrderId,
+      customerId: s.customerId,
+      sourceFileId: s.sourceFileId,
+      sourceLocation: s.sourceLocation,
+      fields: s.fields,
+      otherFields: s.otherFields,
+      status: '可匹配' as const,
+      occupiedDraftId: null,
+      occupiedEntrustmentLineId: null,
+      updatedAt: '2026-09-20T05:00:00Z',
+    }));
+    const result = replayPromptResult({
+      draft: draft as any,
+      entrustmentLines: entrustmentLines as any,
+      inspectionSourceLines: inspectionSourceLines as any,
+      now: '2026-09-20T05:00:00Z',
+    }, puyiFixture);
+    expect(result.relations).toHaveLength(1);
+    expect(result.entrustmentLines.filter((l: any) => l.status === '待人工处理')).toHaveLength(8);
+    expect(result.entrustmentLines.filter((l: any) => l.status === '已找到查货依据')).toHaveLength(1);
+    expect(result.evidence.length).toBeGreaterThan(0);
   });
 });

@@ -1,0 +1,36 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P1",
+  "request_id": "REMAINING-多对多样例-20260921-P1",
+  "output": {
+    "processing_status": "NEEDS_REVIEW",
+    "customer_resolution": {
+      "status": "UNRESOLVED",
+      "customer_id": null,
+      "recognized_name": "",
+      "candidate_customer_ids": [],
+      "sources": []
+    },
+    "read_status": [
+      {
+        "file_id": "F-b441496db8b5",
+        "read_segments": [
+          "sheet:Sheet0"
+        ],
+        "unread_segments": [],
+        "status": "COMPLETE"
+      }
+    ],
+    "rows": [],
+    "scope_records": [],
+    "unlinked_records": [],
+    "issues": [
+      {
+        "code": "ORDER_SUBJECT_UNREADABLE",
+        "row_ref": null,
+        "field": "customer_name",
+        "message": "主体委托表仅显示附件查看及系统字段，没有可验证的委托客户和商品表；未把内部单或查货单转成委托行。"
+      }
+    ]
+  }
+}

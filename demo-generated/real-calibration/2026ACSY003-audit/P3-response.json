@@ -1,0 +1,127 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P3",
+  "request_id": "REMAINING-2026ACSY003-20260921-P3",
+  "output": {
+    "processing_status": "SUCCESS",
+    "row_relations": [
+      {
+        "order_row_id": "D-0971c3fd7c49-R001",
+        "match_status": "UNMATCHED",
+        "selected_raw_row_ids": [],
+        "coverage": {
+          "status": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "evidence_keys": []
+        },
+        "evidence_keys": [],
+        "candidate_groups": [],
+        "weak_candidates": [
+          {
+            "raw_row_ids": [
+              "I-2907feed0d42-26033175-L001"
+            ],
+            "evidence_keys": [
+              "E-P3-001-01",
+              "E-P3-001-02",
+              "E-P3-001-03",
+              "E-P3-001-04"
+            ],
+            "reason": "查货客户归属或读取状态未完成，不能自动匹配。"
+          }
+        ],
+        "issues": [
+          "CUSTOMER_SCOPE_UNPROVEN"
+        ]
+      },
+      {
+        "order_row_id": "D-0971c3fd7c49-R002",
+        "match_status": "UNMATCHED",
+        "selected_raw_row_ids": [],
+        "coverage": {
+          "status": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "evidence_keys": []
+        },
+        "evidence_keys": [],
+        "candidate_groups": [],
+        "weak_candidates": [
+          {
+            "raw_row_ids": [
+              "I-2907feed0d42-26033175-L002"
+            ],
+            "evidence_keys": [
+              "E-P3-002-01",
+              "E-P3-002-02",
+              "E-P3-002-03",
+              "E-P3-002-04"
+            ],
+            "reason": "查货客户归属或读取状态未完成，不能自动匹配。"
+          }
+        ],
+        "issues": [
+          "CUSTOMER_SCOPE_UNPROVEN"
+        ]
+      },
+      {
+        "order_row_id": "D-0971c3fd7c49-R003",
+        "match_status": "UNMATCHED",
+        "selected_raw_row_ids": [],
+        "coverage": {
+          "status": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "evidence_keys": []
+        },
+        "evidence_keys": [],
+        "candidate_groups": [],
+        "weak_candidates": [
+          {
+            "raw_row_ids": [
+              "I-2907feed0d42-26033175-L003"
+            ],
+            "evidence_keys": [
+              "E-P3-003-01",
+              "E-P3-003-02",
+              "E-P3-003-03",
+              "E-P3-003-04"
+            ],
+            "reason": "查货客户归属或读取状态未完成，不能自动匹配。"
+          }
+        ],
+        "issues": [
+          "CUSTOMER_SCOPE_UNPROVEN"
+        ]
+      },
+      {
+        "order_row_id": "D-0971c3fd7c49-R004",
+        "match_status": "UNMATCHED",
+        "selected_raw_row_ids": [],
+        "coverage": {
+          "status": "UNCERTAIN",
+          "overlap": "UNKNOWN",
+          "evidence_keys": []
+        },
+        "evidence_keys": [],
+        "candidate_groups": [],
+        "weak_candidates": [
+          {
+            "raw_row_ids": [
+              "I-2907feed0d42-26033175-L004"
+            ],
+            "evidence_keys": [
+              "E-P3-004-01",
+              "E-P3-004-02",
+              "E-P3-004-03",
+              "E-P3-004-04"
+            ],
+            "reason": "查货客户归属或读取状态未完成，不能自动匹配。"
+          }
+        ],
+        "issues": [
+          "CUSTOMER_SCOPE_UNPROVEN"
+        ]
+      }
+    ],
+    "issues": []
+  }
+}

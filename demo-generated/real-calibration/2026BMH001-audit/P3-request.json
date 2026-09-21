@@ -1,0 +1,2934 @@
+{
+  "schema_version": "jiuli-ai-v3",
+  "prompt": "P3",
+  "request_id": "20260921-2026BMH001-P3",
+  "context": {
+    "customer_id": "C-80d0a4f9a7ac",
+    "retrieval_complete": false
+  },
+  "input": {
+    "order_rows": [
+      {
+        "order_row_id": "D-fb448776f711-R007",
+        "customer_id": "C-80d0a4f9a7ac",
+        "identity": {
+          "model": "LM2576SX-3.3/NOPB",
+          "brand": "TI",
+          "origin": "",
+          "quantity": "4000",
+          "unit": "PCS",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-O-R007-MODEL",
+            "field": "model",
+            "value": "LM2576SX-3.3/NOPB",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 7,
+              "column": "D",
+              "raw_text": "LM2576SX-3.3/NOPB"
+            }
+          },
+          {
+            "evidence_key": "E-O-R007-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 7,
+              "column": "C",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-O-R007-QTY",
+            "field": "quantity",
+            "value": "4000",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 7,
+              "column": "H",
+              "raw_text": "4000"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R008",
+        "customer_id": "C-80d0a4f9a7ac",
+        "identity": {
+          "model": "LM2576SX-3.3/NOPB",
+          "brand": "TI",
+          "origin": "",
+          "quantity": "500",
+          "unit": "PCS",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-O-R008-MODEL",
+            "field": "model",
+            "value": "LM2576SX-3.3/NOPB",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 8,
+              "column": "D",
+              "raw_text": "LM2576SX-3.3/NOPB"
+            }
+          },
+          {
+            "evidence_key": "E-O-R008-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 8,
+              "column": "C",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-O-R008-QTY",
+            "field": "quantity",
+            "value": "500",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 8,
+              "column": "H",
+              "raw_text": "500"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R009",
+        "customer_id": "C-80d0a4f9a7ac",
+        "identity": {
+          "model": "LM2904BIDR",
+          "brand": "TI",
+          "origin": "",
+          "quantity": "110000",
+          "unit": "PCS",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-O-R009-MODEL",
+            "field": "model",
+            "value": "LM2904BIDR",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 9,
+              "column": "D",
+              "raw_text": "LM2904BIDR"
+            }
+          },
+          {
+            "evidence_key": "E-O-R009-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 9,
+              "column": "C",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-O-R009-QTY",
+            "field": "quantity",
+            "value": "110000",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 9,
+              "column": "H",
+              "raw_text": "110000"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R010",
+        "customer_id": "C-80d0a4f9a7ac",
+        "identity": {
+          "model": "SN74LVC08ADR",
+          "brand": "TI",
+          "origin": "",
+          "quantity": "20000",
+          "unit": "PCS",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-O-R010-MODEL",
+            "field": "model",
+            "value": "SN74LVC08ADR",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 10,
+              "column": "D",
+              "raw_text": "SN74LVC08ADR"
+            }
+          },
+          {
+            "evidence_key": "E-O-R010-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 10,
+              "column": "C",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-O-R010-QTY",
+            "field": "quantity",
+            "value": "20000",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 10,
+              "column": "H",
+              "raw_text": "20000"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R011",
+        "customer_id": "C-80d0a4f9a7ac",
+        "identity": {
+          "model": "SN74AHC1G08DBVR",
+          "brand": "TI",
+          "origin": "",
+          "quantity": "360000",
+          "unit": "PCS",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-O-R011-MODEL",
+            "field": "model",
+            "value": "SN74AHC1G08DBVR",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 11,
+              "column": "D",
+              "raw_text": "SN74AHC1G08DBVR"
+            }
+          },
+          {
+            "evidence_key": "E-O-R011-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 11,
+              "column": "C",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-O-R011-QTY",
+            "field": "quantity",
+            "value": "360000",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 11,
+              "column": "H",
+              "raw_text": "360000"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R012",
+        "customer_id": "C-80d0a4f9a7ac",
+        "identity": {
+          "model": "SN74HC245PWR",
+          "brand": "TI",
+          "origin": "",
+          "quantity": "24000",
+          "unit": "PCS",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-O-R012-MODEL",
+            "field": "model",
+            "value": "SN74HC245PWR",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 12,
+              "column": "D",
+              "raw_text": "SN74HC245PWR"
+            }
+          },
+          {
+            "evidence_key": "E-O-R012-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 12,
+              "column": "C",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-O-R012-QTY",
+            "field": "quantity",
+            "value": "24000",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 12,
+              "column": "H",
+              "raw_text": "24000"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R013",
+        "customer_id": "C-80d0a4f9a7ac",
+        "identity": {
+          "model": "SN74LVC1G04DBVR",
+          "brand": "TI",
+          "origin": "",
+          "quantity": "150000",
+          "unit": "PCS",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-O-R013-MODEL",
+            "field": "model",
+            "value": "SN74LVC1G04DBVR",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 13,
+              "column": "D",
+              "raw_text": "SN74LVC1G04DBVR"
+            }
+          },
+          {
+            "evidence_key": "E-O-R013-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 13,
+              "column": "C",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-O-R013-QTY",
+            "field": "quantity",
+            "value": "150000",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 13,
+              "column": "H",
+              "raw_text": "150000"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R014",
+        "customer_id": "C-80d0a4f9a7ac",
+        "identity": {
+          "model": "TLV62569DBVR",
+          "brand": "TI",
+          "origin": "",
+          "quantity": "450000",
+          "unit": "PCS",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-O-R014-MODEL",
+            "field": "model",
+            "value": "TLV62569DBVR",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 14,
+              "column": "D",
+              "raw_text": "TLV62569DBVR"
+            }
+          },
+          {
+            "evidence_key": "E-O-R014-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 14,
+              "column": "C",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-O-R014-QTY",
+            "field": "quantity",
+            "value": "450000",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 14,
+              "column": "H",
+              "raw_text": "450000"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R015",
+        "customer_id": "C-80d0a4f9a7ac",
+        "identity": {
+          "model": "TPS51200DRCR",
+          "brand": "TI",
+          "origin": "",
+          "quantity": "12000",
+          "unit": "PCS",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-O-R015-MODEL",
+            "field": "model",
+            "value": "TPS51200DRCR",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 15,
+              "column": "D",
+              "raw_text": "TPS51200DRCR"
+            }
+          },
+          {
+            "evidence_key": "E-O-R015-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 15,
+              "column": "C",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-O-R015-QTY",
+            "field": "quantity",
+            "value": "12000",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 15,
+              "column": "H",
+              "raw_text": "12000"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R016",
+        "customer_id": "C-80d0a4f9a7ac",
+        "identity": {
+          "model": "TXS0108EPWR",
+          "brand": "TI",
+          "origin": "",
+          "quantity": "86000",
+          "unit": "PCS",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-O-R016-MODEL",
+            "field": "model",
+            "value": "TXS0108EPWR",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 16,
+              "column": "D",
+              "raw_text": "TXS0108EPWR"
+            }
+          },
+          {
+            "evidence_key": "E-O-R016-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 16,
+              "column": "C",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-O-R016-QTY",
+            "field": "quantity",
+            "value": "86000",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 16,
+              "column": "H",
+              "raw_text": "86000"
+            }
+          }
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R017",
+        "customer_id": "C-80d0a4f9a7ac",
+        "identity": {
+          "model": "TXS0108EPWR",
+          "brand": "TI",
+          "origin": "",
+          "quantity": "26000",
+          "unit": "PCS",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": ""
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-O-R017-MODEL",
+            "field": "model",
+            "value": "TXS0108EPWR",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 17,
+              "column": "D",
+              "raw_text": "TXS0108EPWR"
+            }
+          },
+          {
+            "evidence_key": "E-O-R017-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 17,
+              "column": "C",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-O-R017-QTY",
+            "field": "quantity",
+            "value": "26000",
+            "source": {
+              "file_id": "F-fb448776f711",
+              "page": null,
+              "sheet": "Sheet1",
+              "row": 17,
+              "column": "H",
+              "raw_text": "26000"
+            }
+          }
+        ]
+      }
+    ],
+    "inspection_candidates": [
+      {
+        "raw_row_id": "I-F-b98a101d8392-26027114-L001",
+        "customer_id": "C-80d0a4f9a7ac",
+        "logical_inspection_id": "I-F-b98a101d8392-26027114",
+        "warehouse_no": "26027114",
+        "merged_product_id": null,
+        "identity": {
+          "model": "TXS0108EPWR",
+          "brand": "TI",
+          "origin": "CN",
+          "quantity": "16000",
+          "unit": "EA",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": "",
+          "customer_verification": "UNCONFIRMED"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-I-F_b98a101d8392_26027114_L001-MODEL",
+            "field": "model",
+            "value": "TXS0108EPWR",
+            "source": {
+              "file_id": "F-b98a101d8392",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "TXS0108EPWR"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_b98a101d8392_26027114_L001-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-b98a101d8392",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_b98a101d8392_26027114_L001-ORIGIN",
+            "field": "origin",
+            "value": "CN",
+            "source": {
+              "file_id": "F-b98a101d8392",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "CN"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_b98a101d8392_26027114_L001-QTY",
+            "field": "quantity",
+            "value": "16000",
+            "source": {
+              "file_id": "F-b98a101d8392",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "16000"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-c5195fdb15a3-26027143-L001",
+        "customer_id": "C-80d0a4f9a7ac",
+        "logical_inspection_id": "I-F-c5195fdb15a3-26027143",
+        "warehouse_no": "26027143",
+        "merged_product_id": null,
+        "identity": {
+          "model": "TXS0108EPWR",
+          "brand": "TI",
+          "origin": "CN",
+          "quantity": "30000",
+          "unit": "EA",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": "",
+          "customer_verification": "UNCONFIRMED"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-I-F_c5195fdb15a3_26027143_L001-MODEL",
+            "field": "model",
+            "value": "TXS0108EPWR",
+            "source": {
+              "file_id": "F-c5195fdb15a3",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "TXS0108EPWR"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_c5195fdb15a3_26027143_L001-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-c5195fdb15a3",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_c5195fdb15a3_26027143_L001-ORIGIN",
+            "field": "origin",
+            "value": "CN",
+            "source": {
+              "file_id": "F-c5195fdb15a3",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "CN"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_c5195fdb15a3_26027143_L001-QTY",
+            "field": "quantity",
+            "value": "30000",
+            "source": {
+              "file_id": "F-c5195fdb15a3",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "30000"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-c5195fdb15a3-26027143-L002",
+        "customer_id": "C-80d0a4f9a7ac",
+        "logical_inspection_id": "I-F-c5195fdb15a3-26027143",
+        "warehouse_no": "26027143",
+        "merged_product_id": null,
+        "identity": {
+          "model": "TXS0108EPWR",
+          "brand": "TI",
+          "origin": "CN",
+          "quantity": "40000",
+          "unit": "EA",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": "",
+          "customer_verification": "UNCONFIRMED"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-I-F_c5195fdb15a3_26027143_L002-MODEL",
+            "field": "model",
+            "value": "TXS0108EPWR",
+            "source": {
+              "file_id": "F-c5195fdb15a3",
+              "page": 2,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "TXS0108EPWR"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_c5195fdb15a3_26027143_L002-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-c5195fdb15a3",
+              "page": 2,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_c5195fdb15a3_26027143_L002-ORIGIN",
+            "field": "origin",
+            "value": "CN",
+            "source": {
+              "file_id": "F-c5195fdb15a3",
+              "page": 2,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "CN"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_c5195fdb15a3_26027143_L002-QTY",
+            "field": "quantity",
+            "value": "40000",
+            "source": {
+              "file_id": "F-c5195fdb15a3",
+              "page": 2,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "40000"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-94d0c3955b2a-26027191-L001",
+        "customer_id": "C-80d0a4f9a7ac",
+        "logical_inspection_id": "I-F-94d0c3955b2a-26027191",
+        "warehouse_no": "26027191",
+        "merged_product_id": null,
+        "identity": {
+          "model": "TLV62569DBVR",
+          "brand": "TI",
+          "origin": "US",
+          "quantity": "150000",
+          "unit": "EA",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": "",
+          "customer_verification": "UNCONFIRMED"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-I-F_94d0c3955b2a_26027191_L001-MODEL",
+            "field": "model",
+            "value": "TLV62569DBVR",
+            "source": {
+              "file_id": "F-94d0c3955b2a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "TLV62569DBVR"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_94d0c3955b2a_26027191_L001-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-94d0c3955b2a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_94d0c3955b2a_26027191_L001-ORIGIN",
+            "field": "origin",
+            "value": "US",
+            "source": {
+              "file_id": "F-94d0c3955b2a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "US"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_94d0c3955b2a_26027191_L001-QTY",
+            "field": "quantity",
+            "value": "150000",
+            "source": {
+              "file_id": "F-94d0c3955b2a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "150000"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-94d0c3955b2a-26027191-L002",
+        "customer_id": "C-80d0a4f9a7ac",
+        "logical_inspection_id": "I-F-94d0c3955b2a-26027191",
+        "warehouse_no": "26027191",
+        "merged_product_id": null,
+        "identity": {
+          "model": "TLV62569DBVR",
+          "brand": "TI",
+          "origin": "US",
+          "quantity": "150000",
+          "unit": "EA",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": "",
+          "customer_verification": "UNCONFIRMED"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-I-F_94d0c3955b2a_26027191_L002-MODEL",
+            "field": "model",
+            "value": "TLV62569DBVR",
+            "source": {
+              "file_id": "F-94d0c3955b2a",
+              "page": 2,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "TLV62569DBVR"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_94d0c3955b2a_26027191_L002-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-94d0c3955b2a",
+              "page": 2,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_94d0c3955b2a_26027191_L002-ORIGIN",
+            "field": "origin",
+            "value": "US",
+            "source": {
+              "file_id": "F-94d0c3955b2a",
+              "page": 2,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "US"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_94d0c3955b2a_26027191_L002-QTY",
+            "field": "quantity",
+            "value": "150000",
+            "source": {
+              "file_id": "F-94d0c3955b2a",
+              "page": 2,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "150000"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-94d0c3955b2a-26027191-L003",
+        "customer_id": "C-80d0a4f9a7ac",
+        "logical_inspection_id": "I-F-94d0c3955b2a-26027191",
+        "warehouse_no": "26027191",
+        "merged_product_id": null,
+        "identity": {
+          "model": "TLV62569DBVR",
+          "brand": "TI",
+          "origin": "US",
+          "quantity": "150000",
+          "unit": "EA",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": "",
+          "customer_verification": "UNCONFIRMED"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-I-F_94d0c3955b2a_26027191_L003-MODEL",
+            "field": "model",
+            "value": "TLV62569DBVR",
+            "source": {
+              "file_id": "F-94d0c3955b2a",
+              "page": 3,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "TLV62569DBVR"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_94d0c3955b2a_26027191_L003-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-94d0c3955b2a",
+              "page": 3,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_94d0c3955b2a_26027191_L003-ORIGIN",
+            "field": "origin",
+            "value": "US",
+            "source": {
+              "file_id": "F-94d0c3955b2a",
+              "page": 3,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "US"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_94d0c3955b2a_26027191_L003-QTY",
+            "field": "quantity",
+            "value": "150000",
+            "source": {
+              "file_id": "F-94d0c3955b2a",
+              "page": 3,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "150000"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-39b0b8e82a3a-26027254-L001",
+        "customer_id": "C-80d0a4f9a7ac",
+        "logical_inspection_id": "I-F-39b0b8e82a3a-26027254",
+        "warehouse_no": "26027254",
+        "merged_product_id": null,
+        "identity": {
+          "model": "TXS0108EPWR",
+          "brand": "TI",
+          "origin": "CN",
+          "quantity": "26000",
+          "unit": "EA",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": "",
+          "customer_verification": "UNCONFIRMED"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-I-F_39b0b8e82a3a_26027254_L001-MODEL",
+            "field": "model",
+            "value": "TXS0108EPWR",
+            "source": {
+              "file_id": "F-39b0b8e82a3a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "TXS0108EPWR"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_39b0b8e82a3a_26027254_L001-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-39b0b8e82a3a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_39b0b8e82a3a_26027254_L001-ORIGIN",
+            "field": "origin",
+            "value": "CN",
+            "source": {
+              "file_id": "F-39b0b8e82a3a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "CN"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_39b0b8e82a3a_26027254_L001-QTY",
+            "field": "quantity",
+            "value": "26000",
+            "source": {
+              "file_id": "F-39b0b8e82a3a",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "26000"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-a06d575c587d-26027251-L001",
+        "customer_id": "C-80d0a4f9a7ac",
+        "logical_inspection_id": "I-F-a06d575c587d-26027251",
+        "warehouse_no": "26027251",
+        "merged_product_id": null,
+        "identity": {
+          "model": "SN74HC245PWR",
+          "brand": "TI",
+          "origin": "US",
+          "quantity": "24000",
+          "unit": "EA",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": "",
+          "customer_verification": "UNCONFIRMED"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-I-F_a06d575c587d_26027251_L001-MODEL",
+            "field": "model",
+            "value": "SN74HC245PWR",
+            "source": {
+              "file_id": "F-a06d575c587d",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "SN74HC245PWR"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_a06d575c587d_26027251_L001-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-a06d575c587d",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_a06d575c587d_26027251_L001-ORIGIN",
+            "field": "origin",
+            "value": "US",
+            "source": {
+              "file_id": "F-a06d575c587d",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "US"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_a06d575c587d_26027251_L001-QTY",
+            "field": "quantity",
+            "value": "24000",
+            "source": {
+              "file_id": "F-a06d575c587d",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "24000"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-69127fcfa5c3-26027300-L001",
+        "customer_id": "C-80d0a4f9a7ac",
+        "logical_inspection_id": "I-F-69127fcfa5c3-26027300",
+        "warehouse_no": "26027300",
+        "merged_product_id": null,
+        "identity": {
+          "model": "SN74LVC1G04DBVR",
+          "brand": "TI",
+          "origin": "DE",
+          "quantity": "150000",
+          "unit": "EA",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": "",
+          "customer_verification": "UNCONFIRMED"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-I-F_69127fcfa5c3_26027300_L001-MODEL",
+            "field": "model",
+            "value": "SN74LVC1G04DBVR",
+            "source": {
+              "file_id": "F-69127fcfa5c3",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "SN74LVC1G04DBVR"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_69127fcfa5c3_26027300_L001-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-69127fcfa5c3",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_69127fcfa5c3_26027300_L001-ORIGIN",
+            "field": "origin",
+            "value": "DE",
+            "source": {
+              "file_id": "F-69127fcfa5c3",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "DE"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_69127fcfa5c3_26027300_L001-QTY",
+            "field": "quantity",
+            "value": "150000",
+            "source": {
+              "file_id": "F-69127fcfa5c3",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "150000"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-69127fcfa5c3-26027300-L002",
+        "customer_id": "C-80d0a4f9a7ac",
+        "logical_inspection_id": "I-F-69127fcfa5c3-26027300",
+        "warehouse_no": "26027300",
+        "merged_product_id": null,
+        "identity": {
+          "model": "INA180A2IDBVR",
+          "brand": "TI",
+          "origin": "JP",
+          "quantity": "9000",
+          "unit": "EA",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": "",
+          "customer_verification": "UNCONFIRMED"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-I-F_69127fcfa5c3_26027300_L002-MODEL",
+            "field": "model",
+            "value": "INA180A2IDBVR",
+            "source": {
+              "file_id": "F-69127fcfa5c3",
+              "page": 2,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "INA180A2IDBVR"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_69127fcfa5c3_26027300_L002-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-69127fcfa5c3",
+              "page": 2,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_69127fcfa5c3_26027300_L002-ORIGIN",
+            "field": "origin",
+            "value": "JP",
+            "source": {
+              "file_id": "F-69127fcfa5c3",
+              "page": 2,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "JP"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_69127fcfa5c3_26027300_L002-QTY",
+            "field": "quantity",
+            "value": "9000",
+            "source": {
+              "file_id": "F-69127fcfa5c3",
+              "page": 2,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "9000"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-de4e00bf55d8-26027299-L001",
+        "customer_id": "C-80d0a4f9a7ac",
+        "logical_inspection_id": "I-F-de4e00bf55d8-26027299",
+        "warehouse_no": "26027299",
+        "merged_product_id": null,
+        "identity": {
+          "model": "LM2576SX-3.3/NOPB",
+          "brand": "TI",
+          "origin": "GB",
+          "quantity": "500",
+          "unit": "EA",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": "",
+          "customer_verification": "UNCONFIRMED"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-I-F_de4e00bf55d8_26027299_L001-MODEL",
+            "field": "model",
+            "value": "LM2576SX-3.3/NOPB",
+            "source": {
+              "file_id": "F-de4e00bf55d8",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "LM2576SX-3.3/NOPB"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_de4e00bf55d8_26027299_L001-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-de4e00bf55d8",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_de4e00bf55d8_26027299_L001-ORIGIN",
+            "field": "origin",
+            "value": "GB",
+            "source": {
+              "file_id": "F-de4e00bf55d8",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "GB"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_de4e00bf55d8_26027299_L001-QTY",
+            "field": "quantity",
+            "value": "500",
+            "source": {
+              "file_id": "F-de4e00bf55d8",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "500"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-b03e0011849f-26027298-L001",
+        "customer_id": "C-80d0a4f9a7ac",
+        "logical_inspection_id": "I-F-b03e0011849f-26027298",
+        "warehouse_no": "26027298",
+        "merged_product_id": null,
+        "identity": {
+          "model": "LM2576SX-3.3/NOPB",
+          "brand": "TI",
+          "origin": "DE/GB",
+          "quantity": "4000",
+          "unit": "EA",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": "",
+          "customer_verification": "UNCONFIRMED"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-I-F_b03e0011849f_26027298_L001-MODEL",
+            "field": "model",
+            "value": "LM2576SX-3.3/NOPB",
+            "source": {
+              "file_id": "F-b03e0011849f",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "LM2576SX-3.3/NOPB"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_b03e0011849f_26027298_L001-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-b03e0011849f",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_b03e0011849f_26027298_L001-ORIGIN",
+            "field": "origin",
+            "value": "DE/GB",
+            "source": {
+              "file_id": "F-b03e0011849f",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "DE/GB"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_b03e0011849f_26027298_L001-QTY",
+            "field": "quantity",
+            "value": "4000",
+            "source": {
+              "file_id": "F-b03e0011849f",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "4000"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-cb09c02b9ed5-26027323-L001",
+        "customer_id": "C-80d0a4f9a7ac",
+        "logical_inspection_id": "I-F-cb09c02b9ed5-26027323",
+        "warehouse_no": "26027323",
+        "merged_product_id": null,
+        "identity": {
+          "model": "TPS51200DRCR",
+          "brand": "TI",
+          "origin": "JP",
+          "quantity": "12000",
+          "unit": "EA",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": "",
+          "customer_verification": "UNCONFIRMED"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-I-F_cb09c02b9ed5_26027323_L001-MODEL",
+            "field": "model",
+            "value": "TPS51200DRCR",
+            "source": {
+              "file_id": "F-cb09c02b9ed5",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "TPS51200DRCR"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_cb09c02b9ed5_26027323_L001-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-cb09c02b9ed5",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_cb09c02b9ed5_26027323_L001-ORIGIN",
+            "field": "origin",
+            "value": "JP",
+            "source": {
+              "file_id": "F-cb09c02b9ed5",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "JP"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_cb09c02b9ed5_26027323_L001-QTY",
+            "field": "quantity",
+            "value": "12000",
+            "source": {
+              "file_id": "F-cb09c02b9ed5",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "12000"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-f29936219cd1-26027322-L001",
+        "customer_id": "C-80d0a4f9a7ac",
+        "logical_inspection_id": "I-F-f29936219cd1-26027322",
+        "warehouse_no": "26027322",
+        "merged_product_id": null,
+        "identity": {
+          "model": "SN74LVC08ADR",
+          "brand": "TI",
+          "origin": "US",
+          "quantity": "20000",
+          "unit": "EA",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": "",
+          "customer_verification": "UNCONFIRMED"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-I-F_f29936219cd1_26027322_L001-MODEL",
+            "field": "model",
+            "value": "SN74LVC08ADR",
+            "source": {
+              "file_id": "F-f29936219cd1",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "SN74LVC08ADR"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_f29936219cd1_26027322_L001-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-f29936219cd1",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_f29936219cd1_26027322_L001-ORIGIN",
+            "field": "origin",
+            "value": "US",
+            "source": {
+              "file_id": "F-f29936219cd1",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "US"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_f29936219cd1_26027322_L001-QTY",
+            "field": "quantity",
+            "value": "20000",
+            "source": {
+              "file_id": "F-f29936219cd1",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "20000"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-f29936219cd1-26027322-L002",
+        "customer_id": "C-80d0a4f9a7ac",
+        "logical_inspection_id": "I-F-f29936219cd1-26027322",
+        "warehouse_no": "26027322",
+        "merged_product_id": null,
+        "identity": {
+          "model": "LM2904BIDR",
+          "brand": "TI",
+          "origin": "US",
+          "quantity": "150000",
+          "unit": "EA",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": "",
+          "customer_verification": "UNCONFIRMED"
+        },
+        "scope_summary": {
+          "coverage": "COMPLETE",
+          "overlap": "DISJOINT",
+          "has_extra_goods": false,
+          "has_unresolved_goods": false
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-I-F_f29936219cd1_26027322_L002-MODEL",
+            "field": "model",
+            "value": "LM2904BIDR",
+            "source": {
+              "file_id": "F-f29936219cd1",
+              "page": 2,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "LM2904BIDR"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_f29936219cd1_26027322_L002-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-f29936219cd1",
+              "page": 2,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_f29936219cd1_26027322_L002-ORIGIN",
+            "field": "origin",
+            "value": "US",
+            "source": {
+              "file_id": "F-f29936219cd1",
+              "page": 2,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "US"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_f29936219cd1_26027322_L002-QTY",
+            "field": "quantity",
+            "value": "150000",
+            "source": {
+              "file_id": "F-f29936219cd1",
+              "page": 2,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "150000"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-276766064bb2-26027223-L001",
+        "customer_id": "C-80d0a4f9a7ac",
+        "logical_inspection_id": "I-F-276766064bb2-26027223",
+        "warehouse_no": "26027223",
+        "merged_product_id": null,
+        "identity": {
+          "model": "SN74AHC1G08DBVR",
+          "brand": "TI",
+          "origin": "US",
+          "quantity": "300000",
+          "unit": "EA",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": "",
+          "customer_verification": "UNCONFIRMED"
+        },
+        "scope_summary": {
+          "coverage": "PARTIAL",
+          "overlap": "UNKNOWN",
+          "has_extra_goods": false,
+          "has_unresolved_goods": true
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L001-MODEL",
+            "field": "model",
+            "value": "SN74AHC1G08DBVR",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "SN74AHC1G08DBVR"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L001-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L001-ORIGIN",
+            "field": "origin",
+            "value": "US",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "US"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L001-QTY",
+            "field": "quantity",
+            "value": "300000",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 1,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "300000"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-276766064bb2-26027223-L002",
+        "customer_id": "C-80d0a4f9a7ac",
+        "logical_inspection_id": "I-F-276766064bb2-26027223",
+        "warehouse_no": "26027223",
+        "merged_product_id": null,
+        "identity": {
+          "model": "SN74AHC1G08DBVR",
+          "brand": "TI",
+          "origin": "US",
+          "quantity": "300000",
+          "unit": "EA",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": "",
+          "customer_verification": "UNCONFIRMED"
+        },
+        "scope_summary": {
+          "coverage": "PARTIAL",
+          "overlap": "UNKNOWN",
+          "has_extra_goods": false,
+          "has_unresolved_goods": true
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L002-MODEL",
+            "field": "model",
+            "value": "SN74AHC1G08DBVR",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 2,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "SN74AHC1G08DBVR"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L002-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 2,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L002-ORIGIN",
+            "field": "origin",
+            "value": "US",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 2,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "US"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L002-QTY",
+            "field": "quantity",
+            "value": "300000",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 2,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "300000"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-276766064bb2-26027223-L003",
+        "customer_id": "C-80d0a4f9a7ac",
+        "logical_inspection_id": "I-F-276766064bb2-26027223",
+        "warehouse_no": "26027223",
+        "merged_product_id": null,
+        "identity": {
+          "model": "SN74AHC1G08DBVR",
+          "brand": "TI",
+          "origin": "US",
+          "quantity": "300000",
+          "unit": "EA",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": "",
+          "customer_verification": "UNCONFIRMED"
+        },
+        "scope_summary": {
+          "coverage": "PARTIAL",
+          "overlap": "UNKNOWN",
+          "has_extra_goods": false,
+          "has_unresolved_goods": true
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L003-MODEL",
+            "field": "model",
+            "value": "SN74AHC1G08DBVR",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 3,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "SN74AHC1G08DBVR"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L003-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 3,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L003-ORIGIN",
+            "field": "origin",
+            "value": "US",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 3,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "US"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L003-QTY",
+            "field": "quantity",
+            "value": "300000",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 3,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "300000"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-276766064bb2-26027223-L004",
+        "customer_id": "C-80d0a4f9a7ac",
+        "logical_inspection_id": "I-F-276766064bb2-26027223",
+        "warehouse_no": "26027223",
+        "merged_product_id": null,
+        "identity": {
+          "model": "SN74AHC1G08DBVR",
+          "brand": "TI",
+          "origin": "US",
+          "quantity": "120000",
+          "unit": "EA",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": "",
+          "customer_verification": "UNCONFIRMED"
+        },
+        "scope_summary": {
+          "coverage": "PARTIAL",
+          "overlap": "UNKNOWN",
+          "has_extra_goods": false,
+          "has_unresolved_goods": true
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L004-MODEL",
+            "field": "model",
+            "value": "SN74AHC1G08DBVR",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 4,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "SN74AHC1G08DBVR"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L004-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 4,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L004-ORIGIN",
+            "field": "origin",
+            "value": "US",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 4,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "US"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L004-QTY",
+            "field": "quantity",
+            "value": "120000",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 4,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "120000"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-276766064bb2-26027223-L005",
+        "customer_id": "C-80d0a4f9a7ac",
+        "logical_inspection_id": "I-F-276766064bb2-26027223",
+        "warehouse_no": "26027223",
+        "merged_product_id": null,
+        "identity": {
+          "model": "SN74AHC1G08DBVR",
+          "brand": "TI",
+          "origin": "US",
+          "quantity": "180000",
+          "unit": "EA",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": "",
+          "customer_verification": "UNCONFIRMED"
+        },
+        "scope_summary": {
+          "coverage": "PARTIAL",
+          "overlap": "UNKNOWN",
+          "has_extra_goods": false,
+          "has_unresolved_goods": true
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L005-MODEL",
+            "field": "model",
+            "value": "SN74AHC1G08DBVR",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 4,
+              "sheet": null,
+              "row": 2,
+              "column": "PN",
+              "raw_text": "SN74AHC1G08DBVR"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L005-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 4,
+              "sheet": null,
+              "row": 2,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L005-ORIGIN",
+            "field": "origin",
+            "value": "US",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 4,
+              "sheet": null,
+              "row": 2,
+              "column": "COO",
+              "raw_text": "US"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L005-QTY",
+            "field": "quantity",
+            "value": "180000",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 4,
+              "sheet": null,
+              "row": 2,
+              "column": "QTY",
+              "raw_text": "180000"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-276766064bb2-26027223-L006",
+        "customer_id": "C-80d0a4f9a7ac",
+        "logical_inspection_id": "I-F-276766064bb2-26027223",
+        "warehouse_no": "26027223",
+        "merged_product_id": null,
+        "identity": {
+          "model": "SN74AHC1G08DBVR",
+          "brand": "TI",
+          "origin": "US",
+          "quantity": "300000",
+          "unit": "EA",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": "",
+          "customer_verification": "UNCONFIRMED"
+        },
+        "scope_summary": {
+          "coverage": "PARTIAL",
+          "overlap": "UNKNOWN",
+          "has_extra_goods": false,
+          "has_unresolved_goods": true
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L006-MODEL",
+            "field": "model",
+            "value": "SN74AHC1G08DBVR",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 5,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "SN74AHC1G08DBVR"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L006-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 5,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L006-ORIGIN",
+            "field": "origin",
+            "value": "US",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 5,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "US"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L006-QTY",
+            "field": "quantity",
+            "value": "300000",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 5,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "300000"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      },
+      {
+        "raw_row_id": "I-F-276766064bb2-26027223-L007",
+        "customer_id": "C-80d0a4f9a7ac",
+        "logical_inspection_id": "I-F-276766064bb2-26027223",
+        "warehouse_no": "26027223",
+        "merged_product_id": null,
+        "identity": {
+          "model": "SN74AHC1G08DBVR",
+          "brand": "TI",
+          "origin": "US",
+          "quantity": "300000",
+          "unit": "EA",
+          "material_no": "",
+          "purchase_order_no": "",
+          "sku": "",
+          "box_no": "",
+          "dc": "",
+          "lot": "",
+          "customer_verification": "UNCONFIRMED"
+        },
+        "scope_summary": {
+          "coverage": "PARTIAL",
+          "overlap": "UNKNOWN",
+          "has_extra_goods": false,
+          "has_unresolved_goods": true
+        },
+        "evidence": [
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L007-MODEL",
+            "field": "model",
+            "value": "SN74AHC1G08DBVR",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 6,
+              "sheet": null,
+              "row": 1,
+              "column": "PN",
+              "raw_text": "SN74AHC1G08DBVR"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L007-BRAND",
+            "field": "brand",
+            "value": "TI",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 6,
+              "sheet": null,
+              "row": 1,
+              "column": "Brand",
+              "raw_text": "TI"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L007-ORIGIN",
+            "field": "origin",
+            "value": "US",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 6,
+              "sheet": null,
+              "row": 1,
+              "column": "COO",
+              "raw_text": "US"
+            }
+          },
+          {
+            "evidence_key": "E-I-F_276766064bb2_26027223_L007-QTY",
+            "field": "quantity",
+            "value": "300000",
+            "source": {
+              "file_id": "F-276766064bb2",
+              "page": 6,
+              "sheet": null,
+              "row": 1,
+              "column": "QTY",
+              "raw_text": "300000"
+            }
+          }
+        ],
+        "occupied_by_order_row_id": null
+      }
+    ],
+    "proposed_groups": [
+      {
+        "order_row_id": "D-fb448776f711-R007",
+        "raw_row_ids": [
+          "I-F-de4e00bf55d8-26027299-L001",
+          "I-F-b03e0011849f-26027298-L001"
+        ],
+        "evidence_keys": [
+          "E-I-F_de4e00bf55d8_26027299_L001-MODEL",
+          "E-I-F_de4e00bf55d8_26027299_L001-BRAND",
+          "E-I-F_b03e0011849f_26027298_L001-MODEL",
+          "E-I-F_b03e0011849f_26027298_L001-BRAND"
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R008",
+        "raw_row_ids": [
+          "I-F-de4e00bf55d8-26027299-L001",
+          "I-F-b03e0011849f-26027298-L001"
+        ],
+        "evidence_keys": [
+          "E-I-F_de4e00bf55d8_26027299_L001-MODEL",
+          "E-I-F_de4e00bf55d8_26027299_L001-BRAND",
+          "E-I-F_b03e0011849f_26027298_L001-MODEL",
+          "E-I-F_b03e0011849f_26027298_L001-BRAND"
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R009",
+        "raw_row_ids": [
+          "I-F-f29936219cd1-26027322-L002"
+        ],
+        "evidence_keys": [
+          "E-I-F_f29936219cd1_26027322_L002-MODEL",
+          "E-I-F_f29936219cd1_26027322_L002-BRAND"
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R010",
+        "raw_row_ids": [
+          "I-F-f29936219cd1-26027322-L001"
+        ],
+        "evidence_keys": [
+          "E-I-F_f29936219cd1_26027322_L001-MODEL",
+          "E-I-F_f29936219cd1_26027322_L001-BRAND"
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R011",
+        "raw_row_ids": [
+          "I-F-276766064bb2-26027223-L001",
+          "I-F-276766064bb2-26027223-L002",
+          "I-F-276766064bb2-26027223-L003",
+          "I-F-276766064bb2-26027223-L004",
+          "I-F-276766064bb2-26027223-L005",
+          "I-F-276766064bb2-26027223-L006",
+          "I-F-276766064bb2-26027223-L007"
+        ],
+        "evidence_keys": [
+          "E-I-F_276766064bb2_26027223_L001-MODEL",
+          "E-I-F_276766064bb2_26027223_L001-BRAND",
+          "E-I-F_276766064bb2_26027223_L002-MODEL",
+          "E-I-F_276766064bb2_26027223_L002-BRAND",
+          "E-I-F_276766064bb2_26027223_L003-MODEL",
+          "E-I-F_276766064bb2_26027223_L003-BRAND",
+          "E-I-F_276766064bb2_26027223_L004-MODEL",
+          "E-I-F_276766064bb2_26027223_L004-BRAND",
+          "E-I-F_276766064bb2_26027223_L005-MODEL",
+          "E-I-F_276766064bb2_26027223_L005-BRAND",
+          "E-I-F_276766064bb2_26027223_L006-MODEL",
+          "E-I-F_276766064bb2_26027223_L006-BRAND",
+          "E-I-F_276766064bb2_26027223_L007-MODEL",
+          "E-I-F_276766064bb2_26027223_L007-BRAND"
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R012",
+        "raw_row_ids": [
+          "I-F-a06d575c587d-26027251-L001"
+        ],
+        "evidence_keys": [
+          "E-I-F_a06d575c587d_26027251_L001-MODEL",
+          "E-I-F_a06d575c587d_26027251_L001-BRAND"
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R013",
+        "raw_row_ids": [
+          "I-F-69127fcfa5c3-26027300-L001"
+        ],
+        "evidence_keys": [
+          "E-I-F_69127fcfa5c3_26027300_L001-MODEL",
+          "E-I-F_69127fcfa5c3_26027300_L001-BRAND"
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R014",
+        "raw_row_ids": [
+          "I-F-94d0c3955b2a-26027191-L001",
+          "I-F-94d0c3955b2a-26027191-L002",
+          "I-F-94d0c3955b2a-26027191-L003"
+        ],
+        "evidence_keys": [
+          "E-I-F_94d0c3955b2a_26027191_L001-MODEL",
+          "E-I-F_94d0c3955b2a_26027191_L001-BRAND",
+          "E-I-F_94d0c3955b2a_26027191_L002-MODEL",
+          "E-I-F_94d0c3955b2a_26027191_L002-BRAND",
+          "E-I-F_94d0c3955b2a_26027191_L003-MODEL",
+          "E-I-F_94d0c3955b2a_26027191_L003-BRAND"
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R015",
+        "raw_row_ids": [
+          "I-F-cb09c02b9ed5-26027323-L001"
+        ],
+        "evidence_keys": [
+          "E-I-F_cb09c02b9ed5_26027323_L001-MODEL",
+          "E-I-F_cb09c02b9ed5_26027323_L001-BRAND"
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R016",
+        "raw_row_ids": [
+          "I-F-b98a101d8392-26027114-L001",
+          "I-F-c5195fdb15a3-26027143-L001",
+          "I-F-c5195fdb15a3-26027143-L002",
+          "I-F-39b0b8e82a3a-26027254-L001"
+        ],
+        "evidence_keys": [
+          "E-I-F_b98a101d8392_26027114_L001-MODEL",
+          "E-I-F_b98a101d8392_26027114_L001-BRAND",
+          "E-I-F_c5195fdb15a3_26027143_L001-MODEL",
+          "E-I-F_c5195fdb15a3_26027143_L001-BRAND",
+          "E-I-F_c5195fdb15a3_26027143_L002-MODEL",
+          "E-I-F_c5195fdb15a3_26027143_L002-BRAND",
+          "E-I-F_39b0b8e82a3a_26027254_L001-MODEL",
+          "E-I-F_39b0b8e82a3a_26027254_L001-BRAND"
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R017",
+        "raw_row_ids": [
+          "I-F-b98a101d8392-26027114-L001",
+          "I-F-c5195fdb15a3-26027143-L001",
+          "I-F-c5195fdb15a3-26027143-L002",
+          "I-F-39b0b8e82a3a-26027254-L001"
+        ],
+        "evidence_keys": [
+          "E-I-F_b98a101d8392_26027114_L001-MODEL",
+          "E-I-F_b98a101d8392_26027114_L001-BRAND",
+          "E-I-F_c5195fdb15a3_26027143_L001-MODEL",
+          "E-I-F_c5195fdb15a3_26027143_L001-BRAND",
+          "E-I-F_c5195fdb15a3_26027143_L002-MODEL",
+          "E-I-F_c5195fdb15a3_26027143_L002-BRAND",
+          "E-I-F_39b0b8e82a3a_26027254_L001-MODEL",
+          "E-I-F_39b0b8e82a3a_26027254_L001-BRAND"
+        ]
+      }
+    ],
+    "comparison_results": [
+      {
+        "order_row_id": "D-fb448776f711-R007",
+        "candidate_comparisons": [
+          {
+            "raw_row_id": "I-F-de4e00bf55d8-26027299-L001",
+            "order_quantity": "4000",
+            "inspection_quantity": "500",
+            "quantity_status": "DIFFERENT",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          },
+          {
+            "raw_row_id": "I-F-b03e0011849f-26027298-L001",
+            "order_quantity": "4000",
+            "inspection_quantity": "4000",
+            "quantity_status": "EQUAL_NUMERIC",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          }
+        ],
+        "retrieval_limitations": [
+          "CUSTOMER_MISMATCH",
+          "RETRIEVAL_INCOMPLETE"
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R008",
+        "candidate_comparisons": [
+          {
+            "raw_row_id": "I-F-de4e00bf55d8-26027299-L001",
+            "order_quantity": "500",
+            "inspection_quantity": "500",
+            "quantity_status": "EQUAL_NUMERIC",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          },
+          {
+            "raw_row_id": "I-F-b03e0011849f-26027298-L001",
+            "order_quantity": "500",
+            "inspection_quantity": "4000",
+            "quantity_status": "DIFFERENT",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          }
+        ],
+        "retrieval_limitations": [
+          "CUSTOMER_MISMATCH",
+          "RETRIEVAL_INCOMPLETE"
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R009",
+        "candidate_comparisons": [
+          {
+            "raw_row_id": "I-F-f29936219cd1-26027322-L002",
+            "order_quantity": "110000",
+            "inspection_quantity": "150000",
+            "quantity_status": "DIFFERENT",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          }
+        ],
+        "retrieval_limitations": [
+          "CUSTOMER_MISMATCH",
+          "RETRIEVAL_INCOMPLETE"
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R010",
+        "candidate_comparisons": [
+          {
+            "raw_row_id": "I-F-f29936219cd1-26027322-L001",
+            "order_quantity": "20000",
+            "inspection_quantity": "20000",
+            "quantity_status": "EQUAL_NUMERIC",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          }
+        ],
+        "retrieval_limitations": [
+          "CUSTOMER_MISMATCH",
+          "RETRIEVAL_INCOMPLETE"
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R011",
+        "candidate_comparisons": [
+          {
+            "raw_row_id": "I-F-276766064bb2-26027223-L001",
+            "order_quantity": "360000",
+            "inspection_quantity": "300000",
+            "quantity_status": "DIFFERENT",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          },
+          {
+            "raw_row_id": "I-F-276766064bb2-26027223-L002",
+            "order_quantity": "360000",
+            "inspection_quantity": "300000",
+            "quantity_status": "DIFFERENT",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          },
+          {
+            "raw_row_id": "I-F-276766064bb2-26027223-L003",
+            "order_quantity": "360000",
+            "inspection_quantity": "300000",
+            "quantity_status": "DIFFERENT",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          },
+          {
+            "raw_row_id": "I-F-276766064bb2-26027223-L004",
+            "order_quantity": "360000",
+            "inspection_quantity": "120000",
+            "quantity_status": "DIFFERENT",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          },
+          {
+            "raw_row_id": "I-F-276766064bb2-26027223-L005",
+            "order_quantity": "360000",
+            "inspection_quantity": "180000",
+            "quantity_status": "DIFFERENT",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          },
+          {
+            "raw_row_id": "I-F-276766064bb2-26027223-L006",
+            "order_quantity": "360000",
+            "inspection_quantity": "300000",
+            "quantity_status": "DIFFERENT",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          },
+          {
+            "raw_row_id": "I-F-276766064bb2-26027223-L007",
+            "order_quantity": "360000",
+            "inspection_quantity": "300000",
+            "quantity_status": "DIFFERENT",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          }
+        ],
+        "retrieval_limitations": [
+          "CUSTOMER_MISMATCH",
+          "RETRIEVAL_INCOMPLETE"
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R012",
+        "candidate_comparisons": [
+          {
+            "raw_row_id": "I-F-a06d575c587d-26027251-L001",
+            "order_quantity": "24000",
+            "inspection_quantity": "24000",
+            "quantity_status": "EQUAL_NUMERIC",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          }
+        ],
+        "retrieval_limitations": [
+          "CUSTOMER_MISMATCH",
+          "RETRIEVAL_INCOMPLETE"
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R013",
+        "candidate_comparisons": [
+          {
+            "raw_row_id": "I-F-69127fcfa5c3-26027300-L001",
+            "order_quantity": "150000",
+            "inspection_quantity": "150000",
+            "quantity_status": "EQUAL_NUMERIC",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          }
+        ],
+        "retrieval_limitations": [
+          "CUSTOMER_MISMATCH",
+          "RETRIEVAL_INCOMPLETE"
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R014",
+        "candidate_comparisons": [
+          {
+            "raw_row_id": "I-F-94d0c3955b2a-26027191-L001",
+            "order_quantity": "450000",
+            "inspection_quantity": "150000",
+            "quantity_status": "DIFFERENT",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          },
+          {
+            "raw_row_id": "I-F-94d0c3955b2a-26027191-L002",
+            "order_quantity": "450000",
+            "inspection_quantity": "150000",
+            "quantity_status": "DIFFERENT",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          },
+          {
+            "raw_row_id": "I-F-94d0c3955b2a-26027191-L003",
+            "order_quantity": "450000",
+            "inspection_quantity": "150000",
+            "quantity_status": "DIFFERENT",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          }
+        ],
+        "retrieval_limitations": [
+          "CUSTOMER_MISMATCH",
+          "RETRIEVAL_INCOMPLETE"
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R015",
+        "candidate_comparisons": [
+          {
+            "raw_row_id": "I-F-cb09c02b9ed5-26027323-L001",
+            "order_quantity": "12000",
+            "inspection_quantity": "12000",
+            "quantity_status": "EQUAL_NUMERIC",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          }
+        ],
+        "retrieval_limitations": [
+          "CUSTOMER_MISMATCH",
+          "RETRIEVAL_INCOMPLETE"
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R016",
+        "candidate_comparisons": [
+          {
+            "raw_row_id": "I-F-b98a101d8392-26027114-L001",
+            "order_quantity": "86000",
+            "inspection_quantity": "16000",
+            "quantity_status": "DIFFERENT",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          },
+          {
+            "raw_row_id": "I-F-c5195fdb15a3-26027143-L001",
+            "order_quantity": "86000",
+            "inspection_quantity": "30000",
+            "quantity_status": "DIFFERENT",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          },
+          {
+            "raw_row_id": "I-F-c5195fdb15a3-26027143-L002",
+            "order_quantity": "86000",
+            "inspection_quantity": "40000",
+            "quantity_status": "DIFFERENT",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          },
+          {
+            "raw_row_id": "I-F-39b0b8e82a3a-26027254-L001",
+            "order_quantity": "86000",
+            "inspection_quantity": "26000",
+            "quantity_status": "DIFFERENT",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          }
+        ],
+        "retrieval_limitations": [
+          "CUSTOMER_MISMATCH",
+          "RETRIEVAL_INCOMPLETE"
+        ]
+      },
+      {
+        "order_row_id": "D-fb448776f711-R017",
+        "candidate_comparisons": [
+          {
+            "raw_row_id": "I-F-b98a101d8392-26027114-L001",
+            "order_quantity": "26000",
+            "inspection_quantity": "16000",
+            "quantity_status": "DIFFERENT",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          },
+          {
+            "raw_row_id": "I-F-c5195fdb15a3-26027143-L001",
+            "order_quantity": "26000",
+            "inspection_quantity": "30000",
+            "quantity_status": "DIFFERENT",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          },
+          {
+            "raw_row_id": "I-F-c5195fdb15a3-26027143-L002",
+            "order_quantity": "26000",
+            "inspection_quantity": "40000",
+            "quantity_status": "DIFFERENT",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          },
+          {
+            "raw_row_id": "I-F-39b0b8e82a3a-26027254-L001",
+            "order_quantity": "26000",
+            "inspection_quantity": "26000",
+            "quantity_status": "EQUAL_NUMERIC",
+            "unit_comparable": true,
+            "identity_status": "MODEL_EQUAL_ONLY"
+          }
+        ],
+        "retrieval_limitations": [
+          "CUSTOMER_MISMATCH",
+          "RETRIEVAL_INCOMPLETE"
+        ]
+      }
+    ]
+  }
+}

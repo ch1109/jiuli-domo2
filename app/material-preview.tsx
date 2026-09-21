@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { SourceLocation } from "@/lib/domain/types";
 import { getLocalMaterial } from "@/lib/demo-store";
-import {ChevronLeft,ChevronRight} from 'lucide-react';
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export function MaterialPreview({
   location,
@@ -12,21 +12,41 @@ export function MaterialPreview({
   name: string;
 }) {
   const canvas = useRef<HTMLCanvasElement>(null);
-  const selected = useRef<HTMLTableCellElement>(null);
+  const selectedCell = useRef<HTMLTableCellElement>(null);
+  const selectedRow = useRef<HTMLTableRowElement>(null);
   const documentScroll = useRef<HTMLDivElement>(null);
   const [error, setError] = useState("");
   const [sheets, setSheets] = useState<string[]>([]);
   const [sheet, setSheet] = useState(location.sheet ?? "");
   const [rows, setRows] = useState<string[][]>([]);
-  const [columns,setColumns]=useState<string[]>([]);
+  const [columns, setColumns] = useState<string[]>([]);
   const [page, setPage] = useState(location.page ?? 1);
   const [pages, setPages] = useState(1);
   const [loading, setLoading] = useState(true);
-  const pdf = name.toLowerCase().endsWith(".pdf");
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
+
+  const lowerName = name.toLowerCase();
+  const pdf = lowerName.endsWith(".pdf");
+  const isImage = /\.(jpg|jpeg|png|webp|gif|bmp|svg)$/i.test(lowerName);
+
+  // 当外部 location 变化时同步更新内部页码和 sheet
+  useEffect(() => {
+    if (location.page && location.page > 0) {
+      setPage(location.page);
+    }
+    if (location.sheet) {
+      setSheet(location.sheet);
+    }
+  }, [location.fileId, location.page, location.sheet, location.row]);
+
   useEffect(() => {
     let cancelled = false;
     let destroy: (() => void) | undefined;
+    let objectUrlToRevoke: string | null = null;
+
     async function load() {
+      setLoading(true);
+      setError("");
       try {
         const local = getLocalMaterial(location.fileId);
         const response = local
@@ -36,11 +56,25 @@ export function MaterialPreview({
             );
         if (response && !response.ok)
           throw new Error("原文件不可用；本地上传材料刷新后需重新选择原文件。");
+
         const buffer = local
           ? await local.arrayBuffer()
           : await response!.arrayBuffer();
+
         if (cancelled) return;
-        setError('');
+        setError("");
+
+        if (isImage) {
+          const blob = new Blob([buffer]);
+          const url = URL.createObjectURL(blob);
+          objectUrlToRevoke = url;
+          if (!cancelled) {
+            setImageUrl(url);
+            setLoading(false);
+          }
+          return;
+        }
+
         if (pdf) {
           const lib = await import("pdfjs-dist");
           lib.GlobalWorkerOptions.workerSrc = "/api/pdf-worker";
@@ -51,14 +85,18 @@ export function MaterialPreview({
           const doc = await task.promise;
           if (cancelled) return;
           setPages(doc.numPages);
-          if(page>doc.numPages)throw new Error('证据页码超出原文件页数');
-          const p = await doc.getPage(page);
+          const currentPage = Math.min(Math.max(1, page), doc.numPages);
+          const p = await doc.getPage(currentPage);
           const viewport = p.getViewport({ scale: 1.4 });
           if (!canvas.current || cancelled) return;
           canvas.current.width = viewport.width;
           canvas.current.height = viewport.height;
-          await p.render({ canvasContext: canvas.current.getContext('2d')!, viewport }).promise;
-          if (location.bounds && page === location.page) {
+          await p.render({
+            canvasContext: canvas.current.getContext("2d")!,
+            viewport,
+          }).promise;
+
+          if (location.bounds && currentPage === location.page) {
             const ctx = canvas.current.getContext("2d");
             const [x, y, w, h] = location.bounds;
             if (ctx) {
@@ -72,24 +110,47 @@ export function MaterialPreview({
             }
           }
         } else {
+          // 处理表格文件（Excel 等）
           const XLSX = await import("xlsx");
           const workbook = XLSX.read(buffer, { type: "array" });
-          if(sheet && !workbook.Sheets[sheet])throw new Error('原文件中没有记录的工作表');
-          const chosen = workbook.Sheets[sheet]
+          const sheetNames = workbook.SheetNames || [];
+          if (sheetNames.length === 0) {
+            throw new Error("表格文件无有效工作表");
+          }
+
+          // 优先使用记录的 sheet，若不存在则回退到首个可用 sheet
+          const chosen = (sheet && workbook.Sheets[sheet])
             ? sheet
-            : workbook.SheetNames[0];
+            : sheetNames[0];
+
           if (!cancelled) {
-            setSheets(workbook.SheetNames);
-            const range=workbook.Sheets[chosen]['!ref'];
-            setColumns(range ? Array.from({length:XLSX.utils.decode_range(range).e.c+1},(_,i)=>XLSX.utils.encode_col(i)):[]);
-            setRows(
-              XLSX.utils.sheet_to_json<string[]>(workbook.Sheets[chosen], {
-                header: 1,
-                raw: false,
-                defval: "",
-                range: 0,
-              }),
-            );
+            setSheets(sheetNames);
+            if (chosen !== sheet) {
+              setSheet(chosen);
+            }
+            const activeWorksheet = workbook.Sheets[chosen];
+            if (activeWorksheet) {
+              const range = activeWorksheet["!ref"];
+              setColumns(
+                range
+                  ? Array.from(
+                      { length: XLSX.utils.decode_range(range).e.c + 1 },
+                      (_, i) => XLSX.utils.encode_col(i),
+                    )
+                  : [],
+              );
+              setRows(
+                XLSX.utils.sheet_to_json<string[]>(activeWorksheet, {
+                  header: 1,
+                  raw: false,
+                  defval: "",
+                  range: 0,
+                }),
+              );
+            } else {
+              setRows([]);
+              setColumns([]);
+            }
           }
         }
         if (!cancelled) setLoading(false);
@@ -100,22 +161,42 @@ export function MaterialPreview({
         }
       }
     }
+
     void load();
+
     return () => {
       cancelled = true;
       destroy?.();
+      if (objectUrlToRevoke) {
+        URL.revokeObjectURL(objectUrlToRevoke);
+      }
     };
-  }, [location, pdf, page, sheet]);
+  }, [location.fileId, pdf, isImage, page, sheet]);
+
+  // 滚动定位到选中单元格或选中整行
   useEffect(() => {
-    const cell=selected.current;const container=documentScroll.current;
-    if(cell&&container){const a=cell.getBoundingClientRect();const b=container.getBoundingClientRect();container.scrollTop+=a.top-b.top-container.clientHeight/2;container.scrollLeft+=a.left-b.left-container.clientWidth/2;}
-  }, [rows]);
+    const targetElement = selectedCell.current || selectedRow.current;
+    const container = documentScroll.current;
+    if (targetElement && container) {
+      const a = targetElement.getBoundingClientRect();
+      const b = container.getBoundingClientRect();
+      container.scrollTop += a.top - b.top - container.clientHeight / 2;
+      if (selectedCell.current) {
+        container.scrollLeft += a.left - b.left - container.clientWidth / 2;
+      }
+    }
+  }, [rows, location.row]);
+
   const columnIndex =
-    (location.column ?? "")
-      .toUpperCase()
-      .split("")
-      .reduce((n, c) => n * 26 + c.charCodeAt(0) - 64, 0) - 1;
-  const isSourceSheet=!location.sheet||(sheet||sheets[0])===location.sheet;
+    location.column
+      ? location.column
+          .toUpperCase()
+          .split("")
+          .reduce((n, c) => n * 26 + c.charCodeAt(0) - 64, 0) - 1
+      : -1;
+
+  const isSourceSheet = !location.sheet || (sheet || sheets[0]) === location.sheet;
+
   return (
     <div className="material-preview">
       <div className="preview-controls">
@@ -126,7 +207,7 @@ export function MaterialPreview({
               onClick={() => setPage(page - 1)}
               aria-label="上一页"
             >
-              <ChevronLeft size={14}/>
+              <ChevronLeft size={14} />
             </button>
             <span>
               第 {page} / {pages} 页
@@ -136,9 +217,11 @@ export function MaterialPreview({
               onClick={() => setPage(page + 1)}
               aria-label="下一页"
             >
-              <ChevronRight size={14}/>
+              <ChevronRight size={14} />
             </button>
           </>
+        ) : isImage ? (
+          <span>图片原件预览</span>
         ) : (
           <select
             aria-label="工作表"
@@ -151,46 +234,73 @@ export function MaterialPreview({
           </select>
         )}
       </div>
+
       <small>
         {pdf
           ? location.bounds
             ? "已高亮原文位置"
-            : location.page ? "仅定位到页" : "未记录页码，显示第一页"
-          : isSourceSheet && location.row && location.column
-            ? `定位 ${location.column}${location.row}`
-            : "缺少单元格坐标"}
+            : location.page
+              ? `已定位至第 ${page} 页`
+              : "显示第 1 页（原文件浏览）"
+          : isImage
+            ? "已载入原文件图像"
+            : isSourceSheet && location.row && columnIndex >= 0
+              ? `定位 ${location.column}${location.row}`
+              : isSourceSheet && location.row
+                ? `已定位至第 ${location.row} 行`
+                : "原文件对照浏览"}
       </small>
+
       {loading && <p>正在载入原文件…</p>}
       {error && <p role="alert">{error}</p>}
+
       <div className="preview-document" ref={documentScroll}>
         {pdf ? (
           <canvas ref={canvas} aria-label="PDF 原文件预览" />
+        ) : isImage ? (
+          imageUrl && (
+            <img
+              src={imageUrl}
+              alt={name}
+              style={{ maxWidth: "100%", height: "auto", display: "block" }}
+            />
+          )
         ) : (
           <table>
-            <thead><tr><th></th>{columns.map(c=><th key={c}>{c}</th>)}</tr></thead>
+            <thead>
+              <tr>
+                <th></th>
+                {columns.map((c) => (
+                  <th key={c}>{c}</th>
+                ))}
+              </tr>
+            </thead>
             <tbody>
-              {rows.map((row, r) => (
-                <tr key={r}>
-                  <th>{r + 1}</th>
-                  {row.map((value, c) => (
-                    <td
-                      key={c}
-                      ref={
-                        isSourceSheet && r + 1 === location.row && c === columnIndex
-                          ? selected
-                          : undefined
-                      }
-                      className={
-                        isSourceSheet && r + 1 === location.row && c === columnIndex
-                          ? "source-highlight"
-                          : ""
-                      }
-                    >
-                      {value}
-                    </td>
-                  ))}
-                </tr>
-              ))}
+              {rows.map((row, r) => {
+                const isCurrentRow = isSourceSheet && r + 1 === location.row;
+                const hasSpecificCell = isCurrentRow && columnIndex >= 0;
+                return (
+                  <tr
+                    key={r}
+                    ref={isCurrentRow && !hasSpecificCell ? selectedRow : undefined}
+                    className={isCurrentRow && !hasSpecificCell ? "source-row-highlight source-highlight" : ""}
+                  >
+                    <th>{r + 1}</th>
+                    {row.map((value, c) => {
+                      const isTargetCell = isCurrentRow && c === columnIndex;
+                      return (
+                        <td
+                          key={c}
+                          ref={isTargetCell ? selectedCell : undefined}
+                          className={isTargetCell ? "source-highlight" : ""}
+                        >
+                          {value}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         )}
