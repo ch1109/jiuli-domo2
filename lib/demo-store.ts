@@ -37,6 +37,12 @@ import type {
 } from "./domain/types";
 
 export type ViewKey = "home" | "intake" | "pool" | "drafts" | "workbench" | "history" | "console";
+
+export interface NavigationEntry {
+  view: ViewKey;
+  customerId?: string | null;
+  draftId?: string | null;
+}
 export type UiStatus = "暂无查货依据" | "已找到查货依据" | "待人工处理" | "人工已确认";
 export type TaskStage = "new" | "uploading" | "parsing" | "ready" | "matching" | "review" | "confirming" | "finalized";
 export type TaskPanel = "overview" | "materials" | "issues" | "evidence" | "history" | `line:${string}`;
@@ -189,6 +195,10 @@ export interface DemoState {
   finalReconciliations: FinalReconciliationSheet[];
   pocPhaseTimings: PocPhaseTiming[];
   toast: string | null;
+  selectedWorkspaceCustomerId: string | null;
+  setSelectedWorkspaceCustomerId: (customerId: string | null) => void;
+  historyStack: NavigationEntry[];
+  goBack: () => void;
   setView: (view: ViewKey) => void;
   setLastVisitedPanel: (panel: TaskPanel) => void;
   setIntakeCustomer: (customerId: string) => void;
@@ -228,8 +238,11 @@ export interface DemoState {
   submitSelectedDraft: () => void;
   revertDraftToReview: () => void;
   confirmLine: (lineId: string) => void;
+  unconfirmLine: (lineId: string) => void;
   completeSelectedDraft: () => void;
   clearToast: () => void;
+  isEvaluationMode: boolean;
+  setEvaluationMode: (enabled: boolean) => void;
 }
 
 const now = () => new Date().toISOString();
@@ -765,28 +778,82 @@ export const useDemoStore = create<DemoState>()(persist((set, get) => ({
   parseJobs: [],
   parseResults: [],
   parsedFacts: [],
+  isEvaluationMode: false,
+  setEvaluationMode: (enabled) => set({ isEvaluationMode: enabled }),
   convertedEntrustments: [],
   convertedInspections: [],
   convertedAuxiliaryMaterials: [],
   materialBindings: [],
   toast: null,
-  setView: (view) => set((state) => ({
-    view,
-    lastVisitedTaskId:
-      view === "workbench" ? state.selectedDraftId : state.lastVisitedTaskId,
-  })),
+  selectedWorkspaceCustomerId: null,
+  historyStack: [],
+  setSelectedWorkspaceCustomerId: (selectedWorkspaceCustomerId) =>
+    set((state) => {
+      if (state.selectedWorkspaceCustomerId === selectedWorkspaceCustomerId) return state;
+      const currentEntry: NavigationEntry = {
+        view: state.view,
+        customerId: state.selectedWorkspaceCustomerId,
+        draftId: state.selectedDraftId,
+      };
+      return {
+        selectedWorkspaceCustomerId,
+        historyStack: [...state.historyStack, currentEntry].slice(-30),
+      };
+    }),
+  goBack: () =>
+    set((state) => {
+      if (state.historyStack.length === 0) {
+        if (state.selectedWorkspaceCustomerId) {
+          return { selectedWorkspaceCustomerId: null };
+        }
+        return { view: "home", selectedWorkspaceCustomerId: null };
+      }
+      const stack = [...state.historyStack];
+      const prev = stack.pop()!;
+      return {
+        view: prev.view,
+        selectedWorkspaceCustomerId: prev.customerId ?? null,
+        selectedDraftId:
+          prev.draftId !== undefined ? prev.draftId : state.selectedDraftId,
+        historyStack: stack,
+      };
+    }),
+  setView: (view) =>
+    set((state) => {
+      if (state.view === view) return state;
+      const currentEntry: NavigationEntry = {
+        view: state.view,
+        customerId: state.selectedWorkspaceCustomerId,
+        draftId: state.selectedDraftId,
+      };
+      return {
+        view,
+        historyStack: [...state.historyStack, currentEntry].slice(-30),
+        lastVisitedTaskId:
+          view === "workbench" ? state.selectedDraftId : state.lastVisitedTaskId,
+      };
+    }),
   setLastVisitedPanel: (lastVisitedPanel) => set({ lastVisitedPanel }),
   setIntakeCustomer: (selectedIntakeCustomerId) => set({ selectedIntakeCustomerId }),
-  selectDraft: (selectedDraftId) => set((state) => ({
-    selectedDraftId,
-    activeTaskId: selectedDraftId,
-    lastVisitedTaskId: selectedDraftId,
-    lastVisitedPanel:
-      state.lastVisitedTaskId === selectedDraftId
-        ? state.lastVisitedPanel
-        : "overview",
-    view: "workbench",
-  })),
+  selectDraft: (selectedDraftId) =>
+    set((state) => {
+      const currentEntry: NavigationEntry = {
+        view: state.view,
+        customerId: state.selectedWorkspaceCustomerId,
+        draftId: state.selectedDraftId,
+      };
+      return {
+        selectedDraftId,
+        activeTaskId: selectedDraftId,
+        lastVisitedTaskId: selectedDraftId,
+        lastVisitedPanel:
+          state.lastVisitedTaskId === selectedDraftId
+            ? state.lastVisitedPanel
+            : "overview",
+        view: "workbench",
+        historyStack: [...state.historyStack, currentEntry].slice(-30),
+      };
+    }),
   loadScenario: (scenarioId) => {
     try {
       const restored = buildScenarioState(scenarioId);
@@ -806,7 +873,7 @@ export const useDemoStore = create<DemoState>()(persist((set, get) => ({
         events: [], relations: [], evidence: scenarioId === promptFixture.scenarioId ? initialPromptEvidence() : (scenarioId === "BUSINESS" || scenarioId === "26SHPYD056" ? [...initialPromptEvidence(), ...initialPromptEvidence(puyiFixture)] : []), versions: [], operations: [], finalReconciliations: [],
         pocPhaseTimings: (["查找", "检查", "修改", "返工"] as PocPhase[]).map((phase) => ({ phase, elapsedMs: 0, startedAt: null })),
         parseJobs: [], parseResults: [], parsedFacts: [], convertedEntrustments: [], convertedInspections: [], convertedAuxiliaryMaterials: [], materialBindings: [],
-        toast: `已恢复场景：${restored.scenario.name}`,
+        toast: null,
       });
     } catch (error) {
       set({ toast: error instanceof Error ? error.message : "场景恢复失败" });
@@ -1135,7 +1202,13 @@ export const useDemoStore = create<DemoState>()(persist((set, get) => ({
       finalized: created.draft.isFinalized,
     };
     const event: UiEvent = { id: created.operation.id, type: "新建委托", summary: `${file?.name ?? fileId}：生成 ${lines.length} 条草稿行`, time: now(), draftId };
-    return { files: state.files.map(item => item.id === fileId ? { ...item, loaded: true } : item), drafts: [...state.drafts, draft], selectedDraftId: draftId, view: "workbench", operations: [...state.operations, created.operation], versions: [...state.versions, created.initialVersion], events: [event, ...state.events], toast: `已生成 ${displayNo} 草稿` };
+    setTimeout(() => {
+      const s = get();
+      if (s.selectedDraftId === draftId && customerId && s.sources.some((src) => src.customerId === customerId && src.availability === "可匹配")) {
+        s.matchSelectedDraft();
+      }
+    }, 10);
+    return { files: state.files.map(item => item.id === fileId ? { ...item, loaded: true } : item), drafts: [...state.drafts, draft], selectedDraftId: draftId, view: "workbench", operations: [...state.operations, created.operation], versions: [...state.versions, created.initialVersion], events: [event, ...state.events], toast: `已生成 ${displayNo} 草稿并自动完成AI核对` };
   }),
   bindMaterialToDraft: (fileId, draftId) => set((state) => {
     const file = state.files.find((item) => item.id === fileId);
@@ -1516,6 +1589,18 @@ export const useDemoStore = create<DemoState>()(persist((set, get) => ({
       } catch (error) { return { toast: error instanceof Error ? error.message : "商品行确认失败" }; }
     });
   },
+  unconfirmLine: (lineId) => {
+    const { selectedDraftId } = get();
+    set((state) => {
+      const draft = state.drafts.find((item) => item.id === selectedDraftId);
+      if (!draft) return { toast: "请先选择委托草稿" };
+      const lines = draft.lines.map((l) => l.id === lineId ? { ...l, manuallyConfirmed: false } : l);
+      return {
+        drafts: state.drafts.map((d) => d.id === draft.id ? { ...d, lines } : d),
+        toast: "已取消商品行的人工确认",
+      };
+    });
+  },
   completeSelectedDraft: () => {
     const { selectedDraftId } = get();
     set((state) => {
@@ -1543,7 +1628,7 @@ export const useDemoStore = create<DemoState>()(persist((set, get) => ({
   clearToast: () => set({ toast: null }),
 }), {
   name: "jiuli-demo-workspace-v1",
-  version: 3,
+  version: 4,
   migrate: (persisted): DemoState => {
     const previous = persisted as Partial<DemoState>;
     // 强制使用最新的真实业务样本整单体系

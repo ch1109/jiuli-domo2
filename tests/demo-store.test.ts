@@ -32,7 +32,6 @@ beforeEach(() => {
     toast: null,
   });
 });
-
 describe("一体化任务状态", () => {
   it("选择任务后同步阶段、问题和四类进度", () => {
     const draft = useDemoStore.getState().drafts[0];
@@ -690,5 +689,64 @@ describe("TASK-0901 本地文件上传预检", () => {
     expect(result.events[0]?.type).toBe("接收本地文件");
     result.ingestFile(file.id);
     expect(useDemoStore.getState().toast).toBe("本地文件已接收，等待解析后才能进入商品池");
+  });
+});
+
+describe("页面返回上一页导航与历史记录栈", () => {
+  it("记录页面切换并在调用 goBack 时按顺序返回上一页", () => {
+    useDemoStore.setState(useDemoStore.getInitialState(), true);
+    expect(useDemoStore.getState().view).toBe("home");
+    expect(useDemoStore.getState().historyStack).toHaveLength(0);
+
+    // 1. 进入客户详情
+    useDemoStore.getState().setSelectedWorkspaceCustomerId("C-olt");
+    expect(useDemoStore.getState().selectedWorkspaceCustomerId).toBe("C-olt");
+    expect(useDemoStore.getState().historyStack).toHaveLength(1);
+
+    // 2. 切换到商品池
+    useDemoStore.getState().setView("pool");
+    expect(useDemoStore.getState().view).toBe("pool");
+    expect(useDemoStore.getState().historyStack).toHaveLength(2);
+
+    // 3. 切换到委托草稿
+    useDemoStore.getState().setView("drafts");
+    expect(useDemoStore.getState().view).toBe("drafts");
+    expect(useDemoStore.getState().historyStack).toHaveLength(3);
+
+    // 4. 返回上一页 -> 回到商品池
+    useDemoStore.getState().goBack();
+    expect(useDemoStore.getState().view).toBe("pool");
+    expect(useDemoStore.getState().historyStack).toHaveLength(2);
+
+    // 5. 返回上一页 -> 回到客户详情页 (C-olt)
+    useDemoStore.getState().goBack();
+    expect(useDemoStore.getState().view).toBe("home");
+    expect(useDemoStore.getState().selectedWorkspaceCustomerId).toBe("C-olt");
+    expect(useDemoStore.getState().historyStack).toHaveLength(1);
+
+    // 6. 返回上一页 -> 回到全客户首页
+    useDemoStore.getState().goBack();
+    expect(useDemoStore.getState().view).toBe("home");
+    expect(useDemoStore.getState().selectedWorkspaceCustomerId).toBeNull();
+    expect(useDemoStore.getState().historyStack).toHaveLength(0);
+
+    // 7. 栈空时再次 goBack 保持在首页安全状态
+    useDemoStore.getState().goBack();
+    expect(useDemoStore.getState().view).toBe("home");
+    expect(useDemoStore.getState().selectedWorkspaceCustomerId).toBeNull();
+  });
+
+  it("从草稿进入核对工作台后返回上一页能恢复前置视图和草稿状态", () => {
+    useDemoStore.setState(useDemoStore.getInitialState(), true);
+    useDemoStore.getState().setSelectedWorkspaceCustomerId("C-yk");
+    const draftId = useDemoStore.getState().drafts[0].id;
+    useDemoStore.getState().selectDraft(draftId);
+    expect(useDemoStore.getState().view).toBe("workbench");
+    expect(useDemoStore.getState().selectedDraftId).toBe(draftId);
+
+    // 点击返回上一页回到客户工作台 C-yk
+    useDemoStore.getState().goBack();
+    expect(useDemoStore.getState().view).toBe("home");
+    expect(useDemoStore.getState().selectedWorkspaceCustomerId).toBe("C-yk");
   });
 });

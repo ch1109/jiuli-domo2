@@ -51,15 +51,8 @@ test("业务语义翻译层与人本工作台完整旅程验证", async ({ page 
   await expect(page.getByText("专业追溯数据（渐进式披露）")).toBeVisible();
   await expect(page.getByText("商品自动对应 (P3)")).toBeVisible();
 
-  // 4. 侧边栏「可体验场景」
-  const scenariosGuide = page.locator(".cw-scenarios-guide");
-  await expect(scenariosGuide.getByRole("heading", { name: "可体验场景" })).toBeVisible();
-  await expect(scenariosGuide.getByText(/委托先到 · 等待查货匹配/)).toBeVisible();
-  await expect(scenariosGuide.getByText(/查货先到 · 后补委托/)).toBeVisible();
-  await expect(scenariosGuide.getByText(/商品全部自动对应/)).toBeVisible();
-
-  // 5. 进入任务作业台，验证五阶段流转进度条
-  const viewTaskBtn = puyiCard.getByRole("button", { name: /处理商品对应|查看这票委托/ });
+  // 4. 进入任务作业台，验证五阶段流转进度条
+  const viewTaskBtn = tasksSection.getByRole("button", { name: "26SHPYD056" }).first();
   await viewTaskBtn.click();
 
   // 验证已进入核对作业台

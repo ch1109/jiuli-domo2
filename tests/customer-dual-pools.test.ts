@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { buildBusinessWorkspace, useDemoStore } from '../lib/demo-store';
-import { getCustomerWorkbench } from '../lib/customer-workbench-model';
+import { getCustomerWorkbench, getBatchRelationQuestions } from '../lib/customer-workbench-model';
 import { generateCustomerStory } from '../lib/business-translation';
 
 describe('客户级双池并立、关系矩阵与异步增量核对模型验证', () => {
@@ -107,5 +107,56 @@ describe('客户级双池并立、关系矩阵与异步增量核对模型验证'
     const puyi = model.customers.find((c) => c.name.includes('浦壹') || c.id === 'C-132ffbd28c07')!;
     const puyiStory = generateCustomerStory(puyi);
     expect(puyiStory.isMultiTask).toBe(false);
+  });
+
+  it('批次关系清单准确回答 3 大关键业务问题 (Q1/Q2/Q3)', () => {
+    const yingka = model.customers.find((c) => c.name.includes('英卡'))!;
+    const questions = getBatchRelationQuestions(yingka);
+    expect(questions.length).toBe(3);
+
+    expect(questions[0].id).toBe('Q1');
+    expect(questions[0].question).toContain('CH001 被谁用了');
+    expect(questions[0].summary).toContain('12 条查货原始明细');
+
+    expect(questions[1].id).toBe('Q2');
+    expect(questions[1].question).toContain('YK-1 用了哪些批次');
+    expect(questions[1].summary).toContain('3 个待核对商品');
+
+    expect(questions[2].id).toBe('Q3');
+    expect(questions[2].question).toContain('新批次 CH003 来了以后影响谁');
+    expect(questions[2].summary).toContain('影响 YK-260625131-2');
+  });
+
+  it('多批次商品 (UMW2631) 准确支持多查货来源联合证据', () => {
+    const yingka = model.customers.find((c) => c.name.includes('英卡'))!;
+    const summary = yingka.commoditySummary!;
+    const umwYk1 = summary.items.find(
+      (it) => it.taskDisplayNo === 'YK-260625131-1' && it.entrustmentModel === 'UMW2631'
+    );
+    expect(umwYk1).toBeDefined();
+    expect(umwYk1?.isMultiBatchSource).toBe(true);
+    expect(umwYk1?.sourceBatches?.length).toBe(2);
+    expect(umwYk1?.sourceBatches?.[0].batchDisplayNo).toContain('CH001');
+    expect(umwYk1?.sourceBatches?.[1].batchDisplayNo).toContain('CH002');
+    expect(umwYk1?.noticeText).toContain('两个批次共同提供依据');
+  });
+
+  it('双池卡片与关系矩阵单元格展示具体商品型号依据', () => {
+    const yingka = model.customers.find((c) => c.name.includes('英卡'))!;
+    const yk1Card = yingka.dualPools.entrustmentPool.find((c) => c.displayNo === 'YK-260625131-1');
+    expect(yk1Card).toBeDefined();
+    expect(yk1Card?.confirmedInspectionBatches?.length).toBeGreaterThan(0);
+    expect(yk1Card?.confirmedInspectionBatches?.[0]).toContain('CH001');
+
+    const ch001Card = yingka.dualPools.inspectionPool.find((c) => c.displayNo.includes('CH001'));
+    expect(ch001Card).toBeDefined();
+    expect(ch001Card?.confirmedTaskItems?.length).toBeGreaterThan(0);
+
+    // 矩阵单元格包含明确型号
+    const yk1Row = yingka.relationMatrix.rows.find((r) => r.displayNo === 'YK-260625131-1')!;
+    const ch001Col = yingka.relationMatrix.columns.find((c) => c.displayNo.includes('CH001'))!;
+    const cellKey = `${yk1Row.id}_${ch001Col.id}`;
+    const cell = yingka.relationMatrix.cells[cellKey];
+    expect(cell.commoditySummary).toContain('UMW2631');
   });
 });

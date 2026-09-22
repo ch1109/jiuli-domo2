@@ -56,7 +56,7 @@ NO_ACTION：按字段职责本轮不做查货核验，结果不变，状态 NOT_
 下面定义全部字段业务规则，不表示每次输出全部25字段。只执行 evaluated_fields 中的条目。
 1. customer_name：只由 P1/系统客户映射及人工处理；本阶段不改，非空 NO_ACTION，空时按必填缺失处理。
 2. brand：非空保留当前有效委托/人工基准，完整合法查货一致 KEEP，明确不同 CONFLICT；空时完整来源唯一品牌才 FILL。生产商/供应商不等于品牌，明确无牌有效。
-3. model：非空保留委托/人工完整型号，系统批准的归一化一致且完整覆盖则 KEEP；核心不同或前后缀业务含义未确认则 CONFLICT，不静默改成查货写法。空时完整有效来源唯一完整型号才 FILL。关系 MATCHED 不意味着型号字段必然一致。
+3. model：非空保留委托/人工完整型号，绝不把查货型号覆盖进委托型号。当 P3 建立 MATCHED 时：标准化型号完全一致则 KEEP (VERIFIED_CONSISTENT)；核心型号一致但存在前后缀差异（P3 标记 MODEL_AFFIX_DIFFERENCE）时，判定为 KEEP 并附加非阻断提醒 MODEL_AFFIX_DIFFERENCE，展示前后缀差异，不生成阻断型 CONFLICT，草稿值完整保留委托原文；核心不同且无明确业务证据证明同一商品时才 CONFLICT。空时完整有效来源唯一完整型号才 FILL。关系 MATCHED 不意味着型号字段必然文字相同。
 4. description：只保留委托侧描述，本阶段 NO_ACTION，不由查货或其他字段拼接。
 5. product_name：只保留主体委托明确品名或人工确认值；本阶段不由查货补充。非空 NO_ACTION，空则 MISSING。
 6. origin：按第六节产地规则处理，不因不同产地拆行。

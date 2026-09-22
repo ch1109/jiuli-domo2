@@ -1,48 +1,66 @@
 "use client";
-import { Fragment, useMemo, useState } from "react";
+
+import { Fragment, useMemo, useState, useRef, useEffect } from "react";
 import {
+  AlertCircle,
   AlertTriangle,
   ArrowLeft,
   Check,
+  CheckCircle2,
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
+  ChevronUp,
   Download,
   Eye,
+  FileCheck2,
+  FileSpreadsheet,
   FileText,
   Filter,
   History,
+  Info,
   Layers,
   LockKeyhole,
   Pencil,
   RotateCcw,
   Search,
   Sparkles,
+  Table,
   Upload,
   X,
 } from "lucide-react";
-import { useDemoStore, type UiDraft } from "@/lib/demo-store";
+import { useDemoStore, type UiDraft, type UiLine } from "@/lib/demo-store";
 import {
   FINAL_OUTPUT_FIELDS,
   type FinalOutputField,
   type SourceLocation,
 } from "@/lib/domain/types";
-import { getFieldRows, getLineReconStatus, type FieldRow, type LineReconStatus } from "@/lib/workbench-model";
+import {
+  CORE_OUTPUT_FIELDS,
+  getFieldRows,
+  getLineReconStatus,
+  type FieldRow,
+  type LineReconStatus,
+  type FieldCheckStatusType,
+} from "@/lib/workbench-model";
 import { getTaskSummary } from "@/lib/workspace-status";
-import {calculateFinalOutputTotals} from '@/lib/domain/final-output';
-import {buildFinalReconciliationCsv,finalReconciliationFileName} from '@/lib/final-reconciliation-csv';
+import { calculateFinalOutputTotals } from "@/lib/domain/final-output";
+import {
+  buildFinalReconciliationCsv,
+  finalReconciliationFileName,
+} from "@/lib/final-reconciliation-csv";
+import {
+  evaluateDraftAgainstGt,
+  parseBuiltinReference,
+  type EvaluationReport,
+  type StandardAnswerSheet,
+} from "@/lib/domain/evaluation-engine";
 import { MaterialPreview } from "./material-preview";
 import { LineActions } from "./workbench-relations";
 import { generateTaskProcessStages } from "@/lib/business-translation";
+import * as XLSX from "xlsx";
 import "./workbench.css";
 
-const filters = ["全部字段", "有变化", "冲突", "缺失", "待人工"] as const;
-type Filter = (typeof filters)[number];
-const accepts = (row: FieldRow, filter: Filter) =>
-  filter === "全部字段" ||
-  (filter === "有变化" && row.changed) ||
-  (filter === "冲突" && row.conflict) ||
-  (filter === "缺失" && row.missing) ||
-  (filter === "待人工" && row.needsHuman);
 const value = (v: string | null | undefined) => v || "—";
 const short = (id: string) => id.split("-").at(-1);
 
@@ -52,6 +70,8 @@ export function ReconciliationWorkbench({
   draft: UiDraft | undefined;
 }) {
   const state = useDemoStore();
+
+  // 1. 每行商品字段解析映射
   const rowsByLine = useMemo(
     () =>
       new Map(
@@ -62,6 +82,8 @@ export function ReconciliationWorkbench({
       ),
     [draft, state.evidence],
   );
+
+  // 2. 每行商品综合核对状态映射
   const lineStatuses = useMemo(() => {
     if (!draft) return new Map<string, LineReconStatus>();
     return new Map(
@@ -72,357 +94,668 @@ export function ReconciliationWorkbench({
     );
   }, [draft, rowsByLine, state.sources]);
 
-  const restored = state.lastVisitedPanel.startsWith('line:') ? state.lastVisitedPanel.slice(5).split('|') : [];
-  const [lineId, setLineId] = useState(draft?.lines.some(l=>l.id===restored[0]) ? restored[0] : draft?.lines[0]?.id ?? "");
-  const [field, setField] = useState<FinalOutputField | null>(FINAL_OUTPUT_FIELDS.includes(restored[1] as FinalOutputField) ? restored[1] as FinalOutputField : null);
-  const [filter, setFilter] = useState<Filter>("全部字段");
-  const [view, setView] = useState<"fields" | "results">("results");
-  const [resultFilter, setResultFilter] = useState<"ALL" | "RECONCILED" | "UNCHECKED" | "MODIFIED" | "CONFLICT">("ALL");
-  const [tableMode, setTableMode] = useState<"LATEST" | "ORIGINAL" | "DIFF">("LATEST");
-  const [history, setHistory] = useState(false);
-  const [drawer, setDrawer] = useState<"left" | "right" | null>(null);
-  const [source, setSource] = useState("全部");
+  // 3. UI 交互状态
+  const [lineId, setLineId] = useState(draft?.lines[0]?.id ?? "");
+  const [field, setField] = useState<FinalOutputField | null>("型号");
+  const [fieldMode, setFieldMode] = useState<"CORE" | "ALL">("ALL"); // 默认直接展示全部25字段
+  const [lineNavFilter, setLineNavFilter] = useState<
+    "ALL" | "VERIFIED_OK" | "NEEDS_CONFIRM" | "NO_INSPECTION" | "CONFIRMED"
+  >("ALL");
+  const [draftTableFilter, setDraftTableFilter] = useState<
+    "ALL" | "PROBLEMS_ONLY" | "UNCONFIRMED_ONLY" | "MISMATCH_ONLY" | "MISSING_ONLY" | "AI_FALSE_POSITIVE"
+  >("ALL");
+
+  // 右侧 Tab：原始材料 / 字段来源 / 商品对应 / AI记录（默认展示原始材料）
+  const [rightTab, setRightTab] = useState<
+    "RAW_MATERIAL" | "FIELD_SOURCE" | "RELATION" | "AI_LOG"
+  >("RAW_MATERIAL");
+
+  // 右侧溯源面板拖拽缩放宽度（支持向左拖拽放大）
+  const [rightPanelWidth, setRightPanelWidth] = useState<number>(480);
+  const [isDraggingRightPanel, setIsDraggingRightPanel] = useState<boolean>(false);
+
+  const handleSplitterMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsDraggingRightPanel(true);
+    const startX = e.clientX;
+    const startWidth = rightPanelWidth;
+
+    const handleMouseMove = (ev: MouseEvent) => {
+      // 向左拖拽 (ev.clientX < startX) 时，delta > 0，右侧面板变宽
+      const delta = startX - ev.clientX;
+      const minW = 340;
+      const maxW = Math.max(minW, Math.min(window.innerWidth - 480, 960));
+      const targetW = Math.max(minW, Math.min(maxW, startWidth + delta));
+      setRightPanelWidth(targetW);
+    };
+
+    const handleMouseUp = () => {
+      setIsDraggingRightPanel(false);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseup", handleMouseUp);
+  };
+
+  // 复核专注模式
+  const [reviewModeActive, setReviewModeActive] = useState(false);
+
+  // 表格横向滚动控制
+  const tableWrapperRef = useRef<HTMLDivElement>(null);
+  const scrollTable = (offset: number) => {
+    if (tableWrapperRef.current) {
+      tableWrapperRef.current.scrollBy({ left: offset, behavior: "smooth" });
+    }
+  };
+
+  // 评测模式 (Demo / POC)
+  const isEvaluationMode = state.isEvaluationMode;
+  const setEvaluationMode = state.setEvaluationMode;
+  const [customGtSheet, setCustomGtSheet] = useState<StandardAnswerSheet | null>(
+    null,
+  );
+  const [evaluationReport, setEvaluationReport] = useState<EvaluationReport | null>(
+    null,
+  );
+
+  // 顶部五阶段时间线抽屉
+  const [showProcessLogs, setShowProcessLogs] = useState(false);
+
+  // 历史版本抽屉
+  const [historyOpen, setHistoryOpen] = useState(false);
+
+  // 结案核销确认弹窗与条件面板
+  const [showFinalizeModal, setShowFinalizeModal] = useState(false);
+  const [showChecklistPopover, setShowChecklistPopover] = useState(false);
+  const [writeoffFeedbackOpen, setWriteoffFeedbackOpen] = useState(false);
+
+  // 快捷编辑气泡
+  const [quickEditField, setQuickEditField] = useState<{
+    lineId: string;
+    field: FinalOutputField;
+  } | null>(null);
+
+  // 移动端抽屉
+  const [mobileDrawer, setMobileDrawer] = useState<"left" | "right" | null>(
+    null,
+  );
+
+  // 原材料预览联动状态
   const [selectedFileId, setSelectedFileId] = useState<string | null>(null);
   const [preview, setPreview] = useState<{
     location: SourceLocation;
     name: string;
     key: string;
   } | null>(null);
-  if (!draft)
+
+  // 4. 初始化评测标准答案 (评测模式)
+  useEffect(() => {
+    if (isEvaluationMode && draft) {
+      const gt = customGtSheet ?? parseBuiltinReference();
+      const report = evaluateDraftAgainstGt(draft, gt);
+      setEvaluationReport(report);
+    } else {
+      setEvaluationReport(null);
+    }
+  }, [isEvaluationMode, customGtSheet, draft]);
+
+  if (!draft) {
     return (
-      <div className="empty">
-        <p>请选择一票委托草稿</p>
-        <button onClick={() => state.setView("drafts")}>选择委托草稿</button>
+      <div className="recon-empty-page">
+        <AlertCircle size={32} />
+        <p>请选择一票委托书草稿进入人工复核工作台</p>
+        <button
+          className="primary"
+          onClick={() => state.setView("drafts")}
+        >
+          选择委托草稿
+        </button>
       </div>
     );
-  const line = draft.lines.find((l) => l.id === lineId) ?? draft.lines[0];
-  const rows = line ? rowsByLine.get(line.id)! : [];
-  const all = [...rowsByLine.values()].flat();
-  const active =
-    rows.find((row) => row.field === field) ??
-    rows.find((row) => accepts(row, filter)) ??
-    rows[0];
-  const summary = getTaskSummary(draft);
-  const blockedLines = draft.lines.filter((l) => !l.relationSourceId);
-  const lineProblems=draft.lines.flatMap(l=>l.relationSourceId ? l.issueIds.filter(id=>!id.startsWith('字段冲突:')&&!id.startsWith('必填缺失:')).map(message=>({lineId:l.id,message})) : []);
-  const blocking =
-    all.filter((row) => row.needsHuman).length + blockedLines.length + lineProblems.length;
-  const materialIds = new Set([
-    ...draft.materialFileIds,
-    ...state.files.filter(f=>f.batchId===`WORKBENCH-${draft.id}`).map(f=>f.id),
-    ...state.evidence
-      .filter((e) => e.draftId === draft.id)
-      .map((e) => e.sourceFileId),
-    ...state.sources
-      .filter((s) =>
-        draft.lines.some((l) => l.relationSourceIds.includes(s.id)),
+  }
+
+  const currentLine =
+    draft.lines.find((l) => l.id === lineId) ?? draft.lines[0];
+  const currentRows = currentLine ? rowsByLine.get(currentLine.id) ?? [] : [];
+  const activeFieldRow =
+    currentRows.find((r) => r.field === field) ?? currentRows[0];
+  const currentLineStatus = currentLine
+    ? lineStatuses.get(currentLine.id)
+    : undefined;
+
+  // 统计指标
+  const totalLines = draft.lines.length;
+  const allFieldRows = [...rowsByLine.values()].flat();
+  const allStatuses = draft.lines.map((l) => lineStatuses.get(l.id)!);
+
+  const verifiedLines = allStatuses.filter((s) => s.aiStatus === "VERIFIED_OK");
+  const needsConfirmLines = allStatuses.filter(
+    (s) => s.aiStatus === "NEEDS_CONFIRM",
+  );
+  const noInspectionLines = allStatuses.filter(
+    (s) => s.aiStatus === "NO_INSPECTION",
+  );
+  const confirmedLines = allStatuses.filter(
+    (s) => s.humanStatus === "CONFIRMED",
+  );
+
+  // 人工需处理问题（必须处理）
+  const blockedRelations = draft.lines.filter((l) => !l.relationSourceId);
+  const conflictFieldsTotal = allFieldRows.filter((r) => r.conflict);
+  const missingRequiredTotal = allFieldRows.filter(
+    (r) => r.missing && r.required,
+  );
+  const explicitLineIssues = draft.lines.flatMap((l) =>
+    l.issueIds
+      .filter(
+        (id) => !id.startsWith("字段冲突:") && !id.startsWith("必填缺失:"),
       )
-      .map((s) => s.sourceFileId),
-  ]);
-  const files = state.files.filter((f) => materialIds.has(f.id));
-  const customerSources = state.sources.filter(
-    (s) => s.customerId === draft.customerId && s.availability !== "未加载"
+      .map((msg) => ({ lineId: l.id, message: msg })),
   );
-  const mergedProductCount = Math.max(
-    1,
-    new Set(
-      customerSources.map((s) => `${s.brand}-${s.model}-${s.origin}`)
-    ).size
+
+  // 细分问题中心：现在可处理 vs 等待材料 vs 需人工裁决
+  const actionableNowCount = missingRequiredTotal.length + explicitLineIssues.length;
+  const waitingMaterialCount = blockedRelations.length;
+  const conflictCount = conflictFieldsTotal.length;
+  const mustHandleCount =
+    blockedRelations.length +
+    conflictFieldsTotal.length +
+    missingRequiredTotal.length +
+    explicitLineIssues.length;
+
+  // AI 风险提示（建议关注）
+  const aiRiskItems = useMemo(() => {
+    const list: Array<{
+      lineId: string;
+      level: "warn" | "info";
+      title: string;
+      desc: string;
+    }> = [];
+    draft.lines.forEach((l, idx) => {
+      const st = lineStatuses.get(l.id);
+      const rows = rowsByLine.get(l.id) ?? [];
+      const gwRow = rows.find((r) => r.field === "毛重");
+      const nwRow = rows.find((r) => r.field === "净重");
+
+      if (gwRow?.currentValue && nwRow?.currentValue) {
+        const gw = parseFloat(gwRow.currentValue);
+        const nw = parseFloat(nwRow.currentValue);
+        if (!isNaN(gw) && !isNaN(nw) && nw > gw) {
+          list.push({
+            lineId: l.id,
+            level: "warn",
+            title: `商品 ${String(idx + 1).padStart(2, "0")} 重量逻辑需关注`,
+            desc: `净重 (${nw}) 大于毛重 (${gw})，建议核实`,
+          });
+        }
+      }
+      if (l.relationSourceIds.length > 1) {
+        list.push({
+          lineId: l.id,
+          level: "info",
+          title: `商品 ${String(idx + 1).padStart(2, "0")} 多批次查货组合`,
+          desc: `当前商品行对应了 ${l.relationSourceIds.length} 条原始查货明细`,
+        });
+      }
+      if (gwRow?.evidence.some((e) => e.modelDecision?.reason?.includes("分配") || e.modelDecision?.reason?.includes("均摊"))) {
+        list.push({
+          lineId: l.id,
+          level: "info",
+          title: `商品 ${String(idx + 1).padStart(2, "0")} 毛重来自系统比例分配`,
+          desc: "根据箱规及委托件数自动分摊整单毛重",
+        });
+      }
+    });
+    return list;
+  }, [draft.lines, lineStatuses, rowsByLine]);
+
+  // 原始材料文件与证据提取
+  const currentLineSources = state.sources.filter(
+    (s) =>
+      (currentLine?.relationSourceIds ?? []).includes(s.id) ||
+      currentLine?.relationSourceId === s.id,
   );
+  const taskFiles = state.files.filter(
+    (f) =>
+      draft.materialFileIds.includes(f.id) ||
+      currentLineSources.some((s) => s.sourceFileId === f.id) ||
+      f.customerId === draft.customerId,
+  );
+
+  const activeFile =
+    taskFiles.find((f) => f.id === selectedFileId) ?? taskFiles[0];
+
+  // 五阶段业务处理阶段
   const stages = generateTaskProcessStages(
     draft,
     state.sources.filter((s) =>
-      draft.lines.some((l) => l.relationSourceIds.includes(s.id))
+      draft.lines.some((l) => l.relationSourceIds.includes(s.id)),
     ),
-    customerSources.length,
-    mergedProductCount
+    state.sources.filter((s) => s.customerId === draft.customerId).length,
+    Math.max(1, new Set(draft.lines.map((l) => l.model)).size),
   );
-  const isReconciled =
-    draft.hasAiUpdate ||
-    draft.version > 0 ||
-    draft.lines.some((l) => l.relationSourceIds.length > 0) ||
-    draft.status !== "待核对";
 
-  const allLineStatuses = draft.lines.map((l) => lineStatuses.get(l.id)!);
-  const reconciledLines = allLineStatuses.filter((s) => s.hasInspection);
-  const unreconciledLines = allLineStatuses.filter((s) => !s.hasInspection);
-  const userModifiedLines = allLineStatuses.filter((s) => s.isHumanModified);
-  const conflictLines = allLineStatuses.filter((s) => s.hasConflict);
-
-  const sourceNotes = [...new Set(state.sources.filter(s=>s.customerId===draft.customerId && s.availability!=='未加载').flatMap(s=>{
-    try { return (JSON.parse(s.otherFields['来源问题']??'[]') as {message:string}[]).map(i=>i.message); } catch { return []; }
-  }))];
-  const select = (id: string, f: FinalOutputField | null) => {
-    setLineId(id);
-    setField(f);
-    setView("fields");
-    setPreview(null);
-    setSource("全部");
-    const row = rowsByLine.get(id)?.find((r) => r.field === f);
-    if (row && !accepts(row, filter)) setFilter("全部字段");
-    state.setLastVisitedPanel(`line:${id}|${f ?? ""}`);
-    requestAnimationFrame(() =>
-      document
-        .getElementById(`field-${id}-${f}`)
-        ?.scrollIntoView({ block: "nearest" }),
-    );
+  // 切换商品与聚焦字段（实现点击单元格与右侧字段来源强联动）
+  const selectItem = (
+    targetLineId: string,
+    targetField?: FinalOutputField,
+    forceTab?: "RAW_MATERIAL" | "FIELD_SOURCE" | "RELATION" | "AI_LOG",
+  ) => {
+    setLineId(targetLineId);
+    if (targetField) {
+      setField(targetField);
+      // 强联动：只要选定具体字段，自动切换到字段来源 Tab
+      setRightTab(forceTab ?? "FIELD_SOURCE");
+    } else if (forceTab) {
+      setRightTab(forceTab);
+    }
+    // 平滑滚动定位中间表格对应行
+    requestAnimationFrame(() => {
+      const el = document.getElementById(`draft-row-${targetLineId}`);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
   };
-  const entries =
-    active?.evidence
-      .filter((e) => !e.isManuallyEdited)
-      .flatMap((e) =>
-        e.references
-          ? e.references.map((ref) => ({
-              key: ref.key,
-              location: ref.location,
-              raw: ref.rawValue,
-              normalized: ref.normalizedValue,
-              evidenceId: e.id,
-            }))
-          : [
-              {
-                key: e.id,
-                location: e.sourceLocation,
-              raw: e.sourceMaterialType === '委托书' ? e.originalValue : e.candidateValues[0] ?? null,
-              normalized: e.sourceMaterialType === '委托书' ? e.originalValue : e.candidateValues[0] ?? null,
-                evidenceId: e.id,
-              },
-            ],
-      ) ?? [];
-  const uniqueEntries = entries.filter(
-    (entry, i) => entries.findIndex((e) => e.key === entry.key) === i,
-  );
-  const currentLineSources = state.sources.filter(
-    (s) => (line?.relationSourceIds ?? []).includes(s.id) || line?.relationSourceId === s.id
-  );
-  const entrustFileIds = new Set([
-    ...draft.materialFileIds,
-    ...(line?.sourceLocation?.fileId ? [line.sourceLocation.fileId] : []),
-  ]);
-  const inspectionFileIds = new Set([
-    ...currentLineSources.map((s) => s.sourceFileId),
-    ...customerSources.map((s) => s.sourceFileId),
-  ]);
-  const boundFileIds = new Set(
-    state.materialBindings.filter((b) => b.draftId === draft.id).map((b) => b.fileId)
-  );
-  const taskFileIdSet = new Set([
-    ...entrustFileIds,
-    ...inspectionFileIds,
-    ...boundFileIds,
-    ...state.files.filter((f) => f.batchId === `WORKBENCH-${draft.id}` || f.customerId === draft.customerId).map((f) => f.id),
-    ...uniqueEntries.map((e) => e.location.fileId),
-  ]);
-  let taskFiles = state.files.filter((f) => taskFileIdSet.has(f.id));
-  if (taskFiles.length === 0 && draft.materialFileIds.length > 0) {
-    taskFiles = draft.materialFileIds.map((fid) => ({
-      id: fid,
-      name: fid,
-      materialType: "委托书",
-      loaded: true,
-      duplicate: false,
-      source: "基线" as const,
-    }));
-  }
 
-  const activeFileId =
-    preview && taskFiles.some((f) => f.id === preview.location.fileId)
-      ? preview.location.fileId
-      : selectedFileId && taskFiles.some((f) => f.id === selectedFileId)
-        ? selectedFileId
-        : uniqueEntries[0] && taskFiles.some((f) => f.id === uniqueEntries[0].location.fileId)
-          ? uniqueEntries[0].location.fileId
-          : taskFiles.find((f) => entrustFileIds.has(f.id))?.id ?? taskFiles[0]?.id ?? "";
+  // 快捷导航：上一条 / 下一条
+  const currentLineIndex = draft.lines.findIndex((l) => l.id === lineId);
+  const handlePrevLine = () => {
+    if (currentLineIndex > 0) {
+      selectItem(draft.lines[currentLineIndex - 1].id, field ?? undefined);
+    }
+  };
+  const handleNextLine = () => {
+    if (currentLineIndex < draft.lines.length - 1) {
+      selectItem(draft.lines[currentLineIndex + 1].id, field ?? undefined);
+    }
+  };
 
-  const currentFile = taskFiles.find((f) => f.id === activeFileId) ?? taskFiles[0];
+  // 确认当前商品并自动跳到下一个未确认商品
+  const handleConfirmCurrentAndNext = (targetLineId: string) => {
+    state.confirmLine(targetLineId);
+    const unconfirmed = draft.lines.find(
+      (l) => l.id !== targetLineId && !l.manuallyConfirmed,
+    );
+    if (unconfirmed) {
+      selectItem(unconfirmed.id, field ?? undefined);
+    }
+  };
 
-  const effectivePreview = useMemo(() => {
-    if (!currentFile) return null;
-    if (preview && preview.location.fileId === currentFile.id) {
-      return preview;
-    }
-    const matchingEntry = uniqueEntries.find((e) => e.location.fileId === currentFile.id);
-    if (matchingEntry) {
-      return {
-        location: matchingEntry.location,
-        name: currentFile.name ?? matchingEntry.location.fileId,
-        key: matchingEntry.key,
-      };
-    }
-    // 非 OCR 字段级定位（直接定位到具体文件和已有结构化行号/页码）
-    if (currentFile.materialType === "委托书") {
-      const row = line?.sourceLocation?.row ?? null;
-      const sheet = line?.sourceLocation?.sheet ?? null;
-      return {
-        location: {
-          fileId: currentFile.id,
-          page: line?.sourceLocation?.page ?? null,
-          row,
-          sheet,
-          position: row ? `第 ${row} 行` : "整单委托材料",
-        },
-        name: currentFile.name,
-        key: `${currentFile.id}-entrust-${line?.id ?? ""}`,
-      };
-    }
-    if (currentFile.materialType === "查货") {
-      const page = currentLineSources[0]?.sourceLocation?.page ?? 1;
-      return {
-        location: {
-          fileId: currentFile.id,
-          page,
-          sheet: null,
-          position: `第 ${page} 页`,
-        },
-        name: currentFile.name,
-        key: `${currentFile.id}-inspect-${line?.id ?? ""}`,
-      };
-    }
-    return {
-      location: {
-        fileId: currentFile.id,
-        page: 1,
-        sheet: null,
-        position: null,
-      },
-      name: currentFile.name,
-      key: `${currentFile.id}-other`,
-    };
-  }, [currentFile, preview, uniqueEntries, line, currentLineSources]);
-
-  const activePreview = effectivePreview;
+  // 导出 CSV / 最终核对单
   const exportCsv = () => {
-    const final=state.finalReconciliations.find(s=>s.sourceDraftId===draft.id);
-    const rows=draft.lines.map(l=>l.fields);
-    const csv=buildFinalReconciliationCsv(final ?? {rows,totals:calculateFinalOutputTotals(rows)});
+    const final = state.finalReconciliations.find(
+      (s) => s.sourceDraftId === draft.id,
+    );
+    const rows = draft.lines.map((l) => l.fields);
+    const csv = buildFinalReconciliationCsv(
+      final ?? { rows, totals: calculateFinalOutputTotals(rows) },
+    );
     const url = URL.createObjectURL(
       new Blob([csv], { type: "text/csv;charset=utf-8" }),
     );
     const a = document.createElement("a");
     a.href = url;
-    a.download = final ? finalReconciliationFileName(draft.displayNo,final.sourceVersion) : `草稿预览-${draft.displayNo}-V${draft.version}.csv`;
+    a.download = final
+      ? finalReconciliationFileName(draft.displayNo, final.sourceVersion)
+      : `草稿预览-${draft.displayNo}-V${draft.version}.csv`;
     a.click();
     URL.revokeObjectURL(url);
   };
+
+  // 用户上传自定义标准答案文件 (评测模式)
+  const handleGtFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    try {
+      const buffer = await file.arrayBuffer();
+      const workbook = XLSX.read(buffer, { type: "array" });
+      const sheetName = workbook.SheetNames[0];
+      const sheet = workbook.Sheets[sheetName];
+      const jsonRows: Array<Record<string, any>> = XLSX.utils.sheet_to_json(sheet);
+
+      const parsedRows: StandardAnswerSheet["rows"] = jsonRows.map((row, idx) => {
+        const fields: Partial<Record<FinalOutputField, string>> = {};
+        for (const [colName, val] of Object.entries(row)) {
+          const clean = colName.trim();
+          const matched = FINAL_OUTPUT_FIELDS.find(
+            (f) => f === clean || clean.includes(f),
+          );
+          if (matched) fields[matched] = String(val);
+        }
+        return {
+          rowIndex: idx + 1,
+          fields,
+          rawFields: Object.fromEntries(
+            Object.entries(row).map(([k, v]) => [k, String(v)]),
+          ),
+        };
+      });
+
+      const customSheet: StandardAnswerSheet = {
+        name: file.name,
+        rows: parsedRows,
+      };
+      setCustomGtSheet(customSheet);
+      state.clearToast();
+    } catch {
+      alert("解析标准答案文件失败，请确保是有效 Excel 文件");
+    }
+  };
+
+  // 显示的核心字段列表
+  const displayedFields =
+    fieldMode === "CORE" ? CORE_OUTPUT_FIELDS : FINAL_OUTPUT_FIELDS;
+
+  // 结案核销检查项状态
+  const finalizeChecklist = {
+    allLinesConfirmed: confirmedLines.length === draft.lines.length,
+    confirmedCount: confirmedLines.length,
+    totalLines: draft.lines.length,
+    zeroConflicts: conflictFieldsTotal.length === 0,
+    conflictCount: conflictFieldsTotal.length,
+    zeroMissingRequired: missingRequiredTotal.length === 0,
+    missingCount: missingRequiredTotal.length,
+    zeroBlockedRelations: blockedRelations.length === 0,
+    blockedCount: blockedRelations.length,
+  };
+  const canFinalize =
+    finalizeChecklist.allLinesConfirmed &&
+    finalizeChecklist.zeroConflicts &&
+    finalizeChecklist.zeroMissingRequired &&
+    finalizeChecklist.zeroBlockedRelations;
+
+  // 任务状态业务语义判断
+  let taskStatusText = "待人工复核";
+  let taskStatusClass = "ready-confirm";
+  if (draft.finalized) {
+    taskStatusText = "已封版归档";
+    taskStatusClass = "final";
+  } else if (noInspectionLines.length === totalLines) {
+    taskStatusText = "等待查货材料";
+    taskStatusClass = "waiting-inspection";
+  } else if (noInspectionLines.length > 0) {
+    taskStatusText = `部分核对 (${verifiedLines.length + needsConfirmLines.length}/${totalLines})`;
+    taskStatusClass = "partial-recon";
+  } else if (mustHandleCount > 0) {
+    taskStatusText = `待人工处理 (${mustHandleCount})`;
+    taskStatusClass = "needs-attention";
+  } else {
+    taskStatusText = `待人工复核 (${confirmedLines.length}/${totalLines})`;
+    taskStatusClass = "ready-confirm";
+  }
+
+  const updateTimeStr = new Date(draft.updatedAt).toLocaleTimeString("zh-CN", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
   return (
-    <div className="recon-workbench">
+    <div className="recon-workbench recon-workspace-v2">
+      {/* 顶部 Header：围绕“这票现在是什么状态”展开 */}
       <header className="recon-heading">
         <div className="recon-heading-left">
-          <button
-            className="recon-back-button"
-            onClick={() => state.setView("home")}
-            title="返回客户工作台"
-            aria-label="返回客户工作台"
-          >
-            <ArrowLeft size={16} />
-            <span>返回客户工作台</span>
-          </button>
           <div className="recon-heading-titles">
             <div className="recon-kicker">
-              <span>核对作业台</span>
-              <span className="sep">/</span>
+              <span>委托任务</span>
               <b>{draft.displayNo}</b>
+              <span className="sep">·</span>
+              <button
+                type="button"
+                className="draft-version-badge-btn"
+                onClick={() => setHistoryOpen(true)}
+                title="点击查阅版本演进明细"
+              >
+                当前草稿 V{draft.version}
+              </button>
             </div>
             <div className="recon-title-row">
               <h2>{draft.customerName}</h2>
-              <span className={`recon-status-pill ${draft.finalized ? "final" : draft.status === "人工确认中" ? "confirming" : isReconciled ? "reconciled" : "draft"}`}>
-                {draft.finalized ? "已封版归档" : draft.status === "人工确认中" ? "人工确认中" : isReconciled ? `AI核对版 (V${draft.version})` : `原始委托草稿 (V0)`}
+              <span className={`recon-status-pill ${taskStatusClass}`}>
+                {taskStatusText}
               </span>
             </div>
-            <p>
-              单号：{draft.id} · 版本 V{draft.version} · 最近更新{" "}
-              {new Date(draft.updatedAt).toLocaleTimeString("zh-CN", {
-                hour: "2-digit",
-                minute: "2-digit",
-              })}
-              {draft.lastUpdateReason ? ` · ${draft.lastUpdateReason}` : ""}
+            <p className="recon-sub-note">
+              当前草稿 V{draft.version} · 最近更新：{updateTimeStr} ·
+              触发原因：{draft.lastUpdateReason || "系统持续监听材料事件"} ·
+              单号：{draft.id}
             </p>
           </div>
         </div>
-        <div className="action-row">
-          <button className="secondary" onClick={() => setHistory(!history)}>
+
+        <div className="recon-top-actions">
+          {/* 模式切换：正常业务核对 vs 评测模式 (Demo) */}
+          <div
+            className="mode-toggle-group"
+            role="radiogroup"
+            aria-label="工作台模式切换"
+          >
+            <button
+              className={`mode-toggle-btn ${!isEvaluationMode ? "active" : ""}`}
+              onClick={() => setEvaluationMode(false)}
+            >
+              <FileCheck2 size={14} />
+              正常业务核对
+            </button>
+            <button
+              className={`mode-toggle-btn eval-btn ${
+                isEvaluationMode ? "active" : ""
+              }`}
+              onClick={() => setEvaluationMode(true)}
+            >
+              <Sparkles size={14} />
+              评测模式 (POC)
+            </button>
+          </div>
+
+          <button
+            className="secondary"
+            onClick={() => setHistoryOpen(!historyOpen)}
+            title="查看草稿版本变更历史"
+          >
             <History size={15} />
-            历史
+            版本与操作
           </button>
+
           <button className="secondary" onClick={exportCsv}>
             <Download size={15} />
-            {draft.finalized?'导出最终核对单':'导出预览'}
+            {draft.finalized ? "导出最终核对单" : "导出草稿预览"}
           </button>
+
           {!draft.finalized && (
-            <>
-              {blockedLines.length > 0 && (
-                <button
-                  className="secondary"
-                  aria-label="开始核对（执行首次匹配）"
-                  onClick={state.matchSelectedDraft}
+            <div className="finalize-action-container">
+              <button
+                className={`primary recon-finalize-btn ${!canFinalize ? "is-disabled" : ""}`}
+                disabled={!canFinalize}
+                onClick={() => setShowFinalizeModal(true)}
+                onMouseEnter={() => setShowChecklistPopover(true)}
+                onMouseLeave={() => setShowChecklistPopover(false)}
+              >
+                <CheckCircle2 size={16} />
+                {canFinalize ? "完成整票复核" : "整票复核 (未满足条件)"}
+              </button>
+
+              {/* 未达标时的条件提示面板 */}
+              {!canFinalize && showChecklistPopover && (
+                <div
+                  className="finalize-condition-popover"
+                  onMouseEnter={() => setShowChecklistPopover(true)}
+                  onMouseLeave={() => setShowChecklistPopover(false)}
                 >
-                  <Sparkles size={15} />
-                  开始核对
-                </button>
+                  <div className="popover-head">
+                    <strong>还不能完成整票复核</strong>
+                    <span className="popover-badge-warn">尚未达标</span>
+                  </div>
+                  <ul className="popover-checklist">
+                    <li className={noInspectionLines.length === 0 ? "is-ok" : "is-fail"}>
+                      <span className="chk-icon">{noInspectionLines.length === 0 ? "✓" : "✕"}</span>
+                      <span>
+                        {noInspectionLines.length === 0
+                          ? "全部商品已有可靠查货依据"
+                          : `${noInspectionLines.length} 个商品暂无可靠查货依据`}
+                      </span>
+                    </li>
+                    <li className={mustHandleCount === 0 ? "is-ok" : "is-fail"}>
+                      <span className="chk-icon">{mustHandleCount === 0 ? "✓" : "✕"}</span>
+                      <span>
+                        {mustHandleCount === 0
+                          ? "0 个未决冲突与必填缺失"
+                          : `${mustHandleCount} 个必须问题未处理`}
+                      </span>
+                    </li>
+                    <li className={confirmedLines.length === totalLines ? "is-ok" : "is-fail"}>
+                      <span className="chk-icon">{confirmedLines.length === totalLines ? "✓" : "○"}</span>
+                      <span>
+                        人工已复核 {confirmedLines.length} / {totalLines}
+                      </span>
+                    </li>
+                    <li className="is-ok">
+                      <span className="chk-icon">✓</span>
+                      <span>客户信息已确认</span>
+                    </li>
+                    <li className="is-ok">
+                      <span className="chk-icon">✓</span>
+                      <span>委托材料读取完整</span>
+                    </li>
+                  </ul>
+                  <p className="popover-foot-tip">满足全部条件后即可生成最终核对单并执行核销</p>
+                </div>
               )}
-              {draft.status === "人工确认中" ? (
-                <>
-                  <button
-                    className="secondary recon-revert-btn"
-                    title="撤销人工确认状态，返回工作台继续修改"
-                    onClick={state.revertDraftToReview}
-                  >
-                    <RotateCcw size={15} />
-                    退回修改 (返回上一步)
-                  </button>
-                  <button
-                    className="primary"
-                    onClick={state.completeSelectedDraft}
-                  >
-                    <Check size={15} />
-                    确认完成
-                  </button>
-                </>
-              ) : (
-                <button
-                  className="primary"
-                  disabled={blocking > 0 || !line || !draft.customerId}
-                  onClick={state.submitSelectedDraft}
-                >
-                  提交人工复核
-                  <ChevronRight size={15} />
-                </button>
-              )}
-            </>
+            </div>
           )}
         </div>
       </header>
-      {/* 五阶段业务处理全流程步进器 */}
-      <div className="recon-workflow-container">
-        <div className="recon-workflow-title">
-          <div className="recon-workflow-title-left">
-            <Sparkles size={15} className="workflow-title-icon" />
-            <span>AI 报关智能核对流程（五阶段实时流转）</span>
+
+      {/* 顶部自然语言状态横幅 + 6项核心状态卡片 */}
+      <section className="recon-status-overview">
+        <div className="recon-nlp-banner">
+          <div className="nlp-banner-icon">
+            <Sparkles size={18} />
           </div>
-          <div className="recon-workflow-active-badge">
-            <span>当前流转环节：</span>
-            <b className="active-phase-tag">
-              {(() => {
-                const act = stages.find((s) => s.isActive) ?? stages[0];
-                return `第 ${act.step} 阶段 · ${act.title}（${act.statusText}）`;
-              })()}
-            </b>
+          <div className="nlp-banner-content">
+            {noInspectionLines.length === totalLines ? (
+              <>
+                <strong>等待查货材料：</strong>
+                <span>
+                  当前整票共 <b>{totalLines}</b> 个商品，暂无可靠查货依据。
+                  当前可以提前处理委托侧字段问题，但暂不能完成商品核对或整票复核。系统处于自动监听中，新查货到达后将自动触发核对。
+                </span>
+              </>
+            ) : noInspectionLines.length > 0 ? (
+              <>
+                <strong>部分核对进行中：</strong>
+                <span>
+                  AI 已完成当前所有可处理材料的自动核对。整票共 <b>{totalLines}</b> 个商品行：已匹配核对{" "}
+                  <b className="c-green">{verifiedLines.length + needsConfirmLines.length}</b> 行；
+                  仍有 <b className="c-orange">{noInspectionLines.length}</b> 个商品等待查货资料到达；
+                  当前人工已复核 <b>{confirmedLines.length} / {totalLines}</b> 行。
+                </span>
+              </>
+            ) : (
+              <>
+                <strong>全部商品已有查货依据：</strong>
+                <span>
+                  整票共 <b>{totalLines}</b> 个商品行均已匹配查货依据并完成自动核验。
+                  当前人工已复核 <b>{confirmedLines.length} / {totalLines}</b> 行。
+                </span>
+              </>
+            )}
+          </div>
+          <button
+            className="process-drawer-toggle"
+            onClick={() => setShowProcessLogs(!showProcessLogs)}
+          >
+            <span>AI处理记录</span>
+            {showProcessLogs ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+          </button>
+        </div>
+
+        {/* 6项关键计数卡片 (细化问题与待办) */}
+        <div className="recon-metric-tiles recon-metric-tiles-v2">
+          <div className="metric-tile">
+            <span className="metric-label">待核对商品</span>
+            <strong className="metric-num">{totalLines}</strong>
+            <small>全部委托行</small>
+          </div>
+          <div className="metric-tile">
+            <span className="metric-label">AI已核对</span>
+            <strong className="metric-num text-green">
+              {verifiedLines.length + needsConfirmLines.length}
+            </strong>
+            <small>有可靠查货依据</small>
+          </div>
+          <div className="metric-tile">
+            <span className="metric-label">尚无查货依据</span>
+            <strong
+              className={`metric-num ${
+                noInspectionLines.length > 0 ? "text-orange" : "text-muted"
+              }`}
+            >
+              {noInspectionLines.length}
+            </strong>
+            <small>等待材料补入</small>
+          </div>
+          <div className="metric-tile">
+            <span className="metric-label">人工待办</span>
+            <strong
+              className={`metric-num ${
+                actionableNowCount > 0 ? "text-red" : "text-muted"
+              }`}
+            >
+              {actionableNowCount}
+            </strong>
+            <small>现在可以处理</small>
+          </div>
+          <div className="metric-tile">
+            <span className="metric-label">等待材料</span>
+            <strong
+              className={`metric-num ${
+                waitingMaterialCount > 0 ? "text-orange" : "text-muted"
+              }`}
+            >
+              {waitingMaterialCount}
+            </strong>
+            <small>新查货到达后继续</small>
+          </div>
+          <div className="metric-tile metric-tile-accent">
+            <span className="metric-label">人工已复核</span>
+            <strong className="metric-num text-blue">
+              {confirmedLines.length} <small>/ {totalLines}</small>
+            </strong>
+            <small>已逐行人工确认</small>
           </div>
         </div>
-        <div className="recon-workflow-steps">
-          {stages.map((stage, idx) => {
-            const isActive = stage.isActive;
-            return (
+
+        {/* 五阶段业务处理全流程进度条 */}
+        <div className="recon-workflow-container">
+          <div className="recon-workflow-title">
+            <span>AI 报关智能核对流程（五阶段实时流转）</span>
+            <span>
+              当前环节：
+              <b style={{ color: "#1b6e46", marginLeft: 4 }}>
+                {stages.find((s) => s.status === "processing" || s.status === "warning")?.title ||
+                  (draft.finalized ? "已完成封版归档" : "全部核对通过 · 待复核")}
+              </b>
+            </span>
+          </div>
+          <div className="recon-workflow-steps">
+            {stages.map((stage, idx) => (
               <Fragment key={stage.step}>
-                <div className={`recon-workflow-step ${stage.status} ${isActive ? "active-step" : ""}`}>
+                <div className={`recon-workflow-step ${stage.status}`}>
                   <div className="recon-step-head">
-                    <div className="recon-step-number-title">
-                      <span className={`recon-step-num-badge ${stage.status}`}>
-                        {stage.status === "completed" ? "✓" : stage.step}
-                      </span>
-                      <span className="recon-step-title">{stage.step}. {stage.title}</span>
-                    </div>
+                    <span className="recon-step-title">
+                      {stage.step}. {stage.title}
+                    </span>
                     <span className={`recon-step-status ${stage.status}`}>
+                      {stage.status === "completed"
+                        ? "✓ "
+                        : stage.status === "processing"
+                        ? "● "
+                        : stage.status === "warning"
+                        ? "⚠️ "
+                        : "○ "}
                       {stage.statusText}
                     </span>
                   </div>
@@ -433,7 +766,6 @@ export function ReconciliationWorkbench({
                     <span>{stage.actionNote}</span>
                     <span className="recon-step-code">{stage.code}</span>
                   </div>
-                  {isActive && <div className="recon-step-active-indicator">当前处理环节</div>}
                 </div>
                 {idx < stages.length - 1 && (
                   <div className="recon-workflow-arrow">
@@ -441,1141 +773,1645 @@ export function ReconciliationWorkbench({
                   </div>
                 )}
               </Fragment>
-            );
-          })}
-        </div>
-      </div>
-      <div className="recon-summary">
-        <strong>
-          <span className="live-dot" />
-          {summary.businessStatus}
-        </strong>
-        <span>
-          待核对商品 <b>{draft.lines.length}</b>
-        </span>
-        <span>
-          已找到对应（已匹配）{" "}
-          <b>
-            {summary.matched}/{summary.total}
-          </b>
-        </span>
-        <span>
-          字段已核验{" "}
-          <b>
-            {all.filter((r) => r.verified).length}/{all.length}
-          </b>
-        </span>
-        <span className="danger-text">
-          字段冲突 <b>{all.filter((r) => r.conflict).length}</b>
-        </span>
-        <span>
-          必填缺失 <b>{all.filter((r) => r.missing && r.required).length}</b>
-        </span>
-      </div>
-      {/* 单据数据版本与核对状态横幅：明确区分草稿单 vs 核对结果 */}
-      <div className={`recon-data-banner ${isReconciled ? "is-reconciled" : "is-draft"}`}>
-        <div className="banner-left">
-          <div className="banner-icon-box">
-            {isReconciled ? <Sparkles size={20} /> : <FileText size={20} />}
+            ))}
           </div>
-          <div className="banner-text">
-            <div className="banner-heading">
-              <strong>
-                {isReconciled ? `AI 智能核对结果单 (V${draft.version})` : `原始委托书申报草稿单 (V0)`}
-              </strong>
-              <span className="banner-mode-tag">
-                {isReconciled ? "✓ 已基于查货资料自动比对完成" : "○ 尚未执行查货资料比对 · 原始填报值"}
+        </div>
+
+        {/* 业务状态 Summary 栏 */}
+        <div className="recon-summary">
+          <strong>
+            <span className="live-dot" />
+            {draft.finalized
+              ? "已完成封版"
+              : noInspectionLines.length === totalLines
+              ? "等待查货材料"
+              : noInspectionLines.length > 0
+              ? "部分核对进行中"
+              : "全部核对通过"}
+          </strong>
+          <span>
+            待核对商品 <b>{draft.lines.length}</b>
+          </span>
+          <span>
+            已找到对应（已匹配）{" "}
+            <b>
+              {verifiedLines.length + needsConfirmLines.length}/{totalLines}
+            </b>
+          </span>
+          <span>
+            字段已核验{" "}
+            <b>
+              {allFieldRows.filter((r) => r.verified).length}/{allFieldRows.length}
+            </b>
+          </span>
+          <span className="danger-text">
+            字段冲突 <b>{allFieldRows.filter((r) => r.conflict).length}</b>
+          </span>
+          <span>
+            必填缺失 <b>{allFieldRows.filter((r) => r.missing && r.required).length}</b>
+          </span>
+        </div>
+      </section>
+
+      {/* 评测模式专用 Dashboard：标准答案指标与对比控制器 */}
+      {isEvaluationMode && evaluationReport && (
+        <section className="recon-evaluation-dashboard">
+          <div className="eval-dash-head">
+            <div className="eval-dash-title">
+              <Sparkles size={16} className="text-purple" />
+              <strong>POC 标准答案自动化评测看板</strong>
+              <span className="eval-dataset-tag">
+                评测基准：{evaluationReport.datasetName}
               </span>
             </div>
-            <p className="banner-desc">
-              {isReconciled ? (
-                <>
-                  整单共 <b>{draft.lines.length}</b> 个商品行：
-                  已基于查货核对 <b className="stat-green">{reconciledLines.length}</b> 行，
-                  未核对/缺依据 <b className={unreconciledLines.length ? "stat-orange" : ""}>{unreconciledLines.length}</b> 行，
-                  用户手动修正 <b className="stat-blue">{userModifiedLines.length}</b> 行，
-                  字段冲突 <b className={all.filter((r) => r.conflict).length ? "stat-red" : ""}>{all.filter((r) => r.conflict).length}</b> 项。
-                </>
-              ) : (
-                <>
-                  当前工作台数据为客户委托申报原稿，尚未与仓库查货资料建立商品行映射和字段比对。请点击右侧【开始核对】执行自动关联。
-                </>
+            <div className="eval-dash-tools">
+              <label className="secondary eval-upload-btn">
+                <Upload size={13} />
+                导入标准答案.xlsx
+                <input
+                  type="file"
+                  accept=".xlsx,.xls,.csv"
+                  onChange={handleGtFileUpload}
+                  style={{ display: "none" }}
+                />
+              </label>
+              {customGtSheet && (
+                <button
+                  className="text-button"
+                  onClick={() => setCustomGtSheet(null)}
+                >
+                  恢复内置标准答案
+                </button>
               )}
-            </p>
+            </div>
           </div>
-        </div>
-        <div className="banner-right">
-          {!isReconciled && !draft.finalized && (
-            <button className="primary banner-action-btn" onClick={state.matchSelectedDraft}>
-              <Sparkles size={14} />
-              立即开始 AI 核对
+
+          <div className="eval-metric-grid">
+            <div className="eval-metric-card">
+              <span>整体字段准确率</span>
+              <strong className="eval-score">
+                {evaluationReport.metrics.overallAccuracyRate}%
+              </strong>
+              <small>
+                {evaluationReport.metrics.consistentFieldsCount} /{" "}
+                {evaluationReport.metrics.totalFieldsCompared} 字段一致
+              </small>
+            </div>
+            <div className="eval-metric-card">
+              <span>必填字段准确率</span>
+              <strong className="eval-score text-green">
+                {evaluationReport.metrics.requiredAccuracyRate}%
+              </strong>
+              <small>核心报关必填项</small>
+            </div>
+            <div className="eval-metric-card">
+              <span>商品匹配正确率</span>
+              <strong className="eval-score text-blue">
+                {evaluationReport.metrics.productMatchAccuracyRate}%
+              </strong>
+              <small>
+                {evaluationReport.metrics.matchedLineCount} /{" "}
+                {evaluationReport.metrics.totalLineCount} 行有效建立对应
+              </small>
+            </div>
+            <div className="eval-metric-card">
+              <span>人工需修正字段</span>
+              <strong className="eval-score text-red">
+                {evaluationReport.metrics.humanCorrectionNeededCount}
+              </strong>
+              <small>与标准答案存在差异</small>
+            </div>
+            <div className="eval-metric-card">
+              <span>AI判一致但实际错误</span>
+              <strong className="eval-score text-orange">
+                {evaluationReport.metrics.aiConsistentButIncorrectCount}
+              </strong>
+              <small>模型置信但GT不同</small>
+            </div>
+          </div>
+
+          {/* 评测模式专属过滤条 */}
+          <div className="eval-filter-bar">
+            <span className="filter-title">评测差异速查：</span>
+            <button
+              className={`chip ${
+                draftTableFilter === "ALL" ? "active" : ""
+              }`}
+              onClick={() => setDraftTableFilter("ALL")}
+            >
+              全部字段
             </button>
-          )}
-          {isReconciled && draft.status === "人工确认中" && (
-            <button className="secondary banner-action-btn" onClick={state.revertDraftToReview}>
-              <RotateCcw size={14} />
-              退回修改
+            <button
+              className={`chip chip-red ${
+                draftTableFilter === "MISMATCH_ONLY" ? "active" : ""
+              }`}
+              onClick={() => setDraftTableFilter("MISMATCH_ONLY")}
+            >
+              仅看不一致 ({evaluationReport.metrics.mismatchFieldsCount})
             </button>
-          )}
-        </div>
-      </div>
-      {history && (
-        <section className="recon-history" aria-label="当前草稿版本与操作">
-          <button
-            className="icon-button"
-            aria-label="关闭历史"
-            onClick={() => setHistory(false)}
-          >
-            <X size={16} />
-          </button>
-          {state.versions
-            .filter((v) => v.draftId === draft.id)
-            .slice()
-            .reverse()
-            .map((v) => (
-              <details key={v.id}>
-                <summary>
-                  V{v.version} · {v.triggerReason} ·{" "}
-                  {new Date(v.createdAt).toLocaleString("zh-CN")}
-                </summary>
-                {v.after.map((after) => (
-                  <div key={after.entrustmentLineId}>
-                    {FINAL_OUTPUT_FIELDS.filter(
-                      (f) =>
-                        v.before.find(
-                          (b) =>
-                            b.entrustmentLineId === after.entrustmentLineId,
-                        )?.fields[f] !== after.fields[f],
-                    ).map((f) => (
-                      <p key={f}>
-                        {short(after.entrustmentLineId)} · {f}：
-                        {value(
-                          v.before.find(
-                            (b) =>
-                              b.entrustmentLineId === after.entrustmentLineId,
-                          )?.fields[f],
-                        )}{" "}
-                        → {value(after.fields[f])}
-                      </p>
-                    ))}
-                  </div>
-                ))}
-              </details>
-            ))}
-          {state.operations
-            .filter((o) => o.draftId === draft.id)
-            .slice()
-            .reverse()
-            .map((o) => (
-              <p key={o.id}>{o.summary}</p>
-            ))}
+            <button
+              className={`chip chip-orange ${
+                draftTableFilter === "MISSING_ONLY" ? "active" : ""
+              }`}
+              onClick={() => setDraftTableFilter("MISSING_ONLY")}
+            >
+              仅看缺失 ({evaluationReport.metrics.aiMissingFieldsCount})
+            </button>
+            <button
+              className={`chip chip-purple ${
+                draftTableFilter === "AI_FALSE_POSITIVE" ? "active" : ""
+              }`}
+              onClick={() => setDraftTableFilter("AI_FALSE_POSITIVE")}
+            >
+              仅看AI判一致但实际错误 ({evaluationReport.metrics.aiConsistentButIncorrectCount})
+            </button>
+            <span className="eval-hint">
+              💡 评测模式下，每个单元格直接显示：【AI当前值】与【标准答案 GT
+              值】对比，点击差异可查看 AI 判断原因。
+            </span>
+          </div>
         </section>
       )}
-      <div className="recon-mobile">
-        <button onClick={() => setDrawer("left")}>处理与问题 {blocking}</button>
-        <button onClick={() => setDrawer("right")}>原文与证据</button>
-      </div>
-      <div className="recon-columns">
-        <aside
-          className={`recon-left ${drawer === "left" ? "drawer-open" : ""}`}
-        >
-          <button
-            className="drawer-close icon-button"
-            aria-label="关闭处理与问题"
-            onClick={() => setDrawer(null)}
-          >
-            <X size={18} />
-          </button>
-          <section>
-            <h3>当前处理</h3>
-            <strong>{summary.businessStatus}</strong>
-            <p className="muted">{summary.realtimeStatus}</p>
-            <dl>
-              <div>
-                <dt>已找到对应商品</dt>
-                <dd>
-                  {summary.matched} / {summary.total}
-                </dd>
-              </div>
-              <div>
-                <dt>已核验字段</dt>
-                <dd>
-                  {all.filter((r) => r.verified).length} / {all.length}
-                </dd>
-              </div>
-              <div>
-                <dt>待人工字段</dt>
-                <dd>{all.filter((r) => r.needsHuman).length}</dd>
-              </div>
-            </dl>
-            {blocking > 0 && (
-              <p className="recon-blocker">
-                <AlertTriangle size={14} />
-                还有 {blocking} 项必须处理
-              </p>
-            )}
-          </section>
-          <section className="line-navigation">
-            <div className="line-nav-header">
-              <h3>商品核对清单 <span>{draft.lines.length}</span></h3>
-            </div>
-            <div className="line-card-list">
-              {draft.lines.map((item, index) => {
-                const itemStatus = lineStatuses.get(item.id);
-                const isSelected = item.id === line?.id;
-                return (
-                  <button
-                    key={item.id}
-                    className={`line-card-item ${isSelected ? "selected" : ""} ${itemStatus?.hasInspection ? "has-inspection" : "no-inspection"}`}
-                    onClick={() => select(item.id, null)}
-                  >
-                    <div className="line-card-head">
-                      <div className="line-card-title">
-                        <b>商品 {String(index + 1).padStart(2, "0")}</b>
-                        <span className="line-card-code">{short(item.id)}</span>
-                      </div>
-                      <span className={`line-recon-tag ${itemStatus?.hasInspection ? "tag-green" : "tag-orange"}`}>
-                        {itemStatus?.hasInspection ? "✓ 查货已核对" : "○ 缺查货依据"}
-                      </span>
-                    </div>
-                    <div className="line-card-model" title={item.model}>
-                      {item.model || "型号待补充"}
-                    </div>
-                    <div className="line-card-footer">
-                      {itemStatus?.isHumanModified && (
-                        <span className="line-pill pill-blue" title={`用户人工修改了 ${itemStatus.humanModifiedFields.join("、")}`}>
-                          <Pencil size={10} /> 已修正 {itemStatus.humanModifiedFields.length} 项
-                        </span>
-                      )}
-                      {itemStatus?.hasConflict && (
-                        <span className="line-pill pill-red" title={`查货数据存在差异：${itemStatus.conflictFields.join("、")}`}>
-                          <AlertTriangle size={10} /> 差异 {itemStatus.conflictFields.length} 项
-                        </span>
-                      )}
-                      {!itemStatus?.isHumanModified && !itemStatus?.hasConflict && itemStatus?.hasInspection && (
-                        <span className="line-pill pill-ok">
-                          <Check size={10} /> 字段核对一致
-                        </span>
-                      )}
-                      {!itemStatus?.hasInspection && (
-                        <span className="line-pill pill-muted">
-                          等待匹配查货单
-                        </span>
-                      )}
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-          </section>
-          <section className="problem-center">
-            <h3>
-              问题中心 <span>{blocking} 必须处理</span>
-            </h3>
-            {(["必须处理", "建议检查", "信息提示"] as const).map((group, g) => (
-              <div key={group}>
-                <h4 className={`severity-${g}`}>{group}</h4>
-                {g===0 && lineProblems.map(p=><button key={`${p.lineId}-${p.message}`} onClick={()=>select(p.lineId,null)}><b>{short(p.lineId)} · 商品问题</b><span>{p.message}</span></button>)}
-                {g===1 && sourceNotes.map(note=><button key={note} onClick={()=>select(line?.id??'', '毛重')}><b>材料范围提醒</b><span>{note}</span></button>)}
-                {g === 0 &&
-                  blockedLines.map((l) => (
-                    <button
-                      className={l.id === line?.id ? "selected" : ""}
-                      key={l.id}
-                      onClick={() => select(l.id, null)}
-                    >
-                      <b>{short(l.id)} · 缺少查货依据</b>
-                      <span>选择查货商品，建立匹配关系</span>
-                    </button>
-                  ))}
-                {draft.lines.flatMap((l) =>
-                  (rowsByLine.get(l.id) ?? [])
-                    .filter((r) =>
-                      g === 0
-                        ? r.needsHuman
-                        : g === 1
-                          ? !r.needsHuman && !r.verified && !r.missing
-                          : r.missing && !r.required,
-                    )
-                    .map((r) => (
-                      <button
-                        key={`${l.id}-${r.field}`}
-                        className={
-                          l.id === line?.id && r.field === active?.field
-                            ? "selected"
-                            : ""
-                        }
-                        onClick={() => select(l.id, r.field)}
-                      >
-                        <b>
-                          {short(l.id)} · {r.field}
-                        </b>
-                        <span>
-                          {g === 0
-                            ? r.status
-                            : g === 1
-                              ? "尚未核验"
-                              : "暂无来源值"}
-                          {r.conflict ? ` · 当前 ${value(r.currentValue)}` : ""}
-                        </span>
-                      </button>
-                    )),
-                )}
-              </div>
-            ))}
-          </section>
-          <section>
-            <h3>材料状态</h3>
-            {files.map((f) => (
-              <div className="recon-file" key={f.id}>
-                <FileText size={15} />
-                <span>
-                  {f.name}
-                  <small>
-                    {f.materialType} ·{" "}
-                    {f.uploadStatus ?? (f.loaded ? "已接入" : "已关联")}
-                  </small>
-                </span>
-              </div>
-            ))}
-            <label className="secondary upload-material">
-              <Upload size={14} />
-              接入新材料
-              <input
-                type="file"
-                aria-label="为当前草稿上传材料"
-                onChange={async (e) => {
-                  const f = e.target.files?.[0];
-                  if (f) {
-                    state.stageLocalFile({
-                      name: f.name,
-                      size: f.size,
-                      type: f.type,
-                      file: f,
-                      customerId: draft.customerId ?? undefined,
-                      batchId:`WORKBENCH-${draft.id}`,
-                    });
-                    const staged = useDemoStore.getState().files.find(f=>!state.files.some(old=>old.id===f.id));
-                    if (staged?.source === "本地上传") {
-                      await state.parseLocalFile(staged.id);
-                      const parsed=useDemoStore.getState().files.find(f=>f.id===staged.id);
-                      if(parsed && ['发票','箱单'].includes(parsed.materialType) && parsed.uploadStatus==='解析成功') state.bindMaterialToDraft(parsed.id,draft.id);
-                    }
-                  }
-                }}
-              />
-            </label>
+
+      {/* 历史版本与操作记录抽屉 */}
+      {historyOpen && (
+        <section className="recon-history" aria-label="草稿版本与操作">
+          <div className="history-head">
+            <strong>草稿版本演化与操作记录</strong>
             <button
-              className="text-button"
-              onClick={() => state.setView("intake")}
+              className="icon-button"
+              onClick={() => setHistoryOpen(false)}
             >
-              查看全部材料
+              <X size={16} />
             </button>
-          </section>
-          <section>
-            <h3>处理记录</h3>
-            {state.operations
-              .filter((o) => o.draftId === draft.id)
-              .slice(-5)
+          </div>
+          <div className="history-body">
+            {state.versions
+              .filter((v) => v.draftId === draft.id)
+              .slice()
               .reverse()
-              .map((o) => (
-                <p className="recon-record" key={o.id}>
-                  <time>
-                    {new Date(o.occurredAt).toLocaleTimeString("zh-CN", {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
-                  </time>
-                  {o.summary}
-                </p>
-              ))}
-          </section>
-        </aside>
-        <section className="recon-center">
-          {line ? (
-            <>
-              <div className="product-navigation">
-                <button
-                  className="icon-button"
-                  aria-label="上一个商品"
-                  disabled={draft.lines.indexOf(line) === 0}
-                  onClick={() =>
-                    select(draft.lines[draft.lines.indexOf(line) - 1].id, null)
-                  }
-                >
-                  <ChevronLeft size={18} />
-                </button>
-                <div>
-                  <small>
-                    商品 {draft.lines.indexOf(line) + 1} / {draft.lines.length}
-                  </small>
-                  <select
-                    aria-label="选择商品"
-                    value={line.id}
-                    onChange={(e) => select(e.target.value, null)}
-                  >
-                    {draft.lines.map((l) => (
-                      <option key={l.id} value={l.id}>
-                        {short(l.id)} · {l.model}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <button
-                  className="icon-button"
-                  aria-label="下一个商品"
-                  disabled={
-                    draft.lines.indexOf(line) === draft.lines.length - 1
-                  }
-                  onClick={() =>
-                    select(draft.lines[draft.lines.indexOf(line) + 1].id, null)
-                  }
-                >
-                  <ChevronRight size={18} />
-                </button>
-              </div>
-              {/* 当前选中商品行的查货核对状态横幅 */}
-              {(() => {
-                const curStatus = lineStatuses.get(line.id);
-                return (
-                  <div className="line-context-banner">
-                    <div className="line-context-tags">
-                      <span className={`line-context-status-pill ${curStatus?.badgeClass}`}>
-                        {curStatus?.badgeText}
-                      </span>
-                      <span className="line-context-src">
-                        查货依据：<b>{curStatus?.inspectionSummary}</b>
-                      </span>
-                    </div>
-                    {curStatus?.isHumanModified && (
-                      <span className="line-context-modified">
-                        <Pencil size={12} /> 本行已人工修正 {curStatus.humanModifiedFields.length} 个字段
-                      </span>
-                    )}
-                  </div>
-                );
-              })()}
-              {!draft.customerId && (
-                <select
-                  aria-label="补充委托客户"
-                  onChange={(e) =>
-                    state.resolveSelectedDraftCustomer(e.target.value)
-                  }
-                  defaultValue=""
-                >
-                  <option value="" disabled>
-                    选择客户
-                  </option>
-                  {state.customers.map((c) => (
-                    <option key={c.id} value={c.id}>
-                      {c.name}
-                    </option>
-                  ))}
-                </select>
-              )}
-              {!line.relationSourceId && !draft.finalized && (
-                <div className="relation-picker">
-                  <label>
-                    查货依据
-                    <select
-                      aria-label={`为 ${short(line.id)} 选择查货依据`}
-                      value=""
-                      onChange={(e) =>
-                        state.selectLineSource(line.id, e.target.value)
-                      }
-                    >
-                      <option value="">人工选择同客户查货行</option>
-                      {state.sources
-                        .filter(
-                          (s) =>
-                            s.customerId === draft.customerId &&
-                            s.availability === "可匹配",
-                        )
-                        .map((s) => (
-                          <option value={s.id} key={s.id}>
-                            {s.model} · {s.quantity}
-                          </option>
-                        ))}
-                    </select>
-                  </label>
-                </div>
-              )}
-              <div className="recon-tabs">
-                <button
-                  className={view === "fields" ? "active" : ""}
-                  onClick={() => setView("fields")}
-                >
-                  字段核对
-                </button>
-                <button
-                  className={view === "results" ? "active" : ""}
-                  onClick={() => setView("results")}
-                >
-                  25 列结果
-                </button>
-                <span>{draft.finalized ? "最终 25 列核对单" : "AI 核对结果"}</span>
-              </div>
-              {view === "fields" ? (
-                <>
-                  <div className="recon-filters">
-            {filters.map((f) => (
-                      <button
-                        key={f}
-                        aria-pressed={filter === f}
-                        className={filter === f ? "active" : ""}
-                        onClick={() => {
-                          setFilter(f);
-                          setField(null);
-                          setPreview(null);
-                        }}
-                      >
-                        {f} <b>{rows.filter((r) => accepts(r, f)).length}</b>
-                      </button>
-                    ))}
-                  </div>
-                  <div className="field-scroll">
-                    <table className="recon-field-table">
-                      <thead>
-                        <tr>
-                          <th>字段</th>
-                          <th>当前结果</th>
-                          <th>核验状态</th>
-                          <th>来源 / 证据</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {rows
-                          .filter((r) => accepts(r, filter))
-                          .map((r) => (
-                            <Fragment key={r.field}>
-                              <tr
-                                id={`field-${line.id}-${r.field}`}
-                                className={
-                                  r.field === active?.field
-                                    ? "active-field"
-                                    : ""
-                                }
-                                onClick={() => select(line.id, r.field)}
-                              >
-                                <th>
-                                  <button
-                                    onClick={() => select(line.id, r.field)}
-                                  >
-                                    {r.field}
-                                  </button>
-                                </th>
-                                <td>{value(r.currentValue)}</td>
-                                <td>
-                                  <span
-                                    className={`field-status ${r.conflict ? "conflict" : r.missing && r.required ? "missing" : r.verified ? "verified" : ""}`}
-                                  >
-                                    {r.status}
-                                  </span>
-                                  {r.locked && (
-                                    <LockKeyhole
-                                      size={12}
-                                      aria-label="人工锁定"
-                                    />
-                                  )}
-                                </td>
-                                <td>
-                                  <small>
-                                    {r.valueOrigin === "HUMAN"
-                                      ? "人工"
-                                      : r.valueOrigin === "EMPTY"
-                                        ? "无来源"
-                                        : [
-                                            ...new Set(
-                                              r.evidence.map(
-                                                (e) => e.sourceMaterialType,
-                                              ),
-                                            ),
-                                          ].join(" + ") || "委托"}{" "}
-                                    · {r.evidenceCount}
-                                  </small>
-                                </td>
-                              </tr>
-                              {r.field === active?.field && (
-                                <tr className="field-expanded">
-                                  <td colSpan={4}>
-                                    <FieldEditor
-                                      key={`${line.id}-${r.field}-${draft.version}`}
-                                      row={r}
-                                      lineId={line.id}
-                                      finalized={draft.finalized}
-                                    />
-                                  </td>
-                                </tr>
+              .map((v) => (
+                <details key={v.id} className="history-ver-item">
+                  <summary>
+                    <b>V{v.version}</b> · {v.triggerReason} ·{" "}
+                    {new Date(v.createdAt).toLocaleString("zh-CN")}
+                  </summary>
+                  <div className="ver-diff-content">
+                    {v.after.map((after) => (
+                      <div key={after.entrustmentLineId}>
+                        {FINAL_OUTPUT_FIELDS.filter(
+                          (f) =>
+                            v.before.find(
+                              (b) =>
+                                b.entrustmentLineId === after.entrustmentLineId,
+                            )?.fields[f] !== after.fields[f],
+                        ).map((f) => (
+                          <p key={f} className="ver-diff-line">
+                            <span>
+                              {short(after.entrustmentLineId)} · {f}：
+                            </span>
+                            <span className="diff-old">
+                              {value(
+                                v.before.find(
+                                  (b) =>
+                                    b.entrustmentLineId ===
+                                    after.entrustmentLineId,
+                                )?.fields[f],
                               )}
-                            </Fragment>
-                          ))}
-                      </tbody>
-                    </table>
-                    {!rows.some((r) => accepts(r, filter)) && (
-                      <div className="recon-empty">
-                        <Check size={24} />
-                        <p>当前商品没有{filter}项</p>
-                        <button onClick={() => setFilter("全部字段")}>
-                          查看全部 25 字段
-                        </button>
+                            </span>
+                            <span className="diff-arrow">→</span>
+                            <span className="diff-new">
+                              {value(after.fields[f])}
+                            </span>
+                          </p>
+                        ))}
                       </div>
-                    )}
+                    ))}
                   </div>
-                  <details className="relation-tools">
-                    <summary>商品关系与确认</summary>
-                <LineActions
-                  key={line.id}
-                      draft={draft}
-                      line={line}
-                      sources={state.sources}
-                      evidence={state.evidence.filter(
-                        (e) => e.entrustmentLineId === line.id,
-                      )}
-                      onFieldSelect={(f) => select(line.id, f)}
-                    />
-                  </details>
-                </>
-              ) : (
-                <div className="recon-overview-wrapper">
-                  {/* 表格顶层控制栏：商品筛选切片 + 模式切换器 */}
-                  <div className="table-controls-bar">
-                    <div className="filter-chips" role="tablist" aria-label="商品行分类筛选">
-                      <button
-                        className={`chip ${resultFilter === "ALL" ? "active" : ""}`}
-                        onClick={() => setResultFilter("ALL")}
-                      >
-                        全部商品 ({draft.lines.length})
-                      </button>
-                      <button
-                        className={`chip chip-green ${resultFilter === "RECONCILED" ? "active" : ""}`}
-                        onClick={() => setResultFilter("RECONCILED")}
-                      >
-                        ✓ 已基于查货核对 ({reconciledLines.length})
-                      </button>
-                      {unreconciledLines.length > 0 && (
-                        <button
-                          className={`chip chip-orange ${resultFilter === "UNCHECKED" ? "active" : ""}`}
-                          onClick={() => setResultFilter("UNCHECKED")}
-                        >
-                          ○ 缺少查货资料 ({unreconciledLines.length})
-                        </button>
-                      )}
-                      {userModifiedLines.length > 0 && (
-                        <button
-                          className={`chip chip-blue ${resultFilter === "MODIFIED" ? "active" : ""}`}
-                          onClick={() => setResultFilter("MODIFIED")}
-                        >
-                          ✏️ 用户已修正 ({userModifiedLines.length})
-                        </button>
-                      )}
-                      {conflictLines.length > 0 && (
-                        <button
-                          className={`chip chip-red ${resultFilter === "CONFLICT" ? "active" : ""}`}
-                          onClick={() => setResultFilter("CONFLICT")}
-                        >
-                          ⚠️ 查货差异 ({conflictLines.length})
-                        </button>
-                      )}
-                    </div>
-                    <div className="table-mode-switch">
-                      <span className="mode-switch-label">数据对照模式：</span>
-                      <div className="mode-button-group">
-                        <button
-                          className={`mode-btn ${tableMode === "LATEST" ? "active" : ""}`}
-                          onClick={() => setTableMode("LATEST")}
-                          title="展示 AI 核对与人工修正后的最新推荐结果"
-                        >
-                          最新核对结果
-                        </button>
-                        <button
-                          className={`mode-btn ${tableMode === "ORIGINAL" ? "active" : ""}`}
-                          onClick={() => setTableMode("ORIGINAL")}
-                          title="展示客户导入的原始委托申报值"
-                        >
-                          原始委托原值
-                        </button>
-                        <button
-                          className={`mode-btn ${tableMode === "DIFF" ? "active" : ""}`}
-                          onClick={() => setTableMode("DIFF")}
-                          title="对比原始委托申报值与最新核对值的变动（原值 → 现值）"
-                        >
-                          差异对比
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* 模式说明小提示 */}
-                  <div className="table-mode-hint">
-                    {tableMode === "LATEST" && (
-                      <span>
-                        当前展示<b>【最新核对结果】</b>：融合查货资料后的申报值，带有 <span className="sample-pill-blue">✏️ 蓝色角标</span> 的单元格为<b>用户手动修正项</b>，带有 <span className="sample-pill-red">⚠️ 红色角标</span> 为<b>冲突差异项</b>。
-                      </span>
-                    )}
-                    {tableMode === "ORIGINAL" && (
-                      <span>
-                        当前展示<b>【原始委托原值】</b>：纯客户委托草稿原件填报数值，尚未融合查货单数据，用于与核对结果对照查证。
-                      </span>
-                    )}
-                    {tableMode === "DIFF" && (
-                      <span>
-                        当前展示<b>【差异对比】</b>：高亮显示经查货核对或人工修正后发生变动的字段（格式为：<b>原值 → 现值</b>）。
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="result-scroll">
-                    <table className="recon-result-table enhanced-table">
-                      <thead>
-                        <tr>
-                          <th className="th-fixed th-index">商品序号</th>
-                          <th className="th-fixed th-status">查货核对状态</th>
-                          <th className="th-fixed th-evidence">查货依据来源</th>
-                          {FINAL_OUTPUT_FIELDS.map((f) => (
-                            <th key={f}>{f}</th>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {draft.lines
-                          .filter((l) => {
-                            const st = lineStatuses.get(l.id);
-                            if (resultFilter === "RECONCILED") return st?.hasInspection;
-                            if (resultFilter === "UNCHECKED") return !st?.hasInspection;
-                            if (resultFilter === "MODIFIED") return st?.isHumanModified;
-                            if (resultFilter === "CONFLICT") return st?.hasConflict;
-                            return true;
-                          })
-                          .map((l) => {
-                            const st = lineStatuses.get(l.id);
-                            const lRows = rowsByLine.get(l.id) ?? [];
-                            const isSelectedLine = l.id === line.id;
-                            return (
-                              <tr
-                                key={l.id}
-                                className={`${isSelectedLine ? "row-selected" : ""} ${!st?.hasInspection ? "row-unchecked" : ""}`}
-                              >
-                                <th className="td-fixed td-index">
-                                  <button
-                                    onClick={() => select(l.id, null)}
-                                    aria-label={`行 ${String(draft.lines.indexOf(l) + 1).padStart(2, "0")}`}
-                                    title="点击聚焦查看该商品详情与字段"
-                                  >
-                                    <b>商品 {String(draft.lines.indexOf(l) + 1).padStart(2, "0")}</b>
-                                    <small>{short(l.id)} · {l.model || "—"}</small>
-                                  </button>
-                                </th>
-                                <td className="td-fixed td-status">
-                                  <span className={`table-status-badge ${st?.badgeClass ?? ""}`}>
-                                    {st?.badgeText ?? "核对中"}
-                                  </span>
-                                </td>
-                                <td className="td-fixed td-evidence" title={st?.inspectionSummary}>
-                                  <span className="evidence-text">
-                                    {st?.hasInspection ? st.inspectionSummary : "○ 暂无查货单"}
-                                  </span>
-                                </td>
-                                {FINAL_OUTPUT_FIELDS.map((f) => {
-                                  const r = lRows.find((item) => item.field === f);
-                                  const baseVal = r?.baseValue ?? l.fields[f];
-                                  const currentVal = l.fields[f];
-                                  const isHuman = r?.human;
-                                  const isConflict = r?.conflict;
-                                  const isChanged = r?.changed;
-
-                                  let cellContent = value(currentVal);
-                                  let cellClass = "";
-                                  let cellTitle = `${f}: ${value(currentVal)}`;
-
-                                  if (tableMode === "ORIGINAL") {
-                                    cellContent = value(baseVal);
-                                    cellTitle = `原始委托值: ${value(baseVal)}`;
-                                  } else if (tableMode === "DIFF") {
-                                    if (isChanged) {
-                                      cellClass = "diff-cell-changed";
-                                      cellTitle = `变动字段：原值 ${value(baseVal)} → 现值 ${value(currentVal)}`;
-                                      cellContent = `${value(baseVal)} → ${value(currentVal)}`;
-                                    } else {
-                                      cellContent = value(currentVal);
-                                      cellTitle = `一致无变动: ${value(currentVal)}`;
-                                    }
-                                  } else {
-                                    // LATEST mode
-                                    if (isHuman) {
-                                      cellClass = "cell-human-modified";
-                                      cellTitle = `用户手动修改（原委托值: ${value(baseVal)} → 修改为: ${value(currentVal)}）`;
-                                    } else if (isConflict) {
-                                      cellClass = "cell-conflict";
-                                      cellTitle = `存在冲突：当前值 ${value(currentVal)}`;
-                                    } else if (isChanged) {
-                                      cellClass = "cell-ai-updated";
-                                      cellTitle = `AI 基于查货资料调整（原值: ${value(baseVal)} → 现值: ${value(currentVal)}）`;
-                                    }
-                                  }
-
-                                  return (
-                                    <td key={f} className={cellClass}>
-                                      <button
-                                        onClick={() => select(l.id, f)}
-                                        title={cellTitle}
-                                      >
-                                        {tableMode === "LATEST" && isHuman && (
-                                          <Pencil size={11} className="cell-pencil-icon" />
-                                        )}
-                                        {tableMode === "LATEST" && isConflict && (
-                                          <AlertTriangle size={11} className="cell-conflict-icon" />
-                                        )}
-                                        {tableMode === "DIFF" && isChanged ? (
-                                          <span className="diff-inline">
-                                            <span className="diff-old">{value(baseVal)}</span>
-                                            <span className="diff-arrow">→</span>
-                                            <span className="diff-new">{value(currentVal)}</span>
-                                          </span>
-                                        ) : (
-                                          <span>{cellContent}</span>
-                                        )}
-                                      </button>
-                                    </td>
-                                  );
-                                })}
-                              </tr>
-                            );
-                          })}
-                      </tbody>
-                    </table>
-                    {draft.lines.filter((l) => {
-                      const st = lineStatuses.get(l.id);
-                      if (resultFilter === "RECONCILED") return st?.hasInspection;
-                      if (resultFilter === "UNCHECKED") return !st?.hasInspection;
-                      if (resultFilter === "MODIFIED") return st?.isHumanModified;
-                      if (resultFilter === "CONFLICT") return st?.hasConflict;
-                      return true;
-                    }).length === 0 && (
-                      <div className="recon-empty-filter">
-                        <Filter size={20} />
-                        <p>没有符合当前筛选条件的商品行</p>
-                        <button onClick={() => setResultFilter("ALL")}>查看全部商品</button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              )}
-            </>
-          ) : (
-            <div className="recon-empty">暂无商品行</div>
-          )}
+                </details>
+              ))}
+          </div>
         </section>
+      )}
+
+      {/* 工作台三栏主体 */}
+      <div
+        className="recon-columns-v2"
+        style={{
+          gridTemplateColumns: `280px minmax(0, 1fr) 8px ${rightPanelWidth}px`,
+        }}
+      >
+        {/* 左侧：人工工作队列 (商品行导航 + 必须处理问题 + AI风险) */}
         <aside
-          className={`recon-right ${drawer === "right" ? "drawer-open" : ""}`}
+          className={`recon-left-queue ${
+            mobileDrawer === "left" ? "drawer-open" : ""
+          }`}
         >
-          <button
-            className="drawer-close icon-button"
-            aria-label="关闭证据"
-            onClick={() => setDrawer(null)}
-          >
-            <X size={18} />
-          </button>
-          <h3>
-            <Search size={16} />
-            原文与证据
-          </h3>
-          <div className="evidence-context">
-            <small>
-              {short(line?.id ?? "")} / 当前字段：{active?.field ?? "—"}
-            </small>
-            <strong>{value(active?.currentValue)}</strong>
-            <span>证据 {uniqueEntries.length} 条</span>
-          </div>
-          <div className="material-file-tabs" role="tablist" aria-label="相关材料原文件">
-            {taskFiles.map((f) => {
-              const isSelected = f.id === currentFile?.id;
-              const isLineDirect = currentLineSources.some((s) => s.sourceFileId === f.id) || entrustFileIds.has(f.id);
-              return (
-                <button
-                  key={f.id}
-                  role="tab"
-                  aria-selected={isSelected}
-                  className={`material-file-tab ${isSelected ? "active" : ""}`}
-                  onClick={() => {
-                    setSelectedFileId(f.id);
-                    setPreview(null);
-                  }}
-                  title={f.name}
-                >
-                  <span className="material-tab-badge">{f.materialType}</span>
-                  <span className="material-tab-name">{f.name}</span>
-                  {isLineDirect && <span className="material-tab-dot" title="当前商品行关联原件" />}
-                </button>
-              );
-            })}
-          </div>
-          {uniqueEntries.length > 0 ? (
-            <>
-              <div className="evidence-source-tabs">
-                {[
-                  "全部",
-                  ...new Set(
-                    uniqueEntries.map(
-                      (e) =>
-                        state.files.find((f) => f.id === e.location.fileId)
-                          ?.materialType ?? "其他",
-                    ),
-                  ),
-                ].map((s) => (
-                  <button
-                    className={source === s ? "active" : ""}
-                    key={s}
-                    onClick={() => setSource(s)}
-                  >
-                    {s}
-                  </button>
-                ))}
-              </div>
-              {uniqueEntries
-                .filter(
-                  (e) =>
-                    source === "全部" ||
-                    state.files.find((f) => f.id === e.location.fileId)
-                      ?.materialType === source,
-                )
-                .map((e) => {
-                  const file = state.files.find((f) => f.id === e.location.fileId);
+          {/* 区域 1：商品行状态导航 */}
+          <section className="queue-section queue-nav">
+            <div className="queue-section-header">
+              <h3>
+                商品核对清单 <span>{totalLines}</span>
+              </h3>
+            </div>
+            {/* 分组统计芯片 */}
+            <div className="nav-filter-chips">
+              <button
+                className={`filter-chip ${
+                  lineNavFilter === "ALL" ? "active" : ""
+                }`}
+                onClick={() => setLineNavFilter("ALL")}
+              >
+                全部 {totalLines}
+              </button>
+              <button
+                className={`filter-chip chip-green ${
+                  lineNavFilter === "VERIFIED_OK" ? "active" : ""
+                }`}
+                onClick={() => setLineNavFilter("VERIFIED_OK")}
+              >
+                ✓ 无问题 {verifiedLines.length}
+              </button>
+              <button
+                className={`filter-chip chip-red ${
+                  lineNavFilter === "NEEDS_CONFIRM" ? "active" : ""
+                }`}
+                onClick={() => setLineNavFilter("NEEDS_CONFIRM")}
+              >
+                ⚠ 需确认 {needsConfirmLines.length}
+              </button>
+              <button
+                className={`filter-chip chip-orange ${
+                  lineNavFilter === "NO_INSPECTION" ? "active" : ""
+                }`}
+                onClick={() => setLineNavFilter("NO_INSPECTION")}
+              >
+                ○ 缺查货 {noInspectionLines.length}
+              </button>
+              <button
+                className={`filter-chip chip-blue ${
+                  lineNavFilter === "CONFIRMED" ? "active" : ""
+                }`}
+                onClick={() => setLineNavFilter("CONFIRMED")}
+              >
+                ● 已复核 {confirmedLines.length}
+              </button>
+            </div>
+
+            {/* 商品卡片列表 */}
+            <div className="line-cards-scroll">
+              {draft.lines
+                .filter((l) => {
+                  const st = lineStatuses.get(l.id);
+                  if (lineNavFilter === "VERIFIED_OK")
+                    return st?.aiStatus === "VERIFIED_OK";
+                  if (lineNavFilter === "NEEDS_CONFIRM")
+                    return st?.aiStatus === "NEEDS_CONFIRM";
+                  if (lineNavFilter === "NO_INSPECTION")
+                    return st?.aiStatus === "NO_INSPECTION";
+                  if (lineNavFilter === "CONFIRMED")
+                    return st?.humanStatus === "CONFIRMED";
+                  return true;
+                })
+                .map((item, index) => {
+                  const itemStatus = lineStatuses.get(item.id);
+                  const isSelected = item.id === lineId;
+                  const originalIndex = draft.lines.indexOf(item);
+
                   return (
-                    <article
-                      className={`evidence-entry ${activePreview?.key === e.key ? "selected" : ""}`}
-                      key={e.key}
+                    <button
+                      key={item.id}
+                      id={`nav-item-${item.id}`}
+                      className={`line-queue-card ${
+                        isSelected ? "is-selected" : ""
+                      } ${
+                        itemStatus?.hasConflict
+                          ? "has-conflict"
+                          : itemStatus?.hasInspection
+                            ? "has-inspection"
+                            : "no-inspection"
+                      }`}
+                      onClick={() => selectItem(item.id, field ?? undefined)}
                     >
-                      <button
-                        className="evidence-entry-title"
-                        onClick={() => {
-                          setField(active.field);
-                          setSelectedFileId(e.location.fileId);
-                          setPreview({
-                            location: e.location,
-                            name: file?.name ?? e.location.fileId,
-                            key: e.key,
-                          });
-                        }}
-                      >
-                        <FileText size={14} />
-                        {file?.name ?? e.location.fileId}
-                      </button>
-                      <small>
-                        {e.location.sheet
-                          ? `Sheet ${e.location.sheet} · ${e.location.column ?? ""}${e.location.row ?? ""}`
-                          : e.location.page
-                            ? `第 ${e.location.page} 页`
-                            : (e.location.position ?? "位置未记录")}
-                      </small>
-                      <blockquote>
-                        {e.location.rawText || "原文未记录，可查看原文件"}
-                      </blockquote>
-                      <dl>
-                        <div>
-                          <dt>原始值</dt>
-                          <dd>{value(e.raw)}</dd>
+                      <div className="card-top-row">
+                        <div className="card-num-code">
+                          <b>
+                            商品 {String(originalIndex + 1).padStart(2, "0")}
+                          </b>
+                          <span className="card-code">{short(item.id)}</span>
                         </div>
-                        <div>
-                          <dt>标准化值</dt>
-                          <dd>{value(e.normalized)}</dd>
+                        {/* 双状态微标：AI状态 + 人工状态 */}
+                        <div className="card-status-badges">
+                          <span
+                            className={`badge-ai ${
+                              itemStatus?.aiStatus === "VERIFIED_OK"
+                                ? "tag-green"
+                                : itemStatus?.aiStatus === "NEEDS_CONFIRM"
+                                  ? "tag-red"
+                                  : "tag-orange"
+                            }`}
+                          >
+                            {itemStatus?.aiStatusText}
+                          </span>
                         </div>
-                      </dl>
-                      <button
-                        className="text-button"
-                        onClick={() => {
-                          setField(active.field);
-                          setSelectedFileId(e.location.fileId);
-                          setPreview({
-                            location: e.location,
-                            name: file?.name ?? e.location.fileId,
-                            key: e.key,
-                          });
-                        }}
-                      >
-                        定位到原文
-                        <ChevronRight size={13} />
-                      </button>
-                      <div className="evidence-related">
-                        {draft.lines
-                          .flatMap((l) =>
-                            (rowsByLine.get(l.id) ?? []).filter((r) =>
-                              r.evidence.some(
-                                (item) =>
-                                  item.id === e.key ||
-                                  item.references?.some((ref) => ref.key === e.key),
-                              ),
-                            ),
-                          )
-                          .map((r) => (
-                            <button
-                              key={`${r.field}-${e.key}`}
-                              className="text-button"
-                              onClick={() => {
-                                select(line.id, r.field);
-                                setSelectedFileId(e.location.fileId);
-                                setPreview({
-                                  location: e.location,
-                                  name: file?.name ?? e.location.fileId,
-                                  key: e.key,
-                                });
-                              }}
-                            >
-                              {short(line.id)} · {r.field}
-                            </button>
-                          ))}
                       </div>
-                    </article>
+
+                      <div className="card-model-row" title={item.model}>
+                        {item.model || "型号待补充"}
+                      </div>
+
+                      <div className="card-foot-row">
+                        <span className="card-inspection-summary">
+                          {itemStatus?.inspectionSummary}
+                        </span>
+                        <span
+                          className={`badge-human ${
+                            item.manuallyConfirmed ? "is-confirmed" : "is-pending"
+                          }`}
+                        >
+                          {item.manuallyConfirmed
+                            ? "● 人工已确认"
+                            : "○ 待人工复核"}
+                        </span>
+                      </div>
+                    </button>
                   );
                 })}
-            </>
-          ) : (
-            <div className="evidence-direct-note">
-              <FileText size={14} />
-              <div>
-                <strong>已定位到具体原文件对照</strong>
-                <span>无需 OCR 字段级坐标，可直接在下方查看原件内容。</span>
+            </div>
+          </section>
+
+          {/* 区域 2：人工问题中心 (拆解：现在可处理 vs 等待材料 vs 需裁决) */}
+          <section className="queue-section queue-problems">
+            <div className="queue-section-header">
+              <h3>
+                人工问题中心{" "}
+                <span className="badge-count-red">{actionableNowCount} 可处理</span>
+                {waitingMaterialCount > 0 && (
+                  <span className="badge-count-orange">{waitingMaterialCount} 待材料</span>
+                )}
+              </h3>
+            </div>
+            {mustHandleCount === 0 ? (
+              <div className="queue-empty-clean">
+                <Check size={16} />
+                <span>整票无未决冲突与必填缺失，可随时完成复核</span>
+              </div>
+            ) : (
+              <div className="problem-items-list">
+                {/* 1. 现在可以处理：委托侧必填缺失 */}
+                {actionableNowCount > 0 && (
+                  <div className="problem-subgroup">
+                    <div className="subgroup-title text-red">
+                      <span>● 现在可以处理 ({actionableNowCount})</span>
+                      <small>委托侧字段缺失 · 立即录入</small>
+                    </div>
+                    {missingRequiredTotal.map((r) => {
+                      const lineOfField = draft.lines.find((l) =>
+                        rowsByLine.get(l.id)?.some((item) => item === r),
+                      );
+                      const lId = lineOfField?.id ?? draft.lines[0].id;
+                      return (
+                        <div
+                          key={`miss-${lId}-${r.field}`}
+                          className="problem-action-card card-missing"
+                          onClick={() => selectItem(lId, r.field, "FIELD_SOURCE")}
+                        >
+                          <div className="problem-card-head">
+                            <AlertTriangle size={13} className="text-red" />
+                            <b>{short(lId)} · 必填项【{r.field}】缺失</b>
+                          </div>
+                          <p className="problem-card-desc">报关必须填报该字段，当前可提前补全</p>
+                          <div className="problem-card-foot">
+                            <span className="action-link">点击补全字段 →</span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+
+                {/* 2. 等待材料：尚无查货依据商品 */}
+                {waitingMaterialCount > 0 && (
+                  <div className="problem-subgroup">
+                    <div className="subgroup-title text-orange">
+                      <span>○ 等待查货材料 ({waitingMaterialCount})</span>
+                      <small>新查货到达后自动核对</small>
+                    </div>
+                    {blockedRelations.map((l) => (
+                      <div
+                        key={`rel-${l.id}`}
+                        className="problem-action-card card-waiting-mat"
+                        onClick={() => selectItem(l.id, "型号", "RELATION")}
+                      >
+                        <div className="problem-card-head">
+                          <AlertTriangle size={13} className="text-orange" />
+                          <b>{short(l.id)} · 尚未关联查货依据</b>
+                        </div>
+                        <p className="problem-card-desc">系统持续监听中；也可在右侧手动指定</p>
+                        <div className="problem-card-foot">
+                          <span className="action-link">手动指定依据 →</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* 3. 需要人工裁决：字段差异冲突 */}
+                {conflictCount > 0 && (
+                  <div className="problem-subgroup">
+                    <div className="subgroup-title text-red">
+                      <span>⚠ 需人工判断差异 ({conflictCount})</span>
+                      <small>委托与查货实测出入</small>
+                    </div>
+                    {conflictFieldsTotal.map((r) => {
+                      const lineOfField = draft.lines.find((l) =>
+                        rowsByLine.get(l.id)?.some((item) => item === r),
+                      );
+                      const lId = lineOfField?.id ?? draft.lines[0].id;
+                      return (
+                        <div
+                          key={`conf-${lId}-${r.field}`}
+                          className="problem-action-card card-conflict"
+                          onClick={() => selectItem(lId, r.field, "FIELD_SOURCE")}
+                        >
+                          <div className="problem-card-head">
+                            <AlertCircle size={13} className="text-red" />
+                            <b>{short(lId)} · {r.field} 存在差异</b>
+                          </div>
+                          <div className="conflict-contrast">
+                            <span>委托：{value(r.baseValue)}</span>
+                            <span>查货：{value(r.candidateValue)}</span>
+                          </div>
+                          <div className="problem-card-foot">
+                            <span className="action-link">点击快速裁决 →</span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            )}
+          </section>
+
+          {/* 区域 3：AI风险与报警 (建议关注) */}
+          <section className="queue-section queue-risks">
+            <div className="queue-section-header">
+              <h3>
+                AI风险与报警 <span>{aiRiskItems.length} 建议关注</span>
+              </h3>
+            </div>
+            {aiRiskItems.length === 0 ? (
+              <div className="queue-empty-clean">
+                <Check size={16} />
+                <span>无额外风险提示</span>
+              </div>
+            ) : (
+              <div className="risk-items-list">
+                {aiRiskItems.map((risk, i) => (
+                  <div
+                    key={i}
+                    className={`risk-card ${
+                      risk.level === "warn" ? "risk-warn" : "risk-info"
+                    }`}
+                    onClick={() => selectItem(risk.lineId, field ?? undefined)}
+                  >
+                    <div className="risk-card-head">
+                      {risk.level === "warn" ? (
+                        <AlertTriangle size={13} className="text-orange" />
+                      ) : (
+                        <Info size={13} className="text-blue" />
+                      )}
+                      <b>{risk.title}</b>
+                    </div>
+                    <p className="risk-card-desc">{risk.desc}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </section>
+        </aside>
+
+        {/* 中间核心：真正的「核对单草稿」 */}
+        <main className="recon-center-draft">
+          {/* 中间顶部工具栏 */}
+          <div className="draft-control-bar">
+            <div className="draft-control-left">
+              <div
+                className="view-columns-toggle"
+                role="radiogroup"
+                aria-label="草稿显示列切换"
+              >
+                <button
+                  className={`col-toggle-btn ${
+                    fieldMode === "ALL" ? "active" : ""
+                  }`}
+                  onClick={() => setFieldMode("ALL")}
+                  title="展示海关申报规范全部25列字段（包含未填报项）"
+                >
+                  <Layers size={13} />
+                  全部 25 字段 (包含未填项)
+                </button>
+                <button
+                  className={`col-toggle-btn ${
+                    fieldMode === "CORE" ? "active" : ""
+                  }`}
+                  onClick={() => setFieldMode("CORE")}
+                  title="精简展示高频核验的11个核心字段"
+                >
+                  <Table size={13} />
+                  精简核心 (11列)
+                </button>
+              </div>
+
+              {/* 筛选切片 */}
+              <div className="draft-quick-filters">
+                <button
+                  className={`filter-btn ${
+                    draftTableFilter === "ALL" ? "active" : ""
+                  }`}
+                  onClick={() => setDraftTableFilter("ALL")}
+                >
+                  全部
+                </button>
+                <button
+                  className={`filter-btn ${
+                    draftTableFilter === "PROBLEMS_ONLY" ? "active" : ""
+                  }`}
+                  onClick={() => setDraftTableFilter("PROBLEMS_ONLY")}
+                >
+                  仅看问题商品 ({needsConfirmLines.length})
+                </button>
+                <button
+                  className={`filter-btn ${
+                    draftTableFilter === "UNCONFIRMED_ONLY" ? "active" : ""
+                  }`}
+                  onClick={() => setDraftTableFilter("UNCONFIRMED_ONLY")}
+                >
+                  仅看未复核 ({totalLines - confirmedLines.length})
+                </button>
+              </div>
+            </div>
+
+            <div className="draft-control-right">
+              {/* 人工复核模式切换 */}
+              <button
+                className={`focus-review-toggle ${
+                  reviewModeActive ? "active" : ""
+                }`}
+                onClick={() => setReviewModeActive(!reviewModeActive)}
+              >
+                <Pencil size={13} />
+                {reviewModeActive ? "退出复核引导" : "开始人工复核"}
+              </button>
+            </div>
+          </div>
+
+          {/* 专注复核模式浮动栏 */}
+          {reviewModeActive && (
+            <div className="review-mode-floating-bar">
+              <div className="floating-bar-left">
+                <span className="live-dot" />
+                <strong>人工复核进行中：</strong>
+                <span>
+                  当前正在复核商品{" "}
+                  <b>{String(currentLineIndex + 1).padStart(2, "0")}</b> /{" "}
+                  {totalLines}（已确认 <b>{confirmedLines.length}</b> 行）
+                </span>
+              </div>
+              <div className="floating-bar-actions">
+                <button
+                  className="secondary icon-btn-round"
+                  disabled={currentLineIndex === 0}
+                  onClick={handlePrevLine}
+                  title="上一个商品"
+                >
+                  <ChevronLeft size={16} />
+                </button>
+                <button
+                  className="secondary icon-btn-round"
+                  disabled={currentLineIndex === totalLines - 1}
+                  onClick={handleNextLine}
+                  title="下一个商品"
+                >
+                  <ChevronRight size={16} />
+                </button>
+                <button
+                  className="primary btn-sm"
+                  onClick={() => handleConfirmCurrentAndNext(lineId)}
+                >
+                  <Check size={14} />
+                  确认当前商品并下一个
+                </button>
               </div>
             </div>
           )}
-          {activePreview && (
-            <MaterialPreview
-              key={`${activePreview.key}-${activePreview.location.fileId}`}
-              location={activePreview.location}
-              name={activePreview.name}
-            />
-          )}
+
+          {/* 25 字段草稿核对状态图例与横向滑动控制 */}
+          <div className="draft-legend-bar">
+            <div className="legend-items-left">
+              <span className="legend-label">字段核对状态图例：</span>
+              <span className="legend-item"><i className="legend-icon icon-verified">✓</i> 核对一致</span>
+              <span className="legend-item"><i className="legend-icon icon-updated">↑</i> AI更新</span>
+              <span className="legend-item"><i className="legend-icon icon-conflict">⚠</i> 查货差异</span>
+              <span className="legend-item"><i className="legend-icon icon-human">●</i> 人工修改</span>
+              <span className="legend-item"><i className="legend-item icon-missing">!</i> 必填缺失</span>
+              <span className="legend-tip-clean">（未核对商品默认展示委托书初始草稿）</span>
+            </div>
+            <div className="table-scroll-controller">
+              <span className="scroll-tip-label">右滑浏览25字段:</span>
+              <button
+                type="button"
+                className="btn-scroll-nav"
+                onClick={() => scrollTable(-380)}
+                title="向左滚动查看前面的字段"
+              >
+                <ChevronLeft size={13} /> 向左
+              </button>
+              <button
+                type="button"
+                className="btn-scroll-nav"
+                onClick={() => scrollTable(380)}
+                title="向右滚动查看更多海关申报字段"
+              >
+                向右 <ChevronRight size={13} />
+              </button>
+            </div>
+          </div>
+
+          {/* 核对单草稿主表格 */}
+          <div className="draft-table-wrapper" ref={tableWrapperRef}>
+            <table className="draft-master-table">
+              <thead>
+                <tr>
+                  <th className="th-sticky th-no">序号</th>
+                  <th className="th-sticky th-status">AI核对状态</th>
+                  <th className="th-sticky th-review">人工复核</th>
+                  <th className="th-sticky th-action">操作</th>
+                  {displayedFields.map((f) => (
+                    <th
+                      key={f}
+                      className={field === f ? "th-active-field" : ""}
+                      onClick={() => setField(f)}
+                    >
+                      {f}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {draft.lines
+                  .filter((l) => {
+                    const st = lineStatuses.get(l.id);
+                    const evalLine = evaluationReport?.lineResults.find(
+                      (res) => res.lineId === l.id,
+                    );
+                    if (draftTableFilter === "PROBLEMS_ONLY") {
+                      return (
+                        st?.aiStatus === "NEEDS_CONFIRM" ||
+                        st?.hasConflict ||
+                        !st?.hasInspection
+                      );
+                    }
+                    if (draftTableFilter === "UNCONFIRMED_ONLY") {
+                      return !l.manuallyConfirmed;
+                    }
+                    if (draftTableFilter === "AI_FALSE_POSITIVE") {
+                      return (
+                        !!evalLine &&
+                        Object.values(evalLine.fields).some(
+                          (f) =>
+                            f.diffType === "VALUE_MISMATCH" &&
+                            !!f.aiValue &&
+                            f.aiValue !== f.gtValue,
+                        )
+                      );
+                    }
+                    return true;
+                  })
+                  .map((l) => {
+                    const lStatus = lineStatuses.get(l.id);
+                    const lRows = rowsByLine.get(l.id) ?? [];
+                    const isSelected = l.id === lineId;
+                    const evalLine = evaluationReport?.lineResults.find(
+                      (res) => res.lineId === l.id,
+                    );
+
+                    return (
+                      <tr
+                        key={l.id}
+                        id={`draft-row-${l.id}`}
+                        className={`draft-line-row ${
+                          isSelected ? "row-selected" : ""
+                        } ${
+                          l.manuallyConfirmed
+                            ? "row-confirmed"
+                            : lStatus?.hasConflict
+                              ? "row-has-conflict"
+                              : ""
+                        }`}
+                      >
+                        {/* 序号与定位 */}
+                        <td className="td-sticky td-no">
+                          <button
+                            className="row-anchor-btn"
+                            onClick={() =>
+                              selectItem(l.id, field ?? undefined)
+                            }
+                            title="点击选定该商品行"
+                          >
+                            <b>
+                              {String(draft.lines.indexOf(l) + 1).padStart(
+                                2,
+                                "0",
+                              )}
+                            </b>
+                            <small>{short(l.id)}</small>
+                          </button>
+                        </td>
+
+                        {/* AI核对状态 */}
+                        <td className="td-sticky td-status">
+                          <span
+                            className={`badge-status-pill ${
+                              lStatus?.aiStatus === "VERIFIED_OK"
+                                ? "pill-green"
+                                : lStatus?.aiStatus === "NEEDS_CONFIRM"
+                                  ? "pill-red"
+                                  : "pill-orange"
+                            }`}
+                          >
+                            {lStatus?.aiStatusText}
+                          </span>
+                        </td>
+
+                        {/* 人工复核状态 */}
+                        <td className="td-sticky td-review">
+                          {l.manuallyConfirmed ? (
+                            <span className="badge-review confirmed">
+                              <Check size={11} /> 人工已复核
+                            </span>
+                          ) : (
+                            <span className="badge-review pending">
+                              ○ 待人工确认
+                            </span>
+                          )}
+                        </td>
+
+                        {/* 行操作：根据查货与问题状态实施严谨权限与动作分流 */}
+                        <td className="td-sticky td-action">
+                          {l.manuallyConfirmed ? (
+                            <button
+                              className="action-btn-unconfirm"
+                              onClick={() => state.unconfirmLine(l.id)}
+                              title="点击取消人工复核标记"
+                            >
+                              ● 已复核 (取消)
+                            </button>
+                          ) : lStatus?.actionType === "NO_INSPECTION" ? (
+                            <div className="action-btn-no-inspection-group">
+                              <span
+                                className="action-tag-waiting"
+                                title="未建立可靠查货关系前，禁止人工确认本行"
+                              >
+                                等待查货
+                              </span>
+                              <button
+                                className="action-btn-manual-rel"
+                                onClick={() =>
+                                  selectItem(l.id, "型号", "RELATION")
+                                }
+                                title="在右侧商品对应Tab手动指定查货依据"
+                              >
+                                手动关联
+                              </button>
+                            </div>
+                          ) : lStatus?.actionType === "NEEDS_RESOLVE" ? (
+                            <div className="action-btn-needs-resolve-group">
+                              <button
+                                className="action-btn-resolve"
+                                onClick={() => {
+                                  const firstIssue = lRows.find(
+                                    (r) =>
+                                      r.conflict || (r.missing && r.required),
+                                  );
+                                  selectItem(
+                                    l.id,
+                                    firstIssue?.field ?? "型号",
+                                    "FIELD_SOURCE",
+                                  );
+                                }}
+                                title="定位到问题字段并展开处理"
+                              >
+                                处理问题
+                              </button>
+                              <button
+                                className="action-btn-confirm-secondary"
+                                onClick={() =>
+                                  handleConfirmCurrentAndNext(l.id)
+                                }
+                                title="确认当前商品"
+                              >
+                                确认商品
+                              </button>
+                            </div>
+                          ) : (
+                            <button
+                              className="action-btn-confirm"
+                              onClick={() =>
+                                handleConfirmCurrentAndNext(l.id)
+                              }
+                              title="AI已核对无阻断问题，确认本行"
+                            >
+                              确认当前商品
+                            </button>
+                          )}
+                        </td>
+
+                        {/* 字段单元格渲染 (含轻量明确的状态与注脚，支持强联动) */}
+                        {displayedFields.map((f) => {
+                          const r = lRows.find((item) => item.field === f);
+                          const isCurrentActive =
+                            isSelected && field === f;
+                          const evalField = evalLine?.fields[f];
+
+                          return (
+                            <td
+                              key={f}
+                              className={`draft-cell ${
+                                isCurrentActive ? "cell-selected" : ""
+                              } ${
+                                r?.checkStatus === "CONFLICT"
+                                  ? "cell-conflict"
+                                  : r?.checkStatus === "AI_UPDATED"
+                                    ? "cell-ai-updated"
+                                    : r?.checkStatus === "HUMAN_MODIFIED"
+                                      ? "cell-human-modified"
+                                      : r?.checkStatus === "NO_INSPECTION"
+                                        ? "cell-no-inspection"
+                                        : r?.checkStatus === "MISSING_REQUIRED"
+                                          ? "cell-missing-required"
+                                          : "cell-verified-ok"
+                              }`}
+                              onClick={() =>
+                                selectItem(l.id, f, "FIELD_SOURCE")
+                              }
+                            >
+                              <div className="cell-inner">
+                                <div className="cell-top-val-row">
+                                  <span
+                                    className={`cell-val ${
+                                      !r?.currentValue ||
+                                      r.currentValue.trim() === "" ||
+                                      r.currentValue.toUpperCase() === "UNKNOWN"
+                                        ? "cell-val-empty"
+                                        : ""
+                                    }`}
+                                  >
+                                    {value(r?.currentValue)}
+                                  </span>
+                                  {(!r?.currentValue ||
+                                    r.currentValue.trim() === "" ||
+                                    r.currentValue.toUpperCase() ===
+                                      "UNKNOWN") && (
+                                    <span
+                                      className="cell-badge-empty"
+                                      title="该商品未填报此项"
+                                    >
+                                      未填
+                                    </span>
+                                  )}
+                                </div>
+
+                                {/* 状态微注脚 (仅在有查货核对事件或必填缺失时展示，无依据默认保持初始草稿干净展示) */}
+                                {r?.checkStatus === "VERIFIED_CONSISTENT" && (
+                                  <div className="cell-status-subnote note-verified">
+                                    <span>✓ 核对一致</span>
+                                  </div>
+                                )}
+                                {r?.checkStatus === "AI_UPDATED" && (
+                                  <div
+                                    className="cell-status-subnote note-updated"
+                                    title={`原委托: ${value(r.baseValue)} | 查货: ${value(r.candidateValue)}`}
+                                  >
+                                    <span>↑ AI更新</span>
+                                  </div>
+                                )}
+                                {r?.checkStatus === "CONFLICT" && (
+                                  <div
+                                    className="cell-status-subnote note-conflict"
+                                    title={`查货实测出入：${value(r.candidateValue)}`}
+                                  >
+                                    <span>⚠ 冲突</span>
+                                  </div>
+                                )}
+                                {r?.checkStatus === "HUMAN_MODIFIED" && (
+                                  <div
+                                    className="cell-status-subnote note-human"
+                                    title={
+                                      r.hasHumanOverriddenDiff
+                                        ? `后续AI查货新发现：${value(r.candidateValue)}`
+                                        : "人工已修改"
+                                    }
+                                  >
+                                    <span>● 人工修改</span>
+                                    {r.hasHumanOverriddenDiff && (
+                                      <b className="warn-marker">! 差异</b>
+                                    )}
+                                  </div>
+                                )}
+                                {r?.checkStatus === "MISSING_REQUIRED" && (
+                                  <div
+                                    className="cell-status-subnote note-missing"
+                                    title="报关核心必填字段缺失"
+                                  >
+                                    <span>! 必填缺失</span>
+                                  </div>
+                                )}
+
+                                {/* 评测模式下：直观叠加标准答案与差异标识 */}
+                                {isEvaluationMode && evalField && (
+                                  <div
+                                    className={`eval-cell-diff-box ${
+                                      evalField.diffType === "CONSISTENT"
+                                        ? "eval-ok"
+                                        : "eval-mismatch"
+                                    }`}
+                                    title={evalField.diffDescription}
+                                  >
+                                    <small className="eval-gt-val">
+                                      GT: {value(evalField.gtValue)}
+                                    </small>
+                                    <span className="eval-diff-tag">
+                                      {evalField.diffType === "CONSISTENT"
+                                        ? "✓"
+                                        : evalField.diffType === "VALUE_MISMATCH"
+                                          ? "✕ 不一致"
+                                          : evalField.diffType === "AI_MISSING"
+                                            ? "✕ 缺失"
+                                            : "✕ 差异"}
+                                    </span>
+                                  </div>
+                                )}
+                              </div>
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    );
+                  })}
+              </tbody>
+            </table>
+          </div>
+        </main>
+
+        {/* 拖拽分割条：支持向左拖拽放大 */}
+        <div
+          className={`recon-splitter-handle ${
+            isDraggingRightPanel ? "dragging" : ""
+          }`}
+          onMouseDown={handleSplitterMouseDown}
+          title="按住向左拖拽放大右侧溯源面板，向右拖拽缩小"
+          role="separator"
+          aria-orientation="vertical"
+        >
+          <div className="splitter-grip" />
+        </div>
+
+        {/* 右侧：“为什么这个值是这样”溯源与证据 */}
+        <aside
+          className={`recon-right-evidence ${
+            mobileDrawer === "right" ? "drawer-open" : ""
+          }`}
+          style={{ width: `${rightPanelWidth}px` }}
+        >
+          {/* 四大 Tab 切换与快速放大按钮 */}
+          <div
+            className="evidence-tabs-bar"
+            role="tablist"
+            aria-label="溯源信息选项卡"
+          >
+            <button
+              className={`evidence-tab ${
+                rightTab === "RAW_MATERIAL" ? "active" : ""
+              }`}
+              onClick={() => setRightTab("RAW_MATERIAL")}
+            >
+              [原始材料]
+            </button>
+            <button
+              className={`evidence-tab ${
+                rightTab === "FIELD_SOURCE" ? "active" : ""
+              }`}
+              onClick={() => setRightTab("FIELD_SOURCE")}
+            >
+              [字段来源]
+            </button>
+            <button
+              className={`evidence-tab ${
+                rightTab === "RELATION" ? "active" : ""
+              }`}
+              onClick={() => setRightTab("RELATION")}
+            >
+              [商品对应]
+            </button>
+            <button
+              className={`evidence-tab ${
+                rightTab === "AI_LOG" ? "active" : ""
+              }`}
+              onClick={() => setRightTab("AI_LOG")}
+            >
+              [AI记录]
+            </button>
+
+            {/* 快速放大/还原按钮 */}
+            <button
+              type="button"
+              className="tab-action-expand"
+              onClick={() => setRightPanelWidth((w) => (w >= 650 ? 460 : 720))}
+              title={
+                rightPanelWidth >= 650
+                  ? "恢复标准宽度 (460px)"
+                  : "向左展开大宽屏查阅 (720px)"
+              }
+            >
+              {rightPanelWidth >= 650 ? (
+                <>
+                  <ChevronRight size={12} />
+                  <span>还原</span>
+                </>
+              ) : (
+                <>
+                  <ChevronLeft size={12} />
+                  <span>放大</span>
+                </>
+              )}
+            </button>
+          </div>
+
+          <div className="evidence-tab-body">
+            {/* Tab 1: 字段来源 */}
+            {rightTab === "FIELD_SOURCE" && (
+              <div className="tab-pane-source">
+                <div className="source-context-head">
+                  <div className="context-sub">
+                    商品 {draft.lines.findIndex((l) => l.id === lineId) + 1} ·{" "}
+                    {short(lineId)}
+                  </div>
+                  <div className="context-field-name">
+                    <span>当前字段：</span>
+                    <b>{field ?? "未选中"}</b>
+                  </div>
+                  <div className="context-current-val">
+                    当前值：<strong>{value(activeFieldRow?.currentValue)}</strong>
+                  </div>
+                </div>
+
+                {/* 人工修改保护规则提醒 */}
+                {activeFieldRow?.hasHumanOverriddenDiff && (
+                  <div className="human-protection-banner">
+                    <AlertTriangle size={15} className="text-orange" />
+                    <div>
+                      <b>人工修改保护生效中：</b>当前值为人工修订值 [{activeFieldRow.currentValue}]。
+                      后续AI发现新查货证据 [{activeFieldRow.candidateValue}]，系统已保留人工值，不静默覆盖。
+                    </div>
+                  </div>
+                )}
+
+                {/* 委托书 vs 查货单 多源对照卡片 */}
+                <div className="source-compare-card">
+                  <div className="compare-block order-block">
+                    <span className="block-title">委托书申报原件</span>
+                    <div className="source-file-info">
+                      <FileSpreadsheet size={13} />
+                      <span>
+                        {activeFieldRow?.sourceBreakdown.orderSource?.fileName ??
+                          "委托Excel原件"}
+                      </span>
+                    </div>
+                    <div className="source-loc-tag">
+                      位置：
+                      {activeFieldRow?.sourceBreakdown.orderSource?.locationText}
+                    </div>
+                    <div className="source-val-box">
+                      原值：
+                      <b>{value(activeFieldRow?.sourceBreakdown.orderSource?.rawValue)}</b>
+                    </div>
+                  </div>
+
+                  <div className="compare-block inspection-block">
+                    <span className="block-title">仓库查货资料</span>
+                    {activeFieldRow?.sourceBreakdown.inspectionSource ? (
+                      <>
+                        <div className="source-file-info">
+                          <FileText size={13} />
+                          <span>
+                            {activeFieldRow.sourceBreakdown.inspectionSource
+                              .fileName}
+                          </span>
+                        </div>
+                        <div className="source-loc-tag">
+                          批次/位置：
+                          {activeFieldRow.sourceBreakdown.inspectionSource
+                            .locationText}
+                        </div>
+                        <div className="source-val-box">
+                          实测值：
+                          <b>
+                            {value(
+                              activeFieldRow.sourceBreakdown.inspectionSource
+                                .inspectionValue,
+                            )}
+                          </b>
+                        </div>
+                      </>
+                    ) : (
+                      <div className="no-source-hint">
+                        <p><b>○ 暂无查货依据</b></p>
+                        <span>原因：该商品当前没有可靠查货关系，等待仓储查货材料到达</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* AI 处理说明 */}
+                <div className="source-ai-explanation">
+                  <div className="ai-exp-head">
+                    <Sparkles size={14} className="text-purple" />
+                    <strong>AI 处理依据与判定规则</strong>
+                  </div>
+                  <p>
+                    {activeFieldRow?.sourceBreakdown.aiRuleNote ||
+                      (activeFieldRow?.checkStatus === "VERIFIED_CONSISTENT"
+                        ? "委托申报值与仓库查货实测数据严格一致，自动核验通过。"
+                        : activeFieldRow?.checkStatus === "AI_UPDATED"
+                          ? "AI 依据查货单实测事实自动纠偏更新。"
+                          : activeFieldRow?.checkStatus === "CONFLICT"
+                            ? "委托值与查货值存在出入，请人工裁决采用哪项。"
+                            : "等待外部材料补充。")}
+                  </p>
+                </div>
+
+                {/* 人工修订与快捷处理 */}
+                <div className="source-human-editor">
+                  <strong>人工修订该字段</strong>
+                  <div className="editor-quick-buttons">
+                    <button
+                      className="secondary btn-sm"
+                      onClick={() =>
+                        state.editSelectedLineField(
+                          lineId,
+                          field!,
+                          activeFieldRow?.baseValue ?? "",
+                          {
+                            actor: "人工复核员",
+                            occurredAt: new Date().toISOString(),
+                            reason: "采纳委托原件数值",
+                            locked: false,
+                          },
+                        )
+                      }
+                    >
+                      采用委托值
+                    </button>
+                    {activeFieldRow?.candidateValue && (
+                      <button
+                        className="secondary btn-sm"
+                        onClick={() =>
+                          state.editSelectedLineField(
+                            lineId,
+                            field!,
+                            activeFieldRow.candidateValue ?? "",
+                            {
+                              actor: "人工复核员",
+                              occurredAt: new Date().toISOString(),
+                              reason: "采纳查货实测数值",
+                              locked: false,
+                            },
+                          )
+                        }
+                      >
+                        采用查货值 ({activeFieldRow.candidateValue})
+                      </button>
+                    )}
+                  </div>
+
+                  <div className="editor-input-row">
+                    <input
+                      type="text"
+                      aria-label="修订字段值"
+                      defaultValue={activeFieldRow?.currentValue ?? ""}
+                      key={`${lineId}-${field}-${activeFieldRow?.currentValue}`}
+                      id="manual-field-input"
+                    />
+                    <button
+                      className="primary btn-sm"
+                      onClick={() => {
+                        const val = (
+                          document.getElementById(
+                            "manual-field-input",
+                          ) as HTMLInputElement
+                        )?.value;
+                        if (val !== undefined && field) {
+                          state.editSelectedLineField(lineId, field, val, {
+                            actor: "人工复核员",
+                            occurredAt: new Date().toISOString(),
+                            reason: "手工录入纠偏",
+                            locked: false,
+                          });
+                        }
+                      }}
+                    >
+                      保存修改
+                    </button>
+                  </div>
+                </div>
+
+                {/* 评测模式下：额外对比分析 */}
+                {isEvaluationMode && (
+                  <div className="source-eval-compare">
+                    <strong>POC 评测基准差异原因剖析</strong>
+                    {(() => {
+                      const evalF = evaluationReport?.lineResults
+                        .find((l) => l.lineId === lineId)
+                        ?.fields[field!];
+                      if (!evalF) return null;
+                      return (
+                        <div className="eval-detail-note">
+                          <div>
+                            AI 判定结果：<b>{value(evalF.aiValue)}</b>
+                          </div>
+                          <div>
+                            标准答案 (GT)：<b>{value(evalF.gtValue)}</b>
+                          </div>
+                          <div>
+                            差异判定：
+                            <span className="diff-desc">
+                              {evalF.diffDescription}
+                            </span>
+                          </div>
+                        </div>
+                      );
+                    })()}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Tab 2: 商品对应 (含商品对应概要) */}
+            {rightTab === "RELATION" && currentLine && (
+              <div className="tab-pane-relation">
+                {/* 商品对应概要统计卡片 */}
+                <div className="relation-summary-card">
+                  <div className="rel-card-title">
+                    <strong>商品对应概要</strong>
+                    <span className="rel-card-tag">材料商品行匹配概要</span>
+                  </div>
+                  <div className="rel-stats-grid">
+                    <div className="rel-stat-item">
+                      <span>委托商品</span>
+                      <b>{totalLines}</b>
+                    </div>
+                    <div className="rel-stat-item">
+                      <span>已确定对应</span>
+                      <b className="text-green">
+                        {verifiedLines.length + needsConfirmLines.length}
+                      </b>
+                    </div>
+                    <div className="rel-stat-item">
+                      <span>多个候选</span>
+                      <b>0</b>
+                    </div>
+                    <div className="rel-stat-item">
+                      <span>暂无对应</span>
+                      <b className={noInspectionLines.length > 0 ? "text-orange" : "text-muted"}>
+                        {noInspectionLines.length}
+                      </b>
+                    </div>
+                    <div className="rel-stat-item">
+                      <span>涉及查货批次</span>
+                      <b>{currentLineSources.length > 0 ? new Set(currentLineSources.map(s => s.warehouseNo)).size : 0}</b>
+                    </div>
+                    <div className="rel-stat-item">
+                      <span>涉及入仓号</span>
+                      <b>{currentLineSources.length > 0 ? new Set(currentLineSources.map(s => s.warehouseNo)).size : 0}</b>
+                    </div>
+                    <div className="rel-stat-item">
+                      <span>使用原始行</span>
+                      <b>{currentLineSources.length}</b>
+                    </div>
+                  </div>
+                </div>
+
+                <LineActions
+                  key={currentLine.id}
+                  draft={draft}
+                  line={currentLine}
+                  sources={state.sources}
+                  evidence={state.evidence.filter(
+                    (e) => e.entrustmentLineId === currentLine.id,
+                  )}
+                  onFieldSelect={(f) => selectItem(currentLine.id, f, "FIELD_SOURCE")}
+                />
+              </div>
+            )}
+
+            {/* Tab 3: 原始材料预览 (支持Excel单元格定位和PDF) */}
+            {rightTab === "RAW_MATERIAL" && (
+              <div className="tab-pane-raw">
+                <MaterialPreview
+                  key={`${activeFile?.id}-${lineId}-${field}`}
+                  location={
+                    currentLine?.sourceLocation &&
+                    currentLine.sourceLocation.fileId === activeFile?.id
+                      ? currentLine.sourceLocation
+                      : {
+                          fileId: activeFile?.id ?? "",
+                          page: 1,
+                          sheet: null,
+                          position: "原件材料定位",
+                        }
+                  }
+                  name={activeFile?.name ?? "原件"}
+                  files={taskFiles}
+                  activeFileId={activeFile?.id}
+                  onSelectFile={(id) => setSelectedFileId(id)}
+                />
+              </div>
+            )}
+
+            {/* Tab 4: AI 变更轨迹与事件历史 */}
+            {rightTab === "AI_LOG" && (
+              <div className="tab-pane-ailog">
+                <strong>本票 AI 增量推理与事件历史</strong>
+                <div className="ailog-timeline">
+                  {/* 最新的事件驱动状态展示 */}
+                  <div className="timeline-event">
+                    <time>{updateTimeStr}</time>
+                    <div className="event-type">持续事件监听</div>
+                    <p>
+                      {draft.lastUpdateReason
+                        ? `${draft.lastUpdateReason} · 触发系统增量核对`
+                        : "系统持续监听材料事件，并已完成当前材料比对"}
+                    </p>
+                    <div className="event-summary-note">
+                      <span>• 委托商品：共 {totalLines} 行</span>
+                      <span>
+                        • 已建立依据：
+                        {verifiedLines.length + needsConfirmLines.length} 行
+                      </span>
+                      {noInspectionLines.length > 0 && (
+                        <span>• 仍等待查货：{noInspectionLines.length} 行</span>
+                      )}
+                      <span>• 当前草稿：V{draft.version}</span>
+                    </div>
+                  </div>
+
+                  {state.operations
+                    .filter((o) => o.draftId === draft.id)
+                    .slice()
+                    .reverse()
+                    .map((op) => (
+                      <div key={op.id} className="timeline-event">
+                        <time>
+                          {new Date(op.occurredAt).toLocaleTimeString("zh-CN", {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            second: "2-digit",
+                          })}
+                        </time>
+                        <div className="event-type">{op.operationType}</div>
+                        <p>{op.summary}</p>
+                      </div>
+                    ))}
+                </div>
+              </div>
+            )}
+          </div>
         </aside>
       </div>
-    </div>
-  );
-}
 
-function FieldEditor({
-  row,
-  lineId,
-  finalized,
-}: {
-  row: FieldRow;
-  lineId: string;
-  finalized: boolean;
-}) {
-  const edit = useDemoStore((s) => s.editSelectedLineField);
-  const updateMaterial = useDemoStore(s=>s.updateSelectedDraftMaterial);
-  const [input, setInput] = useState(row.currentValue ?? "");
-  const [reason, setReason] = useState("");
-  const [locked, setLocked] = useState(row.locked);
-  const candidates = row.evidence
-    .flatMap((e) =>
-      (e.isManuallyEdited ? [] : e.candidateValues.length ? e.candidateValues : e.references?.length===1 ? [e.references[0].normalizedValue] : []).map((v) => ({
-        value: v,
-        id: e.id,
-        source: e.sourceMaterialType,
-      })),
-    )
-    .filter(
-      (c, i, a) =>
-        c.value !== null && a.findIndex((x) => x.value === c.value) === i,
-    );
-  const save = (v: string, id?: string) =>
-    edit(lineId, row.field, v, {
-      actor: "Demo 当前用户",
-      reason,
-      occurredAt: new Date().toISOString(),
-      sourceEvidenceId: id,
-      locked,
-    });
-  return (
-    <div className="field-editor">
-      <div className="field-comparison">
-        <div>
-          <small>原始委托</small>
-          <strong>{value(row.baseValue)}</strong>
-        </div>
-        <div>
-          <small>当前结果</small>
-          <strong>{value(row.currentValue)}</strong>
-        </div>
-        <div>
-          <small>AI 动作</small>
-          <strong>
-            {(
-              {
-                KEEP: "保留",
-                FILL: "补全",
-                UPDATE: "更新",
-                CONFLICT: "存在冲突",
-                MISSING: "缺失",
-                NO_ACTION: "未调整",
-              } as Record<string, string>
-            )[row.action] ?? row.action}
-          </strong>
-        </div>
-      </div>
-      {row.decision?.reason && (
-        <p className="decision-reason">{row.decision.reason}</p>
-      )}
-      {row.review && (
-        <p className="human-record">
-          {row.review.actor} ·{" "}
-          {new Date(row.review.occurredAt).toLocaleString("zh-CN")}
-          <br />
-          {row.review.reason || "确认当前值"}
-        </p>
-      )}
-      {!finalized && (
-        <>
-          <label className="review-reason">
-            处理原因{row.conflict ? "（必填）" : ""}
-            <input
-              aria-label="处理原因"
-              placeholder="填写判断依据"
-              value={reason}
-              onChange={(e) => setReason(e.target.value)}
-            />
-          </label>
-          <div className="candidate-actions">
-            <button
-              disabled={row.conflict && !reason.trim()}
-              onClick={() => save(row.baseValue ?? "", row.evidence.find(e=>e.sourceMaterialType==='委托书'&&!e.isManuallyEdited)?.id)}
-            >
-              采用委托值
-            </button>
-            {candidates.map((c) => (
+      {/* 完成整票复核检查与核销确认弹窗 */}
+      {showFinalizeModal && (
+        <div
+          className="modal-backdrop"
+          role="presentation"
+          onClick={() => setShowFinalizeModal(false)}
+        >
+          <div
+            className="finalize-modal-card"
+            role="dialog"
+            aria-modal="true"
+            aria-label="整票复核检查与封版核销"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="modal-header">
+              <div className="modal-title">
+                <FileCheck2 size={20} className="text-green" />
+                <strong>整票人工复核终审检查</strong>
+              </div>
               <button
-                disabled={row.conflict && !reason.trim()}
-                key={c.value}
-                onClick={() => save(c.value ?? "", c.id)}
+                className="icon-button"
+                onClick={() => setShowFinalizeModal(false)}
               >
-                采用{c.source}：{c.value}
+                <X size={16} />
               </button>
-            ))}
+            </div>
+
+            <div className="modal-body">
+              {/* Checklist 检查表 */}
+              <div className="checklist-box">
+                <div
+                  className={`checklist-item ${
+                    finalizeChecklist.allLinesConfirmed
+                      ? "is-pass"
+                      : "is-blocked"
+                  }`}
+                >
+                  <span className="chk-icon">
+                    {finalizeChecklist.allLinesConfirmed ? "✓" : "✕"}
+                  </span>
+                  <div className="chk-text">
+                    <b>商品行逐行确认</b>：
+                    <span>
+                      {finalizeChecklist.confirmedCount} /{" "}
+                      {finalizeChecklist.totalLines} 商品已人工确认
+                    </span>
+                  </div>
+                </div>
+
+                <div
+                  className={`checklist-item ${
+                    finalizeChecklist.zeroBlockedRelations
+                      ? "is-pass"
+                      : "is-blocked"
+                  }`}
+                >
+                  <span className="chk-icon">
+                    {finalizeChecklist.zeroBlockedRelations ? "✓" : "✕"}
+                  </span>
+                  <div className="chk-text">
+                    <b>商品匹配关系确定</b>：
+                    <span>
+                      {finalizeChecklist.blockedCount} 个商品缺少查货依据
+                    </span>
+                  </div>
+                </div>
+
+                <div
+                  className={`checklist-item ${
+                    finalizeChecklist.zeroConflicts ? "is-pass" : "is-blocked"
+                  }`}
+                >
+                  <span className="chk-icon">
+                    {finalizeChecklist.zeroConflicts ? "✓" : "✕"}
+                  </span>
+                  <div className="chk-text">
+                    <b>字段冲突清零</b>：
+                    <span>
+                      {finalizeChecklist.conflictCount} 个未决字段差异
+                    </span>
+                  </div>
+                </div>
+
+                <div
+                  className={`checklist-item ${
+                    finalizeChecklist.zeroMissingRequired
+                      ? "is-pass"
+                      : "is-blocked"
+                  }`}
+                >
+                  <span className="chk-icon">
+                    {finalizeChecklist.zeroMissingRequired ? "✓" : "✕"}
+                  </span>
+                  <div className="chk-text">
+                    <b>必填字段完整性</b>：
+                    <span>
+                      {finalizeChecklist.missingCount} 个必填缺失字段
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 执行核销说明 */}
+              <div className="writeoff-explanation-box">
+                <strong>确认完成后将正式执行：</strong>
+                <ul>
+                  <li>✓ 封版当前草稿并生成最终只读核对单（25列标准报关格式）</li>
+                  <li>
+                    ✓ <b>正式完成使用（正式核销）</b>
+                    本次实际匹配关联的原始查货行明细
+                  </li>
+                  <li>
+                    ✓ 这些查货明细将从该客户后续任务的候选匹配池中安全移出
+                  </li>
+                  <li>✓ 永久保留所有历史材料、对应关系、来源证据与人工修订记录</li>
+                </ul>
+
+                <div className="writeoff-simulation">
+                  <b>查货池动态核销结果预估：</b>
+                  <p>
+                    客户：{draft.customerName} · 本次使用原始查货行{" "}
+                    <b>{verifiedLines.length + needsConfirmLines.length}</b> 条 · 已核验查货行将正式核销 ·
+                    历史可追溯。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="modal-footer">
+              <button
+                className="secondary"
+                onClick={() => setShowFinalizeModal(false)}
+              >
+                返回继续复核
+              </button>
+              <button
+                className="primary"
+                disabled={!canFinalize}
+                onClick={() => {
+                  state.completeSelectedDraft();
+                  setShowFinalizeModal(false);
+                  setWriteoffFeedbackOpen(true);
+                }}
+              >
+                {canFinalize ? "确认完成并正式核销封版" : "仍有阻塞项未完成"}
+              </button>
+            </div>
           </div>
-          <div className="manual-input">
-            <input
-              aria-label={`手动修改 ${row.field}`}
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-            />
-            <button
-              disabled={row.conflict && !reason.trim()}
-              onClick={() => save(input)}
-            >
-              保存修改
-            </button>
-            <button
-              disabled={row.conflict && !reason.trim()}
-              onClick={() => save(row.currentValue ?? "")}
-            >
-              确认当前值
-            </button>
+        </div>
+      )}
+
+      {/* 完成整票复核后的核销反馈结果弹窗 */}
+      {writeoffFeedbackOpen && (
+        <div
+          className="modal-backdrop"
+          role="presentation"
+          onClick={() => setWriteoffFeedbackOpen(false)}
+        >
+          <div
+            className="writeoff-result-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-label="整票复核完成与核销反馈"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="result-head">
+              <div className="result-icon-badge">
+                <CheckCircle2 size={36} className="text-green" />
+              </div>
+              <h3>整票复核完成</h3>
+              <p className="result-sub">
+                最终核对单与核销单据已成功生成并正式封版归档
+              </p>
+            </div>
+
+            <div className="result-details-grid">
+              <div className="result-item">
+                <span className="item-label">最终核对单</span>
+                <strong className="item-val">
+                  {finalReconciliationFileName(draft.displayNo, draft.version)}
+                </strong>
+                <span className="item-tag tag-green">已生成 (只读)</span>
+              </div>
+              <div className="result-item">
+                <span className="item-label">本次实际使用查货明细</span>
+                <strong className="item-val">
+                  {verifiedLines.length + needsConfirmLines.length} 条
+                </strong>
+                <span className="item-tag">已完成使用</span>
+              </div>
+              <div className="result-item">
+                <span className="item-label">客户查货池动态</span>
+                <strong className="item-val">
+                  原可匹配 {state.sources.filter((s) => s.customerId === draft.customerId).length + (verifiedLines.length + needsConfirmLines.length)} 条 → 剩余 {state.sources.filter((s) => s.customerId === draft.customerId && s.availability === "可匹配").length} 条
+                </strong>
+                <span className="item-tag tag-blue">完成核销</span>
+              </div>
+              <div className="result-item full-width">
+                <span className="item-label">历史追溯与合规留痕</span>
+                <p className="item-desc">
+                  原始委托材料、查货单原件、AI核对记录、商品对应关系及人工修改历史均已全量保留归档。本次使用的查货明细已正式移出该客户后续任务的候选匹配池，不可重复占用。
+                </p>
+              </div>
+            </div>
+
+            <div className="result-actions">
+              <button className="secondary" onClick={exportCsv}>
+                <Download size={14} /> 导出最终核对单
+              </button>
+              <button
+                className="primary"
+                onClick={() => {
+                  setWriteoffFeedbackOpen(false);
+                  state.setView("home");
+                }}
+              >
+                返回客户工作台
+              </button>
+            </div>
           </div>
-          <div className="lock-setting">
-            <button type="button" role="switch" aria-label="保存后人工锁定" aria-checked={locked} className="lock-switch" onClick={() => setLocked(!locked)}><span /></button>
-            <span>保存后人工锁定</span>
-            {locked && <LockKeyhole size={13} aria-hidden="true" />}
-          </div>
-          <details className="revise-order"><summary>原始委托有误</summary><button onClick={()=>updateMaterial(lineId,row.field,input)}>修订原始委托并重新核对</button></details>
-        </>
+        </div>
       )}
     </div>
   );

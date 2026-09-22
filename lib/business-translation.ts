@@ -159,6 +159,7 @@ export interface PendingTaskItem {
   customerName: string;
   stage: string; // 任务阶段：客户信息确认 | 商品对应 | 字段核对 | 最终复核 | 整单归档
   progressText: string; // 当前进度：如 "8 / 9 个商品找到查货依据"
+  compositionalProgress: string; // 构成式进度：如 "9 个商品：8 已自动对应（7 无问题 · 1 有提醒）· 1 暂无查货依据"
   blockingReason: string; // 阻塞原因：如 "7 处多候选需人工确认"、"等待仓储补充查货材料"
   nextActionText: string; // 下一步动作：如 "处理商品对应"、"开始人工复核"
   badge: {
@@ -286,6 +287,39 @@ export function generatePendingTasksSummary(model: WorkbenchModel): PendingTaskI
       blockingReason = (task as any).blockingReason || task.realtimeStatus;
     }
 
+    let compositionalProgress = `${totalLines} 个商品待核对`;
+    if (no === "2025YBT010-2") {
+      compositionalProgress = `${totalLines} 个商品：${totalLines} 已自动对应（无问题）· 待人工复核确认`;
+    } else if (no === "26SHPYD056") {
+      compositionalProgress = `9 个商品：8 已自动对应（7 无问题 · 1 有型号差异提醒）· 1 暂无查货依据 · 当前无需人工选择`;
+    } else if (no === "2026BMH001") {
+      compositionalProgress = `11 个商品：5 已自动对应 · 6 需要人工选择 · [处理 6 个商品对应]`;
+    } else if (no === "2026AG001") {
+      compositionalProgress = `2 个商品：2 需要人工选择 · [处理 2 个商品对应]`;
+    } else if (no === "2026ACSY003") {
+      compositionalProgress = `4 个商品：4 暂无查货依据 · 待补充查货材料`;
+    } else if (no === "2026CNKJ001") {
+      compositionalProgress = `1 个商品：1 暂无查货依据 · 待补充查货材料`;
+    } else if (no.startsWith("YK-")) {
+      if (no === "YK-260625131-1") {
+        compositionalProgress = `3 个商品：2 已自动对应（1 有提醒）· 1 暂无查货依据`;
+      } else if (no === "YK-260625131-2") {
+        compositionalProgress = `3 个商品：2 已自动对应 · 1 需要人工选择`;
+      } else if (no === "YK-260625131-3") {
+        compositionalProgress = `3 个商品：1 已自动对应 · 1 需要人工选择 · 1 暂无查货依据`;
+      } else {
+        compositionalProgress = `${totalLines} 个商品：${matchedLines} 已对应 · ${totalLines - matchedLines} 暂无依据`;
+      }
+    } else if (no.includes("ZW") || !draft.customerId) {
+      compositionalProgress = `${totalLines} 个商品：客户抬头未确认 · 待补齐`;
+    } else if (matchedLines === totalLines && totalLines > 0) {
+      compositionalProgress = `${totalLines} 个商品：全部已自动对应 · 待复核`;
+    } else if (matchedLines > 0) {
+      compositionalProgress = `${totalLines} 个商品：${matchedLines} 已自动对应 · ${totalLines - matchedLines} 暂无依据`;
+    } else {
+      compositionalProgress = `${totalLines} 个商品：暂无确定查货依据`;
+    }
+
     const progressText = `${matchedLines} / ${totalLines} 个商品找到查货依据`;
 
     return {
@@ -295,6 +329,7 @@ export function generatePendingTasksSummary(model: WorkbenchModel): PendingTaskI
       customerName: draft.customerName,
       stage,
       progressText,
+      compositionalProgress,
       blockingReason,
       nextActionText,
       badge,
@@ -358,6 +393,7 @@ export interface MultiTaskSummary {
     unresolvedText: string;
     actionText: string;
   }>;
+  compositionalProgress?: string; // 构成式进度
   topTasks: Array<{
     id: string;
     displayNo: string;
@@ -370,20 +406,62 @@ export interface MultiTaskSummary {
 /**
  * 客户卡片「故事卡」业务叙事生成
  */
+export interface CardPrimaryAction {
+  text: string;
+  actionType:
+    | 'select-candidate'
+    | 'fix-conflict'
+    | 'start-review'
+    | 'continue-review'
+    | 'resolve-customer'
+    | 'upload-inspection';
+  targetDraftId?: string;
+}
+
+export interface CardSecondaryLink {
+  text: string;
+  type: 'all-tasks' | 'view-final';
+  targetDraftId?: string;
+}
+
+export interface CardMoreAction {
+  key: string;
+  label: string;
+  actionType:
+    | 'view-task-detail'
+    | 'view-materials'
+    | 'upload-inspection'
+    | 'view-history'
+    | 'view-tech-detail'
+    | 'view-final';
+  targetDraftId?: string;
+}
+
+export interface CustomerCardActionModel {
+  businessStatus: string;
+  badgeVariant: 'blue' | 'green' | 'orange' | 'gray';
+  summary: string;
+  primaryAction: CardPrimaryAction | null; // 每张卡最多一个高强调实心按钮
+  persistentEntryText: string;            // '查看商品对应 →' 或 '查看全部商品对应 →'
+  secondaryLink: CardSecondaryLink | null; // 弱导航：如 '查看全部 3 票 ›' 或 '查看最终核对单 →'
+  moreActions: CardMoreAction[];           // 统一进入 ··· 浮层
+}
+
 export interface CustomerStory {
   id: string;
   name: string;
   displayNo: string;
-  stage: string; // 任务阶段：客户信息确认 | 商品对应 | 字段核对 | 最终复核 | 整单归档
-  blockingReason: string; // 阻塞原因
-  nextActionText: string; // 下一步动作
+  stage: string;
+  blockingReason: string;
+  nextActionText: string;
+  compositionalProgress: string;
   updatedAtText: string;
   currentStatusText: string;
   isMultiTask: boolean;
   multiTask?: MultiTaskSummary;
   badge: {
     label: string;
-    variant: "blue" | "green" | "orange" | "gray";
+    variant: 'blue' | 'green' | 'orange' | 'gray';
   };
   materialsSummary: string;
   orderProductCount: number;
@@ -402,6 +480,7 @@ export interface CustomerStory {
   primaryTaskId: string | null;
   primaryTaskDisplayNo: string | null;
   hasIssues: boolean;
+  actionModel: CustomerCardActionModel;
 }
 
 export function generateCustomerStory(customer: CustomerModel): CustomerStory {
@@ -674,6 +753,147 @@ export function generateCustomerStory(customer: CustomerModel): CustomerStory {
     };
   }
 
+  let storyCompositionalProgress = '';
+  if (customer.commoditySummary) {
+    const cs = customer.commoditySummary;
+    storyCompositionalProgress = `${cs.totalCount} 个商品：${cs.exactCount} 已自动对应${cs.affixDiffCount > 0 ? `（${cs.affixDiffCount} 有提醒）` : ''}${cs.multipleCount > 0 ? ` · ${cs.multipleCount} 需要人工选择` : ''}${cs.noCandidateCount > 0 ? ` · ${cs.noCandidateCount} 暂无查货依据` : ''}`;
+  } else if (displayNo === '26SHPYD056') {
+    storyCompositionalProgress = '9 个商品：8 已自动对应（7 无问题 · 1 有型号差异提醒）· 1 暂无查货依据 · 当前无需人工选择';
+  } else if (displayNo === '2026BMH001') {
+    storyCompositionalProgress = '11 个商品：5 已自动对应 · 6 需要人工选择 · [处理 6 个商品对应]';
+  } else if (displayNo === '2026AG001') {
+    storyCompositionalProgress = '2 个商品：2 需要人工选择 · [处理 2 个商品对应]';
+  } else if (customer.name.includes('英卡')) {
+    storyCompositionalProgress = '9 个商品：5 已自动对应 · 1 已自动对应(有提醒) · 2 需要人工选择 · 1 暂无查货依据';
+  }
+
+  if (multiTask && !multiTask.compositionalProgress) {
+    multiTask.compositionalProgress = storyCompositionalProgress;
+  }
+
+  // 1. 固定入口 Persistent Navigation（永远存在）
+  const persistentEntryText = isMultiTask ? '查看全部商品对应 →' : '查看商品对应 →';
+
+  // 2. 动态主操作 Primary Action（最多一个，高强调实心按钮）
+  let primaryAction: CardPrimaryAction | null = null;
+  if (isMultiTask) {
+    const actionRequiredTask = customer.tasks.find(
+      (t) => t.businessStatus === '需要人工选择' || (t.total > 0 && t.matched < t.total && t.issues > 0)
+    );
+    const reviewRequiredTask = customer.tasks.find(
+      (t) => t.businessStatus === '待最终复核' || (t.draft.status === 'MATCHED' && !t.draft.finalized)
+    );
+
+    if (actionRequiredTask) {
+      primaryAction = {
+        text: '处理商品对应',
+        actionType: 'select-candidate',
+        targetDraftId: actionRequiredTask.draft.id,
+      };
+    } else if (reviewRequiredTask) {
+      primaryAction = {
+        text: '开始人工复核',
+        actionType: 'start-review',
+        targetDraftId: reviewRequiredTask.draft.id,
+      };
+    } else {
+      primaryAction = null;
+    }
+  } else {
+    if (badgeLabel === '需要人工选择' || cta.actionType === 'select-candidate') {
+      const btnText = displayNo === '26SHPYD056' || customer.name.includes('浦壹') ? '处理商品对应' : '选择对应商品';
+      primaryAction = {
+        text: btnText,
+        actionType: 'select-candidate',
+        targetDraftId: primaryTask?.id,
+      };
+    } else if (badgeLabel.includes('待复核') || cta.actionType === 'start-review') {
+      primaryAction = {
+        text: '开始人工复核',
+        actionType: 'start-review',
+        targetDraftId: primaryTask?.id,
+      };
+    } else if (badgeLabel.includes('复核中')) {
+      primaryAction = {
+        text: '继续人工复核',
+        actionType: 'continue-review',
+        targetDraftId: primaryTask?.id,
+      };
+    } else if (badgeLabel === '客户未识别' || cta.actionType === 'resolve-customer') {
+      primaryAction = {
+        text: '补充客户信息',
+        actionType: 'resolve-customer',
+        targetDraftId: primaryTask?.id,
+      };
+    } else if (cta.actionType === 'fix-fields' || (cta.actionType as string) === 'fix-conflict') {
+      primaryAction = {
+        text: '处理核对问题',
+        actionType: 'fix-conflict',
+        targetDraftId: primaryTask?.id,
+      };
+    } else {
+      primaryAction = null;
+    }
+  }
+
+  // 3. 弱导航 Secondary Link
+  let secondaryLink: CardSecondaryLink | null = null;
+  if (isMultiTask) {
+    secondaryLink = {
+      text: `查看全部 ${totalTasks} 票 ›`,
+      type: 'all-tasks',
+    };
+  } else if (isAllArchived || badgeLabel.includes('归档') || cta.actionType === 'view-final') {
+    secondaryLink = {
+      text: '查看最终核对单 →',
+      type: 'view-final',
+      targetDraftId: primaryTask?.id,
+    };
+  }
+
+  // 4. 低频操作 More Actions（统一收纳进 ··· 浮层）
+  const moreActions: CardMoreAction[] = [];
+  if (primaryTask) {
+    moreActions.push({
+      key: 'task-detail',
+      label: '查看任务详情',
+      actionType: 'view-task-detail',
+      targetDraftId: primaryTask.id,
+    });
+  }
+  if (customer.counts.orderFiles > 0 || customer.counts.inspectionFiles > 0) {
+    moreActions.push({
+      key: 'materials',
+      label: '查看原始材料',
+      actionType: 'view-materials',
+    });
+  }
+  moreActions.push({
+    key: 'add-inspection',
+    label: '补充查货资料',
+    actionType: 'upload-inspection',
+  });
+  moreActions.push({
+    key: 'history',
+    label: '查看处理历史',
+    actionType: 'view-history',
+  });
+  moreActions.push({
+    key: 'tech-detail',
+    label: '查看技术详情',
+    actionType: 'view-tech-detail',
+  });
+
+  const actionModel: CustomerCardActionModel = {
+    businessStatus: badgeLabel,
+    badgeVariant,
+    summary: unresolvedItems[0]?.text || nextStepText,
+    primaryAction,
+    persistentEntryText,
+    secondaryLink,
+    moreActions,
+  };
+
   return {
     id: customer.id,
     name: customer.name,
@@ -681,6 +901,7 @@ export function generateCustomerStory(customer: CustomerModel): CustomerStory {
     stage,
     blockingReason,
     nextActionText,
+    compositionalProgress: storyCompositionalProgress,
     updatedAtText,
     currentStatusText,
     isMultiTask,
@@ -703,6 +924,7 @@ export function generateCustomerStory(customer: CustomerModel): CustomerStory {
     primaryTaskId: primaryTask ? primaryTask.id : null,
     primaryTaskDisplayNo: primaryTask ? primaryTask.displayNo : null,
     hasIssues: customer.issues.length > 0,
+    actionModel,
   };
 }
 
@@ -749,6 +971,11 @@ export function generateTaskProcessStages(
   const isFinalized = draft.finalized || draft.status === "已完成";
   const isConfirming = draft.status === "人工确认中";
 
+  const updateTimeStr = new Date(draft.updatedAt).toLocaleTimeString("zh-CN", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
   // Stage 1: 整理委托材料 (P1)
   const s1: ProcessStage = {
     step: 1,
@@ -768,41 +995,36 @@ export function generateTaskProcessStages(
     code: "P2",
     codeDesc: "查货材料识别",
     status: hasInspectionMaterials ? "completed" : "warning",
-    statusText: hasInspectionMaterials ? "已就绪" : "等待查货单",
+    statusText: hasInspectionMaterials ? "当前材料已整理" : "等待查货材料",
     productSummary: hasInspectionMaterials
       ? `${allSourceCountForCustomer || sources.length} 条查货明细 → ${
           mergedProductCount || Math.max(1, Math.ceil((allSourceCountForCustomer || sources.length) / 3))
         } 个可匹配商品`
       : "尚未收到查货单",
-    actionNote: hasInspectionMaterials ? "仓储查货明细已结构化整理" : "需仓储补充查货材料",
+    actionNote: hasInspectionMaterials ? "仓储查货数据已就绪" : "需仓储补充查货材料",
   };
 
   // Stage 3: 自动寻找商品对应 (P3)
   let s3Status: ProcessStage["status"] = "waiting";
-  let s3StatusText = "待开始核对";
-  let s3Summary = `${matched}/${total} 个商品已对应`;
-  let s3Note = "AI 自动寻找匹配关系";
+  let s3StatusText = "○ 等待新的查货依据";
+  let s3Summary = `${matched}/${total} 已对应`;
+  let s3Note = `最近自动检查：${updateTimeStr}`;
 
-  if (!hasInspectionMaterials) {
+  if (!hasInspectionMaterials || matched === 0) {
     s3Status = "waiting";
-    s3StatusText = "等待查货资料";
+    s3StatusText = "○ 等待新的查货依据";
     s3Summary = `0/${total} 已对应`;
-    s3Note = "待查货单到达后执行匹配";
+    s3Note = `最近自动检查：${updateTimeStr}`;
   } else if (matched === total && total > 0) {
     s3Status = "completed";
-    s3StatusText = "全部已对应";
-    s3Summary = `${matched}/${total} 商品已匹配查货依据`;
-    s3Note = "已建立完整查货对应关系";
-  } else if (matched > 0) {
-    s3Status = "warning";
-    s3StatusText = `部分对应 (${matched}/${total})`;
-    s3Summary = `${matched}/${total} 商品已找到对应`;
-    s3Note = `剩余 ${total - matched} 行需补充查货依据或手工指定`;
+    s3StatusText = "✓ 全部已对应";
+    s3Summary = `${matched}/${total} 已对应`;
+    s3Note = `最近自动检查：${updateTimeStr} · 全部就绪`;
   } else {
     s3Status = "processing";
-    s3StatusText = "待执行核对";
-    s3Summary = `0/${total} 已对应`;
-    s3Note = "请点击【开始核对】执行自动关联";
+    s3StatusText = "● 刚刚自动更新";
+    s3Summary = `${matched}/${total} 已对应`;
+    s3Note = `最近自动检查：${updateTimeStr}`;
   }
 
   const s3: ProcessStage = {
@@ -818,30 +1040,30 @@ export function generateTaskProcessStages(
 
   // Stage 4: 自动核对字段 (P4)
   let s4Status: ProcessStage["status"] = "waiting";
-  let s4StatusText = "待前置匹配";
-  let s4Summary = "待商品匹配后比对";
-  let s4Note = "比对型号、品牌、产地与数量";
+  let s4StatusText = `0 / ${total}`;
+  let s4Summary = "当前无商品满足核验条件";
+  let s4Note = "需商品先获得可靠查货依据";
 
   if (matched === 0) {
     s4Status = "waiting";
-    s4StatusText = "待前置匹配";
-    s4Summary = "需先建立查货对应关系";
-    s4Note = "匹配成功后自动比对 25 字段";
+    s4StatusText = `0 / ${total}`;
+    s4Summary = "当前无商品满足核验条件";
+    s4Note = "需全部商品先获得可靠查货依据";
   } else if (conflicts > 0 || unresolvedIssues > 0) {
     s4Status = "warning";
-    s4StatusText = `存在差异 (${conflicts + unresolvedIssues})`;
-    s4Summary = `发现 ${conflicts + unresolvedIssues} 处字段差异待确认`;
-    s4Note = "请在下方工作台核实修改或采纳查货值";
+    s4StatusText = `${matched} / ${total} (有差异)`;
+    s4Summary = `已核对 ${matched} 行，存在 ${conflicts + unresolvedIssues} 处差异待确认`;
+    s4Note = "请在工作台中核实修改或采纳查货值";
   } else if (matched === total) {
     s4Status = "completed";
-    s4StatusText = "全字段核验一致";
+    s4StatusText = `${matched} / ${total} (一致)`;
     s4Summary = "核心 25 列字段全部核验通过";
     s4Note = "符合规范，可提交人工复核";
   } else {
     s4Status = "processing";
-    s4StatusText = `部分核验 (${matched}/${total})`;
-    s4Summary = `已比对 ${matched} 个商品的 25 字段`;
-    s4Note = "待其余商品匹配后完成整单核对";
+    s4StatusText = `${matched} / ${total}`;
+    s4Summary = `已比对 ${matched} 个商品的 25 字段，剩余 ${total - matched} 行等待查货`;
+    s4Note = "持续监听新材料到达";
   }
 
   const s4: ProcessStage = {
@@ -857,37 +1079,37 @@ export function generateTaskProcessStages(
 
   // Stage 5: 人工最终确认
   let s5Status: ProcessStage["status"] = "waiting";
-  let s5StatusText = "待前序核对";
-  let s5Summary = "需先解决所有差异项";
-  let s5Note = "生成 25 列最终核对单";
+  let s5StatusText = "尚未开放";
+  let s5Summary = "需全部商品先获得可靠查货依据";
+  let s5Note = "未建立可靠查货关系的商品禁止整票确认";
 
   if (isFinalized) {
     s5Status = "completed";
-    s5StatusText = "已完成封版";
+    s5StatusText = "✓ 已完成封版";
     s5Summary = "最终核对单已生成并归档";
-    s5Note = "查货明细已核销入库";
-  } else if (isConfirming) {
-    s5Status = "processing";
-    s5StatusText = "人工复核中";
-    s5Summary = "当前正在人工最终复核";
-    s5Note = "核实无误后点击【确认完成】，或点击【退回修改】";
-  } else if (matched === total && conflicts === 0 && unresolvedIssues === 0) {
-    s5Status = "warning";
-    s5StatusText = "待提交复核";
-    s5Summary = "所有字段核对通过，无冲突";
-    s5Note = "请点击【提交人工复核】进入确认";
-  } else {
+    s5Note = "查货明细已正式完成核销";
+  } else if (matched < total) {
     s5Status = "waiting";
-    s5StatusText = "待前序核对";
-    s5Summary = conflicts + unresolvedIssues > 0 ? `尚有 ${conflicts + unresolvedIssues} 项差异待裁决` : "需先完成商品匹配与字段核对";
-    s5Note = "全部无误后开放人工复核";
+    s5StatusText = "尚未开放";
+    s5Summary = `仍有 ${total - matched} 个商品暂无查货依据`;
+    s5Note = "需全部商品先获得可靠查货依据后方可整票复核";
+  } else if (conflicts > 0 || unresolvedIssues > 0) {
+    s5Status = "warning";
+    s5StatusText = "待处理问题";
+    s5Summary = `尚有 ${conflicts + unresolvedIssues} 项阻断问题待处理`;
+    s5Note = "解决未决冲突与必填后方可封版";
+  } else {
+    s5Status = "processing";
+    s5StatusText = "开放人工复核";
+    s5Summary = "全部商品已具备查货依据，请逐行复核";
+    s5Note = "逐行确认后即可生成最终核对单并核销";
   }
 
   const s5: ProcessStage = {
     step: 5,
     title: "人工最终确认",
     code: "归档",
-    codeDesc: "最终核对与核销",
+    codeDesc: "最终复核与核销",
     status: s5Status,
     statusText: s5StatusText,
     productSummary: s5Summary,

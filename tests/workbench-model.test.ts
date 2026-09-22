@@ -34,7 +34,7 @@ describe('作业台字段与人工决策',()=>{
   });
   it('冲突必须说明原因，解决后不因历史证据重复告警',()=>{
     const s=useDemoStore.getState();const d=s.drafts[0];const id=d.lines[0].id;
-    useDemoStore.setState({drafts:[{...d,lines:d.lines.map((l,i)=>i===0?{...l,issueIds:['字段冲突:毛重']}:l)}]});
+    useDemoStore.setState({drafts:[{...d,lines:d.lines.map((l,i)=>i===0?{...l,issueIds:['字段冲突:毛重'],relationSourceIds:['I-8bc7177252aa-25120336-L001']}:l)}]});
     const review={actor:'Demo 当前用户',reason:'',occurredAt:'2026-09-21T00:00:00Z',locked:true};
     s.editSelectedLineField(id,'毛重','9',review);
     expect(rows().find(r=>r.field==='毛重')?.conflict).toBe(true);

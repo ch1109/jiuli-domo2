@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useMemo, useRef, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import { CustomerWorkspace } from "./customer-workspace";
 import { ReconciliationWorkbench } from "./reconciliation-workbench";
 import {
@@ -20,9 +20,9 @@ import {
   ListTodo,
   FlaskConical,
   AlertTriangle,
+  ArrowLeft,
 } from "lucide-react";
 import {
-  buildScenarioState,
   getMergedPoolProducts,
   getPocMetrics,
   getScenarioAcceptanceReport,
@@ -100,6 +100,7 @@ function Empty({ title, detail }: { title: string; detail: string }) {
 export default function HomePage() {
   const [scenarioOpen, setScenarioOpen] = useState(false);
   const [intakeOpen, setIntakeOpen] = useState(false);
+  const [intakeKind, setIntakeKind] = useState<"entrustment" | "inspection">("entrustment");
   const view = useDemoStore((state) => state.view);
   const setView = useDemoStore((state) => state.setView);
   const toast = useDemoStore((state) => state.toast);
@@ -116,6 +117,13 @@ export default function HomePage() {
   const selectedDraft = selectedDraftId
     ? drafts.find((draft) => draft.id === selectedDraftId)
     : undefined;
+  const goBack = useDemoStore((state) => state.goBack);
+  const selectedWorkspaceCustomerId = useDemoStore(
+    (state) => state.selectedWorkspaceCustomerId,
+  );
+  const historyStack = useDemoStore((state) => state.historyStack);
+  const canGoBack =
+    historyStack.length > 0 || view !== "home" || Boolean(selectedWorkspaceCustomerId);
   const counts = useMemo(
     () => ({
       ready: sources.filter((source) => source.availability === "可匹配")
@@ -132,7 +140,7 @@ export default function HomePage() {
   return (
     <main className="shell">
       <aside className="sidebar">
-        <div className="brand">
+        <div className="brand" role="heading" aria-level={2} aria-label="九立智能核对工作台">
           <div className="brand-mark">九</div>
           <div>
             <strong>九立</strong>
@@ -187,20 +195,33 @@ export default function HomePage() {
       </aside>
       <section className="content" aria-hidden={scenarioOpen || undefined}>
         <header className="topbar">
-          <div>
-            <div className="eyebrow">九立新流程 Demo</div>
-            <h1>{
-              view === "workbench"
-                ? "核对工作台"
-                : view === "history"
-                  ? "版本与操作"
-                  : view === "intake"
-                    ? "材料接入"
-                    : view === "drafts"
-                      ? "委托草稿"
-                      : ([...navItems, ...utilityNavItems].find((item) => item.key === view)
-                          ?.label ?? (view === "console" ? "演示数据" : "核对任务"))
-            }</h1>
+          <div className="topbar-left">
+            {canGoBack && (
+              <button
+                className="page-back-button topbar-back-btn"
+                onClick={goBack}
+                title="返回上一页"
+                aria-label="返回上一页"
+              >
+                <ArrowLeft size={15} />
+                <span>返回上一页</span>
+              </button>
+            )}
+            <div>
+              <div className="eyebrow">九立新流程 Demo</div>
+              <h1>{
+                view === "workbench"
+                  ? "核对工作台"
+                  : view === "history"
+                    ? "版本与操作"
+                    : view === "intake"
+                      ? "材料接入"
+                      : view === "drafts"
+                        ? "委托草稿"
+                        : ([...navItems, ...utilityNavItems].find((item) => item.key === view)
+                            ?.label ?? (view === "console" ? "演示数据" : "核对任务"))
+              }</h1>
+            </div>
           </div>
           <div className="top-actions">
             <button
@@ -260,8 +281,8 @@ export default function HomePage() {
         ) : null}
         {view === "home" ? (
           <>
-            <CustomerWorkspace onAddMaterial={(customerId) => { useDemoStore.getState().setIntakeCustomer(customerId ?? ""); setIntakeOpen(true); }} />
-            {intakeOpen ? <div className="intake-modal-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setIntakeOpen(false); }}><div className="intake-modal" role="dialog" aria-modal="true" aria-label="新增材料"><div className="intake-modal-head"><strong>新增材料</strong><button className="icon-button" aria-label="关闭新增材料" onClick={() => setIntakeOpen(false)}><X size={16} /></button></div><IntakeView files={files} customers={customers} drafts={drafts} embedded /></div></div> : null}
+            <CustomerWorkspace onAddMaterial={(customerId) => { useDemoStore.getState().setIntakeCustomer(customerId ?? ""); setIntakeKind(customerId ? "inspection" : "entrustment"); setIntakeOpen(true); }} />
+            {intakeOpen ? <div className="intake-modal-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setIntakeOpen(false); }}><div className="intake-modal" role="dialog" aria-modal="true" aria-label="上传客户材料"><div className="intake-modal-head"><div><strong>上传客户材料</strong><span>Demo 材料接入入口，用于模拟委托材料接口与查货材料接口</span></div><button className="icon-button" aria-label="关闭上传客户材料窗口" onClick={() => setIntakeOpen(false)}><X size={16} /></button></div><IntakeView files={files} customers={customers} drafts={drafts} embedded initialKind={intakeKind} onClose={() => setIntakeOpen(false)} /></div></div> : null}
           </>
         ) : null}
         {view === "intake" ? (
@@ -323,355 +344,104 @@ function ScenarioDrawer({ onClose }: { onClose: () => void }) {
 function IntakeView({
   files,
   customers,
-  drafts,
+  drafts: _drafts,
   embedded = false,
+  initialKind = "entrustment",
+  onClose,
 }: {
   files: ReturnType<typeof useDemoStore.getState>["files"];
   customers: ReturnType<typeof useDemoStore.getState>["customers"];
   drafts: ReturnType<typeof useDemoStore.getState>["drafts"];
   embedded?: boolean;
+  initialKind?: "entrustment" | "inspection";
+  onClose?: () => void;
 }) {
-  const [uploadMaterialType, setUploadMaterialType] = useState<
-    MaterialType | ""
-  >("");
-  const [entrustmentCustomerId, setEntrustmentCustomerId] = useState("");
-  const uploadMaterialTypeRef = useRef<MaterialType | "">("");
-  const selectedCustomerRef = useRef<string | null>(null);
-  const scenarioId = useDemoStore((state) => state.scenarioId);
-  const baselineDraftFiles = useMemo(
-    () =>
-      new Set(
-        buildScenarioState(scenarioId).availableDrafts.flatMap(
-          (draft) => draft.materialFileIds,
-        ),
-      ),
-    [scenarioId],
-  );
-  const ingestFile = useDemoStore((state) => state.ingestFile);
+  type UploadKind = "entrustment" | "inspection";
+  type IntakePhase = "ready" | "processing" | "result";
+  const [kind, setKind] = useState<UploadKind>(initialKind);
+  const [phase, setPhase] = useState<IntakePhase>("ready");
+  const [customerId, setCustomerId] = useState("");
+  const [inspectionFiles, setInspectionFiles] = useState<File[]>([]);
+  const [mainFile, setMainFile] = useState<File | null>(null);
+  const [auxiliaryFiles, setAuxiliaryFiles] = useState<File[]>([]);
+  const [batchId, setBatchId] = useState<string | null>(null);
+  const [processingStep, setProcessingStep] = useState(0);
+  const [error, setError] = useState("");
+  const selectedCustomerId = useDemoStore((state) => state.selectedIntakeCustomerId);
+  const setIntakeCustomer = useDemoStore((state) => state.setIntakeCustomer);
   const stageLocalFile = useDemoStore((state) => state.stageLocalFile);
   const parseLocalFile = useDemoStore((state) => state.parseLocalFile);
-  const startParse = useDemoStore((state) => state.startParse);
-  const flagParseReview = useDemoStore((state) => state.flagParseReview);
-  const resolveParseReview = useDemoStore((state) => state.resolveParseReview);
+  const createDraftFromEntrustmentFile = useDemoStore((state) => state.createDraftFromEntrustmentFile);
   const setView = useDemoStore((state) => state.setView);
-  const selectedCustomerId = useDemoStore(
-    (state) => state.selectedIntakeCustomerId,
-  );
-  const setIntakeCustomer = useDemoStore((state) => state.setIntakeCustomer);
-  const parseJobs = useDemoStore((state) => state.parseJobs);
-  const parseResults = useDemoStore((state) => state.parseResults);
-  const convertedEntrustments = useDemoStore(
-    (state) => state.convertedEntrustments,
-  );
-  const convertedAuxiliaryMaterials = useDemoStore(
-    (state) => state.convertedAuxiliaryMaterials,
-  );
-  const materialBindings = useDemoStore((state) => state.materialBindings);
+  const convertedEntrustments = useDemoStore((state) => state.convertedEntrustments);
+  const convertedInspections = useDemoStore((state) => state.convertedInspections);
   const sources = useDemoStore((state) => state.sources);
-  const createDraftFromEntrustmentFile = useDemoStore(
-    (state) => state.createDraftFromEntrustmentFile,
-  );
-  const bindMaterialToDraft = useDemoStore(
-    (state) => state.bindMaterialToDraft,
-  );
-  const reviseDraftWithEntrustmentFile = useDemoStore(
-    (state) => state.reviseDraftWithEntrustmentFile,
-  );
-  const [targetDrafts, setTargetDrafts] = useState<Record<string, string>>({});
-  const localFiles = files.filter((file) => file.source === "本地上传");
-  const parseProblems = localFiles.filter(
-    (file) =>
-      file.uploadStatus === "解析失败" ||
-      file.uploadStatus === "待人工复核",
-  );
-  const inspectionFiles = files.filter((file) => file.materialType === "查货");
-  const entrustmentFiles = files.filter((file) => file.materialType === "委托书");
-  const auxiliaryFiles = files.filter(
-    (file) => file.materialType === "发票" || file.materialType === "箱单",
-  );
-  const uploadFor = (materialType: MaterialType, selectedFiles: FileList | null) => {
-    const inspectionCustomerId = selectedCustomerRef.current ?? selectedCustomerId;
-    if (materialType === "查货" && !inspectionCustomerId) {
-      useDemoStore.setState({ toast: "请先填写查货单所属客户，再上传查货材料" });
-      return;
-    }
-    const batchId = `UPLOAD-BATCH-${Date.now()}`;
-    const customerId = materialType === "委托书"
-      ? entrustmentCustomerId || inspectionCustomerId
-      : inspectionCustomerId;
-    for (const file of Array.from(selectedFiles ?? []))
-      stageLocalFile({
-        name: file.name,
-        size: file.size,
-        type: file.type,
-        file,
-        materialType,
-        customerId: customerId ?? undefined,
-        batchId,
-      });
+  const intakeFiles = batchId ? files.filter((file) => file.batchId === batchId) : [];
+  const effectiveCustomerId = customerId || selectedCustomerId || "";
+  const resolvedCustomer = intakeFiles.map((file) => file.customerId).find(Boolean) ?? effectiveCustomerId;
+  const resolvedCustomerName = customers.find((customer) => customer.id === resolvedCustomer)?.name;
+
+  useEffect(() => {
+    if (phase !== "processing") return;
+    const timer = window.setInterval(() => setProcessingStep((step) => Math.min(step + 1, 3)), 850);
+    const finish = window.setTimeout(() => setPhase("result"), 3200);
+    return () => { window.clearInterval(timer); window.clearTimeout(finish); };
+  }, [phase]);
+
+  const acceptFiles = (incoming: FileList | null, setter: (files: File[]) => void, multiple = true) => {
+    const next = Array.from(incoming ?? []);
+    setter(multiple ? next : next.slice(0, 1));
+    setError("");
   };
-  const customerPendingFiles = localFiles.filter(
-    (file) =>
-      (file.materialType === "委托书" || file.materialType === "查货") &&
-      file.uploadStatus === "解析成功" &&
-      !file.customerId,
-  );
-  const resolvedCustomerNames = [
-    ...new Set(
-      localFiles
-        .map((file) => customers.find((customer) => customer.id === file.customerId)?.name)
-        .filter((name): name is string => Boolean(name)),
-    ),
-  ];
-  return (
-    <div className="view-stack">
-      {!embedded ? <div className="section-heading">
-        <div>
-          <h2>新建核对任务</h2>
-          <p>按业务顺序准备材料，系统会在当前任务内完成解析、核对和确认。</p>
-        </div>
-        <button className="secondary" onClick={() => setView("home")}>
-          <Home size={16} />
-          返回任务首页
-        </button>
-      </div> : null}
-      <div className="task-stepper" aria-label="新建核对进度">
-        {[
-          ["1", "上传材料", files.length > 0],
-          ["2", "解析材料", localFiles.length > 0 && parseProblems.length === 0],
-          ["3", "补充客户信息", localFiles.length > 0 && customerPendingFiles.length === 0],
-          ["4", "开始核对", drafts.length > 0],
-        ].map(([number, label, done]) => (
-          <div className={done ? "task-step done" : "task-step"} key={String(number)}>
-            <b>{done ? <Check size={14} /> : number}</b><span>{label}</span>
-          </div>
-        ))}
-      </div>
-      <div className="panel customer-step">
-        <div><span className="step-kicker">第 1 步</span><strong>先上传本次核对材料</strong><small>委托书客户从左上角“委托方”自动识别；查货单上传前必须填写所属客户。</small></div>
-        <span className="status status-blue"><i />客户按材料分别归属商品池</span>
-      </div>
-      <div className="material-section">
-        <div className="material-section-heading"><div><span className="step-kicker">第 2 步</span><strong>按材料用途上传</strong><small>PDF、Excel、JPG、PNG 均可；单个文件不超过 20MB。</small></div><div className="material-customer-fields"><label className="inspection-customer-field"><span>查货单所属客户 <em>必填</em></span><select aria-label="选择查货客户" value={selectedCustomerId ?? ""} onChange={(event) => { selectedCustomerRef.current = event.target.value; setIntakeCustomer(event.target.value); }}><option value="">上传查货单前请选择</option>{customers.map((customer) => <option key={customer.id} value={customer.id}>{customer.name}</option>)}</select></label><label className="inspection-customer-field"><span>委托书客户 <em className="optional-label">选填</em></span><select aria-label="选择委托书客户（选填）" value={entrustmentCustomerId} onChange={(event) => setEntrustmentCustomerId(event.target.value)}><option value="">由委托方自动识别</option>{customers.map((customer) => <option key={customer.id} value={customer.id}>{customer.name}</option>)}</select></label></div></div>
-        <div className="material-zone-grid">
-          <MaterialUploadZone title="查货材料" detail="必填 · 可上传多份查货单" count={inspectionFiles.length} required onFiles={(value) => uploadFor("查货", value)} />
-          <MaterialUploadZone title="委托材料" detail="必填 · 主体委托书" count={entrustmentFiles.length} required onFiles={(value) => uploadFor("委托书", value)} />
-          <div className="material-zone"><div className="material-zone-icon"><Upload size={19} /></div><strong>辅助材料</strong><span>选填 · 发票、箱单或补充文件</span><small>{auxiliaryFiles.length ? `已添加 ${auxiliaryFiles.length} 份` : "暂未添加"}</small><div className="auxiliary-upload-actions"><label className="secondary">上传发票<input type="file" multiple accept=".pdf,.xlsx,.xls,.jpg,.jpeg,.png" hidden onChange={(event) => { uploadFor("发票", event.currentTarget.files); event.currentTarget.value = ""; }} /></label><label className="secondary">上传箱单<input type="file" multiple accept=".pdf,.xlsx,.xls,.jpg,.jpeg,.png" hidden onChange={(event) => { uploadFor("箱单", event.currentTarget.files); event.currentTarget.value = ""; }} /></label></div></div>
-        </div>
-      </div>
-      <details className="legacy-upload panel" open>
-        <summary>无法判断材料用途？使用手动分类</summary>
-        <div className="legacy-upload-controls">
-          <label><span className="muted">材料类型</span><select aria-label="选择材料类型" value={uploadMaterialType} onChange={(event) => { const value = event.target.value as MaterialType | ""; uploadMaterialTypeRef.current = value; setUploadMaterialType(value); }}><option value="">待人工识别</option>{["委托书", "发票", "箱单", "查货"].map((type) => <option key={type} value={type}>{type}</option>)}</select></label>
-          <label className="secondary">上传本地材料<input aria-label="上传本地材料" type="file" multiple accept=".pdf,.xlsx,.xls,.jpg,.jpeg,.png" hidden onChange={(event) => { uploadFor((uploadMaterialTypeRef.current || "委托书") as MaterialType, event.currentTarget.files); event.currentTarget.value = ""; }} /></label>
-        </div>
-      </details>
-      <div className="parse-summary panel">
-        <div className="panel-head"><div><strong>解析确认</strong><span>先看懂系统识别了什么，再开始核对</span></div>{parseProblems.length ? <span className="status status-red"><i />{parseProblems.length} 份材料需要处理</span> : <span className="status status-green"><i />当前无解析问题</span>}</div>
-        <div className="parse-summary-grid"><div><span>已识别客户</span><strong>{resolvedCustomerNames.length ? resolvedCustomerNames.join("、") : "等待解析委托方"}</strong></div><div><span>查货材料</span><strong>{inspectionFiles.length} 份 · {selectedCustomerId ? sources.filter((source) => source.customerId === selectedCustomerId).length : 0} 条商品事实</strong></div><div><span>委托材料</span><strong>{entrustmentFiles.length} 份 · {convertedEntrustments.reduce((sum, item) => sum + item.lines.length, 0)} 条商品行</strong></div><div><span>辅助材料</span><strong>{auxiliaryFiles.length} 份</strong></div></div>
-      </div>
-      <div className="panel">
-        <div className="panel-head">
-          <div>
-            <strong>材料队列</strong>
-            <span>{files.length} 份材料</span>
-          </div>
-          <span className="muted">失败和待复核材料不会进入商品池</span>
-        </div>
-        <div className="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>文件</th>
-                <th>类型</th>
-                <th>状态</th>
-                <th>操作</th>
-              </tr>
-            </thead>
-            <tbody>
-              {files.map((file) => {
-                const convertedEntrustment = convertedEntrustments.some(
-                  (item) => item.sourceFileId === file.id,
-                );
-                const convertedAuxiliary = convertedAuxiliaryMaterials.some(
-                  (item) => item.sourceFileId === file.id,
-                );
-                const bound = materialBindings.find(
-                  (item) => item.fileId === file.id,
-                );
-                const parseResult = parseResults.find(
-                  (item) => item.sourceFileId === file.id,
-                );
-                const target = targetDrafts[file.id] ?? "";
-                return (
-                  <tr key={file.id}>
-                    <td>
-                      <div className="file-cell">
-                        <div className="file-icon">
-                          <FileInput size={15} />
-                        </div>
-                        <div>
-                          <strong>{file.name}</strong>
-                          <small>
-                            {file.id}
-                            {file.batchId ? ` · ${file.batchId}` : ""}
-                            {file.sizeBytes
-                              ? ` · ${(file.sizeBytes / 1024).toFixed(1)}KB`
-                              : ""}
-                          </small>
-                          <ParseFeedback fileId={file.id} jobs={parseJobs} />
-                        </div>
-                      </div>
-                    </td>
-                    <td>{file.materialType}</td>
-                    <td>
-                      {file.duplicate ? (
-                        <span className="status status-orange">
-                          <i />
-                          重复材料
-                        </span>
-                      ) : file.source === "本地上传" && parseResult && !parseResult.customerId ? (
-                        <span className="status status-red">
-                          <i />
-                          解析成功 · 待补客户信息
-                        </span>
-                      ) : file.source === "本地上传" ? (
-                        <span className="status status-orange">
-                          <i />
-                          {file.uploadStatus ?? "待解析"}
-                        </span>
-                      ) : file.loaded ? (
-                        <Status value="可匹配" />
-                      ) : (
-                        <Status value="待核对" />
-                      )}
-                    </td>
-                    <td>
-                      {file.duplicate ? (
-                        <span className="muted">未重复接入</span>
-                      ) : file.source === "本地上传" ? (
-                        <>
-                          <ParseTaskAction
-                            fileId={file.id}
-                            jobs={parseJobs}
-                            onStart={startParse}
-                            onParse={parseLocalFile}
-                            onReview={flagParseReview}
-                            onResolve={resolveParseReview}
-                          />
-                          {convertedEntrustment && drafts.length ? (
-                            <>
-                              <select
-                                aria-label={`修订目标 ${file.id}`}
-                                value={target}
-                                onChange={(event) =>
-                                  setTargetDrafts({
-                                    ...targetDrafts,
-                                    [file.id]: event.target.value,
-                                  })
-                                }
-                              >
-                                <option value="">选择修订草稿</option>
-                                {drafts
-                                  .filter(
-                                    (draft) =>
-                                      draft.customerId === file.customerId &&
-                                      !draft.finalized,
-                                  )
-                                  .map((draft) => (
-                                    <option key={draft.id} value={draft.id}>
-                                      {draft.displayNo}
-                                    </option>
-                                  ))}
-                              </select>
-                              <button
-                                className="text-button"
-                                disabled={!target}
-                                onClick={() =>
-                                  reviseDraftWithEntrustmentFile(
-                                    file.id,
-                                    target,
-                                  )
-                                }
-                              >
-                                更新原草稿
-                              </button>
-                            </>
-                          ) : null}
-                          {convertedAuxiliary && drafts.length && !bound ? (
-                            <>
-                              <select
-                                aria-label={`绑定目标 ${file.id}`}
-                                value={target}
-                                onChange={(event) =>
-                                  setTargetDrafts({
-                                    ...targetDrafts,
-                                    [file.id]: event.target.value,
-                                  })
-                                }
-                              >
-                                <option value="">选择绑定草稿</option>
-                                {drafts
-                                  .filter(
-                                    (draft) =>
-                                      draft.customerId === file.customerId &&
-                                      !draft.finalized,
-                                  )
-                                  .map((draft) => (
-                                    <option key={draft.id} value={draft.id}>
-                                      {draft.displayNo}
-                                    </option>
-                                  ))}
-                              </select>
-                              <button
-                                className="text-button"
-                                disabled={!target}
-                                onClick={() =>
-                                  bindMaterialToDraft(file.id, target)
-                                }
-                              >
-                                绑定到草稿
-                              </button>
-                            </>
-                          ) : bound ? (
-                            <span className="muted">
-                              已绑定 {bound.draftId}
-                            </span>
-                          ) : null}
-                        </>
-                      ) : file.loaded ? (
-                        <span className="muted">已接入</span>
-                      ) : (
-                        <button
-                          className="text-button"
-                          onClick={() => ingestFile(file.id)}
-                        >
-                          接入商品池 <ChevronRight size={14} />
-                        </button>
-                      )}
-                      {!file.duplicate &&
-                      file.materialType === "委托书" &&
-                      (convertedEntrustment ||
-                        baselineDraftFiles.has(file.id)) ? (
-                        <button
-                          className="text-button"
-                          onClick={() =>
-                            createDraftFromEntrustmentFile(file.id)
-                          }
-                        >
-                          生成委托草稿 <ChevronRight size={14} />
-                        </button>
-                      ) : null}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  );
+
+  const handleSubmit = () => {
+    const filesToUpload = kind === "inspection" ? inspectionFiles : [mainFile, ...auxiliaryFiles].filter((file): file is File => Boolean(file));
+    if (kind === "inspection" && !effectiveCustomerId) { setError("查货资料必须先指定所属客户"); return; }
+    if (kind === "inspection" && !inspectionFiles.length) { setError("请先选择查货 PDF"); return; }
+    if (kind === "entrustment" && !mainFile) { setError("请先上传 1 份主体委托书"); return; }
+    const nextBatchId = `UPLOAD-BATCH-${Date.now()}`;
+    setBatchId(nextBatchId);
+    setPhase("processing");
+    setProcessingStep(0);
+    filesToUpload.forEach((file, index) => {
+      const materialType: MaterialType = kind === "inspection" ? "查货" : index === 0 ? "委托书" : auxiliaryFiles[index - 1]?.name.toLowerCase().includes("pack") ? "箱单" : "发票";
+      stageLocalFile({ name: file.name, size: file.size, type: file.type, file, materialType, customerId: effectiveCustomerId || undefined, batchId: nextBatchId });
+    });
+    window.setTimeout(() => {
+      const staged = useDemoStore.getState().files.filter((file) => file.batchId === nextBatchId);
+      staged.forEach((file) => { void parseLocalFile(file.id); });
+    }, 0);
+  };
+
+  const resetForNext = () => { setPhase("ready"); setBatchId(null); setProcessingStep(0); setInspectionFiles([]); setMainFile(null); setAuxiliaryFiles([]); setError(""); };
+  const cancel = () => { if (onClose) onClose(); else setView("home"); };
+  const openTask = () => {
+    const file = intakeFiles.find((item) => item.materialType === "委托书" && convertedEntrustments.some((entry) => entry.sourceFileId === item.id));
+    if (file) createDraftFromEntrustmentFile(file.id);
+    setView(embedded ? "home" : "workbench");
+    onClose?.();
+  };
+  const openInspectionImpact = () => { setView("home"); onClose?.(); };
+  const resultCount = kind === "inspection"
+    ? convertedInspections.filter((item) => intakeFiles.some((file) => file.id === item.sourceFileId)).reduce((sum, item) => sum + item.lines.length, 0)
+    : convertedEntrustments.filter((item) => intakeFiles.some((file) => file.id === item.sourceFileId)).reduce((sum, item) => sum + item.lines.length, 0);
+  const affectedCount = kind === "inspection" && resolvedCustomer ? sources.filter((source) => source.customerId === resolvedCustomer).length : 0;
+
+  if (phase === "processing") {
+    const steps = kind === "inspection" ? ["文件上传完成", "正在识别查货内容", "正在整理查货商品", "正在检查受影响的委托任务"] : ["文件上传完成", "正在识别客户与商品", "正在生成委托草稿", "正在寻找已有查货依据"];
+    return <div className="intake-content"><div className="intake-processing"><span className="intake-processing-icon"><Upload size={20} /></span><h2>材料处理中</h2><p>系统正在自动完成材料识别和业务接入</p><div className="intake-progress-list">{steps.map((step, index) => <div className={index < processingStep ? "complete" : index === processingStep ? "active" : ""} key={step}><b>{index < processingStep ? <Check size={14} /> : index === processingStep ? <span className="progress-dot" /> : index + 1}</b><span>{step}</span></div>)}</div></div></div>;
+  }
+
+  if (phase === "result") {
+    const needsCustomer = kind === "entrustment" && !resolvedCustomer;
+    return <div className="intake-content"><div className={needsCustomer ? "intake-result warning" : "intake-result"}><div className="result-title"><span className="result-icon">{needsCustomer ? <AlertTriangle size={19} /> : <Check size={19} />}</span><div><h2>{needsCustomer ? "材料已接收，客户待确认" : kind === "inspection" ? "查货资料处理完成" : "材料处理完成"}</h2><p>{needsCustomer ? "识别不到唯一客户，商品匹配将在确认后开始" : "系统已完成本批材料的自动识别和接入"}</p></div></div>{resolvedCustomerName ? <div className="result-customer"><span>客户</span><strong>{resolvedCustomerName}</strong></div> : null}<div className="result-summary"><div><span>本次上传</span><strong>{intakeFiles.length} 份文件</strong></div><div><span>{kind === "inspection" ? "整理结果" : "识别结果"}</span><strong>{resultCount || (kind === "inspection" ? "查货批次已建立" : "待核对商品已记录")}</strong></div>{kind === "inspection" ? <div><span>可能受影响的委托</span><strong>{affectedCount || "暂无"}</strong></div> : null}</div><div className="result-system"><span>系统已</span><div><Check size={14} />{kind === "inspection" ? "将资料加入客户查货池" : needsCustomer ? "保存材料并生成客户待确认待办" : "生成委托草稿并开始寻找已有查货依据"}</div></div><div className="intake-actions"><button className="secondary" onClick={resetForNext}>继续上传</button><button className="primary" onClick={needsCustomer ? resetForNext : kind === "inspection" ? openInspectionImpact : openTask}>{needsCustomer ? "确认客户" : kind === "inspection" ? "查看本次影响" : "查看委托任务"}<ChevronRight size={15} /></button></div></div></div>;
+  }
+
+  return <div className="intake-content"><div className="intake-intro">{!embedded ? <div><span className="eyebrow">材料接入</span><h1>上传客户材料</h1><p>Demo 材料接入入口，用于模拟委托材料接口与查货材料接口</p></div> : null}<div className="intake-tabs" role="tablist"><button role="tab" aria-selected={kind === "entrustment"} className={kind === "entrustment" ? "active" : ""} onClick={() => { setKind("entrustment"); setError(""); }}>委托材料</button><button role="tab" aria-selected={kind === "inspection"} className={kind === "inspection" ? "active" : ""} onClick={() => { setKind("inspection"); setError(""); }}>查货材料</button></div></div>{kind === "inspection" ? <div className="intake-form"><label className="intake-field"><span>所属客户 <em>必填</em></span><select aria-label="选择查货客户" value={effectiveCustomerId} onChange={(event) => { setCustomerId(event.target.value); setIntakeCustomer(event.target.value); }}><option value="">搜索并选择客户</option>{customers.map((customer) => <option key={customer.id} value={customer.id}>{customer.name}</option>)}</select><small>查货资料必须先指定客户，上传后进入该客户的查货资料池。</small></label><FileDrop title="查货资料" detail="拖拽或点击上传 PDF，支持一次上传多份" files={inspectionFiles} onFiles={(incoming) => acceptFiles(incoming, setInspectionFiles)} accept=".pdf" multiple required /></div> : <div className="intake-form"><label className="intake-field"><span>所属客户 <em className="optional-label">选填</em></span><select aria-label="选择委托客户（选填）" value={customerId} onChange={(event) => { setCustomerId(event.target.value); setIntakeCustomer(event.target.value); }}><option value="">由委托书自动识别</option>{customers.map((customer) => <option key={customer.id} value={customer.id}>{customer.name}</option>)}</select><small>不填写时，系统会从委托书中识别客户；识别失败时材料仍会保存。</small></label><FileDrop title="主体委托书" detail="拖入或选择 1 份委托书，支持 PDF / Excel" files={mainFile ? [mainFile] : []} onFiles={(incoming) => acceptFiles(incoming, (next) => setMainFile(next[0] ?? null), false)} accept=".pdf,.xlsx,.xls" multiple={false} required /><FileDrop title="辅助材料" detail="发票、箱单，可上传多份" files={auxiliaryFiles} onFiles={(incoming) => acceptFiles(incoming, setAuxiliaryFiles)} accept=".pdf,.xlsx,.xls,.jpg,.jpeg,.png" /></div>}{error ? <div className="intake-error" role="alert"><AlertTriangle size={15} />{error}</div> : null}{((kind === "inspection" && inspectionFiles.length) || (kind === "entrustment" && (mainFile || auxiliaryFiles.length))) ? <div className="intake-file-list"><strong>本次文件</strong>{(kind === "inspection" ? inspectionFiles : [mainFile, ...auxiliaryFiles].filter((file): file is File => Boolean(file))).map((file, index) => <div key={`${file.name}-${index}`}><FileInput size={15} /><span>{file.name}</span><small>{kind === "inspection" ? "查货资料" : index === 0 ? "委托书" : "辅助材料"}</small></div>)}</div> : null}<div className="intake-footer"><button className="secondary" onClick={cancel}>取消</button><button className="primary" onClick={handleSubmit}>上传并处理<ChevronRight size={15} /></button></div></div>;
+}
+
+function FileDrop({ title, detail, files, onFiles, accept, multiple = true, required = false }: { title: string; detail: string; files: File[]; onFiles: (files: FileList | null) => void; accept: string; multiple?: boolean; required?: boolean }) {
+  return <label className="intake-drop"><div className="intake-drop-icon"><Upload size={19} /></div><strong>{title} {required ? <em>必填</em> : <small>选填</small>}</strong><span>{detail}</span>{files.length ? <div className="drop-file-count">已选择 {files.length} 个文件</div> : <div className="drop-placeholder">点击选择文件</div>}<input type="file" hidden multiple={multiple} accept={accept} onChange={(event) => { onFiles(event.currentTarget.files); event.currentTarget.value = ""; }} /></label>;
 }
 
 function MaterialUploadZone({
@@ -1012,32 +782,32 @@ function PoolView({
           </p>
         </div>
         <div className="pool-filters">
-          <select
-            aria-label="商品池客户筛选"
-            value={customerId}
-            onChange={(event) => setCustomerId(event.target.value)}
-          >
-            <option value="全部">全部客户</option>
-            {customers.map((customer) => (
-              <option key={customer.id} value={customer.id}>
-                {customer.name}
-              </option>
-            ))}
-          </select>
-          <div className="segmented" aria-label="商品状态筛选">
-            {["全部", "可匹配", "草稿占用", "已核销"].map((item) => (
-              <button
-                key={item}
-                className={filter === item ? "selected" : ""}
-                aria-pressed={filter === item}
-                onClick={() => setFilter(item)}
-              >
-                {item}
-              </button>
-            ))}
+            <select
+              aria-label="商品池客户筛选"
+              value={customerId}
+              onChange={(event) => setCustomerId(event.target.value)}
+            >
+              <option value="全部">全部客户</option>
+              {customers.map((customer) => (
+                <option key={customer.id} value={customer.id}>
+                  {customer.name}
+                </option>
+              ))}
+            </select>
+            <div className="segmented" aria-label="商品状态筛选">
+              {["全部", "可匹配", "草稿占用", "已核销"].map((item) => (
+                <button
+                  key={item}
+                  className={filter === item ? "selected" : ""}
+                  aria-pressed={filter === item}
+                  onClick={() => setFilter(item)}
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
       <div className="pool-summary">
         <div>
           <strong>{merged.length}</strong>
@@ -1453,10 +1223,6 @@ function ConsoleView({ embedded = false }: { embedded?: boolean }) {
           <h2>Demo 控制台</h2>
           <p>只展示业务验收状态；场景能打开不代表已经通过。</p>
         </div>
-        <button className="primary" onClick={() => setView("intake")}>
-          <LayoutDashboard size={16} />
-          回到工作区
-        </button>
       </div> : null}
       <div className="scenario-grid">
         {allScenarios.map((scenario) => {

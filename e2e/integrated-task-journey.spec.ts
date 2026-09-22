@@ -6,17 +6,24 @@ test("一体化任务旅程从任务首页进入并连续打开工作台", async
   await expect(page.getByRole("button", { name: "新建核对" })).toBeVisible();
 
   await page.getByRole("button", { name: "新建核对" }).click();
-  await expect(page.getByText("第 1 步")).toBeVisible();
-  await expect(page.getByText("按材料用途上传")).toBeVisible();
-  await expect(page.getByLabel("上传查货材料")).toBeAttached();
-  await expect(page.getByLabel("上传委托材料")).toBeAttached();
-  await expect(page.getByText("解析确认")).toBeVisible();
+  const intake = page.getByRole("dialog", { name: "上传客户材料" });
+  await expect(intake).toBeVisible();
+  await expect(intake.getByRole("tab", { name: "委托材料" })).toHaveAttribute("aria-selected", "true");
+  await expect(intake.getByLabel("选择委托客户（选填）")).toBeVisible();
+  await expect(intake.getByText("主体委托书")).toBeVisible();
+  await expect(intake.getByText("辅助材料")).toBeVisible();
+  await intake.getByRole("tab", { name: "查货材料" }).click();
+  await expect(intake.getByLabel("选择查货客户")).toBeVisible();
+  await expect(intake.getByText("查货资料必须先指定客户")).toBeVisible();
+  await expect(intake.getByText("解析确认")).toHaveCount(0);
+  await expect(intake.getByText("材料队列")).toHaveCount(0);
+  await intake.getByRole("button", { name: "关闭上传客户材料窗口" }).click();
 
   await page.getByRole("button", { name: "Demo 控制台" }).click();
   await page.locator(".scenario-card").filter({ hasText: "SC-08" }).click();
   await page.getByRole("button", { name: "当前核对任务" }).click();
   await expect(page.getByRole("heading", { name: "英堡科技（深圳）有限公司" })).toBeVisible();
-  await expect(page.getByRole("button", { name: "开始核对（执行首次匹配）" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "AI处理记录" })).toBeVisible();
 
   await page.getByRole("button", { name: "客户工作台", exact: true }).click();
   const customer = page.locator(".cw-customer").filter({ hasText: "英堡科技（深圳）有限公司" });
