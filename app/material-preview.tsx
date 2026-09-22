@@ -199,41 +199,46 @@ export function MaterialPreview({
 
   return (
     <div className="material-preview">
-      <div className="preview-controls">
-        {pdf ? (
-          <>
-            <button
-              disabled={page <= 1}
-              onClick={() => setPage(page - 1)}
-              aria-label="上一页"
-            >
-              <ChevronLeft size={14} />
-            </button>
-            <span>
-              第 {page} / {pages} 页
-            </span>
-            <button
-              disabled={page >= pages}
-              onClick={() => setPage(page + 1)}
-              aria-label="下一页"
-            >
-              <ChevronRight size={14} />
-            </button>
-          </>
-        ) : isImage ? (
-          <span>图片原件预览</span>
-        ) : (
-          <select
-            aria-label="工作表"
-            value={sheet || sheets[0] || ""}
-            onChange={(e) => setSheet(e.target.value)}
-          >
-            {sheets.map((s) => (
-              <option key={s}>{s}</option>
-            ))}
-          </select>
-        )}
-      </div>
+      {(pdf || isImage || sheets.length > 1) && (
+        <div className="preview-controls">
+          {pdf ? (
+            <>
+              <button
+                disabled={page <= 1}
+                onClick={() => setPage(page - 1)}
+                aria-label="上一页"
+              >
+                <ChevronLeft size={14} />
+              </button>
+              <span>
+                第 {page} / {pages} 页
+              </span>
+              <button
+                disabled={page >= pages}
+                onClick={() => setPage(page + 1)}
+                aria-label="下一页"
+              >
+                <ChevronRight size={14} />
+              </button>
+            </>
+          ) : isImage ? (
+            <span>图片原件预览</span>
+          ) : (
+            <label className="sheet-selector" style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+              <span style={{ color: "#77857d" }}>工作表：</span>
+              <select
+                aria-label="工作表"
+                value={sheet || sheets[0] || ""}
+                onChange={(e) => setSheet(e.target.value)}
+              >
+                {sheets.map((s) => (
+                  <option key={s}>{s}</option>
+                ))}
+              </select>
+            </label>
+          )}
+        </div>
+      )}
 
       <small>
         {pdf

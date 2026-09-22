@@ -1,6 +1,6 @@
 import {beforeEach,describe,expect,it} from 'vitest';
 import {useDemoStore} from '../lib/demo-store';
-import {getFieldRows} from '../lib/workbench-model';
+import {getFieldRows, getLineReconStatus} from '../lib/workbench-model';
 import {FINAL_OUTPUT_FIELDS} from '../lib/domain/types';
 import {promptFixture} from '../lib/domain/prompt-replay';
 
@@ -49,4 +49,43 @@ describe('作业台字段与人工决策',()=>{
     expect(rows().some(r=>r.decision)).toBe(false);
     expect(useDemoStore.getState().evidence.some(e=>e.modelDecision)).toBe(true);
   });
+  it('准确计算商品行核对状态（未核对、已基于查货核对、人工修正）',()=>{
+    const s=useDemoStore.getState();
+    const line0 = s.drafts[0].lines[0];
+    const fieldRows0 = getFieldRows(line0, s.evidence);
+    const statusBefore = getLineReconStatus(line0, fieldRows0, s.sources);
+    expect(statusBefore.stateCode).toBe('UNCHECKED');
+    expect(statusBefore.hasInspection).toBe(false);
+
+    // 匹配后
+    s.matchSelectedDraft();
+    const line0Matched = useDemoStore.getState().drafts[0].lines[0];
+    const fieldRowsMatched = getFieldRows(line0Matched, useDemoStore.getState().evidence);
+    const statusMatched = getLineReconStatus(line0Matched, fieldRowsMatched, useDemoStore.getState().sources);
+    expect(statusMatched.hasInspection).toBe(true);
+
+    // 人工修改毛重后
+    s.editSelectedLineField(line0Matched.id, '毛重', '4.5', { actor: '测试', reason: '人工核对修改', occurredAt: '2026-09-21T00:00:00Z', locked: false });
+    const line0Edited = useDemoStore.getState().drafts[0].lines[0];
+    const fieldRowsEdited = getFieldRows(line0Edited, useDemoStore.getState().evidence);
+    const statusEdited = getLineReconStatus(line0Edited, fieldRowsEdited, useDemoStore.getState().sources);
+    expect(statusEdited.isHumanModified).toBe(true);
+    expect(statusEdited.stateCode).toBe('USER_MODIFIED');
+    expect(statusEdited.badgeText).toContain('已人工修正');
+  });
+  it('支持在人工确认中退回修改（返回上一步）',()=>{
+    const s=useDemoStore.getState();
+    s.matchSelectedDraft();
+    // 解决冲突以允许提交人工确认
+    const line0 = useDemoStore.getState().drafts[0].lines[0];
+    s.editSelectedLineField(line0.id, '毛重', '4.2', { actor: '测试', reason: '解决冲突', occurredAt: '2026-09-21T00:00:00Z', locked: false });
+    s.submitSelectedDraft();
+    expect(useDemoStore.getState().drafts[0].status).toBe('人工确认中');
+
+    // 退回修改
+    useDemoStore.getState().revertDraftToReview();
+    expect(useDemoStore.getState().drafts[0].status).not.toBe('人工确认中');
+    expect(useDemoStore.getState().toast).toBe('已退回核对与修改状态');
+  });
 });
+

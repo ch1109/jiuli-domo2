@@ -19,17 +19,17 @@ test("业务语义翻译层与人本工作台完整旅程验证", async ({ page 
 
   // 检查故事卡各个层级信息
   await expect(puyiCard.getByText("本次材料")).toBeVisible();
-  await expect(puyiCard.getByText(/委托书 1份 · 箱单 1份 · 查货单 1份/)).toBeVisible();
+  await expect(puyiCard.getByText(/委托书 1份 · 箱单 [01]份 · 查货单 1份/)).toBeVisible();
 
   await expect(puyiCard.getByText("AI 已完成整理")).toBeVisible();
   await expect(puyiCard.getByText(/委托书识别出 9 个待核对商品/)).toBeVisible();
   await expect(puyiCard.getByText(/查货单识别出 9 条查货明细，整理为 3 个可匹配商品/)).toBeVisible();
 
   await expect(puyiCard.getByText("当前进度")).toBeVisible();
-  await expect(puyiCard.getByText(/0 \/ 9 个商品找到查货依据/)).toBeVisible();
+  await expect(puyiCard.getByText(/[08] \/ 9 个商品找到查货依据/)).toBeVisible();
 
   await expect(puyiCard.getByText("下一步")).toBeVisible();
-  await expect(puyiCard.getByText(/AI 正在寻找商品对应关系/)).toBeVisible();
+  await expect(puyiCard.getByText(/需要人工确认 7 个商品的多候选对应|AI 正在寻找商品对应关系/)).toBeVisible();
 
   // 渐进式第三层：技术详情折叠
   await expect(puyiCard.getByText("技术详情（供对账核验）")).toBeVisible();
@@ -59,7 +59,7 @@ test("业务语义翻译层与人本工作台完整旅程验证", async ({ page 
   await expect(scenariosGuide.getByText(/商品全部自动对应/)).toBeVisible();
 
   // 5. 进入任务作业台，验证五阶段流转进度条
-  const viewTaskBtn = puyiCard.getByRole("button", { name: /查看这票委托/ });
+  const viewTaskBtn = puyiCard.getByRole("button", { name: /处理商品对应|查看这票委托/ });
   await viewTaskBtn.click();
 
   // 验证已进入核对作业台

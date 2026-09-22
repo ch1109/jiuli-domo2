@@ -80,3 +80,85 @@ export function getFieldRows(
   });
 }
 export type FieldRow = ReturnType<typeof getFieldRows>[number];
+
+export interface LineReconStatus {
+  lineId: string;
+  hasInspection: boolean;
+  inspectionSummary: string;
+  isHumanModified: boolean;
+  humanModifiedFields: FinalOutputField[];
+  hasConflict: boolean;
+  conflictFields: FinalOutputField[];
+  missingRequiredFields: FinalOutputField[];
+  isAllVerified: boolean;
+  stateCode: "UNCHECKED" | "USER_MODIFIED" | "CONFLICT" | "MISSING" | "VERIFIED" | "CHECKING";
+  badgeText: string;
+  badgeClass: string;
+}
+
+export function getLineReconStatus(
+  line: UiLine,
+  rows: readonly FieldRow[],
+  sources: readonly { id: string; model?: string; sourceFileId?: string; quantity?: string }[] = [],
+): LineReconStatus {
+  const hasInspection = (line.relationSourceIds && line.relationSourceIds.length > 0) || !!line.relationSourceId;
+  const matchedSources = sources.filter(
+    (s) => (line.relationSourceIds ?? []).includes(s.id) || line.relationSourceId === s.id,
+  );
+  const inspectionSummary = hasInspection
+    ? matchedSources.length > 0
+      ? matchedSources.map((s) => `${s.model || "查货行"}${s.quantity ? `(${s.quantity})` : ""}`).join("，")
+      : "已关联查货资料"
+    : "未关联查货单";
+
+  const humanModifiedFields = rows.filter((r) => r.human).map((r) => r.field);
+  const isHumanModified = humanModifiedFields.length > 0;
+
+  const conflictFields = rows.filter((r) => r.conflict).map((r) => r.field);
+  const hasConflict = conflictFields.length > 0;
+
+  const missingRequiredFields = rows.filter((r) => r.missing && r.required).map((r) => r.field);
+
+  const isAllVerified = rows.every((r) => r.verified || (!r.required && r.missing));
+
+  let stateCode: LineReconStatus["stateCode"] = "CHECKING";
+  let badgeText = "核对中";
+  let badgeClass = "badge-gray";
+
+  if (!hasInspection) {
+    stateCode = "UNCHECKED";
+    badgeText = "未核对 · 缺查货";
+    badgeClass = "badge-orange";
+  } else if (isHumanModified) {
+    stateCode = "USER_MODIFIED";
+    badgeText = `已人工修正 (${humanModifiedFields.length})`;
+    badgeClass = "badge-blue";
+  } else if (hasConflict) {
+    stateCode = "CONFLICT";
+    badgeText = `查货差异 (${conflictFields.length})`;
+    badgeClass = "badge-red";
+  } else if (missingRequiredFields.length > 0) {
+    stateCode = "MISSING";
+    badgeText = `必填缺失 (${missingRequiredFields.length})`;
+    badgeClass = "badge-red";
+  } else if (isAllVerified) {
+    stateCode = "VERIFIED";
+    badgeText = "基于查货核对一致";
+    badgeClass = "badge-green";
+  }
+
+  return {
+    lineId: line.id,
+    hasInspection,
+    inspectionSummary,
+    isHumanModified,
+    humanModifiedFields,
+    hasConflict,
+    conflictFields,
+    missingRequiredFields,
+    isAllVerified,
+    stateCode,
+    badgeText,
+    badgeClass,
+  };
+}

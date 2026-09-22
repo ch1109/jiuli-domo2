@@ -14,6 +14,7 @@ import { promptFixture, puyiFixture, getPromptFixture, replayPromptResult, initi
 import { completeDraft, confirmDraftLine, createEntrustmentDraft, editDraftField, establishManualCompositeMatch, executeInitialMatching, ingestInspectionBatch, reassignMatch, reconcileDraftWithInspectionIncrement, resolveDraftCustomer, selectMatchCandidate, submitDraftForManualConfirmation, unbindMatch, updateEntrustmentDraftMaterial } from "./domain/actions";
 import { createFinalOutputRow } from "./domain/final-output";
 import { mergeInspectionSourceLines } from "./domain/inspection-merge";
+import { deriveDraftStatus } from "./domain/status";
 import { canEnterProductPool, completeParseJob, createParseJob, failParseJob, flagParseJobForReview, resolveParseReview as resolveParseReviewState, startParseJob, type ParseJob, type ParsedFactRow, type ParsedMaterialResult } from "./intake/parse-contract";
 import { resolveKnownCustomer } from "./intake/customer-resolution";
 import { convertEntrustmentFacts, type EntrustmentConversionLine } from "./intake/entrustment-conversion";
@@ -225,6 +226,7 @@ export interface DemoState {
   establishCompositeForLine: (lineId: string, sourceIds: string[]) => void;
   updateSelectedDraftMaterial: (lineId: string, field: FinalOutputField, value: string) => void;
   submitSelectedDraft: () => void;
+  revertDraftToReview: () => void;
   confirmLine: (lineId: string) => void;
   completeSelectedDraft: () => void;
   clearToast: () => void;
@@ -243,6 +245,21 @@ const memoryStorage = (() => {
 const customerMap = new Map((customersJson as Array<{ id: string; name: string }>).map((customer) => [customer.id, customer.name]));
 const localFileBlobs = new Map<string, File>();
 export function getLocalMaterial(fileId: string) { return localFileBlobs.get(fileId); }
+
+export const DRAFT_SAMPLE_DISPLAY_MAP: Record<string, string> = {
+  'D-3c3cc10bd26b': '2025YBT010-2',
+  'D-8181f9edc198': '2026(DG)ZW001',
+  'D-b436a16434a4': '2026(DG)ZW003',
+  'D-ab6bfdee3e54': '2026(DG)ZW050',
+  'D-0971c3fd7c49': '2026ACSY003',
+  'D-e60d9bd8df88': '2026AG001',
+  'D-fb448776f711': '2026BMH001',
+  'D-a64834ca9065': '2026CNKJ001',
+  'D-df72916dc019': '26SHPYD056',
+  'D-1df4f4d83480': 'YK-260625131-1',
+  'D-a235e97d6dd0': 'YK-260625131-2',
+  'D-5a09ab721f2e': 'YK-260625131-3',
+};
 
 function buildDrafts(): UiDraft[] {
   const linesByDraft = new Map<string, UiLine[]>();
@@ -271,23 +288,28 @@ function buildDrafts(): UiDraft[] {
     });
     linesByDraft.set(line.draftId, current);
   }
-  return (draftsJson as unknown as Array<{ id: string; fileId: string; customerId: string; customerStatus: EntrustmentDraft["customerStatus"]; status: EntrustmentDraft["status"]; version: number; lineIds: string[] }>).map((draft, index) => ({
-    id: draft.id,
-    displayNo: `W${String(index + 1).padStart(3, "0")}`,
-    customerId: draft.customerId === "UNKNOWN" ? null : draft.customerId,
-    customerName: customerMap.get(draft.customerId) ?? "待补客户信息",
-    status: draft.status,
-    version: draft.version,
-    lines: linesByDraft.get(draft.id) ?? [],
-    finalized: false,
-    customerStatus: draft.customerStatus,
-    materialFileIds: [draft.fileId],
-    hasAiUpdate: false,
-    lastUpdateReason: null,
-    finalReconciliationId: null,
-    createdAt: baselineTime,
-    updatedAt: baselineTime,
-  }));
+
+  return (draftsJson as unknown as Array<{ id: string; fileId: string; customerId: string; customerStatus: EntrustmentDraft["customerStatus"]; status: EntrustmentDraft["status"]; version: number; lineIds: string[] }>).map((draft, index) => {
+    const file = filesJson.find((f: any) => f.id === draft.fileId);
+    const realSampleNo = DRAFT_SAMPLE_DISPLAY_MAP[draft.id] || file?.sampleId || `W${String(index + 1).padStart(3, "0")}`;
+    return {
+      id: draft.id,
+      displayNo: realSampleNo,
+      customerId: draft.customerId === "UNKNOWN" ? null : draft.customerId,
+      customerName: customerMap.get(draft.customerId) ?? "待补客户信息",
+      status: draft.status,
+      version: draft.version,
+      lines: linesByDraft.get(draft.id) ?? [],
+      finalized: false,
+      customerStatus: draft.customerStatus,
+      materialFileIds: [draft.fileId],
+      hasAiUpdate: false,
+      lastUpdateReason: null,
+      finalReconciliationId: null,
+      createdAt: baselineTime,
+      updatedAt: baselineTime,
+    };
+  });
 }
 
 function buildSources(): UiSource[] {
@@ -1434,6 +1456,51 @@ export const useDemoStore = create<DemoState>()(persist((set, get) => ({
       } catch (error) { return { toast: error instanceof Error ? error.message : "提交人工确认失败" }; }
     });
   },
+  revertDraftToReview: () => {
+    const { selectedDraftId } = get();
+    set((state) => {
+      const draft = state.drafts.find((item) => item.id === selectedDraftId);
+      if (!draft) return {};
+      if (draft.status !== "人工确认中") return { toast: "当前草稿不处于人工确认状态" };
+      try {
+        const newStatus = deriveDraftStatus({
+          customerId: draft.customerId,
+          lineStatuses: draft.lines.map((l) => l.status as any),
+          activeMatchRelationCounts: draft.lines.map((l) => l.relationSourceIds.length),
+          submittedForManualConfirmation: false,
+          isFinalized: false,
+          currentStatus: "部分核对",
+        });
+        const nextVersion = draft.version + 1;
+        const newDraft: UiDraft = {
+          ...draft,
+          status: newStatus,
+          version: nextVersion,
+          lastUpdateReason: "退回修改（返回上一步）",
+          updatedAt: now(),
+        };
+        const operation: OperationRecord = {
+          id: `OP-${draft.id}-${nextVersion}-revert-review`,
+          operationType: "草稿版本变化",
+          actorType: "人工操作",
+          customerId: draft.customerId,
+          draftId: draft.id,
+          affectedEntrustmentLineIds: draft.lines.map((line) => line.id),
+          affectedInspectionSourceLineIds: [],
+          summary: "撤销人工确认状态，退回工作台重新核对与修改",
+          occurredAt: now(),
+        };
+        return {
+          drafts: state.drafts.map((item) => (item.id === draft.id ? newDraft : item)),
+          operations: [...state.operations, operation],
+          events: [operationToEvent(operation), ...state.events],
+          toast: "已退回核对与修改状态",
+        };
+      } catch (error) {
+        return { toast: error instanceof Error ? error.message : "退回修改失败" };
+      }
+    });
+  },
   confirmLine: (lineId) => {
     const { selectedDraftId } = get();
     set((state) => {
@@ -1476,10 +1543,10 @@ export const useDemoStore = create<DemoState>()(persist((set, get) => ({
   clearToast: () => set({ toast: null }),
 }), {
   name: "jiuli-demo-workspace-v1",
-  version: 2,
+  version: 3,
   migrate: (persisted): DemoState => {
     const previous = persisted as Partial<DemoState>;
-    // Keep the old scenario, including uploads and manual edits, available for recovery.
+    // 强制使用最新的真实业务样本整单体系
     const business = buildBusinessWorkspace();
     return { ...previous, scenarioId: "BUSINESS", view: "home", drafts: business.drafts, sources: business.sources, files: business.files,
       selectedDraftId: business.selectedDraftId, activeTaskId: business.selectedDraftId, lastVisitedTaskId: business.selectedDraftId, lastVisitedPanel: "overview",
@@ -1491,7 +1558,20 @@ export const useDemoStore = create<DemoState>()(persist((set, get) => ({
   },
   storage: createJSONStorage(() => typeof window === "undefined" ? memoryStorage : window.localStorage),
   onRehydrateStorage: () => (state) => {
-    if (state) state.recoverInterruptedParseJobs();
+    if (state) {
+      const fixedDrafts = state.drafts.map((d) => {
+        const real = DRAFT_SAMPLE_DISPLAY_MAP[d.id];
+        if (real && d.displayNo !== real) {
+          return { ...d, displayNo: real };
+        }
+        return d;
+      });
+      const hasOldW = state.drafts.some((d) => d.displayNo.match(/^W\d{3}$/));
+      if (hasOldW) {
+        useDemoStore.setState({ drafts: fixedDrafts });
+      }
+      state.recoverInterruptedParseJobs();
+    }
   },
 }));
 

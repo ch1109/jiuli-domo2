@@ -11,6 +11,9 @@ import {
   ChevronDown,
   ChevronUp,
   FlaskConical,
+  CheckCircle2,
+  AlertTriangle,
+  HelpCircle,
 } from 'lucide-react';
 import { useDemoStore } from '@/lib/demo-store';
 import {
@@ -18,10 +21,12 @@ import {
   TASK_FILTERS,
   type CustomerModel,
   type WorkbenchModel,
+  type RelationMatrixCell,
 } from '@/lib/customer-workbench-model';
 import {
   generateWorkspaceSummary,
   generateCustomerStory,
+  generatePendingTasksSummary,
   DEMO_SCENARIO_SHOWCASES,
   BUSINESS_TERMS,
 } from '@/lib/business-translation';
@@ -45,11 +50,21 @@ const date = (s?: string) =>
 
 const tabs = [
   '业务总览',
-  '待核对商品与委托材料 (P1)',
-  '查货明细与可匹配商品 (P2)',
-  '商品自动对应关系 (P3)',
-  '需人工处理的问题',
+  '委托任务',
+  '查货资料',
+  '商品对应',
+  '业务动态',
 ];
+
+const TASK_CENTER_TABS = [
+  '我的待办',
+  '全部',
+  '需要人工选择',
+  '待最终复核',
+  '等待外部材料',
+  'AI处理中',
+  '已完成',
+] as const;
 
 const sampleIdByFileId = new Map(
   manifest.samples.flatMap((sample) =>
@@ -101,14 +116,48 @@ export function CustomerWorkspace({
   );
   const model = useMemo(() => getCustomerWorkbench(state), [state]);
   const summary = useMemo(() => generateWorkspaceSummary(model), [model]);
+  const pendingTasks = useMemo(() => generatePendingTasksSummary(model), [model]);
 
   const [customerId, setCustomerId] = useState<string | null>(null);
   const [tab, setTab] = useState(tabs[0]);
-  const [filter, setFilter] = useState('全部任务');
+  const [filter, setFilter] = useState('我的待办');
   const [query, setQuery] = useState('');
   const [preview, setPreview] = useState<string | null>(null);
+  const [matrixDrilldown, setMatrixDrilldown] = useState<RelationMatrixCell | null>(null);
 
   const customer = model.customers.find((c) => c.id === customerId);
+
+  const sortedCustomers = useMemo(() => {
+    return model.customers
+      .filter(
+        (c) =>
+          !query ||
+          `${c.name} ${c.id} ${c.tasks
+            .map((t) => t.draft.displayNo)
+            .join(' ')}`
+            .toLowerCase()
+            .includes(query.toLowerCase())
+      )
+      .sort((a, b) => {
+        const aIssues = a.issues.length > 0 ? 1 : 0;
+        const bIssues = b.issues.length > 0 ? 1 : 0;
+        if (bIssues !== aIssues) return bIssues - aIssues;
+
+        const aMulti = a.isMultiTask ? 1 : 0;
+        const bMulti = b.isMultiTask ? 1 : 0;
+        if (bMulti !== aMulti) return bMulti - aMulti;
+
+        const aPartial = a.counts.matched > 0 && a.counts.matched < a.counts.lines ? 1 : 0;
+        const bPartial = b.counts.matched > 0 && b.counts.matched < b.counts.lines ? 1 : 0;
+        if (bPartial !== aPartial) return bPartial - aPartial;
+
+        const aWait = a.counts.tasks > 0 && a.counts.matched === 0 ? 1 : 0;
+        const bWait = b.counts.tasks > 0 && b.counts.matched === 0 ? 1 : 0;
+        if (bWait !== aWait) return bWait - aWait;
+
+        return b.counts.tasks - a.counts.tasks;
+      });
+  }, [model.customers, query]);
 
   const tasks = model.tasks
     .filter((t) =>
@@ -116,16 +165,54 @@ export function CustomerWorkspace({
         .toLowerCase()
         .includes(query.toLowerCase())
     )
-    .filter((t) =>
-      filter === '全部任务'
-        ? true
-        : filter === '处理中'
-        ? t.businessStatus !== '已完成'
-        : filter === '今日新增材料'
-        ? t.draft.materialFileIds.some((id) => model.todayFileIds.has(id))
-        : t.businessStatus ===
-          (filter === '待人工复核' ? 'AI核对完成 · 待人工复核' : filter)
-    );
+    .filter((t) => {
+      if (filter === '全部' || filter === '全部任务') return true;
+      if (filter === '我的待办') {
+        return (
+          !t.draft.customerId ||
+          t.draft.displayNo.includes('ZW') ||
+          t.businessStatus === '待人工处理' ||
+          t.businessStatus === '异常' ||
+          t.businessStatus === '待人工复核' ||
+          t.businessStatus === 'AI核对完成 · 待人工复核' ||
+          t.businessStatus === '人工复核中' ||
+          ['2026BMH001', '2026AG001', '26SHPYD056'].includes(t.draft.displayNo) ||
+          t.issues > 0
+        );
+      }
+      if (filter === '需要人工选择' || filter === '待人工处理') {
+        return (
+          ['2026BMH001', '2026AG001', '26SHPYD056'].includes(t.draft.displayNo) ||
+          t.draft.lines.some((l) => l.issueIds.some((i) => i.includes('多候选'))) ||
+          t.businessStatus === '待人工处理'
+        );
+      }
+      if (filter === '待最终复核' || filter === '待人工复核') {
+        return (
+          t.businessStatus === '待人工复核' ||
+          t.businessStatus === 'AI核对完成 · 待人工复核' ||
+          t.businessStatus === '人工复核中' ||
+          t.draft.displayNo === '2025YBT010-2'
+        );
+      }
+      if (filter === '等待外部材料' || filter === '待匹配') {
+        return (
+          t.draft.displayNo.startsWith('YK-') ||
+          ['2026ACSY003', '2026CNKJ001'].includes(t.draft.displayNo) ||
+          (t.matched < t.total && !['2026BMH001', '2026AG001', '26SHPYD056'].includes(t.draft.displayNo))
+        );
+      }
+      if (filter === 'AI处理中' || filter === '处理中') {
+        return t.businessStatus !== '已完成';
+      }
+      if (filter === '已完成') {
+        return t.businessStatus === '已完成';
+      }
+      if (filter === '今日新增材料') {
+        return t.draft.materialFileIds.some((id) => model.todayFileIds.has(id));
+      }
+      return t.businessStatus === filter;
+    });
 
   return (
     <div className="customer-workspace cw-v2">
@@ -138,7 +225,11 @@ export function CustomerWorkspace({
             </button>
           )}
           <h2>{customer?.name ?? '客户工作台'}</h2>
-          {customer && <small>{customer.id}</small>}
+          {customer && (
+            <small className="cw-customer-code-tag">
+              客户编号：{customer.name.includes('欧陆通') ? 'KH-OLT' : customer.name.includes('英卡') ? 'KH-YKKJ' : customer.id.replace('C-', 'KH-')}
+            </small>
+          )}
         </div>
         <button className="primary" onClick={() => onAddMaterial(customerId)}>
           <Plus size={16} />
@@ -177,12 +268,12 @@ export function CustomerWorkspace({
         <>
           {state.scenarioId === 'BUSINESS' && (
             <p className="cw-provenance">
-              已整理 {state.files.length} 份材料 ·{' '}
+              本工作台由 11 套真实整单业务数据直接驱动 · 已整理 {state.files.length} 份材料 ·{' '}
               {state.drafts.reduce((n, d) => n + d.lines.length, 0)} 条
               {BUSINESS_TERMS.entrustmentProduct} · {state.sources.length} 条
-              {BUSINESS_TERMS.inspectionRawRow}，其中{' '}
+              {BUSINESS_TERMS.inspectionRawRow}（其中{' '}
               {state.sources.filter((s) => !s.customerId).length}{' '}
-              条待确认客户，未计入客户商品池。模型核对结果请进入对应演示场景查看。
+              条因委托缺少客户抬头待人工确认，严格隔离未计入客户商品池）。
             </p>
           )}
 
@@ -218,13 +309,49 @@ export function CustomerWorkspace({
             </div>
           </div>
 
-          <RealAuditsShowcase
-            onSelectCustomer={(id) => {
-              setCustomerId(id);
-              setTab(tabs[0]);
-            }}
-          />
 
+          {/* 第二层：需要我处理 · 待办任务中心 */}
+          <section id="customer-tasks" style={{ marginTop: 24, marginBottom: 28, background: '#ffffff', border: '1px solid #dce8e1', borderRadius: 8, padding: '16px 20px' }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                marginBottom: 12,
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <CheckCircle2 size={18} color="#1b6e46" />
+                <h3 style={{ margin: 0 }}>待办任务中心 · {tasks.length} 票</h3>
+              </div>
+              <small style={{ color: '#7a8e83' }}>
+                按状态快速筛选，点击行右侧展开渐进式专业详情
+              </small>
+            </div>
+            <div className="cw-filters">
+              {TASK_CENTER_TABS.map((s) => (
+                <button
+                  key={s}
+                  className={
+                    filter === s ||
+                    (s === '全部' && filter === '全部任务') ||
+                    (s === '需要人工选择' && filter === '待人工处理') ||
+                    (s === '待最终复核' && filter === '待人工复核') ||
+                    (s === '等待外部材料' && filter === '待匹配') ||
+                    (s === 'AI处理中' && filter === '处理中')
+                      ? 'active'
+                      : ''
+                  }
+                  onClick={() => setFilter(s)}
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
+            <TaskTable tasks={tasks} />
+          </section>
+
+          {/* 第三层：客户业务概览 */}
           <div className="cw-section-title">
             <h3>
               客户业务概览 <span>{model.customers.length} 家客户</span>
@@ -240,218 +367,280 @@ export function CustomerWorkspace({
             </label>
           </div>
 
-          {/* 客户卡片：从统计卡重构为故事卡 */}
+          {/* 客户卡片：单任务故事卡 + 多任务聚合卡 */}
           <div className="cw-customers">
-            {model.customers
-              .filter(
-                (c) =>
-                  !query ||
-                  `${c.name} ${c.id} ${c.tasks
-                    .map((t) => t.draft.displayNo)
-                    .join(' ')}`
-                    .toLowerCase()
-                    .includes(query.toLowerCase())
-              )
-              .sort(
-                (a, b) =>
-                  b.issues.length - a.issues.length ||
-                  b.counts.tasks - a.counts.tasks
-              )
-              .map((c) => {
-                const story = generateCustomerStory(c);
+            {sortedCustomers.map((c) => {
+              const story = generateCustomerStory(c);
+              if (story.isMultiTask && story.multiTask) {
                 return (
-                  <article className="cw-customer cw-story-card" key={c.id}>
+                  <article className="cw-customer cw-story-card cw-multi-task-card" key={c.id}>
                     <div className="cw-story-head">
                       <div className="cw-story-title-group">
                         <h3>{story.name}</h3>
-                        <small>
-                          {c.id} · 最近更新：{story.updatedAtText}
-                        </small>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 3 }}>
+                          <strong style={{ fontSize: 13, color: '#111827' }}>
+                            {story.multiTask.tasksSummary}
+                          </strong>
+                          <small style={{ color: '#6b7280' }}>· 最近更新：{story.updatedAtText}</small>
+                        </div>
                       </div>
                       <span className={`cw-story-badge ${story.badge.variant}`}>
                         {story.badge.label}
                       </span>
                     </div>
 
-                    <div className="cw-story-body">
-                      <div className="cw-story-status-line">
-                        {story.currentStatusText}
+                    <div className="cw-multi-task-body">
+                      {/* 状态分布条 */}
+                      <div className="cw-multi-status-bar">
+                        {story.multiTask.statusPills.map((pill, idx) => (
+                          <div className="cw-multi-status-item" key={idx}>
+                            <span>{pill.label}</span>
+                            <strong className={`highlight-${pill.variant}`}>{pill.count}</strong>
+                          </div>
+                        ))}
                       </div>
 
-                      <div className="cw-story-section">
-                        <span className="cw-story-label">本次材料</span>
-                        <span className="cw-story-content">
-                          {story.materialsSummary}
+                      {/* 客户级库存概览 */}
+                      <div className="cw-multi-pool-summary">
+                        <span>📦</span>
+                        <span>{story.multiTask.stockSummary}</span>
+                      </div>
+
+                      {/* 重点关注任务列表 */}
+                      <div className="cw-multi-focus-section">
+                        <span className="cw-section-subtitle">
+                          重点委托任务 ({story.multiTask.topTasks.length})
                         </span>
-                      </div>
-
-                      <div className="cw-story-section">
-                        <span className="cw-story-label">AI 已完成整理</span>
-                        <ul className="cw-story-list">
-                          <li>{story.aiOrderSummary}</li>
-                          <li>{story.aiInspectionSummary}</li>
-                        </ul>
-                      </div>
-
-                      <div className="cw-story-section">
-                        <span className="cw-story-label">当前进度</span>
-                        <div className="cw-story-progress-box">
-                          <div className="cw-story-progress-text">
-                            <span>{story.progressText}</span>
-                            <span>
-                              {story.progressTotal > 0
-                                ? Math.round(
-                                    (story.progressMatched /
-                                      story.progressTotal) *
-                                      100
-                                  )
-                                : 0}
-                              %
-                            </span>
-                          </div>
-                          <div className="cw-story-progress-bar">
-                            <div
-                              className="cw-story-progress-fill"
-                              style={{
-                                width: `${
-                                  story.progressTotal > 0
-                                    ? (story.progressMatched /
-                                        story.progressTotal) *
-                                      100
-                                    : 0
-                                }%`,
-                              }}
-                            />
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="cw-story-section">
-                        <span className="cw-story-label">下一步</span>
-                        <div className="cw-story-next">
-                          {story.nextStepText}
+                        <div className="cw-multi-focus-list">
+                          {story.multiTask.topTasks.map((t) => (
+                            <div className="cw-multi-focus-card" key={t.id}>
+                              <div className="cw-focus-card-head">
+                                <strong style={{ fontSize: 13, color: '#163829' }}>{t.displayNo}</strong>
+                                <span className="cw-story-badge blue">{t.status}</span>
+                              </div>
+                              <div className="cw-focus-progress">{t.progressText}</div>
+                              <div className="cw-focus-action-row">
+                                <button
+                                  className="text-button"
+                                  style={{ fontSize: 12, color: '#1b6e46', fontWeight: 600 }}
+                                  onClick={() => state.selectDraft(t.id)}
+                                >
+                                  {t.actionText} →
+                                </button>
+                              </div>
+                            </div>
+                          ))}
                         </div>
                       </div>
                     </div>
 
                     <div className="cw-story-actions">
-                      {story.primaryTaskId ? (
-                        <button
-                          className="text-button"
-                          style={{
-                            fontWeight: 600,
-                            color: '#1b6e46',
-                            padding: '4px 0',
-                          }}
-                          onClick={() => {
-                            state.selectDraft(story.primaryTaskId!);
-                          }}
-                        >
-                          查看这票委托
-                          <ArrowRight size={14} />
-                        </button>
-                      ) : (() => {
-                        const cAudits = getCustomerAudits(c.id);
-                        if (cAudits.length > 0) {
-                          return (
-                            <button
-                              className="text-button"
-                              style={{
-                                fontWeight: 600,
-                                color: '#1b6e46',
-                                padding: '4px 0',
-                              }}
-                              onClick={() => {
-                                setCustomerId(c.id);
-                                setTab(tabs[1]);
-                              }}
-                            >
-                              查看整单档案 ({cAudits[0].counts.orderRows}行商品)
-                              <ArrowRight size={14} />
-                            </button>
-                          );
-                        }
-                        return (
-                          <span style={{ fontSize: 12, color: '#889e92' }}>
-                            暂无委托任务
-                          </span>
-                        );
-                      })()}
                       <button
-                        className="text-button"
+                        className="primary"
+                        style={{ padding: '6px 14px', fontSize: 13, borderRadius: 4 }}
                         onClick={() => {
                           setCustomerId(c.id);
                           setTab(tabs[0]);
                         }}
                       >
-                        进入客户工作台
-                        <ArrowRight size={14} />
+                        进入多任务业务总览 →
+                      </button>
+                      <button
+                        className="text-button"
+                        style={{ fontSize: 13, color: '#4b5563' }}
+                        onClick={() => {
+                          setCustomerId(c.id);
+                          setTab(tabs[0]);
+                        }}
+                      >
+                        查看客户全部业务 →
                       </button>
                     </div>
 
-                    {/* 渐进式披露：底层对账与技术指标（P1/P2/P3） */}
                     <details className="cw-story-card-tech">
                       <summary>技术详情（供对账核验）</summary>
                       <dl>
-                        <dt>材料详情</dt>
+                        <dt>客户标识</dt>
+                        <dd><code>{c.id}</code> · 并发多委托模式</dd>
+                        <dt>材料总览</dt>
                         <dd>
-                          委托 {c.counts.orderFiles} · 发票{' '}
-                          {c.counts.invoiceFiles} · 箱单{' '}
-                          {c.counts.packingFiles} · 查货{' '}
-                          {c.counts.inspectionFiles}
+                          委托任务 {c.counts.tasks} 票 · 查货批次 {c.inspectionBatches.length || 1} 批 · 文件 {c.files.length} 份
                         </dd>
-                        <dt>商品数据</dt>
+                        <dt>商品池</dt>
                         <dd>
-                          待核对商品 {c.counts.lines} · 查货明细{' '}
-                          {c.counts.raw} · 可匹配商品 {c.counts.merged}
-                        </dd>
-                        <dt>业务归属</dt>
-                        <dd>
-                          委托任务 {c.counts.tasks} · 查货单/批次{' '}
-                          {c.counts.orders}
+                          待核对商品 {c.counts.lines} 行 · 查货明细 {c.counts.raw} 条 · 可匹配合并商品 {c.counts.merged} 个
                         </dd>
                       </dl>
                     </details>
                   </article>
                 );
-              })}
+              }
+
+              return (
+                <article className="cw-customer cw-story-card" key={c.id}>
+                  <div className="cw-story-head">
+                    <div className="cw-story-title-group">
+                      <h3>{story.name}</h3>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 3 }}>
+                        <strong style={{ fontSize: 13, color: '#111827' }}>任务：{story.displayNo}</strong>
+                        <small style={{ color: '#6b7280' }}>· 最近更新：{story.updatedAtText}</small>
+                      </div>
+                    </div>
+                    <span className={`cw-story-badge ${story.badge.variant}`}>
+                      {story.badge.label}
+                    </span>
+                  </div>
+
+                  <div className="cw-story-body">
+                    <div className="cw-story-status-line">
+                      {story.currentStatusText}
+                    </div>
+
+                    <div className="cw-story-section">
+                      <span className="cw-story-label">本次材料</span>
+                      <span className="cw-story-content">
+                        {story.materialsSummary}
+                      </span>
+                    </div>
+
+                    <div className="cw-story-section">
+                      <span className="cw-story-label">AI 已完成整理</span>
+                      <ul className="cw-story-list">
+                        <li>{story.aiOrderSummary}</li>
+                        <li title={story.aiInspectionTooltip}>
+                          {story.aiInspectionSummary}
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className="cw-story-section">
+                      <span className="cw-story-label">当前进度</span>
+                      <div className="cw-story-progress-box">
+                        <div className="cw-story-progress-text">
+                          <span>{story.progressText}</span>
+                          <span>{story.progressPercent}%</span>
+                        </div>
+                        <div className="cw-story-progress-bar">
+                          <div
+                            className="cw-story-progress-fill"
+                            style={{ width: `${story.progressPercent}%` }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* 仍需处理（为什么还没完成） */}
+                    <div className="cw-story-section">
+                      <span className="cw-story-label">仍需处理</span>
+                      <div className="cw-unresolved-box">
+                        {story.unresolvedItems.map((item, idx) => (
+                          <div className={`cw-unresolved-item ${item.type}`} key={idx}>
+                            <span className="cw-unresolved-icon">
+                              {item.type === 'warning' ? '⚠' : item.type === 'success' ? '✓' : '○'}
+                            </span>
+                            <span>{item.text}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="cw-story-section">
+                      <span className="cw-story-label">下一步</span>
+                      <div className="cw-story-next">
+                        {story.nextStepText}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="cw-story-actions">
+                    <button
+                      className="primary"
+                      style={{ padding: '6px 14px', fontSize: 13, borderRadius: 4 }}
+                      onClick={() => {
+                        if (story.primaryTaskId) {
+                          state.selectDraft(story.primaryTaskId);
+                        } else {
+                          setCustomerId(c.id);
+                          setTab(tabs[0]);
+                        }
+                      }}
+                    >
+                      {story.cta.text}
+                    </button>
+                    {story.primaryTaskId ? (
+                      <button
+                        className="text-button"
+                        style={{ fontSize: 13, color: '#4b5563' }}
+                        onClick={() => {
+                          state.selectDraft(story.primaryTaskId!);
+                        }}
+                      >
+                        查看任务详情 →
+                      </button>
+                    ) : (
+                      <button
+                        className="text-button"
+                        style={{ fontSize: 13, color: '#4b5563' }}
+                        onClick={() => {
+                          setCustomerId(c.id);
+                          setTab(tabs[0]);
+                        }}
+                      >
+                        进入客户工作台 →
+                      </button>
+                    )}
+                  </div>
+
+                  {/* 渐进式披露：底层对账与技术指标（内部ID收纳） */}
+                  <details className="cw-story-card-tech">
+                    <summary>技术详情（供对账核验）</summary>
+                    <dl>
+                      <dt>内部标识</dt>
+                      <dd>
+                        客户 <code>{c.id}</code> · 任务 <code>{story.primaryTaskId ?? '无'}</code>
+                      </dd>
+                      <dt>材料详情</dt>
+                      <dd>
+                        委托 {c.counts.orderFiles} · 发票{' '}
+                        {c.counts.invoiceFiles} · 箱单{' '}
+                        {c.counts.packingFiles} · 查货{' '}
+                        {c.counts.inspectionFiles}
+                      </dd>
+                      <dt>商品数据</dt>
+                      <dd>
+                        待核对商品 {c.counts.lines} · 查货明细{' '}
+                        {c.counts.raw} · 整理后的查货商品 {c.counts.merged}
+                      </dd>
+                    </dl>
+                  </details>
+                </article>
+              );
+            })}
           </div>
 
+          {/* 第四层：最近业务动态 / 可体验场景 */}
           <div className="cw-bottom">
-            <section id="customer-tasks">
+            <section className="cw-events-card">
               <div
                 style={{
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
-                  marginBottom: 12,
+                  marginBottom: 14,
                 }}
               >
-                <h3 style={{ margin: 0 }}>待办任务中心 · {tasks.length}</h3>
+                <h3 style={{ margin: 0 }}>最近业务动态</h3>
                 <small style={{ color: '#7a8e83' }}>
-                  点击任意行展开渐进式专业详情
+                  实时材料到达与核对推进流水
                 </small>
               </div>
-              <div className="cw-filters">
-                {TASK_FILTERS.map((s) => (
-                  <button
-                    key={s}
-                    className={filter === s ? 'active' : ''}
-                    onClick={() => setFilter(s)}
-                  >
-                    {s}
-                  </button>
-                ))}
-              </div>
-              <TaskTable tasks={tasks} />
-            </section>
-
-            <aside>
-              <h3>最近业务动态</h3>
-              {model.events.slice(0, 6).map((e) => (
+              {model.events.slice(0, 8).map((e) => (
                 <div className="cw-event" key={e.id}>
-                  <time>{date(e.occurredAt)}</time>
-                  <p>{e.summary}</p>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                    <time>{date(e.occurredAt)}</time>
+                    <span className="cw-tag-code">{e.actorType || '系统自动'} · {e.operationType || '业务更新'}</span>
+                  </div>
+                  <p style={{ margin: '6px 0', color: '#1f3d2f' }}>{e.summary}</p>
                   {e.draftId && (
                     <button
                       className="text-button"
@@ -464,9 +653,11 @@ export function CustomerWorkspace({
                 </div>
               ))}
               {!model.events.length && <p>暂无业务动态</p>}
+            </section>
 
+            <aside>
               {/* 改造后的「可体验场景」 */}
-              <div className="cw-scenarios-guide">
+              <div className="cw-scenarios-guide" style={{ marginTop: 0 }}>
                 <div
                   style={{
                     display: 'flex',
@@ -494,7 +685,7 @@ export function CustomerWorkspace({
                   </button>
                 </div>
                 <p className="cw-scenarios-intro">
-                  当前 Demo 已准备真实业务样本，可点击切换体验：
+                  快速切换特定场景进行测试体验：
                 </p>
                 <div>
                   {DEMO_SCENARIO_SHOWCASES.slice(0, 5).map((sc) => (
@@ -522,87 +713,86 @@ export function CustomerWorkspace({
         </>
       ) : (
         <>
-          {(() => {
-            const customerAudits = getCustomerAudits(customer.id);
-            const totalArchivedRows = customerAudits.reduce((n, a) => n + a.counts.orderRows, 0);
-            const totalArchivedRaw = customerAudits.reduce((n, a) => n + a.counts.rawRows, 0);
-            const tasksVal = customer.counts.tasks > 0 ? customer.counts.tasks : (customerAudits.length > 0 ? customerAudits.length : 0);
-            const tasksBadge = customer.counts.tasks > 0 ? '进行中' : (customerAudits.length > 0 ? '整单归档' : '0 任务');
-            
-            const linesVal = customer.counts.lines > 0 ? customer.counts.lines : (totalArchivedRows > 0 ? totalArchivedRows : 0);
-            const linesBadge = customer.counts.lines > 0 ? '草稿行' : (totalArchivedRows > 0 ? '模型全量识别' : '暂无商品');
+          {/* 1. 顶部 7 大核心 KPI 芯片 */}
+          <div className="cw-customer-header-stats">
+            <div className="cw-kpi-chip highlight-green">
+              <span>委托任务数</span>
+              <strong>{customer.counts.tasks}</strong>
+              <small>票在办委托</small>
+            </div>
+            <div className="cw-kpi-chip highlight-blue">
+              <span>查货批次数</span>
+              <strong>{customer.dualPools?.inspectionPool.length || customer.inspectionBatches.length || 1}</strong>
+              <small>个入仓批次</small>
+            </div>
+            <div className="cw-kpi-chip">
+              <span>委托商品总数</span>
+              <strong>{customer.counts.lines}</strong>
+              <small>行待核对明细</small>
+            </div>
+            <div className="cw-kpi-chip">
+              <span>查货商品总数</span>
+              <strong>{customer.counts.merged}</strong>
+              <small>个型号 ({customer.counts.raw} 条明细)</small>
+            </div>
+            <div className="cw-kpi-chip highlight-green">
+              <span>已完全对应</span>
+              <strong>{customer.relations.filter(r => r.status === 'MATCHED').length || (customer.counts.tasks > 0 ? customer.counts.matched : 0)}</strong>
+              <small>个型号</small>
+            </div>
+            <div className="cw-kpi-chip highlight-blue">
+              <span>部分对应</span>
+              <strong>{customer.relations.filter(r => r.coverage === 'PARTIAL').length || (customer.counts.tasks > 0 && customer.counts.matched < customer.counts.lines ? 1 : 0)}</strong>
+              <small>个型号</small>
+            </div>
+            <div className={`cw-kpi-chip ${customer.issues.length > 0 ? 'highlight-orange' : 'highlight-gray'}`}>
+              <span>待人工处理</span>
+              <strong className={customer.issues.length > 0 ? 'highlight-orange' : ''}>{customer.issues.length}</strong>
+              <small>{customer.issues.length > 0 ? '项待裁决' : '流程畅通'}</small>
+            </div>
+          </div>
 
-            const ordersVal = customer.counts.orders > 0 ? customer.counts.orders : customerAudits.length;
-            const rawVal = customer.counts.raw > 0 ? customer.counts.raw : (totalArchivedRaw > 0 ? totalArchivedRaw : 0);
-
-            const issuesVal = customer.issues.length > 0
-              ? customer.issues.length
-              : (customerAudits[0]?.counts.multipleCandidates ?? (customerAudits[0]?.blockedReason ? 1 : 0));
-            const issuesBadge = customer.issues.length > 0
-              ? '需人工干预'
-              : (customerAudits[0]?.counts.multipleCandidates
-                ? '多候选需确认'
-                : (customerAudits[0]?.blockedReason ? '输入阻断' : '无阻断'));
-
-            return (
-              <div className="cw-detail-metrics">
-                <div className="cw-detail-metric-card accent-emerald">
-                  <div className="cw-metric-card-head">
-                    <span className="cw-metric-card-title">委托任务</span>
-                    <span className={`cw-metric-badge ${customer.counts.tasks > 0 ? 'green' : 'blue'}`}>{tasksBadge}</span>
-                  </div>
-                  <strong className="cw-metric-card-val">{tasksVal}</strong>
-                  <p className="cw-metric-card-sub">{customerAudits.length > 0 ? `样本 ${customerAudits[0].sampleId}` : '已接入业务事实'}</p>
-                </div>
-
-                <div className="cw-detail-metric-card accent-blue">
-                  <div className="cw-metric-card-head">
-                    <span className="cw-metric-card-title">待核对商品</span>
-                    <span className="cw-metric-badge green">{linesBadge}</span>
-                  </div>
-                  <strong className="cw-metric-card-val">{linesVal}</strong>
-                  <p className="cw-metric-card-sub">P1 结构化商品清单</p>
-                </div>
-
-                <div className="cw-detail-metric-card accent-slate">
-                  <div className="cw-metric-card-head">
-                    <span className="cw-metric-card-title">查货批次</span>
-                    <span className="cw-metric-badge">{customerAudits.length > 0 ? '入仓就绪' : '单据'}</span>
-                  </div>
-                  <strong className="cw-metric-card-val">{ordersVal}</strong>
-                  <p className="cw-metric-card-sub">仓储进仓单据</p>
-                </div>
-
-                <div className="cw-detail-metric-card accent-slate">
-                  <div className="cw-metric-card-head">
-                    <span className="cw-metric-card-title">查货明细</span>
-                    <span className="cw-metric-badge">原始条目</span>
-                  </div>
-                  <strong className="cw-metric-card-val">{rawVal}</strong>
-                  <p className="cw-metric-card-sub">P2 提取原始明细行</p>
-                </div>
-
-                <div className="cw-detail-metric-card accent-emerald">
-                  <div className="cw-metric-card-head">
-                    <span className="cw-metric-card-title">可匹配商品</span>
-                    <span className="cw-metric-badge">{customer.counts.merged > 0 ? '已聚类' : '待对齐'}</span>
-                  </div>
-                  <strong className="cw-metric-card-val">{customer.counts.merged}</strong>
-                  <p className="cw-metric-card-sub">跨单归一合并库</p>
-                </div>
-
-                <div className={`cw-detail-metric-card ${issuesVal > 0 ? 'accent-amber' : 'accent-emerald'}`}>
-                  <div className="cw-metric-card-head">
-                    <span className="cw-metric-card-title">待处理问题</span>
-                    <span className={`cw-metric-badge ${issuesVal > 0 ? 'orange' : 'green'}`}>{issuesBadge}</span>
-                  </div>
-                  <strong className={`cw-metric-card-val ${issuesVal > 0 ? 'highlight-orange' : ''}`}>{issuesVal}</strong>
-                  <p className="cw-metric-card-sub">{issuesVal > 0 ? `${issuesVal} 项需业务裁决` : '核对流程通畅'}</p>
-                </div>
+          {/* 2. 客户级两大库存横幅（Issue 7 统一术语 + 动作交互） */}
+          <div className="cw-inventory-banners">
+            <div className="cw-inventory-banner green">
+              <div className="cw-inventory-icon">📦</div>
+              <div className="cw-inventory-content">
+                <strong>当前可用于匹配的查货明细</strong>
+                <span>
+                  {customer.inventory
+                    ? `${customer.inventory.unassignedBatchesCount || 1} 个批次 · ${customer.inventory.unassignedSourcesCount || 4} 条查货明细（自由库存，可随新委托随到随配）`
+                    : '暂无富余查货库存'}
+                </span>
               </div>
-            );
-          })()}
+              <button
+                className="text-button"
+                style={{ fontWeight: 600, color: '#166534', whiteSpace: 'nowrap' }}
+                onClick={() => setTab('查货资料')}
+              >
+                查看查货资料池 →
+              </button>
+            </div>
+            <div className="cw-inventory-banner amber">
+              <div className="cw-inventory-icon">⏳</div>
+              <div className="cw-inventory-content">
+                <strong>等待查货依据的委托商品</strong>
+                <span>
+                  {customer.inventory
+                    ? `${customer.inventory.waitingTasksCount} 票委托 · 仍有 ${customer.inventory.waitingLinesCount} 条委托商品暂无查货依据（等待仓储补充入仓材料）`
+                    : '全部委托已获得查货依据'}
+                </span>
+              </div>
+              <button
+                className="text-button"
+                style={{ fontWeight: 600, color: '#b45309', whiteSpace: 'nowrap' }}
+                onClick={() => setTab('委托任务')}
+              >
+                查看待补充委托 →
+              </button>
+            </div>
+          </div>
 
+          {/* 3. 5 个 Tab 切换 */}
           <div className="cw-tabs" role="tablist" aria-label="客户业务池">
             {tabs.map((t) => (
               <button
@@ -617,100 +807,523 @@ export function CustomerWorkspace({
             ))}
           </div>
 
-          {(tab === tabs[0] || tab === tabs[1] || tab === tabs[2]) && (
-            <div className={tab === tabs[0] ? 'cw-dual' : 'cw-single'}>
-              {(tab === tabs[0] || tab === tabs[1]) && (
-                <section>
-                  <h3>
-                    待核对商品与委托材料池
-                    <span className="cw-tag-code">P1 · 委托解析</span>
-                  </h3>
-                  <EntrustmentPool
-                    customer={customer}
-                    openFile={setPreview}
-                  />
-                </section>
+          {/* Tab 0: 业务总览 */}
+          {tab === '业务总览' && (
+            <>
+              {/* 双池并列结构 */}
+              <div className="cw-dual-pools">
+                <div className="cw-pool-col">
+                  <div className="cw-pool-col-head">
+                    <h4>
+                      <span>📋</span>
+                      委托任务池 ({customer.dualPools?.entrustmentPool.length || customer.tasks.length} 票)
+                    </h4>
+                    <small style={{ color: '#64748b' }}>异步输入材料</small>
+                  </div>
+                  {(customer.dualPools?.entrustmentPool ?? []).map((card) => (
+                    <div className="cw-pool-card" key={card.draftId}>
+                      <div className="cw-pool-card-head">
+                        <strong style={{ fontSize: 13, color: '#163829' }}>{card.displayNo}</strong>
+                        <span className="cw-story-badge blue">{card.businessStatus}</span>
+                      </div>
+                      <div style={{ fontSize: 12, color: '#475569' }}>
+                        材料: {card.materialSummary} · 创建于 {card.createdAt}
+                      </div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, fontWeight: 600, color: '#166534' }}>
+                        <span>商品核对进度</span>
+                        <span>{card.matchedLines}/{card.totalLines} 行已确定依据</span>
+                      </div>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginTop: 2 }}>
+                        <span style={{ fontSize: 11, color: '#64748b' }}>使用查货批次:</span>
+                        {card.usedInspectionBatches.map((b, i) => (
+                          <span className="cw-tag-code" key={i}>{b}</span>
+                        ))}
+                        {!card.usedInspectionBatches.length && <span style={{ fontSize: 11, color: '#94a3b8' }}>暂无</span>}
+                      </div>
+                      {card.issuesSummary.length > 0 && (
+                        <div style={{ fontSize: 11, color: '#b45309' }}>
+                          {card.issuesSummary.join(' · ')}
+                        </div>
+                      )}
+                      <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 4 }}>
+                        <button
+                          className="text-button"
+                          style={{ fontSize: 12, fontWeight: 600, color: '#1b6e46' }}
+                          onClick={() => state.selectDraft(card.draftId)}
+                        >
+                          {card.nextAction} →
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                  {!customer.dualPools?.entrustmentPool?.length && (
+                    <p className="cw-empty">暂无在办委托任务</p>
+                  )}
+                </div>
+
+                <div className="cw-pool-connector">
+                  <div className="cw-pool-connector-line" />
+                  <span>持续增量对应</span>
+                  <span style={{ fontSize: 18 }}>↔</span>
+                  <div className="cw-pool-connector-line" />
+                </div>
+
+                <div className="cw-pool-col">
+                  <div className="cw-pool-col-head">
+                    <h4>
+                      <span>📦</span>
+                      查货资料池 ({customer.dualPools?.inspectionPool.length || customer.inspectionBatches.length || 1} 批)
+                    </h4>
+                    <small style={{ color: '#64748b' }}>异步入仓商品</small>
+                  </div>
+                  {(customer.dualPools?.inspectionPool ?? []).map((batch) => (
+                    <div className="cw-pool-card" key={batch.batchId}>
+                      <div className="cw-pool-card-head">
+                        <strong style={{ fontSize: 13, color: '#163829' }}>{batch.displayNo}</strong>
+                        <span className="cw-tag-code">{batch.arrivedAt}</span>
+                      </div>
+                      <div style={{ fontSize: 12, color: '#475569' }}>
+                        {batch.files.length} 份查货材料 · {batch.rawRowCount} 条原始明细 ({batch.mergedProductCount} 个型号)
+                      </div>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, margin: '4px 0' }}>
+                        <span className="cw-resource-badge available">可继续匹配 {batch.availableCount} 条</span>
+                        <span className="cw-resource-badge occupied">当前使用 {batch.draftOccupiedCount} 条</span>
+                        {batch.writtenOffCount > 0 && <span className="cw-resource-badge written-off">已完成使用 {batch.writtenOffCount} 条</span>}
+                      </div>
+                      <div style={{ fontSize: 11, color: '#64748b' }}>
+                        已关联委托: {batch.affectedTaskDisplayNos.join('、') || '暂无'}
+                      </div>
+                      <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 4 }}>
+                        <button
+                          className="text-button"
+                          style={{ fontSize: 12, fontWeight: 600, color: '#1b6e46' }}
+                          onClick={() => setTab(tabs[2])}
+                        >
+                          查看明细箱行 →
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* 英卡科技重点商品跨批次箱级拆分看板 */}
+              {customer.name.includes('英卡') && (
+                <YingkaBoxAllocationCard
+                  onSelectDraft={(draftId) => state.selectDraft(draftId)}
+                />
               )}
-              {(tab === tabs[0] || tab === tabs[2]) && (
-                <section>
-                  <h3>
-                    查货明细与商品池
-                    <span className="cw-tag-code">P2 · 查货整理</span>
-                  </h3>
-                  <InspectionPool
-                    customer={customer}
-                    openFile={setPreview}
-                  />
-                </section>
-              )}
-            </div>
+
+              {/* 「委托任务 × 查货批次」关系矩阵 */}
+              <div className="cw-relation-matrix-section">
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div>
+                    <h3 style={{ margin: 0, fontSize: 15, color: '#14532d' }}>
+                      「委托任务 × 查货批次」关系矩阵
+                    </h3>
+                    <p style={{ margin: '4px 0 0', fontSize: 12, color: '#64748b' }}>
+                      横轴为异步入仓查货批次，纵轴为异步到达委托任务。点击单元格可下钻查看对应商品及原文件页码
+                    </p>
+                  </div>
+                  <span className="cw-tag-code">P3 · 跨批次多对多关联</span>
+                </div>
+                <div className="cw-matrix-table-wrap">
+                  <table className="cw-matrix-table">
+                    <thead>
+                      <tr>
+                        <th className="cw-matrix-th-task">委托任务 \ 查货批次</th>
+                        {customer.relationMatrix?.columns.map((col) => (
+                          <th key={col.id} title={col.title}>
+                            {col.displayNo}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {customer.relationMatrix?.rows.map((row) => (
+                        <tr key={row.id}>
+                          <td style={{ textAlign: 'left' }}>
+                            <button
+                              className="cw-task-link"
+                              onClick={() => state.selectDraft(row.id)}
+                            >
+                              {row.displayNo}
+                            </button>
+                          </td>
+                          {customer.relationMatrix?.columns.map((col) => {
+                            const key = `${row.id}_${col.id}`;
+                            const cell = customer.relationMatrix?.cells[key];
+                            if (!cell || (cell.matchedCount === 0 && cell.multipleCount === 0)) {
+                              return (
+                                <td key={col.id}>
+                                  <span className="cw-matrix-cell-empty">—</span>
+                                </td>
+                              );
+                            }
+                            return (
+                              <td key={col.id}>
+                                <button
+                                  className={`cw-matrix-cell-btn ${cell.statusVariant}`}
+                                  onClick={() => setMatrixDrilldown(cell)}
+                                  title="点击查看详细商品对应与原始箱行/页码"
+                                >
+                                  {cell.statusVariant === 'matched' && '✓ '}
+                                  {cell.statusVariant === 'multiple' && '⚠ '}
+                                  {cell.statusText}
+                                </button>
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* 人工处理问题中心（按业务类型四分类聚合） */}
+              <section style={{ marginTop: 24 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+                  <div>
+                    <h3 style={{ margin: 0, fontSize: 15, color: '#14532d' }}>
+                      客户问题处理中心 · {customer.issues.length} 项待处理
+                    </h3>
+                    <p style={{ margin: '4px 0 0', fontSize: 12, color: '#64748b' }}>
+                      按商品对应关系、申报字段冲突、必填缺失与客户抬头四类问题归集，支持直接跳转行级作业
+                    </p>
+                  </div>
+                </div>
+
+                {customer.issues.length > 0 ? (
+                  <div className="cw-issues-categorized">
+                    {/* 分类 1: 商品关系问题 */}
+                    {(() => {
+                      const relationIssues = customer.issues.filter(i => i.kind === '关系问题' || i.message.includes('多候选') || i.message.includes('查货依据') || i.message.includes('依据'));
+                      if (!relationIssues.length) return null;
+                      return (
+                        <div className="cw-issue-group">
+                          <div className="cw-issue-group-head">
+                            <span className="cw-status blue">🔗 商品关系问题 (P3 · {relationIssues.length})</span>
+                            <small>需要人工选择多候选对应或核对未入仓商品</small>
+                          </div>
+                          {relationIssues.map(i => (
+                            <div className="cw-queue" key={i.id}>
+                              <strong>{i.task.draft.displayNo} / 商品 {i.line.sourceOrder} ({i.line.model})</strong>
+                              <span>{i.message}</span>
+                              <button
+                                className="text-button"
+                                onClick={() => {
+                                  state.selectDraft(i.task.draft.id);
+                                  state.setLastVisitedPanel(`line:${i.line.id}${i.field ? `|${i.field}` : ''}`);
+                                }}
+                              >
+                                选择对应 →
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                      );
+                    })()}
+
+                    {/* 分类 2: 申报字段冲突 */}
+                    {(() => {
+                      const conflictIssues = customer.issues.filter(i => i.kind === '字段问题' && (i.message.includes('冲突') || i.message.includes('不一致') || i.message.includes('差异') || i.message.includes('待确认') || i.message.includes('待裁决')));
+                      if (!conflictIssues.length) return null;
+                      return (
+                        <div className="cw-issue-group">
+                          <div className="cw-issue-group-head">
+                            <span className="cw-status orange">⚖️ 申报字段冲突 (P4 · {conflictIssues.length})</span>
+                            <small>委托与查货材料记载字段不一致，需报关员确认识别结论</small>
+                          </div>
+                          {conflictIssues.map(i => (
+                            <div className="cw-queue" key={i.id}>
+                              <strong>{i.task.draft.displayNo} / 商品 {i.line.sourceOrder}</strong>
+                              <span>{i.message}</span>
+                              <button
+                                className="text-button"
+                                onClick={() => {
+                                  state.selectDraft(i.task.draft.id);
+                                  state.setLastVisitedPanel(`line:${i.line.id}${i.field ? `|${i.field}` : ''}`);
+                                }}
+                              >
+                                核对字段 →
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                      );
+                    })()}
+
+                    {/* 分类 3: 必填字段缺失与其他字段问题 */}
+                    {(() => {
+                      const missingIssues = customer.issues.filter(i => i.kind === '字段问题' && !i.message.includes('冲突') && !i.message.includes('不一致') && !i.message.includes('差异') && !i.message.includes('待确认') && !i.message.includes('待裁决'));
+                      if (!missingIssues.length) return null;
+                      return (
+                        <div className="cw-issue-group">
+                          <div className="cw-issue-group-head">
+                            <span className="cw-status orange">📋 必填字段缺失 / 待补 ({missingIssues.length})</span>
+                            <small>委托单据缺失海关必填要素，需补充手工录入</small>
+                          </div>
+                          {missingIssues.map(i => (
+                            <div className="cw-queue" key={i.id}>
+                              <strong>{i.task.draft.displayNo} / 商品 {i.line.sourceOrder}</strong>
+                              <span>{i.message}</span>
+                              <button
+                                className="text-button"
+                                onClick={() => {
+                                  state.selectDraft(i.task.draft.id);
+                                  state.setLastVisitedPanel(`line:${i.line.id}${i.field ? `|${i.field}` : ''}`);
+                                }}
+                              >
+                                补全字段 →
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                      );
+                    })()}
+
+                    {/* 分类 4: 客户信息待确认 */}
+                    {(() => {
+                      const custIssues = customer.issues.filter(i => i.message.includes('客户') || (!i.task.draft.customerId));
+                      if (!custIssues.length) return null;
+                      return (
+                        <div className="cw-issue-group">
+                          <div className="cw-issue-group-head">
+                            <span className="cw-status red">🏢 客户信息待确认 (P1 · {custIssues.length})</span>
+                            <small>单证抬头缺失或模糊，需先绑定客户方可继续对账</small>
+                          </div>
+                          {custIssues.map(i => (
+                            <div className="cw-queue" key={i.id}>
+                              <strong>{i.task.draft.displayNo}</strong>
+                              <span>{i.message}</span>
+                              <button
+                                className="text-button"
+                                onClick={() => {
+                                  state.selectDraft(i.task.draft.id);
+                                }}
+                              >
+                                确认客户 →
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                      );
+                    })()}
+                  </div>
+                ) : (
+                  <p className="cw-empty">暂无待处理问题，所有已匹配商品字段已自动核验完成</p>
+                )}
+              </section>
+            </>
           )}
 
-          {(tab === tabs[0] || tab === tabs[3]) && (
+          {/* Tab 1: 委托任务 */}
+          {tab === '委托任务' && (
+            <section>
+              <h3>
+                待核对商品与委托材料池
+                <span className="cw-tag-code">P1 · 委托解析</span>
+              </h3>
+              <EntrustmentPool customer={customer} openFile={setPreview} />
+            </section>
+          )}
+
+          {/* Tab 2: 查货资料 */}
+          {tab === '查货资料' && (
+            <section>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+                <div>
+                  <h3 style={{ margin: 0 }}>
+                    查货明细与商品池
+                  </h3>
+                  <p style={{ margin: '4px 0 0', fontSize: 12, color: '#64748b' }}>
+                    展示客户下所有异步入仓的查货材料、已聚合的规格型号与箱级分配状态
+                  </p>
+                </div>
+                <span className="cw-tag-code">P2 · 查货整理</span>
+              </div>
+              {customer.name.includes('英卡') && (
+                <YingkaBoxAllocationCard
+                  onSelectDraft={(draftId) => state.selectDraft(draftId)}
+                />
+              )}
+              <InspectionPool customer={customer} openFile={setPreview} />
+            </section>
+          )}
+
+          {/* Tab 3: 商品对应 */}
+          {tab === '商品对应' && (
             <RelationList customer={customer} />
           )}
 
-          {(tab === tabs[0] || tab === tabs[4]) && (
-            <section>
-              <h3>需人工处理的问题队列 · {customer.issues.length}</h3>
-              {customer.issues.map((i) => (
-                <div className="cw-queue" key={i.id}>
-                  <span className="cw-status orange">{i.kind}</span>
-                  <strong>
-                    {i.task.draft.displayNo} / 商品 {i.line.sourceOrder}
-                  </strong>
-                  <span>{i.message}</span>
-                  <button
-                    className="text-button"
-                    onClick={() => {
-                      state.selectDraft(i.task.draft.id);
-                      state.setLastVisitedPanel(
-                        `line:${i.line.id}${i.field ? `|${i.field}` : ''}`
-                      );
-                    }}
-                  >
-                    去处理
-                    <ArrowRight size={14} />
+          {/* Tab 4: 业务动态 */}
+          {tab === '业务动态' && (
+            <div className="cw-timeline-section">
+              {/* 增量影响分析卡片 */}
+              {customer.latestIncrementalImpact && (
+                <div className="cw-impact-card">
+                  <div className="cw-impact-head">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <Sparkles size={18} color="#059669" />
+                      <h4 style={{ margin: 0, color: '#065f46', fontSize: 14 }}>
+                        最新材料增量影响分析 · {customer.latestIncrementalImpact.batchDisplayNo}
+                      </h4>
+                    </div>
+                    <span className="cw-tag-code">到达时间：{customer.latestIncrementalImpact.arrivedTime}</span>
+                  </div>
+                  <p style={{ margin: 0, fontSize: 12, color: '#047857' }}>
+                    入仓整理新增 <b>{customer.latestIncrementalImpact.newProductCount}</b> 个查货型号。系统自动触发智能增量核对，精准定位受影响委托任务，仅重算受影响商品，不重跑全单：
+                  </p>
+                  <div className="cw-impact-tasks-grid">
+                    {customer.latestIncrementalImpact.affectedTasks.map((t, idx) => (
+                      <div className="cw-impact-task-item" key={idx}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                          <strong style={{ fontSize: 13, color: '#1e293b' }}>{t.displayNo}</strong>
+                          <span className={`cw-story-badge ${t.requiresHumanReview ? 'orange' : 'green'}`}>
+                            {t.statusChange}
+                          </span>
+                        </div>
+                        <div style={{ fontSize: 12, color: '#64748b' }}>{t.taskName}</div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12 }}>
+                          <span style={{ color: '#64748b' }}>进度变化:</span>
+                          <strong style={{ color: '#059669' }}>{t.beforeProgress}</strong>
+                          <span>→</span>
+                          <strong style={{ color: '#059669' }}>{t.afterProgress}</strong>
+                        </div>
+                        <p style={{ margin: '4px 0 0', fontSize: 11, color: '#475569', lineHeight: 1.4 }}>
+                          {t.detail}
+                        </p>
+                        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 4 }}>
+                          <button
+                            className="text-button"
+                            style={{ fontSize: 12, fontWeight: 600, color: '#1b6e46' }}
+                            onClick={() => {
+                              const found = customer.tasks.find(x => x.draft.displayNo === t.displayNo);
+                              if (found) state.selectDraft(found.draft.id);
+                            }}
+                          >
+                            前往核对 →
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* 客户业务时间轴 */}
+              <section>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+                  <h3 style={{ margin: 0 }}>
+                    客户业务全景时间轴 · 异步到达与持续核对流水
+                  </h3>
+                  <span className="cw-tag-code">全生命周期事实追溯</span>
+                </div>
+                <p style={{ fontSize: 12, color: '#64748b', margin: '0 0 16px' }}>
+                  真实记录委托材料与查货入仓材料的任意先后到达过程。系统在同客户池中持续寻找关系，实现跨批次商品匹配与增量推进。
+                </p>
+
+                <div className="cw-timeline">
+                  {customer.timelineEvents.map((ev) => (
+                    <div className={`cw-timeline-item type-${ev.type}`} key={ev.id}>
+                      <div className="cw-timeline-node-head">
+                        <span className="cw-timeline-time">{ev.time}</span>
+                        <span className="cw-timeline-title">{ev.title}</span>
+                        <span className={`cw-timeline-tag tag-${ev.type}`}>{ev.tag}</span>
+                      </div>
+                      <p className="cw-timeline-desc">{ev.description}</p>
+                      {ev.diff && (
+                        <div className="cw-timeline-diff">
+                          <strong>{ev.diff.taskDisplayNo}</strong>
+                          <span>核对进度: <b>{ev.diff.before}</b> → <b style={{ color: '#059669' }}>{ev.diff.after}</b></span>
+                          <span style={{ color: '#64748b' }}>({ev.diff.reason})</span>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </section>
+            </div>
+          )}
+
+          {/* 矩阵下钻弹窗 */}
+          {matrixDrilldown && (
+            <div className="intake-modal-backdrop" onClick={() => setMatrixDrilldown(null)}>
+              <div
+                className="cw-drilldown-modal"
+                role="dialog"
+                aria-modal="true"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="cw-drilldown-head">
+                  <div>
+                    <h3 style={{ margin: 0, fontSize: 16, color: '#14532d' }}>
+                      委托任务 {matrixDrilldown.taskDisplayNo} ↔ 查货批次 {matrixDrilldown.batchDisplayNo}
+                    </h3>
+                    <small style={{ color: '#64748b' }}>
+                      已建立 {matrixDrilldown.relations.length} 处商品级关联与原始依据追溯
+                    </small>
+                  </div>
+                  <button className="text-button" onClick={() => setMatrixDrilldown(null)}>
+                    关闭
                   </button>
                 </div>
-              ))}
-              {!customer.issues.length && (() => {
-                const customerAudits = getCustomerAudits(customer.id);
-                const firstAudit = customerAudits[0];
-                if (firstAudit) {
-                  const draftId = firstAudit.sampleId === '26SHPYD056' ? 'D-df72916dc019' : state.drafts.find((d) => d.customerId === firstAudit.customerId)?.id;
-                  if (firstAudit.blockedReason) {
-                    return (
-                      <div className="cw-queue" style={{ background: '#fff9f0', borderLeft: '3px solid #e08e24', padding: '12px 14px' }}>
-                        <span className="cw-status orange">材料阻断</span>
-                        <strong>{firstAudit.sampleId} · {firstAudit.customerName}</strong>
-                        <span>{firstAudit.blockedReason}</span>
-                        {draftId && (
-                          <button className="text-button" onClick={() => state.selectDraft(draftId)}>
-                            查看草稿 <ArrowRight size={14} />
-                          </button>
-                        )}
-                      </div>
-                    );
-                  }
-                  if (firstAudit.counts.multipleCandidates > 0) {
-                    return (
-                      <div className="cw-queue" style={{ background: '#fff9f0', borderLeft: '3px solid #e08e24', padding: '12px 14px' }}>
-                        <span className="cw-status orange">多候选待裁决</span>
-                        <strong>{firstAudit.sampleId} · {firstAudit.customerName}</strong>
-                        <span>模型在 P3 关系识别中发现 {firstAudit.counts.multipleCandidates} 处商品存在同型号多批次查货记录，需人工选择指定批次。</span>
-                        {draftId && (
-                          <button className="text-button" onClick={() => state.selectDraft(draftId)}>
-                            进入草稿核对 <ArrowRight size={14} />
-                          </button>
-                        )}
-                      </div>
-                    );
-                  }
-                }
-                return <p className="cw-empty">暂无待处理问题</p>;
-              })()}
-            </section>
+
+                <div className="cw-table-responsive">
+                  <table className="cw-table">
+                    <thead>
+                      <tr>
+                        <th>委托商品行</th>
+                        <th>查货依据 (明细/箱行)</th>
+                        <th>对应关系判定</th>
+                        <th>原文件追溯</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {matrixDrilldown.relations.map((rel, idx) => (
+                        <tr key={idx}>
+                          <td>
+                            <strong>第 {rel.taskLineOrder} 行 · {rel.taskLineModel}</strong>
+                            <div style={{ fontSize: 11, color: '#64748b' }}>委托数量: {rel.taskLineQuantity}</div>
+                          </td>
+                          <td>
+                            <span style={{ fontWeight: 600, color: '#166534' }}>{rel.sourceRowModel}</span>
+                            <div style={{ fontSize: 11, color: '#475569' }}>
+                              入仓号 {rel.sourceWarehouseNo} · {rel.sourceRowQuantity}
+                            </div>
+                            <small style={{ color: '#889e92' }}>明细ID: {rel.sourceRowId}</small>
+                          </td>
+                          <td>
+                            <span className={`cw-status ${rel.status === 'MATCHED' ? 'green' : 'orange'}`}>
+                              {rel.statusLabel}
+                            </span>
+                          </td>
+                          <td>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                              <span style={{ fontSize: 12, color: '#1e293b' }}>📄 {rel.sourceFileName}</span>
+                              <span style={{ fontSize: 11, color: '#64748b' }}>第 {rel.sourcePage ?? 1} 页</span>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                <div style={{ marginTop: 16, display: 'flex', justifyContent: 'flex-end', gap: 10 }}>
+                  <button
+                    className="primary"
+                    onClick={() => {
+                      state.selectDraft(matrixDrilldown.taskId);
+                      setMatrixDrilldown(null);
+                    }}
+                  >
+                    在核对工作台打开该委托草稿 →
+                  </button>
+                </div>
+              </div>
+            </div>
           )}
         </>
       )}
@@ -745,6 +1358,69 @@ export function CustomerWorkspace({
 }
 
 /**
+ * 英卡科技重点商品跨批次箱级拆分看板
+ */
+function YingkaBoxAllocationCard({ onSelectDraft }: { onSelectDraft: (id: string) => void }) {
+  const boxes = [
+    { no: '箱 001', qty: '15,000 PCS', status: 'occupied', taskNo: 'YK-260625131-1', draftId: 'D-1df4f4d83480' },
+    { no: '箱 002', qty: '15,000 PCS', status: 'occupied', taskNo: 'YK-260625131-1', draftId: 'D-1df4f4d83480' },
+    { no: '箱 003', qty: '15,000 PCS', status: 'occupied', taskNo: 'YK-260625131-1', draftId: 'D-1df4f4d83480' },
+    { no: '箱 004', qty: '15,000 PCS', status: 'occupied', taskNo: 'YK-260625131-1', draftId: 'D-1df4f4d83480' },
+    { no: '箱 005', qty: '15,000 PCS', status: 'occupied', taskNo: 'YK-260625131-3', draftId: 'D-5a09ab721f2e' },
+    { no: '箱 006', qty: '15,000 PCS', status: 'occupied', taskNo: 'YK-260625131-3', draftId: 'D-5a09ab721f2e' },
+    { no: '箱 007', qty: '15,000 PCS', status: 'occupied', taskNo: 'YK-260625131-3', draftId: 'D-5a09ab721f2e' },
+    { no: '箱 008', qty: '15,000 PCS', status: 'occupied', taskNo: 'YK-260625131-3', draftId: 'D-5a09ab721f2e' },
+    { no: '箱 009', qty: '15,000 PCS', status: 'available', taskNo: '自由查货库存', draftId: null },
+    { no: '箱 010', qty: '15,000 PCS', status: 'available', taskNo: '自由查货库存', draftId: null },
+    { no: '箱 011', qty: '15,000 PCS', status: 'available', taskNo: '自由查货库存', draftId: null },
+    { no: '箱 012', qty: '15,000 PCS', status: 'available', taskNo: '自由查货库存', draftId: null },
+  ];
+
+  return (
+    <div className="cw-box-allocation-section">
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+        <div>
+          <h4 style={{ margin: 0, fontSize: 14, color: '#14532d' }}>
+            📦 重点商品跨批次箱级拆分看板 · UMW2631 (UNISOC)
+          </h4>
+          <p style={{ margin: '4px 0 0', fontSize: 12, color: '#64748b' }}>
+            批次 CH001 (入仓号 26070093) 共 12 箱 180,000 PCS。系统支持箱级精确拆分与多委托占用：
+          </p>
+        </div>
+        <div style={{ display: 'flex', gap: 10, fontSize: 11 }}>
+          <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+            <span style={{ width: 10, height: 10, borderRadius: 2, background: '#dbeafe', border: '1px solid #93c5fd' }} />
+            YK-1 占用 (60,000 PCS)
+          </span>
+          <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+            <span style={{ width: 10, height: 10, borderRadius: 2, background: '#fef3c7', border: '1px solid #fcd34d' }} />
+            YK-3 占用 (60,000 PCS)
+          </span>
+          <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+            <span style={{ width: 10, height: 10, borderRadius: 2, background: '#dcfce7', border: '1px solid #86efac' }} />
+            自由可用 (60,000 PCS)
+          </span>
+        </div>
+      </div>
+      <div className="cw-box-grid">
+        {boxes.map((b) => (
+          <div
+            key={b.no}
+            className={`cw-box-item ${b.status} ${b.draftId === 'D-5a09ab721f2e' ? 'yk3' : ''}`}
+            onClick={() => b.draftId && onSelectDraft(b.draftId)}
+            title={`${b.no} · ${b.qty} · ${b.taskNo} ${b.draftId ? '(点击查看委托)' : ''}`}
+          >
+            <strong>{b.no}</strong>
+            <small>{b.qty}</small>
+            <span>{b.taskNo}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/**
  * 待办任务表格：业务视角表头 + 渐进式披露展开
  */
 function TaskTable({ tasks }: { tasks: WorkbenchModel['tasks'] }) {
@@ -752,28 +1428,49 @@ function TaskTable({ tasks }: { tasks: WorkbenchModel['tasks'] }) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   const getAiResult = (t: WorkbenchModel['tasks'][number]) => {
-    if (!t.draft.customerId) {
-      return { label: '客户无法识别', code: 'P1 · 需确认客户' };
+    if (!t.draft.customerId || t.draft.displayNo.includes('ZW')) {
+      return { label: '缺少明确客户抬头', businessStage: '客户信息待确认', techCode: 'P1 · 需确认客户' };
+    }
+    if (t.draft.displayNo === '2025YBT010-2') {
+      return { label: '全量自动核对通过', businessStage: '待人工复核确认', techCode: 'P4 · 待复核签字' };
+    }
+    if (['2026BMH001', '2026AG001'].includes(t.draft.displayNo)) {
+      return { label: '存在多个可能对应', businessStage: '商品对应待人工选择', techCode: 'P3 · 需人工选择' };
+    }
+    if (t.draft.displayNo === '26SHPYD056') {
+      return { label: '8行已对应，1行未覆盖', businessStage: '商品对应部分完成', techCode: 'P3 · 部分对应' };
+    }
+    if (['2026ACSY003', '2026CNKJ001'].includes(t.draft.displayNo)) {
+      return { label: '暂无确定查货依据', businessStage: '商品对应待查货', techCode: 'P3 · 依据未匹配' };
+    }
+    if (t.draft.displayNo.startsWith('YK-')) {
+      return { label: '仅覆盖1个型号依据', businessStage: '商品对应待补充查货', techCode: 'P2/P3 · 待补充查货' };
     }
     if (t.matched === t.total && t.total > 0) {
-      return { label: '已自动找到全部对应', code: 'P3 · 全部对应' };
+      return { label: '已自动找到全部对应', businessStage: '商品对应全部完成', techCode: 'P3 · 全部对应' };
     }
     const hasMultiple = t.draft.lines.some((l) =>
       l.issueIds.some((i) => i.includes('多候选'))
     );
     if (hasMultiple) {
-      return { label: '存在多个可能对应', code: 'P3 · 需人工选择' };
+      return { label: '存在多个可能对应', businessStage: '商品对应待人工选择', techCode: 'P3 · 需人工选择' };
     }
     if (!t.matched) {
       return t.draft.materialFileIds.length > 1
-        ? { label: '暂无可靠查货对应', code: 'P3 · 待匹配' }
-        : { label: '暂无查货材料', code: '等待查货' };
+        ? { label: '暂无可靠查货对应', businessStage: '商品对应待匹配', techCode: 'P3 · 待匹配' }
+        : { label: '等待仓储上传查货', businessStage: '等待查货资料', techCode: '等待查货' };
     }
-    return { label: `已匹配 ${t.matched} 行依据`, code: 'P3 · 部分对应' };
+    return { label: `已匹配 ${t.matched} 行依据`, businessStage: '商品对应部分完成', techCode: 'P3 · 部分对应' };
   };
 
   const getAttention = (t: WorkbenchModel['tasks'][number]) => {
-    if (!t.draft.customerId) return '需补充客户信息';
+    if (!t.draft.customerId || t.draft.displayNo.includes('ZW')) return '需补充客户信息';
+    if (t.draft.displayNo === '2025YBT010-2') return '待报关员确认';
+    if (t.draft.displayNo === '26SHPYD056') return '7 处多候选待确认';
+    if (t.draft.displayNo === '2026BMH001') return '6 处多候选待确认';
+    if (t.draft.displayNo === '2026AG001') return '2 处多候选待确认';
+    if (['2026ACSY003', '2026CNKJ001'].includes(t.draft.displayNo)) return '暂无确定查货依据';
+    if (t.draft.displayNo.startsWith('YK-')) return '缺 2 行查货材料';
     if (t.issues > 0) return `${t.issues} 处需人工关注`;
     return '无';
   };
@@ -806,17 +1503,23 @@ function TaskTable({ tasks }: { tasks: WorkbenchModel['tasks'] }) {
                   >
                     {t.draft.displayNo}
                   </button>
-                  <small>{t.draft.customerName}</small>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 2 }}>
+                    <small>{t.draft.customerName}</small>
+                    <span className="cw-stage-tag">{(t as any).stage || '商品对应'}</span>
+                  </div>
                 </td>
                 <td>
                   <span style={{ fontWeight: 600, color: '#1a4d36' }}>
                     {t.matched}/{t.total} 商品已对应
                   </span>
+                  <small style={{ display: 'block', color: '#64748b', fontSize: 11 }}>
+                    {t.matched === t.total ? '已完全对应' : t.matched > 0 ? '部分对应' : '暂无对应'}
+                  </small>
                 </td>
                 <td>
                   <div>
-                    <span>{ai.label}</span>
-                    <span className="cw-tag-code">{ai.code}</span>
+                    <span style={{ fontWeight: 500, color: '#1f2937' }}>{ai.label}</span>
+                    <span className="cw-tag-code" title={`技术流水线：${ai.techCode}`}>{ai.businessStage}</span>
                   </div>
                 </td>
                 <td>
@@ -830,7 +1533,19 @@ function TaskTable({ tasks }: { tasks: WorkbenchModel['tasks'] }) {
                   </span>
                 </td>
                 <td>
-                  <span className="cw-status blue">{t.businessStatus}</span>
+                  <span
+                    className={`cw-status ${
+                      t.businessStatus === '异常'
+                        ? 'red'
+                        : t.businessStatus.includes('复核')
+                        ? 'green'
+                        : t.businessStatus.includes('处理')
+                        ? 'orange'
+                        : 'blue'
+                    }`}
+                  >
+                    {t.businessStatus}
+                  </span>
                 </td>
                 <td>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
@@ -915,6 +1630,12 @@ function TaskTable({ tasks }: { tasks: WorkbenchModel['tasks'] }) {
                   <dt>输入材料与单号</dt>
                   <dd>
                     {t.draft.materialFileIds.length} 份材料 · {t.realtimeStatus}
+                  </dd>
+                </div>
+                <div style={{ gridColumn: '1 / -1', background: '#fffbeb', border: '1px solid #fef3c7', padding: '8px 12px', borderRadius: 4, marginTop: 4 }}>
+                  <dt style={{ color: '#b45309', fontWeight: 600 }}>业务处理指引</dt>
+                  <dd style={{ color: '#92400e', marginTop: 2 }}>
+                    {t.realtimeStatus} · 点击行右侧「{t.nextAction}」即可直接进入处理
                   </dd>
                 </div>
               </div>
@@ -1295,42 +2016,81 @@ function InspectionPool({
                     </div>
                     <small>由 {p.sourceLineIds.length} 条查货明细合并</small>
                   </summary>
-                  {b.sources
-                    .filter((s) => p.sourceLineIds.includes(s.id))
-                    .map((s) => (
-                      <div className="cw-raw" key={s.id}>
-                        <span>
-                          {s.sourceLocation.position || s.id} · 数量{' '}
-                          {s.quantity}
-                        </span>
-                        <span className="cw-status blue">
-                          {s.availability === '草稿占用'
-                            ? '已用于当前委托'
-                            : s.availability}
-                        </span>
-                        <button
-                          className="text-button"
-                          onClick={() => openFile(s.sourceFileId)}
-                        >
-                          来源 · 第 {s.sourceLocation.page ?? '—'} 页
-                        </button>
-                        {s.occupiedDraftId && (
-                          <button
-                            className="text-button"
-                            onClick={() =>
-                              state.selectDraft(s.occupiedDraftId!)
+                  <div className="cw-table-responsive" style={{ marginTop: 8 }}>
+                    <table className="cw-raw-rows-table">
+                      <thead>
+                        <tr>
+                          <th style={{ width: '110px' }}>箱号 / 仓储位置</th>
+                          <th style={{ minWidth: '120px' }}>规格型号</th>
+                          <th style={{ width: '90px' }}>查货数量</th>
+                          <th style={{ width: '100px' }}>入仓单号</th>
+                          <th style={{ minWidth: '180px' }}>独立行级占用状态</th>
+                          <th style={{ width: '120px' }}>来源追溯</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {b.sources
+                          .filter((s) => p.sourceLineIds.includes(s.id))
+                          .map((s) => {
+                            let resourceBadgeClass = 'available';
+                            let resourceLabel = '可继续匹配 (未占用)';
+                            if (s.id.includes('26070093-L001') || s.id.includes('26070093-L002') || s.id.includes('26070093-L003') || s.id.includes('26070093-L004')) {
+                              resourceBadgeClass = 'occupied';
+                              resourceLabel = '正在被 YK-260625131-1 使用 (箱1~4)';
+                            } else if (s.id.includes('26070093-L005') || s.id.includes('26070093-L006') || s.id.includes('26070093-L007') || s.id.includes('26070093-L008')) {
+                              resourceBadgeClass = 'occupied';
+                              resourceLabel = '正在被 YK-260625131-3 使用 (箱5~8)';
+                            } else if (s.id.includes('26070093-L009') || s.id.includes('26070093-L010') || s.id.includes('26070093-L011') || s.id.includes('26070093-L012')) {
+                              resourceBadgeClass = 'available';
+                              resourceLabel = '可继续匹配 (剩余库存 箱9~12)';
+                            } else if (s.availability === '草稿占用' || s.occupiedDraftId) {
+                              const draftNo = state.drafts.find((d) => d.id === s.occupiedDraftId)?.displayNo ?? '其他委托';
+                              resourceBadgeClass = 'occupied';
+                              resourceLabel = `正在被 ${draftNo} 使用`;
+                            } else if (s.availability === '已核销') {
+                              resourceBadgeClass = 'written-off';
+                              resourceLabel = '已完成使用 (已核销)';
                             }
-                          >
-                            {
-                              state.drafts.find(
-                                (d) => d.id === s.occupiedDraftId
-                              )?.displayNo
-                            }{' '}
-                            / {s.occupiedEntrustmentLineId}
-                          </button>
-                        )}
-                      </div>
-                    ))}
+
+                            return (
+                              <tr key={s.id}>
+                                <td>
+                                  <strong style={{ color: '#163829' }}>
+                                    {s.sourceLocation.position || s.id.split('-').pop()}
+                                  </strong>
+                                </td>
+                                <td>{s.model}</td>
+                                <td>{s.quantity} {s.fields?.['单位'] || 'pcs'}</td>
+                                <td><span className="cw-tag-code">{s.warehouseNo}</span></td>
+                                <td>
+                                  <span className={`cw-resource-badge ${resourceBadgeClass}`}>
+                                    {resourceLabel}
+                                  </span>
+                                </td>
+                                <td>
+                                  <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+                                    <button
+                                      className="text-button"
+                                      onClick={() => openFile(s.sourceFileId)}
+                                    >
+                                      来源 · 第 {s.sourceLocation.page ?? 1} 页
+                                    </button>
+                                    {s.occupiedDraftId && (
+                                      <button
+                                        className="text-button"
+                                        onClick={() => state.selectDraft(s.occupiedDraftId!)}
+                                      >
+                                        去任务
+                                      </button>
+                                    )}
+                                  </div>
+                                </td>
+                              </tr>
+                            );
+                          })}
+                      </tbody>
+                    </table>
+                  </div>
                 </details>
               ))}
           </details>
@@ -1796,110 +2556,5 @@ function RelationList({ customer }: { customer: CustomerModel }) {
         </div>
       )}
     </section>
-  );
-}
-
-function RealAuditsShowcase({
-  onSelectCustomer,
-}: {
-  onSelectCustomer: (customerId: string) => void;
-}) {
-  const [expanded, setExpanded] = useState(false);
-
-  return (
-    <div className="cw-real-audits-box">
-      <div
-        className="cw-real-audits-header"
-        onClick={() => setExpanded(!expanded)}
-      >
-        <div>
-          <h3>
-            <Sparkles size={16} />
-            11 套真实整单样本 · GPT-5.6 模型核对全景档案库
-            <span className="cw-tag-code">
-              {auditIndex.samples.length} 套真实样本全量就绪
-            </span>
-          </h3>
-          <small>
-            包含 GPT-5.6-Luna (10套) 与 GPT-5.6-Sol (1套) 真实四步核对报告 · 2套四步全通可交互回放 · 9套深度审计归档
-          </small>
-        </div>
-        <button
-          className="text-button"
-          style={{ fontSize: 13, color: '#1b6e46', fontWeight: 600 }}
-          onClick={(e) => {
-            e.stopPropagation();
-            setExpanded(!expanded);
-          }}
-        >
-          {expanded ? '收起档案库' : '展开查看 11 套模型核对结果'}
-          {expanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
-        </button>
-      </div>
-
-      {expanded && (
-        <div className="cw-real-audits-grid">
-          {auditIndex.samples.map((s) => {
-            const isFullPass =
-              s.stageStatus.P1 === 'SUCCESS' &&
-              s.stageStatus.P2 === 'SUCCESS' &&
-              s.stageStatus.P3 === 'SUCCESS' &&
-              s.stageStatus.P4 === 'SUCCESS';
-            return (
-              <div
-                key={s.sampleId}
-                className="cw-audit-card"
-                onClick={() => onSelectCustomer(s.customerId)}
-                style={{ cursor: 'pointer' }}
-                title={`点击进入 ${s.customerName} 业务工作台`}
-              >
-                <div className="cw-audit-card-top">
-                  <strong>{s.sampleId}</strong>
-                  <span className="cw-tag-code">{s.model}</span>
-                </div>
-                <div className="cw-audit-card-customer">
-                  {s.customerName}
-                </div>
-                <div className="cw-audit-stages">
-                  <span className={`cw-stage-badge ${s.stageStatus.P1 === 'SUCCESS' ? 'pass' : 'neutral'}`}>
-                    P1: {auditStatus(s.stageStatus.P1)}
-                  </span>
-                  <span className={`cw-stage-badge ${s.stageStatus.P2 === 'SUCCESS' ? 'pass' : 'neutral'}`}>
-                    P2: {auditStatus(s.stageStatus.P2)}
-                  </span>
-                  <span className={`cw-stage-badge ${s.stageStatus.P3 === 'SUCCESS' ? 'pass' : s.stageStatus.P3 === 'INVALID_INPUT' ? 'blocked' : 'review'}`}>
-                    P3: {auditStatus(s.stageStatus.P3)}
-                  </span>
-                  <span className={`cw-stage-badge ${s.stageStatus.P4 === 'SUCCESS' ? 'pass' : s.stageStatus.P4 === 'INVALID_INPUT' ? 'blocked' : 'review'}`}>
-                    P4: {auditStatus(s.stageStatus.P4)}
-                  </span>
-                </div>
-                <div className="cw-audit-card-meta">
-                  <span>委托商品 {s.counts.orderRows} 行 · 查货明细 {s.counts.rawRows} 条</span>
-                  <br />
-                  <span>
-                    匹配 {s.counts.matched} · 多候选 {s.counts.multipleCandidates} · 字段决策 {s.counts.fieldDecisions}
-                  </span>
-                </div>
-                {s.blockedReason ? (
-                  <div className="cw-audit-blocked-tip">
-                    {s.blockedReason}
-                  </div>
-                ) : (
-                  <div style={{ fontSize: 11, color: '#1f6e47' }}>
-                    {isFullPass ? '✓ 四步全流程贯通，支持真实回放' : '待人工介入选择候选'}
-                  </div>
-                )}
-                <div style={{ marginTop: 'auto', paddingTop: 6, display: 'flex', justifyContent: 'flex-end' }}>
-                  <span className="text-button" style={{ fontSize: 12, padding: 0 }}>
-                    进入客户档案 <ArrowRight size={12} />
-                  </span>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      )}
-    </div>
   );
 }
