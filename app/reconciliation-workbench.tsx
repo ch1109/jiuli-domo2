@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useMemo, useState, useRef, useEffect } from "react";
+import { useMemo, useState, useRef, useEffect } from "react";
 import {
   AlertCircle,
   AlertTriangle,
@@ -21,7 +21,6 @@ import {
   Info,
   Layers,
   LockKeyhole,
-  Pencil,
   RotateCcw,
   Search,
   Sparkles,
@@ -57,7 +56,6 @@ import {
 } from "@/lib/domain/evaluation-engine";
 import { MaterialPreview } from "./material-preview";
 import { LineActions } from "./workbench-relations";
-import { generateTaskProcessStages } from "@/lib/business-translation";
 import * as XLSX from "xlsx";
 import "./workbench.css";
 
@@ -104,15 +102,17 @@ export function ReconciliationWorkbench({
   const [draftTableFilter, setDraftTableFilter] = useState<
     "ALL" | "PROBLEMS_ONLY" | "UNCONFIRMED_ONLY" | "MISMATCH_ONLY" | "MISSING_ONLY" | "AI_FALSE_POSITIVE"
   >("ALL");
+  const [problemFilter, setProblemFilter] = useState<"ALL" | "RELATION" | "CONFLICT" | "MISSING">("ALL");
 
-  // 右侧 Tab：原始材料 / 字段来源 / 商品对应 / AI记录（默认展示原始材料）
+  // 右侧 Tab：字段来源 / 商品对应 / 原始材料 / AI记录
   const [rightTab, setRightTab] = useState<
     "RAW_MATERIAL" | "FIELD_SOURCE" | "RELATION" | "AI_LOG"
-  >("RAW_MATERIAL");
+  >("FIELD_SOURCE");
 
   // 右侧溯源面板拖拽缩放宽度（支持向左拖拽放大）
-  const [rightPanelWidth, setRightPanelWidth] = useState<number>(480);
+  const [rightPanelWidth, setRightPanelWidth] = useState<number>(400);
   const [isDraggingRightPanel, setIsDraggingRightPanel] = useState<boolean>(false);
+  const [rightPanelCollapsed, setRightPanelCollapsed] = useState(false);
 
   const handleSplitterMouseDown = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -139,8 +139,10 @@ export function ReconciliationWorkbench({
     window.addEventListener("mouseup", handleMouseUp);
   };
 
-  // 复核专注模式
-  const [reviewModeActive, setReviewModeActive] = useState(false);
+  // 顶部任务切换面板
+  const [taskSwitcherOpen, setTaskSwitcherOpen] = useState(false);
+  const [taskSearch, setTaskSearch] = useState("");
+  const [taskQueueFilter, setTaskQueueFilter] = useState<"MY_TODO" | "ALL" | "WAITING" | "MANUAL">("MY_TODO");
 
   // 表格横向滚动控制
   const tableWrapperRef = useRef<HTMLDivElement>(null);
@@ -159,9 +161,6 @@ export function ReconciliationWorkbench({
   const [evaluationReport, setEvaluationReport] = useState<EvaluationReport | null>(
     null,
   );
-
-  // 顶部五阶段时间线抽屉
-  const [showProcessLogs, setShowProcessLogs] = useState(false);
 
   // 历史版本抽屉
   const [historyOpen, setHistoryOpen] = useState(false);
@@ -266,7 +265,7 @@ export function ReconciliationWorkbench({
     explicitLineIssues.length;
 
   // AI 风险提示（建议关注）
-  const aiRiskItems = useMemo(() => {
+  const aiRiskItems = (() => {
     const list: Array<{
       lineId: string;
       level: "warn" | "info";
@@ -274,7 +273,6 @@ export function ReconciliationWorkbench({
       desc: string;
     }> = [];
     draft.lines.forEach((l, idx) => {
-      const st = lineStatuses.get(l.id);
       const rows = rowsByLine.get(l.id) ?? [];
       const gwRow = rows.find((r) => r.field === "毛重");
       const nwRow = rows.find((r) => r.field === "净重");
@@ -309,7 +307,7 @@ export function ReconciliationWorkbench({
       }
     });
     return list;
-  }, [draft.lines, lineStatuses, rowsByLine]);
+  })();
 
   // 原始材料文件与证据提取
   const currentLineSources = state.sources.filter(
@@ -326,16 +324,6 @@ export function ReconciliationWorkbench({
 
   const activeFile =
     taskFiles.find((f) => f.id === selectedFileId) ?? taskFiles[0];
-
-  // 五阶段业务处理阶段
-  const stages = generateTaskProcessStages(
-    draft,
-    state.sources.filter((s) =>
-      draft.lines.some((l) => l.relationSourceIds.includes(s.id)),
-    ),
-    state.sources.filter((s) => s.customerId === draft.customerId).length,
-    Math.max(1, new Set(draft.lines.map((l) => l.model)).size),
-  );
 
   // 切换商品与聚焦字段（实现点击单元格与右侧字段来源强联动）
   const selectItem = (
@@ -358,19 +346,6 @@ export function ReconciliationWorkbench({
         el.scrollIntoView({ behavior: "smooth", block: "center" });
       }
     });
-  };
-
-  // 快捷导航：上一条 / 下一条
-  const currentLineIndex = draft.lines.findIndex((l) => l.id === lineId);
-  const handlePrevLine = () => {
-    if (currentLineIndex > 0) {
-      selectItem(draft.lines[currentLineIndex - 1].id, field ?? undefined);
-    }
-  };
-  const handleNextLine = () => {
-    if (currentLineIndex < draft.lines.length - 1) {
-      selectItem(draft.lines[currentLineIndex + 1].id, field ?? undefined);
-    }
   };
 
   // 确认当前商品并自动跳到下一个未确认商品
@@ -492,36 +467,81 @@ export function ReconciliationWorkbench({
     minute: "2-digit",
   });
 
+  const query = taskSearch.trim().toLowerCase();
+  const taskQueue = state.drafts.filter((item) => {
+      const matched = !query || `${item.displayNo} ${item.customerName}`.toLowerCase().includes(query);
+      if (!matched) return false;
+      if (taskQueueFilter === "WAITING") return item.lines.every((line) => !line.relationSourceId);
+      if (taskQueueFilter === "MANUAL") return !item.finalized && item.lines.some((line) => !line.manuallyConfirmed && (line.issueIds.length > 0 || !line.relationSourceId));
+      if (taskQueueFilter === "MY_TODO") return !item.finalized;
+      return true;
+  });
+  const taskIndex = Math.max(0, state.drafts.findIndex((item) => item.id === draft.id));
+  const remainingTaskCount = state.drafts.filter((item) => !item.finalized && item.id !== draft.id).length;
+  const nextPendingTask = [
+    ...state.drafts.slice(taskIndex + 1),
+    ...state.drafts.slice(0, taskIndex),
+  ].find((item) => !item.finalized);
+  const switchDraft = (draftId: string) => {
+    state.selectDraft(draftId);
+    setTaskSwitcherOpen(false);
+    setTaskSearch("");
+  };
+  const switchAdjacentDraft = (offset: number) => {
+    const next = state.drafts[taskIndex + offset];
+    if (next) switchDraft(next.id);
+  };
+  const getTaskCardStatus = (item: UiDraft) => {
+    if (item.finalized) return "可完成整票";
+    const waiting = item.lines.filter((line) => !line.relationSourceId).length;
+    const confirmed = item.lines.filter((line) => line.manuallyConfirmed).length;
+    const issues = item.lines.filter((line) => !line.manuallyConfirmed && line.issueIds.length > 0).length;
+    if (waiting === item.lines.length) return "等待查货";
+    if (issues > 0) return "需人工处理";
+    if (confirmed > 0 && confirmed === item.lines.length) return "待封版";
+    return "部分核对";
+  };
+
   return (
     <div className="recon-workbench recon-workspace-v2">
-      {/* 顶部 Header：围绕“这票现在是什么状态”展开 */}
-      <header className="recon-heading">
+      {/* 顶部 Header：当前任务、队列位置与状态 */}
+      <header className="recon-heading compact-heading">
         <div className="recon-heading-left">
-          <div className="recon-heading-titles">
-            <div className="recon-kicker">
-              <span>委托任务</span>
-              <b>{draft.displayNo}</b>
-              <span className="sep">·</span>
-              <button
-                type="button"
-                className="draft-version-badge-btn"
-                onClick={() => setHistoryOpen(true)}
-                title="点击查阅版本演进明细"
-              >
-                当前草稿 V{draft.version}
-              </button>
-            </div>
-            <div className="recon-title-row">
-              <h2>{draft.customerName}</h2>
-              <span className={`recon-status-pill ${taskStatusClass}`}>
-                {taskStatusText}
-              </span>
-            </div>
-            <p className="recon-sub-note">
-              当前草稿 V{draft.version} · 最近更新：{updateTimeStr} ·
-              触发原因：{draft.lastUpdateReason || "系统持续监听材料事件"} ·
-              单号：{draft.id}
-            </p>
+          <div className="task-switcher-wrap">
+            <button className="task-switcher-trigger" onClick={() => setTaskSwitcherOpen((open) => !open)} aria-expanded={taskSwitcherOpen}>
+              <span className="task-switcher-label">核对任务</span>
+              <span className="task-switcher-main"><b>{draft.displayNo}</b><span>·</span>{draft.customerName}</span>
+              <span className="task-switcher-progress">{verifiedLines.length + needsConfirmLines.length}/{totalLines} 已核对 · {mustHandleCount} 个问题</span>
+              <ChevronDown size={15} className={taskSwitcherOpen ? "rotate-180" : ""} />
+            </button>
+            {taskSwitcherOpen && (
+              <div className="task-switcher-popover">
+                <div className="task-switcher-popover-head"><strong>切换核对任务</strong><span>{state.drafts.filter((item) => !item.finalized).length} 票待处理</span></div>
+                <div className="task-search"><Search size={14} /><input value={taskSearch} onChange={(event) => setTaskSearch(event.target.value)} placeholder="搜索任务号 / 客户" autoFocus /></div>
+                <div className="task-queue-tabs">
+                  {([["MY_TODO", "我的待办"], ["ALL", "全部处理中"], ["WAITING", "等待材料"], ["MANUAL", "需人工处理"]] as const).map(([key, label]) => <button key={key} className={taskQueueFilter === key ? "active" : ""} onClick={() => setTaskQueueFilter(key)}>{label}</button>)}
+                </div>
+                <div className="task-list">
+                  {taskQueue.map((item) => {
+                    const itemMatched = item.lines.filter((line) => line.relationSourceId).length;
+                    const itemIssues = item.lines.filter((line) => !line.manuallyConfirmed && line.issueIds.length > 0).length;
+                    return <button key={item.id} className={`task-list-item ${item.id === draft.id ? "current" : ""}`} onClick={() => switchDraft(item.id)}>
+                      <div className="task-list-top"><b>{item.displayNo}</b><span className={`task-state task-state-${getTaskCardStatus(item)}`}>{getTaskCardStatus(item)}</span></div>
+                      <div className="task-list-customer">{item.customerName}</div>
+                      <div className="task-list-meta"><span>{itemMatched}/{item.lines.length} 个商品已有查货依据</span>{itemIssues > 0 && <span className="task-issue">{itemIssues} 个问题</span>}</div>
+                    </button>;
+                  })}
+                  {taskQueue.length === 0 && <div className="task-empty">没有符合条件的待处理任务</div>}
+                </div>
+                <button className="task-view-all" onClick={() => { state.setView("drafts"); setTaskSwitcherOpen(false); }}>查看全部任务 <ChevronRight size={14} /></button>
+              </div>
+            )}
+          </div>
+          <div className="task-adjacent-nav">
+            <button className="icon-button" onClick={() => switchAdjacentDraft(-1)} disabled={taskIndex <= 0} title="上一票"><ChevronLeft size={16} /></button>
+            <span>第 {taskIndex + 1} / {state.drafts.length} 票</span>
+            <button className="icon-button" onClick={() => switchAdjacentDraft(1)} disabled={taskIndex >= state.drafts.length - 1} title="下一票"><ChevronRight size={16} /></button>
+            <span className={`recon-status-pill ${taskStatusClass}`}>{taskStatusText}</span>
           </div>
         </div>
 
@@ -550,11 +570,7 @@ export function ReconciliationWorkbench({
             </button>
           </div>
 
-          <button
-            className="secondary"
-            onClick={() => setHistoryOpen(!historyOpen)}
-            title="查看草稿版本变更历史"
-          >
+          <button className="secondary" onClick={() => setHistoryOpen(!historyOpen)} title="查看草稿版本变更历史">
             <History size={15} />
             版本与操作
           </button>
@@ -628,188 +644,19 @@ export function ReconciliationWorkbench({
         </div>
       </header>
 
-      {/* 顶部自然语言状态横幅 + 6项核心状态卡片 */}
-      <section className="recon-status-overview">
-        <div className="recon-nlp-banner">
-          <div className="nlp-banner-icon">
-            <Sparkles size={18} />
-          </div>
-          <div className="nlp-banner-content">
-            {noInspectionLines.length === totalLines ? (
-              <>
-                <strong>等待查货材料：</strong>
-                <span>
-                  当前整票共 <b>{totalLines}</b> 个商品，暂无可靠查货依据。
-                  当前可以提前处理委托侧字段问题，但暂不能完成商品核对或整票复核。系统处于自动监听中，新查货到达后将自动触发核对。
-                </span>
-              </>
-            ) : noInspectionLines.length > 0 ? (
-              <>
-                <strong>部分核对进行中：</strong>
-                <span>
-                  AI 已完成当前所有可处理材料的自动核对。整票共 <b>{totalLines}</b> 个商品行：已匹配核对{" "}
-                  <b className="c-green">{verifiedLines.length + needsConfirmLines.length}</b> 行；
-                  仍有 <b className="c-orange">{noInspectionLines.length}</b> 个商品等待查货资料到达；
-                  当前人工已复核 <b>{confirmedLines.length} / {totalLines}</b> 行。
-                </span>
-              </>
-            ) : (
-              <>
-                <strong>全部商品已有查货依据：</strong>
-                <span>
-                  整票共 <b>{totalLines}</b> 个商品行均已匹配查货依据并完成自动核验。
-                  当前人工已复核 <b>{confirmedLines.length} / {totalLines}</b> 行。
-                </span>
-              </>
-            )}
-          </div>
-          <button
-            className="process-drawer-toggle"
-            onClick={() => setShowProcessLogs(!showProcessLogs)}
-          >
-            <span>AI处理记录</span>
-            {showProcessLogs ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-          </button>
+      {/* 紧凑任务状态：只回答当前状态、最近一次自动核对和人工待办 */}
+      <section className="recon-status-overview compact-status-overview">
+        <div className="compact-status-topline">
+          <div className="compact-status-message"><span className="live-dot" /><strong>{draft.finalized ? "当前任务已封版" : noInspectionLines.length > 0 ? "AI 已完成当前可处理内容" : "AI 已完成当前自动核对"}</strong><span>{noInspectionLines.length > 0 ? `${noInspectionLines.length} 个商品仍等待查货；` : "全部商品已有可靠查货依据；"}{mustHandleCount > 0 ? `当前有 ${mustHandleCount} 个问题需要人工处理。` : "当前没有必须处理的问题。"}</span></div>
+          <button className="recent-check-button" onClick={() => setRightTab("AI_LOG")}><Sparkles size={14} />最近自动核对 {updateTimeStr}<ChevronRight size={13} /></button>
         </div>
-
-        {/* 6项关键计数卡片 (细化问题与待办) */}
-        <div className="recon-metric-tiles recon-metric-tiles-v2">
-          <div className="metric-tile">
-            <span className="metric-label">待核对商品</span>
-            <strong className="metric-num">{totalLines}</strong>
-            <small>全部委托行</small>
-          </div>
-          <div className="metric-tile">
-            <span className="metric-label">AI已核对</span>
-            <strong className="metric-num text-green">
-              {verifiedLines.length + needsConfirmLines.length}
-            </strong>
-            <small>有可靠查货依据</small>
-          </div>
-          <div className="metric-tile">
-            <span className="metric-label">尚无查货依据</span>
-            <strong
-              className={`metric-num ${
-                noInspectionLines.length > 0 ? "text-orange" : "text-muted"
-              }`}
-            >
-              {noInspectionLines.length}
-            </strong>
-            <small>等待材料补入</small>
-          </div>
-          <div className="metric-tile">
-            <span className="metric-label">人工待办</span>
-            <strong
-              className={`metric-num ${
-                actionableNowCount > 0 ? "text-red" : "text-muted"
-              }`}
-            >
-              {actionableNowCount}
-            </strong>
-            <small>现在可以处理</small>
-          </div>
-          <div className="metric-tile">
-            <span className="metric-label">等待材料</span>
-            <strong
-              className={`metric-num ${
-                waitingMaterialCount > 0 ? "text-orange" : "text-muted"
-              }`}
-            >
-              {waitingMaterialCount}
-            </strong>
-            <small>新查货到达后继续</small>
-          </div>
-          <div className="metric-tile metric-tile-accent">
-            <span className="metric-label">人工已复核</span>
-            <strong className="metric-num text-blue">
-              {confirmedLines.length} <small>/ {totalLines}</small>
-            </strong>
-            <small>已逐行人工确认</small>
-          </div>
-        </div>
-
-        {/* 五阶段业务处理全流程进度条 */}
-        <div className="recon-workflow-container">
-          <div className="recon-workflow-title">
-            <span>AI 报关智能核对流程（五阶段实时流转）</span>
-            <span>
-              当前环节：
-              <b style={{ color: "#1b6e46", marginLeft: 4 }}>
-                {stages.find((s) => s.status === "processing" || s.status === "warning")?.title ||
-                  (draft.finalized ? "已完成封版归档" : "全部核对通过 · 待复核")}
-              </b>
-            </span>
-          </div>
-          <div className="recon-workflow-steps">
-            {stages.map((stage, idx) => (
-              <Fragment key={stage.step}>
-                <div className={`recon-workflow-step ${stage.status}`}>
-                  <div className="recon-step-head">
-                    <span className="recon-step-title">
-                      {stage.step}. {stage.title}
-                    </span>
-                    <span className={`recon-step-status ${stage.status}`}>
-                      {stage.status === "completed"
-                        ? "✓ "
-                        : stage.status === "processing"
-                        ? "● "
-                        : stage.status === "warning"
-                        ? "⚠️ "
-                        : "○ "}
-                      {stage.statusText}
-                    </span>
-                  </div>
-                  <div className="recon-step-product" title={stage.productSummary}>
-                    {stage.productSummary}
-                  </div>
-                  <div className="recon-step-foot">
-                    <span>{stage.actionNote}</span>
-                    <span className="recon-step-code">{stage.code}</span>
-                  </div>
-                </div>
-                {idx < stages.length - 1 && (
-                  <div className="recon-workflow-arrow">
-                    <ChevronRight size={16} />
-                  </div>
-                )}
-              </Fragment>
-            ))}
-          </div>
-        </div>
-
-        {/* 业务状态 Summary 栏 */}
-        <div className="recon-summary">
-          <strong>
-            <span className="live-dot" />
-            {draft.finalized
-              ? "已完成封版"
-              : noInspectionLines.length === totalLines
-              ? "等待查货材料"
-              : noInspectionLines.length > 0
-              ? "部分核对进行中"
-              : "全部核对通过"}
-          </strong>
-          <span>
-            待核对商品 <b>{draft.lines.length}</b>
-          </span>
-          <span>
-            已找到对应（已匹配）{" "}
-            <b>
-              {verifiedLines.length + needsConfirmLines.length}/{totalLines}
-            </b>
-          </span>
-          <span>
-            字段已核验{" "}
-            <b>
-              {allFieldRows.filter((r) => r.verified).length}/{allFieldRows.length}
-            </b>
-          </span>
-          <span className="danger-text">
-            字段冲突 <b>{allFieldRows.filter((r) => r.conflict).length}</b>
-          </span>
-          <span>
-            必填缺失 <b>{allFieldRows.filter((r) => r.missing && r.required).length}</b>
-          </span>
+        <div className="compact-status-meta"><span>触发原因：{draft.lastUpdateReason || "查货材料到达"}</span><span>草稿 V{draft.version}</span><span className="autosave-note"><Check size={12} /> 已自动保存 {updateTimeStr}</span></div>
+        <div className="recon-metric-tiles compact-metrics">
+          <div className="metric-tile"><span className="metric-label">全部商品</span><strong className="metric-num">{totalLines}</strong></div>
+          <div className="metric-tile"><span className="metric-label">AI已核对</span><strong className="metric-num text-green">{verifiedLines.length + needsConfirmLines.length}</strong></div>
+          <div className="metric-tile"><span className="metric-label">等待查货</span><strong className={`metric-num ${noInspectionLines.length ? "text-orange" : "text-muted"}`}>{noInspectionLines.length}</strong></div>
+          <div className="metric-tile"><span className="metric-label">人工待办</span><strong className={`metric-num ${mustHandleCount ? "text-red" : "text-muted"}`}>{mustHandleCount}</strong></div>
+          <div className="metric-tile metric-tile-accent"><span className="metric-label">人工已确认</span><strong className="metric-num text-blue">{confirmedLines.length}<small> / {totalLines}</small></strong></div>
         </div>
       </section>
 
@@ -998,7 +845,7 @@ export function ReconciliationWorkbench({
       <div
         className="recon-columns-v2"
         style={{
-          gridTemplateColumns: `280px minmax(0, 1fr) 8px ${rightPanelWidth}px`,
+          gridTemplateColumns: `250px minmax(0, 1fr) ${rightPanelCollapsed ? "0 44px" : `8px ${rightPanelWidth}px`}`,
         }}
       >
         {/* 左侧：人工工作队列 (商品行导航 + 必须处理问题 + AI风险) */}
@@ -1151,6 +998,9 @@ export function ReconciliationWorkbench({
                 )}
               </h3>
             </div>
+            <div className="problem-filter-chips">
+              {([["ALL", "全部", mustHandleCount], ["RELATION", "商品关系", waitingMaterialCount], ["CONFLICT", "字段冲突", conflictCount], ["MISSING", "必填缺失", missingRequiredTotal.length]] as const).map(([key, label, count]) => <button key={key} className={problemFilter === key ? "active" : ""} onClick={() => setProblemFilter(key)}>{label} <b>{count}</b></button>)}
+            </div>
             {mustHandleCount === 0 ? (
               <div className="queue-empty-clean">
                 <Check size={16} />
@@ -1159,7 +1009,7 @@ export function ReconciliationWorkbench({
             ) : (
               <div className="problem-items-list">
                 {/* 1. 现在可以处理：委托侧必填缺失 */}
-                {actionableNowCount > 0 && (
+                {actionableNowCount > 0 && problemFilter !== "RELATION" && (
                   <div className="problem-subgroup">
                     <div className="subgroup-title text-red">
                       <span>● 现在可以处理 ({actionableNowCount})</span>
@@ -1191,7 +1041,7 @@ export function ReconciliationWorkbench({
                 )}
 
                 {/* 2. 等待材料：尚无查货依据商品 */}
-                {waitingMaterialCount > 0 && (
+                {waitingMaterialCount > 0 && (problemFilter === "ALL" || problemFilter === "RELATION") && (
                   <div className="problem-subgroup">
                     <div className="subgroup-title text-orange">
                       <span>○ 等待查货材料 ({waitingMaterialCount})</span>
@@ -1217,7 +1067,7 @@ export function ReconciliationWorkbench({
                 )}
 
                 {/* 3. 需要人工裁决：字段差异冲突 */}
-                {conflictCount > 0 && (
+                {conflictCount > 0 && problemFilter !== "RELATION" && problemFilter !== "MISSING" && (
                   <div className="problem-subgroup">
                     <div className="subgroup-title text-red">
                       <span>⚠ 需人工判断差异 ({conflictCount})</span>
@@ -1255,16 +1105,16 @@ export function ReconciliationWorkbench({
           </section>
 
           {/* 区域 3：AI风险与报警 (建议关注) */}
-          <section className="queue-section queue-risks">
+          <section className={`queue-section queue-risks ${aiRiskItems.length === 0 ? "is-empty" : ""}`}>
             <div className="queue-section-header">
               <h3>
-                AI风险与报警 <span>{aiRiskItems.length} 建议关注</span>
+                AI风险预警 {aiRiskItems.length > 0 && <span>{aiRiskItems.length} 建议关注</span>}
               </h3>
             </div>
             {aiRiskItems.length === 0 ? (
               <div className="queue-empty-clean">
                 <Check size={16} />
-                <span>无额外风险提示</span>
+                <span>暂无额外风险</span>
               </div>
             ) : (
               <div className="risk-items-list">
@@ -1310,7 +1160,7 @@ export function ReconciliationWorkbench({
                   title="展示海关申报规范全部25列字段（包含未填报项）"
                 >
                   <Layers size={13} />
-                  全部 25 字段 (包含未填项)
+                  全部25字段
                 </button>
                 <button
                   className={`col-toggle-btn ${
@@ -1320,7 +1170,7 @@ export function ReconciliationWorkbench({
                   title="精简展示高频核验的11个核心字段"
                 >
                   <Table size={13} />
-                  精简核心 (11列)
+                  核心字段
                 </button>
               </div>
 
@@ -1340,7 +1190,7 @@ export function ReconciliationWorkbench({
                   }`}
                   onClick={() => setDraftTableFilter("PROBLEMS_ONLY")}
                 >
-                  仅看问题商品 ({needsConfirmLines.length})
+                  问题 {needsConfirmLines.length}
                 </button>
                 <button
                   className={`filter-btn ${
@@ -1348,64 +1198,12 @@ export function ReconciliationWorkbench({
                   }`}
                   onClick={() => setDraftTableFilter("UNCONFIRMED_ONLY")}
                 >
-                  仅看未复核 ({totalLines - confirmedLines.length})
+                  未复核 {totalLines - confirmedLines.length}
                 </button>
               </div>
             </div>
 
-            <div className="draft-control-right">
-              {/* 人工复核模式切换 */}
-              <button
-                className={`focus-review-toggle ${
-                  reviewModeActive ? "active" : ""
-                }`}
-                onClick={() => setReviewModeActive(!reviewModeActive)}
-              >
-                <Pencil size={13} />
-                {reviewModeActive ? "退出复核引导" : "开始人工复核"}
-              </button>
-            </div>
           </div>
-
-          {/* 专注复核模式浮动栏 */}
-          {reviewModeActive && (
-            <div className="review-mode-floating-bar">
-              <div className="floating-bar-left">
-                <span className="live-dot" />
-                <strong>人工复核进行中：</strong>
-                <span>
-                  当前正在复核商品{" "}
-                  <b>{String(currentLineIndex + 1).padStart(2, "0")}</b> /{" "}
-                  {totalLines}（已确认 <b>{confirmedLines.length}</b> 行）
-                </span>
-              </div>
-              <div className="floating-bar-actions">
-                <button
-                  className="secondary icon-btn-round"
-                  disabled={currentLineIndex === 0}
-                  onClick={handlePrevLine}
-                  title="上一个商品"
-                >
-                  <ChevronLeft size={16} />
-                </button>
-                <button
-                  className="secondary icon-btn-round"
-                  disabled={currentLineIndex === totalLines - 1}
-                  onClick={handleNextLine}
-                  title="下一个商品"
-                >
-                  <ChevronRight size={16} />
-                </button>
-                <button
-                  className="primary btn-sm"
-                  onClick={() => handleConfirmCurrentAndNext(lineId)}
-                >
-                  <Check size={14} />
-                  确认当前商品并下一个
-                </button>
-              </div>
-            </div>
-          )}
 
           {/* 25 字段草稿核对状态图例与横向滑动控制 */}
           <div className="draft-legend-bar">
@@ -1783,7 +1581,7 @@ export function ReconciliationWorkbench({
           className={`recon-right-evidence ${
             mobileDrawer === "right" ? "drawer-open" : ""
           }`}
-          style={{ width: `${rightPanelWidth}px` }}
+          style={{ width: rightPanelCollapsed ? "44px" : `${rightPanelWidth}px` }}
         >
           {/* 四大 Tab 切换与快速放大按钮 */}
           <div
@@ -1791,14 +1589,6 @@ export function ReconciliationWorkbench({
             role="tablist"
             aria-label="溯源信息选项卡"
           >
-            <button
-              className={`evidence-tab ${
-                rightTab === "RAW_MATERIAL" ? "active" : ""
-              }`}
-              onClick={() => setRightTab("RAW_MATERIAL")}
-            >
-              [原始材料]
-            </button>
             <button
               className={`evidence-tab ${
                 rightTab === "FIELD_SOURCE" ? "active" : ""
@@ -1817,6 +1607,14 @@ export function ReconciliationWorkbench({
             </button>
             <button
               className={`evidence-tab ${
+                rightTab === "RAW_MATERIAL" ? "active" : ""
+              }`}
+              onClick={() => setRightTab("RAW_MATERIAL")}
+            >
+              [原始材料]
+            </button>
+            <button
+              className={`evidence-tab ${
                 rightTab === "AI_LOG" ? "active" : ""
               }`}
               onClick={() => setRightTab("AI_LOG")}
@@ -1824,11 +1622,15 @@ export function ReconciliationWorkbench({
               [AI记录]
             </button>
 
+            <button type="button" className="tab-action-collapse" onClick={() => setRightPanelCollapsed((value) => !value)} title={rightPanelCollapsed ? "展开证据" : "收起证据"}>
+              {rightPanelCollapsed ? <ChevronLeft size={15} /> : <ChevronRight size={15} />}
+            </button>
             {/* 快速放大/还原按钮 */}
             <button
               type="button"
               className="tab-action-expand"
-              onClick={() => setRightPanelWidth((w) => (w >= 650 ? 460 : 720))}
+              onClick={() => setRightPanelWidth((w) => (w >= 650 ? 400 : 720))}
+              disabled={rightPanelCollapsed}
               title={
                 rightPanelWidth >= 650
                   ? "恢复标准宽度 (460px)"
@@ -2362,7 +2164,7 @@ export function ReconciliationWorkbench({
               </div>
               <h3>整票复核完成</h3>
               <p className="result-sub">
-                最终核对单与核销单据已成功生成并正式封版归档
+                最终核对单已生成并封版，当前队列还有 {remainingTaskCount} 票待处理
               </p>
             </div>
 
@@ -2400,15 +2202,8 @@ export function ReconciliationWorkbench({
               <button className="secondary" onClick={exportCsv}>
                 <Download size={14} /> 导出最终核对单
               </button>
-              <button
-                className="primary"
-                onClick={() => {
-                  setWriteoffFeedbackOpen(false);
-                  state.setView("home");
-                }}
-              >
-                返回客户工作台
-              </button>
+              <button className="secondary" onClick={() => { setWriteoffFeedbackOpen(false); state.setView("home"); }}>返回客户工作台</button>
+              {nextPendingTask && <button className="primary" onClick={() => { setWriteoffFeedbackOpen(false); switchDraft(nextPendingTask.id); }}>进入下一票 <ChevronRight size={14} /></button>}
             </div>
           </div>
         </div>

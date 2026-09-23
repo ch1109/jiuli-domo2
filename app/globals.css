@@ -13,7 +13,7 @@
 .cw-metrics .selected { background: #eef7f3; }
 .cw-search { display: flex; align-items: center; gap: 8px; border: 1px solid #dce3e1; background: white; padding: 9px 12px; border-radius: 5px; color: #7a8580; }
 .cw-customers { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 24px; }
-.intake-modal-backdrop { position: fixed; inset: 0; z-index: 20; background: rgba(15, 35, 42, .42); display: grid; place-items: center; padding: 24px; }
+.intake-modal-backdrop { position: fixed; inset: 0; z-index: 100; background: rgba(15, 35, 42, .42); display: grid; place-items: center; padding: 24px; }
 .intake-modal { width: min(1120px, 96vw); max-height: 92vh; overflow: auto; background: #f6f8f9; border-radius: 10px; box-shadow: 0 24px 80px rgba(12, 36, 45, .28); }
 .intake-modal-head { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; padding: 16px 22px; background: #fff; border-bottom: 1px solid #dce3e1; font-size: 17px; }
 .intake-modal-head > div { display: grid; gap: 4px; }
@@ -50,6 +50,7 @@
 .intake-file-list svg { color: #398c83; flex-shrink: 0; }
 .intake-file-list span { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .intake-file-list small { color: #849198; }
+.intake-file-list select { max-width: 150px; padding: 6px 28px 6px 8px; font-size: 11px; }
 .intake-footer, .intake-actions { display: flex; justify-content: flex-end; gap: 9px; margin-top: 24px; }
 .intake-processing { max-width: 470px; margin: 24px auto 12px; padding: 32px 36px; border: 1px solid #dce7e7; border-radius: 9px; background: #fff; text-align: center; }
 .intake-processing-icon, .result-icon { width: 42px; height: 42px; display: grid; place-items: center; margin: 0 auto 15px; border-radius: 50%; color: #1a786e; background: #dff2ee; }
