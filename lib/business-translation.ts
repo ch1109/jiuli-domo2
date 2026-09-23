@@ -207,12 +207,12 @@ export function generatePendingTasksSummary(model: WorkbenchModel): PendingTaskI
         "7 个商品存在同型号多批次候选，需人工确认对应关系",
         "1 个商品 (LIS2DU12TR) 查货材料暂无对应原始行",
       ];
-      ctaText = "处理商品对应";
+      ctaText = "进入核对工作台";
       actionType = "select-candidate";
       matchedLines = 8;
       stage = "商品对应";
       blockingReason = "7 个商品存在同型号多候选，1 个商品未覆盖查货依据";
-      nextActionText = "处理商品对应";
+      nextActionText = "进入核对工作台";
     } else if (no === "2026BMH001") {
       badge = { label: "需要人工选择", variant: "orange" };
       summary = "6 个商品存在多个候选批次，5 个商品暂未在查货单中出现";
@@ -220,22 +220,22 @@ export function generatePendingTasksSummary(model: WorkbenchModel): PendingTaskI
         "6 个商品在查货库存在多批次候选，证据不足时不凭目录强配",
         "5 个商品暂未在查货材料中找到依据，待补充查货",
       ];
-      ctaText = "选择商品对应";
+      ctaText = "进入核对工作台";
       actionType = "select-candidate";
       matchedLines = 6;
       stage = "商品对应";
       blockingReason = "6 处多候选需人工选定入仓对应，5 行等待补充查货";
-      nextActionText = "选择商品对应";
+      nextActionText = "进入核对工作台";
     } else if (no === "2026AG001") {
       badge = { label: "需要人工选择", variant: "orange" };
       summary = "2 个同型号商品存在多候选竞争，需人工指定对应明细";
       unresolvedReasons = ["2 条同型号商品存在多个可能查货对应，保留为多候选待选"];
-      ctaText = "选择商品对应";
+      ctaText = "进入核对工作台";
       actionType = "select-candidate";
       matchedLines = 2;
       stage = "商品对应";
       blockingReason = "2 处同型号商品多候选竞争，需人工指定对应查货明细";
-      nextActionText = "选择商品对应";
+      nextActionText = "进入核对工作台";
     } else if (no.includes("ZW") || !draft.customerId) {
       badge = { label: "客户未识别", variant: "orange" };
       summary = "主体导单文件缺少明确客户名称抬头，禁止跨客户强配查货材料";
@@ -291,7 +291,7 @@ export function generatePendingTasksSummary(model: WorkbenchModel): PendingTaskI
     if (no === "2025YBT010-2") {
       compositionalProgress = `${totalLines} 个商品：${totalLines} 已自动对应（无问题）· 待人工复核确认`;
     } else if (no === "26SHPYD056") {
-      compositionalProgress = `9 个商品：8 已自动对应（7 无问题 · 1 有型号差异提醒）· 1 暂无查货依据 · 当前无需人工选择`;
+      compositionalProgress = `9 个商品：8 已自动对应（7 无问题 · 1 有联合覆盖）· 1 暂无查货依据 · 当前无需人工选择`;
     } else if (no === "2026BMH001") {
       compositionalProgress = `11 个商品：5 已自动对应 · 6 需要人工选择 · [处理 6 个商品对应]`;
     } else if (no === "2026AG001") {
@@ -442,7 +442,7 @@ export interface CustomerCardActionModel {
   badgeVariant: 'blue' | 'green' | 'orange' | 'gray';
   summary: string;
   primaryAction: CardPrimaryAction | null; // 每张卡最多一个高强调实心按钮
-  persistentEntryText: string;            // '查看商品对应 →' 或 '查看全部商品对应 →'
+  persistentEntryText: string;            // '查看商品匹配明细 →' 或 '查看全部匹配明细 →'
   secondaryLink: CardSecondaryLink | null; // 弱导航：如 '查看全部 3 票 ›' 或 '查看最终核对单 →'
   moreActions: CardMoreAction[];           // 统一进入 ··· 浮层
 }
@@ -526,10 +526,10 @@ export function generateCustomerStory(customer: CustomerModel): CustomerStory {
       { type: "info", text: "1 个商品 (LIS2DU12TR) 暂未在查货材料中找到对应依据" },
     ];
     nextStepText = "需要人工确认 7 个商品的多候选对应，并核对 1 个未覆盖商品";
-    cta = { text: "处理商品对应", actionType: "select-candidate", primary: true };
+    cta = { text: "进入核对工作台", actionType: "select-candidate", primary: true };
     stage = "商品对应";
     blockingReason = "7 个商品存在多候选需指定，1 个商品未覆盖查货依据";
-    nextActionText = "处理商品对应";
+    nextActionText = "进入核对工作台";
   } else if (displayNo === "2026BMH001" || customer.name.includes("百闽海")) {
     badgeLabel = "需要人工选择";
     badgeVariant = "orange";
@@ -538,10 +538,10 @@ export function generateCustomerStory(customer: CustomerModel): CustomerStory {
       { type: "info", text: "5 个商品暂未在查货材料中找到对应依据" },
     ];
     nextStepText = "存在多候选批次，证据不足时不凭目录名强配，等待人工选择";
-    cta = { text: "选择商品对应", actionType: "select-candidate", primary: true };
+    cta = { text: "进入核对工作台", actionType: "select-candidate", primary: true };
     stage = "商品对应";
     blockingReason = "6 个商品存在多候选批次，5 个商品暂未找到查货依据";
-    nextActionText = "选择商品对应";
+    nextActionText = "进入核对工作台";
   } else if (displayNo === "2026AG001" || customer.name.includes("傲冠")) {
     badgeLabel = "需要人工选择";
     badgeVariant = "orange";
@@ -549,10 +549,10 @@ export function generateCustomerStory(customer: CustomerModel): CustomerStory {
       { type: "warning", text: "2 个同型号商品存在多候选竞争，需人工指定对应查货明细" },
     ];
     nextStepText = "同型号商品存在多个可能对应，需要人工进行候选确认";
-    cta = { text: "选择商品对应", actionType: "select-candidate", primary: true };
+    cta = { text: "进入核对工作台", actionType: "select-candidate", primary: true };
     stage = "商品对应";
     blockingReason = "2 个同型号商品存在多候选竞争，需人工指定对应查货明细";
-    nextActionText = "选择商品对应";
+    nextActionText = "进入核对工作台";
   } else if (displayNo.includes("ZW") || customer.name.includes("智微") || customer.tasks.some(t => !t.draft.customerId)) {
     badgeLabel = isAllArchived ? "整单归档" : "客户未识别";
     badgeVariant = isAllArchived ? "green" : "orange";
@@ -758,7 +758,7 @@ export function generateCustomerStory(customer: CustomerModel): CustomerStory {
     const cs = customer.commoditySummary;
     storyCompositionalProgress = `${cs.totalCount} 个商品：${cs.exactCount} 已自动对应${cs.affixDiffCount > 0 ? `（${cs.affixDiffCount} 有提醒）` : ''}${cs.multipleCount > 0 ? ` · ${cs.multipleCount} 需要人工选择` : ''}${cs.noCandidateCount > 0 ? ` · ${cs.noCandidateCount} 暂无查货依据` : ''}`;
   } else if (displayNo === '26SHPYD056') {
-    storyCompositionalProgress = '9 个商品：8 已自动对应（7 无问题 · 1 有型号差异提醒）· 1 暂无查货依据 · 当前无需人工选择';
+    storyCompositionalProgress = '9 个商品：8 已自动对应（7 无问题 · 1 有联合覆盖）· 1 暂无查货依据 · 当前无需人工选择';
   } else if (displayNo === '2026BMH001') {
     storyCompositionalProgress = '11 个商品：5 已自动对应 · 6 需要人工选择 · [处理 6 个商品对应]';
   } else if (displayNo === '2026AG001') {
@@ -772,7 +772,7 @@ export function generateCustomerStory(customer: CustomerModel): CustomerStory {
   }
 
   // 1. 固定入口 Persistent Navigation（永远存在）
-  const persistentEntryText = isMultiTask ? '查看全部商品对应 →' : '查看商品对应 →';
+  const persistentEntryText = isMultiTask ? '查看全部匹配明细 →' : '查看商品匹配明细 →';
 
   // 2. 动态主操作 Primary Action（最多一个，高强调实心按钮）
   let primaryAction: CardPrimaryAction | null = null;
@@ -786,7 +786,7 @@ export function generateCustomerStory(customer: CustomerModel): CustomerStory {
 
     if (actionRequiredTask) {
       primaryAction = {
-        text: '处理商品对应',
+        text: '进入核对工作台',
         actionType: 'select-candidate',
         targetDraftId: actionRequiredTask.draft.id,
       };
@@ -801,7 +801,7 @@ export function generateCustomerStory(customer: CustomerModel): CustomerStory {
     }
   } else {
     if (badgeLabel === '需要人工选择' || cta.actionType === 'select-candidate') {
-      const btnText = displayNo === '26SHPYD056' || customer.name.includes('浦壹') ? '处理商品对应' : '选择对应商品';
+      const btnText = '进入核对工作台';
       primaryAction = {
         text: btnText,
         actionType: 'select-candidate',

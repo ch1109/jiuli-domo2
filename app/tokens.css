@@ -1,0 +1,39 @@
+/* Jiuli AI Workspace design tokens. Shared by every view. */
+:root {
+  --canvas: #f6f6f5;
+  --surface: #ffffff;
+  --surface-soft: #fafafa;
+  --surface-hover: #f4f4f3;
+  --ink: #202124;
+  --muted: #747780;
+  --subtle: #a2a5ad;
+  --line: #e9e9e7;
+  --line-strong: #dededb;
+  --action: #242528;
+  --ai: #655da8;
+  --ai-soft: #f2f0fb;
+  --human: #a87529;
+  --human-soft: #fbf4e9;
+  --success: #4c8468;
+  --success-soft: #eef6f0;
+  --danger: #b75f5c;
+  --danger-soft: #fbf0ef;
+  --font-ui: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+  --text-xs: 10.5px;
+  --text-sm: 11.5px;
+  --text-md: 13.5px;
+  --text-lg: 18.5px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --r-sm: 7px;
+  --r-md: 11px;
+  --r-lg: 15px;
+  --shadow-pop: 0 16px 48px rgba(32, 33, 36, .12);
+  --soft: var(--canvas);
+  --navy: var(--action);
+  --primary: var(--action);
+}

@@ -202,6 +202,7 @@ export interface DemoState {
   setView: (view: ViewKey) => void;
   setLastVisitedPanel: (panel: TaskPanel) => void;
   setIntakeCustomer: (customerId: string) => void;
+  addCustomer: (name: string) => { id: string; name: string };
   selectDraft: (id: string) => void;
   loadScenario: (id: string) => void;
   openBusinessWorkspace: () => void;
@@ -802,6 +803,22 @@ export const useDemoStore = create<DemoState>()(persist((set, get) => ({
     }),
   goBack: () =>
     set((state) => {
+      // 如果当前在客户工作台的具体客户详情页（view === "home" && selectedWorkspaceCustomerId !== null）
+      // 返回上一级优先回到客户工作台首页（全部客户概览），避免跳过首页直接退回核对工作台等外部视图
+      if (state.view === "home" && state.selectedWorkspaceCustomerId) {
+        const stack = [...state.historyStack];
+        if (stack.length > 0) {
+          const last = stack[stack.length - 1];
+          if (last.view === "home" && !last.customerId) {
+            stack.pop();
+          }
+        }
+        return {
+          selectedWorkspaceCustomerId: null,
+          historyStack: stack,
+        };
+      }
+
       if (state.historyStack.length === 0) {
         if (state.selectedWorkspaceCustomerId) {
           return { selectedWorkspaceCustomerId: null };
@@ -820,7 +837,21 @@ export const useDemoStore = create<DemoState>()(persist((set, get) => ({
     }),
   setView: (view) =>
     set((state) => {
-      if (state.view === view) return state;
+      // 1. 如果当前已经在 home，但选了具体客户，点击【客户工作台】导航项应该回到全客户首页看板
+      if (state.view === view) {
+        if (view === "home" && state.selectedWorkspaceCustomerId) {
+          const currentEntry: NavigationEntry = {
+            view: state.view,
+            customerId: state.selectedWorkspaceCustomerId,
+            draftId: state.selectedDraftId,
+          };
+          return {
+            selectedWorkspaceCustomerId: null,
+            historyStack: [...state.historyStack, currentEntry].slice(-30),
+          };
+        }
+        return state;
+      }
       const currentEntry: NavigationEntry = {
         view: state.view,
         customerId: state.selectedWorkspaceCustomerId,
@@ -828,6 +859,8 @@ export const useDemoStore = create<DemoState>()(persist((set, get) => ({
       };
       return {
         view,
+        // 从其他视图点击进入客户工作台时，重置客户选择，直达全量客户看板（首页）
+        ...(view === "home" ? { selectedWorkspaceCustomerId: null } : {}),
         historyStack: [...state.historyStack, currentEntry].slice(-30),
         lastVisitedTaskId:
           view === "workbench" ? state.selectedDraftId : state.lastVisitedTaskId,
@@ -835,6 +868,25 @@ export const useDemoStore = create<DemoState>()(persist((set, get) => ({
     }),
   setLastVisitedPanel: (lastVisitedPanel) => set({ lastVisitedPanel }),
   setIntakeCustomer: (selectedIntakeCustomerId) => set({ selectedIntakeCustomerId }),
+  addCustomer: (name: string) => {
+    const trimmed = name.trim();
+    if (!trimmed) {
+      throw new Error("客户名称不能为空");
+    }
+    const existing = get().customers.find((c) => c.name.toLowerCase() === trimmed.toLowerCase());
+    if (existing) {
+      return existing;
+    }
+    const hexPart = Math.random().toString(16).slice(2, 14).padEnd(12, "0");
+    const newCustomer = {
+      id: `C-${hexPart}`,
+      name: trimmed,
+    };
+    set((state) => ({
+      customers: [newCustomer, ...state.customers],
+    }));
+    return newCustomer;
+  },
   selectDraft: (selectedDraftId) =>
     set((state) => {
       const currentEntry: NavigationEntry = {

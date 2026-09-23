@@ -10,11 +10,14 @@ import {
   Sparkles,
   ChevronDown,
   ChevronUp,
-  CheckCircle2,
   AlertTriangle,
   AlertCircle,
   HelpCircle,
   MoreHorizontal,
+  X,
+  CheckCircle2,
+  ArrowUpRight,
+  Clock,
 } from 'lucide-react';
 import { useDemoStore } from '@/lib/demo-store';
 import {
@@ -41,7 +44,6 @@ import puyiFixture from '@/demo-generated/mock/real-calibration-26shpyd056.json'
 import auditIndex from '@/demo-generated/mock/model-audit-index.json';
 import manifest from '@/demo-generated/sample_manifest.json';
 import { MaterialPreview } from './material-preview';
-import './customer-workspace.css';
 
 const date = (s?: string) =>
   s
@@ -443,25 +445,26 @@ function CustomerCardActions({
     <div className="cw-story-actions-v3">
       {/* 2. 动态主操作 Primary Action（有人工待办时才出现，高强调实心按钮） */}
       {actionModel.primaryAction && (
-        <div className="cw-primary-action-wrap">
-          <button
-            type="button"
-            className="primary cw-btn-primary-action"
-            onClick={() => {
-              const pa = actionModel.primaryAction!;
-              if (pa.targetDraftId) {
-                onSelectDraft(pa.targetDraftId);
-              } else {
-                onSelectCustomer(customer.id, '商品对应');
-              }
-            }}
-          >
-            {actionModel.primaryAction.text}
-          </button>
-        </div>
+        <>
+          <div className="cw-primary-action-wrap">
+            <button
+              type="button"
+              className="primary cw-btn-primary-action"
+              onClick={() => {
+                const pa = actionModel.primaryAction!;
+                if (pa.targetDraftId) {
+                  onSelectDraft(pa.targetDraftId);
+                } else {
+                  onSelectCustomer(customer.id, '商品对应');
+                }
+              }}
+            >
+              <span>{actionModel.primaryAction.text}</span>
+            </button>
+          </div>
+          <div className="cw-story-actions-divider" />
+        </>
       )}
-
-      <div className="cw-story-actions-divider" />
 
       {/* 底部导航行：左侧永远固定的核心入口，右侧弱导航与 ··· 菜单 */}
       <div className="cw-story-actions-bottom-row">
@@ -531,6 +534,7 @@ export function CustomerWorkspace({
   const [query, setQuery] = useState('');
   const [preview, setPreview] = useState<string | null>(null);
   const [matrixDrilldown, setMatrixDrilldown] = useState<RelationMatrixCell | null>(null);
+  const [eventsExpanded, setEventsExpanded] = useState(true);
   const [selectedDetailItem, setSelectedDetailItem] = useState<CustomerCommodityItem | null>(null);
   const [selectedCandidateItem, setSelectedCandidateItem] = useState<CustomerCommodityItem | null>(null);
   const [commodityFilter, setCommodityFilter] = useState<'ALL' | ModelRelationLevel>('ALL');
@@ -847,16 +851,10 @@ export function CustomerWorkspace({
           {scenarioId !== 'BUSINESS' && (
             <button
               className="secondary"
-              style={{ padding: '6px 12px', fontSize: 13, borderColor: '#166534', color: '#166534', fontWeight: 600, cursor: 'pointer' }}
+              style={{ padding: '6px 12px', fontSize: 13.5, borderColor: '#166534', color: '#166534', fontWeight: 600, cursor: 'pointer' }}
               onClick={() => state.loadScenario('BUSINESS')}
             >
               ← 返回完整客户业务（查看全部 11 票任务）
-            </button>
-          )}
-          {!customer && (
-            <button className="primary" aria-label="新建核对" onClick={() => onAddMaterial(null)}>
-              <Plus size={16} />
-              新建核对任务
             </button>
           )}
         </div>
@@ -875,41 +873,260 @@ export function CustomerWorkspace({
             </p>
           )}
 
-          {/* 首页业务进度面板：先讲一句人话，再给分类数字 */}
-          <div className="cw-summary-banner">
-            <div className="cw-summary-lead">
-              <div className="cw-summary-title">
-                <Sparkles size={17} />
-                <h3>{summary.headline}</h3>
+          {/* 重构版：AI任务动态总览卡（四层结构：标题区、核心摘要区、行动建议区、关键指标区） */}
+          {(() => {
+            const processingTasksCount = model.tasks.filter((t) => t.businessStatus !== '已完成').length;
+            const needsActionCustomerCount = customerFilterCounts['需要我处理'];
+            const totalCommoditiesCount = model.tasks.reduce((n, t) => n + t.total, 0);
+            const matchedCommoditiesCount = model.tasks.reduce((n, t) => n + t.matched, 0);
+
+            // 建议项统计
+            const abnormalTasksCount = model.tasks.filter(
+              (t) => t.businessStatus === '待人工处理' || t.businessStatus === '异常' || t.issues > 0
+            ).length;
+            const reviewTasksCount = model.tasks.filter(
+              (t) => t.businessStatus === '待人工复核' || t.businessStatus === 'AI核对完成 · 待人工复核'
+            ).length;
+            const waitingInspectionTasksCount = model.tasks.filter(
+              (t) =>
+                t.matched < t.total &&
+                t.businessStatus !== '已完成' &&
+                !(t.businessStatus === '待人工处理' || t.businessStatus === '异常' || t.issues > 0)
+            ).length;
+
+            const scrollToTasks = (targetFilter: string) => {
+              setFilter(targetFilter);
+              document.getElementById('customer-tasks')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            };
+
+            return (
+              <div className="cw-summary-banner" role="region" aria-label="AI任务与业务动态中枢">
+                {/* 1. 上半部分：AI任务动态与关键指标总览 */}
+                <div className="cw-summary-overview">
+                  {/* 左侧：标题、核心摘要、行动建议 */}
+                  <div className="cw-summary-lead">
+                    {/* 一、标题区 */}
+                    <div className="cw-summary-header">
+                      <div className="cw-summary-title">
+                        <Sparkles size={24} className="cw-summary-icon" />
+                        <h3>AI 任务动态</h3>
+                        <span className="cw-ai-live">
+                          <span className="cw-ai-live-dot" />
+                          持续跟进中
+                        </span>
+                      </div>
+                      <button
+                        type="button"
+                        className="cw-summary-view-all"
+                        onClick={() => scrollToTasks('全部')}
+                        title="滚动至任务队列并查看全部任务"
+                      >
+                        <span>查看全部任务</span>
+                        <ArrowRight size={13} />
+                      </button>
+                    </div>
+
+                    {/* 二、核心摘要区 */}
+                    <div className="cw-summary-text">
+                      <p className="cw-summary-main">
+                        当前有 <strong>{processingTasksCount}</strong> 票委托正在处理，其中{' '}
+                        <span className="highlight-action">{needsActionCustomerCount} 票需要你介入</span>。
+                      </p>
+                      <p className="cw-summary-sub">
+                        AI 已完成 <strong>{totalCommoditiesCount}</strong> 个委托商品整理，已建立{' '}
+                        <strong>{matchedCommoditiesCount}</strong> 条可靠商品对应。
+                      </p>
+                    </div>
+
+                    {/* 三、行动建议区 */}
+                    <div className="cw-summary-recommendations">
+                      <div className="cw-rec-header">
+                        <span className="cw-rec-badge">优先建议</span>
+                        <span className="cw-rec-hint">点击建议可直达对应任务筛选</span>
+                      </div>
+                      <div className="cw-rec-list">
+                        {abnormalTasksCount > 0 && (
+                          <button
+                            type="button"
+                            className="cw-rec-item rec-warning"
+                            onClick={() => scrollToTasks('需要人工选择')}
+                          >
+                            <span className="cw-rec-indicator" />
+                            <span className="cw-rec-label">
+                              <strong>{abnormalTasksCount} 票</strong>客户信息异常，需人工补充
+                            </span>
+                            <span className="cw-rec-btn">
+                              去处理 <ArrowRight size={12} />
+                            </span>
+                          </button>
+                        )}
+                        {reviewTasksCount > 0 && (
+                          <button
+                            type="button"
+                            className="cw-rec-item rec-review"
+                            onClick={() => scrollToTasks('待最终复核')}
+                          >
+                            <span className="cw-rec-indicator" />
+                            <span className="cw-rec-label">
+                              <strong>{reviewTasksCount} 票</strong>已完成 AI 自动核对，等待人工复核
+                            </span>
+                            <span className="cw-rec-btn">
+                              去复核 <ArrowRight size={12} />
+                            </span>
+                          </button>
+                        )}
+                        {waitingInspectionTasksCount > 0 && (
+                          <button
+                            type="button"
+                            className="cw-rec-item rec-info"
+                            onClick={() => scrollToTasks('等待外部材料')}
+                          >
+                            <span className="cw-rec-indicator" />
+                            <span className="cw-rec-label">
+                              <strong>{waitingInspectionTasksCount} 票</strong>仍缺查货依据，建议补充查货资料
+                            </span>
+                            <span className="cw-rec-btn">
+                              去查看 <ArrowRight size={12} />
+                            </span>
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 四、关键指标区（右侧 2 行网格：上排核心待办高亮强调，下排基线运行指标） */}
+                  <div className="cw-metrics-panel">
+                    {/* 上排：核心待办聚焦（最高强调 + 次级强调） */}
+                    <div className="cw-metrics-priority-row">
+                      <button
+                        type="button"
+                        className={`cw-metric-card metric-priority ${filter === '我的待办' ? 'selected' : ''}`}
+                        onClick={() => scrollToTasks('我的待办')}
+                        title="查看需要我处理的任务"
+                      >
+                        <div className="metric-header">
+                          <span className="metric-tag">优先待办</span>
+                          <span className="metric-label">需要我处理</span>
+                        </div>
+                        <div className="metric-value-wrap">
+                          <strong className="metric-value">{needsActionCustomerCount}</strong>
+                          <span className="metric-unit">票</span>
+                        </div>
+                      </button>
+
+                      <button
+                        type="button"
+                        className={`cw-metric-card metric-secondary ${filter === '待最终复核' ? 'selected' : ''}`}
+                        onClick={() => scrollToTasks('待最终复核')}
+                        title="查看待人工复核的任务"
+                      >
+                        <div className="metric-header">
+                          <span className="metric-tag">等待确认</span>
+                          <span className="metric-label">待人工复核</span>
+                        </div>
+                        <div className="metric-value-wrap">
+                          <strong className="metric-value">{reviewTasksCount}</strong>
+                          <span className="metric-unit">票</span>
+                        </div>
+                      </button>
+                    </div>
+
+                    {/* 下排：业务运行基线指标（3列均分紧凑网格） */}
+                    <div className="cw-metrics-baseline-row">
+                      <button
+                        type="button"
+                        className={`cw-metric-card metric-normal ${filter === 'AI处理中' ? 'selected' : ''}`}
+                        onClick={() => scrollToTasks('AI处理中')}
+                        title="查看处理中的任务"
+                      >
+                        <span className="metric-label">处理中</span>
+                        <strong className="metric-value">{processingTasksCount}</strong>
+                      </button>
+
+                      <button
+                        type="button"
+                        className={`cw-metric-card metric-normal ${filter === '等待外部材料' ? 'selected' : ''}`}
+                        onClick={() => scrollToTasks('等待外部材料')}
+                        title="查看等待查货的任务"
+                      >
+                        <span className="metric-label">等待查货</span>
+                        <strong className="metric-value">
+                          {model.tasks.filter((t) => t.matched < t.total && t.businessStatus !== '已完成').length}
+                        </strong>
+                      </button>
+
+                      <button
+                        type="button"
+                        className={`cw-metric-card metric-normal ${filter === '已完成' ? 'selected' : ''}`}
+                        onClick={() => scrollToTasks('已完成')}
+                        title="查看已完成客户"
+                      >
+                        <span className="metric-label">已完成客户</span>
+                        <strong className="metric-value">{customerFilterCounts['已完成']}</strong>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 2. 下半部分：最近业务动态实时流水（一体化内嵌） */}
+                <div className="cw-summary-feed">
+                  <div className="cw-feed-header">
+                    <div className="cw-feed-title">
+                      <Clock size={16} className="cw-feed-icon" />
+                      <h4>最近业务动态</h4>
+                      <span className="cw-feed-count">最新 {Math.min(model.events.length, 5)} 条</span>
+                    </div>
+                    <button
+                      type="button"
+                      className="cw-feed-toggle"
+                      onClick={() => setEventsExpanded(!eventsExpanded)}
+                      title={eventsExpanded ? '收起动态列表' : '展开动态列表'}
+                    >
+                      <span>{eventsExpanded ? '收起动态' : '展开动态'}</span>
+                      {eventsExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                    </button>
+                  </div>
+
+                  {eventsExpanded && (
+                    <div className="cw-feed-list">
+                      {model.events.slice(0, 5).map((e) => (
+                        <div className="cw-feed-item" key={e.id}>
+                          <div className="cw-feed-item-left">
+                            <span className="cw-feed-dot" />
+                            <time className="cw-feed-time">{date(e.occurredAt)}</time>
+                            <p className="cw-feed-summary" title={e.summary}>{e.summary}</p>
+                          </div>
+                          <div className="cw-feed-item-right">
+                            <span className="cw-feed-tag">
+                              {e.actorType || '系统自动'} · {e.operationType || '业务更新'}
+                            </span>
+                            {e.draftId && (
+                              <button
+                                type="button"
+                                className="cw-feed-action"
+                                onClick={() => state.selectDraft(e.draftId!)}
+                                title="前往该委托任务查看明细"
+                              >
+                                <span>查看任务</span>
+                                <ArrowRight size={12} />
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                      {!model.events.length && (
+                        <div className="cw-feed-empty">暂无最新业务动态</div>
+                      )}
+                    </div>
+                  )}
+                </div>
               </div>
-              <p className="cw-summary-text">
-                <strong>{summary.storyLead}</strong>
-                <span>{summary.storyDetail}</span>
-              </p>
-            </div>
-            <div className="cw-metrics">
-              {summary.metrics.map((m) => (
-                <button
-                  key={m.key}
-                  className={filter === m.filter ? 'selected' : ''}
-                  onClick={() => {
-                    setFilter(m.filter);
-                    document
-                      .getElementById('customer-tasks')
-                      ?.scrollIntoView({ block: 'start' });
-                  }}
-                >
-                  <span>{m.label}</span>
-                  <strong>{m.count}</strong>
-                  <small>{m.subtext}</small>
-                </button>
-              ))}
-            </div>
-          </div>
+            );
+          })()}
 
 
           {/* 第二层：需要我处理 · 待办任务中心 */}
-          <section id="customer-tasks" style={{ marginTop: 24, marginBottom: 28, background: '#ffffff', border: '1px solid #dce8e1', borderRadius: 8, padding: '16px 20px' }}>
+          <section id="customer-tasks" className="cw-task-center">
             <div
               style={{
                 display: 'flex',
@@ -919,8 +1136,8 @@ export function CustomerWorkspace({
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <CheckCircle2 size={18} color="#1b6e46" />
-                <h3 style={{ margin: 0 }}>待办任务中心 · {tasks.length} 票</h3>
+                <List size={18} />
+                <h3 style={{ margin: 0 }}>任务队列 <span>{tasks.length}</span></h3>
               </div>
               <small style={{ color: '#7a8e83' }}>
                 按状态快速筛选，点击行右侧展开渐进式专业详情
@@ -977,13 +1194,27 @@ export function CustomerWorkspace({
 
                 {/* 搜索框 */}
                 <label className="cw-search">
-                  <Search size={16} />
+                  <Search size={15} />
                   <input
                     aria-label="搜索客户或委托任务"
                     placeholder="搜索客户、委托任务号"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                   />
+                  {query && (
+                    <button
+                      type="button"
+                      className="cw-search-clear"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setQuery('');
+                      }}
+                      title="清空搜索"
+                    >
+                      <X size={12} />
+                    </button>
+                  )}
                 </label>
               </div>
             </div>
@@ -1042,10 +1273,10 @@ export function CustomerWorkspace({
                         <div className="cw-story-title-group">
                           <h3>{story.name}</h3>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 3 }}>
-                            <strong style={{ fontSize: 14.5, color: '#111827' }}>
+                            <strong style={{ fontSize: 15, color: '#111827' }}>
                               {story.multiTask.tasksSummary}
                             </strong>
-                            <small style={{ fontSize: 13, color: '#6b7280' }}>· 最近更新：{story.updatedAtText}</small>
+                            <small style={{ fontSize: 13.5, color: '#6b7280' }}>· 最近更新：{story.updatedAtText}</small>
                           </div>
                         </div>
                         <span className={`cw-story-badge ${primaryBadge.variant}`}>
@@ -1086,7 +1317,7 @@ export function CustomerWorkspace({
                           {story.multiTask.topTasks.map((t: { id: string; displayNo: string; status: string; progressText: string; actionText: string }) => (
                             <div className="cw-multi-focus-card" key={t.id}>
                               <div className="cw-focus-card-head">
-                                <strong style={{ fontSize: 14, color: '#163829' }}>{t.displayNo}</strong>
+                                <strong style={{ fontSize: 14.5, color: '#163829' }}>{t.displayNo}</strong>
                                 <span className="cw-story-badge blue">{t.status}</span>
                               </div>
                               <div className="cw-focus-progress">{t.progressText}</div>
@@ -1095,7 +1326,7 @@ export function CustomerWorkspace({
                                   <button
                                     type="button"
                                     className="text-button"
-                                    style={{ fontSize: 13.5, color: '#1b6e46', fontWeight: 600 }}
+                                    style={{ fontSize: 14, color: '#1b6e46', fontWeight: 600 }}
                                     onClick={() => onAddMaterial(c.id)}
                                   >
                                     补充查货资料 →
@@ -1104,7 +1335,7 @@ export function CustomerWorkspace({
                                   <button
                                     type="button"
                                     className="text-button"
-                                    style={{ fontSize: 13.5, color: '#1b6e46', fontWeight: 600 }}
+                                    style={{ fontSize: 14, color: '#1b6e46', fontWeight: 600 }}
                                     onClick={() => state.selectDraft(t.id)}
                                   >
                                     {t.actionText} →
@@ -1147,14 +1378,16 @@ export function CustomerWorkspace({
                 );
               }
 
+              const noReliableSource = story.progressPercent === 100 && story.unresolvedItems.some((item) => item.text.includes('暂无可靠对应') || item.text.includes('暂无确定查货依据') || item.text.includes('等待仓储补充'));
+              const awaitingReview = story.nextStepText.includes('最终复核');
               return (
                 <article className="cw-customer cw-story-card" key={c.id}>
                   <div className="cw-story-head">
                     <div className="cw-story-title-group">
                       <h3>{story.name}</h3>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 3 }}>
-                        <strong style={{ fontSize: 14.5, color: '#111827' }}>任务：{story.displayNo}</strong>
-                        <small style={{ fontSize: 13, color: '#6b7280' }}>· 最近更新：{story.updatedAtText}</small>
+                        <strong className="cw-story-task-no">{story.displayNo}</strong>
+                        <small className="cw-story-updated">更新于 {story.updatedAtText}</small>
                       </div>
                     </div>
                     <span className={`cw-story-badge ${primaryBadge.variant}`}>
@@ -1174,38 +1407,26 @@ export function CustomerWorkspace({
                       {story.currentStatusText}
                     </div>
 
-                    <div className="cw-story-section">
-                      <span className="cw-story-label">本次材料</span>
-                      <span className="cw-story-content">
-                        {story.materialsSummary}
-                      </span>
+                    <div className="cw-story-section cw-ai-stage">
+                      <span className="cw-story-label"><Sparkles size={13} /> AI 当前阶段</span>
+                      <span className="cw-story-content">{noReliableSource ? '等待可靠查货依据' : awaitingReview ? 'AI 自动核对已通过，等待人工复核' : story.progressPercent === 100 && primaryBadge.variant !== 'green' ? '已找到查货候选，等待人工确认' : story.currentStatusText}</span>
                     </div>
 
                     <div className="cw-story-section">
-                      <span className="cw-story-label">AI 已完成整理</span>
-                      <ul className="cw-story-list">
-                        <li>{story.aiOrderSummary}</li>
-                        <li title={story.aiInspectionTooltip}>
-                          {story.aiInspectionSummary}
-                        </li>
-                      </ul>
-                    </div>
-
-                    <div className="cw-story-section">
-                      <span className="cw-story-label">当前进度</span>
+                      <span className="cw-story-label">查货候选覆盖</span>
                       <div className="cw-story-progress-box">
                         <div className="cw-story-progress-text">
-                          <span>{story.progressText}</span>
-                          <span>{story.progressPercent}%</span>
+                          <span>{noReliableSource ? '暂无可靠查货依据' : story.progressText}</span>
+                          <span>{noReliableSource ? '待补充查货' : story.progressPercent === 100 && primaryBadge.variant !== 'green' ? '候选已覆盖' : `${story.progressPercent}%`}</span>
                         </div>
                         <div className="cw-story-progress-bar">
                           <div
                             className="cw-story-progress-fill"
-                            style={{ width: `${story.progressPercent}%` }}
+                            style={{ width: `${noReliableSource ? 0 : story.progressPercent}%` }}
                           />
                         </div>
-                        {story.compositionalProgress && (
-                          <div className="cw-compositional-progress" style={{ fontSize: 11, color: '#047857', marginTop: 4, lineHeight: 1.4 }}>
+                        {story.compositionalProgress && !awaitingReview && (
+                          <div className="cw-compositional-progress">
                             {story.compositionalProgress}
                           </div>
                         )}
@@ -1246,6 +1467,12 @@ export function CustomerWorkspace({
                     onSelectDraft={(draftId) => state.selectDraft(draftId)}
                   />
 
+                  <details className="cw-story-card-tech cw-story-materials">
+                    <summary>材料与 AI 已完成工作</summary>
+                    <div className="cw-story-section"><span className="cw-story-label">本次材料</span><span className="cw-story-content">{story.materialsSummary}</span></div>
+                    <div className="cw-story-section"><span className="cw-story-label">AI 已完成整理</span><ul className="cw-story-list"><li>{story.aiOrderSummary}</li><li title={story.aiInspectionTooltip}>{story.aiInspectionSummary}</li></ul></div>
+                  </details>
+
                   {/* 渐进式披露：底层对账与技术指标（内部ID收纳） */}
                   <details className="cw-story-card-tech">
                     <summary>技术详情（供对账核验）</summary>
@@ -1273,47 +1500,51 @@ export function CustomerWorkspace({
             })}
           </div>
         )}
-
-          {/* 第四层：最近业务动态 */}
-          <div className="cw-bottom">
-            <section className="cw-events-card">
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  marginBottom: 14,
-                }}
-              >
-                <h3 style={{ margin: 0 }}>最近业务动态</h3>
-                <small style={{ color: '#7a8e83' }}>
-                  实时材料到达与核对推进流水
-                </small>
-              </div>
-              {model.events.slice(0, 8).map((e) => (
-                <div className="cw-event" key={e.id}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                    <time>{date(e.occurredAt)}</time>
-                    <span className="cw-tag-code">{e.actorType || '系统自动'} · {e.operationType || '业务更新'}</span>
-                  </div>
-                  <p style={{ margin: '6px 0', color: '#1f3d2f' }}>{e.summary}</p>
-                  {e.draftId && (
-                    <button
-                      className="text-button"
-                      onClick={() => state.selectDraft(e.draftId!)}
-                    >
-                      查看任务
-                      <ArrowRight size={13} />
-                    </button>
-                  )}
-                </div>
-              ))}
-              {!model.events.length && <p>暂无业务动态</p>}
-            </section>
-          </div>
         </>
       ) : (
         <>
+          {/* 返回全部客户看板快捷条 */}
+          <div
+            className="cw-customer-detail-nav-bar"
+            style={{
+              marginBottom: 12,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              background: '#f8fafc',
+              border: '1px solid #e2e8f0',
+              borderRadius: 8,
+              padding: '8px 14px',
+            }}
+          >
+            <button
+              type="button"
+              className="cw-back-to-home-btn"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 6,
+                padding: '5px 12px',
+                fontSize: 13.5,
+                fontWeight: 600,
+                color: '#166534',
+                borderColor: '#86efac',
+                background: '#f0fdf4',
+                cursor: 'pointer',
+                borderRadius: 6,
+                border: '1px solid #86efac',
+              }}
+              onClick={() => setCustomerId(null)}
+              aria-label="返回客户工作台首页（全部客户）"
+            >
+              <ArrowLeft size={14} />
+              <span>返回客户工作台首页（全部客户）</span>
+            </button>
+            <span style={{ fontSize: 13, color: '#64748b' }}>
+              当前客户：<strong style={{ color: '#1e293b' }}>{customer.name}</strong>
+            </span>
+          </div>
+
           {/* 1. 客户概览信息卡片 */}
           <div className="cw-customer-overview-card">
             <div className="cw-customer-overview-main">
@@ -1330,6 +1561,15 @@ export function CustomerWorkspace({
             </div>
             <div className="cw-customer-overview-actions" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <button
+                type="button"
+                className="secondary"
+                style={{ fontSize: 13.5, display: 'inline-flex', alignItems: 'center', gap: 4 }}
+                onClick={() => setCustomerId(null)}
+              >
+                <ArrowLeft size={13} />
+                全部客户
+              </button>
+              <button
                 className="primary"
                 onClick={() => onAddMaterial(customerId)}
               >
@@ -1338,7 +1578,7 @@ export function CustomerWorkspace({
               </button>
               <button
                 className="text-button"
-                style={{ fontSize: 13, fontWeight: 600, color: '#166534' }}
+                style={{ fontSize: 12.5, fontWeight: 550 }}
                 onClick={() => setTab('批次关系')}
               >
                 查看批次关系全貌 →
@@ -1354,7 +1594,7 @@ export function CustomerWorkspace({
                 onClick={() => setCommodityFilter(commodityFilter === 'EXACT_MODEL' ? 'ALL' : 'EXACT_MODEL')}
                 title="点击仅显示【已自动对应】商品"
               >
-                <div className="cw-five-kpi-badge">🟢 已自动对应</div>
+                <div className="cw-five-kpi-badge">已自动对应</div>
                 <strong className="cw-five-kpi-num">{commoditySummary.exactCount}</strong>
                 <small>高信度自动确认</small>
               </button>
@@ -1364,7 +1604,7 @@ export function CustomerWorkspace({
                 onClick={() => setCommodityFilter(commodityFilter === 'CORE_MODEL_WITH_AFFIX_DIFF' ? 'ALL' : 'CORE_MODEL_WITH_AFFIX_DIFF')}
                 title="点击仅显示【已自动对应 · 有提醒】商品"
               >
-                <div className="cw-five-kpi-badge">🟡 已自动对应 · 有提醒</div>
+                <div className="cw-five-kpi-badge">已自动对应 · 有提醒</div>
                 <strong className="cw-five-kpi-num">{commoditySummary.affixDiffCount}</strong>
                 <small>型号后缀差异，已匹配</small>
               </button>
@@ -1374,7 +1614,7 @@ export function CustomerWorkspace({
                 onClick={() => setCommodityFilter(commodityFilter === 'MULTIPLE_MODEL_CANDIDATES' ? 'ALL' : 'MULTIPLE_MODEL_CANDIDATES')}
                 title="点击仅显示【需要人工选择】商品"
               >
-                <div className="cw-five-kpi-badge">🟠 需要人工选择</div>
+                <div className="cw-five-kpi-badge">需要人工选择</div>
                 <strong className={`cw-five-kpi-num ${commoditySummary.multipleCount > 0 ? 'highlight-orange' : ''}`}>
                   {commoditySummary.multipleCount}
                 </strong>
@@ -1386,7 +1626,7 @@ export function CustomerWorkspace({
                 onClick={() => setCommodityFilter(commodityFilter === 'NO_MODEL_CANDIDATE' ? 'ALL' : 'NO_MODEL_CANDIDATE')}
                 title="点击仅显示【暂无查货依据】商品"
               >
-                <div className="cw-five-kpi-badge">⚪ 暂无查货依据</div>
+                <div className="cw-five-kpi-badge">暂无查货依据</div>
                 <strong className="cw-five-kpi-num">{commoditySummary.noCandidateCount}</strong>
                 <small>材料异步，等待到货</small>
               </button>
@@ -1396,7 +1636,7 @@ export function CustomerWorkspace({
                 onClick={() => setCommodityFilter(commodityFilter === 'MODEL_CONFLICT' ? 'ALL' : 'MODEL_CONFLICT')}
                 title="点击仅显示【存在明确冲突】商品"
               >
-                <div className="cw-five-kpi-badge">🔴 存在明确冲突</div>
+                <div className="cw-five-kpi-badge">存在明确冲突</div>
                 <strong className={`cw-five-kpi-num ${commoditySummary.conflictCount > 0 ? 'highlight-red' : ''}`}>
                   {commoditySummary.conflictCount}
                 </strong>
@@ -1424,8 +1664,8 @@ export function CustomerWorkspace({
           {tab === '商品对应' && (
             <div className="cw-commodity-reconciliation-tab">
               <div className="cw-commodity-header-block" style={{ marginBottom: 14 }}>
-                <h3 style={{ margin: '0 0 4px', fontSize: 16, color: '#14532d' }}>商品对应</h3>
-                <p style={{ margin: 0, fontSize: 12, color: '#4b5563' }}>
+                <h3 style={{ margin: '0 0 4px', fontSize: 16.5, color: '#14532d' }}>商品对应</h3>
+                <p style={{ margin: 0, fontSize: 12.5, color: '#4b5563' }}>
                   查看 AI 已建立的商品关系，处理无法自动确定的对应。
                 </p>
               </div>
@@ -1434,8 +1674,8 @@ export function CustomerWorkspace({
                 <section className="cw-action-required-card">
                   <div className="cw-action-required-head">
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <span style={{ fontSize: 18 }}>⚠️</span>
-                      <h3 style={{ margin: 0, color: '#9a3412', fontSize: 15 }}>
+                      <span style={{ fontSize: 18.5 }}>⚠️</span>
+                      <h3 style={{ margin: 0, color: '#9a3412', fontSize: 15.5 }}>
                         需要我处理 · {commoditySummary.actionRequiredItems.length} 个商品待人工选择
                       </h3>
                     </div>
@@ -1461,22 +1701,27 @@ export function CustomerWorkspace({
                             <span className="label">查货候选 ({item.candidateCount || item.candidates?.length || 2}个)：</span>
                             {item.candidates && item.candidates.length > 0 ? (
                               <div className="cw-candidate-chips-row" style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 4 }}>
-                                {item.candidates.map((c, idx) => (
-                                  <span
-                                    key={idx}
-                                    style={{
-                                      fontSize: 11,
-                                      padding: '2px 8px',
-                                      borderRadius: 4,
-                                      background: '#fff7ed',
-                                      border: '1px solid #fed7aa',
-                                      color: '#9a3412',
-                                      fontWeight: 600,
-                                    }}
-                                  >
-                                    {idx === 0 ? '①' : idx === 1 ? '②' : `${idx + 1}.`} {c.batchDisplayNo} / {c.model} ({c.warehouseNo})
-                                  </span>
-                                ))}
+                                {item.candidates.map((c, idx) => {
+                                  const labelText = c.batchDisplayNo.includes(c.warehouseNo)
+                                    ? `${c.batchDisplayNo} · ${c.model}`
+                                    : `${c.batchDisplayNo} / ${c.model} (${c.warehouseNo})`;
+                                  return (
+                                    <span
+                                      key={idx}
+                                      style={{
+                                        fontSize: 11.5,
+                                        padding: '2px 8px',
+                                        borderRadius: 4,
+                                        background: '#fff7ed',
+                                        border: '1px solid #fed7aa',
+                                        color: '#9a3412',
+                                        fontWeight: 600,
+                                      }}
+                                    >
+                                      {idx === 0 ? '①' : idx === 1 ? '②' : `${idx + 1}.`} {labelText}
+                                    </span>
+                                  );
+                                })}
                               </div>
                             ) : (
                               <span className="candidates-summary">存在同主干不同版本候选</span>
@@ -1486,14 +1731,14 @@ export function CustomerWorkspace({
                         <div className="cw-action-item-btns">
                           <button
                             className="primary"
-                            style={{ fontSize: 12, padding: '5px 12px' }}
+                            style={{ fontSize: 12.5, padding: '5px 12px' }}
                             onClick={() => setSelectedCandidateItem(item)}
                           >
-                            选择对应商品 →
+                            选择匹配批次 →
                           </button>
                           <button
                             className="text-button"
-                            style={{ fontSize: 12, color: '#166534', fontWeight: 600 }}
+                            style={{ fontSize: 12.5, color: '#166534', fontWeight: 600 }}
                             onClick={() => setSelectedDetailItem(item)}
                           >
                             查看依据详情
@@ -1509,17 +1754,17 @@ export function CustomerWorkspace({
               <section className="cw-goods-table-card">
                 <div className="cw-goods-table-head">
                   <div>
-                    <h3 style={{ margin: 0, fontSize: 15, color: '#14532d' }}>
+                    <h3 style={{ margin: 0, fontSize: 15.5, color: '#14532d' }}>
                       全部商品对应清单 ({filteredCommodities.length}/{commoditySummary?.totalCount || 0}) · 按委托任务分组
                     </h3>
-                    <p style={{ margin: '4px 0 0', fontSize: 12, color: '#64748b' }}>
+                    <p style={{ margin: '4px 0 0', fontSize: 12.5, color: '#64748b' }}>
                       以委托商品为核心，跨批次归集查货依据。清晰呈现每个商品的对应结果、依据来源及处理建议。
                     </p>
                   </div>
                   {commodityFilter !== 'ALL' && (
                     <button
                       className="text-button"
-                      style={{ fontSize: 12, color: '#166534', fontWeight: 600 }}
+                      style={{ fontSize: 12.5, color: '#166534', fontWeight: 600 }}
                       onClick={() => setCommodityFilter('ALL')}
                     >
                       清除过滤，显示全部商品 ✕
@@ -1602,8 +1847,8 @@ export function CustomerWorkspace({
                                     {item.isMultiBatchSource ? (
                                       <div className="cw-source-cell multi-batch">
                                         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                                          <span className="cw-source-batch multi">CH001 + CH002</span>
-                                          <span className="cw-source-tag-multi">双批次联合</span>
+                                          <span className="cw-source-batch multi">{item.sourceBatch || '多明细联合'}</span>
+                                          <span className="cw-source-tag-multi">联合覆盖</span>
                                         </div>
                                         <small className="cw-source-meta" style={{ color: '#047857' }}>
                                           {item.sourceBatches && item.sourceBatches.length > 0
@@ -1674,7 +1919,7 @@ export function CustomerWorkspace({
                                       {requiresAction && (
                                         <button
                                           className="primary"
-                                          style={{ fontSize: 11, padding: '3px 8px' }}
+                                          style={{ fontSize: 11.5, padding: '3px 8px' }}
                                           onClick={() => setSelectedCandidateItem(item)}
                                           title="人工选择查货依据"
                                         >
@@ -1683,7 +1928,7 @@ export function CustomerWorkspace({
                                       )}
                                       <button
                                         className="text-button"
-                                        style={{ fontSize: 12, fontWeight: 600, color: '#166534' }}
+                                        style={{ fontSize: 12.5, fontWeight: 600, color: '#166534' }}
                                         onClick={() => setSelectedDetailItem(item)}
                                         title="查看四层递进比对详情与材料依据"
                                       >
@@ -1717,8 +1962,8 @@ export function CustomerWorkspace({
               <div className="cw-batch-relation-banner-clean">
                 <div className="cw-batch-banner-main">
                   <div className="cw-batch-banner-title">
-                    <span style={{ fontSize: 18 }}>📋</span>
-                    <h3 style={{ margin: 0, fontSize: 16, color: '#14532d' }}>
+                    <span style={{ fontSize: 18.5 }}>📋</span>
+                    <h3 style={{ margin: 0, fontSize: 16.5, color: '#14532d' }}>
                       异步材料池与批次关联关系清单
                     </h3>
                   </div>
@@ -1729,7 +1974,7 @@ export function CustomerWorkspace({
                 <div className="cw-batch-banner-action">
                   <button
                     className="text-button"
-                    style={{ fontSize: 13, fontWeight: 600, color: '#166534', whiteSpace: 'nowrap' }}
+                    style={{ fontSize: 13.5, fontWeight: 600, color: '#166534', whiteSpace: 'nowrap' }}
                     onClick={() => setTab(tabs[2])}
                   >
                     查看材料与批次明细 →
@@ -1741,10 +1986,10 @@ export function CustomerWorkspace({
               <section className="cw-batch-three-questions-section">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
                   <div>
-                    <h3 style={{ margin: 0, fontSize: 15, color: '#14532d' }}>
+                    <h3 style={{ margin: 0, fontSize: 15.5, color: '#14532d' }}>
                       批次关系清单 · 回答 3 大关键业务问题
                     </h3>
-                    <p style={{ margin: '4px 0 0', fontSize: 12, color: '#64748b' }}>
+                    <p style={{ margin: '4px 0 0', fontSize: 12.5, color: '#64748b' }}>
                       穿透批次与任务交集，直接说明每个查货批次去向、委托来源及增量变更影响
                     </p>
                   </div>
@@ -1793,20 +2038,20 @@ export function CustomerWorkspace({
                   {(customer.dualPools?.entrustmentPool ?? []).map((card) => (
                     <div className="cw-pool-card" key={card.draftId}>
                       <div className="cw-pool-card-head">
-                        <strong style={{ fontSize: 13, color: '#163829' }}>{card.displayNo}</strong>
+                        <strong style={{ fontSize: 13.5, color: '#163829' }}>{card.displayNo}</strong>
                         <span className="cw-story-badge blue">{card.businessStatus}</span>
                       </div>
-                      <div style={{ fontSize: 12, color: '#475569' }}>
+                      <div style={{ fontSize: 12.5, color: '#475569' }}>
                         材料: {card.materialSummary} · 创建于 {card.createdAt}
                       </div>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, fontWeight: 600, color: '#166534', marginTop: 4 }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12.5, fontWeight: 600, color: '#166534', marginTop: 4 }}>
                         <span>商品核对进度</span>
                         <span>{card.matchedLines}/{card.totalLines} 行已确定依据</span>
                       </div>
 
                       {card.confirmedInspectionBatches && card.confirmedInspectionBatches.length > 0 && (
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginTop: 4 }}>
-                          <span style={{ fontSize: 11, color: '#166534', fontWeight: 600 }}>已确认使用批次:</span>
+                          <span style={{ fontSize: 11.5, color: '#166534', fontWeight: 600 }}>已确认使用批次:</span>
                           {card.confirmedInspectionBatches.map((b, i) => (
                             <span className="cw-tag-code" style={{ background: '#dcfce7', borderColor: '#86efac', color: '#166534' }} key={i}>{b}</span>
                           ))}
@@ -1815,7 +2060,7 @@ export function CustomerWorkspace({
 
                       {card.candidateInspectionBatches && card.candidateInspectionBatches.length > 0 && (
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginTop: 4 }}>
-                          <span style={{ fontSize: 11, color: '#9a3412', fontWeight: 600 }}>候选批次:</span>
+                          <span style={{ fontSize: 11.5, color: '#9a3412', fontWeight: 600 }}>候选批次:</span>
                           {card.candidateInspectionBatches.map((b, i) => (
                             <span className="cw-tag-code" style={{ background: '#ffedd5', borderColor: '#fed7aa', color: '#9a3412' }} key={i}>{b}</span>
                           ))}
@@ -1823,20 +2068,20 @@ export function CustomerWorkspace({
                       )}
 
                       {(card.missingInspectionCount ?? 0) > 0 && (
-                        <div style={{ fontSize: 11, color: '#64748b', marginTop: 2 }}>
+                        <div style={{ fontSize: 11.5, color: '#64748b', marginTop: 2 }}>
                           仍缺查货依据商品: <strong style={{ color: '#475569' }}>{card.missingInspectionCount} 个</strong> (等待材料到货)
                         </div>
                       )}
 
                       {card.issuesSummary.length > 0 && (
-                        <div style={{ fontSize: 11, color: '#b45309', marginTop: 2 }}>
+                        <div style={{ fontSize: 11.5, color: '#b45309', marginTop: 2 }}>
                           {card.issuesSummary.join(' · ')}
                         </div>
                       )}
                       <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 6 }}>
                         <button
                           className="text-button"
-                          style={{ fontSize: 12, fontWeight: 600, color: '#1b6e46' }}
+                          style={{ fontSize: 12.5, fontWeight: 600, color: '#1b6e46' }}
                           onClick={() => state.selectDraft(card.draftId)}
                         >
                           {card.nextAction} →
@@ -1852,7 +2097,7 @@ export function CustomerWorkspace({
                 <div className="cw-pool-connector">
                   <div className="cw-pool-connector-line" />
                   <span>持续增量对应</span>
-                  <span style={{ fontSize: 18 }}>↔</span>
+                  <span style={{ fontSize: 18.5 }}>↔</span>
                   <div className="cw-pool-connector-line" />
                 </div>
 
@@ -1867,10 +2112,10 @@ export function CustomerWorkspace({
                   {(customer.dualPools?.inspectionPool ?? []).map((batch) => (
                     <div className="cw-pool-card" key={batch.batchId}>
                       <div className="cw-pool-card-head">
-                        <strong style={{ fontSize: 13, color: '#163829' }}>{batch.displayNo}</strong>
+                        <strong style={{ fontSize: 13.5, color: '#163829' }}>{batch.displayNo}</strong>
                         <span className="cw-tag-code">{batch.arrivedAt}</span>
                       </div>
-                      <div style={{ fontSize: 12, color: '#475569' }}>
+                      <div style={{ fontSize: 12.5, color: '#475569' }}>
                         {batch.files.length} 份查货材料 · {batch.rawRowCount} 条原始明细 ({batch.mergedProductCount} 个型号)
                       </div>
                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, margin: '6px 0 4px' }}>
@@ -1881,8 +2126,8 @@ export function CustomerWorkspace({
 
                       {batch.confirmedTaskItems && batch.confirmedTaskItems.length > 0 && (
                         <div style={{ marginTop: 4 }}>
-                          <span style={{ fontSize: 11, color: '#166534', fontWeight: 600 }}>已实际提供依据:</span>
-                          <ul style={{ margin: '2px 0 0', paddingLeft: 16, fontSize: 11, color: '#1e293b' }}>
+                          <span style={{ fontSize: 11.5, color: '#166534', fontWeight: 600 }}>已实际提供依据:</span>
+                          <ul style={{ margin: '2px 0 0', paddingLeft: 16, fontSize: 11.5, color: '#1e293b' }}>
                             {batch.confirmedTaskItems.map((itemStr, i) => (
                               <li key={i}>{itemStr}</li>
                             ))}
@@ -1892,8 +2137,8 @@ export function CustomerWorkspace({
 
                       {batch.candidateTaskItems && batch.candidateTaskItems.length > 0 && (
                         <div style={{ marginTop: 4 }}>
-                          <span style={{ fontSize: 11, color: '#9a3412', fontWeight: 600 }}>候选关联:</span>
-                          <ul style={{ margin: '2px 0 0', paddingLeft: 16, fontSize: 11, color: '#9a3412' }}>
+                          <span style={{ fontSize: 11.5, color: '#9a3412', fontWeight: 600 }}>候选关联:</span>
+                          <ul style={{ margin: '2px 0 0', paddingLeft: 16, fontSize: 11.5, color: '#9a3412' }}>
                             {batch.candidateTaskItems.map((itemStr, i) => (
                               <li key={i}>{itemStr}</li>
                             ))}
@@ -1904,7 +2149,7 @@ export function CustomerWorkspace({
                       <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 6 }}>
                         <button
                           className="text-button"
-                          style={{ fontSize: 12, fontWeight: 600, color: '#1b6e46' }}
+                          style={{ fontSize: 12.5, fontWeight: 600, color: '#1b6e46' }}
                           onClick={() => setTab(tabs[2])}
                         >
                           查看明细箱行 →
@@ -1919,10 +2164,10 @@ export function CustomerWorkspace({
               <div className="cw-relation-matrix-section">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div>
-                    <h3 style={{ margin: 0, fontSize: 15, color: '#14532d' }}>
+                    <h3 style={{ margin: 0, fontSize: 15.5, color: '#14532d' }}>
                       「委托任务 × 查货批次」高级关系矩阵
                     </h3>
-                    <p style={{ margin: '4px 0 0', fontSize: 12, color: '#64748b' }}>
+                    <p style={{ margin: '4px 0 0', fontSize: 12.5, color: '#64748b' }}>
                       横轴为异步入仓查货批次，纵轴为异步到达委托任务。点击单元格可下钻查看对应商品及原文件页码
                     </p>
                   </div>
@@ -1991,10 +2236,10 @@ export function CustomerWorkspace({
               <section style={{ marginTop: 24 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
                   <div>
-                    <h3 style={{ margin: 0, fontSize: 15, color: '#14532d' }}>
+                    <h3 style={{ margin: 0, fontSize: 15.5, color: '#14532d' }}>
                       客户问题处理中心 · {customer.issues.length} 项待处理
                     </h3>
-                    <p style={{ margin: '4px 0 0', fontSize: 12, color: '#64748b' }}>
+                    <p style={{ margin: '4px 0 0', fontSize: 12.5, color: '#64748b' }}>
                       按商品对应关系、申报字段冲突、必填缺失与客户抬头四类问题归集，支持直接跳转行级作业
                     </p>
                   </div>
@@ -2143,7 +2388,7 @@ export function CustomerWorkspace({
                   <h3 style={{ margin: 0 }}>
                     查货明细与商品池
                   </h3>
-                  <p style={{ margin: '4px 0 0', fontSize: 12, color: '#64748b' }}>
+                  <p style={{ margin: '4px 0 0', fontSize: 12.5, color: '#64748b' }}>
                     展示客户下所有异步入仓的查货材料、已聚合的规格型号与箱级分配状态
                   </p>
                 </div>
@@ -2168,38 +2413,38 @@ export function CustomerWorkspace({
                   <div className="cw-impact-head">
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                       <Sparkles size={18} color="#059669" />
-                      <h4 style={{ margin: 0, color: '#065f46', fontSize: 14 }}>
+                      <h4 style={{ margin: 0, color: '#065f46', fontSize: 14.5 }}>
                         最新材料增量影响分析 · {customer.latestIncrementalImpact.batchDisplayNo}
                       </h4>
                     </div>
                     <span className="cw-tag-code">到达时间：{customer.latestIncrementalImpact.arrivedTime}</span>
                   </div>
-                  <p style={{ margin: 0, fontSize: 12, color: '#047857' }}>
+                  <p style={{ margin: 0, fontSize: 12.5, color: '#047857' }}>
                     入仓整理新增 <b>{customer.latestIncrementalImpact.newProductCount}</b> 个查货型号。系统自动触发智能增量核对，精准定位受影响委托任务，仅重算受影响商品，不重跑全单：
                   </p>
                   <div className="cw-impact-tasks-grid">
                     {customer.latestIncrementalImpact.affectedTasks.map((t, idx) => (
                       <div className="cw-impact-task-item" key={idx}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                          <strong style={{ fontSize: 13, color: '#1e293b' }}>{t.displayNo}</strong>
+                          <strong style={{ fontSize: 13.5, color: '#1e293b' }}>{t.displayNo}</strong>
                           <span className={`cw-story-badge ${t.requiresHumanReview ? 'orange' : 'green'}`}>
                             {t.statusChange}
                           </span>
                         </div>
-                        <div style={{ fontSize: 12, color: '#64748b' }}>{t.taskName}</div>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12 }}>
+                        <div style={{ fontSize: 12.5, color: '#64748b' }}>{t.taskName}</div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12.5 }}>
                           <span style={{ color: '#64748b' }}>进度变化:</span>
                           <strong style={{ color: '#059669' }}>{t.beforeProgress}</strong>
                           <span>→</span>
                           <strong style={{ color: '#059669' }}>{t.afterProgress}</strong>
                         </div>
-                        <p style={{ margin: '4px 0 0', fontSize: 11, color: '#475569', lineHeight: 1.4 }}>
+                        <p style={{ margin: '4px 0 0', fontSize: 11.5, color: '#475569', lineHeight: 1.4 }}>
                           {t.detail}
                         </p>
                         <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 4 }}>
                           <button
                             className="text-button"
-                            style={{ fontSize: 12, fontWeight: 600, color: '#1b6e46' }}
+                            style={{ fontSize: 12.5, fontWeight: 600, color: '#1b6e46' }}
                             onClick={() => {
                               const found = customer.tasks.find(x => x.draft.displayNo === t.displayNo);
                               if (found) state.selectDraft(found.draft.id);
@@ -2222,7 +2467,7 @@ export function CustomerWorkspace({
                   </h3>
                   <span className="cw-tag-code">全生命周期事实追溯</span>
                 </div>
-                <p style={{ fontSize: 12, color: '#64748b', margin: '0 0 16px' }}>
+                <p style={{ fontSize: 12.5, color: '#64748b', margin: '0 0 16px' }}>
                   真实记录委托材料与查货入仓材料的任意先后到达过程。系统在同客户池中持续寻找关系，实现跨批次商品匹配与增量推进。
                 </p>
 
@@ -2260,7 +2505,7 @@ export function CustomerWorkspace({
               >
                 <div className="cw-drilldown-head">
                   <div>
-                    <h3 style={{ margin: 0, fontSize: 16, color: '#14532d' }}>
+                    <h3 style={{ margin: 0, fontSize: 16.5, color: '#14532d' }}>
                       委托任务 {matrixDrilldown.taskDisplayNo} ↔ 查货批次 {matrixDrilldown.batchDisplayNo}
                     </h3>
                     <small style={{ color: '#64748b' }}>
@@ -2288,11 +2533,11 @@ export function CustomerWorkspace({
                         <tr key={idx}>
                           <td>
                             <strong>第 {rel.taskLineOrder} 行 · {rel.taskLineModel}</strong>
-                            <div style={{ fontSize: 11, color: '#64748b' }}>委托数量: {rel.taskLineQuantity}</div>
+                            <div style={{ fontSize: 11.5, color: '#64748b' }}>委托数量: {rel.taskLineQuantity}</div>
                           </td>
                           <td>
                             <span style={{ fontWeight: 600, color: '#166534' }}>{rel.sourceRowModel}</span>
-                            <div style={{ fontSize: 11, color: '#475569' }}>
+                            <div style={{ fontSize: 11.5, color: '#475569' }}>
                               入仓号 {rel.sourceWarehouseNo} · {rel.sourceRowQuantity}
                             </div>
                             <small style={{ color: '#889e92' }}>明细ID: {rel.sourceRowId}</small>
@@ -2304,8 +2549,8 @@ export function CustomerWorkspace({
                           </td>
                           <td>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                              <span style={{ fontSize: 12, color: '#1e293b' }}>📄 {rel.sourceFileName}</span>
-                              <span style={{ fontSize: 11, color: '#64748b' }}>第 {rel.sourcePage ?? 1} 页</span>
+                              <span style={{ fontSize: 12.5, color: '#1e293b' }}>📄 {rel.sourceFileName}</span>
+                              <span style={{ fontSize: 11.5, color: '#64748b' }}>第 {rel.sourcePage ?? 1} 页</span>
                             </div>
                           </td>
                         </tr>
@@ -2411,14 +2656,14 @@ function YingkaBoxAllocationCard({ onSelectDraft }: { onSelectDraft: (id: string
     <div className="cw-box-allocation-section">
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
         <div>
-          <h4 style={{ margin: 0, fontSize: 14, color: '#14532d' }}>
+          <h4 style={{ margin: 0, fontSize: 14.5, color: '#14532d' }}>
             📦 重点商品跨批次箱级拆分看板 · UMW2631 (UNISOC)
           </h4>
-          <p style={{ margin: '4px 0 0', fontSize: 12, color: '#64748b' }}>
+          <p style={{ margin: '4px 0 0', fontSize: 12.5, color: '#64748b' }}>
             批次 CH001 (入仓号 26070093) 共 12 箱 180,000 PCS。系统支持箱级精确拆分与多委托占用：
           </p>
         </div>
-        <div style={{ display: 'flex', gap: 10, fontSize: 11 }}>
+        <div style={{ display: 'flex', gap: 10, fontSize: 11.5 }}>
           <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
             <span style={{ width: 10, height: 10, borderRadius: 2, background: '#dbeafe', border: '1px solid #93c5fd' }} />
             YK-1 占用 (60,000 PCS)
@@ -2570,7 +2815,7 @@ export function CommodityDetailDrawer({
         <div className="cw-drawer-head">
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <h3 style={{ margin: 0, fontSize: 16, color: '#14532d' }}>
+              <h3 style={{ margin: 0, fontSize: 16.5, color: '#14532d' }}>
                 商品对应详情 · {item.taskDisplayNo}
               </h3>
               <CommodityStatusBadge
@@ -2579,7 +2824,7 @@ export function CommodityDetailDrawer({
                 variant={item.statusVariant}
               />
             </div>
-            <p style={{ margin: '4px 0 0', fontSize: 12, color: '#64748b' }}>
+            <p style={{ margin: '4px 0 0', fontSize: 12.5, color: '#64748b' }}>
               委托申报行 #{item.lineOrder} · 申报型号: <strong>{item.entrustmentModel}</strong>
             </p>
           </div>
@@ -2642,15 +2887,17 @@ export function CommodityDetailDrawer({
                     <td><strong>申报品名 / 品牌</strong></td>
                     <td>
                       <span className="cw-prop-val">
-                        {item.entrustmentBrand ? `${item.entrustmentBrand} · 芯片` : '芯片/集成电路'}
+                        {item.entrustmentProductName
+                          ? `${item.entrustmentBrand ? `${item.entrustmentBrand} · ` : ''}${item.entrustmentProductName}`
+                          : item.entrustmentBrand || '—'}
                       </span>
                     </td>
                     <td>
                       <span className="cw-prop-val">
                         {item.inspectionBrand
-                          ? `${item.inspectionBrand} · 贴片集成电路`
+                          ? `${item.inspectionBrand}${item.entrustmentProductName ? ` · ${item.entrustmentProductName}` : ''}`
                           : item.inspectionModel
-                          ? '集成电路'
+                          ? (item.entrustmentProductName || '—')
                           : '—'}
                       </span>
                     </td>
@@ -2677,13 +2924,17 @@ export function CommodityDetailDrawer({
                   <tr>
                     <td><strong>原产国 (地区)</strong></td>
                     <td>
-                      <span className="cw-prop-val">{item.entrustmentOrigin || '中国'}</span>
+                      <span className="cw-prop-val">{item.entrustmentOrigin || '—'}</span>
                     </td>
                     <td>
-                      <span className="cw-prop-val">{item.inspectionOrigin || '中国'}</span>
+                      <span className="cw-prop-val">{item.inspectionOrigin || (item.inspectionModel ? (item.entrustmentOrigin || '—') : '—')}</span>
                     </td>
                     <td>
-                      <span className="cw-compare-tag match">产地一致</span>
+                      {item.inspectionOrigin && item.entrustmentOrigin && item.inspectionOrigin !== item.entrustmentOrigin ? (
+                        <span className="cw-compare-tag conflict">产地存疑</span>
+                      ) : (
+                        <span className="cw-compare-tag match">产地核符</span>
+                      )}
                     </td>
                   </tr>
                 </tbody>
@@ -2763,7 +3014,7 @@ export function CommodityDetailDrawer({
               <div className="cw-multi-batch-source-card">
                 <div className="cw-multi-batch-source-head">
                   <span className="cw-multi-badge">多批次联合依据</span>
-                  <h5 style={{ margin: '4px 0', fontSize: 14, color: '#166534' }}>
+                  <h5 style={{ margin: '4px 0', fontSize: 14.5, color: '#166534' }}>
                     两个查货来源共同覆盖该商品
                   </h5>
                   <p className="cw-multi-source-desc">
@@ -2833,8 +3084,8 @@ export function CommodityDetailDrawer({
               <div className="cw-drawer-box-link">
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <div>
-                    <strong style={{ fontSize: 13, color: '#166534' }}>📦 该型号跨批次拆分于 16 个物理箱</strong>
-                    <p style={{ margin: '3px 0 0', fontSize: 11, color: '#475569' }}>
+                    <strong style={{ fontSize: 13.5, color: '#166534' }}>📦 该型号跨批次拆分于 16 个物理箱</strong>
+                    <p style={{ margin: '3px 0 0', fontSize: 11.5, color: '#475569' }}>
                       批次 CH001 包含箱001~004 (60,000 PCS) 及自由箱009~012；批次 CH002 入仓 UMW2631-A。
                     </p>
                   </div>
@@ -2918,10 +3169,10 @@ export function CandidateSelectionModal({
       >
         <div className="cw-candidate-modal-head">
           <div>
-            <h3 style={{ margin: 0, fontSize: 16, color: '#9a3412' }}>
+            <h3 style={{ margin: 0, fontSize: 16.5, color: '#9a3412' }}>
               人工指定查货依据商品
             </h3>
-            <p style={{ margin: '4px 0 0', fontSize: 12, color: '#64748b' }}>
+            <p style={{ margin: '4px 0 0', fontSize: 12.5, color: '#64748b' }}>
               委托任务：<strong>{item.taskDisplayNo}</strong> · 申报行号：#<strong>{item.lineOrder}</strong> · 委托型号：<strong className="highlight-text">{item.entrustmentModel}</strong>
             </p>
           </div>
@@ -2965,7 +3216,7 @@ export function CandidateSelectionModal({
                     </div>
                     <div>
                       <span className="label">数量核验：</span>
-                      <span>{item.entrustmentQuantity || '60000 PCS'}</span>
+                      <span>{item.entrustmentQuantity || '—'}</span>
                     </div>
                     <div>
                       <span className="label">原始查货文件：</span>
@@ -2979,9 +3230,9 @@ export function CandidateSelectionModal({
                   <div className="cw-candidate-evidence-tip">
                     <span>依据：</span>
                     <span>
-                      {cand.model === item.entrustmentModel
-                        ? '核心型号完全吻合，来源于独立入仓批次。'
-                        : `型号带有后缀变体（${cand.model}），为可替代/包装衍生候选。`}
+                      {cand.model.startsWith(item.entrustmentModel) || cand.model.includes(item.entrustmentModel)
+                        ? '核心型号吻合，来源于实物查货单独立明细行。'
+                        : `型号带有变体（${cand.model}），为可替代/包装衍生候选。`}
                     </span>
                   </div>
                 </div>
@@ -3101,7 +3352,7 @@ function TaskTable({
                     {t.draft.displayNo}
                   </button>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 2 }}>
-                    <small style={{ fontSize: 12.5, color: '#64748b' }}>{t.draft.customerName}</small>
+                    <small style={{ fontSize: 13, color: '#64748b' }}>{t.draft.customerName}</small>
                     <span className="cw-stage-tag">{(t as any).stage || '商品对应'}</span>
                   </div>
                 </td>
@@ -3110,7 +3361,7 @@ function TaskTable({
                     {t.matched}/{t.total} 商品已对应
                   </span>
                   <small
-                    style={{ display: 'block', color: '#64748b', fontSize: 12.5, marginTop: 4 }}
+                    style={{ display: 'block', color: '#64748b', fontSize: 13, marginTop: 4 }}
                     title={taskProgressMap?.get(t.draft.displayNo)}
                   >
                     {taskProgressMap?.get(t.draft.displayNo) ||
@@ -3119,7 +3370,7 @@ function TaskTable({
                 </td>
                 <td>
                   <div>
-                    <span style={{ fontWeight: 600, color: '#1f2937', fontSize: 14 }}>{ai.label}</span>
+                    <span style={{ fontWeight: 600, color: '#1f2937', fontSize: 14.5 }}>{ai.label}</span>
                     <span className="cw-tag-code" title={`技术流水线：${ai.techCode}`}>{ai.businessStage}</span>
                   </div>
                 </td>
@@ -3152,7 +3403,7 @@ function TaskTable({
                   <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                     <button
                       className="text-button"
-                      style={{ fontSize: 14, color: '#166534', fontWeight: 600 }}
+                      style={{ fontSize: 14.5, color: '#166534', fontWeight: 600 }}
                       onClick={() => select(t.draft.id)}
                     >
                       {t.nextAction}
@@ -3199,7 +3450,7 @@ function TaskTable({
                   marginBottom: 8,
                 }}
               >
-                <strong style={{ fontSize: 13, color: '#184935' }}>
+                <strong style={{ fontSize: 13.5, color: '#184935' }}>
                   {t.draft.displayNo} · 专业追溯数据（渐进式披露）
                 </strong>
                 <button
@@ -3362,7 +3613,7 @@ function EntrustmentPool({
                   </tbody>
                 </table>
               </div>
-              <p style={{ fontSize: 11, color: '#7a8e82', marginTop: 4 }}>
+              <p style={{ fontSize: 11.5, color: '#7a8e82', marginTop: 4 }}>
                 保留原始商品结构和顺序，未做跨行合并。
               </p>
             </details>
@@ -3385,7 +3636,7 @@ function EntrustmentPool({
           return (
             <div>
               <div className="cw-archived-banner">
-                <span style={{ fontSize: 16 }}>📌</span>
+                <span style={{ fontSize: 16.5 }}>📌</span>
                 <div>
                   <strong>当前演示场景未加载该客户的演示草稿（场景：{state.scenarioId}）</strong>
                   <p style={{ margin: '4px 0 0', color: '#415e4f' }}>
@@ -3425,7 +3676,7 @@ function EntrustmentPool({
                           const foundFile = state.files.find((f) => f.name === fname || fname.includes(f.id));
                           return (
                             <div key={fname} style={{ display: 'flex', alignItems: 'center', gap: 10, margin: '6px 0' }}>
-                              <span style={{ fontSize: 13, color: '#1d3f2e' }}>📄 {fname}</span>
+                              <span style={{ fontSize: 13.5, color: '#1d3f2e' }}>📄 {fname}</span>
                               <span className="cw-status blue">主委托材料</span>
                               {foundFile && (
                                 <button className="text-button" onClick={() => openFile(foundFile.id)}>
@@ -3478,7 +3729,7 @@ function EntrustmentPool({
                         <strong>⚠️ 模型审计阻断分析：</strong>{audit.blockedReason}
                       </div>
                     ) : (
-                      <div style={{ background: '#f2f8f5', padding: '10px 12px', borderRadius: 4, fontSize: 12, color: '#255e42' }}>
+                      <div style={{ background: '#f2f8f5', padding: '10px 12px', borderRadius: 4, fontSize: 12.5, color: '#255e42' }}>
                         <strong>✓ 四步核对结论：</strong>
                         P3 关系判定已完成（明确对应 {audit.counts.matched} 行，多候选待确认 {audit.counts.multipleCandidates} 行，未匹配 {audit.counts.unmatched} 行），已生成 {audit.counts.fieldDecisions} 项字段裁决。
                       </div>
@@ -3517,8 +3768,12 @@ function InspectionPool({
 }) {
   const state = useDemoStore();
   const [filter, setFilter] = useState('全部');
+  const archivedInspectionCount = !customer.sources.length
+    ? getCustomerAudits(customer.id).reduce((total, audit) => total + (audit.p2?.rawRowsCount ?? 0), 0)
+    : 0;
   return (
     <>
+      {archivedInspectionCount > 0 && <p className="cw-archive-context">当前任务暂无查货明细；历史样本另有 {archivedInspectionCount} 条查货记录，可在下方查看。</p>}
       <div className="cw-filters">
         {['全部', '可匹配', '草稿占用', '已核销'].map((s) => (
           <button
@@ -3531,7 +3786,7 @@ function InspectionPool({
               : s === '已核销'
               ? '已完成使用'
               : s}{' '}
-            {s === '全部'
+            当前任务 · {s === '全部'
               ? customer.sources.length
               : customer.sources.filter((r) => r.availability === s).length}{' '}
             条明细
@@ -3699,7 +3954,7 @@ function InspectionPool({
           return (
             <div>
               <div className="cw-archived-banner">
-                <span style={{ fontSize: 16 }}>📦</span>
+                <span style={{ fontSize: 16.5 }}>📦</span>
                 <div>
                   <strong>当前演示场景未加载该客户的查货批次</strong>
                   <p style={{ margin: '4px 0 0', color: '#415e4f' }}>
@@ -4013,10 +4268,10 @@ function RelationList({ customer }: { customer: CustomerModel }) {
           <div className="cw-archived-banner">
             <Sparkles size={18} style={{ color: '#16a34a', flexShrink: 0, marginTop: 2 }} />
             <div>
-              <strong style={{ fontSize: '14px', color: '#14532d' }}>
+              <strong style={{ fontSize: '14.5px', color: '#14532d' }}>
                 真实整单样本模型核对结论（样本 {primaryAudit.sampleId} · {primaryAudit.model}）
               </strong>
-              <p style={{ margin: '4px 0 0', color: '#166534', fontSize: '12px' }}>
+              <p style={{ margin: '4px 0 0', color: '#166534', fontSize: '12.5px' }}>
                 共完成 <b>{stats.total}</b> 行商品的自动对应裁决：明确对应 <b>{stats.matched}</b> 行，多候选需人工确认 <b>{stats.multiple}</b> 行，未匹配 <b>{stats.unmatched}</b> 行。
               </p>
             </div>
@@ -4046,7 +4301,7 @@ function RelationList({ customer }: { customer: CustomerModel }) {
                     return (
                       <tr key={rel.orderRowId || idx}>
                         <td>
-                          <strong style={{ color: '#163829', fontSize: '13px' }}>{row?.model || rel.orderRowId}</strong>
+                          <strong style={{ color: '#163829', fontSize: '13.5px' }}>{row?.model || rel.orderRowId}</strong>
                           <br />
                           <small style={{ color: '#687e72' }}>
                             {row?.brand ? `${row.brand} · ` : ''}数量 {row?.quantity || '—'} {row?.unit || ''}
@@ -4077,7 +4332,7 @@ function RelationList({ customer }: { customer: CustomerModel }) {
                             </span>
                           ) : rel.candidateRawRowIds?.length > 0 ? (
                             <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                              <span style={{ color: '#b45309', fontSize: '11px', fontWeight: 600 }}>候选明细:</span>
+                              <span style={{ color: '#b45309', fontSize: '11.5px', fontWeight: 600 }}>候选明细:</span>
                               <span style={{ color: '#78350f' }}>{rel.candidateRawRowIds.join('、')}</span>
                             </div>
                           ) : (

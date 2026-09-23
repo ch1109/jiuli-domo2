@@ -35,18 +35,53 @@ test('各页面返回上一页导航功能正常', async ({ page }) => {
 
   // 1. 进入客户详情页
   const yingkaCard = page.locator('.cw-customer', { hasText: '英卡科技' });
-  await yingkaCard.getByRole('button', { name: /查看全部商品对应 →|查看商品对应 →/ }).click();
+  await yingkaCard.getByRole('button', { name: /查看全部匹配明细 →|查看商品匹配明细 →|查看全部商品对应 →|查看商品对应 →/ }).click();
   await expect(page.locator('.cw-customer-overview-card').getByRole('heading', { level: 2 })).toContainText('英卡科技');
 
   // 2. 点击返回上一页
   await page.getByRole('button', { name: '返回上一页' }).first().click();
   await expect(page.getByText('完整客户业务 · 已整理事实')).toBeVisible();
 
-  // 3. 访问客户商品池
+  // 3. 再次进入英卡科技详情页，通过详情页顶部的“返回客户工作台首页（全部客户）”快捷按钮返回
+  await yingkaCard.getByRole('button', { name: /查看全部匹配明细 →|查看商品匹配明细 →|查看全部商品对应 →|查看商品对应 →/ }).click();
+  await expect(page.locator('.cw-customer-overview-card').getByRole('heading', { level: 2 })).toContainText('英卡科技');
+  await page.getByRole('button', { name: '返回客户工作台首页（全部客户）' }).click();
+  await expect(page.getByText('完整客户业务 · 已整理事实')).toBeVisible();
+
+  // 4. 再次进入英卡科技详情页，通过侧边栏“客户工作台”导航项返回首页
+  await yingkaCard.getByRole('button', { name: /查看全部匹配明细 →|查看商品匹配明细 →|查看全部商品对应 →|查看商品对应 →/ }).click();
+  await expect(page.locator('.cw-customer-overview-card').getByRole('heading', { level: 2 })).toContainText('英卡科技');
+  await page.getByRole('button', { name: '客户工作台' }).first().click();
+  await expect(page.getByText('完整客户业务 · 已整理事实')).toBeVisible();
+
+  // 5. 再次进入英卡科技详情页，通过左侧 Brand Logo 返回首页
+  await yingkaCard.getByRole('button', { name: /查看全部匹配明细 →|查看商品匹配明细 →|查看全部商品对应 →|查看商品对应 →/ }).click();
+  await expect(page.locator('.cw-customer-overview-card').getByRole('heading', { level: 2 })).toContainText('英卡科技');
+  await page.getByLabel('九立智能核对工作台 - 返回首页').click();
+  await expect(page.getByText('完整客户业务 · 已整理事实')).toBeVisible();
+
+  // 6. 再次进入英卡科技详情页，通过顶部面包屑“客户工作台”链接返回首页
+  await yingkaCard.getByRole('button', { name: /查看全部匹配明细 →|查看商品匹配明细 →|查看全部商品对应 →|查看商品对应 →/ }).click();
+  await expect(page.locator('.cw-customer-overview-card').getByRole('heading', { level: 2 })).toContainText('英卡科技');
+  await page.locator('.breadcrumb-nav-link').click();
+  await expect(page.getByText('完整客户业务 · 已整理事实')).toBeVisible();
+
+  // 7. 从核对工作台切换到客户详情页后，点击顶栏返回上一页，能优先退回客户工作台首页而非死循环跳回核对工作台
+  await page.getByRole('button', { name: '当前核对任务' }).click();
+  await expect(page.getByRole('heading', { name: '核对工作台' })).toBeVisible();
+  // 切换到客户工作台，再进入傲冠软件
+  await page.getByRole('button', { name: '客户工作台' }).click();
+  await expect(page.getByText('完整客户业务 · 已整理事实')).toBeVisible();
+  const aoguanCard = page.locator('.cw-customer', { hasText: '傲冠软件' });
+  await aoguanCard.getByRole('button', { name: /查看全部匹配明细 →|查看商品匹配明细 →|查看全部商品对应 →|查看商品对应 →/ }).click();
+  await expect(page.locator('.cw-customer-overview-card').getByRole('heading', { level: 2 })).toContainText('傲冠软件');
+  // 点击顶栏返回按钮
+  await page.getByRole('button', { name: '返回上一页' }).first().click();
+  await expect(page.getByText('完整客户业务 · 已整理事实')).toBeVisible();
+
+  // 8. 访问客户商品池并返回
   await page.getByRole('button', { name: '商品池' }).click();
   await expect(page.getByRole('heading', { name: '客户商品池' })).toBeVisible();
-
-  // 4. 点击返回上一页
   await page.getByRole('button', { name: '返回上一页' }).first().click();
   await expect(page.getByText('完整客户业务 · 已整理事实')).toBeVisible();
 
@@ -61,15 +96,14 @@ test('英卡科技客户工作台：商品对应按委托任务分组、多批�
   // 1. 从首页进入英卡科技工作台
   const yingkaCard = page.locator('.cw-customer', { hasText: '英卡科技' });
   await expect(yingkaCard).toBeVisible();
-  await yingkaCard.getByRole('button', { name: /查看全部商品对应 →|查看商品对应 →/ }).click();
+  await yingkaCard.getByRole('button', { name: /查看全部匹配明细 →|查看商品匹配明细 →|查看全部商品对应 →|查看商品对应 →/ }).click();
 
   // 2. 验证客户抬头及 5 状态核心 KPI 横幅
   await expect(page.locator('.cw-customer-overview-card').getByRole('heading', { level: 2 })).toContainText('英卡科技');
   await expect(page.locator('.cw-customer-overview-card .cw-customer-code-tag')).toHaveText('KH-YKKJ');
-  await expect(page.getByText('🟢 已自动对应')).toBeVisible();
-  await expect(page.getByText('🟡 已自动对应 · 有提醒')).toBeVisible();
-  await expect(page.getByText('🟠 需要人工选择')).toBeVisible();
-  await expect(page.getByText('⚪ 暂无查货依据')).toBeVisible();
+  await expect(page.locator('.cw-five-kpi-badge')).toHaveText([
+    '已自动对应', '已自动对应 · 有提醒', '需要人工选择', '暂无查货依据', '存在明确冲突',
+  ]);
 
   // 3. 验证 Tab 0「商品对应」按委托任务分组
   await expect(page.getByText('全部商品对应清单 (9/9) · 按委托任务分组')).toBeVisible();

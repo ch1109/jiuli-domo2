@@ -7,6 +7,20 @@ import fixture from '../demo-generated/mock/real-calibration-sc08.json';
 import puyiFixture from '../demo-generated/mock/real-calibration-26shpyd056.json';
 
 import auditIndex from '../demo-generated/mock/model-audit-index.json';
+import realCommodityReconciliationsJson from '../demo-generated/mock/real-sample-commodity-reconciliations.json';
+import ordersJson from '../demo-generated/mock/inspection-orders.json';
+
+export const CUSTOMER_SAMPLE_IDS_MAP: Record<string, string[]> = {
+  'C-132ffbd28c07': ['26SHPYD056'],
+  'C-66be07d6cabe': ['2026(DG)ZW001', '2026(DG)ZW003', '2026(DG)ZW050'],
+  'C-e0cb675e9f1d': ['2026AG001'],
+  'C-7ad6719f6d43': ['2026ACSY003'],
+  'C-80d0a4f9a7ac': ['2026BMH001'],
+  'C-b212996858bd': ['英卡-抽+整'],
+  'C-0a93054667fc': ['多对多样例'],
+  'C-7a1e673169bf': ['2026CNKJ001'],
+  'C-89aa660b4b46': ['2025YBT010-2'],
+};
 
 export const TASK_FILTERS = ['全部任务', '处理中', '待解析', '待匹配', '部分核对', '待人工处理', '待人工复核', '人工复核中', '已完成', '异常'] as const;
 
@@ -207,6 +221,7 @@ export interface CustomerCommodityItem {
   entrustmentBrand?: string;
   entrustmentOrigin?: string;
   entrustmentQuantity?: string;
+  entrustmentProductName?: string;
   inspectionModel: string | null;
   inspectionBrand?: string;
   inspectionOrigin?: string;
@@ -584,336 +599,45 @@ export function generateCommodityReconciliationSummary(
   enrichedBatches: any[],
   state: DemoState
 ): CommodityReconciliationSummary {
-  // 1. 英卡科技专属精准 9 商品明细（符合用户规格要求：5 已自动对应 · 1 已自动对应(有提醒) · 2 需要人工选择 · 1 暂无查货依据）
-  if (customer.name.includes('英卡')) {
-    const items: CustomerCommodityItem[] = [
-      // YK-1 (3 items: 2 exact including multi-batch UMW2631, 1 no candidate)
-      {
-        id: 'CI-YK1-01',
-        taskDisplayNo: 'YK-260625131-1',
-        taskDraftId: customerTasks[0]?.draft.id || 'D-1df4f4d83480',
-        lineOrder: 1,
-        lineId: 'D-1df4f4d83480-R001',
-        entrustmentModel: 'UMW2631',
-        entrustmentBrand: 'UNISOC',
-        entrustmentOrigin: '中国',
-        entrustmentQuantity: '60000 PCS',
-        inspectionModel: 'UMW2631',
-        inspectionBrand: 'UNISOC',
-        inspectionOrigin: '中国',
-        inspectionQuantity: '60000 PCS',
-        sourceBatch: 'CH001 + CH002',
-        sourceWarehouseNo: '26070093 / 26070104',
-        sourceFileName: '1767831448651816.pdf · CH002_26070104.pdf',
-        sourcePage: 1,
-        sourceRowOrder: 1,
-        sourceBoxNo: '箱001~箱004 (CH001) + 增量覆盖 (CH002)',
-        relationLevel: 'EXACT_MODEL',
-        statusText: '已自动对应',
-        statusVariant: 'green',
-        noticeText: '两个批次共同提供依据',
-        isMultiBatchSource: true,
-        sourceBatches: [
-          {
-            batchDisplayNo: 'CH001 (入仓 26070093)',
-            warehouseNo: '26070093',
-            fileName: '1767831448651816.pdf',
-            page: 1,
-            rowOrder: 3,
-            boxNo: '箱001~箱004',
-            rawRowId: 'I-CH001-L003',
-            quantity: '60000 PCS',
-            note: '查货行03 · 独占占用箱1~4',
-          },
-          {
-            batchDisplayNo: 'CH002 (入仓 26070104)',
-            warehouseNo: '26070104',
-            fileName: 'CH002_26070104.pdf',
-            page: 1,
-            rowOrder: 7,
-            boxNo: '增量推进',
-            rawRowId: 'I-CH002-L007',
-            quantity: '60000 PCS',
-            isIncrement: true,
-            note: '查货行07 · 增量推进共同覆盖',
-          },
-        ],
-        judgmentEvidence: [
-          '✓ 核心型号完全一致 (UMW2631)',
-          '✓ 由 CH001 (查货行03 / 箱1~4) 与 CH002 (查货行07) 两个来源共同提供依据',
-          '✓ 结论：同一个委托商品由两个批次共同覆盖，业务关系已确定',
-        ],
-      },
-      {
-        id: 'CI-YK1-02',
-        taskDisplayNo: 'YK-260625131-1',
-        taskDraftId: customerTasks[0]?.draft.id || 'D-1df4f4d83480',
-        lineOrder: 2,
-        lineId: 'D-1df4f4d83480-R002',
-        entrustmentModel: 'UMS9230E',
-        entrustmentBrand: 'UNISOC',
-        entrustmentOrigin: '中国',
-        entrustmentQuantity: '60000 PCS',
-        inspectionModel: 'UMS9230E',
-        inspectionBrand: 'UNISOC',
-        inspectionOrigin: '中国',
-        inspectionQuantity: '60000 PCS',
-        sourceBatch: 'CH002 (入仓 26070104)',
-        sourceWarehouseNo: '26070104',
-        sourceFileName: 'CH002_26070104.pdf',
-        sourcePage: 1,
-        sourceRowOrder: 2,
-        relationLevel: 'EXACT_MODEL',
-        statusText: '已自动对应',
-        statusVariant: 'green',
-        noticeText: '—',
-        judgmentEvidence: [
-          '✓ 标准化型号完全一致 (UMS9230E)',
-          '✓ 查货单 26070104 第1页明确记录',
-        ],
-      },
-      {
-        id: 'CI-YK1-03',
-        taskDisplayNo: 'YK-260625131-1',
-        taskDraftId: customerTasks[0]?.draft.id || 'D-1df4f4d83480',
-        lineOrder: 3,
-        lineId: 'D-1df4f4d83480-R003',
-        entrustmentModel: 'ABC102',
-        entrustmentBrand: 'UNISOC',
-        entrustmentOrigin: '中国',
-        entrustmentQuantity: '20000 PCS',
-        inspectionModel: null,
-        sourceBatch: '—',
-        sourceWarehouseNo: '—',
-        sourceFileName: '—',
-        relationLevel: 'NO_MODEL_CANDIDATE',
-        statusText: '暂无查货依据',
-        statusVariant: 'gray',
-        noticeText: '等待新查货',
-        judgmentEvidence: [
-          '○ 当前客户查货池中未发现可对应商品',
-          '后续新查货材料入仓后将自动触发核对，无需人工操作。',
-        ],
-      },
+  // 1. 优先根据当前客户与任务映射提取真实样本校准数据
+  const sampleMap = realCommodityReconciliationsJson as Record<string, any>;
+  const customerSampleIds = CUSTOMER_SAMPLE_IDS_MAP[customer.id] || [];
 
-      // YK-2 (3 items: 1 exact, 1 affix diff, 1 multiple)
-      {
-        id: 'CI-YK2-01',
-        taskDisplayNo: 'YK-260625131-2',
-        taskDraftId: customerTasks[1]?.draft.id || 'D-5a09ab721f2e',
-        lineOrder: 1,
-        lineId: 'D-5a09ab721f2e-R001',
-        entrustmentModel: 'ABC001',
-        entrustmentBrand: 'UNISOC',
-        entrustmentOrigin: '中国',
-        entrustmentQuantity: '66000 PCS',
-        inspectionModel: 'ABC001',
-        inspectionBrand: 'UNISOC',
-        inspectionOrigin: '中国',
-        inspectionQuantity: '66000 PCS',
-        sourceBatch: 'CH002 (入仓 26070104)',
-        sourceWarehouseNo: '26070104',
-        sourceFileName: 'CH002_26070104.pdf',
-        sourcePage: 2,
-        sourceRowOrder: 1,
-        relationLevel: 'EXACT_MODEL',
-        statusText: '已自动对应',
-        statusVariant: 'green',
-        noticeText: '—',
-        judgmentEvidence: [
-          '✓ 标准化型号完全一致 (ABC001)',
-          '✓ 查货单 26070104 第2页明确记录',
-        ],
-      },
-      {
-        id: 'CI-YK2-02',
-        taskDisplayNo: 'YK-260625131-2',
-        taskDraftId: customerTasks[1]?.draft.id || 'D-5a09ab721f2e',
-        lineOrder: 2,
-        lineId: 'D-5a09ab721f2e-R002',
-        entrustmentModel: '74HC00PW-Q100',
-        entrustmentBrand: 'NXP',
-        entrustmentOrigin: '中国台湾',
-        entrustmentQuantity: '10000 PCS',
-        inspectionModel: '74HC00PW-Q100,118',
-        inspectionBrand: 'NXP',
-        inspectionOrigin: '中国台湾',
-        inspectionQuantity: '10000 PCS',
-        sourceBatch: 'CH003 (入仓 26070188 补货)',
-        sourceWarehouseNo: '26070188',
-        sourceFileName: 'CH003_26070188.pdf',
-        sourcePage: 2,
-        sourceRowOrder: 6,
-        relationLevel: 'CORE_MODEL_WITH_AFFIX_DIFF',
-        statusText: '已自动对应 · 有提醒',
-        statusVariant: 'yellow',
-        affixDiff: {
-          hasDiff: true,
-          diffType: 'suffix',
-          coreModel: '74HC00PW-Q100',
-          suffix: ',118',
-          entrustmentModel: '74HC00PW-Q100',
-          inspectionModel: '74HC00PW-Q100,118',
-          explanation: '查货型号多出后缀 [,118]',
-        },
-        noticeText: '型号后缀差异 [,118]',
-        judgmentEvidence: [
-          '✓ 核心型号 74HC00PW-Q100 完全一致',
-          '⚠ 查货型号多出包装编带后缀 [,118]',
-          '✓ 当前客户查货池中不存在型号完全一致的更高优先候选',
-          '✓ 不存在其他同等级主体型号候选，已自动对应同一商品',
-          'ℹ 结论：已自动对应，请在最终人工复核时留意型号后缀差异。',
-        ],
-      },
-      {
-        id: 'CI-YK2-03',
-        taskDisplayNo: 'YK-260625131-2',
-        taskDraftId: customerTasks[1]?.draft.id || 'D-5a09ab721f2e',
-        lineOrder: 3,
-        lineId: 'D-5a09ab721f2e-R003',
-        entrustmentModel: 'ABC123',
-        entrustmentBrand: 'UNISOC',
-        entrustmentOrigin: '中国',
-        entrustmentQuantity: '66000 PCS',
-        inspectionModel: null,
-        sourceBatch: '—',
-        sourceWarehouseNo: '—',
-        sourceFileName: '—',
-        relationLevel: 'MULTIPLE_MODEL_CANDIDATES',
-        statusText: '需要人工选择',
-        statusVariant: 'orange',
-        noticeText: '发现 2 个可能对应',
-        candidateCount: 2,
-        candidates: [
-          {
-            model: 'ABC123-A',
-            batchDisplayNo: 'CH002 (入仓 26070104)',
-            warehouseNo: '26070104',
-            fileName: 'CH002_26070104.pdf',
-            page: 2,
-            sourceRowId: 'I-CH002-L008',
-          },
-          {
-            model: 'ABC123-B',
-            batchDisplayNo: 'CH003 (入仓 26070188 补货)',
-            warehouseNo: '26070188',
-            fileName: 'CH003_26070188.pdf',
-            page: 1,
-            sourceRowId: 'I-CH003-L005',
-          },
-        ],
-        judgmentEvidence: [
-          '⚠ 查货池中发现 2 个可能对应的商品候选',
-          '候选 1: ABC123-A (来自 CH002 / 入仓 26070104)',
-          '候选 2: ABC123-B (来自 CH003 / 入仓 26070188)',
-          '系统无法唯一排他判断，需由报关员手工选择确认。',
-        ],
-      },
+  let realItems: CustomerCommodityItem[] = [];
 
-      // YK-3 (3 items: 2 exact, 1 multiple)
-      {
-        id: 'CI-YK3-01',
-        taskDisplayNo: 'YK-260625131-3',
-        taskDraftId: customerTasks[2]?.draft.id || 'D-3fa66dfc9247',
-        lineOrder: 1,
-        lineId: 'D-3fa66dfc9247-R001',
-        entrustmentModel: 'UMW2631',
-        entrustmentBrand: 'UNISOC',
-        entrustmentOrigin: '中国',
-        entrustmentQuantity: '60000 PCS',
-        inspectionModel: 'UMW2631',
-        inspectionBrand: 'UNISOC',
-        inspectionOrigin: '中国',
-        inspectionQuantity: '60000 PCS',
-        sourceBatch: 'CH001 (入仓 26070093)',
-        sourceWarehouseNo: '26070093',
-        sourceFileName: '1767831448651816.pdf',
-        sourcePage: 1,
-        sourceRowOrder: 1,
-        sourceBoxNo: '箱005~箱008',
-        relationLevel: 'EXACT_MODEL',
-        statusText: '已自动对应',
-        statusVariant: 'green',
-        noticeText: '—',
-        judgmentEvidence: [
-          '✓ 核心型号完全一致 (UMW2631)',
-          '✓ 独占占用查货原始箱5~箱8 (共 60,000 PCS)',
-          '✓ 来源文件 1767831448651816.pdf 第1页',
-        ],
-      },
-      {
-        id: 'CI-YK3-02',
-        taskDisplayNo: 'YK-260625131-3',
-        taskDraftId: customerTasks[2]?.draft.id || 'D-3fa66dfc9247',
-        lineOrder: 2,
-        lineId: 'D-3fa66dfc9247-R002',
-        entrustmentModel: 'ZX001',
-        entrustmentBrand: 'UNISOC',
-        entrustmentOrigin: '中国',
-        entrustmentQuantity: '30000 PCS',
-        inspectionModel: 'ZX001',
-        inspectionBrand: 'UNISOC',
-        inspectionOrigin: '中国',
-        inspectionQuantity: '30000 PCS',
-        sourceBatch: 'CH001 (入仓 26070093)',
-        sourceWarehouseNo: '26070093',
-        sourceFileName: '1767831448651816.pdf',
-        sourcePage: 1,
-        sourceRowOrder: 2,
-        relationLevel: 'EXACT_MODEL',
-        statusText: '已自动对应',
-        statusVariant: 'green',
-        noticeText: '—',
-        judgmentEvidence: [
-          '✓ 核心型号完全一致 (ZX001)',
-          '✓ 来源文件 1767831448651816.pdf 第1页',
-        ],
-      },
-      {
-        id: 'CI-YK3-03',
-        taskDisplayNo: 'YK-260625131-3',
-        taskDraftId: customerTasks[2]?.draft.id || 'D-3fa66dfc9247',
-        lineOrder: 3,
-        lineId: 'D-3fa66dfc9247-R003',
-        entrustmentModel: 'ZX990',
-        entrustmentBrand: 'UNISOC',
-        entrustmentOrigin: '中国',
-        entrustmentQuantity: '30000 PCS',
-        inspectionModel: null,
-        sourceBatch: '—',
-        sourceWarehouseNo: '—',
-        sourceFileName: '—',
-        relationLevel: 'MULTIPLE_MODEL_CANDIDATES',
-        statusText: '需要人工选择',
-        statusVariant: 'orange',
-        noticeText: '发现 2 个可能对应',
-        candidateCount: 2,
-        candidates: [
-          {
-            model: 'ZX990-A',
-            batchDisplayNo: 'CH002 (入仓 26070104)',
-            warehouseNo: '26070104',
-            fileName: 'CH002_26070104.pdf',
-            page: 3,
-            sourceRowId: 'I-CH002-L009',
-          },
-          {
-            model: 'ZX990-B',
-            batchDisplayNo: 'CH003 (入仓 26070188 补货)',
-            warehouseNo: '26070188',
-            fileName: 'CH003_26070188.pdf',
-            page: 1,
-            sourceRowId: 'I-CH003-L006',
-          },
-        ],
-        judgmentEvidence: [
-          '⚠ 查货池中发现 2 个可能对应的候选商品',
-          '候选 1: ZX990-A (来自 CH002 / 入仓 26070104)',
-          '候选 2: ZX990-B (来自 CH003 / 入仓 26070188)',
-          '两批次主体型号一致但后缀不同，需人工裁决选定。',
-        ],
-      },
-    ];
+  // 如果智微智能包含多个子任务（ZW001, ZW003, ZW050）
+  if (customerSampleIds.length > 1) {
+    for (const sId of customerSampleIds) {
+      if (sampleMap[sId]?.items) {
+        realItems.push(...(sampleMap[sId].items as CustomerCommodityItem[]));
+      }
+    }
+  } else if (customerSampleIds.length === 1 && sampleMap[customerSampleIds[0]]?.items) {
+    realItems = [...(sampleMap[customerSampleIds[0]].items as CustomerCommodityItem[])];
+  } else {
+    // 尝试通过 customerTasks 中的任务 displayNo 匹配
+    for (const task of customerTasks) {
+      const displayNo = task.draft.displayNo;
+      if (sampleMap[displayNo]?.items) {
+        realItems.push(...(sampleMap[displayNo].items as CustomerCommodityItem[]));
+      }
+    }
+  }
+
+  if (realItems.length > 0) {
+    // 防御性深拷贝并同步真实 draftId（以便跳转）
+    const taskDraftMap = new Map<string, string>();
+    for (const task of customerTasks) {
+      taskDraftMap.set(task.draft.displayNo, task.draft.id);
+    }
+
+    const items: CustomerCommodityItem[] = realItems.map((it) => {
+      const matchedDraftId = taskDraftMap.get(it.taskDisplayNo) || it.taskDraftId;
+      return {
+        ...it,
+        taskDraftId: matchedDraftId,
+      };
+    });
 
     const exactCount = items.filter((i) => i.relationLevel === 'EXACT_MODEL').length;
     const affixDiffCount = items.filter((i) => i.relationLevel === 'CORE_MODEL_WITH_AFFIX_DIFF').length;
@@ -936,129 +660,8 @@ export function generateCommodityReconciliationSummary(
     };
   }
 
-  // 2. 浦壹科技（26SHPYD056）：8 已自动对应（7 无问题 · 1 有型号差异提醒）· 1 暂无查货依据 · 0 需人工选择
-  if (customer.name.includes('浦壹') || customerTasks.some((t) => t.draft.displayNo === '26SHPYD056')) {
-    const task = customerTasks[0];
-    const items: CustomerCommodityItem[] = (task?.draft.lines || []).map((line: any, idx: number) => {
-      const model = line.fields?.型号 || line.model || `PROD-${idx + 1}`;
-      const brand = line.fields?.品牌 || '—';
-      const origin = line.fields?.产地 || '—';
-      const qty = line.fields?.数量 ? `${line.fields.数量} PCS` : '—';
-      const isUnmatched = idx === (task?.draft.lines.length ? task.draft.lines.length - 1 : 8);
-      const isAffixDiff = idx === 1; // 1 个有型号差异提醒
-
-      if (isUnmatched) {
-        return {
-          id: `CI-PY-${line.id}`,
-          taskDisplayNo: task?.draft.displayNo || '26SHPYD056',
-          taskDraftId: task?.draft.id || '',
-          lineOrder: idx + 1,
-          lineId: line.id,
-          entrustmentModel: model,
-          entrustmentBrand: brand,
-          entrustmentOrigin: origin,
-          entrustmentQuantity: qty,
-          inspectionModel: null,
-          sourceBatch: '—',
-          sourceWarehouseNo: '—',
-          sourceFileName: '—',
-          relationLevel: 'NO_MODEL_CANDIDATE',
-          statusText: '暂无查货依据',
-          statusVariant: 'gray',
-          noticeText: '等待新查货',
-          judgmentEvidence: ['当前客户查货单中暂无对应原始行，待补充查货。'],
-        };
-      }
-
-      if (isAffixDiff) {
-        const inspectModel = `${model},118`;
-        return {
-          id: `CI-PY-${line.id}`,
-          taskDisplayNo: task?.draft.displayNo || '26SHPYD056',
-          taskDraftId: task?.draft.id || '',
-          lineOrder: idx + 1,
-          lineId: line.id,
-          entrustmentModel: model,
-          entrustmentBrand: brand,
-          entrustmentOrigin: origin,
-          entrustmentQuantity: qty,
-          inspectionModel: inspectModel,
-          inspectionBrand: brand,
-          inspectionOrigin: origin,
-          inspectionQuantity: qty,
-          sourceBatch: 'CH001 (入仓 26070093)',
-          sourceWarehouseNo: '26070093',
-          sourceFileName: '26SHPYD056_CH.pdf',
-          sourcePage: 1,
-          sourceRowOrder: idx + 1,
-          relationLevel: 'CORE_MODEL_WITH_AFFIX_DIFF',
-          statusText: '已自动对应 · 有提醒',
-          statusVariant: 'yellow',
-          affixDiff: {
-            hasDiff: true,
-            diffType: 'suffix',
-            coreModel: model,
-            suffix: ',118',
-            entrustmentModel: model,
-            inspectionModel: inspectModel,
-            explanation: '查货型号多出后缀 [,118]',
-          },
-          noticeText: '型号后缀差异 [,118]',
-          judgmentEvidence: [
-            `✓ 核心型号 ${model} 完全一致`,
-            '⚠ 查货型号带有包装编带后缀 [,118]',
-            '✓ 无同级冲突候选，自动建立商品对应',
-          ],
-        };
-      }
-
-      return {
-        id: `CI-PY-${line.id}`,
-        taskDisplayNo: task?.draft.displayNo || '26SHPYD056',
-        taskDraftId: task?.draft.id || '',
-        lineOrder: idx + 1,
-        lineId: line.id,
-        entrustmentModel: model,
-        entrustmentBrand: brand,
-        entrustmentOrigin: origin,
-        entrustmentQuantity: qty,
-        inspectionModel: model,
-        inspectionBrand: brand,
-        inspectionOrigin: origin,
-        inspectionQuantity: qty,
-        sourceBatch: 'CH001 (入仓 26070093)',
-        sourceWarehouseNo: '26070093',
-        sourceFileName: '26SHPYD056_CH.pdf',
-        sourcePage: 1,
-        sourceRowOrder: idx + 1,
-        relationLevel: 'EXACT_MODEL',
-        statusText: '已自动对应',
-        statusVariant: 'green',
-        noticeText: '—',
-        judgmentEvidence: ['✓ 标准化型号完全一致', '✓ 查货单对应原始行清晰明确'],
-      };
-    });
-
-    const exactCount = items.filter((i) => i.relationLevel === 'EXACT_MODEL').length;
-    const affixDiffCount = items.filter((i) => i.relationLevel === 'CORE_MODEL_WITH_AFFIX_DIFF').length;
-    const multipleCount = items.filter((i) => i.relationLevel === 'MULTIPLE_MODEL_CANDIDATES').length;
-    const noCandidateCount = items.filter((i) => i.relationLevel === 'NO_MODEL_CANDIDATE').length;
-    const conflictCount = items.filter((i) => i.relationLevel === 'MODEL_CONFLICT').length;
-
-    return {
-      totalCount: items.length,
-      exactCount,
-      affixDiffCount,
-      multipleCount,
-      noCandidateCount,
-      conflictCount,
-      actionRequiredItems: [],
-      items,
-    };
-  }
-
-  // 3. 通用全量生成逻辑（适用于百闽海、傲冠、澳创、超年、欧陆通等所有客户）
-  const items: CustomerCommodityItem[] = customerTasks.flatMap((task) =>
+  // 2. 通用动态回退生成逻辑（针对未来新上传的单据）
+  const fallbackItems: CustomerCommodityItem[] = customerTasks.flatMap((task) =>
     task.draft.lines.map((line: any, idx: number) => {
       const model = line.fields?.型号 || line.model || `PROD-${idx + 1}`;
       const brand = line.fields?.品牌 || '—';
@@ -1066,145 +669,6 @@ export function generateCommodityReconciliationSummary(
       const qty = line.fields?.数量 ? `${line.fields.数量} PCS` : '—';
       const displayNo = task.draft.displayNo;
 
-      // 百闽海：5 已自动对应，6 需要人工选择
-      if (displayNo === '2026BMH001') {
-        const isMultiple = idx < 6;
-        if (isMultiple) {
-          return {
-            id: `CI-${line.id}`,
-            taskDisplayNo: displayNo,
-            taskDraftId: task.draft.id,
-            lineOrder: idx + 1,
-            lineId: line.id,
-            entrustmentModel: model,
-            entrustmentBrand: brand,
-            entrustmentOrigin: origin,
-            entrustmentQuantity: qty,
-            inspectionModel: null,
-            sourceBatch: '—',
-            sourceWarehouseNo: '—',
-            sourceFileName: '—',
-            relationLevel: 'MULTIPLE_MODEL_CANDIDATES' as ModelRelationLevel,
-            statusText: '需要人工选择',
-            statusVariant: 'orange' as const,
-            noticeText: '发现 2 个可能对应',
-            candidateCount: 2,
-            candidates: [
-              {
-                model: `${model}-A`,
-                batchDisplayNo: 'CH001 (26070093)',
-                warehouseNo: '26070093',
-                fileName: 'BMH_CH01.pdf',
-                page: 1,
-                sourceRowId: `I-BMH-${idx}-1`,
-              },
-              {
-                model: `${model}-B`,
-                batchDisplayNo: 'CH002 (26070104)',
-                warehouseNo: '26070104',
-                fileName: 'BMH_CH02.pdf',
-                page: 2,
-                sourceRowId: `I-BMH-${idx}-2`,
-              },
-            ],
-            judgmentEvidence: ['查货池中存在同主体多批次候选，需人工选定。'],
-          };
-        }
-        return {
-          id: `CI-${line.id}`,
-          taskDisplayNo: displayNo,
-          taskDraftId: task.draft.id,
-          lineOrder: idx + 1,
-          lineId: line.id,
-          entrustmentModel: model,
-          entrustmentBrand: brand,
-          entrustmentOrigin: origin,
-          entrustmentQuantity: qty,
-          inspectionModel: model,
-          inspectionBrand: brand,
-          inspectionOrigin: origin,
-          inspectionQuantity: qty,
-          sourceBatch: 'CH001 (26070093)',
-          sourceWarehouseNo: '26070093',
-          sourceFileName: 'BMH_CH01.pdf',
-          sourcePage: 1,
-          sourceRowOrder: idx + 1,
-          relationLevel: 'EXACT_MODEL' as ModelRelationLevel,
-          statusText: '已自动对应',
-          statusVariant: 'green' as const,
-          noticeText: '—',
-          judgmentEvidence: ['✓ 标准化型号完全一致'],
-        };
-      }
-
-      // 傲冠软件：2 个多候选待选
-      if (displayNo === '2026AG001') {
-        return {
-          id: `CI-${line.id}`,
-          taskDisplayNo: displayNo,
-          taskDraftId: task.draft.id,
-          lineOrder: idx + 1,
-          lineId: line.id,
-          entrustmentModel: model,
-          entrustmentBrand: brand,
-          entrustmentOrigin: origin,
-          entrustmentQuantity: qty,
-          inspectionModel: null,
-          sourceBatch: '—',
-          sourceWarehouseNo: '—',
-          sourceFileName: '—',
-          relationLevel: 'MULTIPLE_MODEL_CANDIDATES' as ModelRelationLevel,
-          statusText: '需要人工选择',
-          statusVariant: 'orange' as const,
-          noticeText: '发现 2 个可能对应',
-          candidateCount: 2,
-          candidates: [
-            {
-              model: `${model} (明细1)`,
-              batchDisplayNo: 'CH001',
-              warehouseNo: '26070093',
-              fileName: 'AG_CH01.pdf',
-              page: 1,
-              sourceRowId: `I-AG-${idx}-1`,
-            },
-            {
-              model: `${model} (明细2)`,
-              batchDisplayNo: 'CH002',
-              warehouseNo: '26070104',
-              fileName: 'AG_CH02.pdf',
-              page: 1,
-              sourceRowId: `I-AG-${idx}-2`,
-            },
-          ],
-          judgmentEvidence: ['查货明细存在多个相同型号条目，需人工指定占用项。'],
-        };
-      }
-
-      // 澳创实业 / 超年科技：暂无查货依据
-      if (['2026ACSY003', '2026CNKJ001'].includes(displayNo)) {
-        return {
-          id: `CI-${line.id}`,
-          taskDisplayNo: displayNo,
-          taskDraftId: task.draft.id,
-          lineOrder: idx + 1,
-          lineId: line.id,
-          entrustmentModel: model,
-          entrustmentBrand: brand,
-          entrustmentOrigin: origin,
-          entrustmentQuantity: qty,
-          inspectionModel: null,
-          sourceBatch: '—',
-          sourceWarehouseNo: '—',
-          sourceFileName: '—',
-          relationLevel: 'NO_MODEL_CANDIDATE' as ModelRelationLevel,
-          statusText: '暂无查货依据',
-          statusVariant: 'gray' as const,
-          noticeText: '等待新查货',
-          judgmentEvidence: ['当前客户查货池中暂无对应材料，等待后续查货导入。'],
-        };
-      }
-
-      // 默认按活跃关系与数据源判定
       const activeRel = state.relations.find((r) => r.active && r.entrustmentLineId === line.id);
       if (activeRel) {
         const source = customerSources.find((s) => activeRel.inspectionSourceLineIds.includes(s.id));
@@ -1220,6 +684,7 @@ export function generateCommodityReconciliationSummary(
             entrustmentBrand: brand,
             entrustmentOrigin: origin,
             entrustmentQuantity: qty,
+            entrustmentProductName: line.fields?.品名 || '商品',
             inspectionModel: source?.fields?.型号 || source?.model || model,
             inspectionBrand: source?.fields?.品牌 || brand,
             inspectionOrigin: source?.fields?.产地 || origin,
@@ -1251,6 +716,7 @@ export function generateCommodityReconciliationSummary(
           entrustmentBrand: brand,
           entrustmentOrigin: origin,
           entrustmentQuantity: qty,
+          entrustmentProductName: line.fields?.品名 || '商品',
           inspectionModel: source?.fields?.型号 || source?.model || model,
           inspectionBrand: source?.fields?.品牌 || brand,
           inspectionOrigin: source?.fields?.产地 || origin,
@@ -1279,6 +745,7 @@ export function generateCommodityReconciliationSummary(
         entrustmentBrand: brand,
         entrustmentOrigin: origin,
         entrustmentQuantity: qty,
+        entrustmentProductName: line.fields?.品名 || '商品',
         inspectionModel: null,
         sourceBatch: '—',
         sourceWarehouseNo: '—',
@@ -1292,24 +759,24 @@ export function generateCommodityReconciliationSummary(
     })
   );
 
-  const exactCount = items.filter((i) => i.relationLevel === 'EXACT_MODEL').length;
-  const affixDiffCount = items.filter((i) => i.relationLevel === 'CORE_MODEL_WITH_AFFIX_DIFF').length;
-  const multipleCount = items.filter((i) => i.relationLevel === 'MULTIPLE_MODEL_CANDIDATES').length;
-  const noCandidateCount = items.filter((i) => i.relationLevel === 'NO_MODEL_CANDIDATE').length;
-  const conflictCount = items.filter((i) => i.relationLevel === 'MODEL_CONFLICT').length;
-  const actionRequiredItems = items.filter(
+  const exactCount = fallbackItems.filter((i) => i.relationLevel === 'EXACT_MODEL').length;
+  const affixDiffCount = fallbackItems.filter((i) => i.relationLevel === 'CORE_MODEL_WITH_AFFIX_DIFF').length;
+  const multipleCount = fallbackItems.filter((i) => i.relationLevel === 'MULTIPLE_MODEL_CANDIDATES').length;
+  const noCandidateCount = fallbackItems.filter((i) => i.relationLevel === 'NO_MODEL_CANDIDATE').length;
+  const conflictCount = fallbackItems.filter((i) => i.relationLevel === 'MODEL_CONFLICT').length;
+  const actionRequiredItems = fallbackItems.filter(
     (i) => i.relationLevel === 'MULTIPLE_MODEL_CANDIDATES' || i.relationLevel === 'MODEL_CONFLICT'
   );
 
   return {
-    totalCount: items.length,
+    totalCount: fallbackItems.length,
     exactCount,
     affixDiffCount,
     multipleCount,
     noCandidateCount,
     conflictCount,
     actionRequiredItems,
-    items,
+    items: fallbackItems,
   };
 }
 
@@ -1453,7 +920,13 @@ export function getCustomerWorkbench(state: DemoState, today = new Date()) {
 
   const customers = state.customers.map(customer => {
     const customerTasks = tasks.filter(t => t.draft.customerId === customer.id);
-    const customerSources = sources.filter(s => s.customerId === customer.id);
+    const customerSampleIds = CUSTOMER_SAMPLE_IDS_MAP[customer.id] || [];
+    const customerSources = sources.filter(s => {
+      if (s.customerId === customer.id) return true;
+      const order = ordersJson.find((o: any) => o.id === s.logicalInspectionOrderId);
+      if (order && customerSampleIds.includes(order.sampleId)) return true;
+      return false;
+    });
     const customerAudits = auditIndex.samples.filter(s => s.customerId === customer.id);
 
     // 活跃任务草稿引用的委托材料
@@ -1478,7 +951,7 @@ export function getCustomerWorkbench(state: DemoState, today = new Date()) {
       const orders = [...new Set(members.map(s => s.logicalInspectionOrderId))];
       const batchFiles = files.filter(f => members.some(s => s.sourceFileId === f.id));
       const batchProducts = customerProducts.filter(p => p.sourceLineIds.some(id => members.some(s => s.id === id)));
-      const whNo = orders[0]?.split('-').pop() ?? members[0]?.warehouseNo ?? '26070093';
+      const whNo = orders[0]?.split('-').pop() ?? members[0]?.warehouseNo ?? '待定入仓号';
       const displayNo = `CH00${bIdx + 1} (${whNo})`;
       return { id, displayNo, sources: members, files: batchFiles, products: batchProducts, orders, warehouseNo: whNo };
     });

@@ -1,6 +1,7 @@
 "use client";
 
 import { Fragment, useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import { CustomerWorkspace } from "./customer-workspace";
 import { ReconciliationWorkbench } from "./reconciliation-workbench";
 import {
@@ -19,6 +20,8 @@ import {
   ListTodo,
   AlertTriangle,
   ArrowLeft,
+  Plus,
+  Sparkles,
 } from "lucide-react";
 import {
   getMergedPoolProducts,
@@ -52,15 +55,15 @@ function businessStatus(value: string) {
 }
 
 const statusClass: Record<string, string> = {
-  可匹配: "status-green",
-  已找到查货依据: "status-green",
+  可匹配: "status-blue",
+  已找到查货依据: "status-blue",
   可提交人工确认: "status-blue",
   人工确认中: "status-orange",
-  人工已确认: "status-blue",
-  草稿占用: "status-orange",
+  人工已确认: "status-green",
+  草稿占用: "status-gray",
   已核销: "status-gray",
   暂无查货依据: "status-gray",
-  待人工处理: "status-red",
+  待人工处理: "status-orange",
   部分核对: "status-orange",
   待核对: "status-gray",
   已完成: "status-green",
@@ -109,29 +112,69 @@ export default function HomePage() {
   const historyStack = useDemoStore((state) => state.historyStack);
   const canGoBack =
     historyStack.length > 0 || view !== "home" || Boolean(selectedWorkspaceCustomerId);
-  const counts = useMemo(
-    () => ({
-      ready: sources.filter((source) => source.availability === "可匹配")
-        .length,
-      occupied: sources.filter((source) => source.availability === "草稿占用")
-        .length,
-      waiting: drafts.filter(
-        (draft) => draft.status === "待核对" || draft.status === "部分核对",
-      ).length,
-    }),
-    [drafts, sources],
-  );
-
+  useEffect(() => {
+    const onShortcut = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "n") {
+        event.preventDefault();
+        setView("home");
+        setIntakeKind("entrustment");
+        setIntakeOpen(true);
+      }
+    };
+    window.addEventListener("keydown", onShortcut);
+    return () => window.removeEventListener("keydown", onShortcut);
+  }, [setView]);
+  useEffect(() => {
+    if (!intakeOpen) return;
+    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const dialog = document.querySelector<HTMLElement>('.intake-modal[role="dialog"]');
+    const firstButton = dialog?.querySelector<HTMLButtonElement>('button');
+    firstButton?.focus();
+    const onDialogKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") { setIntakeOpen(false); return; }
+      if (event.key !== "Tab" || !dialog) return;
+      const focusable = Array.from(dialog.querySelectorAll<HTMLElement>('button:not(:disabled), select:not(:disabled), input:not(:disabled), [tabindex="0"]')).filter((item) => item.offsetParent !== null);
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    };
+    document.addEventListener("keydown", onDialogKeyDown);
+    return () => { document.removeEventListener("keydown", onDialogKeyDown); previousFocus?.focus(); };
+  }, [intakeOpen]);
   return (
     <main className="shell">
-      <aside className="sidebar">
-        <div className="brand" role="heading" aria-level={2} aria-label="九立智能核对工作台">
+      <aside className="sidebar" aria-hidden={intakeOpen || undefined}>
+        <div
+          className="brand"
+          role="button"
+          tabIndex={0}
+          aria-label="九立智能核对工作台 - 返回首页"
+          onClick={() => {
+            setView("home");
+            useDemoStore.getState().setSelectedWorkspaceCustomerId(null);
+            setScenarioOpen(false);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              setView("home");
+              useDemoStore.getState().setSelectedWorkspaceCustomerId(null);
+              setScenarioOpen(false);
+            }
+          }}
+          style={{ cursor: "pointer" }}
+        >
           <div className="brand-mark">九</div>
           <div>
             <strong>九立</strong>
             <span>智能核对工作台</span>
           </div>
         </div>
+        <button aria-label="新建核对任务" className="sidebar-create" onClick={() => { setView("home"); setIntakeKind("entrustment"); setIntakeOpen(true); }}>
+          <Plus size={16} /> 新建核对任务 <span>⌘ N</span>
+        </button>
         <div className="workspace-label primary-label">工作区</div>
         <nav className="nav-list primary-nav" aria-label="主导航">
           {navItems.map(({ key, label, icon: Icon }) => (
@@ -146,6 +189,9 @@ export default function HomePage() {
                     : label
               }
               onClick={() => {
+                if (key === "home") {
+                  useDemoStore.getState().setSelectedWorkspaceCustomerId(null);
+                }
                 setView(key);
                 setScenarioOpen(false);
               }}
@@ -155,20 +201,34 @@ export default function HomePage() {
             </button>
           ))}
         </nav>
+        <div className="sidebar-tools">
+          <div className="workspace-label">工具</div>
+          <button aria-label="商品池" className={view === "pool" ? "nav-item active" : "nav-item"} onClick={() => setView("pool")}><Archive size={16} /><span>商品池</span></button>
+          <button aria-label="Demo 控制台" className={view === "console" ? "nav-item active" : "nav-item"} onClick={() => setView("console")}><SlidersHorizontal size={16} /><span>Demo 控制台</span></button>
+        </div>
+        <div className="sidebar-recent">
+          <div className="workspace-label">最近任务</div>
+          {drafts.slice(0, 5).map((draft) => (
+            <button key={draft.id} className={selectedDraftId === draft.id && view === "workbench" ? "recent-item active" : "recent-item"} onClick={() => useDemoStore.getState().selectDraft(draft.id)} title={`${draft.displayNo} · ${draft.customerName}`}>
+              <span className="recent-item-dot" />
+              <span>{draft.displayNo}<small>{draft.customerName}</small></span>
+            </button>
+          ))}
+        </div>
         <div className="sidebar-bottom">
-          <div className="sync-dot" />
-          <span>本地状态已保存</span>
-          <span className="version">v0.2</span>
+          <Sparkles size={14} />
+          <span>AI 工作区</span>
+          <span className="version">本地已保存</span>
         </div>
       </aside>
-      <section className="content" aria-hidden={scenarioOpen || undefined}>
+      <section className="content" aria-hidden={scenarioOpen || intakeOpen || undefined}>
         <header className="topbar">
           <div className="topbar-left">
             {canGoBack && (
               <button
                 className="page-back-button topbar-back-btn"
                 onClick={goBack}
-                title="返回上一页"
+                title={view === "home" && selectedWorkspaceCustomerId ? "返回上一页（回到全部客户看板）" : "返回上一页"}
                 aria-label="返回上一页"
               >
                 <ArrowLeft size={15} />
@@ -176,12 +236,47 @@ export default function HomePage() {
               </button>
             )}
             <div>
-              <div className="eyebrow">九立新流程 Demo</div>
+              <div className="eyebrow">
+                Workspace /{" "}
+                {view === "home" ? (
+                  selectedWorkspaceCustomerId ? (
+                    <>
+                      <button
+                        type="button"
+                        className="breadcrumb-nav-link"
+                        onClick={() => useDemoStore.getState().setSelectedWorkspaceCustomerId(null)}
+                        style={{
+                          background: "none",
+                          border: "none",
+                          padding: 0,
+                          font: "inherit",
+                          color: "inherit",
+                          cursor: "pointer",
+                          textDecoration: "underline",
+                        }}
+                      >
+                        客户工作台
+                      </button>
+                      {" / " + (customers.find((c) => c.id === selectedWorkspaceCustomerId)?.name ?? "客户详情")}
+                    </>
+                  ) : (
+                    "客户工作台"
+                  )
+                ) : view === "pool" ? (
+                  "客户商品池"
+                ) : view === "console" ? (
+                  "演示工具"
+                ) : view === "history" ? (
+                  "历史任务"
+                ) : (
+                  "核对任务"
+                )}
+              </div>
               <h1>{
                 view === "workbench"
                   ? "核对工作台"
                   : view === "history"
-                    ? "版本与操作"
+                    ? "历史任务"
                     : view === "intake"
                       ? "材料接入"
                       : view === "drafts"
@@ -197,29 +292,6 @@ export default function HomePage() {
             </div>
           </div>
         </header>
-        {view !== "home" && view !== "workbench" && <div className="metric-row">
-          <div className="metric">
-            <span>可匹配商品</span>
-            <strong>{counts.ready}</strong>
-            <small>客户池原始行</small>
-          </div>
-          <div className="metric">
-            <span>草稿占用</span>
-            <strong>{counts.occupied}</strong>
-            <small>尚未核销</small>
-          </div>
-          <div className="metric">
-            <span>待处理草稿</span>
-            <strong>{counts.waiting}</strong>
-            <small>需要关注</small>
-          </div>
-          <div className="metric metric-accent">
-            <span>本轮操作</span>
-            <strong>{events.length}</strong>
-            <small>可追溯事件</small>
-          </div>
-        </div>
-        }
         {toast ? (
           <div className="toast" role="status" aria-live="polite">
             <Check size={16} />
@@ -232,7 +304,6 @@ export default function HomePage() {
         {view === "home" ? (
           <>
             <CustomerWorkspace onAddMaterial={(customerId) => { useDemoStore.getState().setIntakeCustomer(customerId ?? ""); setIntakeKind(customerId ? "inspection" : "entrustment"); setIntakeOpen(true); }} />
-            {intakeOpen ? <div className="intake-modal-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setIntakeOpen(false); }}><div className="intake-modal" role="dialog" aria-modal="true" aria-label="上传客户材料"><div className="intake-modal-head"><div><strong>上传客户材料</strong><span>Demo 材料接入入口，用于模拟委托材料接口与查货材料接口</span></div><button className="icon-button" aria-label="关闭上传客户材料窗口" onClick={() => setIntakeOpen(false)}><X size={16} /></button></div><IntakeView files={files} customers={customers} drafts={drafts} embedded initialKind={intakeKind} onClose={() => setIntakeOpen(false)} /></div></div> : null}
           </>
         ) : null}
         {view === "intake" ? (
@@ -255,6 +326,44 @@ export default function HomePage() {
       </section>
       {scenarioOpen ? (
         <ScenarioDrawer onClose={() => setScenarioOpen(false)} />
+      ) : null}
+      {intakeOpen ? (
+        <div
+          className="intake-modal-backdrop"
+          role="presentation"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setIntakeOpen(false);
+          }}
+        >
+          <div
+            className="intake-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-label="新建核对任务 / 上传客户材料"
+          >
+            <div className="intake-modal-head">
+              <div>
+                <strong>新建核对任务 / 上传客户材料</strong>
+                <span>Demo 材料接入入口，用于模拟委托材料接口与查货材料接口</span>
+              </div>
+              <button
+                className="icon-button"
+                aria-label="关闭上传客户材料窗口"
+                onClick={() => setIntakeOpen(false)}
+              >
+                <X size={16} />
+              </button>
+            </div>
+            <IntakeView
+              files={files}
+              customers={customers}
+              drafts={drafts}
+              embedded
+              initialKind={intakeKind}
+              onClose={() => setIntakeOpen(false)}
+            />
+          </div>
+        </div>
       ) : null}
     </main>
   );
@@ -310,6 +419,10 @@ function IntakeView({
   const [kind, setKind] = useState<UploadKind>(initialKind);
   const [phase, setPhase] = useState<IntakePhase>("ready");
   const [customerId, setCustomerId] = useState("");
+  const [isAddingCustomer, setIsAddingCustomer] = useState(false);
+  const [newCustomerName, setNewCustomerName] = useState("");
+  const [customerAddError, setCustomerAddError] = useState("");
+  const [customerAddSuccess, setCustomerAddSuccess] = useState("");
   const [inspectionFiles, setInspectionFiles] = useState<File[]>([]);
   const [mainFile, setMainFile] = useState<File | null>(null);
   const [auxiliaryFiles, setAuxiliaryFiles] = useState<File[]>([]);
@@ -319,6 +432,7 @@ function IntakeView({
   const [error, setError] = useState("");
   const selectedCustomerId = useDemoStore((state) => state.selectedIntakeCustomerId);
   const setIntakeCustomer = useDemoStore((state) => state.setIntakeCustomer);
+  const addCustomer = useDemoStore((state) => state.addCustomer);
   const stageLocalFile = useDemoStore((state) => state.stageLocalFile);
   const parseLocalFile = useDemoStore((state) => state.parseLocalFile);
   const createDraftFromEntrustmentFile = useDemoStore((state) => state.createDraftFromEntrustmentFile);
@@ -356,9 +470,42 @@ function IntakeView({
     setError("");
   };
 
+  const handleAddNewCustomer = () => {
+    const trimmed = newCustomerName.trim();
+    if (!trimmed) {
+      setCustomerAddError("请输入客户全称");
+      return;
+    }
+    try {
+      const created = addCustomer(trimmed);
+      setCustomerId(created.id);
+      setIntakeCustomer(created.id);
+      setIsAddingCustomer(false);
+      setNewCustomerName("");
+      setCustomerAddError("");
+      setCustomerAddSuccess(`已添加并选中客户：“${created.name}”`);
+      setError("");
+    } catch (err) {
+      setCustomerAddError(err instanceof Error ? err.message : "添加客户失败");
+    }
+  };
+
   const handleSubmit = () => {
+    let targetCustomerId = effectiveCustomerId;
+    if (isAddingCustomer && newCustomerName.trim()) {
+      try {
+        const created = addCustomer(newCustomerName.trim());
+        targetCustomerId = created.id;
+        setCustomerId(created.id);
+        setIntakeCustomer(created.id);
+        setIsAddingCustomer(false);
+        setNewCustomerName("");
+      } catch {
+        // ignore
+      }
+    }
     const filesToUpload = kind === "inspection" ? inspectionFiles : [mainFile, ...auxiliaryFiles].filter((file): file is File => Boolean(file));
-    if (kind === "inspection" && !effectiveCustomerId) { setError("查货资料必须先指定所属客户"); return; }
+    if (kind === "inspection" && !targetCustomerId) { setError("查货资料必须先指定所属客户"); return; }
     if (kind === "inspection" && !inspectionFiles.length) { setError("请先选择查货 PDF"); return; }
     if (kind === "entrustment" && !mainFile) { setError("请先上传 1 份主体委托书"); return; }
     const nextBatchId = `UPLOAD-BATCH-${Date.now()}`;
@@ -368,7 +515,7 @@ function IntakeView({
     filesToUpload.forEach((file, index) => {
       const auxiliaryFile = auxiliaryFiles[index - 1];
       const materialType: MaterialType | undefined = kind === "inspection" ? "查货" : index === 0 ? "委托书" : auxiliaryTypes[auxiliaryFile?.name] || detectAuxiliaryType(auxiliaryFile?.name ?? "") || undefined;
-      stageLocalFile({ name: file.name, size: file.size, type: file.type, file, materialType, customerId: effectiveCustomerId || undefined, batchId: nextBatchId });
+      stageLocalFile({ name: file.name, size: file.size, type: file.type, file, materialType, customerId: targetCustomerId || undefined, batchId: nextBatchId });
     });
     window.setTimeout(() => {
       const staged = useDemoStore.getState().files.filter((file) => file.batchId === nextBatchId);
@@ -376,7 +523,20 @@ function IntakeView({
     }, 0);
   };
 
-  const resetForNext = () => { setPhase("ready"); setBatchId(null); setProcessingStep(0); setInspectionFiles([]); setMainFile(null); setAuxiliaryFiles([]); setAuxiliaryTypes({}); setError(""); };
+  const resetForNext = () => {
+    setPhase("ready");
+    setBatchId(null);
+    setProcessingStep(0);
+    setInspectionFiles([]);
+    setMainFile(null);
+    setAuxiliaryFiles([]);
+    setAuxiliaryTypes({});
+    setError("");
+    setIsAddingCustomer(false);
+    setNewCustomerName("");
+    setCustomerAddError("");
+    setCustomerAddSuccess("");
+  };
   const cancel = () => { if (onClose) onClose(); else setView("home"); };
   const openTask = () => {
     const file = intakeFiles.find((item) => item.materialType === "委托书" && convertedEntrustments.some((entry) => entry.sourceFileId === item.id));
@@ -401,7 +561,272 @@ function IntakeView({
   }
 
   const selectedFiles = kind === "inspection" ? inspectionFiles : [mainFile, ...auxiliaryFiles].filter((file): file is File => Boolean(file));
-  return <div className="intake-content"><div className="intake-intro">{!embedded ? <div><span className="eyebrow">材料接入</span><h1>上传客户材料</h1><p>Demo 材料接入入口，用于模拟委托材料接口与查货材料接口</p></div> : null}<div className="intake-tabs" role="tablist"><button role="tab" aria-selected={kind === "entrustment"} className={kind === "entrustment" ? "active" : ""} onClick={() => { setKind("entrustment"); setError(""); }}>委托材料</button><button role="tab" aria-selected={kind === "inspection"} className={kind === "inspection" ? "active" : ""} onClick={() => { setKind("inspection"); setError(""); }}>查货材料</button></div></div>{kind === "inspection" ? <div className="intake-form"><label className="intake-field"><span>所属客户 <em>必填</em></span><select aria-label="选择查货客户" value={effectiveCustomerId} onChange={(event) => { setCustomerId(event.target.value); setIntakeCustomer(event.target.value); }}><option value="">搜索并选择客户</option>{customers.map((customer) => <option key={customer.id} value={customer.id}>{customer.name}</option>)}</select><small>查货资料必须先指定客户，上传后进入该客户的查货资料池。</small></label><FileDrop title="查货资料" detail="拖拽或点击上传 PDF，支持一次上传多份" files={inspectionFiles} onFiles={(incoming) => acceptFiles(incoming, setInspectionFiles)} accept=".pdf" multiple required /></div> : <div className="intake-form"><label className="intake-field"><span>所属客户 <em className="optional-label">选填</em></span><select aria-label="选择委托客户（选填）" value={customerId} onChange={(event) => { setCustomerId(event.target.value); setIntakeCustomer(event.target.value); }}><option value="">由委托书自动识别</option>{customers.map((customer) => <option key={customer.id} value={customer.id}>{customer.name}</option>)}</select><small>不填写时，系统会从委托书中识别客户；识别失败时材料仍会保存。</small></label><FileDrop title="主体委托书" detail="拖入或选择 1 份委托书，支持 PDF / Excel" files={mainFile ? [mainFile] : []} onFiles={(incoming) => acceptFiles(incoming, (next) => setMainFile(next[0] ?? null), false)} accept=".pdf,.xlsx,.xls" multiple={false} required /><FileDrop title="辅助材料" detail="发票、箱单，可上传多份" files={auxiliaryFiles} onFiles={selectAuxiliaryFiles} accept=".pdf,.xlsx,.xls,.jpg,.jpeg,.png" /></div>}{error ? <div className="intake-error" role="alert"><AlertTriangle size={15} />{error}</div> : null}{selectedFiles.length ? <div className="intake-file-list"><strong>本次文件</strong>{selectedFiles.map((file, index) => { const auxiliary = kind === "entrustment" && index > 0; const identifiedType = auxiliary ? auxiliaryTypes[file.name] || detectAuxiliaryType(file.name) : ""; return <div key={`${file.name}-${index}`}><FileInput size={15} /><span>{file.name}</span>{auxiliary && !identifiedType ? <select aria-label={`选择 ${file.name} 类型`} value={auxiliaryTypes[file.name] ?? ""} onChange={(event) => setAuxiliaryTypes({ ...auxiliaryTypes, [file.name]: event.target.value as "发票" | "箱单" })}><option value="">无法识别类型</option><option value="发票">发票</option><option value="箱单">箱单</option></select> : <small>{kind === "inspection" ? "查货资料" : index === 0 ? "委托书" : identifiedType}</small>}</div>; })}</div> : null}<div className="intake-footer"><button className="secondary" onClick={cancel}>取消</button><button className="primary" onClick={handleSubmit}>上传并处理<ChevronRight size={15} /></button></div></div>;
+
+  const renderCustomerSelector = () => {
+    const isRequired = kind === "inspection";
+    const selectValue = kind === "inspection" ? effectiveCustomerId : customerId;
+    const selectLabel = isRequired ? "选择查货客户" : "选择委托客户（选填）";
+    const defaultOptionText = isRequired ? "搜索并选择客户" : "由委托书自动识别";
+
+    return (
+      <div className="intake-field">
+        <div className="intake-field-head">
+          <span>
+            所属客户 {isRequired ? <em>必填</em> : <em className="optional-label">选填</em>}
+          </span>
+          {!isAddingCustomer ? (
+            <button
+              type="button"
+              className="intake-add-customer-trigger"
+              onClick={() => {
+                setIsAddingCustomer(true);
+                setCustomerAddError("");
+                setCustomerAddSuccess("");
+              }}
+            >
+              <Plus size={13} /> 手动添加新客户
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="intake-add-customer-trigger"
+              onClick={() => {
+                setIsAddingCustomer(false);
+                setCustomerAddError("");
+              }}
+            >
+              返回选择已有客户
+            </button>
+          )}
+        </div>
+
+        {isAddingCustomer ? (
+          <>
+            <div className="intake-add-customer-box">
+              <input
+                type="text"
+                className="intake-customer-input"
+                aria-label="输入新客户名称"
+                placeholder="请输入新客户全称（例如：深圳市创新电子有限公司）"
+                value={newCustomerName}
+                onChange={(e) => {
+                  setNewCustomerName(e.target.value);
+                  setCustomerAddError("");
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    handleAddNewCustomer();
+                  } else if (e.key === "Escape") {
+                    setIsAddingCustomer(false);
+                    setCustomerAddError("");
+                  }
+                }}
+                autoFocus
+              />
+              <div className="intake-add-customer-actions">
+                <button
+                  type="button"
+                  className="primary"
+                  onClick={handleAddNewCustomer}
+                >
+                  确认添加
+                </button>
+                <button
+                  type="button"
+                  className="secondary"
+                  onClick={() => {
+                    setIsAddingCustomer(false);
+                    setCustomerAddError("");
+                  }}
+                >
+                  取消
+                </button>
+              </div>
+            </div>
+            {customerAddError ? (
+              <div className="intake-field-error">
+                <AlertTriangle size={13} />
+                {customerAddError}
+              </div>
+            ) : (
+              <small>输入新客户全称后点击确认添加，系统将自动录入并选定该客户。</small>
+            )}
+          </>
+        ) : (
+          <>
+            <select
+              aria-label={selectLabel}
+              value={selectValue}
+              onChange={(event) => {
+                if (event.target.value === "__NEW__") {
+                  setIsAddingCustomer(true);
+                  setCustomerAddError("");
+                  setCustomerAddSuccess("");
+                  return;
+                }
+                setCustomerId(event.target.value);
+                setIntakeCustomer(event.target.value);
+                setCustomerAddSuccess("");
+              }}
+            >
+              <option value="">{defaultOptionText}</option>
+              <option value="__NEW__">➕ 手动添加新客户...</option>
+              {customers.map((customer) => (
+                <option key={customer.id} value={customer.id}>
+                  {customer.name}
+                </option>
+              ))}
+            </select>
+            {customerAddSuccess ? (
+              <div className="intake-customer-hint-success">
+                <Check size={13} />
+                {customerAddSuccess}
+              </div>
+            ) : (
+              <small>
+                {isRequired
+                  ? "查货资料必须先指定客户，上传后进入该客户的查货资料池。"
+                  : "不填写时，系统会从委托书中识别客户；识别失败时材料仍会保存。"}
+              </small>
+            )}
+          </>
+        )}
+      </div>
+    );
+  };
+
+  return (
+    <div className="intake-content">
+      <div className="intake-intro">
+        {!embedded ? (
+          <div>
+            <span className="eyebrow">材料接入</span>
+            <h1>上传客户材料</h1>
+            <p>Demo 材料接入入口，用于模拟委托材料接口与查货材料接口</p>
+          </div>
+        ) : null}
+        <div className="intake-tabs" role="tablist">
+          <button
+            role="tab"
+            aria-selected={kind === "entrustment"}
+            className={kind === "entrustment" ? "active" : ""}
+            onClick={() => {
+              setKind("entrustment");
+              setError("");
+              setIsAddingCustomer(false);
+              setCustomerAddError("");
+              setCustomerAddSuccess("");
+            }}
+          >
+            委托材料
+          </button>
+          <button
+            role="tab"
+            aria-selected={kind === "inspection"}
+            className={kind === "inspection" ? "active" : ""}
+            onClick={() => {
+              setKind("inspection");
+              setError("");
+              setIsAddingCustomer(false);
+              setCustomerAddError("");
+              setCustomerAddSuccess("");
+            }}
+          >
+            查货材料
+          </button>
+        </div>
+      </div>
+      {kind === "inspection" ? (
+        <div className="intake-form">
+          {renderCustomerSelector()}
+          <FileDrop
+            title="查货资料"
+            detail="拖拽或点击上传 PDF，支持一次上传多份"
+            files={inspectionFiles}
+            onFiles={(incoming) => acceptFiles(incoming, setInspectionFiles)}
+            accept=".pdf"
+            multiple
+            required
+          />
+        </div>
+      ) : (
+        <div className="intake-form">
+          {renderCustomerSelector()}
+          <FileDrop
+            title="主体委托书"
+            detail="拖入或选择 1 份委托书，支持 PDF / Excel"
+            files={mainFile ? [mainFile] : []}
+            onFiles={(incoming) => acceptFiles(incoming, (next) => setMainFile(next[0] ?? null), false)}
+            accept=".pdf,.xlsx,.xls"
+            multiple={false}
+            required
+          />
+          <FileDrop
+            title="辅助材料"
+            detail="发票、箱单，可上传多份"
+            files={auxiliaryFiles}
+            onFiles={selectAuxiliaryFiles}
+            accept=".pdf,.xlsx,.xls,.jpg,.jpeg,.png"
+          />
+        </div>
+      )}
+      {error ? (
+        <div className="intake-error" role="alert">
+          <AlertTriangle size={15} />
+          {error}
+        </div>
+      ) : null}
+      {selectedFiles.length ? (
+        <div className="intake-file-list">
+          <strong>本次文件</strong>
+          {selectedFiles.map((file, index) => {
+            const auxiliary = kind === "entrustment" && index > 0;
+            const identifiedType = auxiliary ? auxiliaryTypes[file.name] || detectAuxiliaryType(file.name) : "";
+            return (
+              <div key={`${file.name}-${index}`}>
+                <FileInput size={15} />
+                <span>{file.name}</span>
+                {auxiliary && !identifiedType ? (
+                  <select
+                    aria-label={`选择 ${file.name} 类型`}
+                    value={auxiliaryTypes[file.name] ?? ""}
+                    onChange={(event) =>
+                      setAuxiliaryTypes({
+                        ...auxiliaryTypes,
+                        [file.name]: event.target.value as "发票" | "箱单",
+                      })
+                    }
+                  >
+                    <option value="">无法识别类型</option>
+                    <option value="发票">发票</option>
+                    <option value="箱单">箱单</option>
+                  </select>
+                ) : (
+                  <small>
+                    {kind === "inspection"
+                      ? "查货资料"
+                      : index === 0
+                      ? "委托书"
+                      : identifiedType}
+                  </small>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      ) : null}
+      <div className="intake-footer">
+        <button className="secondary" onClick={cancel}>
+          取消
+        </button>
+        <button className="primary" onClick={handleSubmit}>
+          上传并处理
+          <ChevronRight size={15} />
+        </button>
+      </div>
+    </div>
+  );
 }
 
 function FileDrop({ title, detail, files, onFiles, accept, multiple = true, required = false }: { title: string; detail: string; files: File[]; onFiles: (files: FileList | null) => void; accept: string; multiple?: boolean; required?: boolean }) {
@@ -840,7 +1265,6 @@ function PoolView({
                       <tr>
                         <td>
                           <strong>{product.fields.型号}</strong>
-                          <small>{product.id}</small>
                         </td>
                         <td>{product.fields.品牌}</td>
                         <td>{product.fields.产地}</td>
@@ -869,6 +1293,7 @@ function PoolView({
                         <tr className="source-detail-row">
                           <td colSpan={8}>
                             <div className="source-detail-list">
+                              <small>合并商品标识：{product.id}</small>
                               {members.map((source) => (
                                 <div key={source.id}>
                                   <strong>{source.id}</strong>
@@ -1008,18 +1433,31 @@ function HistoryView({
     null,
   );
   const selected = versions.find((version) => version.id === selectedVersionId);
+  const archivedDrafts = drafts.filter((draft) => draft.finalized || draft.status === "已完成");
   return (
     <div className="view-stack">
       <div className="section-heading">
         <div>
-          <h2>版本与操作</h2>
-          <p>这里展示业务事件和真实版本前后差异。</p>
+          <h2>已完成的核对</h2>
+          <p>已封版的任务可随时查看；操作与版本记录保留在下方。</p>
         </div>
         <div className="history-stat">
-          <strong>{events.length}</strong>
-          <span>条操作记录</span>
+          <strong>{archivedDrafts.length}</strong>
+          <span>票已完成</span>
         </div>
       </div>
+      <section className="history-task-list" aria-label="已完成任务">
+        {archivedDrafts.length ? archivedDrafts.map((draft) => (
+          <button className="history-task-row" key={draft.id} onClick={() => useDemoStore.getState().selectDraft(draft.id)}>
+            <span className="history-task-main"><strong>{draft.displayNo}</strong><small>{draft.customerName}</small></span>
+            <span className="status status-green"><i />已完成</span>
+            <time>{new Date(draft.updatedAt).toLocaleDateString("zh-CN")}</time>
+            <ChevronRight size={15} />
+          </button>
+        )) : <Empty title="还没有人工封版的当前任务" detail="客户工作台的已完成客户来自历史业务档案；这里仅展示当前草稿经人工复核并封版的任务。" />}
+      </section>
+      {events.length > 0 || versions.length > 0 ? <>
+      <div className="section-heading history-secondary-heading"><div><h2>操作与版本</h2><p>查看处理过程和草稿变更。</p></div></div>
       <div className="history-layout">
         <div className="panel">
           <div className="panel-head">
@@ -1086,6 +1524,7 @@ function HistoryView({
           </div>
         </div>
       </div>
+      </> : null}
       {selected ? <VersionDiff version={selected} /> : null}
     </div>
   );
@@ -1156,6 +1595,7 @@ function VersionDiff({
 }
 
 function ConsoleView({ embedded = false }: { embedded?: boolean }) {
+  const [scenarioQuery, setScenarioQuery] = useState("");
   const scenarioId = useDemoStore((state) => state.scenarioId);
   const loadScenario = useDemoStore((state) => state.loadScenario);
   const setView = useDemoStore((state) => state.setView);
@@ -1188,8 +1628,9 @@ function ConsoleView({ embedded = false }: { embedded?: boolean }) {
           <p>只展示业务验收状态；场景能打开不代表已经通过。</p>
         </div>
       </div> : null}
+      <label className="scenario-search"><span>查找验收场景</span><input value={scenarioQuery} onChange={(event) => setScenarioQuery(event.target.value)} placeholder="编号、名称或用例" /></label>
       <div className="scenario-grid">
-        {allScenarios.map((scenario) => {
+        {allScenarios.filter((scenario) => `${scenario.id} ${scenario.name} ${scenario.caseIds.join(" ")}`.toLowerCase().includes(scenarioQuery.trim().toLowerCase())).map((scenario) => {
           const item = acceptance.get(scenario.id);
           return (
             <button

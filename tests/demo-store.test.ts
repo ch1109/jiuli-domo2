@@ -749,4 +749,51 @@ describe("页面返回上一页导航与历史记录栈", () => {
     expect(useDemoStore.getState().view).toBe("home");
     expect(useDemoStore.getState().selectedWorkspaceCustomerId).toBe("C-yk");
   });
+
+  it("在客户详情页调用 goBack 优先回到客户工作台首页，不会直接跨视图回退到核对工作台", () => {
+    useDemoStore.setState(useDemoStore.getInitialState(), true);
+    // 假设从核对工作台切换到客户详情页
+    useDemoStore.getState().setView("workbench");
+    useDemoStore.getState().setView("home");
+    useDemoStore.getState().setSelectedWorkspaceCustomerId("C-olt");
+    expect(useDemoStore.getState().view).toBe("home");
+    expect(useDemoStore.getState().selectedWorkspaceCustomerId).toBe("C-olt");
+
+    // 点击返回上一页 -> 应该优先回到客户工作台首页（全部客户），而不是直接退回核对工作台
+    useDemoStore.getState().goBack();
+    expect(useDemoStore.getState().view).toBe("home");
+    expect(useDemoStore.getState().selectedWorkspaceCustomerId).toBeNull();
+  });
+
+  it("在客户详情页点击主导航客户工作台 (setView('home')) 时能重置客户并回到首页", () => {
+    useDemoStore.setState(useDemoStore.getInitialState(), true);
+    useDemoStore.getState().setSelectedWorkspaceCustomerId("C-olt");
+    expect(useDemoStore.getState().view).toBe("home");
+    expect(useDemoStore.getState().selectedWorkspaceCustomerId).toBe("C-olt");
+
+    // 点击客户工作台导航
+    useDemoStore.getState().setView("home");
+    expect(useDemoStore.getState().view).toBe("home");
+    expect(useDemoStore.getState().selectedWorkspaceCustomerId).toBeNull();
+  });
+
+  it("支持手动添加客户，且同名客户直接复用不重复创建", () => {
+    const store = useDemoStore.getState();
+    const countBefore = store.customers.length;
+
+    // 添加全新客户
+    const newCust = store.addCustomer("深圳市测试科技有限公司");
+    expect(newCust.id).toMatch(/^C-[0-9a-f]{12}$/);
+    expect(newCust.name).toBe("深圳市测试科技有限公司");
+    expect(useDemoStore.getState().customers.length).toBe(countBefore + 1);
+    expect(useDemoStore.getState().customers[0].id).toBe(newCust.id);
+
+    // 重复添加同名客户（大小写/空格）
+    const duplicated = store.addCustomer("  深圳市测试科技有限公司  ");
+    expect(duplicated.id).toBe(newCust.id);
+    expect(useDemoStore.getState().customers.length).toBe(countBefore + 1);
+
+    // 空白名字抛错
+    expect(() => store.addCustomer("   ")).toThrow("客户名称不能为空");
+  });
 });

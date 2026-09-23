@@ -78,17 +78,17 @@ describe('客户级商品对应汇总 (generateCommodityReconciliationSummary)',
     expect(multiItems.map((m) => m.entrustmentModel)).toEqual(['ABC123', 'ZX990']);
   });
 
-  it('浦壹 26SHPYD056 包含 8 个已自动对应（7 无问题 · 1 有后缀提醒）及 1 个暂无依据', () => {
+  it('浦壹 26SHPYD056 包含 8 个已自动对应（7 无问题 · 1 有联合覆盖）及 1 个暂无依据', () => {
     const puyi = workbench.customers.find((c) => c.name.includes('浦壹'));
     expect(puyi).toBeDefined();
 
     const summary = puyi!.commoditySummary;
     expect(summary).toBeDefined();
     expect(summary.totalCount).toBe(9);
-    expect(summary.exactCount).toBe(7);
-    expect(summary.affixDiffCount).toBe(1);
-    expect(summary.noCandidateCount).toBe(1);
+    expect(summary.exactCount).toBe(8);
+    expect(summary.affixDiffCount).toBe(0);
     expect(summary.multipleCount).toBe(0);
+    expect(summary.noCandidateCount).toBe(1);
   });
 });
 
@@ -102,7 +102,7 @@ describe('构成式进度文案 (compositionalProgress)', () => {
     const puyiTask = pendingTasks.find((t) => t.displayNo === '26SHPYD056');
     expect(puyiTask).toBeDefined();
     expect(puyiTask!.compositionalProgress).toBe(
-      '9 个商品：8 已自动对应（7 无问题 · 1 有型号差异提醒）· 1 暂无查货依据 · 当前无需人工选择'
+      '9 个商品：8 已自动对应（7 无问题 · 1 有联合覆盖）· 1 暂无查货依据 · 当前无需人工选择'
     );
   });
 

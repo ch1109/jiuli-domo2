@@ -15,11 +15,11 @@ describe('客户业务概览交互定稿规范测试（四级层级体系）', (
       const story = generateCustomerStory(c);
       const { actionModel } = story;
 
-      // 单任务客户固定入口为“查看商品对应 →”，多任务为“查看全部商品对应 →”
+      // 单任务客户固定入口为“查看商品匹配明细 →”，多任务为“查看全部匹配明细 →”
       if (story.isMultiTask) {
-        expect(actionModel.persistentEntryText).toBe('查看全部商品对应 →');
+        expect(actionModel.persistentEntryText).toBe('查看全部匹配明细 →');
       } else {
-        expect(actionModel.persistentEntryText).toBe('查看商品对应 →');
+        expect(actionModel.persistentEntryText).toBe('查看商品匹配明细 →');
       }
     }
   });
@@ -29,20 +29,20 @@ describe('客户业务概览交互定稿规范测试（四级层级体系）', (
     const state = { ...useDemoStore.getInitialState(), ...data };
     const model = getCustomerWorkbench(state);
 
-    // 浦壹：需要人工确认 7 个商品的多候选 -> [处理商品对应]
+    // 浦壹：需要人工确认 7 个商品的多候选 -> [进入核对工作台]
     const puyi = model.customers.find((c) => c.name.includes('浦壹'))!;
     const puyiStory = generateCustomerStory(puyi);
-    expect(puyiStory.actionModel.primaryAction?.text).toBe('处理商品对应');
+    expect(puyiStory.actionModel.primaryAction?.text).toBe('进入核对工作台');
 
-    // 百闽海：6 个商品存在多个候选批次 -> [选择对应商品]
+    // 百闽海：6 个商品存在多个候选批次 -> [进入核对工作台]
     const bmh = model.customers.find((c) => c.name.includes('百闽海'))!;
     const bmhStory = generateCustomerStory(bmh);
-    expect(bmhStory.actionModel.primaryAction?.text).toBe('选择对应商品');
+    expect(bmhStory.actionModel.primaryAction?.text).toBe('进入核对工作台');
 
-    // 傲冠：同型号多候选竞争 -> [选择对应商品]
+    // 傲冠：同型号多候选竞争 -> [进入核对工作台]
     const ag = model.customers.find((c) => c.name.includes('傲冠'))!;
     const agStory = generateCustomerStory(ag);
-    expect(agStory.actionModel.primaryAction?.text).toBe('选择对应商品');
+    expect(agStory.actionModel.primaryAction?.text).toBe('进入核对工作台');
 
     // 英堡科技：AI 核对完成，待人工复核 -> [开始人工复核]
     const yingbao = model.customers.find((c) => c.name.includes('英堡'))!;

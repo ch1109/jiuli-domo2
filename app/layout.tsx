@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
+import "./tokens.css";
 import "./globals.css";
+import "./design-system.css";
+import "./customer-workspace.css";
+import "./workbench.css";
 
 export const metadata: Metadata = {
   title: "九立 Demo",

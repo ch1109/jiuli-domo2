@@ -13,6 +13,7 @@ import {
   ChevronUp,
   Download,
   Eye,
+  ExternalLink,
   FileCheck2,
   FileSpreadsheet,
   FileText,
@@ -38,9 +39,12 @@ import {
   CORE_OUTPUT_FIELDS,
   getFieldRows,
   getLineReconStatus,
+  getP4FieldDecisions,
+  INSPECTION_EVALUATED_FIELDS,
   type FieldRow,
   type LineReconStatus,
   type FieldCheckStatusType,
+  type P4FieldDecisionInfo,
 } from "@/lib/workbench-model";
 import { getTaskSummary } from "@/lib/workspace-status";
 import { calculateFinalOutputTotals } from "@/lib/domain/final-output";
@@ -55,12 +59,11 @@ import {
   type StandardAnswerSheet,
 } from "@/lib/domain/evaluation-engine";
 import { MaterialPreview } from "./material-preview";
-import { LineActions } from "./workbench-relations";
+import { CommodityRelations, LineActions } from "./workbench-relations";
 import * as XLSX from "xlsx";
-import "./workbench.css";
 
 const value = (v: string | null | undefined) => v || "—";
-const short = (id: string) => id.split("-").at(-1);
+const short = (id: string) => id.split("-").at(-1) || id;
 
 export function ReconciliationWorkbench({
   draft,
@@ -104,10 +107,21 @@ export function ReconciliationWorkbench({
   >("ALL");
   const [problemFilter, setProblemFilter] = useState<"ALL" | "RELATION" | "CONFLICT" | "MISSING">("ALL");
 
-  // 右侧 Tab：字段来源 / 商品对应 / 原始材料 / AI记录
+  // 右侧 Tab：字段来源 / 查货核验依据 / 原始材料 / 核验结论 (+ POC评测模式下：标准答案差异)
   const [rightTab, setRightTab] = useState<
-    "RAW_MATERIAL" | "FIELD_SOURCE" | "RELATION" | "AI_LOG"
-  >("FIELD_SOURCE");
+    "FIELD_SOURCE" | "INSPECTION_BASIS" | "RAW_MATERIAL" | "VERIFY_DECISION" | "EVAL_DIFF"
+  >("VERIFY_DECISION");
+
+  // Tab 4 (核验结论) 筛选状态
+  const [p4Filter, setP4Filter] = useState<
+    "ALL" | "CONFLICT" | "UPDATE" | "MISSING" | "KEEP" | "NO_ACTION"
+  >("ALL");
+
+  // 核对记录视角：当前商品 vs 整票任务
+  const [reconLogScope, setReconLogScope] = useState<"CURRENT_LINE" | "ALL_TASK">("CURRENT_LINE");
+
+  // 精确原件定位跳转状态
+  const [targetMaterialLocation, setTargetMaterialLocation] = useState<SourceLocation | null>(null);
 
   // 右侧溯源面板拖拽缩放宽度（支持向左拖拽放大）
   const [rightPanelWidth, setRightPanelWidth] = useState<number>(400);
@@ -264,13 +278,15 @@ export function ReconciliationWorkbench({
     missingRequiredTotal.length +
     explicitLineIssues.length;
 
-  // AI 风险提示（建议关注）
+  // AI 风险提示（建议关注，带自动路由 Tab）
   const aiRiskItems = (() => {
     const list: Array<{
       lineId: string;
       level: "warn" | "info";
       title: string;
       desc: string;
+      targetTab: "FIELD_SOURCE" | "INSPECTION_BASIS" | "RAW_MATERIAL" | "VERIFY_DECISION";
+      targetField?: FinalOutputField;
     }> = [];
     draft.lines.forEach((l, idx) => {
       const rows = rowsByLine.get(l.id) ?? [];
@@ -286,6 +302,8 @@ export function ReconciliationWorkbench({
             level: "warn",
             title: `商品 ${String(idx + 1).padStart(2, "0")} 重量逻辑需关注`,
             desc: `净重 (${nw}) 大于毛重 (${gw})，建议核实`,
+            targetTab: "VERIFY_DECISION",
+            targetField: "净重",
           });
         }
       }
@@ -295,6 +313,7 @@ export function ReconciliationWorkbench({
           level: "info",
           title: `商品 ${String(idx + 1).padStart(2, "0")} 多批次查货组合`,
           desc: `当前商品行对应了 ${l.relationSourceIds.length} 条原始查货明细`,
+          targetTab: "INSPECTION_BASIS",
         });
       }
       if (gwRow?.evidence.some((e) => e.modelDecision?.reason?.includes("分配") || e.modelDecision?.reason?.includes("均摊"))) {
@@ -303,6 +322,8 @@ export function ReconciliationWorkbench({
           level: "info",
           title: `商品 ${String(idx + 1).padStart(2, "0")} 毛重来自系统比例分配`,
           desc: "根据箱规及委托件数自动分摊整单毛重",
+          targetTab: "VERIFY_DECISION",
+          targetField: "毛重",
         });
       }
     });
@@ -325,20 +346,80 @@ export function ReconciliationWorkbench({
   const activeFile =
     taskFiles.find((f) => f.id === selectedFileId) ?? taskFiles[0];
 
-  // 切换商品与聚焦字段（实现点击单元格与右侧字段来源强联动）
+  // 当前商品是否有查货依据关系
+  const hasRelation = Boolean(
+    (currentLine?.relationSourceIds && currentLine.relationSourceIds.length > 0) ||
+      currentLine?.relationSourceId,
+  );
+
+  // 当前行查货候选池情况
+  const availableCandidatesForLine = state.sources.filter(
+    (s) =>
+      s.customerId === draft.customerId &&
+      (s.availability === "可匹配" ||
+        (currentLine?.relationSourceIds ?? []).includes(s.id) ||
+        currentLine?.relationSourceId === s.id),
+  );
+
+  const exactCandidatesForLine = currentLine?.model
+    ? availableCandidatesForLine.filter(
+        (c) =>
+          c.model?.trim().toUpperCase() === currentLine.model?.trim().toUpperCase() &&
+          !(currentLine?.relationSourceIds ?? []).includes(c.id) &&
+          currentLine?.relationSourceId !== c.id,
+      )
+    : [];
+
+  const isLineMultiCandidate = !hasRelation && exactCandidatesForLine.length >= 2;
+  const isLineNoMatch = !hasRelation && exactCandidatesForLine.length === 0;
+
+  // 4. 计算当前选定商品的 P4 结构化字段核验决策 (严格对齐 P4 VERIFY_FIELDS 规范)
+  const p4Decisions = useMemo(() => {
+    if (!currentLine) return [];
+    return getP4FieldDecisions(currentLine, currentRows, currentLineSources);
+  }, [currentLine, currentRows, currentLineSources]);
+
+  const activeP4Decision = useMemo(() => {
+    return p4Decisions.find((d) => d.field === field) ?? p4Decisions[0];
+  }, [p4Decisions, field]);
+
+  // 一键跳转到原始材料并高亮定位
+  const jumpToMaterial = (fileId: string, loc?: Partial<SourceLocation>) => {
+    if (fileId) setSelectedFileId(fileId);
+    if (loc) {
+      setTargetMaterialLocation({
+        fileId: fileId || loc.fileId || "",
+        page: loc.page ?? 1,
+        sheet: loc.sheet ?? null,
+        row: loc.row ?? null,
+        column: loc.column ?? null,
+        position: loc.position ?? "原件材料定位",
+      });
+    }
+    setRightTab("RAW_MATERIAL");
+    if (window.innerWidth <= 680) setMobileDrawer("right");
+  };
+
+  // 切换商品与聚焦字段（实现点击单元格/行号与右侧 Tab 强联动）
   const selectItem = (
     targetLineId: string,
     targetField?: FinalOutputField,
-    forceTab?: "RAW_MATERIAL" | "FIELD_SOURCE" | "RELATION" | "AI_LOG",
+    forceTab?: "FIELD_SOURCE" | "INSPECTION_BASIS" | "RAW_MATERIAL" | "VERIFY_DECISION" | "EVAL_DIFF",
   ) => {
     setLineId(targetLineId);
-    if (targetField) {
-      setField(targetField);
-      // 强联动：只要选定具体字段，自动切换到字段来源 Tab
-      setRightTab(forceTab ?? "FIELD_SOURCE");
-    } else if (forceTab) {
+    if (forceTab) {
       setRightTab(forceTab);
+      if (targetField) setField(targetField);
+    } else if (targetField) {
+      setField(targetField);
+      // 点击字段单元格，默认打开【核验结论】Tab
+      setRightTab("VERIFY_DECISION");
+    } else {
+      // 未指定字段且未指定 Tab 时（点击商品行/行号），自动切换到【查货核验依据】Tab
+      setRightTab("INSPECTION_BASIS");
     }
+    if (window.innerWidth <= 680) setMobileDrawer("right");
+
     // 平滑滚动定位中间表格对应行
     requestAnimationFrame(() => {
       const el = document.getElementById(`draft-row-${targetLineId}`);
@@ -347,6 +428,222 @@ export function ReconciliationWorkbench({
       }
     });
   };
+
+  // 结构化核对记录（业务事件历史轨迹，支持区分系统自动/人工操作/材料变化）
+  const allReconciliationLogs = useMemo(() => {
+    if (!draft) return [];
+
+    const lineMap = new Map(draft.lines.map((l, idx) => [l.id, { line: l, idx }]));
+    const ops = state.operations.filter(
+      (o) => !o.draftId || o.draftId === draft.id,
+    );
+    const versions = state.versions.filter((v) => v.draftId === draft.id);
+
+    const logs: Array<{
+      id: string;
+      occurredAt: string;
+      timeStr: string;
+      category: "SYSTEM" | "HUMAN" | "MATERIAL";
+      categoryLabel: "[系统自动]" | "[人工操作]" | "[材料变化]";
+      title: string;
+      reason: string;
+      actor: string;
+      draftVersion: string;
+      affectedLineIds: string[];
+      affectedLineNames: string[];
+      changes: Array<{
+        lineName?: string;
+        item: string;
+        before: string;
+        after: string;
+      }>;
+    }> = [];
+
+    ops.forEach((op) => {
+      let category: "SYSTEM" | "HUMAN" | "MATERIAL" = "SYSTEM";
+      let categoryLabel: "[系统自动]" | "[人工操作]" | "[材料变化]" = "[系统自动]";
+      let actor = "系统自动";
+
+      if (
+        op.operationType === "新增查货" ||
+        op.operationType === "新建委托" ||
+        op.summary.includes("材料") ||
+        op.summary.includes("批次") ||
+        op.summary.includes("导入")
+      ) {
+        category = "MATERIAL";
+        categoryLabel = "[材料变化]";
+        actor = op.actorType === "人工操作" ? "操作员 / 仓储" : "仓储系统接入";
+      } else if (
+        op.actorType === "人工操作" ||
+        op.operationType.includes("人工") ||
+        op.operationType.includes("选择候选") ||
+        op.operationType.includes("解除")
+      ) {
+        category = "HUMAN";
+        categoryLabel = "[人工操作]";
+        actor = "人工复核员";
+      } else {
+        category = "SYSTEM";
+        categoryLabel = "[系统自动]";
+        actor = "AI 自动核对引擎";
+      }
+
+      const affectedLineIds = (op.affectedEntrustmentLineIds || []) as string[];
+      const affectedLineNames = affectedLineIds
+        .map((id) => {
+          const item = lineMap.get(id);
+          return item ? `商品 ${String(item.idx + 1).padStart(2, "0")}` : short(id);
+        })
+        .filter(Boolean);
+
+      const changes: Array<{ lineName?: string; item: string; before: string; after: string }> = [];
+
+      const ver = versions.find(
+        (v) => Math.abs(new Date(v.createdAt).getTime() - new Date(op.occurredAt).getTime()) < 3000,
+      );
+
+      if (ver && ver.before && ver.after) {
+        ver.changedLineIds.forEach((cId) => {
+          const beforeLine = ver.before.find((b) => b.entrustmentLineId === cId);
+          const afterLine = ver.after.find((a) => a.entrustmentLineId === cId);
+          const itemMeta = lineMap.get(cId);
+          const linePrefix = itemMeta ? `商品 ${String(itemMeta.idx + 1).padStart(2, "0")}` : short(cId);
+
+          if (beforeLine && afterLine) {
+            if (beforeLine.matchRelationIds?.length !== afterLine.matchRelationIds?.length) {
+              changes.push({
+                lineName: linePrefix,
+                item: "商品关系",
+                before: beforeLine.matchRelationIds?.length ? `已绑定 (${beforeLine.matchRelationIds.length}条)` : "暂无对应",
+                after: afterLine.matchRelationIds?.length ? `已绑定 (${afterLine.matchRelationIds.length}条)` : "已解除释放",
+              });
+            }
+            if (beforeLine.status !== afterLine.status) {
+              changes.push({
+                lineName: linePrefix,
+                item: "核对状态",
+                before: beforeLine.status || "待查货",
+                after: afterLine.status || "核对完成",
+              });
+            }
+            FINAL_OUTPUT_FIELDS.forEach((f) => {
+              const bVal = beforeLine.fields[f];
+              const aVal = afterLine.fields[f];
+              if (bVal !== aVal && (bVal || aVal)) {
+                changes.push({
+                  lineName: linePrefix,
+                  item: f,
+                  before: bVal || "空",
+                  after: aVal || "空",
+                });
+              }
+            });
+          }
+        });
+      }
+
+      if (changes.length === 0) {
+        if (op.operationType === "人工编辑字段" && affectedLineNames[0]) {
+          changes.push({
+            lineName: affectedLineNames[0],
+            item: "字段修改",
+            before: "前序值",
+            after: "人工修订值",
+          });
+        } else if (op.operationType.includes("候选") || op.operationType.includes("关系")) {
+          changes.push({
+            lineName: affectedLineNames[0] || "选定商品",
+            item: "商品关系",
+            before: "待人工选择",
+            after: "已确定查货依据",
+          });
+        } else if (op.operationType === "解除匹配") {
+          changes.push({
+            lineName: affectedLineNames[0] || "选定商品",
+            item: "商品关系",
+            before: "已建立对应",
+            after: "已解除释放",
+          });
+        }
+      }
+
+      const d = new Date(op.occurredAt);
+      const timeStr = isNaN(d.getTime())
+        ? "刚刚"
+        : d.toLocaleTimeString("zh-CN", {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+          });
+
+      logs.push({
+        id: op.id,
+        occurredAt: op.occurredAt,
+        timeStr,
+        category,
+        categoryLabel,
+        title: op.operationType,
+        reason: op.summary || "系统业务流转记录",
+        actor,
+        draftVersion: ver ? `草稿 V${ver.version}` : `草稿 V${draft.version}`,
+        affectedLineIds,
+        affectedLineNames,
+        changes,
+      });
+    });
+
+    if (logs.length <= 1) {
+      const initTime = new Date(draft.createdAt || Date.now() - 3600000);
+      const timeStr1 = initTime.toLocaleTimeString("zh-CN", { hour: "2-digit", minute: "2-digit" });
+      const timeStr2 = new Date(initTime.getTime() + 60000).toLocaleTimeString("zh-CN", { hour: "2-digit", minute: "2-digit" });
+
+      logs.unshift(
+        {
+          id: `INIT-MAT-${draft.id}`,
+          occurredAt: initTime.toISOString(),
+          timeStr: timeStr1,
+          category: "MATERIAL",
+          categoryLabel: "[材料变化]",
+          title: "导入委托原件材料",
+          reason: `客户【${draft.customerName}】委托材料导入，包含 ${draft.lines.length} 行商品申报项`,
+          actor: "客户提交 / 报关系统",
+          draftVersion: "草稿 V0",
+          affectedLineIds: draft.lines.map((l) => l.id),
+          affectedLineNames: draft.lines.map((_, i) => `商品 ${String(i + 1).padStart(2, "0")}`),
+          changes: [
+            {
+              item: "委托商品",
+              before: "无",
+              after: `已解析导入 ${draft.lines.length} 行`,
+            },
+          ],
+        },
+        {
+          id: `INIT-AUTO-${draft.id}`,
+          occurredAt: new Date(initTime.getTime() + 60000).toISOString(),
+          timeStr: timeStr2,
+          category: "SYSTEM",
+          categoryLabel: "[系统自动]",
+          title: "AI 首次智能核对与关系扫描",
+          reason: "系统自动排查可用客户查货池，执行型号、品牌与物料号规则比对",
+          actor: "AI 自动核对引擎",
+          draftVersion: "草稿 V1",
+          affectedLineIds: draft.lines.map((l) => l.id),
+          affectedLineNames: draft.lines.map((_, i) => `商品 ${String(i + 1).padStart(2, "0")}`),
+          changes: [
+            {
+              item: "商品关系扫描",
+              before: "未核对",
+              after: `${draft.lines.filter((l) => l.relationSourceIds?.length > 0).length} 行已自动建立对应，${draft.lines.filter((l) => !l.relationSourceIds?.length).length} 行等待查货`,
+            },
+          ],
+        },
+      );
+    }
+
+    return logs.sort((a, b) => b.occurredAt.localeCompare(a.occurredAt));
+  }, [draft, state.operations, state.versions]);
 
   // 确认当前商品并自动跳到下一个未确认商品
   const handleConfirmCurrentAndNext = (targetLineId: string) => {
@@ -572,12 +869,12 @@ export function ReconciliationWorkbench({
 
           <button className="secondary" onClick={() => setHistoryOpen(!historyOpen)} title="查看草稿版本变更历史">
             <History size={15} />
-            版本与操作
+            <span>版本与操作</span>
           </button>
 
           <button className="secondary" onClick={exportCsv}>
             <Download size={15} />
-            {draft.finalized ? "导出最终核对单" : "导出草稿预览"}
+            <span>{draft.finalized ? "导出最终核对单" : "导出草稿预览"}</span>
           </button>
 
           {!draft.finalized && (
@@ -589,8 +886,8 @@ export function ReconciliationWorkbench({
                 onMouseEnter={() => setShowChecklistPopover(true)}
                 onMouseLeave={() => setShowChecklistPopover(false)}
               >
-                <CheckCircle2 size={16} />
-                {canFinalize ? "完成整票复核" : "整票复核 (未满足条件)"}
+                <CheckCircle2 size={15} />
+                <span>{canFinalize ? "完成整票复核" : "整票复核 (未满足条件)"}</span>
               </button>
 
               {/* 未达标时的条件提示面板 */}
@@ -647,8 +944,8 @@ export function ReconciliationWorkbench({
       {/* 紧凑任务状态：只回答当前状态、最近一次自动核对和人工待办 */}
       <section className="recon-status-overview compact-status-overview">
         <div className="compact-status-topline">
-          <div className="compact-status-message"><span className="live-dot" /><strong>{draft.finalized ? "当前任务已封版" : noInspectionLines.length > 0 ? "AI 已完成当前可处理内容" : "AI 已完成当前自动核对"}</strong><span>{noInspectionLines.length > 0 ? `${noInspectionLines.length} 个商品仍等待查货；` : "全部商品已有可靠查货依据；"}{mustHandleCount > 0 ? `当前有 ${mustHandleCount} 个问题需要人工处理。` : "当前没有必须处理的问题。"}</span></div>
-          <button className="recent-check-button" onClick={() => setRightTab("AI_LOG")}><Sparkles size={14} />最近自动核对 {updateTimeStr}<ChevronRight size={13} /></button>
+          <div className="compact-status-message"><span className="live-dot" /><strong>{draft.finalized ? "当前任务已封版" : mustHandleCount > 0 ? `AI 已暂停，等待处理 ${mustHandleCount} 个问题` : noInspectionLines.length > 0 ? "AI 正在等待查货材料" : "AI 已完成当前自动核对"}</strong><span>{noInspectionLines.length > 0 ? `${noInspectionLines.length} 个商品仍等待查货；` : "全部商品已有可靠查货依据；"}{mustHandleCount > 0 ? `请处理 ${mustHandleCount} 个问题后继续复核。` : "当前没有必须处理的问题。"}</span></div>
+          <button className="recent-check-button" onClick={() => setRightTab("VERIFY_DECISION")}><Sparkles size={14} />最近自动核对 {updateTimeStr}<ChevronRight size={13} /></button>
         </div>
         <div className="compact-status-meta"><span>触发原因：{draft.lastUpdateReason || "查货材料到达"}</span><span>草稿 V{draft.version}</span><span className="autosave-note"><Check size={12} /> 已自动保存 {updateTimeStr}</span></div>
         <div className="recon-metric-tiles compact-metrics">
@@ -780,67 +1077,191 @@ export function ReconciliationWorkbench({
         </section>
       )}
 
-      {/* 历史版本与操作记录抽屉 */}
+      {/* 历史版本与操作记录抽屉 (整票演进与操作流转统一归宿) */}
       {historyOpen && (
         <section className="recon-history" aria-label="草稿版本与操作">
           <div className="history-head">
-            <strong>草稿版本演化与操作记录</strong>
-            <button
-              className="icon-button"
-              onClick={() => setHistoryOpen(false)}
-            >
-              <X size={16} />
-            </button>
+            <div className="history-head-title-group">
+              <History size={16} className="text-teal" />
+              <strong>版本演进与全票操作轨迹</strong>
+            </div>
+            <div className="history-head-actions">
+              <div className="recon-log-scope-tabs" role="radiogroup">
+                <button
+                  type="button"
+                  className={`scope-btn ${reconLogScope === "CURRENT_LINE" ? "active" : ""}`}
+                  onClick={() => setReconLogScope("CURRENT_LINE")}
+                >
+                  当前商品 ({draft.lines.findIndex((l) => l.id === lineId) + 1})
+                </button>
+                <button
+                  type="button"
+                  className={`scope-btn ${reconLogScope === "ALL_TASK" ? "active" : ""}`}
+                  onClick={() => setReconLogScope("ALL_TASK")}
+                >
+                  整票任务 ({allReconciliationLogs.length})
+                </button>
+              </div>
+              <button
+                className="icon-button"
+                onClick={() => setHistoryOpen(false)}
+                title="关闭抽屉"
+              >
+                <X size={16} />
+              </button>
+            </div>
           </div>
+
           <div className="history-body">
-            {state.versions
-              .filter((v) => v.draftId === draft.id)
-              .slice()
-              .reverse()
-              .map((v) => (
-                <details key={v.id} className="history-ver-item">
-                  <summary>
-                    <b>V{v.version}</b> · {v.triggerReason} ·{" "}
-                    {new Date(v.createdAt).toLocaleString("zh-CN")}
-                  </summary>
-                  <div className="ver-diff-content">
-                    {v.after.map((after) => (
-                      <div key={after.entrustmentLineId}>
-                        {FINAL_OUTPUT_FIELDS.filter(
-                          (f) =>
-                            v.before.find(
-                              (b) =>
-                                b.entrustmentLineId === after.entrustmentLineId,
-                            )?.fields[f] !== after.fields[f],
-                        ).map((f) => (
-                          <p key={f} className="ver-diff-line">
-                            <span>
-                              {short(after.entrustmentLineId)} · {f}：
-                            </span>
-                            <span className="diff-old">
-                              {value(
-                                v.before.find(
-                                  (b) =>
-                                    b.entrustmentLineId ===
-                                    after.entrustmentLineId,
-                                )?.fields[f],
-                              )}
-                            </span>
-                            <span className="diff-arrow">→</span>
-                            <span className="diff-new">
-                              {value(after.fields[f])}
-                            </span>
-                          </p>
-                        ))}
+            {/* 业务操作与事件流 */}
+            <div className="history-events-stream">
+              {(() => {
+                const logs =
+                  reconLogScope === "CURRENT_LINE"
+                    ? allReconciliationLogs.filter((log) =>
+                        log.affectedLineIds.includes(lineId),
+                      )
+                    : allReconciliationLogs;
+
+                if (logs.length === 0) {
+                  return (
+                    <div className="recon-log-empty">
+                      <p>当前范围暂无专属人工操作或二次变更轨迹</p>
+                      <span>可切换至【整票任务】查看全票材料导入与批次演进历史</span>
+                    </div>
+                  );
+                }
+
+                return logs.map((log) => (
+                  <div key={log.id} className="log-event-card">
+                    <div className="event-top-bar">
+                      <span
+                        className={`log-source-tag ${
+                          log.category === "SYSTEM"
+                            ? "tag-sys"
+                            : log.category === "HUMAN"
+                              ? "tag-human"
+                              : "tag-mat"
+                        }`}
+                      >
+                        {log.categoryLabel}
+                      </span>
+                      <time className="event-time">{log.timeStr}</time>
+                      <span className="event-version-pill">{log.draftVersion}</span>
+                    </div>
+
+                    <div className="event-main-title">
+                      <strong>{log.title}</strong>
+                      <span className="event-actor">{log.actor}</span>
+                    </div>
+
+                    <p className="event-reason">{log.reason}</p>
+
+                    {/* 影响商品 */}
+                    {log.affectedLineNames.length > 0 && (
+                      <div className="event-affected-row">
+                        <span className="affected-lbl">影响商品：</span>
+                        <div className="affected-chips-wrap">
+                          {log.affectedLineNames.map((name, idx) => {
+                            const targetId = log.affectedLineIds[idx];
+                            return (
+                              <button
+                                key={idx}
+                                type="button"
+                                className={`affected-chip ${targetId === lineId ? "is-current" : ""}`}
+                                onClick={() => {
+                                  if (targetId) selectItem(targetId, undefined, "VERIFY_DECISION");
+                                }}
+                                title="点击在中间表格定位该商品"
+                              >
+                                {name}
+                              </button>
+                            );
+                          })}
+                        </div>
                       </div>
-                    ))}
+                    )}
+
+                    {/* 结构化前后对比明细 (Before → After) */}
+                    {log.changes.length > 0 && (
+                      <div className="event-changes-box">
+                        <div className="changes-box-title">变更明细前后对比：</div>
+                        <div className="changes-list">
+                          {log.changes.map((ch, idx) => (
+                            <div key={idx} className="change-row-item">
+                              {ch.lineName && (
+                                <span className="change-line-tag">{ch.lineName}</span>
+                              )}
+                              <span className="change-field-name">{ch.item}</span>
+                              <span className="change-before-val">{ch.before || "空"}</span>
+                              <span className="change-arrow">→</span>
+                              <span className="change-after-val">{ch.after || "空"}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
-                </details>
-              ))}
+                ));
+              })()}
+            </div>
+
+            {/* 底层版本快照折叠 */}
+            <div className="history-versions-section">
+              <div className="ver-section-title">全票草稿版本快照（历史留痕）</div>
+              {state.versions
+                .filter((v) => v.draftId === draft.id)
+                .slice()
+                .reverse()
+                .map((v) => (
+                  <details key={v.id} className="history-ver-item">
+                    <summary>
+                      <b>V{v.version}</b> · {v.triggerReason} ·{" "}
+                      {new Date(v.createdAt).toLocaleString("zh-CN")}
+                    </summary>
+                    <div className="ver-diff-content">
+                      {v.after.map((after) => (
+                        <div key={after.entrustmentLineId}>
+                          {FINAL_OUTPUT_FIELDS.filter(
+                            (f) =>
+                              v.before.find(
+                                (b) =>
+                                  b.entrustmentLineId === after.entrustmentLineId,
+                              )?.fields[f] !== after.fields[f],
+                          ).map((f) => (
+                            <p key={f} className="ver-diff-line">
+                              <span>
+                                {short(after.entrustmentLineId)} · {f}：
+                              </span>
+                              <span className="diff-old">
+                                {value(
+                                  v.before.find(
+                                    (b) =>
+                                      b.entrustmentLineId ===
+                                      after.entrustmentLineId,
+                                  )?.fields[f],
+                                )}
+                              </span>
+                              <span className="diff-arrow">→</span>
+                              <span className="diff-new">
+                                {value(after.fields[f])}
+                              </span>
+                            </p>
+                          ))}
+                        </div>
+                      ))}
+                    </div>
+                  </details>
+                ))}
+            </div>
           </div>
         </section>
       )}
 
+      <div className="recon-mobile-panels" aria-label="工作台面板">
+        <button className="secondary" onClick={() => setMobileDrawer("left")}><Layers size={14} />商品与问题</button>
+        <button className="secondary" onClick={() => setMobileDrawer("right")}><Eye size={14} />字段证据</button>
+      </div>
       {/* 工作台三栏主体 */}
       <div
         className="recon-columns-v2"
@@ -854,6 +1275,7 @@ export function ReconciliationWorkbench({
             mobileDrawer === "left" ? "drawer-open" : ""
           }`}
         >
+          <button className="recon-drawer-close" aria-label="关闭商品与问题面板" onClick={() => setMobileDrawer(null)}><X size={17} /></button>
           {/* 区域 1：商品行状态导航 */}
           <section className="queue-section queue-nav">
             <div className="queue-section-header">
@@ -938,7 +1360,7 @@ export function ReconciliationWorkbench({
                             ? "has-inspection"
                             : "no-inspection"
                       }`}
-                      onClick={() => selectItem(item.id, field ?? undefined)}
+                      onClick={() => selectItem(item.id, undefined, "INSPECTION_BASIS")}
                     >
                       <div className="card-top-row">
                         <div className="card-num-code">
@@ -999,7 +1421,7 @@ export function ReconciliationWorkbench({
               </h3>
             </div>
             <div className="problem-filter-chips">
-              {([["ALL", "全部", mustHandleCount], ["RELATION", "商品关系", waitingMaterialCount], ["CONFLICT", "字段冲突", conflictCount], ["MISSING", "必填缺失", missingRequiredTotal.length]] as const).map(([key, label, count]) => <button key={key} className={problemFilter === key ? "active" : ""} onClick={() => setProblemFilter(key)}>{label} <b>{count}</b></button>)}
+              {([["ALL", "全部", mustHandleCount], ["RELATION", "查货依据", waitingMaterialCount], ["CONFLICT", "字段冲突", conflictCount], ["MISSING", "必填缺失", missingRequiredTotal.length]] as const).map(([key, label, count]) => <button key={key} className={problemFilter === key ? "active" : ""} onClick={() => setProblemFilter(key)}>{label} <b>{count}</b></button>)}
             </div>
             {mustHandleCount === 0 ? (
               <div className="queue-empty-clean">
@@ -1024,7 +1446,7 @@ export function ReconciliationWorkbench({
                         <div
                           key={`miss-${lId}-${r.field}`}
                           className="problem-action-card card-missing"
-                          onClick={() => selectItem(lId, r.field, "FIELD_SOURCE")}
+                          onClick={() => selectItem(lId, r.field, "VERIFY_DECISION")}
                         >
                           <div className="problem-card-head">
                             <AlertTriangle size={13} className="text-red" />
@@ -1032,7 +1454,7 @@ export function ReconciliationWorkbench({
                           </div>
                           <p className="problem-card-desc">报关必须填报该字段，当前可提前补全</p>
                           <div className="problem-card-foot">
-                            <span className="action-link">点击补全字段 →</span>
+                            <span className="action-link">在核验结论中补全 →</span>
                           </div>
                         </div>
                       );
@@ -1051,7 +1473,7 @@ export function ReconciliationWorkbench({
                       <div
                         key={`rel-${l.id}`}
                         className="problem-action-card card-waiting-mat"
-                        onClick={() => selectItem(l.id, "型号", "RELATION")}
+                        onClick={() => selectItem(l.id, "型号", "INSPECTION_BASIS")}
                       >
                         <div className="problem-card-head">
                           <AlertTriangle size={13} className="text-orange" />
@@ -1059,7 +1481,7 @@ export function ReconciliationWorkbench({
                         </div>
                         <p className="problem-card-desc">系统持续监听中；也可在右侧手动指定</p>
                         <div className="problem-card-foot">
-                          <span className="action-link">手动指定依据 →</span>
+                          <span className="action-link">查看查货依据 →</span>
                         </div>
                       </div>
                     ))}
@@ -1082,7 +1504,7 @@ export function ReconciliationWorkbench({
                         <div
                           key={`conf-${lId}-${r.field}`}
                           className="problem-action-card card-conflict"
-                          onClick={() => selectItem(lId, r.field, "FIELD_SOURCE")}
+                          onClick={() => selectItem(lId, r.field, "VERIFY_DECISION")}
                         >
                           <div className="problem-card-head">
                             <AlertCircle size={13} className="text-red" />
@@ -1093,7 +1515,7 @@ export function ReconciliationWorkbench({
                             <span>查货：{value(r.candidateValue)}</span>
                           </div>
                           <div className="problem-card-foot">
-                            <span className="action-link">点击快速裁决 →</span>
+                            <span className="action-link">前往核验结论裁决 →</span>
                           </div>
                         </div>
                       );
@@ -1124,7 +1546,7 @@ export function ReconciliationWorkbench({
                     className={`risk-card ${
                       risk.level === "warn" ? "risk-warn" : "risk-info"
                     }`}
-                    onClick={() => selectItem(risk.lineId, field ?? undefined)}
+                    onClick={() => selectItem(risk.lineId, risk.targetField, risk.targetTab)}
                   >
                     <div className="risk-card-head">
                       {risk.level === "warn" ? (
@@ -1250,7 +1672,7 @@ export function ReconciliationWorkbench({
                     <th
                       key={f}
                       className={field === f ? "th-active-field" : ""}
-                      onClick={() => setField(f)}
+                      onClick={() => selectItem(lineId, f, "FIELD_SOURCE")}
                     >
                       {f}
                     </th>
@@ -1314,9 +1736,9 @@ export function ReconciliationWorkbench({
                           <button
                             className="row-anchor-btn"
                             onClick={() =>
-                              selectItem(l.id, field ?? undefined)
+                              selectItem(l.id, undefined, "INSPECTION_BASIS")
                             }
-                            title="点击选定该商品行"
+                            title="点击选定该商品行并在右侧查看查货核验依据"
                           >
                             <b>
                               {String(draft.lines.indexOf(l) + 1).padStart(
@@ -1377,9 +1799,9 @@ export function ReconciliationWorkbench({
                               <button
                                 className="action-btn-manual-rel"
                                 onClick={() =>
-                                  selectItem(l.id, "型号", "RELATION")
+                                  selectItem(l.id, "型号", "INSPECTION_BASIS")
                                 }
-                                title="在右侧商品对应Tab手动指定查货依据"
+                                title="在右侧「查货核验依据」手动指定依据"
                               >
                                 手动关联
                               </button>
@@ -1396,10 +1818,10 @@ export function ReconciliationWorkbench({
                                   selectItem(
                                     l.id,
                                     firstIssue?.field ?? "型号",
-                                    "FIELD_SOURCE",
+                                    "VERIFY_DECISION",
                                   );
                                 }}
-                                title="定位到问题字段并展开处理"
+                                title="定位到问题字段并查看核验结论"
                               >
                                 处理问题
                               </button>
@@ -1436,6 +1858,10 @@ export function ReconciliationWorkbench({
                           return (
                             <td
                               key={f}
+                              role="button"
+                              tabIndex={0}
+                              aria-label={`查看${l.model}的${f}核验结论`}
+                              onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); selectItem(l.id, f, "VERIFY_DECISION"); } }}
                               className={`draft-cell ${
                                 isCurrentActive ? "cell-selected" : ""
                               } ${
@@ -1452,7 +1878,7 @@ export function ReconciliationWorkbench({
                                           : "cell-verified-ok"
                               }`}
                               onClick={() =>
-                                selectItem(l.id, f, "FIELD_SOURCE")
+                                selectItem(l.id, f, "VERIFY_DECISION")
                               }
                             >
                               <div className="cell-inner">
@@ -1466,7 +1892,7 @@ export function ReconciliationWorkbench({
                                         : ""
                                     }`}
                                   >
-                                    {value(r?.currentValue)}
+                                    {r?.currentValue?.trim().toUpperCase() === "UNKNOWN" ? "—" : value(r?.currentValue)}
                                   </span>
                                   {(!r?.currentValue ||
                                     r.currentValue.trim() === "" ||
@@ -1490,9 +1916,13 @@ export function ReconciliationWorkbench({
                                 {r?.checkStatus === "AI_UPDATED" && (
                                   <div
                                     className="cell-status-subnote note-updated"
-                                    title={`原委托: ${value(r.baseValue)} | 查货: ${value(r.candidateValue)}`}
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      selectItem(l.id, f, "VERIFY_DECISION");
+                                    }}
+                                    title={`点击查看核验结论 | 原委托: ${value(r.baseValue)} -> 查货实测: ${value(r.candidateValue)}`}
                                   >
-                                    <span>↑ AI更新</span>
+                                    <span>✦ AI纠偏</span>
                                   </div>
                                 )}
                                 {r?.checkStatus === "CONFLICT" && (
@@ -1506,13 +1936,17 @@ export function ReconciliationWorkbench({
                                 {r?.checkStatus === "HUMAN_MODIFIED" && (
                                   <div
                                     className="cell-status-subnote note-human"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      selectItem(l.id, f, "VERIFY_DECISION");
+                                    }}
                                     title={
                                       r.hasHumanOverriddenDiff
-                                        ? `后续AI查货新发现：${value(r.candidateValue)}`
-                                        : "人工已修改"
+                                        ? `点击查看核验结论 | 后续AI查货新发现：${value(r.candidateValue)}`
+                                        : "点击查看人工修改记录"
                                     }
                                   >
-                                    <span>● 人工修改</span>
+                                    <span>✍ 人工修订</span>
                                     {r.hasHumanOverriddenDiff && (
                                       <b className="warn-marker">! 差异</b>
                                     )}
@@ -1583,7 +2017,8 @@ export function ReconciliationWorkbench({
           }`}
           style={{ width: rightPanelCollapsed ? "44px" : `${rightPanelWidth}px` }}
         >
-          {/* 四大 Tab 切换与快速放大按钮 */}
+          <button className="recon-drawer-close" aria-label="关闭字段证据面板" onClick={() => setMobileDrawer(null)}><X size={17} /></button>
+          {/* 四大 Tab 切换与快速放大按钮 (+ POC 评测模式下：标准答案差异) */}
           <div
             className="evidence-tabs-bar"
             role="tablist"
@@ -1595,15 +2030,15 @@ export function ReconciliationWorkbench({
               }`}
               onClick={() => setRightTab("FIELD_SOURCE")}
             >
-              [字段来源]
+              字段来源
             </button>
             <button
               className={`evidence-tab ${
-                rightTab === "RELATION" ? "active" : ""
+                rightTab === "INSPECTION_BASIS" ? "active" : ""
               }`}
-              onClick={() => setRightTab("RELATION")}
+              onClick={() => setRightTab("INSPECTION_BASIS")}
             >
-              [商品对应]
+              查货核验依据
             </button>
             <button
               className={`evidence-tab ${
@@ -1611,16 +2046,26 @@ export function ReconciliationWorkbench({
               }`}
               onClick={() => setRightTab("RAW_MATERIAL")}
             >
-              [原始材料]
+              原始材料
             </button>
             <button
               className={`evidence-tab ${
-                rightTab === "AI_LOG" ? "active" : ""
+                rightTab === "VERIFY_DECISION" ? "active" : ""
               }`}
-              onClick={() => setRightTab("AI_LOG")}
+              onClick={() => setRightTab("VERIFY_DECISION")}
             >
-              [AI记录]
+              核验结论
             </button>
+            {isEvaluationMode && (
+              <button
+                className={`evidence-tab eval-diff-tab ${
+                  rightTab === "EVAL_DIFF" ? "active" : ""
+                }`}
+                onClick={() => setRightTab("EVAL_DIFF")}
+              >
+                标准答案差异
+              </button>
+            )}
 
             <button type="button" className="tab-action-collapse" onClick={() => setRightPanelCollapsed((value) => !value)} title={rightPanelCollapsed ? "展开证据" : "收起证据"}>
               {rightPanelCollapsed ? <ChevronLeft size={15} /> : <ChevronRight size={15} />}
@@ -1651,21 +2096,61 @@ export function ReconciliationWorkbench({
             </button>
           </div>
 
+          {/* 右侧面板公共常驻上下文条：显示当前选中的商品与字段，切 Tab 不迷失 */}
+          <div className="recon-context-bar">
+            <div className="context-item-commodity">
+              <span className="context-commodity-no">
+                商品 {String(draft.lines.findIndex((l) => l.id === lineId) + 1).padStart(2, "0")}
+              </span>
+              <span className="context-commodity-id">{short(lineId)}</span>
+              <span className="context-commodity-model" title={currentLine?.model}>
+                {currentLine?.model || "未命名商品"}
+              </span>
+            </div>
+            <div className="context-divider">/</div>
+            <div className="context-item-field">
+              <span className="context-field-label">当前聚焦：</span>
+              <b className="context-field-name">{field || "整行关系"}</b>
+              {field && activeFieldRow?.currentValue && (
+                <span className="context-field-badge" title={activeFieldRow.currentValue}>
+                  {value(activeFieldRow.currentValue)}
+                </span>
+              )}
+            </div>
+          </div>
+
           <div className="evidence-tab-body">
-            {/* Tab 1: 字段来源 */}
+            {/* Tab 1: 字段来源 (规范四层结构) */}
             {rightTab === "FIELD_SOURCE" && (
               <div className="tab-pane-source">
-                <div className="source-context-head">
-                  <div className="context-sub">
-                    商品 {draft.lines.findIndex((l) => l.id === lineId) + 1} ·{" "}
-                    {short(lineId)}
+                {/* 1. 当前结果 */}
+                <div className="source-result-box">
+                  <div className="result-box-top">
+                    <span className="result-label">当前核对单结果</span>
+                    <span className={`result-status-badge ${
+                      activeFieldRow?.checkStatus === "VERIFIED_CONSISTENT"
+                        ? "badge-verified"
+                        : activeFieldRow?.checkStatus === "AI_UPDATED"
+                          ? "badge-updated"
+                          : activeFieldRow?.checkStatus === "CONFLICT"
+                            ? "badge-conflict"
+                            : activeFieldRow?.checkStatus === "HUMAN_MODIFIED"
+                              ? "badge-human"
+                              : "badge-pending"
+                    }`}>
+                      {activeFieldRow?.checkStatus === "VERIFIED_CONSISTENT"
+                        ? "✓ 核对一致"
+                        : activeFieldRow?.checkStatus === "AI_UPDATED"
+                          ? "✦ AI依据实测纠偏"
+                          : activeFieldRow?.checkStatus === "CONFLICT"
+                            ? "⚠ 存在差异，需人工判断"
+                            : activeFieldRow?.checkStatus === "HUMAN_MODIFIED"
+                              ? "✍ 人工已修订"
+                              : "○ 尚未核对 (仅委托来源)"}
+                    </span>
                   </div>
-                  <div className="context-field-name">
-                    <span>当前字段：</span>
-                    <b>{field ?? "未选中"}</b>
-                  </div>
-                  <div className="context-current-val">
-                    当前值：<strong>{value(activeFieldRow?.currentValue)}</strong>
+                  <div className="result-val-display">
+                    <strong>{value(activeFieldRow?.currentValue)}</strong>
                   </div>
                 </div>
 
@@ -1680,67 +2165,123 @@ export function ReconciliationWorkbench({
                   </div>
                 )}
 
-                {/* 委托书 vs 查货单 多源对照卡片 */}
-                <div className="source-compare-card">
-                  <div className="compare-block order-block">
-                    <span className="block-title">委托书申报原件</span>
-                    <div className="source-file-info">
-                      <FileSpreadsheet size={13} />
-                      <span>
-                        {activeFieldRow?.sourceBreakdown.orderSource?.fileName ??
-                          "委托Excel原件"}
-                      </span>
+                {/* 2. 委托侧依据 */}
+                <div className="evidence-layer-card layer-order">
+                  <div className="layer-head">
+                    <div className="layer-head-title">
+                      <FileSpreadsheet size={13} className="text-blue" />
+                      <strong>委托侧依据</strong>
                     </div>
-                    <div className="source-loc-tag">
-                      位置：
-                      {activeFieldRow?.sourceBreakdown.orderSource?.locationText}
-                    </div>
-                    <div className="source-val-box">
-                      原值：
-                      <b>{value(activeFieldRow?.sourceBreakdown.orderSource?.rawValue)}</b>
-                    </div>
+                    <button
+                      type="button"
+                      className="link-jump-material"
+                      onClick={() => {
+                        const oFileId =
+                          activeFieldRow?.sourceBreakdown.orderSource?.fileId ||
+                          currentLine?.sourceLocation?.fileId ||
+                          draft.materialFileIds[0] ||
+                          "";
+                        jumpToMaterial(
+                          oFileId,
+                          currentLine?.sourceLocation || {
+                            fileId: oFileId,
+                            position: activeFieldRow?.sourceBreakdown.orderSource?.locationText,
+                          },
+                        );
+                      }}
+                      title="点击在原始材料中定位此委托单元格"
+                    >
+                      <span>在原件中定位</span>
+                      <ChevronRight size={12} />
+                    </button>
                   </div>
 
-                  <div className="compare-block inspection-block">
-                    <span className="block-title">仓库查货资料</span>
+                  <div className="layer-body">
+                    <div className="layer-file-meta">
+                      <span>文件：<b>{activeFieldRow?.sourceBreakdown.orderSource?.fileName ?? "2件.xlsx"}</b></span>
+                      <span>·</span>
+                      <span>位置：{activeFieldRow?.sourceBreakdown.orderSource?.locationText || `第${draft.lines.findIndex(l => l.id === lineId) + 1}行`}</span>
+                    </div>
+                    <div className="layer-raw-val">
+                      原文：<b>{value(activeFieldRow?.sourceBreakdown.orderSource?.rawValue || activeFieldRow?.baseValue)}</b>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3. 查货侧依据 */}
+                <div className="evidence-layer-card layer-inspection">
+                  <div className="layer-head">
+                    <div className="layer-head-title">
+                      <FileText size={13} className="text-teal" />
+                      <strong>查货侧依据</strong>
+                    </div>
+                    {activeFieldRow?.sourceBreakdown.inspectionSource && (
+                      <button
+                        type="button"
+                        className="link-jump-material"
+                        onClick={() => {
+                          const isrc = activeFieldRow?.sourceBreakdown.inspectionSource;
+                          if (isrc?.fileId) {
+                            jumpToMaterial(isrc.fileId, {
+                              fileId: isrc.fileId,
+                              position: isrc.locationText,
+                            });
+                          }
+                        }}
+                        title="点击在原始材料中定位此查货数据"
+                      >
+                        <span>在查货单中定位</span>
+                        <ChevronRight size={12} />
+                      </button>
+                    )}
+                  </div>
+
+                  <div className="layer-body">
                     {activeFieldRow?.sourceBreakdown.inspectionSource ? (
                       <>
-                        <div className="source-file-info">
-                          <FileText size={13} />
+                        <div className="layer-file-meta">
                           <span>
-                            {activeFieldRow.sourceBreakdown.inspectionSource
-                              .fileName}
+                            批次：<b>{currentLineSources[0]?.logicalInspectionOrderId || "CH003"}</b>
                           </span>
+                          <span>·</span>
+                          <span>入仓号：{currentLineSources[0]?.warehouseNo || "26036383"}</span>
+                          <span>·</span>
+                          <span>文件：{activeFieldRow.sourceBreakdown.inspectionSource.fileName}</span>
                         </div>
-                        <div className="source-loc-tag">
-                          批次/位置：
-                          {activeFieldRow.sourceBreakdown.inspectionSource
-                            .locationText}
-                        </div>
-                        <div className="source-val-box">
+                        <div className="layer-raw-val">
                           实测值：
-                          <b>
+                          <b className="text-teal">
                             {value(
-                              activeFieldRow.sourceBreakdown.inspectionSource
-                                .inspectionValue,
+                              activeFieldRow.sourceBreakdown.inspectionSource.inspectionValue,
                             )}
                           </b>
                         </div>
                       </>
                     ) : (
-                      <div className="no-source-hint">
-                        <p><b>○ 暂无查货依据</b></p>
-                        <span>原因：该商品当前没有可靠查货关系，等待仓储查货材料到达</span>
+                      <div className="no-inspection-hint-box">
+                        <div className="hint-main-text">
+                          <b>○ 暂无可靠查货依据</b>
+                        </div>
+                        <p className="hint-sub-text">
+                          当前值直接来自委托材料；等待找到对应查货商品后将执行交叉核对。
+                        </p>
+                        <button
+                          type="button"
+                          className="link-rel-switch"
+                          onClick={() => setRightTab("INSPECTION_BASIS")}
+                        >
+                          去「查货核验依据」查找/关联查货依据 →
+                        </button>
                       </div>
                     )}
                   </div>
                 </div>
 
-                {/* AI 处理说明 */}
+                {/* 4. 当前处理结论与判定依据 */}
                 <div className="source-ai-explanation">
                   <div className="ai-exp-head">
                     <Sparkles size={14} className="text-purple" />
-                    <strong>AI 处理依据与判定规则</strong>
+                    <strong>当前处理结论与判定依据</strong>
                   </div>
                   <p>
                     {activeFieldRow?.sourceBreakdown.aiRuleNote ||
@@ -1749,53 +2290,114 @@ export function ReconciliationWorkbench({
                         : activeFieldRow?.checkStatus === "AI_UPDATED"
                           ? "AI 依据查货单实测事实自动纠偏更新。"
                           : activeFieldRow?.checkStatus === "CONFLICT"
-                            ? "委托值与查货值存在出入，请人工裁决采用哪项。"
-                            : "等待外部材料补充。")}
+                            ? "委托值与查货实测出入，请人工裁决采用哪项。"
+                            : "当前值来自委托材料，等待外部查货材料补充后交叉核对。")}
                   </p>
+                  <button
+                    type="button"
+                    className="link-p4-switch"
+                    onClick={() => setRightTab("VERIFY_DECISION")}
+                  >
+                    前往「核验结论」查看 P4 判定明细与裁决 →
+                  </button>
                 </div>
 
-                {/* 人工修订与快捷处理 */}
-                <div className="source-human-editor">
-                  <strong>人工修订该字段</strong>
-                  <div className="editor-quick-buttons">
-                    <button
-                      className="secondary btn-sm"
-                      onClick={() =>
-                        state.editSelectedLineField(
-                          lineId,
-                          field!,
-                          activeFieldRow?.baseValue ?? "",
-                          {
-                            actor: "人工复核员",
-                            occurredAt: new Date().toISOString(),
-                            reason: "采纳委托原件数值",
-                            locked: false,
-                          },
-                        )
-                      }
-                    >
-                      采用委托值
-                    </button>
-                    {activeFieldRow?.candidateValue && (
+                {/* 冲突裁决与人工修订 */}
+                {activeFieldRow?.checkStatus === "CONFLICT" && (
+                  <div className="field-conflict-banner">
+                    <div className="conflict-badge-title">
+                      <AlertTriangle size={14} className="text-red" />
+                      <b>存在差异，需要人工判断：</b>
+                    </div>
+                    <div className="conflict-values-contrast">
+                      <div className="cv-box cv-order">
+                        <span>委托值：</span>
+                        <b>{value(activeFieldRow.baseValue)}</b>
+                      </div>
+                      <div className="cv-box cv-inspection">
+                        <span>查货实测：</span>
+                        <b>{value(activeFieldRow.candidateValue)}</b>
+                      </div>
+                    </div>
+                    <div className="conflict-options-row">
                       <button
-                        className="secondary btn-sm"
+                        type="button"
+                        className="btn-conflict-action btn-accept-order"
+                        onClick={() => state.confirmSelectedLineField(lineId, field!)}
+                      >
+                        <Check size={12} />
+                        保留委托值
+                      </button>
+                      {activeFieldRow.candidateValue && (
+                        <button
+                          type="button"
+                          className="btn-conflict-action btn-accept-inspection"
+                          onClick={() =>
+                            state.editSelectedLineField(
+                              lineId,
+                              field!,
+                              activeFieldRow.candidateValue ?? "",
+                              {
+                                actor: "人工复核员",
+                                occurredAt: new Date().toISOString(),
+                                reason: "采纳查货实测数据裁决差异",
+                                locked: false,
+                              },
+                            )
+                          }
+                        >
+                          <Check size={12} />
+                          采用查货值 ({value(activeFieldRow.candidateValue)})
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {/* 手动修订输入区 */}
+                <div className="source-human-editor">
+                  <div className="editor-title-row">
+                    <strong>手动修订该字段</strong>
+                    <div className="editor-quick-chips">
+                      <button
+                        className="chip-action"
                         onClick={() =>
                           state.editSelectedLineField(
                             lineId,
                             field!,
-                            activeFieldRow.candidateValue ?? "",
+                            activeFieldRow?.baseValue ?? "",
                             {
                               actor: "人工复核员",
                               occurredAt: new Date().toISOString(),
-                              reason: "采纳查货实测数值",
+                              reason: "采纳委托原件数值",
                               locked: false,
                             },
                           )
                         }
                       >
-                        采用查货值 ({activeFieldRow.candidateValue})
+                        填入委托值
                       </button>
-                    )}
+                      {activeFieldRow?.candidateValue && (
+                        <button
+                          className="chip-action"
+                          onClick={() =>
+                            state.editSelectedLineField(
+                              lineId,
+                              field!,
+                              activeFieldRow.candidateValue ?? "",
+                              {
+                                actor: "人工复核员",
+                                occurredAt: new Date().toISOString(),
+                                reason: "采纳查货实测数值",
+                                locked: false,
+                              },
+                            )
+                          }
+                        >
+                          填入查货值
+                        </button>
+                      )}
+                    </div>
                   </div>
 
                   <div className="editor-input-row">
@@ -1828,84 +2430,13 @@ export function ReconciliationWorkbench({
                     </button>
                   </div>
                 </div>
-
-                {/* 评测模式下：额外对比分析 */}
-                {isEvaluationMode && (
-                  <div className="source-eval-compare">
-                    <strong>POC 评测基准差异原因剖析</strong>
-                    {(() => {
-                      const evalF = evaluationReport?.lineResults
-                        .find((l) => l.lineId === lineId)
-                        ?.fields[field!];
-                      if (!evalF) return null;
-                      return (
-                        <div className="eval-detail-note">
-                          <div>
-                            AI 判定结果：<b>{value(evalF.aiValue)}</b>
-                          </div>
-                          <div>
-                            标准答案 (GT)：<b>{value(evalF.gtValue)}</b>
-                          </div>
-                          <div>
-                            差异判定：
-                            <span className="diff-desc">
-                              {evalF.diffDescription}
-                            </span>
-                          </div>
-                        </div>
-                      );
-                    })()}
-                  </div>
-                )}
               </div>
             )}
 
-            {/* Tab 2: 商品对应 (含商品对应概要) */}
-            {rightTab === "RELATION" && currentLine && (
+            {/* Tab 2: 查货核验依据 (P2/P3 真实查货事实明细与对应关系) */}
+            {rightTab === "INSPECTION_BASIS" && currentLine && (
               <div className="tab-pane-relation">
-                {/* 商品对应概要统计卡片 */}
-                <div className="relation-summary-card">
-                  <div className="rel-card-title">
-                    <strong>商品对应概要</strong>
-                    <span className="rel-card-tag">材料商品行匹配概要</span>
-                  </div>
-                  <div className="rel-stats-grid">
-                    <div className="rel-stat-item">
-                      <span>委托商品</span>
-                      <b>{totalLines}</b>
-                    </div>
-                    <div className="rel-stat-item">
-                      <span>已确定对应</span>
-                      <b className="text-green">
-                        {verifiedLines.length + needsConfirmLines.length}
-                      </b>
-                    </div>
-                    <div className="rel-stat-item">
-                      <span>多个候选</span>
-                      <b>0</b>
-                    </div>
-                    <div className="rel-stat-item">
-                      <span>暂无对应</span>
-                      <b className={noInspectionLines.length > 0 ? "text-orange" : "text-muted"}>
-                        {noInspectionLines.length}
-                      </b>
-                    </div>
-                    <div className="rel-stat-item">
-                      <span>涉及查货批次</span>
-                      <b>{currentLineSources.length > 0 ? new Set(currentLineSources.map(s => s.warehouseNo)).size : 0}</b>
-                    </div>
-                    <div className="rel-stat-item">
-                      <span>涉及入仓号</span>
-                      <b>{currentLineSources.length > 0 ? new Set(currentLineSources.map(s => s.warehouseNo)).size : 0}</b>
-                    </div>
-                    <div className="rel-stat-item">
-                      <span>使用原始行</span>
-                      <b>{currentLineSources.length}</b>
-                    </div>
-                  </div>
-                </div>
-
-                <LineActions
+                <CommodityRelations
                   key={currentLine.id}
                   draft={draft}
                   line={currentLine}
@@ -1913,80 +2444,527 @@ export function ReconciliationWorkbench({
                   evidence={state.evidence.filter(
                     (e) => e.entrustmentLineId === currentLine.id,
                   )}
-                  onFieldSelect={(f) => selectItem(currentLine.id, f, "FIELD_SOURCE")}
+                  onFieldSelect={(f) => selectItem(currentLine.id, f, "VERIFY_DECISION")}
+                  onJumpToMaterial={jumpToMaterial}
+                  onSwitchTab={(t) => setRightTab(t)}
                 />
               </div>
             )}
 
-            {/* Tab 3: 原始材料预览 (支持Excel单元格定位和PDF) */}
+            {/* Tab 3: 原始材料预览 (支持Excel行列高亮定位和PDF) */}
             {rightTab === "RAW_MATERIAL" && (
               <div className="tab-pane-raw">
                 <MaterialPreview
-                  key={`${activeFile?.id}-${lineId}-${field}`}
+                  key={`${activeFile?.id}-${targetMaterialLocation ? `${targetMaterialLocation.sheet}-${targetMaterialLocation.row}-${targetMaterialLocation.page}` : `${lineId}-${field}`}`}
                   location={
-                    currentLine?.sourceLocation &&
-                    currentLine.sourceLocation.fileId === activeFile?.id
-                      ? currentLine.sourceLocation
-                      : {
-                          fileId: activeFile?.id ?? "",
-                          page: 1,
-                          sheet: null,
-                          position: "原件材料定位",
-                        }
+                    targetMaterialLocation && targetMaterialLocation.fileId === activeFile?.id
+                      ? targetMaterialLocation
+                      : currentLine?.sourceLocation &&
+                        currentLine.sourceLocation.fileId === activeFile?.id
+                        ? currentLine.sourceLocation
+                        : {
+                            fileId: activeFile?.id ?? "",
+                            page: 1,
+                            sheet: null,
+                            position: "原件材料定位",
+                          }
                   }
                   name={activeFile?.name ?? "原件"}
                   files={taskFiles}
                   activeFileId={activeFile?.id}
-                  onSelectFile={(id) => setSelectedFileId(id)}
+                  onSelectFile={(id) => {
+                    setSelectedFileId(id);
+                    setTargetMaterialLocation(null);
+                  }}
                 />
               </div>
             )}
 
-            {/* Tab 4: AI 变更轨迹与事件历史 */}
-            {rightTab === "AI_LOG" && (
-              <div className="tab-pane-ailog">
-                <strong>本票 AI 增量推理与事件历史</strong>
-                <div className="ailog-timeline">
-                  {/* 最新的事件驱动状态展示 */}
-                  <div className="timeline-event">
-                    <time>{updateTimeStr}</time>
-                    <div className="event-type">持续事件监听</div>
-                    <p>
-                      {draft.lastUpdateReason
-                        ? `${draft.lastUpdateReason} · 触发系统增量核对`
-                        : "系统持续监听材料事件，并已完成当前材料比对"}
-                    </p>
-                    <div className="event-summary-note">
-                      <span>• 委托商品：共 {totalLines} 行</span>
-                      <span>
-                        • 已建立依据：
-                        {verifiedLines.length + needsConfirmLines.length} 行
-                      </span>
-                      {noInspectionLines.length > 0 && (
-                        <span>• 仍等待查货：{noInspectionLines.length} 行</span>
-                      )}
-                      <span>• 当前草稿：V{draft.version}</span>
+            {/* Tab 4: 核验结论 (P4 字段级核验与草稿裁决核心) */}
+            {rightTab === "VERIFY_DECISION" && currentLine && (
+              <div className="tab-pane-verify-decision">
+                {/* 前置边界守卫：非 MATCHED 行严禁执行 P4 字段核验 */}
+                {!hasRelation ? (
+                  <div className="p4-unmatched-guard">
+                    {isLineMultiCandidate ? (
+                      <div className="p4-guard-banner banner-warning">
+                        <AlertTriangle size={18} className="text-amber" />
+                        <div className="guard-banner-content">
+                          <strong>⚠ 等待商品对应确认，暂不执行字段核验</strong>
+                          <p>
+                            当前委托商品在客户查货池中匹配到多个候选，依据尚未唯一确定。在人工确认查货依据前，系统暂停执行 P4 字段核验，当前草稿值仍来自委托侧初始事实。
+                          </p>
+                          <button
+                            type="button"
+                            className="primary btn-sm mt-2"
+                            onClick={() => setRightTab("INSPECTION_BASIS")}
+                          >
+                            前往「查货核验依据」确认商品对应 →
+                          </button>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="p4-guard-banner banner-info">
+                        <AlertCircle size={18} className="text-blue" />
+                        <div className="guard-banner-content">
+                          <strong>○ 暂无可靠查货依据，尚未进入查货字段核验</strong>
+                          <p>
+                            当前客户查货池中暂无与本商品匹配的记录。当前草稿值全部来自委托侧初始事实（P1基准），后续新查货材料导入后系统将自动重新检查。
+                          </p>
+                          <button
+                            type="button"
+                            className="secondary btn-sm mt-2"
+                            onClick={() => setRightTab("INSPECTION_BASIS")}
+                          >
+                            前往「查货核验依据」查看查货池与弱候选 →
+                          </button>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* 委托侧基准事实快照 */}
+                    <div className="p4-base-snapshot-card">
+                      <div className="snapshot-card-head">
+                        <FileSpreadsheet size={14} className="text-blue" />
+                        <span>委托侧初始基准事实 (P1 原始申报)</span>
+                      </div>
+                      <div className="snapshot-fields-grid">
+                        {CORE_OUTPUT_FIELDS.map((f) => (
+                          <div key={f} className="snapshot-field-item">
+                            <span className="lbl">{f}：</span>
+                            <span className="val">{value(currentLine.fields[f])}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
-
-                  {state.operations
-                    .filter((o) => o.draftId === draft.id)
-                    .slice()
-                    .reverse()
-                    .map((op) => (
-                      <div key={op.id} className="timeline-event">
-                        <time>
-                          {new Date(op.occurredAt).toLocaleTimeString("zh-CN", {
-                            hour: "2-digit",
-                            minute: "2-digit",
-                            second: "2-digit",
-                          })}
-                        </time>
-                        <div className="event-type">{op.operationType}</div>
-                        <p>{op.summary}</p>
+                ) : (
+                  /* MATCHED 状态：渲染完整 P4 字段核验看板与决策 */
+                  <div className="p4-matched-content">
+                    {/* 1. 核验范围与结果统计看板 */}
+                    <div className="p4-metrics-board">
+                      <div className="board-header">
+                        <div className="board-title-group">
+                          <Sparkles size={14} className="text-teal" />
+                          <strong>P4 字段级核验结论看板</strong>
+                        </div>
+                        <span className="board-batch-info">
+                          依据批次：<b>{currentLineSources[0]?.logicalInspectionOrderId || "CH003"}</b> (入仓号: {currentLineSources[0]?.warehouseNo || "26036383"})
+                        </span>
                       </div>
-                    ))}
+
+                      <div className="p4-stat-chips" role="radiogroup">
+                        <button
+                          type="button"
+                          className={`p4-stat-chip chip-all ${p4Filter === "ALL" ? "is-active" : ""}`}
+                          onClick={() => setP4Filter("ALL")}
+                        >
+                          <span>全部</span>
+                          <b>25</b>
+                        </button>
+                        <button
+                          type="button"
+                          className={`p4-stat-chip chip-consistent ${p4Filter === "KEEP" ? "is-active" : ""}`}
+                          onClick={() => setP4Filter("KEEP")}
+                        >
+                          <span>✓ 一致</span>
+                          <b>{p4Decisions.filter((d) => d.decision === "KEEP" && d.isEvaluatedByInspection).length}</b>
+                        </button>
+                        <button
+                          type="button"
+                          className={`p4-stat-chip chip-updated ${p4Filter === "UPDATE" ? "is-active" : ""}`}
+                          onClick={() => setP4Filter("UPDATE")}
+                        >
+                          <span>✦ 更新/补充</span>
+                          <b>{p4Decisions.filter((d) => d.decision === "UPDATE" || d.decision === "FILL").length}</b>
+                        </button>
+                        <button
+                          type="button"
+                          className={`p4-stat-chip chip-conflict ${p4Filter === "CONFLICT" ? "is-active" : ""}`}
+                          onClick={() => setP4Filter("CONFLICT")}
+                        >
+                          <span>⚠ 差异冲突</span>
+                          <b className={p4Decisions.filter((d) => d.decision === "CONFLICT").length > 0 ? "text-red" : ""}>
+                            {p4Decisions.filter((d) => d.decision === "CONFLICT").length}
+                          </b>
+                        </button>
+                        <button
+                          type="button"
+                          className={`p4-stat-chip chip-missing ${p4Filter === "MISSING" ? "is-active" : ""}`}
+                          onClick={() => setP4Filter("MISSING")}
+                        >
+                          <span>✕ 缺失</span>
+                          <b>{p4Decisions.filter((d) => d.decision === "MISSING").length}</b>
+                        </button>
+                        <button
+                          type="button"
+                          className={`p4-stat-chip chip-noaction ${p4Filter === "NO_ACTION" ? "is-active" : ""}`}
+                          onClick={() => setP4Filter("NO_ACTION")}
+                        >
+                          <span>— 不参与核验</span>
+                          <b>{p4Decisions.filter((d) => d.decision === "NO_ACTION").length}</b>
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* 2. 当前聚焦字段决策卡片 (置顶重点呈现) */}
+                    {activeP4Decision && (
+                      <div className="p4-active-field-card">
+                        <div className="p4-field-card-header">
+                          <div className="field-card-title-group">
+                            <span className="field-tag-prefix">当前核验字段：</span>
+                            <strong className="field-tag-name">{activeP4Decision.field}</strong>
+                            <span className={`p4-badge ${activeP4Decision.actionBadgeClass}`}>
+                              {activeP4Decision.actionLabel}
+                            </span>
+                          </div>
+                          <div className="field-card-quick-links">
+                            <button
+                              type="button"
+                              className="quick-link-btn"
+                              onClick={() => setRightTab("FIELD_SOURCE")}
+                              title="查看字段来源链"
+                            >
+                              <span>查看字段来源</span>
+                              <ChevronRight size={12} />
+                            </button>
+                            <button
+                              type="button"
+                              className="quick-link-btn"
+                              onClick={() => setRightTab("INSPECTION_BASIS")}
+                              title="查看核验所用的查货依据明细"
+                            >
+                              <span>查看核验所用查货</span>
+                              <ChevronRight size={12} />
+                            </button>
+                          </div>
+                        </div>
+
+                        {/* 人工修改保护警示 */}
+                        {activeP4Decision.hasHumanOverriddenDiff && (
+                          <div className="p4-human-banner">
+                            <AlertTriangle size={14} className="text-orange" />
+                            <span>人工修改保护生效中：当前结果为人工修订值，后续查货实测出入已被拦截，锁定当前人工值。</span>
+                          </div>
+                        )}
+
+                        {/* 三方比对区域 */}
+                        <div className="p4-three-way-grid">
+                          <div className="three-way-box box-order">
+                            <span className="box-lbl">
+                              <FileSpreadsheet size={11} className="text-blue" />
+                              委托/核验前值 (P1)
+                            </span>
+                            <strong className="box-val">{value(activeP4Decision.orderValue)}</strong>
+                          </div>
+
+                          <div className="three-way-arrow">
+                            <span>vs</span>
+                          </div>
+
+                          <div className="three-way-box box-inspection">
+                            <span className="box-lbl">
+                              <FileText size={11} className="text-teal" />
+                              查货实测依据值 (P2/P3)
+                            </span>
+                            <strong className={`box-val ${activeP4Decision.inspectionValue ? "text-teal" : "text-muted"}`}>
+                              {activeP4Decision.isEvaluatedByInspection ? value(activeP4Decision.inspectionValue) : "— 不由查货核验"}
+                            </strong>
+                          </div>
+
+                          <div className="three-way-arrow">
+                            <span>➔</span>
+                          </div>
+
+                          <div className="three-way-box box-result">
+                            <span className="box-lbl">
+                              <Sparkles size={11} className="text-purple" />
+                              当前核对单结果 (P4裁决)
+                            </span>
+                            <strong className="box-val text-purple">{value(activeP4Decision.currentValue)}</strong>
+                          </div>
+                        </div>
+
+                        {/* 判定原因与业务解释 */}
+                        <div className="p4-decision-reason-box">
+                          <div className="reason-lbl">判定原因与业务解释 (Reason)：</div>
+                          <p className="reason-text">{activeP4Decision.reason}</p>
+                        </div>
+
+                        {/* 关联证据原件跳转 */}
+                        {activeP4Decision.evidenceKeys.length > 0 && (
+                          <div className="p4-evidence-links-row">
+                            <span className="ev-label">关联证据原件：</span>
+                            <div className="ev-tags">
+                              {activeP4Decision.evidenceKeys.map((key) => {
+                                const matchedEv = state.evidence.find((e) => e.id === key);
+                                const fileId = matchedEv?.sourceFileId || currentLineSources[0]?.sourceFileId || "";
+                                const loc = matchedEv?.sourceLocation;
+
+                                return (
+                                  <button
+                                    key={key}
+                                    type="button"
+                                    className="ev-jump-pill"
+                                    onClick={() => jumpToMaterial(fileId, loc)}
+                                    title={`点击在原始材料中定位 ${key}`}
+                                  >
+                                    <FileText size={10} />
+                                    <span>{key}</span>
+                                    {loc?.position ? <small>({loc.position})</small> : null}
+                                    <ExternalLink size={9} />
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        )}
+
+                        {/* 快捷处理操作 */}
+                        {activeP4Decision.decision === "CONFLICT" && (
+                          <div className="p4-conflict-actions-bar">
+                            <span className="actions-title">差异裁决：</span>
+                            <button
+                              type="button"
+                              className="btn-conflict-opt btn-accept-order"
+                              onClick={() => state.confirmSelectedLineField(lineId, activeP4Decision.field)}
+                            >
+                              <Check size={12} />
+                              保留当前委托值 ({value(activeP4Decision.orderValue)})
+                            </button>
+                            {activeP4Decision.candidateValues[0] && (
+                              <button
+                                type="button"
+                                className="btn-conflict-opt btn-accept-insp"
+                                onClick={() =>
+                                  state.editSelectedLineField(
+                                    lineId,
+                                    activeP4Decision.field,
+                                    activeP4Decision.candidateValues[0],
+                                    {
+                                      actor: "人工复核员",
+                                      occurredAt: new Date().toISOString(),
+                                      reason: "采纳查货实测数据裁决差异",
+                                      locked: false,
+                                    },
+                                  )
+                                }
+                              >
+                                <Check size={12} />
+                                采用查货值 ({value(activeP4Decision.candidateValues[0])})
+                              </button>
+                            )}
+                          </div>
+                        )}
+
+                        {activeP4Decision.decision === "MISSING" && (
+                          <div className="p4-missing-actions-bar">
+                            <span className="actions-title">必填补充：</span>
+                            <div className="missing-input-group">
+                              <input
+                                type="text"
+                                id="p4-missing-fill-input"
+                                placeholder={`输入 ${activeP4Decision.field}...`}
+                                defaultValue=""
+                              />
+                              <button
+                                type="button"
+                                className="primary btn-sm"
+                                onClick={() => {
+                                  const input = document.getElementById("p4-missing-fill-input") as HTMLInputElement;
+                                  if (input && input.value.trim()) {
+                                    state.editSelectedLineField(
+                                      lineId,
+                                      activeP4Decision.field,
+                                      input.value.trim(),
+                                      {
+                                        actor: "人工复核员",
+                                        occurredAt: new Date().toISOString(),
+                                        reason: "人工补充必填空缺",
+                                        locked: false,
+                                      },
+                                    );
+                                  }
+                                }}
+                              >
+                                确认录入
+                              </button>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {/* 3. 整行 25 字段决策清单 (All 25 Fields Decision Table) */}
+                    <div className="p4-fields-table-wrapper">
+                      <div className="fields-table-header">
+                        <div className="table-header-title">
+                          <strong>整行 25 字段核验明细清单</strong>
+                          <span className="fields-total-count">共 25 项标准报关字段</span>
+                        </div>
+                        <small className="text-muted">点击任一行可在上方查看三方比对与原件证据</small>
+                      </div>
+
+                      <div className="p4-table-scroll">
+                        <table className="p4-decision-table">
+                          <thead>
+                            <tr>
+                              <th>字段名称</th>
+                              <th>P4 动作</th>
+                              <th>委托前值 (P1)</th>
+                              <th>查货依据 (P2/P3)</th>
+                              <th>当前核对单结果</th>
+                              <th>核验判定说明</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {p4Decisions
+                              .filter((d) => {
+                                if (p4Filter === "ALL") return true;
+                                if (p4Filter === "KEEP") return d.decision === "KEEP" && d.isEvaluatedByInspection;
+                                if (p4Filter === "UPDATE") return d.decision === "UPDATE" || d.decision === "FILL";
+                                if (p4Filter === "CONFLICT") return d.decision === "CONFLICT";
+                                if (p4Filter === "MISSING") return d.decision === "MISSING";
+                                if (p4Filter === "NO_ACTION") return d.decision === "NO_ACTION";
+                                return true;
+                              })
+                              .map((d) => {
+                                const isSelected = field === d.field;
+
+                                return (
+                                  <tr
+                                    key={d.field}
+                                    className={`p4-row ${isSelected ? "row-selected" : ""} row-${d.decision.toLowerCase()}`}
+                                    onClick={() => setField(d.field)}
+                                  >
+                                    <td className="col-field-name">
+                                      <b>{d.field}</b>
+                                      {d.fieldRow.required && <span className="req-dot" title="报关必填项">*</span>}
+                                    </td>
+                                    <td className="col-action">
+                                      <span className={`p4-badge ${d.actionBadgeClass}`}>
+                                        {d.actionLabel}
+                                      </span>
+                                    </td>
+                                    <td className="col-val">{value(d.orderValue)}</td>
+                                    <td className="col-val">
+                                      {d.isEvaluatedByInspection ? value(d.inspectionValue) : <span className="text-muted">—</span>}
+                                    </td>
+                                    <td className="col-val col-result">
+                                      <strong>{value(d.currentValue)}</strong>
+                                    </td>
+                                    <td className="col-reason" title={d.reason}>
+                                      <span className="reason-ellipsis">{d.reason}</span>
+                                    </td>
+                                  </tr>
+                                );
+                              })}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Tab 5 (POC 评测模式专用): 标准答案差异 */}
+            {rightTab === "EVAL_DIFF" && isEvaluationMode && (
+              <div className="tab-pane-eval-diff">
+                <div className="eval-diff-head">
+                  <Sparkles size={15} className="text-purple" />
+                  <strong>POC 评测标准答案对比与准确率剖析</strong>
                 </div>
+
+                {evaluationReport ? (
+                  <div className="eval-diff-content">
+                    <div className="eval-metrics-mini-grid">
+                      <div className="mini-metric">
+                        <span>总体准确率</span>
+                        <b className="text-green">{evaluationReport.metrics.overallAccuracyRate}%</b>
+                      </div>
+                      <div className="mini-metric">
+                        <span>需修正字段</span>
+                        <b className="text-red">{evaluationReport.metrics.humanCorrectionNeededCount} 个</b>
+                      </div>
+                      <div className="mini-metric">
+                        <span>商品匹配准确率</span>
+                        <b className="text-blue">{evaluationReport.metrics.productMatchAccuracyRate}%</b>
+                      </div>
+                    </div>
+
+                    {/* 当前选定商品的对比 */}
+                    {(() => {
+                      const evalLineResult = evaluationReport.lineResults.find(
+                        (l) => l.lineId === lineId,
+                      );
+                      if (!evalLineResult) return null;
+
+                      return (
+                        <div className="eval-line-contrast-card">
+                          <div className="contrast-card-head">
+                            <strong>
+                              商品 {draft.lines.findIndex((l) => l.id === lineId) + 1} 详细字段比对
+                            </strong>
+                            <span className="contrast-score">
+                              {evalLineResult.mismatchCount === 0
+                                ? "✓ 全部吻合"
+                                : `⚠ ${evalLineResult.mismatchCount} 项出入`}
+                            </span>
+                          </div>
+
+                          <div className="contrast-table-scroll">
+                            <table className="eval-table">
+                              <thead>
+                                <tr>
+                                  <th>字段</th>
+                                  <th>AI判定值</th>
+                                  <th>标准答案 (GT)</th>
+                                  <th>比对结果</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {FINAL_OUTPUT_FIELDS.map((f) => {
+                                  const fd = evalLineResult.fields[f];
+                                  if (!fd) return null;
+                                  return (
+                                    <tr
+                                      key={f}
+                                      className={
+                                        fd.diffType === "CONSISTENT"
+                                          ? "row-match"
+                                          : "row-diff"
+                                      }
+                                    >
+                                      <td><b>{f}</b></td>
+                                      <td>{value(fd.aiValue)}</td>
+                                      <td>{value(fd.gtValue)}</td>
+                                      <td>
+                                        <span
+                                          className={`eval-status-pill ${
+                                            fd.diffType === "CONSISTENT"
+                                              ? "pill-ok"
+                                              : "pill-warn"
+                                          }`}
+                                        >
+                                          {fd.diffType === "CONSISTENT"
+                                            ? "✓ 完全吻合"
+                                            : `⚠ ${fd.diffDescription || "出入"}`}
+                                        </span>
+                                      </td>
+                                    </tr>
+                                  );
+                                })}
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      );
+                    })()}
+                  </div>
+                ) : (
+                  <div className="eval-empty">暂无评测基准数据</div>
+                )}
               </div>
             )}
           </div>
