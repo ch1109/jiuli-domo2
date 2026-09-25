@@ -22,7 +22,9 @@ import {
   Info,
   Layers,
   LockKeyhole,
+  Maximize2,
   RotateCcw,
+  Save,
   Search,
   Sparkles,
   Table,
@@ -39,14 +41,18 @@ import {
   CORE_OUTPUT_FIELDS,
   getFieldRows,
   getLineReconStatus,
+  getManuallyModifiedLineIds,
+  getMultiFileEvidenceContext,
   getP4FieldDecisions,
   INSPECTION_EVALUATED_FIELDS,
   type FieldRow,
   type LineReconStatus,
   type FieldCheckStatusType,
+  type MultiFileEvidenceContext,
   type P4FieldDecisionInfo,
 } from "@/lib/workbench-model";
 import { getTaskSummary } from "@/lib/workspace-status";
+import { getInspectionAvailability } from "@/lib/inspection-availability";
 import { calculateFinalOutputTotals } from "@/lib/domain/final-output";
 import {
   buildFinalReconciliationCsv,
@@ -59,6 +65,7 @@ import {
   type StandardAnswerSheet,
 } from "@/lib/domain/evaluation-engine";
 import { MaterialPreview } from "./material-preview";
+import { MultiEvidenceInspector } from "./multi-evidence-inspector";
 import { CommodityRelations, LineActions } from "./workbench-relations";
 import * as XLSX from "xlsx";
 
@@ -90,17 +97,22 @@ export function ReconciliationWorkbench({
     return new Map(
       draft.lines.map((l) => [
         l.id,
-        getLineReconStatus(l, rowsByLine.get(l.id) ?? [], state.sources),
+        getLineReconStatus(
+          l,
+          rowsByLine.get(l.id) ?? [],
+          state.sources,
+          getInspectionAvailability(draft, l, state.sources, state.scenarioId === "BUSINESS"),
+        ),
       ]),
     );
-  }, [draft, rowsByLine, state.sources]);
+  }, [draft, rowsByLine, state.sources, state.scenarioId]);
 
   // 3. UI 交互状态
   const [lineId, setLineId] = useState(draft?.lines[0]?.id ?? "");
   const [field, setField] = useState<FinalOutputField | null>("型号");
   const [fieldMode, setFieldMode] = useState<"CORE" | "ALL">("ALL"); // 默认直接展示全部25字段
   const [lineNavFilter, setLineNavFilter] = useState<
-    "ALL" | "VERIFIED_OK" | "NEEDS_CONFIRM" | "NO_INSPECTION" | "CONFIRMED"
+    "ALL" | "VERIFIED_OK" | "NEEDS_CONFIRM" | "CANDIDATES" | "NO_INSPECTION" | "CONFIRMED"
   >("ALL");
   const [draftTableFilter, setDraftTableFilter] = useState<
     "ALL" | "PROBLEMS_ONLY" | "UNCONFIRMED_ONLY" | "MISMATCH_ONLY" | "MISSING_ONLY" | "AI_FALSE_POSITIVE"
@@ -229,6 +241,9 @@ export function ReconciliationWorkbench({
     );
   }
 
+  const modifiedLineIds = getManuallyModifiedLineIds(draft.id, state.operations);
+  const lastResultSave = state.resultSaves?.[draft.id];
+
   const currentLine =
     draft.lines.find((l) => l.id === lineId) ?? draft.lines[0];
   const currentRows = currentLine ? rowsByLine.get(currentLine.id) ?? [] : [];
@@ -250,12 +265,15 @@ export function ReconciliationWorkbench({
   const noInspectionLines = allStatuses.filter(
     (s) => s.aiStatus === "NO_INSPECTION",
   );
+  const candidateLines = allStatuses.filter((s) => s.aiStatus === "CANDIDATES");
   const confirmedLines = allStatuses.filter(
     (s) => s.humanStatus === "CONFIRMED",
   );
 
   // 人工需处理问题（必须处理）
-  const blockedRelations = draft.lines.filter((l) => !l.relationSourceId);
+  const blockedRelations = draft.lines.filter((l) => !l.relationSourceId && l.relationSourceIds.length === 0);
+  const waitingMaterialLines = blockedRelations.filter((l) => lineStatuses.get(l.id)?.aiStatus === "NO_INSPECTION");
+  const pendingRelationLines = blockedRelations.filter((l) => lineStatuses.get(l.id)?.aiStatus === "CANDIDATES");
   const conflictFieldsTotal = allFieldRows.filter((r) => r.conflict);
   const missingRequiredTotal = allFieldRows.filter(
     (r) => r.missing && r.required,
@@ -270,7 +288,7 @@ export function ReconciliationWorkbench({
 
   // 细分问题中心：现在可处理 vs 等待材料 vs 需人工裁决
   const actionableNowCount = missingRequiredTotal.length + explicitLineIssues.length;
-  const waitingMaterialCount = blockedRelations.length;
+  const waitingMaterialCount = waitingMaterialLines.length;
   const conflictCount = conflictFieldsTotal.length;
   const mustHandleCount =
     blockedRelations.length +
@@ -352,27 +370,6 @@ export function ReconciliationWorkbench({
       currentLine?.relationSourceId,
   );
 
-  // 当前行查货候选池情况
-  const availableCandidatesForLine = state.sources.filter(
-    (s) =>
-      s.customerId === draft.customerId &&
-      (s.availability === "可匹配" ||
-        (currentLine?.relationSourceIds ?? []).includes(s.id) ||
-        currentLine?.relationSourceId === s.id),
-  );
-
-  const exactCandidatesForLine = currentLine?.model
-    ? availableCandidatesForLine.filter(
-        (c) =>
-          c.model?.trim().toUpperCase() === currentLine.model?.trim().toUpperCase() &&
-          !(currentLine?.relationSourceIds ?? []).includes(c.id) &&
-          currentLine?.relationSourceId !== c.id,
-      )
-    : [];
-
-  const isLineMultiCandidate = !hasRelation && exactCandidatesForLine.length >= 2;
-  const isLineNoMatch = !hasRelation && exactCandidatesForLine.length === 0;
-
   // 4. 计算当前选定商品的 P4 结构化字段核验决策 (严格对齐 P4 VERIFY_FIELDS 规范)
   const p4Decisions = useMemo(() => {
     if (!currentLine) return [];
@@ -382,6 +379,31 @@ export function ReconciliationWorkbench({
   const activeP4Decision = useMemo(() => {
     return p4Decisions.find((d) => d.field === field) ?? p4Decisions[0];
   }, [p4Decisions, field]);
+
+  // 多文件同屏证据透视弹窗状态
+  const [isMultiEvidenceOpen, setIsMultiEvidenceOpen] = useState(false);
+  // 原始材料 Tab 呈现模式：SPLIT（同屏多文件并排对比） vs SINGLE（单文件查阅）
+  const [rawMaterialMode, setRawMaterialMode] = useState<"SPLIT" | "SINGLE">("SPLIT");
+
+  // 多文件同屏证据上下文
+  const multiEvidenceContext = useMemo(() => {
+    if (!currentLine) return null;
+    return getMultiFileEvidenceContext(
+      field || "型号",
+      currentLine,
+      currentLineSources,
+      state.files,
+      state.evidence,
+      draft,
+      state.sources,
+    );
+  }, [currentLine, field, currentLineSources, state.files, state.evidence, draft, state.sources]);
+
+  // 一键打开同屏多文件证据透视弹窗
+  const openMultiEvidenceInspector = (targetField?: FinalOutputField) => {
+    if (targetField) setField(targetField);
+    setIsMultiEvidenceOpen(true);
+  };
 
   // 一键跳转到原始材料并高亮定位
   const jumpToMaterial = (fileId: string, loc?: Partial<SourceLocation>) => {
@@ -748,6 +770,9 @@ export function ReconciliationWorkbench({
   } else if (noInspectionLines.length === totalLines) {
     taskStatusText = "等待查货材料";
     taskStatusClass = "waiting-inspection";
+  } else if (candidateLines.length > 0) {
+    taskStatusText = `待确认商品对应 (${candidateLines.length})`;
+    taskStatusClass = "needs-attention";
   } else if (noInspectionLines.length > 0) {
     taskStatusText = `部分核对 (${verifiedLines.length + needsConfirmLines.length}/${totalLines})`;
     taskStatusClass = "partial-recon";
@@ -768,7 +793,7 @@ export function ReconciliationWorkbench({
   const taskQueue = state.drafts.filter((item) => {
       const matched = !query || `${item.displayNo} ${item.customerName}`.toLowerCase().includes(query);
       if (!matched) return false;
-      if (taskQueueFilter === "WAITING") return item.lines.every((line) => !line.relationSourceId);
+      if (taskQueueFilter === "WAITING") return item.lines.some((line) => getInspectionAvailability(item, line, state.sources, state.scenarioId === "BUSINESS") === "MISSING");
       if (taskQueueFilter === "MANUAL") return !item.finalized && item.lines.some((line) => !line.manuallyConfirmed && (line.issueIds.length > 0 || !line.relationSourceId));
       if (taskQueueFilter === "MY_TODO") return !item.finalized;
       return true;
@@ -790,10 +815,12 @@ export function ReconciliationWorkbench({
   };
   const getTaskCardStatus = (item: UiDraft) => {
     if (item.finalized) return "可完成整票";
-    const waiting = item.lines.filter((line) => !line.relationSourceId).length;
+    const waiting = item.lines.filter((line) => getInspectionAvailability(item, line, state.sources, state.scenarioId === "BUSINESS") === "MISSING").length;
+    const candidates = item.lines.filter((line) => getInspectionAvailability(item, line, state.sources, state.scenarioId === "BUSINESS") === "CANDIDATES").length;
     const confirmed = item.lines.filter((line) => line.manuallyConfirmed).length;
     const issues = item.lines.filter((line) => !line.manuallyConfirmed && line.issueIds.length > 0).length;
     if (waiting === item.lines.length) return "等待查货";
+    if (candidates > 0) return "待确认对应";
     if (issues > 0) return "需人工处理";
     if (confirmed > 0 && confirmed === item.lines.length) return "待封版";
     return "部分核对";
@@ -820,12 +847,12 @@ export function ReconciliationWorkbench({
                 </div>
                 <div className="task-list">
                   {taskQueue.map((item) => {
-                    const itemMatched = item.lines.filter((line) => line.relationSourceId).length;
+                    const itemMatched = item.lines.filter((line) => getInspectionAvailability(item, line, state.sources, state.scenarioId === "BUSINESS") !== "MISSING").length;
                     const itemIssues = item.lines.filter((line) => !line.manuallyConfirmed && line.issueIds.length > 0).length;
                     return <button key={item.id} className={`task-list-item ${item.id === draft.id ? "current" : ""}`} onClick={() => switchDraft(item.id)}>
                       <div className="task-list-top"><b>{item.displayNo}</b><span className={`task-state task-state-${getTaskCardStatus(item)}`}>{getTaskCardStatus(item)}</span></div>
                       <div className="task-list-customer">{item.customerName}</div>
-                      <div className="task-list-meta"><span>{itemMatched}/{item.lines.length} 个商品已有查货依据</span>{itemIssues > 0 && <span className="task-issue">{itemIssues} 个问题</span>}</div>
+                      <div className="task-list-meta"><span>{itemMatched}/{item.lines.length} 个商品有查货依据或候选</span>{itemIssues > 0 && <span className="task-issue">{itemIssues} 个问题</span>}</div>
                     </button>;
                   })}
                   {taskQueue.length === 0 && <div className="task-empty">没有符合条件的待处理任务</div>}
@@ -878,6 +905,13 @@ export function ReconciliationWorkbench({
           </button>
 
           {!draft.finalized && (
+            <button className="secondary recon-save-btn" onClick={state.saveSelectedDraftResults} title="保存当前整票核对结果，稍后可以继续修改">
+              <Save size={15} />
+              <span>保存结果</span>
+            </button>
+          )}
+
+          {!draft.finalized && (
             <div className="finalize-action-container">
               <button
                 className={`primary recon-finalize-btn ${!canFinalize ? "is-disabled" : ""}`}
@@ -887,7 +921,7 @@ export function ReconciliationWorkbench({
                 onMouseLeave={() => setShowChecklistPopover(false)}
               >
                 <CheckCircle2 size={15} />
-                <span>{canFinalize ? "完成整票复核" : "整票复核 (未满足条件)"}</span>
+                <span>整票通过复核</span>
               </button>
 
               {/* 未达标时的条件提示面板 */}
@@ -944,13 +978,14 @@ export function ReconciliationWorkbench({
       {/* 紧凑任务状态：只回答当前状态、最近一次自动核对和人工待办 */}
       <section className="recon-status-overview compact-status-overview">
         <div className="compact-status-topline">
-          <div className="compact-status-message"><span className="live-dot" /><strong>{draft.finalized ? "当前任务已封版" : mustHandleCount > 0 ? `AI 已暂停，等待处理 ${mustHandleCount} 个问题` : noInspectionLines.length > 0 ? "AI 正在等待查货材料" : "AI 已完成当前自动核对"}</strong><span>{noInspectionLines.length > 0 ? `${noInspectionLines.length} 个商品仍等待查货；` : "全部商品已有可靠查货依据；"}{mustHandleCount > 0 ? `请处理 ${mustHandleCount} 个问题后继续复核。` : "当前没有必须处理的问题。"}</span></div>
+          <div className="compact-status-message"><span className="live-dot" /><strong>{draft.finalized ? "当前任务已封版" : candidateLines.length > 0 ? `已找到 ${candidateLines.length} 个商品的查货候选，待确认对应` : mustHandleCount > 0 ? `AI 已暂停，等待处理 ${mustHandleCount} 个问题` : noInspectionLines.length > 0 ? "AI 正在等待查货材料" : "AI 已完成当前自动核对"}</strong><span>{noInspectionLines.length > 0 ? `${noInspectionLines.length} 个商品仍等待查货；` : "无商品等待查货材料；"}{candidateLines.length > 0 ? `${candidateLines.length} 个商品待建立对应；` : ""}{mustHandleCount > 0 ? `还有 ${mustHandleCount} 个待处理项。` : "当前没有必须处理的问题。"}</span></div>
           <button className="recent-check-button" onClick={() => setRightTab("VERIFY_DECISION")}><Sparkles size={14} />最近自动核对 {updateTimeStr}<ChevronRight size={13} /></button>
         </div>
-        <div className="compact-status-meta"><span>触发原因：{draft.lastUpdateReason || "查货材料到达"}</span><span>草稿 V{draft.version}</span><span className="autosave-note"><Check size={12} /> 已自动保存 {updateTimeStr}</span></div>
+        <div className="compact-status-meta"><span>触发原因：{draft.lastUpdateReason || "查货材料到达"}</span><span>草稿 V{draft.version}</span><span className="autosave-note"><Check size={12} /> 已自动保存 {updateTimeStr}</span>{lastResultSave && <span className="result-save-note"><Save size={12} /> 上次保存 {new Date(lastResultSave.savedAt).toLocaleTimeString("zh-CN", { hour: "2-digit", minute: "2-digit" })}</span>}</div>
         <div className="recon-metric-tiles compact-metrics">
           <div className="metric-tile"><span className="metric-label">全部商品</span><strong className="metric-num">{totalLines}</strong></div>
           <div className="metric-tile"><span className="metric-label">AI已核对</span><strong className="metric-num text-green">{verifiedLines.length + needsConfirmLines.length}</strong></div>
+          <div className="metric-tile"><span className="metric-label">有查货候选</span><strong className="metric-num text-blue">{candidateLines.length}</strong></div>
           <div className="metric-tile"><span className="metric-label">等待查货</span><strong className={`metric-num ${noInspectionLines.length ? "text-orange" : "text-muted"}`}>{noInspectionLines.length}</strong></div>
           <div className="metric-tile"><span className="metric-label">人工待办</span><strong className={`metric-num ${mustHandleCount ? "text-red" : "text-muted"}`}>{mustHandleCount}</strong></div>
           <div className="metric-tile metric-tile-accent"><span className="metric-label">人工已确认</span><strong className="metric-num text-blue">{confirmedLines.length}<small> / {totalLines}</small></strong></div>
@@ -1317,6 +1352,7 @@ export function ReconciliationWorkbench({
               >
                 ○ 缺查货 {noInspectionLines.length}
               </button>
+              <button className={`filter-chip chip-blue ${lineNavFilter === "CANDIDATES" ? "active" : ""}`} onClick={() => setLineNavFilter("CANDIDATES")}>◇ 待确认对应 {candidateLines.length}</button>
               <button
                 className={`filter-chip chip-blue ${
                   lineNavFilter === "CONFIRMED" ? "active" : ""
@@ -1338,6 +1374,8 @@ export function ReconciliationWorkbench({
                     return st?.aiStatus === "NEEDS_CONFIRM";
                   if (lineNavFilter === "NO_INSPECTION")
                     return st?.aiStatus === "NO_INSPECTION";
+                  if (lineNavFilter === "CANDIDATES")
+                    return st?.aiStatus === "CANDIDATES";
                   if (lineNavFilter === "CONFIRMED")
                     return st?.humanStatus === "CONFIRMED";
                   return true;
@@ -1356,7 +1394,7 @@ export function ReconciliationWorkbench({
                       } ${
                         itemStatus?.hasConflict
                           ? "has-conflict"
-                          : itemStatus?.hasInspection
+                          : itemStatus?.hasInspection || itemStatus?.aiStatus === "CANDIDATES"
                             ? "has-inspection"
                             : "no-inspection"
                       }`}
@@ -1371,6 +1409,9 @@ export function ReconciliationWorkbench({
                         </div>
                         {/* 双状态微标：AI状态 + 人工状态 */}
                         <div className="card-status-badges">
+                          <span className={`badge-line-modified ${modifiedLineIds.has(item.id) ? "is-modified" : "is-untouched"}`}>
+                            {modifiedLineIds.has(item.id) ? "已修改" : "未修改"}
+                          </span>
                           <span
                             className={`badge-ai ${
                               itemStatus?.aiStatus === "VERIFIED_OK"
@@ -1421,7 +1462,7 @@ export function ReconciliationWorkbench({
               </h3>
             </div>
             <div className="problem-filter-chips">
-              {([["ALL", "全部", mustHandleCount], ["RELATION", "查货依据", waitingMaterialCount], ["CONFLICT", "字段冲突", conflictCount], ["MISSING", "必填缺失", missingRequiredTotal.length]] as const).map(([key, label, count]) => <button key={key} className={problemFilter === key ? "active" : ""} onClick={() => setProblemFilter(key)}>{label} <b>{count}</b></button>)}
+                {([["ALL", "全部", mustHandleCount], ["RELATION", "商品对应 / 缺查货", blockedRelations.length], ["CONFLICT", "字段冲突", conflictCount], ["MISSING", "必填缺失", missingRequiredTotal.length]] as const).map(([key, label, count]) => <button key={key} className={problemFilter === key ? "active" : ""} onClick={() => setProblemFilter(key)}>{label} <b>{count}</b></button>)}
             </div>
             {mustHandleCount === 0 ? (
               <div className="queue-empty-clean">
@@ -1469,7 +1510,7 @@ export function ReconciliationWorkbench({
                       <span>○ 等待查货材料 ({waitingMaterialCount})</span>
                       <small>新查货到达后自动核对</small>
                     </div>
-                    {blockedRelations.map((l) => (
+                    {waitingMaterialLines.map((l) => (
                       <div
                         key={`rel-${l.id}`}
                         className="problem-action-card card-waiting-mat"
@@ -1485,6 +1526,13 @@ export function ReconciliationWorkbench({
                         </div>
                       </div>
                     ))}
+                  </div>
+                )}
+
+                {pendingRelationLines.length > 0 && (problemFilter === "ALL" || problemFilter === "RELATION") && (
+                  <div className="problem-subgroup">
+                    <div className="subgroup-title text-orange"><span>◇ 待确认商品对应 ({pendingRelationLines.length})</span><small>已有查货候选，需确定关联后核验字段</small></div>
+                    {pendingRelationLines.map((l) => <div key={`candidate-${l.id}`} className="problem-action-card card-waiting-mat" onClick={() => selectItem(l.id, "型号", "INSPECTION_BASIS") }><div className="problem-card-head"><Info size={13} /><b>{short(l.id)} · 已找到查货候选</b></div><p className="problem-card-desc">请检查候选明细并建立商品对应</p><div className="problem-card-foot"><span className="action-link">查看候选依据 →</span></div></div>)}
                   </div>
                 )}
 
@@ -1747,6 +1795,9 @@ export function ReconciliationWorkbench({
                               )}
                             </b>
                             <small>{short(l.id)}</small>
+                            <span className={`row-modified-label ${modifiedLineIds.has(l.id) ? "is-modified" : "is-untouched"}`}>
+                              {modifiedLineIds.has(l.id) ? "已修改" : "未修改"}
+                            </span>
                           </button>
                         </td>
 
@@ -1794,7 +1845,7 @@ export function ReconciliationWorkbench({
                                 className="action-tag-waiting"
                                 title="未建立可靠查货关系前，禁止人工确认本行"
                               >
-                                等待查货
+                                {lStatus.aiStatus === "CANDIDATES" ? "待确认对应" : "等待查货"}
                               </span>
                               <button
                                 className="action-btn-manual-rel"
@@ -1880,6 +1931,10 @@ export function ReconciliationWorkbench({
                               onClick={() =>
                                 selectItem(l.id, f, "VERIFY_DECISION")
                               }
+                              onDoubleClick={() => {
+                                selectItem(l.id, f, "VERIFY_DECISION");
+                                openMultiEvidenceInspector(f);
+                              }}
                             >
                               <div className="cell-inner">
                                 <div className="cell-top-val-row">
@@ -1904,6 +1959,19 @@ export function ReconciliationWorkbench({
                                     >
                                       未填
                                     </span>
+                                  )}
+                                  {isCurrentActive && (
+                                    <button
+                                      type="button"
+                                      className="cell-inspect-shortcut-btn"
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        openMultiEvidenceInspector(f);
+                                      }}
+                                      title={`双击或点击：同屏查看各文件关于「${f}」的原文定位与采信理由`}
+                                    >
+                                      <Eye size={10} />
+                                    </button>
                                   )}
                                 </div>
 
@@ -2153,6 +2221,20 @@ export function ReconciliationWorkbench({
                     <strong>{value(activeFieldRow?.currentValue)}</strong>
                   </div>
                 </div>
+
+                {/* 快捷同屏全景透视横幅 */}
+                <button
+                  type="button"
+                  className="btn-multi-evidence-banner"
+                  onClick={() => openMultiEvidenceInspector(field ?? undefined)}
+                  title="在同一屏幕同时查看该字段在委托书与查货单的定位（免切换对比）"
+                >
+                  <div className="banner-left">
+                    <Eye size={14} className="text-teal" />
+                    <span>同屏透视各文件原文定位 (免切换对比)</span>
+                  </div>
+                  <ChevronRight size={13} />
+                </button>
 
                 {/* 人工修改保护规则提醒 */}
                 {activeFieldRow?.hasHumanOverriddenDiff && (
@@ -2451,32 +2533,155 @@ export function ReconciliationWorkbench({
               </div>
             )}
 
-            {/* Tab 3: 原始材料预览 (支持Excel行列高亮定位和PDF) */}
+            {/* Tab 3: 原始材料预览 (支持Excel行列高亮定位和PDF，强化同屏多文件并排比对) */}
             {rightTab === "RAW_MATERIAL" && (
               <div className="tab-pane-raw">
-                <MaterialPreview
-                  key={`${activeFile?.id}-${targetMaterialLocation ? `${targetMaterialLocation.sheet}-${targetMaterialLocation.row}-${targetMaterialLocation.page}` : `${lineId}-${field}`}`}
-                  location={
-                    targetMaterialLocation && targetMaterialLocation.fileId === activeFile?.id
-                      ? targetMaterialLocation
-                      : currentLine?.sourceLocation &&
-                        currentLine.sourceLocation.fileId === activeFile?.id
-                        ? currentLine.sourceLocation
-                        : {
-                            fileId: activeFile?.id ?? "",
-                            page: 1,
-                            sheet: null,
-                            position: "原件材料定位",
-                          }
-                  }
-                  name={activeFile?.name ?? "原件"}
-                  files={taskFiles}
-                  activeFileId={activeFile?.id}
-                  onSelectFile={(id) => {
-                    setSelectedFileId(id);
-                    setTargetMaterialLocation(null);
-                  }}
-                />
+                {/* 顶部模式切换栏与全屏透视入口 */}
+                <div className="raw-material-view-switch-bar">
+                  <div className="segmented-control-mini">
+                    <button
+                      type="button"
+                      className={`seg-item ${rawMaterialMode === "SPLIT" ? "active" : ""}`}
+                      onClick={() => setRawMaterialMode("SPLIT")}
+                      title="同屏同时展示委托书与查货单原文定位（免切换对比）"
+                    >
+                      <Layers size={12} />
+                      <span>同屏并排比对 (免切换)</span>
+                    </button>
+                    <button
+                      type="button"
+                      className={`seg-item ${rawMaterialMode === "SINGLE" ? "active" : ""}`}
+                      onClick={() => setRawMaterialMode("SINGLE")}
+                      title="单文件全览"
+                    >
+                      <FileText size={12} />
+                      <span>单文件浏览</span>
+                    </button>
+                  </div>
+
+                  <button
+                    type="button"
+                    className="btn-open-inspector-full"
+                    onClick={() => openMultiEvidenceInspector(field ?? undefined)}
+                    title="在同屏全景视窗中查看各文件高亮"
+                  >
+                    <Maximize2 size={12} />
+                    <span>同屏全景透视</span>
+                  </button>
+                </div>
+
+                {/* 模式 A：同屏并排多文件对比（核心需求：无需切换，同屏尽览） */}
+                {rawMaterialMode === "SPLIT" && multiEvidenceContext ? (
+                  <div className="raw-split-container">
+                    {/* 顶部仲裁理由快速卡 */}
+                    <div className="split-quick-decision-card">
+                      <div className="decision-card-top">
+                        <span className="field-badge">当前聚焦：<b>{field || "型号"}</b></span>
+                        <span className="adopted-pill">⭐ 采信：{multiEvidenceContext.adoptedSourceLabel}</span>
+                      </div>
+                      <p className="rule-text">{multiEvidenceContext.adoptionRule.reason}</p>
+                      {multiEvidenceContext.modelAffixNote && (
+                        <div className="affix-text-sm">
+                          <Info size={11} />
+                          <span>{multiEvidenceContext.modelAffixNote}</span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* 并排两个视窗 (委托书 + 查货单) */}
+                    <div className="split-cards-grid">
+                      {/* 委托书 */}
+                      {multiEvidenceContext.files.find((f) => f.materialType === "委托书") && (() => {
+                        const ofile = multiEvidenceContext.files.find((f) => f.materialType === "委托书")!;
+                        return (
+                          <div className="split-mini-card pane-order">
+                            <div className="mini-card-head">
+                              <div className="head-title">
+                                <FileSpreadsheet size={13} className="text-blue" />
+                                <strong>【委托书】{ofile.fileName}</strong>
+                              </div>
+                              <div className="head-right">
+                                <span className="raw-pill">原文：<b>{ofile.rawValue || "空"}</b></span>
+                                <span className={`status-pill ${ofile.isAdopted ? "is-adopted" : ""}`}>
+                                  {ofile.isAdopted ? "⭐ 采纳" : "委托申报"}
+                                </span>
+                              </div>
+                            </div>
+                            <div className="mini-card-body">
+                              <MaterialPreview
+                                key={`split-order-${ofile.fileId}-${field}-${ofile.location.row}`}
+                                location={ofile.location}
+                                name={ofile.fileName}
+                                activeFileId={ofile.fileId}
+                                compactMode={true}
+                                targetField={field ?? undefined}
+                                badgeLabel={`委托申报: ${ofile.rawValue || "空"}`}
+                              />
+                            </div>
+                          </div>
+                        );
+                      })()}
+
+                      {/* 查货单 */}
+                      {multiEvidenceContext.files.find((f) => f.materialType === "查货单") && (() => {
+                        const ifile = multiEvidenceContext.files.find((f) => f.materialType === "查货单")!;
+                        return (
+                          <div className="split-mini-card pane-inspection">
+                            <div className="mini-card-head">
+                              <div className="head-title">
+                                <FileText size={13} className="text-teal" />
+                                <strong>【查货单】{ifile.fileName}</strong>
+                              </div>
+                              <div className="head-right">
+                                <span className="raw-pill text-teal">实测：<b>{ifile.rawValue || "空"}</b></span>
+                                <span className={`status-pill ${ifile.isAdopted ? "is-adopted" : ""}`}>
+                                  {ifile.isAdopted ? "⭐ 采纳 (实物优先)" : "实测依据"}
+                                </span>
+                              </div>
+                            </div>
+                            <div className="mini-card-body">
+                              <MaterialPreview
+                                key={`split-inspect-${ifile.fileId}-${field}-${ifile.location.page}`}
+                                location={ifile.location}
+                                name={ifile.fileName}
+                                activeFileId={ifile.fileId}
+                                compactMode={true}
+                                defaultViewMode="ANNOTATED"
+                                targetField={field ?? undefined}
+                                badgeLabel={`${field || "实测"}证据: ${ifile.rawValue || "实测依据"}`}
+                              />
+                            </div>
+                          </div>
+                        );
+                      })()}
+                    </div>
+                  </div>
+                ) : (
+                  /* 模式 B：单文件浏览模式（保留传统下拉选择） */
+                  <MaterialPreview
+                    key={`${activeFile?.id}-${targetMaterialLocation ? `${targetMaterialLocation.sheet}-${targetMaterialLocation.row}-${targetMaterialLocation.page}` : `${lineId}-${field}`}`}
+                    location={
+                      targetMaterialLocation && targetMaterialLocation.fileId === activeFile?.id
+                        ? targetMaterialLocation
+                        : currentLine?.sourceLocation &&
+                          currentLine.sourceLocation.fileId === activeFile?.id
+                          ? currentLine.sourceLocation
+                          : {
+                              fileId: activeFile?.id ?? "",
+                              page: 1,
+                              sheet: null,
+                              position: "原件材料定位",
+                            }
+                    }
+                    name={activeFile?.name ?? "原件"}
+                    files={taskFiles}
+                    activeFileId={activeFile?.id}
+                    onSelectFile={(id) => {
+                      setSelectedFileId(id);
+                      setTargetMaterialLocation(null);
+                    }}
+                  />
+                )}
               </div>
             )}
 
@@ -2486,13 +2691,13 @@ export function ReconciliationWorkbench({
                 {/* 前置边界守卫：非 MATCHED 行严禁执行 P4 字段核验 */}
                 {!hasRelation ? (
                   <div className="p4-unmatched-guard">
-                    {isLineMultiCandidate ? (
+                    {currentLineStatus?.aiStatus === "CANDIDATES" ? (
                       <div className="p4-guard-banner banner-warning">
                         <AlertTriangle size={18} className="text-amber" />
                         <div className="guard-banner-content">
                           <strong>⚠ 等待商品对应确认，暂不执行字段核验</strong>
                           <p>
-                            当前委托商品在客户查货池中匹配到多个候选，依据尚未唯一确定。在人工确认查货依据前，系统暂停执行 P4 字段核验，当前草稿值仍来自委托侧初始事实。
+                            当前委托商品已有查货候选，依据尚未建立可靠对应。在确认查货依据前，系统暂停执行字段核验，当前草稿值仍来自委托侧初始事实。
                           </p>
                           <button
                             type="button"
@@ -2619,6 +2824,16 @@ export function ReconciliationWorkbench({
                             </span>
                           </div>
                           <div className="field-card-quick-links">
+                            <button
+                              type="button"
+                              className="quick-link-btn highlight-teal"
+                              onClick={() => openMultiEvidenceInspector(activeP4Decision.field)}
+                              title="在同一屏幕同时查看该字段在委托书与查货单的定位（免切换）"
+                            >
+                              <Eye size={12} className="text-teal" />
+                              <span>同屏透视原件 (免切换)</span>
+                              <ChevronRight size={12} />
+                            </button>
                             <button
                               type="button"
                               className="quick-link-btn"
@@ -3185,6 +3400,33 @@ export function ReconciliationWorkbench({
             </div>
           </div>
         </div>
+      )}
+
+      {/* 多文件原文同屏定位与仲裁透视大弹窗 */}
+      {isMultiEvidenceOpen && multiEvidenceContext && currentLine && (
+        <MultiEvidenceInspector
+          context={multiEvidenceContext}
+          currentField={field || "型号"}
+          allFields={FINAL_OUTPUT_FIELDS}
+          onSelectField={(f) => setField(f)}
+          onClose={() => setIsMultiEvidenceOpen(false)}
+          onQuickAdoptOrder={(f, val) => {
+            state.editSelectedLineField(currentLine.id, f, val, {
+              actor: "人工操作",
+              reason: "业务员在同屏证据中选择采纳委托申报值",
+              occurredAt: new Date().toISOString(),
+              locked: true,
+            });
+          }}
+          onQuickAdoptInspection={(f, val) => {
+            state.editSelectedLineField(currentLine.id, f, val, {
+              actor: "人工操作",
+              reason: "业务员在同屏证据中选择采纳查货实测值",
+              occurredAt: new Date().toISOString(),
+              locked: true,
+            });
+          }}
+        />
       )}
     </div>
   );

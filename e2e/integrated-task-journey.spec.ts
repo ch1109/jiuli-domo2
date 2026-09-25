@@ -11,7 +11,7 @@ test("一体化任务旅程从任务首页进入并连续打开工作台", async
   await expect(intake.getByRole("tab", { name: "委托材料" })).toHaveAttribute("aria-selected", "true");
   await expect(intake.getByLabel("选择委托客户（选填）")).toBeVisible();
   await expect(intake.getByText("主体委托书")).toBeVisible();
-  await expect(intake.getByText("辅助材料")).toBeVisible();
+  await expect(intake.getByText("辅助材料")).toHaveCount(0);
   await intake.getByRole("tab", { name: "查货材料" }).click();
   await expect(intake.getByLabel("选择查货客户")).toBeVisible();
   await expect(intake.getByText("查货资料必须先指定客户")).toBeVisible();

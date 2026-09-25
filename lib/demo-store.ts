@@ -15,6 +15,7 @@ import { completeDraft, confirmDraftLine, createEntrustmentDraft, editDraftField
 import { createFinalOutputRow } from "./domain/final-output";
 import { mergeInspectionSourceLines } from "./domain/inspection-merge";
 import { deriveDraftStatus } from "./domain/status";
+import { getInspectionAvailability } from "./inspection-availability";
 import { canEnterProductPool, completeParseJob, createParseJob, failParseJob, flagParseJobForReview, resolveParseReview as resolveParseReviewState, startParseJob, type ParseJob, type ParsedFactRow, type ParsedMaterialResult } from "./intake/parse-contract";
 import { resolveKnownCustomer } from "./intake/customer-resolution";
 import { convertEntrustmentFacts, type EntrustmentConversionLine } from "./intake/entrustment-conversion";
@@ -36,7 +37,7 @@ import type {
   MaterialType,
 } from "./domain/types";
 
-export type ViewKey = "home" | "intake" | "pool" | "drafts" | "workbench" | "history" | "console";
+export type ViewKey = "home" | "intake" | "pool" | "drafts" | "workbench" | "history" | "console" | "customer-supplement";
 
 export interface NavigationEntry {
   view: ViewKey;
@@ -51,7 +52,7 @@ export interface TaskIssue {
   id: string;
   draftId: string;
   lineId: string;
-  kind: "missing-evidence" | "field-issue";
+  kind: "missing-evidence" | "pending-relation" | "field-issue";
   message: string;
   severity: "must" | "review";
 }
@@ -192,6 +193,7 @@ export interface DemoState {
   evidence: FieldEvidence[];
   versions: DraftVersion[];
   operations: OperationRecord[];
+  resultSaves: Record<string, { savedAt: string; version: number }>;
   finalReconciliations: FinalReconciliationSheet[];
   pocPhaseTimings: PocPhaseTiming[];
   toast: string | null;
@@ -228,7 +230,10 @@ export interface DemoState {
   bindMaterialToDraft: (fileId: string, draftId: string) => void;
   reviseDraftWithEntrustmentFile: (fileId: string, draftId: string) => void;
   matchSelectedDraft: () => void;
-  selectLineSource: (lineId: string, sourceId: string) => void;
+  selectLineSource: (lineId: string, sourceId: string, draftId?: string) => void;
+  targetCustomerSupplementDraftId: string | null;
+  openCustomerSupplement: (draftId: string) => void;
+  supplementCustomerForTasks: (input: { draftIds: string[]; customerId: string }) => void;
   resolveSelectedDraftCustomer: (customerId: string) => void;
   editSelectedLineField: (lineId: string, field: FinalOutputField, value: string, review?: FieldEvidence["review"]) => void;
   confirmSelectedLineField: (lineId: string, field: FinalOutputField) => void;
@@ -241,6 +246,7 @@ export interface DemoState {
   confirmLine: (lineId: string) => void;
   unconfirmLine: (lineId: string) => void;
   completeSelectedDraft: () => void;
+  saveSelectedDraftResults: () => void;
   clearToast: () => void;
   isEvaluationMode: boolean;
   setEvaluationMode: (enabled: boolean) => void;
@@ -297,7 +303,16 @@ function buildDrafts(): UiDraft[] {
       updatedFieldNames: [],
       manuallyConfirmed: false,
       sourceOrder: line.sourceOrder,
-      sourceLocation: line.source ? { fileId: line.source.fileId ?? "UNKNOWN", page: line.source.page ?? null, sheet: line.source.sheet ?? null, position: line.source.row ? `第 ${line.source.row} 行` : null } : null,
+      sourceLocation: line.source
+        ? {
+            fileId: line.source.fileId ?? "UNKNOWN",
+            page: line.source.page ?? null,
+            sheet: line.source.sheet ?? null,
+            row: line.source.row ?? null,
+            column: (line.source as any).column ?? null,
+            position: line.source.row ? `第 ${line.source.row} 行` : null,
+          }
+        : null,
       issue: null,
     });
     linesByDraft.set(line.draftId, current);
@@ -498,8 +513,17 @@ const auxiliaryEvidenceFields: readonly FinalOutputField[] = ["品牌", "型号"
 
 function fromDomainLine(line: EntrustmentLine, previous: UiLine, relations: readonly ProductMatchRelation[]): UiLine {
   const relation = relations.find((item) => item.active && item.entrustmentLineId === line.id);
+  const rowMatch = line.id.match(/-R(\d+)/i);
+  const fallbackRow = rowMatch ? parseInt(rowMatch[1], 10) : undefined;
+  const rawLoc = line.sourceLocation ?? previous.sourceLocation;
+  const rowFromPos = rawLoc?.position?.match(/第\s*(\d+)\s*行/)?.[1];
+  const finalRow = rawLoc?.row ?? (rowFromPos ? parseInt(rowFromPos, 10) : fallbackRow);
+  const sourceLocation = rawLoc
+    ? { ...rawLoc, row: finalRow }
+    : (fallbackRow ? { fileId: line.draftId, page: null, row: fallbackRow, sheet: "Sheet1", position: `第 ${fallbackRow} 行` } : null);
   return {
     ...previous, ...line,
+    sourceLocation,
     baseValues: previous.baseValues ?? { ...previous.fields },
     model: line.fields.型号 ?? "UNKNOWN", brand: line.fields.品牌 ?? "UNKNOWN",
     origin: line.fields.产地 ?? "UNKNOWN", quantity: line.fields.数量 ?? "UNKNOWN",
@@ -536,19 +560,55 @@ export function buildBusinessWorkspace() {
       return {
         ...draft,
         lines: draft.lines.map(line => {
+          const original = puyiFixture.orderRows.find(row => row.id === line.id);
+          if (!original) return line;
           const matched = puyiEvidence.filter(e => e.entrustmentLineId === line.id);
-          return { ...line, evidenceIds: matched.map(e => e.id) };
+          const fields = createFinalOutputRow(original.fields);
+          const rowMatch = original.id.match(/-R(\d+)/i);
+          const extractedRow = rowMatch ? parseInt(rowMatch[1], 10) : undefined;
+          const originalLoc = (original as any).sourceLocation;
+          const rowFromPos = originalLoc?.position?.match(/第\s*(\d+)\s*行/)?.[1];
+          const finalRow = originalLoc?.row ?? (rowFromPos ? parseInt(rowFromPos, 10) : extractedRow);
+          const draftFileId = draft.materialFileIds[0] || "UNKNOWN";
+          const sourceLoc = originalLoc
+            ? { ...originalLoc, row: finalRow }
+            : (extractedRow ? { fileId: draftFileId, page: null, row: extractedRow, sheet: "Sheet1", position: `第 ${extractedRow} 行` } : null);
+          return { ...line, fields, baseValues: { ...fields }, model: fields.型号 ?? "UNKNOWN", brand: fields.品牌 ?? "UNKNOWN", origin: fields.产地 ?? "UNKNOWN", quantity: fields.数量 ?? "UNKNOWN", sourceLocation: sourceLoc, evidenceIds: matched.map(e => e.id) };
         }),
       };
     }
     return draft;
   });
-  const sources = buildSources().map(source => ({ ...source, availability: source.customerId ? "可匹配" as const : "未加载" as const }));
+  const sources: UiSource[] = buildSources().map(source => {
+    const original = puyiFixture.sourceLines.find(row => row.id === source.id);
+    return original
+      ? { ...source, fields: original.fields, otherFields: original.otherFields, sourceLocation: original.sourceLocation, model: original.fields.型号 ?? "UNKNOWN", brand: original.fields.品牌 ?? "UNKNOWN", origin: original.fields.产地 ?? "UNKNOWN", quantity: original.fields.数量 ?? "UNKNOWN", availability: "可匹配" as const }
+      : { ...source, availability: source.customerId ? "可匹配" as const : "未加载" as const };
+  });
+  const puyiDraft = drafts.find(draft => draft.id === puyiFixture.draftId)!;
+  const puyiResult = replayPromptResult({
+    draft: toDomainDraft(puyiDraft),
+    entrustmentLines: puyiDraft.lines.map(toDomainLine),
+    inspectionSourceLines: sources.filter(source => source.availability !== "未加载").map(toDomainSource),
+    now: baselineTime,
+  }, puyiFixture);
+  const initialRelations = [...puyiResult.relations];
+  const reconciledDrafts = drafts.map(draft => draft.id === puyiDraft.id ? {
+    ...draft,
+    lines: puyiResult.entrustmentLines.map(line => fromDomainLine(line, draft.lines.find(previous => previous.id === line.id)!, initialRelations)),
+    status: puyiResult.draft.status,
+    version: puyiResult.draft.version,
+    hasAiUpdate: puyiResult.draft.hasAiUpdate,
+    lastUpdateReason: puyiResult.draft.lastUpdateReason,
+    updatedAt: puyiResult.draft.updatedAt,
+  } : draft);
+  const reconciledSourceById = new Map(puyiResult.inspectionSourceLines.map(source => [source.id, source]));
+  const reconciledSources = sources.map(source => reconciledSourceById.has(source.id) ? fromDomainSource(reconciledSourceById.get(source.id)!, source) : source);
   const files = buildFiles().map(file => {
-    const owners = new Set([...drafts.filter(d => d.materialFileIds.includes(file.id)).map(d => d.customerId), ...sources.filter(s => s.sourceFileId === file.id).map(s => s.customerId)].filter((id): id is string => !!id));
+    const owners = new Set([...reconciledDrafts.filter(d => d.materialFileIds.includes(file.id)).map(d => d.customerId), ...reconciledSources.filter(s => s.sourceFileId === file.id).map(s => s.customerId)].filter((id): id is string => !!id));
     const asset = filesJson.find(f => f.id === file.id)!;
     if (!owners.size && asset.role === "entrustment_material") {
-      for (const draft of drafts) {
+      for (const draft of reconciledDrafts) {
         if (draft.customerId && draft.materialFileIds.some(id => filesJson.some(f => f.id === id && f.sampleId === asset.sampleId))) owners.add(draft.customerId);
       }
     }
@@ -556,7 +616,8 @@ export function buildBusinessWorkspace() {
     const materialType = asset.role === "reference" ? "参考结果" : asset.role === "inspection" ? "查货" : kinds.includes("entrustment") ? "委托书" : kinds.includes("invoice") ? "发票" : kinds.includes("packing-list") ? "箱单" : "其他材料";
     return { ...file, materialType, loaded: true, customerId: owners.size === 1 ? [...owners][0] : undefined };
   });
-  return { scenario: { id: "BUSINESS", name: "完整客户业务", initialBatchIds: [], overrideIds: [] }, drafts, availableDrafts: drafts, sources, files, selectedDraftId: drafts[0]?.id ?? null };
+  return { scenario: { id: "BUSINESS", name: "完整客户业务", initialBatchIds: [], overrideIds: [] }, drafts: reconciledDrafts, availableDrafts: reconciledDrafts, sources: reconciledSources, files, selectedDraftId: reconciledDrafts[0]?.id ?? null,
+    relations: initialRelations, evidence: [...puyiEvidence, ...puyiResult.evidence], versions: [...puyiResult.versions], operations: [...puyiResult.operations] };
 }
 
 function workspaceSnapshot(state: Partial<DemoState>): Partial<DemoState> {
@@ -661,6 +722,8 @@ const emptyTaskProgress = (): TaskProgress => ({
 function buildTaskSnapshot(
   draft: UiDraft | undefined,
   files: readonly UiFile[],
+  sources: readonly UiSource[],
+  scenarioId: string,
 ): Pick<DemoState, "taskStage" | "taskIssues" | "taskProgress"> {
   if (!draft) {
     const localFiles = files.filter((file) => file.source === "本地上传");
@@ -677,13 +740,14 @@ function buildTaskSnapshot(
 
   const taskIssues = draft.lines.flatMap<TaskIssue>((line) => {
     const issues: TaskIssue[] = [];
-    if (!line.relationSourceId) {
+    if (!line.relationSourceId && line.relationSourceIds.length === 0) {
+      const availability = getInspectionAvailability(draft, line, sources, scenarioId === "BUSINESS");
       issues.push({
-        id: `${draft.id}:${line.id}:missing-evidence`,
+        id: `${draft.id}:${line.id}:${availability === "CANDIDATES" ? "pending-relation" : "missing-evidence"}`,
         draftId: draft.id,
         lineId: line.id,
-        kind: "missing-evidence",
-        message: line.issue ?? "尚无可靠查货依据",
+        kind: availability === "CANDIDATES" ? "pending-relation" : "missing-evidence",
+        message: line.issue ?? (availability === "CANDIDATES" ? "已有查货候选，待确认商品对应" : "尚无可靠查货依据"),
         severity: "must",
       });
     }
@@ -699,7 +763,8 @@ function buildTaskSnapshot(
     }
     return issues;
   });
-  const relationCount = draft.lines.filter((line) => line.relationSourceId).length;
+  const relationCount = draft.lines.filter((line) => line.relationSourceId || line.relationSourceIds.length > 0).length;
+  const candidateCount = taskIssues.filter((issue) => issue.kind === "pending-relation").length;
   const confirmedCount = draft.lines.filter((line) => line.manuallyConfirmed).length;
   const taskFiles = files.filter(
     (file) =>
@@ -712,7 +777,7 @@ function buildTaskSnapshot(
     ? "finalized"
     : draft.status === "人工确认中"
       ? "confirming"
-      : relationCount === 0
+      : relationCount === 0 && candidateCount === 0
         ? "ready"
         : taskIssues.length > 0
           ? "matching"
@@ -735,6 +800,8 @@ const initialDrafts = initialScenario.drafts;
 const initialTaskSnapshot = buildTaskSnapshot(
   initialDrafts.find((draft) => draft.id === initialScenario.selectedDraftId),
   initialScenario.files,
+  initialScenario.sources,
+  initialScenario.scenario.id,
 );
 
 export const useDemoStore = create<DemoState>()(persist((set, get) => ({
@@ -764,16 +831,18 @@ export const useDemoStore = create<DemoState>()(persist((set, get) => ({
     restoredAt: baselineTime,
   },
   selectedDraftId: initialDrafts[0]?.id ?? null,
+  targetCustomerSupplementDraftId: null,
   selectedIntakeCustomerId: null,
   drafts: initialDrafts,
   sources: initialScenario.sources,
   files: initialScenario.files,
   customers: (customersJson as unknown as Array<{ id: string; name: string }>).map(({ id, name }) => ({ id, name })),
   events: [],
-  relations: [],
-  evidence: [],
-  versions: [],
-  operations: [],
+  relations: initialScenario.relations,
+  evidence: initialScenario.evidence,
+  versions: initialScenario.versions,
+  operations: initialScenario.operations,
+  resultSaves: {},
   finalReconciliations: [],
   pocPhaseTimings: (["查找", "检查", "修改", "返工"] as PocPhase[]).map((phase) => ({ phase, elapsedMs: 0, startedAt: null })),
   parseJobs: [],
@@ -906,6 +975,22 @@ export const useDemoStore = create<DemoState>()(persist((set, get) => ({
         historyStack: [...state.historyStack, currentEntry].slice(-30),
       };
     }),
+  openCustomerSupplement: (selectedDraftId) =>
+    set((state) => {
+      const currentEntry: NavigationEntry = {
+        view: state.view,
+        customerId: state.selectedWorkspaceCustomerId,
+        draftId: state.selectedDraftId,
+      };
+      return {
+        selectedDraftId,
+        targetCustomerSupplementDraftId: selectedDraftId,
+        activeTaskId: selectedDraftId,
+        lastVisitedTaskId: selectedDraftId,
+        view: "customer-supplement",
+        historyStack: [...state.historyStack, currentEntry].slice(-30),
+      };
+    }),
   loadScenario: (scenarioId) => {
     try {
       const restored = buildScenarioState(scenarioId);
@@ -922,7 +1007,7 @@ export const useDemoStore = create<DemoState>()(persist((set, get) => ({
         drafts: restored.drafts,
         sources: restored.sources,
         files: restored.files,
-        events: [], relations: [], evidence: scenarioId === promptFixture.scenarioId ? initialPromptEvidence() : (scenarioId === "BUSINESS" || scenarioId === "26SHPYD056" ? [...initialPromptEvidence(), ...initialPromptEvidence(puyiFixture)] : []), versions: [], operations: [], finalReconciliations: [],
+        events: [], relations: "relations" in restored ? restored.relations : [], evidence: "evidence" in restored ? restored.evidence : scenarioId === promptFixture.scenarioId ? initialPromptEvidence() : (scenarioId === "26SHPYD056" ? [...initialPromptEvidence(), ...initialPromptEvidence(puyiFixture)] : []), versions: "versions" in restored ? restored.versions : [], operations: "operations" in restored ? restored.operations : [], resultSaves: {}, finalReconciliations: [],
         pocPhaseTimings: (["查找", "检查", "修改", "返工"] as PocPhase[]).map((phase) => ({ phase, elapsedMs: 0, startedAt: null })),
         parseJobs: [], parseResults: [], parsedFacts: [], convertedEntrustments: [], convertedInspections: [], convertedAuxiliaryMaterials: [], materialBindings: [],
         toast: null,
@@ -1365,8 +1450,8 @@ export const useDemoStore = create<DemoState>()(persist((set, get) => ({
       };
     });
   },
-  selectLineSource: (lineId, sourceId) => {
-    const { selectedDraftId } = get();
+  selectLineSource: (lineId, sourceId, draftId) => {
+    const selectedDraftId = draftId ?? get().selectedDraftId;
     if (!selectedDraftId) return;
     set((state) => {
       const draft = state.drafts.find((item) => item.id === selectedDraftId);
@@ -1396,6 +1481,132 @@ export const useDemoStore = create<DemoState>()(persist((set, get) => ({
         relations: [...state.relations, result.relation], evidence: [...state.evidence, ...result.evidence],
         versions: [...state.versions, result.version], operations: [...state.operations, result.operation],
         events: [operationToEvent(result.operation), ...state.events],
+      };
+    });
+  },
+  supplementCustomerForTasks: ({ draftIds, customerId }) => {
+    set((state) => {
+      const customer = state.customers.find((c) => c.id === customerId);
+      const customerName = customer?.name ?? customerId;
+      const targetDrafts = state.drafts.filter((d) => draftIds.includes(d.id));
+      if (!targetDrafts.length) return { toast: "未找到待补充客户的委托任务" };
+
+      const targetWarehouseNos = ["26010048", "26010713", "26010801", "26010211", "26050640"];
+      const updatedSources = state.sources.map((s) => {
+        if (s.customerId === customerId || targetWarehouseNos.includes(s.warehouseNo)) {
+          return {
+            ...s,
+            customerId,
+            availability: s.availability === "未加载" ? ("可匹配" as const) : s.availability,
+          };
+        }
+        return s;
+      });
+
+      const updatedFiles = state.files.map((f) => {
+        if (targetDrafts.some((d) => d.materialFileIds.includes(f.id))) {
+          return { ...f, customerId, loaded: true };
+        }
+        if (targetWarehouseNos.some((wh) => f.name.includes(wh) || (f as any).path?.includes(wh))) {
+          return { ...f, customerId, loaded: true };
+        }
+        return f;
+      });
+
+      let updatedRelations = [...state.relations];
+      let updatedEvidence = [...state.evidence];
+      const newOperations: OperationRecord[] = [];
+      const newVersions: DraftVersion[] = [];
+
+      const updatedDrafts = state.drafts.map((draft) => {
+        if (!draftIds.includes(draft.id)) return draft;
+        try {
+          const resolved = resolveDraftCustomer({
+            draft: toDomainDraft(draft),
+            lines: draft.lines.map(toDomainLine),
+            customerId,
+            knownCustomerIds: state.customers.map((c) => c.id),
+            now: now(),
+          });
+
+          newOperations.push(resolved.operation);
+          newVersions.push(resolved.version);
+
+          const draftWithCustomer: UiDraft = {
+            ...draft,
+            customerId: resolved.draft.customerId,
+            customerName,
+            customerStatus: resolved.draft.customerStatus,
+            status: resolved.draft.status,
+            version: resolved.draft.version,
+            lastUpdateReason: resolved.draft.lastUpdateReason,
+            updatedAt: resolved.draft.updatedAt,
+          };
+
+          const matchResult = executeInitialMatching({
+            draft: toDomainDraft(draftWithCustomer),
+            entrustmentLines: draftWithCustomer.lines.map(toDomainLine),
+            inspectionSourceLines: updatedSources.filter((s) => s.availability !== "未加载").map(toDomainSource),
+            now: now(),
+          });
+
+          updatedRelations = [...updatedRelations, ...matchResult.relations];
+          updatedEvidence = [...updatedEvidence, ...matchResult.evidence];
+          newOperations.push(...matchResult.operations);
+          newVersions.push(...matchResult.versions);
+
+          const relationByLine = new Map(
+            updatedRelations.filter((r) => r.active).map((r) => [r.entrustmentLineId, r])
+          );
+          const lines = matchResult.entrustmentLines.map((line) => {
+            const rel = relationByLine.get(line.id);
+            return {
+              ...draftWithCustomer.lines.find((item) => item.id === line.id)!,
+              ...line,
+              model: line.fields.型号 ?? "UNKNOWN",
+              brand: line.fields.品牌 ?? "UNKNOWN",
+              origin: line.fields.产地 ?? "UNKNOWN",
+              quantity: line.fields.数量 ?? "UNKNOWN",
+              relationSourceId: rel?.inspectionSourceLineIds[0] ?? null,
+              relationSourceIds: rel ? [...rel.inspectionSourceLineIds] : [],
+              matchRelationIds: [...line.matchRelationIds],
+              evidenceIds: [...line.evidenceIds],
+              issueIds: [...line.issueIds],
+              updatedFieldNames: [...line.updatedFieldNames],
+              issue: line.issueIds.join("、") || null,
+            };
+          });
+
+          return {
+            ...draftWithCustomer,
+            lines,
+            version: matchResult.draft.version,
+            status: matchResult.draft.status,
+            hasAiUpdate: matchResult.draft.hasAiUpdate,
+            lastUpdateReason: matchResult.draft.lastUpdateReason,
+            updatedAt: matchResult.draft.updatedAt,
+          };
+        } catch {
+          return {
+            ...draft,
+            customerId,
+            customerName,
+            customerStatus: "已识别" as const,
+            status: "待核对" as const,
+          };
+        }
+      });
+
+      return {
+        drafts: updatedDrafts,
+        files: updatedFiles,
+        sources: updatedSources,
+        relations: updatedRelations,
+        evidence: updatedEvidence,
+        operations: [...state.operations, ...newOperations],
+        versions: [...state.versions, ...newVersions],
+        events: [...newOperations.map(operationToEvent), ...state.events],
+        toast: `已为 ${draftIds.length} 票任务补充客户：${customerName}，并完成商品对应`,
       };
     });
   },
@@ -1677,10 +1888,44 @@ export const useDemoStore = create<DemoState>()(persist((set, get) => ({
       } catch (error) { return { toast: error instanceof Error ? error.message : "确认完成失败" }; }
     });
   },
+  saveSelectedDraftResults: () => {
+    set((state) => {
+      const draft = state.drafts.find((item) => item.id === state.selectedDraftId);
+      if (!draft) return { toast: "请先选择委托草稿" };
+      return {
+        resultSaves: {
+          ...state.resultSaves,
+          [draft.id]: { savedAt: now(), version: draft.version },
+        },
+        toast: `${draft.displayNo} 的核对结果已保存，可稍后继续修改`,
+      };
+    });
+  },
   clearToast: () => set({ toast: null }),
 }), {
   name: "jiuli-demo-workspace-v1",
   version: 4,
+  merge: (persisted, current): DemoState => {
+    const saved = { ...current, ...(persisted as Partial<DemoState>) };
+    const oldPuyi = saved.drafts.find(draft => draft.id === puyiFixture.draftId);
+    if (saved.scenarioId !== "BUSINESS" || oldPuyi?.version !== 0 ||
+      saved.operations.some(operation => operation.draftId === puyiFixture.draftId) ||
+      saved.relations.some(relation => relation.draftId === puyiFixture.draftId) ||
+      saved.resultSaves?.[puyiFixture.draftId]) return saved;
+    // 只补齐未编辑的旧版浦壹快照，不覆盖其他任务和人工修改。
+    const baseline = buildBusinessWorkspace();
+    const baselineDraft = baseline.drafts.find(draft => draft.id === puyiFixture.draftId)!;
+    const baselineSources = new Map(baseline.sources.filter(source => source.customerId === puyiFixture.customerId).map(source => [source.id, source]));
+    return {
+      ...saved,
+      drafts: saved.drafts.map(draft => draft.id === puyiFixture.draftId ? baselineDraft : draft),
+      sources: saved.sources.map(source => baselineSources.get(source.id) ?? source),
+      relations: [...saved.relations, ...baseline.relations],
+      evidence: [...saved.evidence, ...baseline.evidence.filter(evidence => !saved.evidence.some(existing => existing.id === evidence.id))],
+      versions: [...saved.versions, ...baseline.versions],
+      operations: [...saved.operations, ...baseline.operations],
+    };
+  },
   migrate: (persisted): DemoState => {
     const previous = persisted as Partial<DemoState>;
     // 强制使用最新的真实业务样本整单体系
@@ -1688,7 +1933,7 @@ export const useDemoStore = create<DemoState>()(persist((set, get) => ({
     return { ...previous, scenarioId: "BUSINESS", view: "home", drafts: business.drafts, sources: business.sources, files: business.files,
       selectedDraftId: business.selectedDraftId, activeTaskId: business.selectedDraftId, lastVisitedTaskId: business.selectedDraftId, lastVisitedPanel: "overview",
       scenarioEntry: { scenarioId: "BUSINESS", restoredAt: baselineTime },
-      events: [], relations: [], evidence: [], versions: [], operations: [], finalReconciliations: [],
+      events: [], relations: [], evidence: [], versions: [], operations: [], resultSaves: {}, finalReconciliations: [],
       parseJobs: [], parseResults: [], parsedFacts: [], convertedEntrustments: [], convertedInspections: [], convertedAuxiliaryMaterials: [], materialBindings: [],
       savedBusinessWorkspace: null, previousScenarioWorkspace: workspaceSnapshot(previous),
     } as DemoState;
@@ -1718,7 +1963,7 @@ useDemoStore.subscribe((state) => {
   if (syncingTaskSnapshot) return;
   const activeTaskId = state.selectedDraftId;
   const draft = state.drafts.find((item) => item.id === activeTaskId);
-  const snapshot = buildTaskSnapshot(draft, state.files);
+  const snapshot = buildTaskSnapshot(draft, state.files, state.sources, state.scenarioId);
   const lastVisitedTaskId =
     state.view === "workbench" ? activeTaskId : state.lastVisitedTaskId;
   const unchanged =

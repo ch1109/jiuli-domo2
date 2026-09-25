@@ -50,35 +50,23 @@ describe('客户级商品对应汇总 (generateCommodityReconciliationSummary)',
   const state = { ...useDemoStore.getInitialState(), ...data };
   const workbench = getCustomerWorkbench(state);
 
-  it('英卡科技应准确归集 9 个商品，其中 5 自动对应、1 后缀提醒、2 需人工选择、1 暂无查货依据', () => {
+  it('英卡按三键合并后，3 个 UMW2631 直接自动对应成功，6 个无查货依据，无需人工选择', () => {
     const yingka = workbench.customers.find((c) => c.name.includes('英卡'));
     expect(yingka).toBeDefined();
 
     const summary = yingka!.commoditySummary;
     expect(summary).toBeDefined();
     expect(summary.totalCount).toBe(9);
-    expect(summary.exactCount).toBe(5);
-    expect(summary.affixDiffCount).toBe(1);
-    expect(summary.multipleCount).toBe(2);
-    expect(summary.noCandidateCount).toBe(1);
+    expect(summary.exactCount).toBe(3);
+    expect(summary.affixDiffCount).toBe(0);
+    expect(summary.multipleCount).toBe(0);
+    expect(summary.noCandidateCount).toBe(6);
     expect(summary.conflictCount).toBe(0);
-    expect(summary.actionRequiredItems.length).toBe(2);
-
-    // 验证 74HC00PW-Q100 为 CORE_MODEL_WITH_AFFIX_DIFF
-    const hc00 = summary.items.find((it) => it.entrustmentModel === '74HC00PW-Q100');
-    expect(hc00).toBeDefined();
-    expect(hc00!.relationLevel).toBe('CORE_MODEL_WITH_AFFIX_DIFF');
-    expect(hc00!.statusText).toBe('已自动对应 · 有提醒');
-    expect(hc00!.noticeText).toContain(',118');
-    expect(hc00!.inspectionModel).toBe('74HC00PW-Q100,118');
-
-    // 验证 ABC123 (YK-2) 与 ZX990 (YK-3) 需人工选择
-    const multiItems = summary.items.filter((it) => it.relationLevel === 'MULTIPLE_MODEL_CANDIDATES');
-    expect(multiItems.length).toBe(2);
-    expect(multiItems.map((m) => m.entrustmentModel)).toEqual(['ABC123', 'ZX990']);
+    expect(summary.actionRequiredItems.length).toBe(0);
+    expect(summary.items.every((item) => state.drafts.some((draft) => draft.lines.some((line) => line.id === item.lineId && line.model === item.entrustmentModel)))).toBe(true);
   });
 
-  it('浦壹 26SHPYD056 包含 8 个已自动对应（7 无问题 · 1 有联合覆盖）及 1 个暂无依据', () => {
+  it('浦壹 26SHPYD056 查货合并后 8 个已自动对应及 1 个暂无依据', () => {
     const puyi = workbench.customers.find((c) => c.name.includes('浦壹'));
     expect(puyi).toBeDefined();
 
@@ -89,6 +77,7 @@ describe('客户级商品对应汇总 (generateCommodityReconciliationSummary)',
     expect(summary.affixDiffCount).toBe(0);
     expect(summary.multipleCount).toBe(0);
     expect(summary.noCandidateCount).toBe(1);
+    expect(summary.actionRequiredItems).toHaveLength(0);
   });
 });
 
@@ -102,13 +91,13 @@ describe('构成式进度文案 (compositionalProgress)', () => {
     const puyiTask = pendingTasks.find((t) => t.displayNo === '26SHPYD056');
     expect(puyiTask).toBeDefined();
     expect(puyiTask!.compositionalProgress).toBe(
-      '9 个商品：8 已自动对应（7 无问题 · 1 有联合覆盖）· 1 暂无查货依据 · 当前无需人工选择'
+      '9 个商品：8 已建立对应 · 1 暂无查货依据'
     );
   });
 
   it('2026BMH001 具有人工选择提醒的构成式进度', () => {
     const bmh = pendingTasks.find((t) => t.displayNo === '2026BMH001');
     expect(bmh).toBeDefined();
-    expect(bmh!.compositionalProgress).toContain('5 已自动对应 · 6 需要人工选择');
+    expect(bmh!.compositionalProgress).toBe('11 个商品：11 已建立对应');
   });
 });

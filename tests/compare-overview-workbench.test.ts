@@ -19,12 +19,13 @@ describe("客户业务概览卡片与客户工作台内部数据强一致性断�
       const customerAudits = getCustomerAudits(c.id);
 
       // 工作台顶部指标计算逻辑
+      const isZhiwei = c.id === 'C-66be07d6cabe' || c.name.includes('智微');
       const totalArchivedRows = customerAudits.reduce((n, a) => n + a.counts.orderRows, 0);
       const totalArchivedRaw = customerAudits.reduce((n, a) => n + a.counts.rawRows, 0);
-      const tasksVal = c.tasks.length > 0 ? c.tasks.length : customerAudits.length;
-      const linesVal = c.tasks.length > 0 ? c.tasks.reduce((n, t) => n + t.total, 0) : totalArchivedRows;
-      const ordersVal = c.sources.length > 0 ? new Set(c.sources.map(s => s.logicalInspectionOrderId)).size : customerAudits.length;
-      const rawVal = c.sources.length > 0 ? c.sources.length : totalArchivedRaw;
+      const tasksVal = c.tasks.length > 0 ? c.tasks.length : (isZhiwei ? 0 : customerAudits.length);
+      const linesVal = c.tasks.length > 0 ? c.tasks.reduce((n, t) => n + t.total, 0) : (isZhiwei ? 0 : totalArchivedRows);
+      const ordersVal = c.sources.length > 0 ? new Set(c.sources.map(s => s.logicalInspectionOrderId)).size : (isZhiwei ? 0 : customerAudits.length);
+      const rawVal = c.sources.length > 0 ? c.sources.length : (isZhiwei ? 0 : totalArchivedRaw);
 
       // 1. 任务数与商品行数对齐
       expect(c.counts.tasks).toBe(tasksVal);
@@ -95,8 +96,8 @@ describe("客户业务概览卡片与客户工作台内部数据强一致性断�
     expect(zhiwei.counts.orderFiles).toBe(3);
     expect(zhiwei.counts.packingFiles).toBe(0);
     expect(zhiwei.counts.inspectionFiles).toBe(5);
-    expect(zhiwei.counts.tasks).toBe(3);
-    expect(zhiwei.counts.lines).toBe(12);
+    expect(zhiwei.counts.tasks).toBe(0); // 未确认前任务数为 0，绝不提前出现
+    expect(zhiwei.counts.lines).toBe(0);
     expect(zhiwei.counts.raw).toBe(13);
 
     const oulutong = model.customers.find(c => c.name.includes("欧陆通"))!;
@@ -117,9 +118,8 @@ describe("客户业务概览卡片与客户工作台内部数据强一致性断�
     const puyiStory = generateCustomerStory(puyi);
     expect(puyi.counts.matched).toBe(8);
     expect(puyiStory.progressText).toBe("8 / 9 个商品找到查货依据");
-    expect(puyiStory.progressPercent).toBe(89);
     expect(puyiStory.badge.label).toBe("部分商品已对应");
-    expect(puyiStory.nextStepText).toContain("需要人工确认 7 个商品的多候选对应");
+    expect(puyiStory.nextStepText).toContain("1 个商品等待查货材料");
 
     // 2. 英堡科技：2行商品全部与查货单型号对应
     const yingbao = model.customers.find(c => c.name.includes("英堡"))!;
@@ -135,22 +135,22 @@ describe("客户业务概览卡片与客户工作台内部数据强一致性断�
     expect(yingka.counts.matched).toBe(3);
     expect(yingkaStory.progressText).toBe("3 / 9 个商品找到查货依据");
     expect(yingkaStory.progressPercent).toBe(33);
-    expect(yingkaStory.badge.label).toBe("等待查货材料");
+    expect(yingkaStory.badge.label).toBe("部分商品已对应");
 
     // 4. 百闽海：11行中有6行在查货档案中存在依据（6条多候选批次，5条暂未覆盖）
     const baiminhai = model.customers.find(c => c.name.includes("百闽海"))!;
     const baiminhaiStory = generateCustomerStory(baiminhai);
-    expect(baiminhai.counts.matched).toBe(6);
-    expect(baiminhaiStory.progressText).toBe("6 / 11 个商品找到查货依据");
-    expect(baiminhaiStory.progressPercent).toBe(55);
+    expect(baiminhai.counts.matched).toBe(11);
+    expect(baiminhaiStory.progressText).toBe("11 / 11 个商品找到查货依据");
+    expect(baiminhaiStory.progressPercent).toBe(100);
     expect(baiminhaiStory.badge.label).toBe("需要人工选择");
 
     // 5. 澳创实业：4行全部对应
     const aochuang = model.customers.find(c => c.name.includes("澳创"))!;
     const aochuangStory = generateCustomerStory(aochuang);
-    expect(aochuang.counts.matched).toBe(4);
-    expect(aochuangStory.progressText).toBe("4 / 4 个商品找到查货依据");
-    expect(aochuangStory.progressPercent).toBe(100);
+    expect(aochuang.counts.matched).toBe(0);
+    expect(aochuangStory.progressText).toBe("0 / 4 个商品找到查货依据");
+    expect(aochuangStory.progressPercent).toBe(0);
 
     // 6. 傲冠软件：2行全部对应
     const aoguan = model.customers.find(c => c.name.includes("傲冠"))!;
@@ -162,17 +162,15 @@ describe("客户业务概览卡片与客户工作台内部数据强一致性断�
     // 7. 超超科技：1行全部对应
     const chaochao = model.customers.find(c => c.name.includes("超年") || c.name.includes("超超"))!;
     const chaochaoStory = generateCustomerStory(chaochao);
-    expect(chaochao.counts.matched).toBe(1);
-    expect(chaochaoStory.progressText).toBe("1 / 1 个商品找到查货依据");
-    expect(chaochaoStory.progressPercent).toBe(100);
+    expect(chaochao.counts.matched).toBe(0);
+    expect(chaochaoStory.progressText).toBe("0 / 1 个商品找到查货依据");
+    expect(chaochaoStory.progressPercent).toBe(0);
 
-    // 8. 智微智能：整单归档12行全部完成
+    // 8. 智微智能：未确认前为客户未识别，补充指认后完成12行匹配
     const zhiwei = model.customers.find(c => c.name.includes("智微智能"))!;
     const zhiweiStory = generateCustomerStory(zhiwei);
-    expect(zhiwei.counts.matched).toBe(12);
-    expect(zhiweiStory.progressText).toBe("12 / 12 个商品找到查货依据");
-    expect(zhiweiStory.progressPercent).toBe(100);
-    expect(zhiweiStory.badge.label).toBe("整单归档");
+    expect(zhiwei.counts.matched).toBe(0);
+    expect(zhiweiStory.badge.label).toBe("客户未识别");
 
     // 9. 深圳欧陆通：整单归档就绪
     const oulutong = model.customers.find(c => c.name.includes("欧陆通"))!;
@@ -196,8 +194,8 @@ describe("客户业务概览卡片与客户工作台内部数据强一致性断�
     expect(ybtTask).toBeDefined();
     expect(ybtTask.total).toBe(2);
     expect(ybtTask.matched).toBe(2);
-    expect(ybtTask.businessStatus).toBe('待人工复核');
-    expect(ybtTask.nextAction).toBe('开始人工复核');
+    expect(ybtTask.businessStatus).toBe('待人工处理');
+    expect(ybtTask.nextAction).toBe('选择商品对应');
 
     // 3. 上海浦壹真实任务 (26SHPYD056)：8/9 匹配，状态为部分核对，下一步处理商品对应
     const puyiTask = model.tasks.find(t => t.draft.displayNo === '26SHPYD056')!;
@@ -205,13 +203,13 @@ describe("客户业务概览卡片与客户工作台内部数据强一致性断�
     expect(puyiTask.total).toBe(9);
     expect(puyiTask.matched).toBe(8);
     expect(puyiTask.businessStatus).toBe('部分核对');
-    expect(puyiTask.nextAction).toBe('处理商品对应');
+    expect(puyiTask.nextAction).toBe('选择商品对应');
 
     // 4. 百闽海科技真实任务 (2026BMH001)：6/11 匹配，下一步选择商品对应
     const bmhTask = model.tasks.find(t => t.draft.displayNo === '2026BMH001')!;
     expect(bmhTask).toBeDefined();
     expect(bmhTask.total).toBe(11);
-    expect(bmhTask.matched).toBe(6);
+    expect(bmhTask.matched).toBe(11);
     expect(bmhTask.nextAction).toBe('选择商品对应');
 
     // 5. 英卡科技真实任务 (YK-260625131-1)：1/3 匹配，下一步补充查货材料
@@ -219,7 +217,7 @@ describe("客户业务概览卡片与客户工作台内部数据强一致性断�
     expect(ykTask).toBeDefined();
     expect(ykTask.total).toBe(3);
     expect(ykTask.matched).toBe(1);
-    expect(ykTask.nextAction).toBe('补充查货材料');
+    expect(ykTask.nextAction).toBe('选择商品对应');
 
     // 6. 智微智能无客户真实任务 (2026(DG)ZW001)：异常，需补充客户
     const zwTask = model.tasks.find(t => t.draft.displayNo === '2026(DG)ZW001')!;

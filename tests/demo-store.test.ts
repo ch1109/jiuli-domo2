@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import { buildScenarioState, getMergedPoolProducts, getPocMetrics, getScenarioAcceptanceReport, useDemoStore } from "../lib/demo-store";
 import scenarios from "../demo-generated/mock/scenarios.json";
+import { getManuallyModifiedLineIds } from "../lib/workbench-model";
 
 const initialState = useDemoStore.getState();
 // Legacy action tests use an explicit synthetic scenario; real Prompt tests load SC-08 separately.
@@ -21,6 +22,7 @@ beforeEach(() => {
     evidence: [],
     versions: [],
     operations: [],
+    resultSaves: {},
     finalReconciliations: [],
     parseJobs: initialState.parseJobs,
     parseResults: initialState.parseResults,
@@ -40,7 +42,7 @@ describe("一体化任务状态", () => {
     const state = useDemoStore.getState();
     expect(state.activeTaskId).toBe(draft.id);
     expect(state.lastVisitedTaskId).toBe(draft.id);
-    expect(state.taskStage).toBe("ready");
+    expect(state.taskStage).toBe("matching");
     expect(state.taskIssues.some((issue) => issue.draftId === draft.id)).toBe(true);
     expect(state.taskProgress.relations.total).toBe(draft.lines.length);
     expect(state.taskProgress.finalization).toEqual({ current: 0, total: 1 });
@@ -600,6 +602,35 @@ describe("TASK-0814 本地持久化", () => {
     useDemoStore.getState().loadScenario("SC-08");
     expect(useDemoStore.getState().relations).toEqual([]);
     expect(useDemoStore.getState().operations).toEqual([]);
+  });
+
+  it("保存复核结果后保留人工修改和保存时间，重新进入可继续修改", async () => {
+    useDemoStore.getState().loadScenario("SC-08");
+    const draft = useDemoStore.getState().drafts[0];
+    const line = draft.lines[0];
+    useDemoStore.getState().selectDraft(draft.id);
+    useDemoStore.getState().editSelectedLineField(line.id, "产地", "人工修改的产地");
+    useDemoStore.getState().saveSelectedDraftResults();
+
+    const storage = useDemoStore.persist.getOptions().storage;
+    const persisted = await storage?.getItem("jiuli-demo-workspace-v1");
+    const savedState = persisted?.state as ReturnType<typeof useDemoStore.getState>;
+    expect(savedState.drafts.find((item) => item.id === draft.id)?.lines[0].fields.产地).toBe("人工修改的产地");
+    expect(savedState.resultSaves[draft.id]?.savedAt).toBeTruthy();
+    expect(getManuallyModifiedLineIds(draft.id, savedState.operations)).toContain(line.id);
+
+    useDemoStore.getState().setView("home");
+    useDemoStore.getState().selectDraft(draft.id);
+    expect(useDemoStore.getState().drafts.find((item) => item.id === draft.id)?.lines[0].fields.产地).toBe("人工修改的产地");
+  });
+
+  it("仅确认商品行不会显示为已修改", () => {
+    const modified = getManuallyModifiedLineIds("D-1", [{
+      id: "OP-confirm", operationType: "人工编辑字段", actorType: "人工操作",
+      customerId: null, draftId: "D-1", affectedEntrustmentLineIds: ["L-1"],
+      affectedInspectionSourceLineIds: [], summary: "人工确认商品行 L-1", occurredAt: "2026-09-23T00:00:00.000Z",
+    }]);
+    expect(modified).not.toContain("L-1");
   });
 });
 

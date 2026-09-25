@@ -127,18 +127,16 @@ describe('客户级双池并立、关系矩阵与异步增量核对模型验证'
     expect(questions[2].summary).toContain('影响 YK-260625131-2');
   });
 
-  it('多批次商品 (UMW2631) 准确支持多查货来源联合证据', () => {
+  it('UMW2631 查货多行合并后单候选高置信度直接匹配成功，不展示多候选警告', () => {
     const yingka = model.customers.find((c) => c.name.includes('英卡'))!;
     const summary = yingka.commoditySummary!;
     const umwYk1 = summary.items.find(
       (it) => it.taskDisplayNo === 'YK-260625131-1' && it.entrustmentModel === 'UMW2631'
     );
     expect(umwYk1).toBeDefined();
-    expect(umwYk1?.isMultiBatchSource).toBe(true);
-    expect(umwYk1?.sourceBatches?.length).toBe(2);
-    expect(umwYk1?.sourceBatches?.[0].batchDisplayNo).toContain('CH001');
-    expect(umwYk1?.sourceBatches?.[1].batchDisplayNo).toContain('CH002');
-    expect(umwYk1?.noticeText).toContain('两个批次共同提供依据');
+    expect(umwYk1?.relationLevel).toBe('EXACT_MODEL');
+    expect(umwYk1?.sourceBatches?.length).toBeGreaterThan(0);
+    expect(umwYk1?.inspectionQuantity).toBe('177000 PCS');
   });
 
   it('双池卡片与关系矩阵单元格展示具体商品型号依据', () => {

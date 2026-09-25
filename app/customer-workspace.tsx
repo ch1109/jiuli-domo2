@@ -60,7 +60,7 @@ const tabs = [
   '商品对应',
   '委托任务',
   '查货资料',
-  '批次关系',
+  // '批次关系', // 暂时隐藏，待后续调整
   '业务动态',
 ];
 
@@ -144,7 +144,8 @@ export function getCustomerStatusFlags(c: CustomerModel, story: CustomerStory) {
     c.tasks.some(
       (t) =>
         !t.draft.customerId ||
-        t.draft.displayNo.includes('ZW') ||
+        t.draft.customerId === 'UNKNOWN' ||
+        t.draft.customerStatus === '待补客户信息' ||
         t.draft.lines.some((l) =>
           l.issueIds.some((i) => i.includes('字段冲突') || i.includes('冲突'))
         )
@@ -424,6 +425,169 @@ function CardMoreMenu({
   );
 }
 
+/**
+ * 四个提示词全流程处理追溯看板 (P1~P4 Prompt Pipeline)
+ */
+export function CustomerPromptPipelineTrace({
+  isResolved,
+  compact = false,
+}: {
+  isResolved: boolean;
+  compact?: boolean;
+}) {
+  const [expanded, setExpanded] = useState(true);
+
+  if (compact) {
+    return (
+      <div className="cw-prompts-trace-compact">
+        <div className="cw-prompts-trace-grid compact" style={{ marginTop: 4 }}>
+          {/* P1 */}
+          <div className="cw-prompt-item">
+            <div className="cw-prompt-item-head">
+              <span className="cw-prompt-badge">P1</span>
+              <strong>委托草稿与客户校验</strong>
+            </div>
+            <p>
+              解析导单 Excel 提取 12 项商品型号。经人工指认为【东莞智微智能】后，激活草稿并解除客户隔离阻断。
+            </p>
+            <span className="cw-prompt-file-tag" title="委托材料：智微智能导单文件.xlsx">
+              📄 智微智能导单文件.xlsx
+            </span>
+          </div>
+
+          {/* P2 */}
+          <div className="cw-prompt-item">
+            <div className="cw-prompt-item-head">
+              <span className="cw-prompt-badge">P2</span>
+              <strong>查货材料事实提取</strong>
+            </div>
+            <p>
+              OCR 抽取入仓号 26010048 / 26010713，识别收货方为智微智能，解析 13 个实物批次入库。
+            </p>
+            <span className="cw-prompt-file-tag" title="查货材料：26010048 / 26010713.pdf">
+              📦 26010048 / 26010713.pdf
+            </span>
+          </div>
+
+          {/* P3 */}
+          <div className="cw-prompt-item">
+            <div className="cw-prompt-item-head">
+              <span className="cw-prompt-badge">P3</span>
+              <strong>同客户商品依据匹配</strong>
+            </div>
+            <p>
+              在智微智能查货池严格隔离比对，型号 ASM1543、UP9505 等全量精确锁定依据 (EXACT 无串货)。
+            </p>
+            <span className="cw-prompt-file-tag" title="型号精确匹配：ASM1543 等 12 项全覆盖">
+              ✓ 12 行依据锁定 (无串货)
+            </span>
+          </div>
+
+          {/* P4 */}
+          <div className="cw-prompt-item">
+            <div className="cw-prompt-item-head">
+              <span className="cw-prompt-badge">P4</span>
+              <strong>25要素比对与核验</strong>
+            </div>
+            <p>
+              逐项比对净重/毛重/数量/产地；保留共箱毛重，标记产地差异待报关员最终复核签字。
+            </p>
+            <span className="cw-prompt-file-tag" title="核验结论：25 字段比对完成，待人工复核">
+              ⚖ 25 字段比对 · 待人工复核
+            </span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="cw-prompts-trace-box" style={{ margin: '14px 0 6px' }}>
+      <div className="cw-prompts-trace-head">
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          <Sparkles size={14} style={{ color: '#059669' }} />
+          <strong style={{ fontSize: 13, color: '#065f46' }}>
+            AI 四个提示词全流程处理追溯 (P1 导单 → P2 查货 → P3 对应 → P4 核验)
+          </strong>
+          {isResolved ? (
+            <span className="cw-status green" style={{ fontSize: 11, padding: '1px 6px' }}>已全量贯通</span>
+          ) : (
+            <span className="cw-status orange" style={{ fontSize: 11, padding: '1px 6px' }}>P1 阻断待确认</span>
+          )}
+        </div>
+        <button
+          type="button"
+          className="text-button"
+          style={{ fontSize: 12, color: '#047857' }}
+          onClick={() => setExpanded(!expanded)}
+        >
+          {expanded ? '收起流水线过程' : '展开流水线过程'}
+        </button>
+      </div>
+
+      {expanded && (
+        <div className="cw-prompts-trace-grid" style={{ marginTop: 8 }}>
+          {/* P1 */}
+          <div className="cw-prompt-item">
+            <div className="cw-prompt-item-head">
+              <span className="cw-prompt-badge">P1</span>
+              <strong>委托草稿与客户校验</strong>
+            </div>
+            <p>
+              解析导单 Excel/PDF 提取商品型号与申报要素。{isResolved ? '经人工补充指认为【东莞智微智能】后，激活草稿 V1。' : '因主体委托缺失客户抬头触发 NEEDS_REVIEW 阻断。'}
+            </p>
+            <span className="cw-prompt-file-tag" title="委托材料：智微智能导单文件-1767600043104.xlsx">
+              📄 智微智能导单文件.xlsx
+            </span>
+          </div>
+
+          {/* P2 */}
+          <div className="cw-prompt-item">
+            <div className="cw-prompt-item-head">
+              <span className="cw-prompt-badge">P2</span>
+              <strong>查货材料事实提取</strong>
+            </div>
+            <p>
+              OCR 抽取入仓号 26010048 / 26010713，识别收货方为智微智能，解析 13 个实物批次与 6 项核心规格事实入库。
+            </p>
+            <span className="cw-prompt-file-tag" title="查货材料：1767583198125.pdf, 1767597461096.pdf">
+              📦 26010048 / 26010713.pdf
+            </span>
+          </div>
+
+          {/* P3 */}
+          <div className="cw-prompt-item">
+            <div className="cw-prompt-item-head">
+              <span className="cw-prompt-badge">P3</span>
+              <strong>同客户商品依据匹配</strong>
+            </div>
+            <p>
+              在智微智能查货池内严格隔离比对，型号 ASM1543、UP9505UQGW 等 6 项商品全量精确锁定 (EXACT)。
+            </p>
+            <span className="cw-prompt-file-tag" title="型号精确匹配：ASM1543, UP9505UQGW 等 6 项">
+              ✓ 6 行依据锁定 (无串货)
+            </span>
+          </div>
+
+          {/* P4 */}
+          <div className="cw-prompt-item">
+            <div className="cw-prompt-item-head">
+              <span className="cw-prompt-badge">P4</span>
+              <strong>25要素比对与核验</strong>
+            </div>
+            <p>
+              逐项比对净重/毛重/数量/产地；保留共箱毛重，标记中国台湾 vs 泰国产地差异供报关员最终复核。
+            </p>
+            <span className="cw-prompt-file-tag" title="核验结论：共箱毛重保留，COD/COO 差异已标记">
+              ⚖ 25 字段比对 · 待人工复核
+            </span>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function CustomerCardActions({
   customer,
   story,
@@ -452,7 +616,13 @@ function CustomerCardActions({
               className="primary cw-btn-primary-action"
               onClick={() => {
                 const pa = actionModel.primaryAction!;
-                if (pa.targetDraftId) {
+                if (pa.actionType === 'resolve-customer' || pa.text.includes('客户')) {
+                  const targetDraftId =
+                    pa.targetDraftId ||
+                    customer.tasks.find((t) => !t.draft.customerId || t.draft.customerId === 'UNKNOWN')?.draft?.id ||
+                    'D-8181f9edc198';
+                  useDemoStore.getState().openCustomerSupplement(targetDraftId);
+                } else if (pa.targetDraftId) {
                   onSelectDraft(pa.targetDraftId);
                 } else {
                   onSelectCustomer(customer.id, '商品对应');
@@ -651,9 +821,21 @@ export function CustomerWorkspace({
     return getBatchRelationQuestions(customer);
   }, [customer]);
 
+  // 业务概览仅展示已确立业务的客户；
+  // 智微智能（或待补客户）在未完成客户指认确认（c.tasks.length === 0）之前，绝不出现在客户业务概览中！
+  // 只有当用户进入“补充客户”页面完成指认确认后，tasks 关联生效，客户业务概览中才动态新增显示该客户！
+  const visibleCustomers = useMemo(() => {
+    return model.customers.filter((c) => {
+      if (c.id === 'C-66be07d6cabe' || c.name.includes('智微')) {
+        return c.tasks.length > 0;
+      }
+      return true;
+    });
+  }, [model.customers]);
+
   const customerFilterCounts = useMemo(() => {
     const counts: Record<CustomerStatusFilter, number> = {
-      '全部': model.customers.length,
+      '全部': visibleCustomers.length,
       '需要我处理': 0,
       '等待查货': 0,
       '需要人工选择': 0,
@@ -662,7 +844,7 @@ export function CustomerWorkspace({
       '已完成': 0,
     };
 
-    for (const c of model.customers) {
+    for (const c of visibleCustomers) {
       const story = generateCustomerStory(c);
       const flags = getCustomerStatusFlags(c, story);
 
@@ -675,7 +857,7 @@ export function CustomerWorkspace({
     }
 
     return counts;
-  }, [model.customers]);
+  }, [visibleCustomers]);
 
   const filterExplanation = useMemo(() => {
     const count = customerFilterCounts[customerStatusFilter] ?? 0;
@@ -703,7 +885,7 @@ export function CustomerWorkspace({
     const q = query.trim().toLowerCase();
 
     // 1. 搜索过滤
-    const searchFiltered = model.customers.filter((c) => {
+    const searchFiltered = visibleCustomers.filter((c) => {
       if (!q) return true;
       return `${c.name} ${c.id} ${c.tasks.map((t) => t.draft.displayNo).join(' ')}`
         .toLowerCase()
@@ -782,7 +964,7 @@ export function CustomerWorkspace({
 
       return 0;
     });
-  }, [model.customers, query, customerStatusFilter, customerSortBy]);
+  }, [visibleCustomers, query, customerStatusFilter, customerSortBy]);
 
   const tasks = model.tasks
     .filter((t) =>
@@ -795,7 +977,8 @@ export function CustomerWorkspace({
       if (filter === '我的待办') {
         return (
           !t.draft.customerId ||
-          t.draft.displayNo.includes('ZW') ||
+          t.draft.customerId === 'UNKNOWN' ||
+          t.draft.customerStatus === '待补客户信息' ||
           t.businessStatus === '待人工处理' ||
           t.businessStatus === '异常' ||
           t.businessStatus === '待人工复核' ||
@@ -817,7 +1000,8 @@ export function CustomerWorkspace({
           t.businessStatus === '待人工复核' ||
           t.businessStatus === 'AI核对完成 · 待人工复核' ||
           t.businessStatus === '人工复核中' ||
-          t.draft.displayNo === '2025YBT010-2'
+          t.draft.displayNo === '2025YBT010-2' ||
+          (t.draft.displayNo.includes('ZW') && t.draft.customerId && t.draft.customerId !== 'UNKNOWN')
         );
       }
       if (filter === '等待外部材料' || filter === '待匹配') {
@@ -1171,7 +1355,7 @@ export function CustomerWorkspace({
             <div className="cw-customer-overview-top-row">
               <div className="cw-customer-overview-title-group">
                 <h3>
-                  客户业务概览 <span>共 {model.customers.length} 家客户</span>
+                  客户业务概览 <span>共 {visibleCustomers.length} 家客户</span>
                 </h3>
                 <p className="cw-filter-caption">{filterExplanation}</p>
               </div>
@@ -1266,7 +1450,7 @@ export function CustomerWorkspace({
                 const flags = getCustomerStatusFlags(c, story);
                 const primaryBadge = getCustomerPrimaryBadge(flags, story.badge);
                 const focusedHighlight = getFocusedCardHighlight(customerStatusFilter, c, story, flags);
-                if (story.isMultiTask && story.multiTask) {
+                if (c.name.includes('英卡') && story.isMultiTask && story.multiTask) {
                   return (
                     <article className="cw-customer cw-story-card cw-multi-task-card" key={c.id}>
                       <div className="cw-story-head">
@@ -1336,7 +1520,20 @@ export function CustomerWorkspace({
                                     type="button"
                                     className="text-button"
                                     style={{ fontSize: 14, color: '#1b6e46', fontWeight: 600 }}
-                                    onClick={() => state.selectDraft(t.id)}
+                                    onClick={() => {
+                                      const targetDraft = state.drafts.find((d) => d.id === t.id);
+                                      if (
+                                        t.actionText.includes('补充客户') ||
+                                        (targetDraft &&
+                                          (!targetDraft.customerId ||
+                                            targetDraft.customerId === 'UNKNOWN' ||
+                                            targetDraft.customerStatus === '待补客户信息'))
+                                      ) {
+                                        state.openCustomerSupplement(t.id);
+                                      } else {
+                                        state.selectDraft(t.id);
+                                      }
+                                    }}
                                   >
                                     {t.actionText} →
                                   </button>
@@ -1356,7 +1553,19 @@ export function CustomerWorkspace({
                         setCustomerId(id);
                         if (targetTab) setTab(targetTab);
                       }}
-                      onSelectDraft={(draftId) => state.selectDraft(draftId)}
+                      onSelectDraft={(draftId) => {
+                        const targetDraft = state.drafts.find((d) => d.id === draftId);
+                        if (
+                          targetDraft &&
+                          (!targetDraft.customerId ||
+                            targetDraft.customerId === 'UNKNOWN' ||
+                            targetDraft.customerStatus === '待补客户信息')
+                        ) {
+                          state.openCustomerSupplement(draftId);
+                        } else {
+                          state.selectDraft(draftId);
+                        }
+                      }}
                     />
 
                     <details className="cw-story-card-tech">
@@ -1378,15 +1587,18 @@ export function CustomerWorkspace({
                 );
               }
 
+              const isZhiwei = c.name.includes('智微') || c.id === 'C-66be07d6cabe' || c.tasks.some((t) => t.draft.displayNo.includes('ZW'));
               const noReliableSource = story.progressPercent === 100 && story.unresolvedItems.some((item) => item.text.includes('暂无可靠对应') || item.text.includes('暂无确定查货依据') || item.text.includes('等待仓储补充'));
-              const awaitingReview = story.nextStepText.includes('最终复核');
+              const awaitingReview = story.nextStepText.includes('最终复核') || story.badge.label.includes('待复核');
               return (
                 <article className="cw-customer cw-story-card" key={c.id}>
                   <div className="cw-story-head">
                     <div className="cw-story-title-group">
                       <h3>{story.name}</h3>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 3 }}>
-                        <strong className="cw-story-task-no">{story.displayNo}</strong>
+                        <strong className="cw-story-task-no">
+                          {isZhiwei ? `${story.displayNo} 等 ${c.tasks.length} 票任务` : story.displayNo}
+                        </strong>
                         <small className="cw-story-updated">更新于 {story.updatedAtText}</small>
                       </div>
                     </div>
@@ -1464,8 +1676,30 @@ export function CustomerWorkspace({
                       setCustomerId(id);
                       if (targetTab) setTab(targetTab);
                     }}
-                    onSelectDraft={(draftId) => state.selectDraft(draftId)}
+                    onSelectDraft={(draftId) => {
+                      const targetDraft = state.drafts.find((d) => d.id === draftId);
+                      if (
+                        targetDraft &&
+                        (!targetDraft.customerId ||
+                          targetDraft.customerId === 'UNKNOWN' ||
+                          targetDraft.customerStatus === '待补客户信息')
+                      ) {
+                        state.openCustomerSupplement(draftId);
+                      } else {
+                        state.selectDraft(draftId);
+                      }
+                    }}
                   />
+
+                  {/* 智微智能专属：AI 四步提示词处理过程追溯 (P1~P4) 放在操作按钮下方，采用规范统一的 details 折叠项，默认折叠收起，与其他客户卡片样式规范 100% 保持一致 */}
+                  {isZhiwei && (
+                    <details className="cw-story-card-tech">
+                      <summary>AI 四步提示词处理过程追溯 (P1 导单 → P2 查货 → P3 对应 → P4 核验)</summary>
+                      <div style={{ marginTop: 8 }}>
+                        <CustomerPromptPipelineTrace compact isResolved={true} />
+                      </div>
+                    </details>
+                  )}
 
                   <details className="cw-story-card-tech cw-story-materials">
                     <summary>材料与 AI 已完成工作</summary>
@@ -1576,15 +1810,23 @@ export function CustomerWorkspace({
                 <Plus size={15} />
                 新增材料
               </button>
-              <button
+              {/* 批次关系暂时隐藏，后续调整 */}
+              {/* <button
                 className="text-button"
                 style={{ fontSize: 12.5, fontWeight: 550 }}
                 onClick={() => setTab('批次关系')}
               >
                 查看批次关系全貌 →
-              </button>
+              </button> */}
             </div>
           </div>
+
+          {/* 智微智能专属：AI 四步提示词处理过程追溯 (P1~P4) */}
+          {(customer.name.includes('智微') || customer.id === 'C-66be07d6cabe' || customer.tasks.some((t) => t.draft.displayNo.includes('ZW'))) && (
+            <div style={{ marginBottom: 14 }}>
+              <CustomerPromptPipelineTrace isResolved={true} />
+            </div>
+          )}
 
           {/* 2. 5 状态核心 KPI 横幅（一目了然，点击可快速过滤下方商品表） */}
           {commoditySummary && (
@@ -2590,14 +2832,11 @@ export function CustomerWorkspace({
               item={selectedCandidateItem}
               onClose={() => setSelectedCandidateItem(null)}
               onConfirmCandidate={(item, candidate) => {
-                setResolvedCandidates((prev) => ({
-                  ...prev,
-                  [item.id]: {
-                    model: candidate.model,
-                    batch: candidate.batchDisplayNo,
-                  },
-                }));
-                setSelectedCandidateItem(null);
+                state.selectLineSource(item.lineId, candidate.sourceRowId, item.taskDraftId);
+                if (useDemoStore.getState().relations.some((relation) => relation.active && relation.entrustmentLineId === item.lineId && relation.inspectionSourceLineIds.includes(candidate.sourceRowId))) {
+                  setResolvedCandidates((prev) => ({ ...prev, [item.id]: { model: candidate.model, batch: candidate.batchDisplayNo } }));
+                  setSelectedCandidateItem(null);
+                }
               }}
             />
           )}
@@ -3273,10 +3512,24 @@ function TaskTable({
   taskProgressMap?: Map<string, string>;
 }) {
   const select = useDemoStore((s) => s.selectDraft);
+  const openSupplement = useDemoStore((s) => s.openCustomerSupplement);
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
+  const handleTaskAction = (t: WorkbenchModel['tasks'][number]) => {
+    if (
+      t.nextAction === '补充客户' ||
+      !t.draft.customerId ||
+      t.draft.customerId === 'UNKNOWN' ||
+      t.draft.customerStatus === '待补客户信息'
+    ) {
+      openSupplement(t.draft.id);
+    } else {
+      select(t.draft.id);
+    }
+  };
+
   const getAiResult = (t: WorkbenchModel['tasks'][number]) => {
-    if (!t.draft.customerId || t.draft.displayNo.includes('ZW')) {
+    if (!t.draft.customerId || t.draft.customerId === 'UNKNOWN' || t.draft.customerStatus === '待补客户信息') {
       return { label: '缺少明确客户抬头', businessStage: '客户信息待确认', techCode: 'P1 · 需确认客户' };
     }
     if (t.draft.displayNo === '2025YBT010-2') {
@@ -3293,6 +3546,9 @@ function TaskTable({
     }
     if (t.draft.displayNo.startsWith('YK-')) {
       return { label: '仅覆盖1个型号依据', businessStage: '商品对应待补充查货', techCode: 'P2/P3 · 待补充查货' };
+    }
+    if (t.draft.displayNo.includes('ZW')) {
+      return { label: '已自动锁定查货依据', businessStage: '已完成商品匹配 · 待复核', techCode: 'P3/P4 · 全部对应待复核' };
     }
     if (t.matched === t.total && t.total > 0) {
       return { label: '已自动找到全部对应', businessStage: '商品对应全部完成', techCode: 'P3 · 全部对应' };
@@ -3312,11 +3568,12 @@ function TaskTable({
   };
 
   const getAttention = (t: WorkbenchModel['tasks'][number]) => {
-    if (!t.draft.customerId || t.draft.displayNo.includes('ZW')) return '需补充客户信息';
+    if (!t.draft.customerId || t.draft.customerId === 'UNKNOWN' || t.draft.customerStatus === '待补客户信息') return '需补充客户信息';
     if (t.draft.displayNo === '2025YBT010-2') return '待报关员确认';
     if (t.draft.displayNo === '26SHPYD056') return '7 处多候选待确认';
     if (t.draft.displayNo === '2026BMH001') return '6 处多候选待确认';
     if (t.draft.displayNo === '2026AG001') return '2 处多候选待确认';
+    if (t.draft.displayNo.includes('ZW')) return '待报关员复核';
     if (['2026ACSY003', '2026CNKJ001'].includes(t.draft.displayNo)) return '暂无确定查货依据';
     if (t.draft.displayNo.startsWith('YK-')) return '缺 2 行查货材料';
     if (t.issues > 0) return `${t.issues} 处需人工关注`;
@@ -3347,7 +3604,7 @@ function TaskTable({
                 <td>
                   <button
                     className="cw-task-link"
-                    onClick={() => select(t.draft.id)}
+                    onClick={() => handleTaskAction(t)}
                   >
                     {t.draft.displayNo}
                   </button>
@@ -3404,7 +3661,7 @@ function TaskTable({
                     <button
                       className="text-button"
                       style={{ fontSize: 14.5, color: '#166534', fontWeight: 600 }}
-                      onClick={() => select(t.draft.id)}
+                      onClick={() => handleTaskAction(t)}
                     >
                       {t.nextAction}
                       <ArrowRight size={14} />
@@ -3488,7 +3745,15 @@ function TaskTable({
                 <div style={{ gridColumn: '1 / -1', background: '#fffbeb', border: '1px solid #fef3c7', padding: '8px 12px', borderRadius: 4, marginTop: 4 }}>
                   <dt style={{ color: '#b45309', fontWeight: 600 }}>业务处理指引</dt>
                   <dd style={{ color: '#92400e', marginTop: 2 }}>
-                    {t.realtimeStatus} · 点击行右侧「{t.nextAction}」即可直接进入处理
+                    {t.realtimeStatus} ·{' '}
+                    <button
+                      type="button"
+                      className="text-button"
+                      style={{ color: '#b45309', fontWeight: 600, textDecoration: 'underline', padding: 0 }}
+                      onClick={() => handleTaskAction(t)}
+                    >
+                      点击立即「{t.nextAction}」
+                    </button>
                   </dd>
                 </div>
               </div>

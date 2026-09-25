@@ -578,6 +578,7 @@ td small {
 }
 
 .intake-drop {
+  grid-column: 1 / -1;
   min-height: 168px;
   display: flex;
   flex-direction: column;

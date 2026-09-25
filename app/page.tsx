@@ -4,6 +4,7 @@ import { Fragment, useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import { CustomerWorkspace } from "./customer-workspace";
 import { ReconciliationWorkbench } from "./reconciliation-workbench";
+import { CustomerSupplementPage } from "./customer-supplement";
 import {
   Archive,
   Check,
@@ -268,6 +269,8 @@ export default function HomePage() {
                   "演示工具"
                 ) : view === "history" ? (
                   "历史任务"
+                ) : view === "customer-supplement" ? (
+                  "补充委托客户"
                 ) : (
                   "核对任务"
                 )}
@@ -275,14 +278,16 @@ export default function HomePage() {
               <h1>{
                 view === "workbench"
                   ? "核对工作台"
-                  : view === "history"
-                    ? "历史任务"
-                    : view === "intake"
-                      ? "材料接入"
-                      : view === "drafts"
-                        ? "委托草稿"
-                        : (navItems.find((item) => item.key === view)
-                            ?.label ?? (view === "console" ? "演示数据" : "核对任务"))
+                  : view === "customer-supplement"
+                    ? "人工补充委托客户信息"
+                    : view === "history"
+                      ? "历史任务"
+                      : view === "intake"
+                        ? "材料接入"
+                        : view === "drafts"
+                          ? "委托草稿"
+                          : (navItems.find((item) => item.key === view)
+                              ?.label ?? (view === "console" ? "演示数据" : "核对任务"))
               }</h1>
             </div>
           </div>
@@ -317,6 +322,15 @@ export default function HomePage() {
           <ReconciliationWorkbench
             key={selectedDraft?.id ?? "empty-task"}
             draft={selectedDraft}
+          />
+        ) : null}
+        {view === "customer-supplement" ? (
+          <CustomerSupplementPage
+            onBack={() => setView("home")}
+            onNavigateOverview={() => {
+              useDemoStore.getState().setSelectedWorkspaceCustomerId(null);
+              setView("home");
+            }}
           />
         ) : null}
         {view === "history" ? (
@@ -425,8 +439,6 @@ function IntakeView({
   const [customerAddSuccess, setCustomerAddSuccess] = useState("");
   const [inspectionFiles, setInspectionFiles] = useState<File[]>([]);
   const [mainFile, setMainFile] = useState<File | null>(null);
-  const [auxiliaryFiles, setAuxiliaryFiles] = useState<File[]>([]);
-  const [auxiliaryTypes, setAuxiliaryTypes] = useState<Record<string, "发票" | "箱单">>({});
   const [batchId, setBatchId] = useState<string | null>(null);
   const [processingStep, setProcessingStep] = useState(0);
   const [error, setError] = useState("");
@@ -455,18 +467,6 @@ function IntakeView({
   const acceptFiles = (incoming: FileList | null, setter: (files: File[]) => void, multiple = true) => {
     const next = Array.from(incoming ?? []);
     setter(multiple ? next : next.slice(0, 1));
-    setError("");
-  };
-  const detectAuxiliaryType = (fileName: string): "发票" | "箱单" | "" => {
-    const normalized = fileName.toLowerCase();
-    if (normalized.includes("packing") || normalized.includes("pack") || normalized.includes("箱单")) return "箱单";
-    if (normalized.includes("invoice") || normalized.includes("inv") || normalized.includes("发票")) return "发票";
-    return "";
-  };
-  const selectAuxiliaryFiles = (incoming: FileList | null) => {
-    const next = Array.from(incoming ?? []);
-    setAuxiliaryFiles(next);
-    setAuxiliaryTypes(Object.fromEntries(next.map((file) => [file.name, detectAuxiliaryType(file.name)]).filter((entry): entry is [string, "发票" | "箱单"] => Boolean(entry[1]))));
     setError("");
   };
 
@@ -504,7 +504,7 @@ function IntakeView({
         // ignore
       }
     }
-    const filesToUpload = kind === "inspection" ? inspectionFiles : [mainFile, ...auxiliaryFiles].filter((file): file is File => Boolean(file));
+    const filesToUpload = kind === "inspection" ? inspectionFiles : [mainFile].filter((file): file is File => Boolean(file));
     if (kind === "inspection" && !targetCustomerId) { setError("查货资料必须先指定所属客户"); return; }
     if (kind === "inspection" && !inspectionFiles.length) { setError("请先选择查货 PDF"); return; }
     if (kind === "entrustment" && !mainFile) { setError("请先上传 1 份主体委托书"); return; }
@@ -512,9 +512,8 @@ function IntakeView({
     setBatchId(nextBatchId);
     setPhase("processing");
     setProcessingStep(0);
-    filesToUpload.forEach((file, index) => {
-      const auxiliaryFile = auxiliaryFiles[index - 1];
-      const materialType: MaterialType | undefined = kind === "inspection" ? "查货" : index === 0 ? "委托书" : auxiliaryTypes[auxiliaryFile?.name] || detectAuxiliaryType(auxiliaryFile?.name ?? "") || undefined;
+    filesToUpload.forEach((file) => {
+      const materialType: MaterialType | undefined = kind === "inspection" ? "查货" : "委托书";
       stageLocalFile({ name: file.name, size: file.size, type: file.type, file, materialType, customerId: targetCustomerId || undefined, batchId: nextBatchId });
     });
     window.setTimeout(() => {
@@ -529,8 +528,6 @@ function IntakeView({
     setProcessingStep(0);
     setInspectionFiles([]);
     setMainFile(null);
-    setAuxiliaryFiles([]);
-    setAuxiliaryTypes({});
     setError("");
     setIsAddingCustomer(false);
     setNewCustomerName("");
@@ -560,7 +557,7 @@ function IntakeView({
     return <div className="intake-content"><div className={needsCustomer ? "intake-result warning" : "intake-result"}><div className="result-title"><span className="result-icon">{needsCustomer ? <AlertTriangle size={19} /> : <Check size={19} />}</span><div><h2>{needsCustomer ? "材料已接收，客户待确认" : kind === "inspection" ? "查货资料处理完成" : "材料处理完成"}</h2><p>{needsCustomer ? "识别不到唯一客户，商品匹配将在确认后开始" : "系统已完成本批材料的自动识别和接入"}</p></div></div>{resolvedCustomerName ? <div className="result-customer"><span>客户</span><strong>{resolvedCustomerName}</strong></div> : null}<div className="result-summary"><div><span>本次上传</span><strong>{intakeFiles.length} 份文件</strong></div><div><span>{kind === "inspection" ? "整理结果" : "识别结果"}</span><strong>{resultCount ? `${resultCount} ${kind === "inspection" ? "条查货明细" : "个待核对商品"}` : kind === "inspection" ? "查货批次已建立" : "待核对商品已记录"}</strong></div>{kind === "inspection" ? <div><span>可能受影响的委托</span><strong>{affectedCount ? `${affectedCount} 条依据` : "暂无"}</strong></div> : null}</div><div className="result-system"><span>系统已</span><div><Check size={14} />{kind === "inspection" ? "将资料加入客户查货池" : needsCustomer ? "保存材料并生成客户待确认待办" : "生成委托草稿并开始寻找已有查货依据"}</div></div><div className="intake-actions"><button className="secondary" onClick={resetForNext}>继续上传</button><button className="primary" onClick={needsCustomer ? resetForNext : kind === "inspection" ? openInspectionImpact : openTask}>{needsCustomer ? "确认客户" : kind === "inspection" ? "查看本次影响" : "查看委托任务"}<ChevronRight size={15} /></button></div></div></div>;
   }
 
-  const selectedFiles = kind === "inspection" ? inspectionFiles : [mainFile, ...auxiliaryFiles].filter((file): file is File => Boolean(file));
+  const selectedFiles = kind === "inspection" ? inspectionFiles : [mainFile].filter((file): file is File => Boolean(file));
 
   const renderCustomerSelector = () => {
     const isRequired = kind === "inspection";
@@ -762,13 +759,6 @@ function IntakeView({
             multiple={false}
             required
           />
-          <FileDrop
-            title="辅助材料"
-            detail="发票、箱单，可上传多份"
-            files={auxiliaryFiles}
-            onFiles={selectAuxiliaryFiles}
-            accept=".pdf,.xlsx,.xls,.jpg,.jpeg,.png"
-          />
         </div>
       )}
       {error ? (
@@ -780,40 +770,13 @@ function IntakeView({
       {selectedFiles.length ? (
         <div className="intake-file-list">
           <strong>本次文件</strong>
-          {selectedFiles.map((file, index) => {
-            const auxiliary = kind === "entrustment" && index > 0;
-            const identifiedType = auxiliary ? auxiliaryTypes[file.name] || detectAuxiliaryType(file.name) : "";
-            return (
-              <div key={`${file.name}-${index}`}>
-                <FileInput size={15} />
-                <span>{file.name}</span>
-                {auxiliary && !identifiedType ? (
-                  <select
-                    aria-label={`选择 ${file.name} 类型`}
-                    value={auxiliaryTypes[file.name] ?? ""}
-                    onChange={(event) =>
-                      setAuxiliaryTypes({
-                        ...auxiliaryTypes,
-                        [file.name]: event.target.value as "发票" | "箱单",
-                      })
-                    }
-                  >
-                    <option value="">无法识别类型</option>
-                    <option value="发票">发票</option>
-                    <option value="箱单">箱单</option>
-                  </select>
-                ) : (
-                  <small>
-                    {kind === "inspection"
-                      ? "查货资料"
-                      : index === 0
-                      ? "委托书"
-                      : identifiedType}
-                  </small>
-                )}
-              </div>
-            );
-          })}
+          {selectedFiles.map((file, index) => (
+            <div key={`${file.name}-${index}`}>
+              <FileInput size={15} />
+              <span>{file.name}</span>
+              <small>{kind === "inspection" ? "查货资料" : "委托书"}</small>
+            </div>
+          ))}
         </div>
       ) : null}
       <div className="intake-footer">

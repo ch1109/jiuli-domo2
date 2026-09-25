@@ -15,7 +15,9 @@ describe('完整客户业务与场景隔离', () => {
     expect(model.customers).toHaveLength(9);
     expect(model.customers.every(c => c.files.length > 0)).toBe(true);
     expect(model.customers.reduce((n,c) => n+c.counts.raw,0)).toBe(122);
-    expect(model.relations.every(r => r.status === 'PENDING')).toBe(true);
+    expect(model.relations.filter(r => r.status === 'MATCHED')).toHaveLength(1);
+    expect(model.relations.some(r => r.status === 'MULTIPLE_CANDIDATES')).toBe(true);
+    expect(model.relations.some(r => r.status === 'PENDING')).toBe(true);
     expect(model.customers.every(c => c.counts.packingFiles === 0)).toBe(true);
   });
   it('完整业务编辑在进入场景、返回以及恢复场景后保持独立', () => {

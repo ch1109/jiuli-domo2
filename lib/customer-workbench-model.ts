@@ -1,6 +1,7 @@
-import { getMergedPoolProducts, DRAFT_SAMPLE_DISPLAY_MAP, type DemoState } from './demo-store';
+import { getMergedPoolProducts, DRAFT_SAMPLE_DISPLAY_MAP, type DemoState, type UiLine } from './demo-store';
 import { getTaskSummary } from './workspace-status';
 import { getFieldRows } from './workbench-model';
+import { getInspectionAvailability } from './inspection-availability';
 import baselineFiles from '../demo-generated/mock/source-files.json';
 import batches from '../demo-generated/mock/material-batches.json';
 import fixture from '../demo-generated/mock/real-calibration-sc08.json';
@@ -624,6 +625,13 @@ export function generateCommodityReconciliationSummary(
     }
   }
 
+  // 样本展示行必须能落到当前委托行；旧英卡演示行号与实际草稿不一致，不能再冒充实时对应结果。
+  realItems = realItems.filter((item) => {
+    const task = customerTasks.find((entry) => entry.draft.displayNo === item.taskDisplayNo);
+    const line = task?.draft.lines.find((entry: UiLine) => entry.id === item.lineId);
+    return line && normalizeModel(line.model) === normalizeModel(item.entrustmentModel);
+  });
+
   if (realItems.length > 0) {
     // 防御性深拷贝并同步真实 draftId（以便跳转）
     const taskDraftMap = new Map<string, string>();
@@ -633,9 +641,20 @@ export function generateCommodityReconciliationSummary(
 
     const items: CustomerCommodityItem[] = realItems.map((it) => {
       const matchedDraftId = taskDraftMap.get(it.taskDisplayNo) || it.taskDraftId;
+      const activeRelation = state.relations.find((relation) => relation.active && relation.entrustmentLineId === it.lineId);
+      const selectedSource = activeRelation && customerSources.find((source) => activeRelation.inspectionSourceLineIds.includes(source.id));
       return {
         ...it,
         taskDraftId: matchedDraftId,
+        ...(activeRelation ? {
+          relationLevel: 'EXACT_MODEL' as ModelRelationLevel,
+          statusText: activeRelation.establishedBy === '人工' ? '人工已对应' : '已自动对应',
+          statusVariant: 'green' as const,
+          inspectionModel: selectedSource?.model ?? it.inspectionModel,
+          sourceBatch: selectedSource?.warehouseNo ? `入仓 ${selectedSource.warehouseNo}` : it.sourceBatch,
+          noticeText: activeRelation.establishedBy === '人工' ? '已选定查货依据' : it.noticeText,
+          judgmentEvidence: [`✓ 当前有效关系：${activeRelation.evidenceSummary}`, ...it.judgmentEvidence],
+        } : {}),
       };
     });
 
@@ -660,7 +679,65 @@ export function generateCommodityReconciliationSummary(
     };
   }
 
-  // 2. 通用动态回退生成逻辑（针对未来新上传的单据）
+  // 2. 通用动态回退生成逻辑（查货明细三键合并累加 + 单候选高置信度直接自动对应）
+  interface MergedInspectionGroup {
+    key: string;
+    brand: string;
+    model: string;
+    origin: string;
+    totalQuantity: number;
+    unit: string;
+    warehouseNos: string[];
+    sourceLineIds: string[];
+    sources: any[];
+    primaryWarehouseNo: string;
+    primaryFileName: string;
+    primaryPage: number | null;
+  }
+
+  const mergedInspectionGroups: MergedInspectionGroup[] = [];
+  const groupMap = new Map<string, MergedInspectionGroup>();
+
+  for (const source of customerSources) {
+    if (source.availability !== '可匹配') continue;
+    const sBrand = (source.fields?.品牌 || source.brand || '—').trim();
+    const sModel = (source.fields?.型号 || source.model || '—').trim();
+    const sOrigin = (source.fields?.产地 || source.origin || '—').trim();
+    const groupKey = `${normalizeModel(sModel)}||${sBrand.toLowerCase()}||${sOrigin.toLowerCase()}`;
+
+    let group = groupMap.get(groupKey);
+    const qtyNum = parseFloat(String(source.fields?.数量 ?? source.quantity ?? 0).replace(/,/g, '')) || 0;
+    const whNo = source.warehouseNo || source.fields?.入仓号 || '—';
+    const fName = source.sourceLocation?.position || source.sourceFileId || '查货单.pdf';
+    const page = source.sourceLocation?.page ?? 1;
+
+    if (!group) {
+      group = {
+        key: groupKey,
+        brand: sBrand,
+        model: sModel,
+        origin: sOrigin,
+        totalQuantity: qtyNum,
+        unit: source.fields?.单位 || source.fields?.unit || 'PCS',
+        warehouseNos: [whNo],
+        sourceLineIds: [source.id],
+        sources: [source],
+        primaryWarehouseNo: whNo,
+        primaryFileName: fName,
+        primaryPage: page,
+      };
+      groupMap.set(groupKey, group);
+      mergedInspectionGroups.push(group);
+    } else {
+      group.totalQuantity += qtyNum;
+      if (!group.warehouseNos.includes(whNo)) {
+        group.warehouseNos.push(whNo);
+      }
+      group.sourceLineIds.push(source.id);
+      group.sources.push(source);
+    }
+  }
+
   const fallbackItems: CustomerCommodityItem[] = customerTasks.flatMap((task) =>
     task.draft.lines.map((line: any, idx: number) => {
       const model = line.fields?.型号 || line.model || `PROD-${idx + 1}`;
@@ -734,7 +811,120 @@ export function generateCommodityReconciliationSummary(
         };
       }
 
-      // 未匹配
+      // 规则：基于合并后的查货候选池进行匹配
+      const matchedGroups = mergedInspectionGroups.filter((g) => {
+        if (normalizeModel(line.model) === normalizeModel(g.model)) {
+          return true;
+        }
+        const diff = analyzeModelAffixDiff(model, g.model);
+        if (!diff.hasDiff || diff.diffType === 'prefix' || diff.diffType === 'suffix') {
+          return true;
+        }
+        return false;
+      });
+
+      // 铁律 A：如果只有一个候选组且置信度高 -> 直接对应成功！绝不提醒人工处理！
+      if (matchedGroups.length === 1) {
+        const group = matchedGroups[0];
+        const isMulti = group.sources.length > 1;
+        const diff = analyzeModelAffixDiff(model, group.model);
+        const hasAffixDiff = diff.hasDiff && (diff.diffType === 'prefix' || diff.diffType === 'suffix');
+        const sourceBatchText = isMulti
+          ? `入仓 ${group.primaryWarehouseNo} (${group.sources.length}条明细合并 · 累计 ${group.totalQuantity} PCS)`
+          : `入仓 ${group.primaryWarehouseNo}`;
+
+        const sourceBatches = group.sources.map((s, sidx) => ({
+          batchDisplayNo: `入仓 ${s.warehouseNo || group.primaryWarehouseNo} · 行0${sidx + 1}`,
+          warehouseNo: s.warehouseNo || group.primaryWarehouseNo,
+          fileName: group.primaryFileName,
+          page: s.sourceLocation?.page ?? group.primaryPage ?? 1,
+          rowOrder: sidx + 1,
+          boxNo: s.sourceLocation?.position || `箱0${sidx + 1}`,
+          rawRowId: s.id,
+          quantity: `${s.fields?.数量 ?? s.quantity ?? '—'} PCS`,
+          note: `查货第${sidx + 1}行 · ${s.fields?.数量 ?? s.quantity ?? '—'} PCS`,
+        }));
+
+        return {
+          id: `CI-${line.id}`,
+          taskDisplayNo: displayNo,
+          taskDraftId: task.draft.id,
+          lineOrder: idx + 1,
+          lineId: line.id,
+          entrustmentModel: model,
+          entrustmentBrand: brand,
+          entrustmentOrigin: origin,
+          entrustmentQuantity: qty,
+          entrustmentProductName: line.fields?.品名 || '商品',
+          inspectionModel: group.model,
+          inspectionBrand: group.brand,
+          inspectionOrigin: group.origin,
+          inspectionQuantity: `${group.totalQuantity} PCS`,
+          sourceBatch: sourceBatchText,
+          sourceWarehouseNo: group.primaryWarehouseNo,
+          sourceFileName: group.primaryFileName,
+          sourcePage: group.primaryPage ?? 1,
+          sourceRowOrder: idx + 1,
+          relationLevel: hasAffixDiff ? ('CORE_MODEL_WITH_AFFIX_DIFF' as ModelRelationLevel) : ('EXACT_MODEL' as ModelRelationLevel),
+          statusText: hasAffixDiff ? '已自动对应 · 有提醒' : '已自动对应',
+          statusVariant: 'green' as const,
+          affixDiff: hasAffixDiff ? diff : undefined,
+          noticeText: hasAffixDiff
+            ? diff.explanation
+            : isMulti
+            ? `${group.sources.length}条查货明细合并覆盖 (累计 ${group.totalQuantity} PCS)`
+            : '—',
+          isMultiBatchSource: isMulti,
+          sourceBatches: isMulti ? sourceBatches : undefined,
+          candidateCount: 0,
+          candidates: [],
+          judgmentEvidence: [
+            `✓ 核心型号完全一致 (${group.model})`,
+            isMulti
+              ? `✓ 查货单 ${group.primaryWarehouseNo} 包含 ${group.sources.length} 笔同型号明细已自动合并，数量累加为 ${group.totalQuantity} PCS`
+              : '✓ 查货单对应明细清晰明确',
+            '✓ 唯一高置信度候选，系统已自动对应成功',
+          ],
+        };
+      }
+
+      // 铁律 B：存在多个互斥候选值时才提醒人工处理
+      if (matchedGroups.length >= 2) {
+        const candidates = matchedGroups.map((g) => ({
+          model: g.model,
+          batchDisplayNo: `入仓 ${g.primaryWarehouseNo} (${g.sources.length}明细 · ${g.totalQuantity} PCS)`,
+          warehouseNo: g.primaryWarehouseNo,
+          fileName: g.primaryFileName,
+          page: g.primaryPage,
+          sourceRowId: g.sourceLineIds[0],
+        }));
+
+        return {
+          id: `CI-${line.id}`,
+          taskDisplayNo: displayNo,
+          taskDraftId: task.draft.id,
+          lineOrder: idx + 1,
+          lineId: line.id,
+          entrustmentModel: model,
+          entrustmentBrand: brand,
+          entrustmentOrigin: origin,
+          entrustmentQuantity: qty,
+          entrustmentProductName: line.fields?.品名 || '商品',
+          inspectionModel: candidates[0].model,
+          sourceBatch: '—',
+          sourceWarehouseNo: '—',
+          sourceFileName: '—',
+          relationLevel: 'MULTIPLE_MODEL_CANDIDATES' as ModelRelationLevel,
+          statusText: '需要人工选择',
+          statusVariant: 'orange' as const,
+          noticeText: `存在 ${candidates.length} 个互斥候选批次`,
+          candidateCount: candidates.length,
+          candidates,
+          judgmentEvidence: [`查货池中存在 ${candidates.length} 处不同属性候选，需由报关员手工选定对应批次。`],
+        };
+      }
+
+      // 铁律 C：未匹配（0 个候选）
       return {
         id: `CI-${line.id}`,
         taskDisplayNo: displayNo,
@@ -788,29 +978,11 @@ export function getCustomerWorkbench(state: DemoState, today = new Date()) {
     const effectiveDraft = draft.displayNo !== realSampleNo ? { ...draft, displayNo: realSampleNo } : draft;
     const total = effectiveDraft.lines.length;
 
-    // 获取所属客户的查货明细
-    const draftSources = sources.filter((s) => s.customerId === effectiveDraft.customerId);
-
-    // 结合真实整单样本审计库
-    const audit = auditIndex.samples.find(
-      (s) => s.sampleId === realSampleNo || (effectiveDraft.customerId && s.customerId === effectiveDraft.customerId)
-    );
-
-    // 计算客观找到查货依据的商品数：优先基于权威整单核对事实（orderRows > 0），否则基于查货明细匹配
-    let matched = 0;
-    if (audit && audit.counts && audit.counts.orderRows > 0) {
-      if ((audit.counts as any).unmatched > 0) {
-        matched = Math.min(total, (audit.counts.matched ?? 0) + (audit.counts.multipleCandidates ?? 0));
-      } else if (audit.stageStatus.P3 === 'SUCCESS' || audit.counts.matched === total) {
-        matched = total;
-      } else {
-        matched = Math.min(total, (audit.counts.matched ?? 0) + (audit.counts.multipleCandidates ?? 0));
-      }
-    } else {
-      matched = effectiveDraft.lines.filter((line) =>
-        line.relationSourceIds.length > 0 || draftSources.some((s) => lineMatchesSource(line, s))
-      ).length;
-    }
+    const availability = effectiveDraft.lines.map((line) => getInspectionAvailability(effectiveDraft, line, state.sources, state.scenarioId === 'BUSINESS'));
+    const confirmed = availability.filter((status) => status === 'MATCHED').length;
+    const candidateCount = availability.filter((status) => status === 'CANDIDATES').length;
+    const missingCount = total - confirmed - candidateCount;
+    let matched = confirmed + candidateCount;
 
     const summary = getTaskSummary(effectiveDraft);
     let businessStatus = summary.businessStatus;
@@ -825,54 +997,31 @@ export function getCustomerWorkbench(state: DemoState, today = new Date()) {
       nextAction = '查看结果';
       stage = '整单归档';
       blockingReason = '无阻塞（已完成核对并归档）';
-    } else if (!effectiveDraft.customerId || realSampleNo.includes('ZW')) {
+    } else if (!effectiveDraft.customerId || effectiveDraft.customerId === 'UNKNOWN' || effectiveDraft.customerStatus === '待补客户信息') {
       businessStatus = '异常';
       realtimeStatus = '客户未识别';
       nextAction = '补充客户';
       matched = 0;
       stage = '客户信息确认';
       blockingReason = '主体导单文件缺少明确客户抬头，禁止跨客户强配查货材料';
-    } else if (['2026ACSY003', '2026CNKJ001'].includes(realSampleNo)) {
-      matched = 0;
-      businessStatus = '待匹配';
-      realtimeStatus = '暂无确定查货依据';
+    } else if (candidateCount > 0) {
+      businessStatus = missingCount > 0 ? '部分核对' : '待人工处理';
+      realtimeStatus = `${candidateCount} 个商品有查货候选待确认${missingCount > 0 ? `，${missingCount} 个仍缺查货` : ''}`;
+      nextAction = '选择商品对应';
+      stage = '商品对应';
+      blockingReason = realtimeStatus;
+    } else if (confirmed === total && total > 0) {
+      businessStatus = summary.issues > 0 ? '待人工处理' : '待人工复核';
+      realtimeStatus = summary.issues > 0 ? `待处理 ${summary.issues} 行字段问题` : '等待人工复核';
+      nextAction = summary.issues > 0 ? '处理字段' : '开始人工复核';
+      stage = summary.issues > 0 ? '字段核对' : '最终复核';
+      blockingReason = realtimeStatus;
+    } else if (confirmed > 0) {
+      businessStatus = '部分核对';
+      realtimeStatus = `已有 ${confirmed} 个商品建立对应，${missingCount} 个仍缺查货`;
       nextAction = '补充查货材料';
       stage = '商品对应';
-      blockingReason = `${total} 条委托商品在查货中无可靠依据，P3 未形成关系，未进入 P4 自动核验`;
-    } else if (matched === total && total > 0) {
-      if (realSampleNo === '2025YBT010-2' || (audit && audit.stageStatus.P4 === 'SUCCESS')) {
-        businessStatus = '待人工复核';
-        realtimeStatus = '等待人工复核签字';
-        nextAction = '开始人工复核';
-        stage = '最终复核';
-        blockingReason = '无阻塞（全流程自动核对通过，等待人工复核签字）';
-      } else {
-        businessStatus = '待人工处理';
-        realtimeStatus = '需人工核验字段';
-        nextAction = '处理字段';
-        stage = '字段核对';
-        blockingReason = '存在申报字段差异或人工确认项';
-      }
-    } else if (matched > 0) {
-      if (realSampleNo === '2026BMH001' || realSampleNo === '2026AG001') {
-        businessStatus = '待人工处理';
-        realtimeStatus = '多候选待指定';
-        nextAction = '选择商品对应';
-        stage = '商品对应';
-        blockingReason = `${realSampleNo === '2026BMH001' ? '6 处' : '2 处'}同型号商品存在多候选，需人工选定对应明细`;
-      } else if (realSampleNo.startsWith('YK-')) {
-        businessStatus = '待匹配';
-        realtimeStatus = `缺少 ${total - matched} 行查货依据`;
-        nextAction = '补充查货材料';
-        stage = '商品对应';
-        blockingReason = `缺少 ${total - matched} 行查货依据，等待后续查货材料入仓补充`;
-      } else {
-        businessStatus = '部分核对';
-        realtimeStatus = `等待补充 ${total - matched} 行查货`;
-        nextAction = '处理商品对应';
-        stage = '商品对应';
-        blockingReason = `7 处多候选需人工确认，${total - matched} 行等待补充查货`;
-      }
+      blockingReason = realtimeStatus;
     } else {
       businessStatus = '待匹配';
       realtimeStatus = '等待查货材料';
@@ -901,19 +1050,20 @@ export function getCustomerWorkbench(state: DemoState, today = new Date()) {
     const modelRelations = active.some(r => r.modelCoverage);
     const currentFixture = line.id.startsWith('D-df72916dc019') ? puyiFixture : fixture;
     const saved = modelRelations ? (currentFixture as any).stageOutputs?.P3?.row_relations?.find((r: any) => r.order_row_id === line.id) : undefined;
-    const multiple = line.issueIds.some(i => i.includes('多候选')) || !!line.issue?.includes('多候选');
+    const multiple = getInspectionAvailability(task.draft, line, state.sources, state.scenarioId === 'BUSINESS') === 'CANDIDATES';
     const status = active.length ? 'MATCHED' : multiple ? 'MULTIPLE_CANDIDATES' : 'PENDING';
     const coverage = active.length ? active.every(r => r.modelCoverage?.status === 'COMPLETE') ? 'COMPLETE' : active.some(r => r.modelCoverage?.status === 'PARTIAL') ? 'PARTIAL' : 'UNCERTAIN' : null;
     return { task, line, active, sources: matchedSources, status, coverage, saved,
-      label: status === 'MATCHED' ? '已匹配' : status === 'MULTIPLE_CANDIDATES' ? '多候选' : '尚无可靠关系',
-      reason: active.map(r => r.evidenceSummary).join('；') || line.issue || '尚未形成可用关系，需执行匹配或补充查货。',
+      label: status === 'MATCHED' ? '已匹配' : status === 'MULTIPLE_CANDIDATES' ? '有查货候选待确认' : '暂无查货依据',
+      reason: active.map(r => r.evidenceSummary).join('；') || line.issue || (multiple ? '已有查货候选，需确认商品对应。' : '尚无可用查货依据，等待补充查货。'),
       origin: modelRelations ? '真实 P3 结果' : active.some(r => r.establishedBy === '人工') ? '人工建立' : active.length ? '演示场景关系' : '待处理',
     };
   }));
 
   const issues = tasks.filter(t => !t.draft.finalized).flatMap(task => task.draft.lines.flatMap(line => {
     const items = getFieldRows(line, state.evidence).filter(f => f.needsHuman).map(f => ({ id: `${line.id}:${f.field}`, task, line, field: f.field, kind: '字段问题', message: `${f.field} · ${f.status}` }));
-    return [...items, ...(!line.relationSourceIds.length ? [{ id: `${line.id}:relation`, task, line, field: null, kind: '关系问题', message: line.issue || '暂无查货依据' }] : [])];
+    const availability = getInspectionAvailability(task.draft, line, state.sources, state.scenarioId === 'BUSINESS');
+    return [...items, ...(availability !== 'MATCHED' ? [{ id: `${line.id}:relation`, task, line, field: null, kind: '关系问题', message: line.issue || (availability === 'CANDIDATES' ? '已有查货候选，待确认对应' : '暂无查货依据') }] : [])];
   }));
 
   const baselineEvents = getBaselineCustomerEvents(today);
@@ -984,21 +1134,28 @@ export function getCustomerWorkbench(state: DemoState, today = new Date()) {
     const totalArchivedRows = customerAudits.reduce((n, a) => n + a.counts.orderRows, 0);
     const totalArchivedRaw = customerAudits.reduce((n, a) => n + a.counts.rawRows, 0);
 
-    const tasksCount = customerTasks.length > 0 ? customerTasks.length : customerAudits.length;
-    const linesCount = customerTasks.length > 0 ? customerTasks.reduce((n, t) => n + t.total, 0) : totalArchivedRows;
-    const ordersCount = customerSources.length > 0 ? new Set(customerSources.map(s => s.logicalInspectionOrderId)).size : customerAudits.length;
-    const rawCount = customerSources.length > 0 ? customerSources.length : totalArchivedRaw;
+    const isZhiweiCustomer = customer.id === 'C-66be07d6cabe' || customer.name.includes('智微');
+    const tasksCount = customerTasks.length > 0
+      ? customerTasks.length
+      : (isZhiweiCustomer ? 0 : customerAudits.length);
+    const linesCount = customerTasks.length > 0
+      ? customerTasks.reduce((n, t) => n + t.total, 0)
+      : (isZhiweiCustomer ? 0 : totalArchivedRows);
+    const ordersCount = customerSources.length > 0
+      ? new Set(customerSources.map(s => s.logicalInspectionOrderId)).size
+      : (isZhiweiCustomer ? 0 : customerAudits.length);
+    const rawCount = customerSources.length > 0 ? customerSources.length : (isZhiweiCustomer ? 0 : totalArchivedRaw);
     const mergedCount = customerProducts.length;
 
     // 5. 客观在查货材料中找到依据的商品行数
     const taskMatchedLines = customerTasks.reduce((sum, t) => sum + t.matched, 0);
     const auditMatchedLines = customerAudits.reduce((sum, a) => sum + (a.counts.matched ?? 0) + (a.counts.multipleCandidates ?? 0), 0);
-    const matchedCount = taskMatchedLines > 0 
-      ? taskMatchedLines 
-      : (auditMatchedLines > 0 ? auditMatchedLines : totalArchivedRows);
+    const matchedCount = customerTasks.length > 0
+      ? taskMatchedLines
+      : (isZhiweiCustomer ? 0 : (auditMatchedLines > 0 ? auditMatchedLines : totalArchivedRows));
 
-    // 是否为多任务客户（>= 2 票任务）
-    const isMultiTask = customerTasks.length >= 2 || customerAudits.length >= 2;
+    // 是否为多任务卡片（仅英卡科技采用多任务并发卡片，智微智能采用统一规范的故事卡）
+    const isMultiTask = customer.name.includes('英卡') || (!isZhiweiCustomer && (customerTasks.length >= 2 || customerAudits.length >= 2));
 
     // 任务状态聚合分布
     const taskStatusCounts = {
@@ -1011,7 +1168,7 @@ export function getCustomerWorkbench(state: DemoState, today = new Date()) {
 
     // 客户级双库存指标
     const unassignedSources = customerSources.filter(s => s.availability === '可匹配');
-    const waitingEntrustmentLines = customerTasks.flatMap(t => t.draft.lines.filter(l => !l.relationSourceIds.length));
+    const waitingEntrustmentLines = customerTasks.flatMap(t => t.draft.lines.filter(l => getInspectionAvailability(t.draft, l, state.sources, state.scenarioId === 'BUSINESS') === 'MISSING'));
     const inventory: CustomerInventory = {
       unassignedSourcesCount: unassignedSources.length,
       unassignedBatchesCount: new Set(unassignedSources.map(s => s.logicalInspectionOrderId)).size,

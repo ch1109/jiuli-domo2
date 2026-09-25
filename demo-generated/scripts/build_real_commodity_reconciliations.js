@@ -232,7 +232,7 @@ const reconciliations = {};
         inspectionBrand: brand,
         inspectionOrigin: 'CHINA',
         inspectionQuantity: '153440 PCS',
-        sourceBatch: '入仓 26036383 (7条明细合并)',
+        sourceBatch: '入仓 26036383 (7条明细合并 · 累计 153,440 PCS)',
         sourceWarehouseNo: '26036383',
         sourceFileName: getFileName('F-970b59d6d5b8'),
         sourcePage: 1,
@@ -249,7 +249,7 @@ const reconciliations = {};
         judgmentEvidence: [
           `✓ 核心型号、品牌完全一致 (${brand} · ${model})`,
           '✓ 查货单 26036383 包含 7 笔同型号明细已自动合并，数量相加为 153,440 PCS，与委托总量严格吻合',
-          '✓ 自动对应成功，无需人工介入选择',
+          '✓ 唯一高置信度候选，系统已自动对应成功',
         ],
       };
     }

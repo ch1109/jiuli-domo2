@@ -2,7 +2,7 @@ import type { UiDraft } from "./demo-store";
 
 export function getTaskSummary(draft: UiDraft, processing?: string) {
   const total = draft.lines.length;
-  const matched = draft.lines.filter(line => line.relationSourceIds.length > 0).length;
+  const matched = draft.lines.filter(line => line.relationSourceIds.length > 0 || !!line.relationSourceId).length;
   const issues = draft.finalized || draft.status === "已完成" ? 0 : draft.lines.filter(line => !line.manuallyConfirmed && (line.issue || line.issueIds.length > 0 || line.status === "待人工处理")).length;
   let businessStatus = "待匹配";
   let realtimeStatus = "等待查货材料";

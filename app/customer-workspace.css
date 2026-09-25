@@ -4522,3 +4522,504 @@
   color: var(--primary);
   text-decoration: underline !important;
 }
+
+/* ============================================================
+   人工补充委托客户信息专用页面 (Customer Supplement Page)
+   ============================================================ */
+
+.cw-supplement-page {
+  padding: 20px 24px 40px;
+  max-width: 1380px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.cw-supplement-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: 1px solid #dce8e1;
+  box-shadow: 0 1px 3px rgba(18, 55, 38, 0.04);
+}
+
+.cw-supplement-title-area h2 {
+  margin: 2px 0 0;
+  font-size: 19px;
+  font-weight: 700;
+  color: #14532d;
+}
+
+.cw-supplement-breadcrumb {
+  font-size: 12.5px;
+  color: #64748b;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.cw-supplement-task-tabs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f8fafc;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  flex-wrap: wrap;
+}
+
+.cw-task-tab-btn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 8px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s ease;
+}
+
+.cw-task-tab-btn.active {
+  border-color: #059669;
+  background: #f0fdf4;
+  box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.15);
+}
+
+.cw-task-tab-btn strong {
+  font-size: 13.5px;
+  color: #0f172a;
+}
+
+.cw-task-tab-btn small {
+  font-size: 11.5px;
+  color: #64748b;
+}
+
+.cw-badge-small {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+.cw-badge-small.green {
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+}
+
+.cw-badge-small.orange {
+  background: #fffbeb;
+  color: #b45309;
+  border: 1px solid #fde68a;
+}
+
+.cw-supplement-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+@media (max-width: 960px) {
+  .cw-supplement-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cw-supplement-card {
+  background: #ffffff;
+  border: 1px solid #dce8e1;
+  border-radius: 10px;
+  padding: 18px 20px;
+  box-shadow: 0 1px 3px rgba(18, 55, 38, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cw-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f1f5f3;
+  padding-bottom: 10px;
+}
+
+.cw-card-header h3 {
+  margin: 0;
+  font-size: 15.5px;
+  color: #1e293b;
+}
+
+.icon-blue { color: #2563eb; }
+.icon-green { color: #059669; }
+
+.cw-supplement-alert-box {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  gap: 10px;
+}
+
+.cw-file-info-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cw-file-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 8px 12px;
+  flex: 1;
+}
+
+.cw-file-item strong {
+  display: block;
+  font-size: 13.5px;
+  color: #0f172a;
+}
+
+.cw-file-item small {
+  display: block;
+  font-size: 11.5px;
+  color: #64748b;
+}
+
+.cw-mini-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+
+.cw-mini-table th,
+.cw-mini-table td {
+  border: 1px solid #f1f5f9;
+  padding: 6px 10px;
+  text-align: left;
+}
+
+.cw-mini-table th {
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 600;
+}
+
+.cw-clue-card {
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  border-radius: 8px;
+  padding: 12px 16px;
+}
+
+.cw-customer-select-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cw-recommended-customer-card {
+  border: 2px solid #a7f3d0;
+  background: #f0fdf4;
+  border-radius: 8px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.cw-recommended-customer-card.selected {
+  border-color: #059669;
+  box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.2);
+}
+
+.cw-checkbox-row {
+  margin-top: 6px;
+  padding: 6px 0;
+}
+
+.cw-btn-submit-supplement {
+  width: 100%;
+  padding: 11px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* 四个提示词全流程展示卡片 */
+.cw-pipeline-showcase-section {
+  background: #ffffff;
+  border: 1px solid #dce8e1;
+  border-radius: 10px;
+  padding: 20px 24px;
+  box-shadow: 0 1px 3px rgba(18, 55, 38, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cw-pipeline-showcase-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f1f5f3;
+  padding-bottom: 12px;
+}
+
+.cw-pipeline-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 1080px) {
+  .cw-pipeline-steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .cw-pipeline-steps-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cw-pipeline-step-card {
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: all 0.2s ease;
+}
+
+.cw-pipeline-step-card.active {
+  border-color: #0f766e;
+  background: #f0fdfa;
+  box-shadow: 0 0 0 2px rgba(15, 118, 110, 0.15);
+}
+
+.cw-pipeline-step-card.done {
+  border-color: #10b981;
+  background: #ffffff;
+  border-top: 3px solid #10b981;
+}
+
+.cw-step-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cw-step-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: #e2e8f0;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cw-pipeline-step-card.done .cw-step-num {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+.cw-step-header strong {
+  display: block;
+  font-size: 13.5px;
+  color: #0f172a;
+}
+
+.cw-step-header small {
+  display: block;
+  font-size: 11.5px;
+  color: #64748b;
+}
+
+.cw-step-done-icon {
+  margin-left: auto;
+  color: #059669;
+}
+
+.cw-step-material {
+  font-size: 12px;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+.cw-step-material code {
+  font-size: 11.5px;
+  background: #f1f5f9;
+  padding: 2px 4px;
+  border-radius: 4px;
+  color: #0f766e;
+}
+
+.cw-step-desc {
+  margin: 0;
+  font-size: 12.5px;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.cw-step-status-tag {
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-top: 4px;
+  display: inline-block;
+}
+
+.cw-step-status-tag.success {
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+}
+
+.cw-pipeline-success-banner {
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: 8px;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.cw-success-icon-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #dcfce7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* 概览卡片内四个提示词处理追溯组件样式 */
+.cw-prompts-trace-box {
+  background: #f8fafc;
+  border: 1px solid #e2ece6;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cw-prompts-trace-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cw-prompts-trace-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.cw-prompts-trace-grid.compact {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+@media (max-width: 900px) {
+  .cw-prompts-trace-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 540px) {
+  .cw-prompts-trace-grid.compact {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cw-prompt-item {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cw-prompt-item-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cw-prompt-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.cw-prompt-item strong {
+  font-size: 12.5px;
+  color: #0f172a;
+}
+
+.cw-prompt-item p {
+  margin: 0;
+  font-size: 11.5px;
+  color: #475569;
+  line-height: 1.45;
+}
+
+.cw-prompt-file-tag {
+  font-size: 11px;
+  color: #0369a1;
+  background: #f0f9ff;
+  padding: 1px 4px;
+  border-radius: 3px;
+  margin-top: 2px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

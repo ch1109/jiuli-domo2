@@ -68,7 +68,7 @@ test("业务语义翻译层与人本工作台完整旅程验证", async ({ page 
   await expect(page.getByText(/9 条查货明细 → 3 个可匹配商品/)).toBeVisible();
 
   await expect(page.getByText("3. 自动寻找商品对应")).toBeVisible();
-  await expect(page.getByText("0/9 已对应")).toBeVisible();
+  await expect(page.getByText("1/9 已对应")).toBeVisible();
 
   await expect(page.getByText("4. 自动核对字段")).toBeVisible();
   await expect(page.getByText("5. 人工最终确认")).toBeVisible();

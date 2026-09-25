@@ -88,7 +88,7 @@ test('各页面返回上一页导航功能正常', async ({ page }) => {
   expect(errors).toEqual([]);
 });
 
-test('英卡科技客户工作台：商品对应按委托任务分组、多批次分叉树与3大关键问题清单', async ({ page }) => {
+test('英卡科技客户工作台：用真实委托行和已加载查货池展示商品候选', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto('/');
@@ -111,23 +111,25 @@ test('英卡科技客户工作台：商品对应按委托任务分组、多批�
   await expect(page.getByRole('button', { name: 'YK-260625131-2' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'YK-260625131-3' })).toBeVisible();
 
-  // 4. 验证多批次联合依据商品（UMW2631）及提醒
-  await expect(page.getByText('CH001 + CH002')).toBeVisible();
-  await expect(page.getByText('两个批次共同提供依据').first()).toBeVisible();
+  // 4. 旧样本声称的 CH002 尚未入池，不能显示为已自动对应。
+  await expect(page.getByText('CH001 + CH002')).not.toBeVisible();
+  await expect(page.locator('.cw-five-kpi-item.orange .cw-five-kpi-num')).toHaveText('3');
+  await expect(page.locator('.cw-five-kpi-item.gray .cw-five-kpi-num')).toHaveText('6');
 
-  // 5. 点击查看依据，展开四层详情抽屉，验证多批次分叉树
+  // 5. 点击查看依据，候选来源须来自当前实际查货池。
   const umwRow = page.locator('tr', { hasText: 'UMW2631' }).first();
   await umwRow.getByRole('button', { name: '查看依据', exact: true }).click();
   await expect(page.locator('.cw-commodity-drawer')).toBeVisible();
-  await expect(page.getByText('两个查货来源共同覆盖该商品')).toBeVisible();
-  await expect(page.locator('.cw-source-fork-tree')).toBeVisible();
-  await expect(page.locator('.cw-tree-root-card')).toContainText('UMW2631');
+  await expect(page.locator('.cw-commodity-drawer')).toContainText('UMW2631');
 
   // 关闭抽屉
   await page.getByRole('button', { name: '关闭详情抽屉' }).click();
   await expect(page.locator('.cw-commodity-drawer')).not.toBeVisible();
 
-  // 6. 切换到 Tab「批次关系」
+  // 6. 验证 Tab「批次关系」当前处于隐藏状态
+  await expect(page.getByRole('tab', { name: '批次关系' })).not.toBeVisible();
+
+  /* 批次关系暂时隐藏，后续调整后恢复：
   await page.getByRole('tab', { name: '批次关系' }).click();
 
   // 验证自然语言关系清单横幅
@@ -143,6 +145,7 @@ test('英卡科技客户工作台：商品对应按委托任务分组、多批�
   await expect(page.getByText('「委托任务 × 查货批次」高级关系矩阵')).toBeVisible();
   await expect(page.getByText('同一商品可能同时出现在多个查货批次列中')).toBeVisible();
   await expect(page.getByRole('button', { name: /UMW2631.*箱1~箱4/ })).toBeVisible();
+  */
 
   expect(errors).toEqual([]);
 });

@@ -24,12 +24,12 @@ describe('客户业务概览交互定稿规范测试（四级层级体系）', (
     }
   });
 
-  it('2. 动态主操作（Primary Action）——每张卡最多一个高强调实心按钮，无待办时为 null', () => {
+  it('2. 动态主操作（Primary Action）——每张卡统一具备高强调实心主按钮，便于一键进入工作台', () => {
     const data = buildBusinessWorkspace();
     const state = { ...useDemoStore.getInitialState(), ...data };
     const model = getCustomerWorkbench(state);
 
-    // 浦壹：需要人工确认 7 个商品的多候选 -> [进入核对工作台]
+    // 浦壹：8个商品已自动对应成功，1个等待查货材料 -> [进入核对工作台]
     const puyi = model.customers.find((c) => c.name.includes('浦壹'))!;
     const puyiStory = generateCustomerStory(puyi);
     expect(puyiStory.actionModel.primaryAction?.text).toBe('进入核对工作台');
@@ -44,30 +44,30 @@ describe('客户业务概览交互定稿规范测试（四级层级体系）', (
     const agStory = generateCustomerStory(ag);
     expect(agStory.actionModel.primaryAction?.text).toBe('进入核对工作台');
 
-    // 英堡科技：AI 核对完成，待人工复核 -> [开始人工复核]
+    // 英堡科技：商品全部自动对应通过，待报关员复核 -> [开始人工复核]
     const yingbao = model.customers.find((c) => c.name.includes('英堡'))!;
     const yingbaoStory = generateCustomerStory(yingbao);
     expect(yingbaoStory.actionModel.primaryAction?.text).toBe('开始人工复核');
 
-    // 澳创实业：等待查货资料 -> 无主操作（null）
+    // 澳创实业：等待查货资料 -> [进入核对工作台]
     const acsy = model.customers.find((c) => c.name.includes('澳创'))!;
     const acsyStory = generateCustomerStory(acsy);
-    expect(acsyStory.actionModel.primaryAction).toBeNull();
+    expect(acsyStory.actionModel.primaryAction?.text).toBe('进入核对工作台');
 
-    // 福建超年：等待查货资料 -> 无主操作（null）
+    // 福建超年：等待查货资料 -> [进入核对工作台]
     const cnkj = model.customers.find((c) => c.name.includes('超年'))!;
     const cnkjStory = generateCustomerStory(cnkj);
-    expect(cnkjStory.actionModel.primaryAction).toBeNull();
+    expect(cnkjStory.actionModel.primaryAction?.text).toBe('进入核对工作台');
 
-    // 深圳欧陆通：整单归档（已完成） -> 无主操作（null）
+    // 深圳欧陆通：整单归档（已完成） -> [查看最终核对单]
     const oult = model.customers.find((c) => c.name.includes('欧陆通'))!;
     const oultStory = generateCustomerStory(oult);
-    expect(oultStory.actionModel.primaryAction).toBeNull();
+    expect(oultStory.actionModel.primaryAction?.text).toBe('查看最终核对单');
 
-    // 深圳市英卡科技：并发多任务目前均处于等待查货 -> 无主操作（null）
+    // 深圳市英卡科技：有真实查货候选的任务可直接进入核对工作台。
     const yingka = model.customers.find((c) => c.name.includes('英卡'))!;
     const yingkaStory = generateCustomerStory(yingka);
-    expect(yingkaStory.actionModel.primaryAction).toBeNull();
+    expect(yingkaStory.actionModel.primaryAction?.text).toBe('进入核对工作台');
   });
 
   it('3. 弱导航（Secondary Link）与低频操作（More Actions 收纳至 ···）', () => {

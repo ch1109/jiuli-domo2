@@ -236,7 +236,7 @@ export function generatePendingTasksSummary(model: WorkbenchModel): PendingTaskI
       stage = "商品对应";
       blockingReason = "2 处同型号商品多候选竞争，需人工指定对应查货明细";
       nextActionText = "进入核对工作台";
-    } else if (no.includes("ZW") || !draft.customerId) {
+    } else if (!draft.customerId || draft.customerId === "UNKNOWN" || draft.customerStatus === "待补客户信息") {
       badge = { label: "客户未识别", variant: "orange" };
       summary = "主体导单文件缺少明确客户名称抬头，禁止跨客户强配查货材料";
       unresolvedReasons = [
@@ -291,7 +291,7 @@ export function generatePendingTasksSummary(model: WorkbenchModel): PendingTaskI
     if (no === "2025YBT010-2") {
       compositionalProgress = `${totalLines} 个商品：${totalLines} 已自动对应（无问题）· 待人工复核确认`;
     } else if (no === "26SHPYD056") {
-      compositionalProgress = `9 个商品：8 已自动对应（7 无问题 · 1 有联合覆盖）· 1 暂无查货依据 · 当前无需人工选择`;
+      compositionalProgress = `9 个商品：1 已自动对应 · 7 有查货候选待人工选择 · 1 暂无查货依据`;
     } else if (no === "2026BMH001") {
       compositionalProgress = `11 个商品：5 已自动对应 · 6 需要人工选择 · [处理 6 个商品对应]`;
     } else if (no === "2026AG001") {
@@ -318,6 +318,28 @@ export function generatePendingTasksSummary(model: WorkbenchModel): PendingTaskI
       compositionalProgress = `${totalLines} 个商品：${matchedLines} 已自动对应 · ${totalLines - matchedLines} 暂无依据`;
     } else {
       compositionalProgress = `${totalLines} 个商品：暂无确定查货依据`;
+    }
+
+    const currentItems = model.customers.find((customer) => customer.id === draft.customerId)?.commoditySummary?.items.filter((item) => item.taskDraftId === draft.id);
+    if (currentItems?.length === totalLines && draft.customerId && !draft.finalized) {
+      const associated = currentItems.filter((item) => item.relationLevel === 'EXACT_MODEL' || item.relationLevel === 'CORE_MODEL_WITH_AFFIX_DIFF').length;
+      const candidates = currentItems.filter((item) => item.relationLevel === 'MULTIPLE_MODEL_CANDIDATES').length;
+      const missing = totalLines - associated - candidates;
+      matchedLines = associated + candidates;
+      compositionalProgress = `${totalLines} 个商品：${associated} 已建立对应${candidates ? ` · ${candidates} 有候选待确认` : ''}${missing ? ` · ${missing} 暂无查货依据` : ''}`;
+      summary = `${associated} 个商品已建立对应，${candidates} 个待确认查货候选，${missing} 个缺查货依据`;
+      unresolvedReasons = [candidates ? `${candidates} 个商品待确定对应` : '', missing ? `${missing} 个商品等待查货材料` : ''].filter(Boolean);
+      if (candidates > 0) {
+        badge = { label: '待确认商品对应', variant: 'orange' };
+        ctaText = '选择商品对应'; actionType = 'select-candidate'; nextActionText = ctaText;
+      } else if (missing > 0) {
+        badge = { label: associated > 0 ? '部分商品已对应' : '等待查货材料', variant: associated > 0 ? 'blue' : 'orange' };
+        ctaText = '补充查货材料'; actionType = 'upload-inspection'; nextActionText = ctaText;
+      } else if (associated === totalLines) {
+        badge = { label: 'AI核对完成 · 待复核', variant: 'green' };
+        ctaText = '开始人工复核'; actionType = 'start-review'; nextActionText = ctaText;
+      }
+      blockingReason = unresolvedReasons.join('；') || '等待人工复核';
     }
 
     const progressText = `${matchedLines} / ${totalLines} 个商品找到查货依据`;
@@ -414,7 +436,8 @@ export interface CardPrimaryAction {
     | 'start-review'
     | 'continue-review'
     | 'resolve-customer'
-    | 'upload-inspection';
+    | 'upload-inspection'
+    | 'view-final';
   targetDraftId?: string;
 }
 
@@ -553,17 +576,22 @@ export function generateCustomerStory(customer: CustomerModel): CustomerStory {
     stage = "商品对应";
     blockingReason = "2 个同型号商品存在多候选竞争，需人工指定对应查货明细";
     nextActionText = "进入核对工作台";
-  } else if (displayNo.includes("ZW") || customer.name.includes("智微") || customer.tasks.some(t => !t.draft.customerId)) {
-    badgeLabel = isAllArchived ? "整单归档" : "客户未识别";
-    badgeVariant = isAllArchived ? "green" : "orange";
-    if (isAllArchived) {
-      unresolvedItems = [{ type: "success", text: "整单业务已完成四步核对或归档入库，档案齐全" }];
-      nextStepText = "整单业务已完成四步核对或归档入库，可在工作台中查看完整档案";
-      cta = { text: "查看完整档案", actionType: "view-final", primary: false };
-      stage = "整单归档";
-      blockingReason = "无阻塞（整单已归档入库）";
-      nextActionText = "查看完整档案";
+  } else if (displayNo.includes("ZW") || customer.name.includes("智微") || customer.tasks.some(t => !t.draft.customerId || t.draft.customerId === "UNKNOWN")) {
+    const isCustomerResolved = customer.tasks.length > 0 && customer.tasks.every(t => t.draft.customerId && t.draft.customerId !== "UNKNOWN" && t.draft.customerStatus !== "待补客户信息");
+    if (isCustomerResolved) {
+      badgeLabel = "已完成商品匹配 · 待复核";
+      badgeVariant = "green";
+      unresolvedItems = [
+        { type: "success", text: "已完成客户抬头补充，P1~P4 流水线全量贯通，商品已在智微智能查货池锁定对应依据" },
+      ];
+      nextStepText = "四个提示词全流程已执行完成，等待报关员人工复核或最终封版";
+      cta = { text: "进入核对工作台", actionType: "start-review", primary: true };
+      stage = "待人工复核";
+      blockingReason = "无阻塞（已补充客户并完成四步核对）";
+      nextActionText = "进入核对工作台";
     } else {
+      badgeLabel = "客户未识别";
+      badgeVariant = "orange";
       unresolvedItems = [
         { type: "warning", text: "主体委托（导单文件）缺少明确客户抬头，禁止跨客户强配查货库" },
       ];
@@ -648,6 +676,25 @@ export function generateCustomerStory(customer: CustomerModel): CustomerStory {
     stage = "商品对应";
     blockingReason = "系统正在对齐规格与查货明细";
     nextActionText = "查看任务详情";
+  }
+
+  if (!isAllArchived && customer.commoditySummary?.totalCount && stage !== "待人工复核" && stage !== "最终复核" && stage !== "客户信息确认" && !badgeLabel.includes("待复核")) {
+    const { exactCount, affixDiffCount, multipleCount, noCandidateCount, conflictCount } = customer.commoditySummary;
+    const associated = exactCount + affixDiffCount;
+    const missing = noCandidateCount + conflictCount;
+    if (multipleCount > 0) {
+      badgeLabel = '待确认商品对应'; badgeVariant = 'orange';
+      unresolvedItems = [{ type: 'warning', text: `${multipleCount} 个商品有查货候选，尚待确认对应` }, ...(missing ? [{ type: 'info' as const, text: `${missing} 个商品暂无查货依据` }] : [])];
+      nextStepText = `${multipleCount} 个商品待确认对应${missing ? `，${missing} 个商品等待查货材料` : ''}`;
+      cta = { text: '选择商品对应', actionType: 'select-candidate', primary: true };
+      stage = '商品对应'; blockingReason = nextStepText; nextActionText = cta.text;
+    } else if (missing > 0) {
+      badgeLabel = associated > 0 ? '部分商品已对应' : '等待查货材料'; badgeVariant = associated > 0 ? 'blue' : 'orange';
+      unresolvedItems = [{ type: 'info', text: `${missing} 个商品暂无查货依据` }];
+      nextStepText = `${missing} 个商品等待查货材料`;
+      cta = { text: '补充查货材料', actionType: 'upload-inspection', primary: true };
+      stage = '商品对应'; blockingReason = nextStepText; nextActionText = cta.text;
+    }
   }
 
   const currentStatusText =
@@ -758,7 +805,7 @@ export function generateCustomerStory(customer: CustomerModel): CustomerStory {
     const cs = customer.commoditySummary;
     storyCompositionalProgress = `${cs.totalCount} 个商品：${cs.exactCount} 已自动对应${cs.affixDiffCount > 0 ? `（${cs.affixDiffCount} 有提醒）` : ''}${cs.multipleCount > 0 ? ` · ${cs.multipleCount} 需要人工选择` : ''}${cs.noCandidateCount > 0 ? ` · ${cs.noCandidateCount} 暂无查货依据` : ''}`;
   } else if (displayNo === '26SHPYD056') {
-    storyCompositionalProgress = '9 个商品：8 已自动对应（7 无问题 · 1 有联合覆盖）· 1 暂无查货依据 · 当前无需人工选择';
+    storyCompositionalProgress = '9 个商品：1 已自动对应 · 7 有查货候选待人工选择 · 1 暂无查货依据';
   } else if (displayNo === '2026BMH001') {
     storyCompositionalProgress = '11 个商品：5 已自动对应 · 6 需要人工选择 · [处理 6 个商品对应]';
   } else if (displayNo === '2026AG001') {
@@ -778,7 +825,7 @@ export function generateCustomerStory(customer: CustomerModel): CustomerStory {
   let primaryAction: CardPrimaryAction | null = null;
   if (isMultiTask) {
     const actionRequiredTask = customer.tasks.find(
-      (t) => t.businessStatus === '需要人工选择' || (t.total > 0 && t.matched < t.total && t.issues > 0)
+      (t) => t.nextAction === '选择商品对应' || t.businessStatus === '需要人工选择' || (t.total > 0 && t.matched < t.total && t.issues > 0)
     );
     const reviewRequiredTask = customer.tasks.find(
       (t) => t.businessStatus === '待最终复核' || (t.draft.status === 'MATCHED' && !t.draft.finalized)
@@ -797,10 +844,20 @@ export function generateCustomerStory(customer: CustomerModel): CustomerStory {
         targetDraftId: reviewRequiredTask.draft.id,
       };
     } else {
-      primaryAction = null;
+      primaryAction = {
+        text: '进入核对工作台',
+        actionType: 'select-candidate',
+        targetDraftId: customer.tasks[0]?.draft?.id,
+      };
     }
   } else {
-    if (badgeLabel === '需要人工选择' || cta.actionType === 'select-candidate') {
+    if (customer.name.includes('智微') || customer.id === 'C-66be07d6cabe') {
+      primaryAction = {
+        text: '进入核对工作台',
+        actionType: 'select-candidate',
+        targetDraftId: primaryTask?.id,
+      };
+    } else if (badgeLabel === '需要人工选择' || cta.actionType === 'select-candidate') {
       const btnText = '进入核对工作台';
       primaryAction = {
         text: btnText,
@@ -819,11 +876,11 @@ export function generateCustomerStory(customer: CustomerModel): CustomerStory {
         actionType: 'continue-review',
         targetDraftId: primaryTask?.id,
       };
-    } else if (badgeLabel === '客户未识别' || cta.actionType === 'resolve-customer') {
+    } else if (badgeLabel === '客户未识别' || badgeLabel.includes('待补') || cta.actionType === 'resolve-customer') {
       primaryAction = {
         text: '补充客户信息',
         actionType: 'resolve-customer',
-        targetDraftId: primaryTask?.id,
+        targetDraftId: primaryTask?.id || 'D-8181f9edc198',
       };
     } else if (cta.actionType === 'fix-fields' || (cta.actionType as string) === 'fix-conflict') {
       primaryAction = {
@@ -831,8 +888,19 @@ export function generateCustomerStory(customer: CustomerModel): CustomerStory {
         actionType: 'fix-conflict',
         targetDraftId: primaryTask?.id,
       };
+    } else if (isAllArchived || badgeLabel.includes('归档') || cta.actionType === 'view-final') {
+      primaryAction = {
+        text: '查看最终核对单',
+        actionType: 'view-final',
+        targetDraftId: primaryTask?.id,
+      };
     } else {
-      primaryAction = null;
+      // 浦壹、澳创、超年等所有非归档待核对客户，均提供统一醒目的【进入核对工作台】主按钮
+      primaryAction = {
+        text: '进入核对工作台',
+        actionType: 'select-candidate',
+        targetDraftId: primaryTask?.id,
+      };
     }
   }
 
