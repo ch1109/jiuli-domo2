@@ -119,6 +119,22 @@ export function ReconciliationWorkbench({
   >("ALL");
   const [problemFilter, setProblemFilter] = useState<"ALL" | "RELATION" | "CONFLICT" | "MISSING">("ALL");
 
+  useEffect(() => {
+    if (!draft) return;
+    const focus = state.lastVisitedPanel;
+    if (focus.startsWith("line:")) {
+      const target = focus.slice(5);
+      if (draft.lines.some((line) => line.id === target)) {
+        setLineId(target);
+        setRightTab("INSPECTION_BASIS");
+      }
+    } else if (focus === "evidence") {
+      setRightTab("INSPECTION_BASIS");
+    } else if (focus === "issues") {
+      setProblemFilter("RELATION");
+    }
+  }, [draft, state.lastVisitedPanel]);
+
   // 右侧 Tab：字段来源 / 查货核验依据 / 原始材料 / 核验结论 (+ POC评测模式下：标准答案差异)
   const [rightTab, setRightTab] = useState<
     "FIELD_SOURCE" | "INSPECTION_BASIS" | "RAW_MATERIAL" | "VERIFY_DECISION" | "EVAL_DIFF"

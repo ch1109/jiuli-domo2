@@ -44,6 +44,15 @@ import puyiFixture from '@/demo-generated/mock/real-calibration-26shpyd056.json'
 import auditIndex from '@/demo-generated/mock/model-audit-index.json';
 import manifest from '@/demo-generated/sample_manifest.json';
 import { MaterialPreview } from './material-preview';
+import {
+  buildCustomerOverview,
+  matchesOverviewFilter,
+  selectOverviewCustomers,
+  OVERVIEW_FILTERS,
+  type OverviewFilter,
+  type OverviewCustomer,
+  type OverviewAction,
+} from '@/lib/customer-overview';
 
 const date = (s?: string) =>
   s
@@ -74,231 +83,9 @@ const TASK_CENTER_TABS = [
   '已完成',
 ] as const;
 
-export type CustomerStatusFilter =
-  | '全部'
-  | '需要我处理'
-  | '等待查货'
-  | '需要人工选择'
-  | '待人工复核'
-  | '人工复核中'
-  | '已完成';
-
+export type CustomerStatusFilter = OverviewFilter;
 export type CustomerSortOption = 'priority' | 'recent' | 'longestWaiting' | 'name';
-
-export const CUSTOMER_FILTER_TABS: Array<{ key: CustomerStatusFilter; label: string }> = [
-  { key: '全部', label: '全部' },
-  { key: '需要我处理', label: '需要我处理' },
-  { key: '等待查货', label: '等待查货' },
-  { key: '需要人工选择', label: '需要人工选择' },
-  { key: '待人工复核', label: '待人工复核' },
-  { key: '人工复核中', label: '人工复核中' },
-  { key: '已完成', label: '已完成' },
-];
-
-export function getCustomerStatusFlags(c: CustomerModel, story: CustomerStory) {
-  // 1. 需要人工选择
-  const needsSelection =
-    c.tasks.some(
-      (t) =>
-        t.businessStatus === '需要人工选择' ||
-        t.businessStatus === '待人工处理' ||
-        ['2026BMH001', '2026AG001', '26SHPYD056'].includes(t.draft.displayNo) ||
-        t.draft.lines.some((l) => l.issueIds.some((i) => i.includes('多候选')))
-    ) ||
-    story.unresolvedItems.some(
-      (item) =>
-        item.text.includes('多个候选') ||
-        item.text.includes('人工选择') ||
-        item.text.includes('多候选')
-    ) ||
-    (story.multiTask?.statusPills.some(
-      (p: { label: string; count: number }) => p.label === '待人工处理' && p.count > 0
-    ) ?? false);
-
-  // 2. 待人工复核
-  const pendingReview =
-    c.tasks.some(
-      (t) =>
-        t.businessStatus === '待人工复核' ||
-        t.businessStatus === 'AI核对完成 · 待人工复核' ||
-        t.draft.displayNo === '2025YBT010-2' ||
-        (t.matched === t.total && t.total > 0 && !t.draft.finalized && t.issues === 0)
-    ) ||
-    story.badge.label.includes('待复核') ||
-    story.badge.label.includes('待人工复核') ||
-    (story.multiTask?.statusPills.some(
-      (p: { label: string; count: number }) => p.label === '待复核' && p.count > 0
-    ) ?? false);
-
-  // 3. 人工复核中
-  const inReview =
-    c.tasks.some(
-      (t) =>
-        t.businessStatus === '人工复核中' ||
-        t.draft.status === '人工确认中'
-    ) ||
-    story.badge.label.includes('复核中');
-
-  // 4. 存在人工阻塞问题（如无客户抬头、字段冲突未决等）
-  const hasBlockingIssues =
-    c.tasks.some(
-      (t) =>
-        !t.draft.customerId ||
-        t.draft.customerId === 'UNKNOWN' ||
-        t.draft.customerStatus === '待补客户信息' ||
-        t.draft.lines.some((l) =>
-          l.issueIds.some((i) => i.includes('字段冲突') || i.includes('冲突'))
-        )
-    ) ||
-    c.issues.length > 0 ||
-    story.blockingReason.includes('缺少明确客户抬头') ||
-    story.badge.label.includes('客户未识别');
-
-  // 5. 需要我处理（聚合筛选，包含人工选择、待复核、复核中、阻塞问题）
-  const needsMyAction = needsSelection || pendingReview || inReview || hasBlockingIssues;
-
-  // 6. 等待查货
-  const waitingInspection =
-    (c.counts.matched < c.counts.lines && c.counts.lines > 0) ||
-    c.tasks.some(
-      (t) =>
-        (t.matched < t.total && !t.draft.finalized) ||
-        t.businessStatus === '待匹配' ||
-        t.realtimeStatus.includes('缺少') ||
-        t.draft.displayNo.startsWith('YK-') ||
-        ['2026ACSY003', '2026CNKJ001'].includes(t.draft.displayNo)
-    ) ||
-    story.badge.label.includes('等待查货') ||
-    story.unresolvedItems.some(
-      (i) => i.text.includes('查货材料') || i.text.includes('查货依据')
-    ) ||
-    c.name.includes('英卡');
-
-  // 7. 已完成
-  const completed =
-    c.tasks.some((t) => t.businessStatus === '已完成' || t.draft.finalized) ||
-    (c.counts.tasks > 0 && c.tasks.every((t) => t.draft.finalized)) ||
-    story.badge.label.includes('归档') ||
-    c.name.includes('欧陆通');
-
-  return {
-    needsSelection,
-    pendingReview,
-    inReview,
-    hasBlockingIssues,
-    needsMyAction,
-    waitingInspection,
-    completed,
-  };
-}
-
-export function getCustomerPrimaryBadge(
-  flags: ReturnType<typeof getCustomerStatusFlags>,
-  fallbackBadge: { label: string; variant: 'blue' | 'green' | 'orange' | 'gray' }
-): { label: string; variant: 'blue' | 'green' | 'orange' | 'gray' } {
-  if (flags.hasBlockingIssues) {
-    return { label: '存在人工阻塞', variant: 'orange' };
-  }
-  if (flags.inReview) {
-    return { label: '人工复核中', variant: 'blue' };
-  }
-  if (flags.pendingReview) {
-    return { label: 'AI核对完成 · 待复核', variant: 'green' };
-  }
-  if (flags.needsSelection) {
-    return { label: '需要人工选择', variant: 'orange' };
-  }
-  if (flags.waitingInspection) {
-    return { label: '等待查货材料', variant: 'orange' };
-  }
-  if (flags.completed) {
-    return { label: '整单归档 · 已完成', variant: 'green' };
-  }
-  return fallbackBadge;
-}
-
-function getFocusedCardHighlight(
-  filter: CustomerStatusFilter,
-  c: CustomerModel,
-  story: CustomerStory,
-  flags: ReturnType<typeof getCustomerStatusFlags>
-): { title: string; detail: string } | null {
-  if (filter === '全部') return null;
-
-  if (filter === '等待查货') {
-    const waitingTasks = c.tasks.filter(
-      (t) => t.matched < t.total && !t.draft.finalized
-    ).length;
-    const missingLines = Math.max(0, c.counts.lines - c.counts.matched);
-    return {
-      title: `${waitingTasks || 1} 票等待查货`,
-      detail: `${missingLines || '部分'} 个商品暂无查货依据，等待仓储材料补充`,
-    };
-  }
-
-  if (filter === '需要人工选择') {
-    const candTasks = c.tasks.filter(
-      (t) =>
-        t.businessStatus === '需要人工选择' ||
-        t.businessStatus === '待人工处理' ||
-        ['2026BMH001', '2026AG001', '26SHPYD056'].includes(t.draft.displayNo)
-    ).length;
-    return {
-      title: `${candTasks || 1} 票需要处理`,
-      detail: '同型号存在多个候选批次，需人工指定对应查货明细',
-    };
-  }
-
-  if (filter === '待人工复核') {
-    return {
-      title: '1 票 AI 核对已完成',
-      detail: '25 列关键字段全量核对通过，等待报关员复核确认',
-    };
-  }
-
-  if (filter === '人工复核中') {
-    return {
-      title: '人工复核推进中',
-      detail: '正在核查最终核对单数据，确认无误后完成封版归档',
-    };
-  }
-
-  if (filter === '需要我处理') {
-    if (flags.hasBlockingIssues) {
-      return {
-        title: '存在人工阻断项',
-        detail: '主体委托缺少客户抬头或字段冲突，需人工处理',
-      };
-    }
-    if (flags.needsSelection) {
-      return {
-        title: '商品存在多个候选',
-        detail: '需人工选定入仓查货依据建立对应',
-      };
-    }
-    if (flags.pendingReview) {
-      return {
-        title: '待人工复核封版',
-        detail: '全量自动核对通过，可直接人工复核',
-      };
-    }
-    if (flags.inReview) {
-      return {
-        title: '复核正在进行',
-        detail: '正在核查对账中，请继续完成确认',
-      };
-    }
-  }
-
-  if (filter === '已完成') {
-    return {
-      title: '整单归档完成',
-      detail: '四步核对已通过，最终核对单已生成留档',
-    };
-  }
-
-  return null;
-}
+export const CUSTOMER_FILTER_TABS = OVERVIEW_FILTERS.map((key) => ({ key, label: key }));
 
 const sampleIdByFileId = new Map(
   manifest.samples.flatMap((sample) =>
@@ -701,6 +488,7 @@ export function CustomerWorkspace({
   const [filter, setFilter] = useState('我的待办');
   const [customerStatusFilter, setCustomerStatusFilter] = useState<CustomerStatusFilter>('全部');
   const [customerSortBy, setCustomerSortBy] = useState<CustomerSortOption>('priority');
+  const [overviewView, setOverviewView] = useState<'card' | 'list'>('card');
   const [query, setQuery] = useState('');
   const [preview, setPreview] = useState<string | null>(null);
   const [matrixDrilldown, setMatrixDrilldown] = useState<RelationMatrixCell | null>(null);
@@ -833,138 +621,23 @@ export function CustomerWorkspace({
     });
   }, [model.customers]);
 
-  const customerFilterCounts = useMemo(() => {
-    const counts: Record<CustomerStatusFilter, number> = {
-      '全部': visibleCustomers.length,
-      '需要我处理': 0,
-      '等待查货': 0,
-      '需要人工选择': 0,
-      '待人工复核': 0,
-      '人工复核中': 0,
-      '已完成': 0,
-    };
+  const overviewRows = useMemo(() => {
+    const finalDraftIds = new Set(state.finalReconciliations.map((sheet) => sheet.sourceDraftId));
+    return visibleCustomers.map((c) => buildCustomerOverview(c, state.sources, finalDraftIds));
+  }, [visibleCustomers, state.sources, state.finalReconciliations]);
 
-    for (const c of visibleCustomers) {
-      const story = generateCustomerStory(c);
-      const flags = getCustomerStatusFlags(c, story);
-
-      if (flags.needsMyAction) counts['需要我处理']++;
-      if (flags.waitingInspection) counts['等待查货']++;
-      if (flags.needsSelection) counts['需要人工选择']++;
-      if (flags.pendingReview) counts['待人工复核']++;
-      if (flags.inReview) counts['人工复核中']++;
-      if (flags.completed) counts['已完成']++;
-    }
-
-    return counts;
-  }, [visibleCustomers]);
+  const customerFilterCounts = useMemo(() => Object.fromEntries(
+    OVERVIEW_FILTERS.map((key) => [key, overviewRows.filter((row) => matchesOverviewFilter(row, key)).length])
+  ) as Record<OverviewFilter, number>, [overviewRows]);
 
   const filterExplanation = useMemo(() => {
-    const count = customerFilterCounts[customerStatusFilter] ?? 0;
-    switch (customerStatusFilter) {
-      case '全部':
-        return `共 ${count} 家客户业务全貌`;
-      case '需要我处理':
-        return `${count} 个客户当前存在需要人工介入处理的任务，请优先跟进处理`;
-      case '等待查货':
-        return `${count} 个客户存在尚未找到查货依据的委托商品，等待仓储材料入仓`;
-      case '需要人工选择':
-        return `${count} 个客户存在 AI 无法唯一确定的商品对应，需人工选定对应批次`;
-      case '待人工复核':
-        return `${count} 个客户已有任务完成 AI 自动核对，可开始人工最终确认封版`;
-      case '人工复核中':
-        return `${count} 个客户正在进行报关员人工复核确认`;
-      case '已完成':
-        return `${count} 个客户包含已归档完成的委托任务`;
-      default:
-        return '';
-    }
+    const count = customerFilterCounts[customerStatusFilter];
+    return customerStatusFilter === '全部' ? `共 ${count} 家客户` : `${count} 家客户 · ${customerStatusFilter}`;
   }, [customerStatusFilter, customerFilterCounts]);
 
-  const sortedCustomers = useMemo(() => {
-    const q = query.trim().toLowerCase();
-
-    // 1. 搜索过滤
-    const searchFiltered = visibleCustomers.filter((c) => {
-      if (!q) return true;
-      return `${c.name} ${c.id} ${c.tasks.map((t) => t.draft.displayNo).join(' ')}`
-        .toLowerCase()
-        .includes(q);
-    });
-
-    // 2. 业务状态筛选过滤（非互斥状态机）
-    const statusFiltered = searchFiltered.filter((c) => {
-      if (customerStatusFilter === '全部') return true;
-      const story = generateCustomerStory(c);
-      const flags = getCustomerStatusFlags(c, story);
-
-      if (customerStatusFilter === '需要我处理') return flags.needsMyAction;
-      if (customerStatusFilter === '等待查货') return flags.waitingInspection;
-      if (customerStatusFilter === '需要人工选择') return flags.needsSelection;
-      if (customerStatusFilter === '待人工复核') return flags.pendingReview;
-      if (customerStatusFilter === '人工复核中') return flags.inReview;
-      if (customerStatusFilter === '已完成') return flags.completed;
-      return true;
-    });
-
-    // 3. 多维度排序
-    return [...statusFiltered].sort((a, b) => {
-      const storyA = generateCustomerStory(a);
-      const storyB = generateCustomerStory(b);
-      const flagsA = getCustomerStatusFlags(a, storyA);
-      const flagsB = getCustomerStatusFlags(b, storyB);
-
-      if (customerSortBy === 'priority') {
-        // 人工待办优先
-        const aNeed = flagsA.needsMyAction ? 1 : 0;
-        const bNeed = flagsB.needsMyAction ? 1 : 0;
-        if (bNeed !== aNeed) return bNeed - aNeed;
-
-        // 严重程度打分
-        const scoreA =
-          (flagsA.hasBlockingIssues ? 4 : 0) +
-          (flagsA.needsSelection ? 3 : 0) +
-          (flagsA.pendingReview ? 2 : 0) +
-          (flagsA.inReview ? 1 : 0);
-        const scoreB =
-          (flagsB.hasBlockingIssues ? 4 : 0) +
-          (flagsB.needsSelection ? 3 : 0) +
-          (flagsB.pendingReview ? 2 : 0) +
-          (flagsB.inReview ? 1 : 0);
-        if (scoreB !== scoreA) return scoreB - scoreA;
-
-        // 最近更新时间倒序
-        const timeA = a.latest ? new Date(a.latest).getTime() : 0;
-        const timeB = b.latest ? new Date(b.latest).getTime() : 0;
-        if (timeB !== timeA) return timeB - timeA;
-
-        return b.counts.tasks - a.counts.tasks;
-      }
-
-      if (customerSortBy === 'recent') {
-        const timeA = a.latest ? new Date(a.latest).getTime() : 0;
-        const timeB = b.latest ? new Date(b.latest).getTime() : 0;
-        return timeB - timeA;
-      }
-
-      if (customerSortBy === 'longestWaiting') {
-        // 未完成任务排在已归档前面
-        const aDone = flagsA.completed && a.counts.tasks > 0 && a.tasks.every((t) => t.draft.finalized) ? 1 : 0;
-        const bDone = flagsB.completed && b.counts.tasks > 0 && b.tasks.every((t) => t.draft.finalized) ? 1 : 0;
-        if (aDone !== bDone) return aDone - bDone;
-
-        const timeA = a.latest ? new Date(a.latest).getTime() : Date.now();
-        const timeB = b.latest ? new Date(b.latest).getTime() : Date.now();
-        return timeA - timeB;
-      }
-
-      if (customerSortBy === 'name') {
-        return a.name.localeCompare(b.name, 'zh-CN');
-      }
-
-      return 0;
-    });
-  }, [visibleCustomers, query, customerStatusFilter, customerSortBy]);
+  const sortedCustomers = useMemo(() => selectOverviewCustomers(
+    overviewRows, customerStatusFilter, query, customerSortBy
+  ), [overviewRows, customerStatusFilter, query, customerSortBy]);
 
   const tasks = model.tasks
     .filter((t) =>
@@ -1023,6 +696,28 @@ export function CustomerWorkspace({
       return t.businessStatus === filter;
     });
 
+  const handleOverviewAction = (row: OverviewCustomer, act: OverviewAction) => {
+    if (act.target === 'archive') {
+      setCustomerId(row.customer.id);
+      setTab('业务动态');
+      return;
+    }
+    if (act.target === 'customer' && act.draftId) {
+      state.openCustomerSupplement(act.draftId);
+      return;
+    }
+    if (!act.draftId) {
+      setCustomerId(row.customer.id);
+      setTab('委托任务');
+      return;
+    }
+    state.selectDraft(act.draftId);
+    if (act.target === 'candidate') state.setLastVisitedPanel(act.lineId ? `line:${act.lineId}` : 'evidence');
+    else if (act.target === 'problem') state.setLastVisitedPanel(act.lineId ? `line:${act.lineId}` : 'issues');
+    else if (act.target === 'review') state.setLastVisitedPanel(act.lineId ? `line:${act.lineId}` : 'overview');
+    else state.setLastVisitedPanel(act.lineId ? `line:${act.lineId}` : 'overview');
+  };
+
   return (
     <div className="customer-workspace cw-v2">
       <div className="cw-section-title" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12, marginBottom: 16 }}>
@@ -1057,7 +752,7 @@ export function CustomerWorkspace({
             </p>
           )}
 
-          {/* 重构版：AI任务动态总览卡（四层结构：标题区、核心摘要区、行动建议区、关键指标区） */}
+          {/* 第一层：AI任务动态总览卡（过程与汇总信息） */}
           {(() => {
             const processingTasksCount = model.tasks.filter((t) => t.businessStatus !== '已完成').length;
             const needsActionCustomerCount = customerFilterCounts['需要我处理'];
@@ -1361,6 +1056,10 @@ export function CustomerWorkspace({
               </div>
 
               <div className="cw-customer-overview-controls">
+                <div className="cw-overview-view-toggle" role="group" aria-label="概览视图">
+                  <button type="button" className={overviewView === 'card' ? 'active' : ''} onClick={() => setOverviewView('card')}>卡片</button>
+                  <button type="button" className={overviewView === 'list' ? 'active' : ''} onClick={() => setOverviewView('list')}>列表</button>
+                </div>
                 {/* 轻量排序控件 */}
                 <div className="cw-sort-control">
                   <label htmlFor="customer-sort-select">排序：</label>
@@ -1424,316 +1123,157 @@ export function CustomerWorkspace({
             </div>
           </div>
 
-          {/* 客户卡片：单任务故事卡 + 多任务聚合卡 + 空状态 */}
+          {/* 客户任务入口：Card / List 双视图 */}
           {sortedCustomers.length === 0 ? (
             <div className="cw-customers-empty">
               <div className="cw-empty-icon">📂</div>
               <h4>当前没有符合条件的客户</h4>
-              <p>
-                在“{customerStatusFilter}”状态筛选{query ? `且包含关键词“${query}”` : ''}下未找到匹配客户
-              </p>
-              <button
-                type="button"
-                className="secondary"
-                onClick={() => {
-                  setCustomerStatusFilter('全部');
-                  setQuery('');
-                }}
-              >
-                清除筛选与搜索
-              </button>
+              <p>在“{customerStatusFilter}”状态筛选{query ? `且包含关键词“${query}”` : ''}下未找到匹配客户</p>
+              <button type="button" className="secondary" onClick={() => { setCustomerStatusFilter('全部'); setQuery(''); }}>清除筛选与搜索</button>
+            </div>
+          ) : overviewView === 'list' ? (
+            <div className="cw-overview-list-wrap">
+              <table className="cw-overview-list" aria-label="客户业务概览列表">
+                <thead><tr><th>客户</th><th>活跃任务</th><th>主状态</th><th>人工待办</th><th>等待材料</th><th>完成进度</th><th>最近更新</th><th>下一动作</th></tr></thead>
+                <tbody>
+                  {sortedCustomers.map((row) => <tr key={row.customer.id}>
+                    <td><strong>{row.customer.name}</strong><small>{row.customer.id}</small></td>
+                    <td>{row.activeTasks}</td>
+                    <td><span className={`cw-overview-status ${row.status}`}>{row.status}</span></td>
+                    <td>{row.humanTodos}</td><td>{row.waiting}</td><td>{row.progress}</td>
+                    <td>{row.updatedAt ? date(row.updatedAt) : '暂无更新'}</td>
+                    <td><button type="button" className={row.action.prominent ? 'cw-overview-list-action primary' : 'cw-overview-list-action'} onClick={() => handleOverviewAction(row, row.action)}>{row.action.label}</button></td>
+                  </tr>)}
+                </tbody>
+              </table>
             </div>
           ) : (
             <div className="cw-customers">
-              {sortedCustomers.map((c) => {
-                const story = generateCustomerStory(c);
-                const flags = getCustomerStatusFlags(c, story);
-                const primaryBadge = getCustomerPrimaryBadge(flags, story.badge);
-                const focusedHighlight = getFocusedCardHighlight(customerStatusFilter, c, story, flags);
-                if (c.name.includes('英卡') && story.isMultiTask && story.multiTask) {
-                  return (
-                    <article className="cw-customer cw-story-card cw-multi-task-card" key={c.id}>
-                      <div className="cw-story-head">
-                        <div className="cw-story-title-group">
-                          <h3>{story.name}</h3>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 3 }}>
-                            <strong style={{ fontSize: 15, color: '#111827' }}>
-                              {story.multiTask.tasksSummary}
-                            </strong>
-                            <small style={{ fontSize: 13.5, color: '#6b7280' }}>· 最近更新：{story.updatedAtText}</small>
-                          </div>
-                        </div>
-                        <span className={`cw-story-badge ${primaryBadge.variant}`}>
-                          {primaryBadge.label}
-                        </span>
-                      </div>
-
-                      <div className="cw-multi-task-body">
-                        {focusedHighlight && (
-                          <div className="cw-focused-filter-strip">
-                            <span className="cw-focused-icon">🎯</span>
-                            <strong>{focusedHighlight.title}</strong>
-                            <span>· {focusedHighlight.detail}</span>
-                          </div>
-                        )}
-                        {/* 状态分布条 */}
-                      <div className="cw-multi-status-bar">
-                        {story.multiTask.statusPills.map((pill: { label: string; count: number; variant: string }, idx: number) => (
-                          <div className="cw-multi-status-item" key={idx}>
-                            <span>{pill.label}</span>
-                            <strong className={`highlight-${pill.variant}`}>{pill.count}</strong>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* 客户级商品构成进度与库存 */}
-                      <div className="cw-multi-pool-summary">
-                        <span>📊</span>
-                        <span>{story.multiTask.compositionalProgress || story.multiTask.stockSummary}</span>
-                      </div>
-
-                      {/* 重点关注任务列表 */}
-                      <div className="cw-multi-focus-section">
-                        <span className="cw-section-subtitle">
-                          重点委托任务 ({story.multiTask.topTasks.length})
-                        </span>
-                        <div className="cw-multi-focus-list">
-                          {story.multiTask.topTasks.map((t: { id: string; displayNo: string; status: string; progressText: string; actionText: string }) => (
-                            <div className="cw-multi-focus-card" key={t.id}>
-                              <div className="cw-focus-card-head">
-                                <strong style={{ fontSize: 14.5, color: '#163829' }}>{t.displayNo}</strong>
-                                <span className="cw-story-badge blue">{t.status}</span>
-                              </div>
-                              <div className="cw-focus-progress">{t.progressText}</div>
-                              <div className="cw-focus-action-row">
-                                {t.actionText.includes('补充查货') ? (
-                                  <button
-                                    type="button"
-                                    className="text-button"
-                                    style={{ fontSize: 14, color: '#1b6e46', fontWeight: 600 }}
-                                    onClick={() => onAddMaterial(c.id)}
-                                  >
-                                    补充查货资料 →
-                                  </button>
-                                ) : (
-                                  <button
-                                    type="button"
-                                    className="text-button"
-                                    style={{ fontSize: 14, color: '#1b6e46', fontWeight: 600 }}
-                                    onClick={() => {
-                                      const targetDraft = state.drafts.find((d) => d.id === t.id);
-                                      if (
-                                        t.actionText.includes('补充客户') ||
-                                        (targetDraft &&
-                                          (!targetDraft.customerId ||
-                                            targetDraft.customerId === 'UNKNOWN' ||
-                                            targetDraft.customerStatus === '待补客户信息'))
-                                      ) {
-                                        state.openCustomerSupplement(t.id);
-                                      } else {
-                                        state.selectDraft(t.id);
-                                      }
-                                    }}
-                                  >
-                                    {t.actionText} →
-                                  </button>
-                                )}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
+              {sortedCustomers.map((row) => {
+                const c = row.customer;
+                const isMultiTask = row.tasks.length > 1;
+                const progressMatch = row.progress.match(/(\d+)\s*\/\s*(\d+)/);
+                const progressDone = progressMatch ? Number(progressMatch[1]) : row.done;
+                const progressTotal = progressMatch ? Number(progressMatch[2]) : row.total;
+                const progressPercent = row.status === '已完成' ? 100 : progressTotal ? Math.round((progressDone / progressTotal) * 100) : 0;
+                const progressTitle = isMultiTask
+                  ? '任务整体进度'
+                  : row.status === '前置问题'
+                    ? '材料处理'
+                    : row.status === '待人工核对'
+                      ? '人工核对'
+                      : row.status === '已完成'
+                        ? '任务完成'
+                        : '查货覆盖';
+                const progressValue = isMultiTask
+                  ? `${row.total} 个商品 · 已完成 ${row.done} · 待处理 ${Math.max(0, row.total - row.done)}`
+                  : row.status === '前置问题'
+                    ? `${row.problem.includes('客户信息') ? '委托材料已识别' : '材料已识别'} · ${row.humanTodos} 个问题待处理`
+                    : row.status === '已完成'
+                      ? `全部商品已完成核对 · ${progressPercent}%`
+                      : `${progressDone} / ${progressTotal} 商品${row.status === '待人工核对' ? '已确认' : '已找到依据'} · ${progressPercent}%`;
+                const progressMeta = isMultiTask
+                  ? `已完成 ${row.done} · 待处理 ${Math.max(0, row.total - row.done)}`
+                  : row.status === '前置问题'
+                    ? `${row.humanTodos} 个材料问题待处理`
+                    : row.status === '待人工核对'
+                      ? `已确认 ${progressDone} · 待核对 ${Math.max(0, progressTotal - progressDone)}`
+                      : row.status === '等待查货'
+                        ? `等待材料 ${row.waiting}`
+                        : row.status === '已完成'
+                          ? '历史材料与修改记录已保留'
+                          : `自动对应 ${row.done} · 待处理 ${Math.max(0, row.total - row.done)}`;
+                const issueTitle = isMultiTask
+                  ? `${row.activeTasks} 票任务存在待处理事项`
+                  : row.status === '已完成'
+                    ? '✓ 全部商品已经完成核对'
+                    : row.problem.replace(/^○\s*/, '○ ');
+                const issueDescription = isMultiTask
+                  ? `优先处理：${row.focusTasks[0]?.displayNo || '查看任务列表'}`
+                  : row.status === '前置问题'
+                    ? '处理完成后才能继续商品对应'
+                    : row.status === '待确认对应'
+                      ? '存在多个查货候选，需要人工选择'
+                      : row.status === '待人工核对'
+                        ? '商品对应关系已准备完成'
+                        : row.status === '已完成'
+                          ? '最终结果已经归档，可随时追溯'
+                          : '当前无需操作，新材料到达后自动继续';
+                const issueTone = row.status === '已完成' ? 'complete' : row.status === '等待查货' ? 'waiting' : 'attention';
+                const footerLabel = isMultiTask ? `查看全部 ${row.tasks.length} 个任务 →` : row.status === '已完成' || row.status === '等待查货' ? '查看处理记录 →' : '查看任务详情 →';
+                const actionLabel = row.status === '已完成' ? '查看最终核对单' : row.action.label;
+                const isPrimaryAction = row.action.prominent && row.status !== '已完成';
+                return <article className={`cw-customer cw-overview-card ${row.status}`} key={c.id}>
+                  <header className="cw-overview-card-head">
+                    <div className="cw-overview-card-identity">
+                      <h3 title={c.name}>{c.name}</h3>
+                      <div className="cw-overview-card-meta">{isMultiTask ? `${row.activeTasks} 票活跃任务` : row.tasks[0]?.displayNo || '历史业务'} · 更新于 {row.updatedAt ? date(row.updatedAt) : '暂无更新'}</div>
                     </div>
+                    <span className={`cw-overview-status ${row.status}`}>{row.status}</span>
+                  </header>
 
-                    <CustomerCardActions
-                      customer={c}
-                      story={story}
-                      onAddMaterial={onAddMaterial}
-                      onSelectCustomer={(id, targetTab) => {
-                        setCustomerId(id);
-                        if (targetTab) setTab(targetTab);
-                      }}
-                      onSelectDraft={(draftId) => {
-                        const targetDraft = state.drafts.find((d) => d.id === draftId);
-                        if (
-                          targetDraft &&
-                          (!targetDraft.customerId ||
-                            targetDraft.customerId === 'UNKNOWN' ||
-                            targetDraft.customerStatus === '待补客户信息')
-                        ) {
-                          state.openCustomerSupplement(draftId);
-                        } else {
-                          state.selectDraft(draftId);
-                        }
-                      }}
-                    />
-
-                    <details className="cw-story-card-tech">
-                      <summary>技术详情（供对账核验）</summary>
-                      <dl>
-                        <dt>客户标识</dt>
-                        <dd><code>{c.id.startsWith('C-') && c.name.includes('英卡') ? 'KH-YKKJ' : c.id}</code> · 并发多委托模式</dd>
-                        <dt>材料总览</dt>
-                        <dd>
-                          委托任务 {c.counts.tasks} 票 · 查货批次 {c.inspectionBatches.length || 1} 批 · 文件 {c.files.length} 份
-                        </dd>
-                        <dt>商品池</dt>
-                        <dd>
-                          待核对商品 {c.counts.lines} 行 · 查货明细 {c.counts.raw} 条 · 可匹配合并商品 {c.counts.merged} 个
-                        </dd>
-                      </dl>
-                    </details>
-                  </article>
-                );
-              }
-
-              const isZhiwei = c.name.includes('智微') || c.id === 'C-66be07d6cabe' || c.tasks.some((t) => t.draft.displayNo.includes('ZW'));
-              const noReliableSource = story.progressPercent === 100 && story.unresolvedItems.some((item) => item.text.includes('暂无可靠对应') || item.text.includes('暂无确定查货依据') || item.text.includes('等待仓储补充'));
-              const awaitingReview = story.nextStepText.includes('最终复核') || story.badge.label.includes('待复核');
-              return (
-                <article className="cw-customer cw-story-card" key={c.id}>
-                  <div className="cw-story-head">
-                    <div className="cw-story-title-group">
-                      <h3>{story.name}</h3>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 3 }}>
-                        <strong className="cw-story-task-no">
-                          {isZhiwei ? `${story.displayNo} 等 ${c.tasks.length} 票任务` : story.displayNo}
-                        </strong>
-                        <small className="cw-story-updated">更新于 {story.updatedAtText}</small>
-                      </div>
-                    </div>
-                    <span className={`cw-story-badge ${primaryBadge.variant}`}>
-                      {primaryBadge.label}
-                    </span>
-                  </div>
-
-                  <div className="cw-story-body">
-                    {focusedHighlight && (
-                      <div className="cw-focused-filter-strip">
-                        <span className="cw-focused-icon">🎯</span>
-                        <strong>{focusedHighlight.title}</strong>
-                        <span>· {focusedHighlight.detail}</span>
-                      </div>
+                  <section className={`cw-overview-progress ${isMultiTask ? 'multi' : ''}`} aria-label="当前核心进度">
+                    {isMultiTask ? (
+                      <>
+                        <div className="cw-overview-progress-top"><b>各票任务进度</b><strong>{row.activeTasks} 票活跃任务</strong></div>
+                        <div className="cw-overview-task-progress-list">
+                          {row.tasks.slice(0, 3).map((task) => {
+                            const taskPercent = task.status === '已完成' ? 100 : task.total ? Math.round((task.done / task.total) * 100) : 0;
+                            return (
+                              <div className="cw-overview-task-progress" key={task.id}>
+                                <div className="cw-overview-task-progress-head">
+                                  <span title={task.displayNo}>{task.displayNo}</span>
+                                  <em className={`cw-overview-mini-status ${task.status}`}>{task.status}</em>
+                                  <strong>{task.done}/{task.total}</strong>
+                                </div>
+                                <div className="cw-overview-task-progress-bar" role="progressbar" aria-valuenow={taskPercent} aria-valuemin={0} aria-valuemax={100}>
+                                  <i style={{ width: `${taskPercent}%` }} />
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="cw-overview-progress-top"><b>{progressTitle}</b><strong>{progressValue}</strong></div>
+                        <div className="cw-overview-progress-bar" role="progressbar" aria-valuenow={progressPercent} aria-valuemin={0} aria-valuemax={100}><i style={{ width: `${progressPercent}%` }} /></div>
+                        <span className="cw-overview-progress-meta">{progressMeta}</span>
+                      </>
                     )}
-                    <div className="cw-story-status-line">
-                      {story.currentStatusText}
-                    </div>
+                  </section>
 
-                    <div className="cw-story-section cw-ai-stage">
-                      <span className="cw-story-label"><Sparkles size={13} /> AI 当前阶段</span>
-                      <span className="cw-story-content">{noReliableSource ? '等待可靠查货依据' : awaitingReview ? 'AI 自动核对已通过，等待人工复核' : story.progressPercent === 100 && primaryBadge.variant !== 'green' ? '已找到查货候选，等待人工确认' : story.currentStatusText}</span>
-                    </div>
+                  <section className={`cw-overview-problem ${issueTone}`} aria-label="当前最重要信息">
+                    <strong>{issueTitle}</strong>
+                    <span>{issueDescription}</span>
+                  </section>
 
-                    <div className="cw-story-section">
-                      <span className="cw-story-label">查货候选覆盖</span>
-                      <div className="cw-story-progress-box">
-                        <div className="cw-story-progress-text">
-                          <span>{noReliableSource ? '暂无可靠查货依据' : story.progressText}</span>
-                          <span>{noReliableSource ? '待补充查货' : story.progressPercent === 100 && primaryBadge.variant !== 'green' ? '候选已覆盖' : `${story.progressPercent}%`}</span>
-                        </div>
-                        <div className="cw-story-progress-bar">
-                          <div
-                            className="cw-story-progress-fill"
-                            style={{ width: `${noReliableSource ? 0 : story.progressPercent}%` }}
-                          />
-                        </div>
-                        {story.compositionalProgress && !awaitingReview && (
-                          <div className="cw-compositional-progress">
-                            {story.compositionalProgress}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* 仍需处理（为什么还没完成） */}
-                    <div className="cw-story-section">
-                      <span className="cw-story-label">仍需处理</span>
-                      <div className="cw-unresolved-box">
-                        {story.unresolvedItems.map((item, idx) => (
-                          <div className={`cw-unresolved-item ${item.type}`} key={idx}>
-                            <span className="cw-unresolved-icon">
-                              {item.type === 'warning' ? '⚠' : item.type === 'success' ? '✓' : '○'}
-                            </span>
-                            <span>{item.text}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="cw-story-section">
-                      <span className="cw-story-label">下一步</span>
-                      <div className="cw-story-next">
-                        {story.nextStepText}
-                      </div>
-                    </div>
+                  <div className="cw-overview-action-slot">
+                    <button type="button" className={isPrimaryAction ? 'cw-overview-primary' : 'cw-overview-secondary'} onClick={() => handleOverviewAction(row, row.action)}>{actionLabel}</button>
                   </div>
 
-                  <CustomerCardActions
-                    customer={c}
-                    story={story}
-                    onAddMaterial={onAddMaterial}
-                    onSelectCustomer={(id, targetTab) => {
-                      setCustomerId(id);
-                      if (targetTab) setTab(targetTab);
-                    }}
-                    onSelectDraft={(draftId) => {
-                      const targetDraft = state.drafts.find((d) => d.id === draftId);
-                      if (
-                        targetDraft &&
-                        (!targetDraft.customerId ||
-                          targetDraft.customerId === 'UNKNOWN' ||
-                          targetDraft.customerStatus === '待补客户信息')
-                      ) {
-                        state.openCustomerSupplement(draftId);
-                      } else {
-                        state.selectDraft(draftId);
-                      }
-                    }}
-                  />
+                  <footer className="cw-overview-details">
+                    <button
+                      type="button"
+                      className="cw-overview-product-entry"
+                      onClick={() => { setCustomerId(c.id); setTab('商品对应'); }}
+                    >
+                      进入商品对应
+                    </button>
+                    <button
+                      type="button"
+                      className="cw-overview-detail-link"
+                      onClick={() => isMultiTask ? (setCustomerId(c.id), setTab('委托任务')) : handleOverviewAction(row, { ...row.action, target: 'task', prominent: false })}
+                    >
+                      {footerLabel}
+                    </button>
+                  </footer>
+                </article>;
+              })}
+            </div>
+          )}
 
-                  {/* 智微智能专属：AI 四步提示词处理过程追溯 (P1~P4) 放在操作按钮下方，采用规范统一的 details 折叠项，默认折叠收起，与其他客户卡片样式规范 100% 保持一致 */}
-                  {isZhiwei && (
-                    <details className="cw-story-card-tech">
-                      <summary>AI 四步提示词处理过程追溯 (P1 导单 → P2 查货 → P3 对应 → P4 核验)</summary>
-                      <div style={{ marginTop: 8 }}>
-                        <CustomerPromptPipelineTrace compact isResolved={true} />
-                      </div>
-                    </details>
-                  )}
 
-                  <details className="cw-story-card-tech cw-story-materials">
-                    <summary>材料与 AI 已完成工作</summary>
-                    <div className="cw-story-section"><span className="cw-story-label">本次材料</span><span className="cw-story-content">{story.materialsSummary}</span></div>
-                    <div className="cw-story-section"><span className="cw-story-label">AI 已完成整理</span><ul className="cw-story-list"><li>{story.aiOrderSummary}</li><li title={story.aiInspectionTooltip}>{story.aiInspectionSummary}</li></ul></div>
-                  </details>
-
-                  {/* 渐进式披露：底层对账与技术指标（内部ID收纳） */}
-                  <details className="cw-story-card-tech">
-                    <summary>技术详情（供对账核验）</summary>
-                    <dl>
-                      <dt>内部标识</dt>
-                      <dd>
-                        客户 <code>{c.id.startsWith('C-') && c.name.includes('英卡') ? 'KH-YKKJ' : c.id}</code> · 任务 <code>{story.primaryTaskId ?? '无'}</code>
-                      </dd>
-                      <dt>材料详情</dt>
-                      <dd>
-                        委托 {c.counts.orderFiles} · 发票{' '}
-                        {c.counts.invoiceFiles} · 箱单{' '}
-                        {c.counts.packingFiles} · 查货{' '}
-                        {c.counts.inspectionFiles}
-                      </dd>
-                      <dt>商品数据</dt>
-                      <dd>
-                        待核对商品 {c.counts.lines} · 查货明细{' '}
-                        {c.counts.raw} · 整理后的查货商品 {c.counts.merged}
-                      </dd>
-                    </dl>
-                  </details>
-                </article>
-              );
-            })}
-          </div>
-        )}
         </>
       ) : (
         <>

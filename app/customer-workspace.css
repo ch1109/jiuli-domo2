@@ -17,8 +17,8 @@
 .cw-v2 > .cw-customers,
 .cw-customers {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
   width: 100%;
 }
 
@@ -4486,6 +4486,121 @@
   margin: 0 0 16px;
   font-size: 13.5px;
   color: #60796c;
+}
+
+/* 客户业务概览：任务入口卡片与列表 */
+.cw-overview-view-toggle { display:flex; gap:2px; padding:3px; background:#f1f5f3; border:1px solid #dbe7e0; border-radius:8px; }
+.cw-overview-view-toggle button { border:0; background:transparent; color:#567063; padding:6px 10px; border-radius:6px; cursor:pointer; font-size:13px; }
+.cw-overview-view-toggle button.active { background:#fff; color:#14532d; box-shadow:0 1px 3px rgba(18,55,38,.12); font-weight:650; }
+.cw-overview-card {
+  position: relative;
+  box-sizing: border-box;
+  height: 350px;
+  min-height: 350px;
+  padding: 16px 17px 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #dce7e0;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(25, 62, 43, .025);
+  transition: border-color .16s ease, box-shadow .16s ease, transform .16s ease;
+}
+.cw-overview-card:hover { border-color:#b9d0c1; box-shadow:0 8px 22px rgba(25,62,43,.08); transform:translateY(-1px); }
+.cw-overview-card::before { content:""; position:absolute; inset:0 0 auto; height:2px; background:#dce7e0; }
+.cw-overview-card.前置问题::before,.cw-overview-card.待确认对应::before { background:#e8b66e; }
+.cw-overview-card.待人工核对::before { background:#76a9d5; }
+.cw-overview-card.部分完成::before { background:#78b58f; }
+.cw-overview-card.等待查货::before { background:#b9c8c0; }
+.cw-overview-card.已完成::before { background:#72c694; }
+.cw-overview-card-head { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; height:54px; min-height:54px; }
+.cw-overview-card-identity { min-width:0; }
+.cw-overview-card-head h3 { margin:0 0 5px; overflow:hidden; color:#173b2c; font-size:16px; line-height:1.3; font-weight:650; text-overflow:ellipsis; white-space:nowrap; }
+.cw-overview-card-meta { overflow:hidden; color:#75877d; font-size:12px; line-height:1.35; text-overflow:ellipsis; white-space:nowrap; }
+.cw-overview-status { display:inline-flex; align-items:center; white-space:nowrap; border-radius:999px; padding:4px 9px; border:1px solid; font-size:12px; font-weight:650; }
+.cw-overview-status.前置问题,.cw-overview-status.待确认对应 { color:#9a4d0a; background:#fff5e8; border-color:#f3d3a8; }
+.cw-overview-status.待人工核对 { color:#245b8f; background:#edf5ff; border-color:#c9def5; }
+.cw-overview-status.部分完成 { color:#356b54; background:#eef8f2; border-color:#cfe8d8; }
+.cw-overview-status.等待查货 { color:#64756c; background:#f4f7f5; border-color:#dce5df; }
+.cw-overview-status.已完成 { color:#21724a; background:#eaf8ef; border-color:#c6e9d2; }
+.cw-overview-progress { display:flex; flex-direction:column; justify-content:center; gap:8px; height:82px; min-height:82px; color:#294d3b; font-size:13px; }
+.cw-overview-progress.multi { height:126px; min-height:126px; gap:8px; }
+.cw-overview-progress-top { display:flex; align-items:baseline; justify-content:space-between; gap:8px; }
+.cw-overview-progress-top b { color:#315844; font-size:13px; font-weight:650; }
+.cw-overview-progress-top strong { overflow:hidden; color:#183d2c; font-size:12.5px; font-weight:650; text-align:right; text-overflow:ellipsis; white-space:nowrap; }
+.cw-overview-progress-meta { overflow:hidden; color:#6d8276; font-size:11.5px; text-overflow:ellipsis; white-space:nowrap; }
+.cw-overview-progress-bar { height:6px; border-radius:99px; background:#edf2ef; overflow:hidden; }
+.cw-overview-progress-bar i { display:block; height:100%; border-radius:inherit; background:#5a9b75; }
+.cw-overview-task-progress-list { display:flex; flex-direction:column; gap:6px; min-width:0; }
+.cw-overview-task-progress { display:flex; flex-direction:column; gap:3px; min-width:0; }
+.cw-overview-task-progress-head { display:grid; grid-template-columns:minmax(0, 1fr) auto auto; align-items:center; gap:6px; min-width:0; }
+.cw-overview-task-progress-head > span { overflow:hidden; color:#315844; font-size:11.5px; font-weight:650; text-overflow:ellipsis; white-space:nowrap; }
+.cw-overview-task-progress-head > strong { color:#315844; font-size:11.5px; font-weight:650; }
+.cw-overview-mini-status { overflow:hidden; max-width:72px; padding:1px 5px; border:1px solid #d7e4dc; border-radius:999px; color:#668073; background:#f7faf8; font-size:10px; font-style:normal; line-height:1.25; text-overflow:ellipsis; white-space:nowrap; }
+.cw-overview-mini-status.待确认对应,.cw-overview-mini-status.前置问题 { border-color:#f1d4aa; color:#9a4d0a; background:#fff8ee; }
+.cw-overview-mini-status.待人工核对 { border-color:#c9def5; color:#245b8f; background:#edf5ff; }
+.cw-overview-mini-status.已完成 { border-color:#c6e9d2; color:#21724a; background:#eaf8ef; }
+.cw-overview-task-progress-bar { height:4px; border-radius:99px; background:#edf2ef; overflow:hidden; }
+.cw-overview-task-progress-bar i { display:block; height:100%; border-radius:inherit; background:#5a9b75; }
+.cw-overview-problem { box-sizing:border-box; display:flex; flex-direction:column; justify-content:center; gap:4px; height:66px; min-height:66px; margin:0 0 12px; padding:9px 10px; overflow:hidden; border-radius:7px; background:#fff8ee; color:#8a4a14; font-size:12px; line-height:1.4; }
+.cw-overview-problem strong,.cw-overview-problem span { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.cw-overview-problem strong { font-size:12.5px; font-weight:650; }
+.cw-overview-problem span { color:#a56f3c; }
+.cw-overview-problem.waiting { background:#f5f8f6; color:#66776e; }
+.cw-overview-problem.waiting span { color:#7c8c84; }
+.cw-overview-problem.complete { background:#f1faf4; color:#27724a; }
+.cw-overview-problem.complete span { color:#5a8b6d; }
+.cw-overview-action-slot { height:44px; min-height:44px; display:flex; align-items:center; }
+.cw-overview-primary { width:100%; border:0; border-radius:7px; padding:9px 12px; background:#2563d9; color:white; font-size:13px; font-weight:650; cursor:pointer; transition:background .15s ease, transform .15s ease; }
+.cw-overview-primary:hover { background:#1d56bd; transform:translateY(-1px); }
+.cw-overview-secondary { width:100%; border:1px solid #cbded2; border-radius:7px; padding:8px 12px; color:#246043; background:#fff; font-size:13px; cursor:pointer; }
+.cw-overview-secondary:hover { border-color:#8bb89c; background:#f8fcf9; }
+.cw-overview-summary-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; padding:10px; margin-bottom:14px; border:1px solid #e4ece7; border-radius:8px; background:#f8fbf9; color:#60776b; font-size:12.5px; }
+.cw-overview-summary-grid b { display:block; margin-top:2px; color:#173b2c; font-size:18px; }
+.cw-overview-focus-title { margin:16px 0 8px; color:#526b5e; font-size:12.5px; font-weight:650; }
+.cw-overview-focus-list { display:flex; flex-direction:column; gap:8px; }
+.cw-overview-focus-task { display:grid; grid-template-columns:1fr auto; gap:5px 10px; padding:10px 12px; border:1px solid #e3ece6; border-radius:8px; background:#fbfdfc; }
+.cw-overview-focus-task > div { display:flex; align-items:center; gap:8px; }
+.cw-overview-focus-task > span { color:#456655; font-size:13px; }
+.cw-overview-focus-task button,.cw-overview-all-tasks { justify-self:start; border:0; padding:0; background:transparent; color:#1f6a47; font-weight:650; cursor:pointer; font-size:13px; }
+.cw-overview-all-tasks { margin-top:10px; }
+.cw-overview-details { height:35px; min-height:35px; margin-top:auto; padding-top:9px; display:flex; align-items:center; justify-content:space-between; gap:8px; border-top:1px dashed #dce7e0; color:#557364; font-size:12px; }
+.cw-overview-details button { cursor:pointer; }
+.cw-overview-product-entry { padding:5px 8px; border:1px solid #c9ded0; border-radius:6px; background:#f7fbf8; color:#246043; font-size:12px; font-weight:650; white-space:nowrap; }
+.cw-overview-product-entry:hover { border-color:#8bb89c; background:#edf8f0; color:#1f6a47; }
+.cw-overview-detail-link { padding:0; border:0; background:transparent; color:#557364; font-size:12px; font-weight:600; white-space:nowrap; }
+.cw-overview-detail-link:hover { color:#1f6a47; }
+.cw-overview-list-wrap { overflow:auto; border:1px solid #dfe9e3; border-radius:10px; background:#fff; }
+.cw-overview-list { width:100%; border-collapse:collapse; min-width:980px; font-size:13px; }
+.cw-overview-list th { text-align:left; padding:11px 12px; background:#f7faf8; color:#60776b; font-weight:650; border-bottom:1px solid #e5ece7; }
+.cw-overview-list td { padding:12px; border-bottom:1px solid #edf2ef; color:#385746; vertical-align:middle; }
+.cw-overview-list tr:last-child td { border-bottom:0; }
+.cw-overview-list td:first-child { min-width:190px; }
+.cw-overview-list td:first-child small { display:block; margin-top:3px; color:#8a9b91; font-size:11px; }
+.cw-overview-list-action { border:1px solid #cbded2; border-radius:6px; padding:6px 9px; background:#fff; color:#246043; cursor:pointer; white-space:nowrap; }
+.cw-overview-list-action.primary { border-color:#2563d9; background:#2563d9; color:#fff; }
+
+
+@media (max-width: 700px) {
+  .cw-overview-card { padding:16px; }
+  .cw-overview-summary-grid { grid-template-columns:1fr 1fr; }
+  .cw-customer-overview-controls { width:100%; flex-wrap:wrap; }
+  .cw-overview-view-toggle { order:3; }
+}
+
+@media (max-width: 1280px) {
+  .cw-v2 > .cw-customers, .cw-customers { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (max-width: 960px) {
+  .cw-v2 > .cw-customers, .cw-customers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 650px) {
+  .cw-v2 > .cw-customers, .cw-customers { grid-template-columns: 1fr; }
+  .cw-overview-card { height: auto; min-height: 350px; }
 }
 
 /* 客户详情页顶部返回看板快捷条 */

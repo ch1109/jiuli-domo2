@@ -577,6 +577,120 @@ td small {
   width: 100%;
 }
 
+.intake-combobox {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+}
+
+.intake-combobox-trigger {
+  width: 100%;
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  color: var(--ink);
+  background: var(--surface);
+  font-size: var(--text-md);
+  text-align: left;
+  cursor: pointer;
+}
+
+.intake-combobox-trigger.open,
+.intake-combobox-trigger:focus-visible {
+  border-color: var(--ai);
+  outline: 2px solid var(--ai-soft);
+  outline-offset: 1px;
+}
+
+.intake-combobox-trigger .placeholder {
+  color: var(--muted);
+}
+
+.intake-combobox-popover {
+  position: absolute;
+  z-index: 8;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-pop);
+}
+
+.intake-combobox-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 11px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.intake-combobox-search input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  color: var(--ink);
+  background: transparent;
+  font-size: var(--text-sm);
+}
+
+.intake-combobox-options {
+  max-height: 230px;
+  overflow-y: auto;
+  padding: 4px;
+}
+
+.intake-combobox-option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 10px;
+  border: 0;
+  border-radius: var(--r-sm);
+  color: var(--ink);
+  background: transparent;
+  font-size: var(--text-sm);
+  text-align: left;
+  cursor: pointer;
+}
+
+.intake-combobox-option:hover,
+.intake-combobox-option[aria-selected="true"] {
+  background: var(--surface-soft);
+}
+
+.intake-combobox-option small {
+  color: var(--muted);
+}
+
+.intake-combobox-empty {
+  display: grid;
+  gap: 8px;
+  padding: 14px 10px;
+  color: var(--muted);
+  font-size: var(--text-sm);
+}
+
+.intake-combobox-empty button {
+  width: fit-content;
+  padding: 0;
+  border: 0;
+  color: var(--ai);
+  background: transparent;
+  cursor: pointer;
+  font-size: var(--text-sm);
+}
+
 .intake-drop {
   grid-column: 1 / -1;
   min-height: 168px;
@@ -595,6 +709,12 @@ td small {
 .intake-drop:hover {
   border-color: var(--action);
   background: var(--surface-hover);
+}
+
+.intake-drop.dragging {
+  border-color: var(--action);
+  background: var(--surface-hover);
+  box-shadow: 0 0 0 3px var(--ai-soft);
 }
 
 .intake-drop-icon {
@@ -701,6 +821,33 @@ td small {
 .intake-file-list small {
   color: var(--muted);
   font-size: var(--text-xs);
+}
+
+.intake-file-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 6px;
+  border: 0;
+  border-radius: var(--r-sm);
+  color: var(--muted);
+  background: transparent;
+  font-size: var(--text-xs);
+  cursor: pointer;
+}
+
+.intake-file-action:hover {
+  color: var(--danger);
+  background: var(--danger-soft);
+}
+
+.intake-file-list-submitted {
+  margin-top: 18px;
+}
+
+.intake-file-status {
+  min-width: 52px;
+  text-align: right;
 }
 
 .intake-file-list select {
